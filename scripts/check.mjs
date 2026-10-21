@@ -7,7 +7,7 @@ async function walk(dir){let out=[];for(const e of await readdir(dir,{withFileTy
 const paths=await walk(dist),errors=[];
 let bytes=0,links=0;
 for(const path of paths){bytes+=(await stat(path)).size;if(!/\.(html|css|js|svg|txt)$/.test(path)&&!path.endsWith('_headers'))continue;const text=await readFile(path,'utf8');
-for(const [name,re] of Object.entries({placeholder:/__(?:LINKEDIN_URL|GITHUB_URL|UPDATED|HERO_DIAGRAM)__/,privatePath:/[A-Z]:\\Users\\|codex-remote-attachments|root-audit\\private/,credential:/-----BEGIN (?:OPENSSH|RSA|EC|PRIVATE)|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}/,personalNetwork:/\b(?:192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3}\.\d{1,3})\b|\b(?:[0-9a-f]{2}:){5}[0-9a-f]{2}\b/i,contactDetails:/mailto:|tel:|[\w.+-]+@(?:gmail|protonmail|outlook|hotmail)\./i}))if(re.test(text))errors.push(name+': '+path);
+for(const [name,re] of Object.entries({placeholder:/__(?:LINKEDIN_URL|GITHUB_URL|UPDATED|HERO_DIAGRAM)__/,privatePath:/[A-Z]:\\Users\\|remote-attachments|root-audit\\private/,credential:/-----BEGIN (?:OPENSSH|RSA|EC|PRIVATE)|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}/,personalNetwork:/\b(?:192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3}\.\d{1,3})\b|\b(?:[0-9a-f]{2}:){5}[0-9a-f]{2}\b/i,contactDetails:/mailto:|tel:|[\w.+-]+@(?:gmail|protonmail|outlook|hotmail)\./i}))if(re.test(text))errors.push(name+': '+path);
 if(extname(path)==='.html'){
  if(!text.includes('name="robots"')||!text.includes('noindex'))errors.push('Missing noindex: '+path);
  if(/<script(?![^>]*src=)[^>]*>|\son[a-z]+\s*=|style\s*=/i.test(text))errors.push('Inline execution or style: '+path);

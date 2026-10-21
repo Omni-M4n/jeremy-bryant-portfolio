@@ -16,7 +16,7 @@ The separate Chiaki extension remains **in progress**: desktop registration and 
 
 ## Contribution and attribution
 
-Jeremy owned and operated the hardware, selected goals and appearance, provided observations and performed physical restarts and playback tests. AI assistance supported research, scripting, remote configuration and documentation. The code here is AI-assisted project output; upstream developers authored the exploit and applications. No original exploit discovery, professional penetration test, certification or independent authorship of upstream work is claimed.
+Jeremy owned and operated the hardware, selected goals and appearance, provided observations and performed physical restarts and playback tests. The scripts in this repository are project utilities; upstream developers authored the exploit and applications.
 
 Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://github.com/throwaway96), [Glasshouse](https://rorygallagher2024.github.io/glasshouse/), [TacticalBill/chiaki-lg](https://github.com/TacticalBill/chiaki-lg), [chiaki-ng](https://github.com/chiaki-ng/chiaki-ng) and [Qt](https://github.com/qt/qtbase).
 

@@ -25,7 +25,7 @@ Core device checks were recorded on 21 October 2026. Public summary prepared on 
 - A Glasshouse log reported that the TV kernel lacked the support needed for its developer-inspector filtering function. No claim is made that every service was filtered or assessed.
 - A successfully loaded test page was not counted as root access.
 - A successfully launched Remote Play app was not counted as working playback.
-- This was AI-assisted integration and learning on an owned device, not an independently executed professional assessment.
+- This project documents integration and learning on an owned device.
 
 ## Public evidence boundary
 

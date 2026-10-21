@@ -1,6 +1,6 @@
 # Pairing-format converter
 
-`chiaki_pairing_converter.py` is an AI-assisted utility prepared during the Remote Play extension. It converts one PS5 registration from a native chiaki-ng Qt INI export into the JSON format expected by the inspected chiaki-lg v0.1.2 client. It does not contact a TV or console.
+`chiaki_pairing_converter.py` is a project utility prepared during the Remote Play extension. It converts one PS5 registration from a native chiaki-ng Qt INI export into the JSON format expected by the inspected chiaki-lg v0.1.2 client. It does not contact a TV or console.
 
 It decodes Qt escaping, checks byte-array lengths, rejects ambiguous registrations, avoids copying OAuth tokens and creates a new output file without overwriting an existing one. Diagnostics report counts and byte lengths rather than credential values. The source documents the upstream format references.
 

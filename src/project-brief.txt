@@ -26,7 +26,6 @@ Separating observations, evidence and unverified extensions.
 CONTRIBUTION AND METHOD
 Jeremy owned and operated the hardware, chose the goals and appearance,
 supplied observations, and carried out restarts and playback tests.
-AI assisted research, scripting, remote configuration and documentation.
 Upstream developers created the exploit and applications. See full credits
 and detailed scope in the case study. This is not original exploit research
 or a comprehensive security assessment.
