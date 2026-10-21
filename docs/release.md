@@ -8,6 +8,8 @@ Cloudflare routes reserve the `/portfolio` prefix for this separate static deplo
 
 The portfolio is public by direct link. HTML and response headers request `noindex, nofollow, noarchive`. This is discovery control, not authentication. No inbound links or sitemap entries are added to the main site.
 
+Responses use `Cache-Control: public, max-age=0, must-revalidate, no-transform`. Cloudflare documents that `no-transform` prevents its automatic analytics-beacon injection. This keeps the portfolio's same-origin policy and dependency-free delivery intact without changing the main site's analytics settings. See [Cloudflare Web Analytics setup](https://developers.cloudflare.com/web-analytics/get-started/).
+
 ## Applicable checks
 
 - Validate links, responsive layout, keyboard navigation, menu and diagram interactions.

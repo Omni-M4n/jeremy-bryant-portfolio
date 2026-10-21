@@ -24,9 +24,7 @@ await writeFile(join(dist,'_headers'),`/*
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000
   X-Robots-Tag: noindex, nofollow, noarchive
-
-/portfolio/assets/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 `);
 const inventory=(await files(dist)).map(p=>relative(dist,p).replaceAll('\\','/'));
 console.log(JSON.stringify({status:'built',files:inventory.length,base:config.base,runtimeDependencies:0}));
