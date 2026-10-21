@@ -1,0 +1,13 @@
+{
+  "name": "jeremy-bryant-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Jeremy Bryant's cybersecurity portfolio and owner-controlled LG webOS lab case study.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test": "node --test tests/site.test.mjs"
+  }
+}

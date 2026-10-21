@@ -1,0 +1,38 @@
+JEREMY BRYANT | CYBERSECURITY PORTFOLIO
+LG webOS home lab: device administration, customisation and recovery
+
+Portfolio: https://deadgoodreviews.com/portfolio/
+Case study: https://deadgoodreviews.com/portfolio/lg-webos-lab/
+LinkedIn: __LINKEDIN_URL__
+Repository: __GITHUB_URL__
+
+PROJECT
+Owner-authorised home lab using an LG 50UT8050PSB running webOS 10.3.2.
+Core setup completed 21 October 2026. Case study published __UPDATED__.
+
+OUTCOME
+Community Homebrew Channel installed; administrator access verified.
+Key-based SSH configured, Telnet disabled, restart persistence checked.
+Glasshouse custom home integrated with tested LG Home fallback.
+Temporary installation networking restored.
+Normal PS5 and streaming use confirmed by the owner.
+
+LEARNING
+Distinguishing network reachability from successful privileged access.
+Understanding Linux startup and configuration persistence.
+Preserving recovery paths and testing changes through normal use.
+Separating observations, evidence and unverified extensions.
+
+CONTRIBUTION AND METHOD
+Jeremy owned and operated the hardware, chose the goals and appearance,
+supplied observations, and carried out restarts and playback tests.
+AI assisted research, scripting, remote configuration and documentation.
+Upstream developers created the exploit and applications. See full credits
+and detailed scope in the case study. This is not original exploit research
+or a comprehensive security assessment.
+
+IN PROGRESS
+Chiaki PS5 registration and configuration transfer completed. Streaming
+video/audio and Bluetooth controller behaviour still await verification.
+
+This is a project brief, not an employment history or certification claim.
