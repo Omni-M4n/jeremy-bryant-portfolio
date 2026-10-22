@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "e1-vs-e2": "definitely-before",
+    "e2-vs-e3": "definitely-before"
+  },
+  "limitations": [
+    "A positive clock offset means the device clock is fast and is subtracted after UTC normalisation. The supplied uncertainty is a bound, not a probability.",
+    "Overlapping or touching intervals, including identical timestamps, cannot establish strict ordering. Even separated intervals do not establish causation.",
+    "The model assumes supplied offset and uncertainty estimates are valid; collection delay, timestamp granularity and omitted events need separate investigation."
+  ],
+  "observations": [
+    "e1: corrected UTC=2026-01-14T23:59:30Z; possible interval=[2026-01-14T23:59:25Z, 2026-01-14T23:59:35Z].",
+    "e2: corrected UTC=2026-01-14T23:59:45Z; possible interval=[2026-01-14T23:59:42Z, 2026-01-14T23:59:48Z].",
+    "e3: corrected UTC=2026-01-15T00:00:20Z; possible interval=[2026-01-15T00:00:18Z, 2026-01-15T00:00:22Z].",
+    "e1-vs-e2: compare e1 with e2; interval result=definitely-before.",
+    "e2-vs-e3: compare e2 with e3; interval result=definitely-before."
+  ]
+}

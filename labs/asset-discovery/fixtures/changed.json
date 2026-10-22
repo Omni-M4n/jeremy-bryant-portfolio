@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "lab_id": "asset-discovery",
+  "case_id": "changed",
+  "title": "A filtered service and a down host",
+  "synthetic": true,
+  "context": {
+    "question": "Which saved observations agree with the approved inventory, and which need an owner check?"
+  },
+  "data": {
+    "scope": [
+      "192.0.2.10",
+      "192.0.2.20",
+      "192.0.2.30",
+      "192.0.2.40"
+    ],
+    "approved": [
+      {
+        "ip": "192.0.2.10",
+        "owner": "museum-it",
+        "expected_tcp_ports": [
+          443
+        ]
+      },
+      {
+        "ip": "192.0.2.20",
+        "owner": "museum-it",
+        "expected_tcp_ports": [
+          443
+        ]
+      }
+    ],
+    "nmap_xml": "<nmaprun scanner=\"nmap\">\n  <host>\n    <status state=\"up\"/>\n    <address addr=\"192.0.2.10\" addrtype=\"ipv4\"/>\n    <ports>\n      <port protocol=\"tcp\" portid=\"443\"><state state=\"filtered\"/></port>\n    </ports>\n  </host>\n  <host>\n    <status state=\"down\"/>\n    <address addr=\"192.0.2.20\" addrtype=\"ipv4\"/>\n  </host>\n</nmaprun>\n"
+  },
+  "artifacts": {
+    "scan.xml": "<nmaprun scanner=\"nmap\">\n  <host>\n    <status state=\"up\"/>\n    <address addr=\"192.0.2.10\" addrtype=\"ipv4\"/>\n    <ports>\n      <port protocol=\"tcp\" portid=\"443\"><state state=\"filtered\"/></port>\n    </ports>\n  </host>\n  <host>\n    <status state=\"down\"/>\n    <address addr=\"192.0.2.20\" addrtype=\"ipv4\"/>\n  </host>\n</nmaprun>\n"
+  }
+}

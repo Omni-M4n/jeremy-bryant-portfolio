@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lab_id": "identity-lifecycle",
+  "case_id": "changed",
+  "title": "Handover expires while a starter is provisioned too early",
+  "synthetic": true,
+  "context": {
+    "question": "What access should be added, removed and retained on the stated review date?"
+  },
+  "data": {
+    "as_of": "2026-10-24",
+    "people": [
+      {
+        "id": "team-move",
+        "event": "mover",
+        "effective_on": "2026-10-22",
+        "current": [
+          "mail",
+          "new-queue",
+          "old-reports"
+        ],
+        "required": [
+          "mail",
+          "new-queue"
+        ],
+        "exceptions": [
+          {
+            "access": "old-reports",
+            "approved_by": "team-owner",
+            "expires_on": "2026-10-23"
+          }
+        ]
+      },
+      {
+        "id": "early-starter",
+        "event": "joiner",
+        "effective_on": "2026-10-25",
+        "current": [
+          "mail"
+        ],
+        "required": [
+          "mail",
+          "casework"
+        ],
+        "exceptions": []
+      },
+      {
+        "id": "future-leaver",
+        "event": "leaver",
+        "effective_on": "2026-10-25",
+        "current": [
+          "mail",
+          "casework"
+        ],
+        "required": [],
+        "exceptions": []
+      }
+    ]
+  },
+  "artifacts": {}
+}

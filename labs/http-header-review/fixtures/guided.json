@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "lab_id": "http-header-review",
+  "case_id": "guided",
+  "title": "A museum booking page and an incomplete account response",
+  "synthetic": true,
+  "context": {
+    "question": "Which exact supplied requirements are met by each saved response?"
+  },
+  "data": {
+    "requirements": {
+      "hsts_min_seconds": 31536000,
+      "frame_ancestors": "'none'",
+      "session_cookie": "session",
+      "cookie_samesite": "Strict"
+    },
+    "responses": [
+      {
+        "id": "booking",
+        "scheme": "https",
+        "is_html": true,
+        "requires_session": true,
+        "private_data": true,
+        "headers": "Strict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'none'\nCache-Control: no-store\nSet-Cookie: session=practice; Path=/; Secure; HttpOnly; SameSite=Strict\n"
+      },
+      {
+        "id": "account",
+        "scheme": "https",
+        "is_html": true,
+        "requires_session": true,
+        "private_data": true,
+        "headers": "Strict-Transport-Security: max-age=0; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'\nCache-Control: private\nSet-Cookie: session=practice; Path=/; Secure; SameSite=Lax\n"
+      }
+    ]
+  },
+  "artifacts": {
+    "headers.txt": "[booking] scheme=https\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'none'\nCache-Control: no-store\nSet-Cookie: session=practice; Path=/; Secure; HttpOnly; SameSite=Strict\n\n[account] scheme=https\nStrict-Transport-Security: max-age=0; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'\nCache-Control: private\nSet-Cookie: session=practice; Path=/; Secure; SameSite=Lax\n"
+  }
+}

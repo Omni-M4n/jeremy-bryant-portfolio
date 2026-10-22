@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "b0": "rpo-exceeded",
+    "b1": "restore-bytes-mismatch",
+    "recovery": "no-qualified-copy"
+  },
+  "limitations": [
+    "Only embedded fictional payloads were decoded into memory and hashed. No real backup, disk file or application was restored.",
+    "RPO is the permitted age of this synthetic recovery point, not recovery duration. A hash match establishes byte identity against the supplied manifest, not application usability.",
+    "Retention is evaluated from supplied metadata; embedded evidence of an expired copy does not establish its real availability. Media health, encryption keys and full recovery procedures are outside scope."
+  ],
+  "observations": [
+    "b1/notes.txt: decoded synthetic bytes=29; SHA-256=79f6d8b9e9ef370acdb243bf95205828b186cacfe7bf2e5cc57525e7c6ed4de2; expected=57ab2287ab2b8a3c9fb61efa8b1fd58235cd9cb724b94e4f9c97c90b68525ee9; match=no.",
+    "b1/roster.csv: decoded synthetic bytes=21; SHA-256=19dbb4749c0af6beebe1223fa4261e69cabf18aefe8455f3b02886466eecc2c7; expected=19dbb4749c0af6beebe1223fa4261e69cabf18aefe8455f3b02886466eecc2c7; match=yes.",
+    "b1: age=7200 seconds; RPO=14400 seconds; retained=yes; missing=none; mismatches=notes.txt.",
+    "b0/notes.txt: decoded synthetic bytes=29; SHA-256=57ab2287ab2b8a3c9fb61efa8b1fd58235cd9cb724b94e4f9c97c90b68525ee9; expected=57ab2287ab2b8a3c9fb61efa8b1fd58235cd9cb724b94e4f9c97c90b68525ee9; match=yes.",
+    "b0/roster.csv: decoded synthetic bytes=21; SHA-256=19dbb4749c0af6beebe1223fa4261e69cabf18aefe8455f3b02886466eecc2c7; expected=19dbb4749c0af6beebe1223fa4261e69cabf18aefe8455f3b02886466eecc2c7; match=yes.",
+    "b0: age=93600 seconds; RPO=14400 seconds; retained=yes; missing=none; mismatches=none.",
+    "Recovery candidate=none; latest qualifying capture wins, with lexical ID as a tie-break."
+  ]
+}

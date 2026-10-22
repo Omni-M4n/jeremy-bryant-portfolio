@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "lab_id": "tcp-handshake",
+  "case_id": "guided",
+  "title": "Three ways an opening excerpt can end",
+  "synthetic": true,
+  "context": {
+    "question": "Which opening events are actually supported by these packet summaries?"
+  },
+  "data": {
+    "flows": [
+      {
+        "id": "gallery",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 1,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 1000,
+            "ack": null
+          },
+          {
+            "frame": 2,
+            "direction": "s2c",
+            "flags": "SYN-ACK",
+            "seq": 9000,
+            "ack": 1001
+          },
+          {
+            "frame": 3,
+            "direction": "c2s",
+            "flags": "ACK",
+            "seq": 1001,
+            "ack": 9001
+          }
+        ]
+      },
+      {
+        "id": "archive",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 4,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 2000,
+            "ack": null
+          },
+          {
+            "frame": 5,
+            "direction": "s2c",
+            "flags": "RST-ACK",
+            "seq": 0,
+            "ack": 2001
+          }
+        ]
+      },
+      {
+        "id": "catalogue",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 6,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 3000,
+            "ack": null
+          },
+          {
+            "frame": 8,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 3000,
+            "ack": null
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "packets.csv": "flow,frame,direction,flags,sequence,acknowledgement\ngallery,1,c2s,SYN,1000,\ngallery,2,s2c,SYN-ACK,9000,1001\ngallery,3,c2s,ACK,1001,9001\narchive,4,c2s,SYN,2000,\narchive,5,s2c,RST-ACK,0,2001\ncatalogue,6,c2s,SYN,3000,\ncatalogue,8,c2s,SYN,3000,\n"
+  }
+}

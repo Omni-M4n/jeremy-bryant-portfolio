@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "lab_id": "mfa-review",
+  "case_id": "changed",
+  "title": "Expiry and emergency test boundary",
+  "synthetic": true,
+  "context": {
+    "question": "Which specified controls are missing for human, workload and emergency accounts?"
+  },
+  "data": {
+    "as_of": "2026-10-24",
+    "accounts": [
+      {
+        "id": "emergency-owner",
+        "type": "breakglass",
+        "interactive": true,
+        "privileged": true,
+        "methods": [
+          "password"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": true,
+        "test_age_days": 91,
+        "exception_until": "2026-10-23"
+      },
+      {
+        "id": "nightly-export",
+        "type": "service",
+        "interactive": false,
+        "privileged": false,
+        "methods": [
+          "federated-workload"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "short-lived",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      },
+      {
+        "id": "platform-admin",
+        "type": "human",
+        "interactive": true,
+        "privileged": true,
+        "methods": [
+          "password",
+          "security-key"
+        ],
+        "enforced": true,
+        "recovery": "backup-codes-secured",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      }
+    ]
+  },
+  "artifacts": {}
+}

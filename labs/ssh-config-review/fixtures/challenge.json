@@ -1,0 +1,14 @@
+{
+  "artifacts": {},
+  "case_id": "challenge",
+  "context": {
+    "question": "Review a deliberately small SSH server configuration against a fictional explicit baseline and notice first-value precedence and access-route gaps."
+  },
+  "data": {
+    "config": "PermitRootLogin yes\nPermitRootLogin no\nPasswordAuthentication no\nKbdInteractiveAuthentication no\nPubkeyAuthentication no\nPermitEmptyPasswords no\nMaxAuthTries 6\n"
+  },
+  "lab_id": "ssh-config-review",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "A later setting does not override the first"
+}

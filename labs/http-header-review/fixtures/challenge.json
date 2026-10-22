@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "lab_id": "http-header-review",
+  "case_id": "challenge",
+  "title": "A same-origin embed requirement and a missing session cookie",
+  "synthetic": true,
+  "context": {
+    "question": "Which exact supplied requirements are met by each saved response?"
+  },
+  "data": {
+    "requirements": {
+      "hsts_min_seconds": 31536000,
+      "frame_ancestors": "'self'",
+      "session_cookie": "session",
+      "cookie_samesite": "Strict"
+    },
+    "responses": [
+      {
+        "id": "embed",
+        "scheme": "https",
+        "is_html": true,
+        "requires_session": true,
+        "private_data": true,
+        "headers": "Strict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'\nCache-Control: no-store\nSet-Cookie: session=practice; Path=/; Secure; HttpOnly; SameSite=Strict\n"
+      },
+      {
+        "id": "login",
+        "scheme": "https",
+        "is_html": true,
+        "requires_session": true,
+        "private_data": true,
+        "headers": "Strict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'\nCache-Control: no-store\n"
+      }
+    ]
+  },
+  "artifacts": {
+    "headers.txt": "[embed] scheme=https\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'\nCache-Control: no-store\nSet-Cookie: session=practice; Path=/; Secure; HttpOnly; SameSite=Strict\n\n[login] scheme=https\nStrict-Transport-Security: max-age=31536000; includeSubDomains\nX-Content-Type-Options: nosniff\nContent-Security-Policy: default-src 'self'; frame-ancestors 'self'\nCache-Control: no-store\n"
+  }
+}

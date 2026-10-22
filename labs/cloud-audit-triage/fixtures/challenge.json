@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-audit-triage",
+  "case_id": "challenge",
+  "title": "The same session label is not enough",
+  "synthetic": true,
+  "context": {
+    "question": "Which actions succeeded, which correlate with a sign-in and where is logging incomplete?"
+  },
+  "data": {
+    "window_start": "2026-10-23T10:00:00Z",
+    "window_end": "2026-10-23T11:00:00Z",
+    "logging": {
+      "management": true,
+      "data": true
+    },
+    "approved_changes": [],
+    "events": [
+      {
+        "id": "x01",
+        "at": "2026-10-23T10:00:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "sign-in",
+        "result": "success",
+        "resource": "identity-service"
+      },
+      {
+        "id": "x02",
+        "at": "2026-10-23T10:15:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "read-object",
+        "result": "success",
+        "resource": "poster-object"
+      },
+      {
+        "id": "x03",
+        "at": "2026-10-23T10:16:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "read-object",
+        "result": "success",
+        "resource": "poster-object"
+      },
+      {
+        "id": "x04",
+        "at": "2026-10-23T10:05:00Z",
+        "identity": "different-operator",
+        "session": "session-a",
+        "action": "read-object",
+        "result": "success",
+        "resource": "rota-object"
+      }
+    ]
+  },
+  "artifacts": {}
+}

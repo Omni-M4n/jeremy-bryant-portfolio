@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "poster-site": "public-read-approved",
+    "volunteer-rota": "public-read-unapproved",
+    "archive": "blocked-public-grant",
+    "receipts": "no-public-grant"
+  },
+  "observations": [
+    "poster-site: grants=policy; blockers=none; purpose=public-site; class=public; approval=approved.",
+    "volunteer-rota: grants=acl; blockers=none; purpose=internal; class=internal; approval=none.",
+    "archive: grants=policy; blockers=bucket; purpose=internal; class=internal; approval=none.",
+    "receipts: grants=none; blockers=none; purpose=internal; class=restricted; approval=none."
+  ],
+  "limitations": [
+    "This is a fictional Boolean read-access model, not an AWS policy or ACL evaluator.",
+    "No object contents, write access, conditions, cross-account roles, access points, signed URLs or real cloud state are examined."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "artifacts": {},
+  "case_id": "guided",
+  "context": {
+    "question": "Normalise offset timestamps to UTC, correct known clock error and decide when evidence does or does not establish strict temporal order."
+  },
+  "data": {
+    "events": [
+      {
+        "clock_offset_seconds": 30,
+        "description": "Workstation file-open record",
+        "id": "e1",
+        "time": "2026-01-15T10:00:00+10:00",
+        "uncertainty_seconds": 5
+      },
+      {
+        "clock_offset_seconds": 0,
+        "description": "Gateway connection record",
+        "id": "e2",
+        "time": "2026-01-14T23:59:45Z",
+        "uncertainty_seconds": 3
+      },
+      {
+        "clock_offset_seconds": 0,
+        "description": "Service response record",
+        "id": "e3",
+        "time": "2026-01-15T01:00:20+01:00",
+        "uncertainty_seconds": 2
+      }
+    ],
+    "pairs": [
+      {
+        "id": "e1-vs-e2",
+        "left": "e1",
+        "right": "e2"
+      },
+      {
+        "id": "e2-vs-e3",
+        "left": "e2",
+        "right": "e3"
+      }
+    ]
+  },
+  "lab_id": "timeline-analysis",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "Three sources with explicit offsets"
+}

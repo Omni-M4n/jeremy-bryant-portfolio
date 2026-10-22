@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "redirect": "requirement-gaps:https-required",
+    "feed": "meets-supplied-requirements"
+  },
+  "observations": [
+    "redirect: scheme=http; HSTS-max-age=31536000; gaps=https-required.",
+    "feed: scheme=https; HSTS-max-age=31536000; gaps=none."
+  ],
+  "limitations": [
+    "Results compare supplied response excerpts with a fictional application policy, not with every browser rule or security requirement.",
+    "The narrow parser rejects folding, duplicate singleton fields and unsupported cookie/CSP/HSTS forms; no browser, server or network is used."
+  ]
+}

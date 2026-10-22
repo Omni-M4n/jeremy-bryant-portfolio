@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "lab_id": "mfa-review",
+  "case_id": "guided",
+  "title": "Enrolled is different from enforced",
+  "synthetic": true,
+  "context": {
+    "question": "Which specified controls are missing for human, workload and emergency accounts?"
+  },
+  "data": {
+    "as_of": "2026-10-23",
+    "accounts": [
+      {
+        "id": "helpdesk-user",
+        "type": "human",
+        "interactive": true,
+        "privileged": false,
+        "methods": [
+          "password",
+          "totp"
+        ],
+        "enforced": false,
+        "recovery": "shared-mailbox",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      },
+      {
+        "id": "platform-admin",
+        "type": "human",
+        "interactive": true,
+        "privileged": true,
+        "methods": [
+          "password",
+          "totp"
+        ],
+        "enforced": true,
+        "recovery": "helpdesk-verified",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      },
+      {
+        "id": "nightly-export",
+        "type": "service",
+        "interactive": true,
+        "privileged": false,
+        "methods": [
+          "password"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": null,
+        "credential_lifetime": "long-lived",
+        "monitored": false,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      },
+      {
+        "id": "emergency-owner",
+        "type": "breakglass",
+        "interactive": true,
+        "privileged": true,
+        "methods": [
+          "password"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": true,
+        "test_age_days": 30,
+        "exception_until": "2026-10-23"
+      }
+    ]
+  },
+  "artifacts": {
+    "control-note.txt": "Fictional policy: privileged humans use a security-key MFA method.\nService identities require noninteractive, owned, monitored short-lived federation.\nA dated emergency exception waives only the MFA requirement, not storage, monitoring, ownership or testing.\n"
+  }
+}

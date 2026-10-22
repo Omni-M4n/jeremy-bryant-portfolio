@@ -1,0 +1,50 @@
+{
+  "artifacts": {},
+  "case_id": "challenge",
+  "context": {
+    "question": "Compare observed daily tasks with a small approved baseline and distinguish exact maintenance approval from unexplained differences."
+  },
+  "data": {
+    "approvals": [
+      {
+        "account": "lab-backup",
+        "action": "C:/Lab/bin/archive.exe",
+        "daily_time": "03:00",
+        "id": "archive",
+        "reason": "Fictional maintenance window adjustment CHG-17"
+      }
+    ],
+    "baseline": [
+      {
+        "account": "lab-backup",
+        "action": "C:/Lab/bin/archive.exe",
+        "daily_time": "02:00",
+        "id": "archive"
+      },
+      {
+        "account": "lab-inventory",
+        "action": "C:/Lab/bin/inventory.exe",
+        "daily_time": "04:00",
+        "id": "inventory"
+      }
+    ],
+    "observed": [
+      {
+        "account": "SYSTEM",
+        "action": "C:/Lab/bin/archive.exe",
+        "daily_time": "03:00",
+        "id": "archive"
+      },
+      {
+        "account": "lab-inventory",
+        "action": "C:/Lab/bin/inventory.exe",
+        "daily_time": "04:00",
+        "id": "inventory"
+      }
+    ]
+  },
+  "lab_id": "scheduled-task-review",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "An approval that does not cover the account"
+}

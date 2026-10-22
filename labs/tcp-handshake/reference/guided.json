@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "gallery": "handshake-observed",
+    "archive": "reset-observed",
+    "catalogue": "no-response-observed"
+  },
+  "observations": [
+    "gallery: SYN 1000 -> SYN-ACK 9000/1001 -> ACK 1001/9001.",
+    "archive: server-direction RST-ACK acknowledges 2001; cause is not established.",
+    "catalogue: 2 SYN observation(s); no server response in this excerpt."
+  ],
+  "limitations": [
+    "Missing packets can reflect capture position, loss or a short capture; they do not prove a firewall or server fault.",
+    "Only one ordinary, payload-free opening attempt per flow is supported; this is not a packet decoder or TCP state implementation."
+  ]
+}

@@ -573,3 +573,21 @@ details[open] > summary { margin-bottom: 15px; }
   .site-footer > .container { display: block; }
   .footer-links { display: none; }
 }
+
+/* Compact, keyboard-accessible entries for the foundation practice catalog. */
+.lab-catalog { display: grid; gap: 1rem; margin-top: 2rem; }
+.lab-card { border: 1px solid var(--line, #d4d5cb); padding: 1.25rem; }
+.lab-card summary { cursor: pointer; list-style-position: outside; margin-left: 1rem; }
+.lab-card summary:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.lab-card summary .eyebrow { display: block; margin-bottom: .5rem; }
+.lab-summary-title { display: block; font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+.lab-card[open] summary { margin-bottom: 1.25rem; }
+.lab-card dl { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: .75rem 1rem; margin-block: 1.5rem; }
+.lab-card dt { font-weight: 600; }
+.lab-card dd { margin: 0; }
+.lab-card .text-link { overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .lab-card { padding: 1rem; }
+  .lab-card dl { grid-template-columns: 1fr; gap: .25rem; }
+  .lab-card dd { margin-bottom: .75rem; }
+}

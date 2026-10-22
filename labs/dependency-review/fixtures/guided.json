@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "lab_id": "dependency-review",
+  "case_id": "guided",
+  "title": "Runtime exposure and build-time uncertainty",
+  "synthetic": true,
+  "context": {
+    "question": "Which supplied versions fall inside fictional ranges and what remains uncertain about exposure?"
+  },
+  "data": {
+    "components": [
+      {
+        "id": "upload-parser",
+        "name": "demo-parser",
+        "version": "1.9.9",
+        "scope": "runtime",
+        "reachability": "reachable",
+        "evidence": "request map reaches the upload parser"
+      },
+      {
+        "id": "asset-builder",
+        "name": "demo-builder",
+        "version": "2.0.4",
+        "scope": "development",
+        "reachability": "unknown",
+        "evidence": "build inputs have not been reviewed"
+      },
+      {
+        "id": "theme-helper",
+        "name": "demo-theme",
+        "version": "1.0.0",
+        "scope": "runtime",
+        "reachability": "unknown",
+        "evidence": "inventory only"
+      }
+    ],
+    "advisories": [
+      {
+        "id": "DEMO-ADV-001",
+        "package": "demo-parser",
+        "introduced": "1.9.0",
+        "fixed": "1.10.0"
+      },
+      {
+        "id": "DEMO-ADV-002",
+        "package": "demo-builder",
+        "introduced": "2.0.0",
+        "fixed": "2.0.5"
+      }
+    ]
+  },
+  "artifacts": {
+    "advisory-note.txt": "DEMO-ADV identifiers are fictional and are not CVEs.\nRange notation [introduced,fixed) includes the first version and excludes the fixed boundary.\nA request map provides reachability evidence, not proof that an exploit will work.\n"
+  }
+}

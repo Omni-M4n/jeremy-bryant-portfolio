@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "upload-parser": "outside-supplied-ranges",
+    "asset-builder": "outside-supplied-ranges",
+    "report-parser": "affected-validate-path"
+  },
+  "observations": [
+    "upload-parser: demo-parser 1.10.0; scope=runtime; reachability=reachable; matches=none; evidence=same request map after a proposed update.",
+    "asset-builder: demo-builder 2.0.5; scope=development; reachability=unknown; matches=none; evidence=build inputs have not been reviewed.",
+    "report-parser: demo-parser 1.9.0; scope=runtime; reachability=not-demonstrated; matches=DEMO-ADV-001:[1.9.0,1.10.0); evidence=one smoke test did not exercise report import."
+  ],
+  "limitations": [
+    "Only stable three-part numeric versions from 0 to 9999 per part are supported; prereleases, build metadata, ecosystem ranges and backports are rejected or outside scope.",
+    "All packages and advisories are fictional. A range match is not proof of exploitability, and no supplied match is not proof that software is secure."
+  ]
+}

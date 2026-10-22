@@ -1,0 +1,14 @@
+{
+  "artifacts": {},
+  "case_id": "changed",
+  "context": {
+    "question": "Review a deliberately small SSH server configuration against a fictional explicit baseline and notice first-value precedence and access-route gaps."
+  },
+  "data": {
+    "config": "PermitRootLogin no\nPasswordAuthentication no\nKbdInteractiveAuthentication no\nPubkeyAuthentication yes\nPermitEmptyPasswords no\nMaxAuthTries 4\n"
+  },
+  "lab_id": "ssh-config-review",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "Six explicit settings meet the fictional baseline"
+}

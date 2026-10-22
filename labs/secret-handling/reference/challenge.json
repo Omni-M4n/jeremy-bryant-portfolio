@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "short-token": "relocate-before-sharing",
+    "long-token": "contain;revoke-and-replace;clean-copies;review-use"
+  },
+  "observations": [
+    "short-token: state=active; locations=draft-config.txt:L1(config,local); audiences=local.",
+    "long-token: state=active; locations=package-log.txt:L1(log,shared); audiences=shared."
+  ],
+  "limitations": [
+    "Only exact listed DEMO_ONLY_TOKEN markers are matched; absence is not proof that an artifact contains no secrets.",
+    "All values are deliberately fake. No credentials are tested, revoked, uploaded or changed; real response needs owner-led containment and service continuity planning."
+  ]
+}

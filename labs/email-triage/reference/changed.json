@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "forged": "authentication-unverified",
+    "lookalike": "authenticated-domain-with-mismatch"
+  },
+  "observations": [
+    "forged: no trusted receiver result; mismatches=none.",
+    "lookalike: trusted lookalike-relay: SPF=pass, DKIM=pass, DMARC=pass; mismatches=from-not-expected."
+  ],
+  "limitations": [
+    "Receiver trust is supplied out of band for this exercise; an Authentication-Results header or matching relay name alone is not proof.",
+    "SPF authorises a sending domain context; DMARC relates authenticated domains to From. Neither authenticates a person or guarantees harmless content.",
+    "Only decoded strict domain alignment is checked; no DNS, signature, ARC, relaxed alignment, attachment or URL-content analysis occurs."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "gallery": "fields-and-reported-chain-pass",
+    "archive": "renewal-due",
+    "kiosk": "expired|chain-unverified"
+  },
+  "observations": [
+    "gallery: seconds-until-notAfter=4233600; SAN-match=true; supplied-chain=verified.",
+    "archive: seconds-until-notAfter=864000; SAN-match=true; supplied-chain=verified.",
+    "kiosk: seconds-until-notAfter=-1; SAN-match=true; supplied-chain=unverified."
+  ],
+  "limitations": [
+    "Certificate fields and a supplied chain report are synthetic; no signature, chain, revocation, protocol or cipher verification is performed.",
+    "Only ASCII DNS SAN names and a single leftmost wildcard are modelled; a matching name does not establish application safety."
+  ]
+}

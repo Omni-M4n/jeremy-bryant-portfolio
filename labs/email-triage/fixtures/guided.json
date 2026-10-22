@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "lab_id": "email-triage",
+  "case_id": "guided",
+  "title": "A normal domain result and an unrelated SPF pass",
+  "synthetic": true,
+  "context": {
+    "question": "Which domain claims come from the supplied trusted receiver, and which discrepancies need checking?",
+    "trusted_receiving_relay": {
+      "authserv_id": "mx.receiver.test",
+      "trusted_record_ids": [
+        "notice-relay",
+        "invoice-relay"
+      ],
+      "alignment": "strict",
+      "provenance": "fictional-receiver-export"
+    }
+  },
+  "data": {
+    "messages": [
+      {
+        "id": "notice",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum.test",
+        "reply_to_domain": "museum.test",
+        "link_domains": [
+          "museum.test"
+        ],
+        "authentication_results": [
+          {
+            "id": "notice-relay",
+            "authserv_id": "mx.receiver.test",
+            "spf": "pass",
+            "mailfrom_domain": "museum.test",
+            "dkim": "pass",
+            "dkim_domain": "museum.test",
+            "dmarc": "pass"
+          }
+        ]
+      },
+      {
+        "id": "invoice",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum.test",
+        "reply_to_domain": "payments.test",
+        "link_domains": [
+          "payments.test"
+        ],
+        "authentication_results": [
+          {
+            "id": "invoice-relay",
+            "authserv_id": "mx.receiver.test",
+            "spf": "pass",
+            "mailfrom_domain": "sender.test",
+            "dkim": "fail",
+            "dkim_domain": "sender.test",
+            "dmarc": "fail"
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "headers.txt": "[notice]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum.test; dkim=pass header.d=museum.test; dmarc=pass header.from=museum.test (record notice-relay)\nLink domains: museum.test\n\n[invoice]\nFrom: curator@museum.test\nReply-To: desk@payments.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=sender.test; dkim=fail header.d=sender.test; dmarc=fail header.from=museum.test (record invoice-relay)\nLink domains: payments.test\n"
+  }
+}

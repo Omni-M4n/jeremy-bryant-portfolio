@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "archive": "unapproved-change-review",
+    "inventory": "matches-baseline"
+  },
+  "limitations": [
+    "Daily time, account and literal action path are compared exactly; this is not the Windows Task Scheduler XML parser.",
+    "A missing task may reflect incomplete collection. A change can be benign maintenance; confirm approval scope before escalation.",
+    "Matching an approval or baseline does not verify executable contents, actual execution, permissions or safety. No task was created or run."
+  ],
+  "observations": [
+    "archive: baseline=02:00|lab-backup|C:/Lab/bin/archive.exe; observed=03:00|SYSTEM|C:/Lab/bin/archive.exe; approval=03:00|lab-backup|C:/Lab/bin/archive.exe.",
+    "inventory: baseline=04:00|lab-inventory|C:/Lab/bin/inventory.exe; observed=04:00|lab-inventory|C:/Lab/bin/inventory.exe; approval=none."
+  ]
+}

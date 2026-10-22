@@ -8,6 +8,6 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "preview": "node scripts/preview.mjs",
-    "test": "node --test tests/site.test.mjs"
+    "test": "node --test tests/site.test.mjs tests/lab-catalog.test.mjs"
   }
 }

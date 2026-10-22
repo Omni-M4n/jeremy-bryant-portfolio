@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "lab_id": "tcp-handshake",
+  "case_id": "changed",
+  "title": "A missing final packet and a late capture",
+  "synthetic": true,
+  "context": {
+    "question": "Which opening events are actually supported by these packet summaries?"
+  },
+  "data": {
+    "flows": [
+      {
+        "id": "gallery",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 1,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 700,
+            "ack": null
+          },
+          {
+            "frame": 3,
+            "direction": "s2c",
+            "flags": "SYN-ACK",
+            "seq": 800,
+            "ack": 701
+          }
+        ]
+      },
+      {
+        "id": "archive",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 2,
+            "direction": "s2c",
+            "flags": "SYN-ACK",
+            "seq": 900,
+            "ack": 401
+          },
+          {
+            "frame": 4,
+            "direction": "c2s",
+            "flags": "ACK",
+            "seq": 401,
+            "ack": 901
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "packets.csv": "flow,frame,direction,flags,sequence,acknowledgement\ngallery,1,c2s,SYN,700,\ngallery,3,s2c,SYN-ACK,800,701\narchive,2,s2c,SYN-ACK,900,401\narchive,4,c2s,ACK,401,901\n"
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "existing_labs": 6,
+  "tracks": [
+    {
+      "id": "network-testing",
+      "title": "Network investigation and testing",
+      "description": "Read what a service exposes, test a narrow hypothesis and describe what the evidence supports."
+    },
+    {
+      "id": "defence-operations",
+      "title": "Defensive operations and recovery",
+      "description": "Review endpoint activity, put events in context and check that recovery and configuration controls meet their purpose."
+    },
+    {
+      "id": "cloud-identity",
+      "title": "Cloud, identity and configuration",
+      "description": "Practise access lifecycle, exposure review and audit reasoning before working with a real cloud platform."
+    }
+  ],
+  "labs": [
+    {
+      "id": "asset-discovery",
+      "title": "Asset discovery and inventory",
+      "track": "network-testing",
+      "purpose": "Compare a saved scan with the authorised asset inventory.",
+      "evidence": "Saved synthetic scan export and inventory.",
+      "deliverable": "An inventory of expected, newly observed and unobserved services.",
+      "prerequisites": "DNS investigation; ports and services.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "tcp-handshake",
+      "title": "TCP handshake investigation",
+      "track": "network-testing",
+      "purpose": "Distinguish a completed handshake, a reset and incomplete evidence.",
+      "evidence": "Packet summaries with flags, endpoints and frame order.",
+      "deliverable": "A flow table with packet references and capture limitations.",
+      "prerequisites": "DNS investigation; client and server roles.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "tls-review",
+      "title": "TLS certificate review",
+      "track": "network-testing",
+      "purpose": "Check certificate evidence against the intended hostname and observation time.",
+      "evidence": "Decoded fictional certificate fields and connection context.",
+      "deliverable": "A certificate review that separates validity checks from trust assumptions.",
+      "prerequisites": "Names, UTC time and HTTPS basics.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "http-header-review",
+      "title": "HTTP headers and cookies",
+      "track": "network-testing",
+      "purpose": "Review web response settings against the needs of a fictional application.",
+      "evidence": "Saved response headers and stated application requirements.",
+      "deliverable": "A short configuration review with specific fixes and limits.",
+      "prerequisites": "HTTP log triage; requests and responses.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "vulnerability-prioritisation",
+      "title": "Vulnerability prioritisation",
+      "track": "network-testing",
+      "purpose": "Explain which fictional findings need attention first using an explicit local rubric.",
+      "evidence": "Findings, exposure, service importance, exploitation and confidence.",
+      "deliverable": "A prioritised queue with reasons, dependencies and uncertainties.",
+      "prerequisites": "Asset discovery; access review.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "vulnerability-retest",
+      "title": "Remediation and retesting",
+      "track": "network-testing",
+      "purpose": "Decide whether a claimed fix is demonstrated, incomplete or cannot yet be tested.",
+      "evidence": "Before-and-after evidence for fictional findings.",
+      "deliverable": "A retest record with scope, result and the next evidence needed.",
+      "prerequisites": "Asset discovery; careful evidence statements.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "email-triage",
+      "title": "Email identity and message triage",
+      "track": "network-testing",
+      "purpose": "Compare message identities and destinations with trusted receiving evidence.",
+      "evidence": "Fictional From and Reply-To headers, extracted link domains and a receiver provenance register.",
+      "deliverable": "A measured triage note that avoids treating one header as proof of safety.",
+      "prerequisites": "DNS and domain-name basics.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "endpoint-triage",
+      "title": "Endpoint process investigation",
+      "track": "defence-operations",
+      "purpose": "Use process relationships and approved activity to decide what deserves review.",
+      "evidence": "Synthetic process records and maintenance context.",
+      "deliverable": "A process-tree review with benign alternatives and next checks.",
+      "prerequisites": "Login triage; basic process concepts.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "scheduled-task-review",
+      "title": "Scheduled task review",
+      "track": "defence-operations",
+      "purpose": "Compare recurring task settings and changes with authorised maintenance.",
+      "evidence": "Task inventory, execution identities and approval notes.",
+      "deliverable": "A change-review table for paths, timing and account use.",
+      "prerequisites": "Endpoint process investigation.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "timeline-analysis",
+      "title": "Evidence timeline reconstruction",
+      "track": "defence-operations",
+      "purpose": "Normalise event times and show where clock uncertainty limits ordering.",
+      "evidence": "Fictional logs with offsets and clock-quality context.",
+      "deliverable": "A UTC timeline that distinguishes reliable order from overlapping time ranges.",
+      "prerequisites": "Login triage; UTC and time zones.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "alert-correlation",
+      "title": "Alert correlation and duplicate handling",
+      "track": "defence-operations",
+      "purpose": "Group related records without confusing duplicate alerts with separate incidents.",
+      "evidence": "Synthetic alert identifiers, event times and correlation criteria.",
+      "deliverable": "A grouping record showing retained evidence and ambiguous relationships.",
+      "prerequisites": "Login triage; timeline reconstruction.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "backup-verification",
+      "title": "Backup and recovery verification",
+      "track": "defence-operations",
+      "purpose": "Check backup scope, freshness and restore evidence against stated recovery needs.",
+      "evidence": "Backup inventories, timestamps and synthetic restore-check evidence.",
+      "deliverable": "A recovery-readiness note with gaps and the next validation step.",
+      "prerequisites": "File integrity; timeline reconstruction.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "linux-permissions",
+      "title": "Linux file permission review",
+      "track": "defence-operations",
+      "purpose": "Work out access from owner, group and other permission bits.",
+      "evidence": "Fictional file modes, directory permissions and identity memberships.",
+      "deliverable": "An access table explaining the relevant permission class and missing rights.",
+      "prerequisites": "Access review; files and directories.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "ssh-config-review",
+      "title": "SSH configuration review",
+      "track": "defence-operations",
+      "purpose": "Evaluate a small supported configuration against stated administration requirements.",
+      "evidence": "Saved synthetic configuration and an explicit supported-directive model.",
+      "deliverable": "A configuration review that identifies unsupported cases and needed verification.",
+      "prerequisites": "Linux permissions; authentication and authorisation.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "cloud-storage-review",
+      "title": "Cloud storage exposure review",
+      "track": "cloud-identity",
+      "purpose": "Reason about public exposure in a deliberately small fictional storage model.",
+      "evidence": "Storage settings, access rules and stated sharing requirements.",
+      "deliverable": "An exposure review that preserves necessary sharing and describes model limits.",
+      "prerequisites": "Access review; public versus private access.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "identity-lifecycle",
+      "title": "Joiner, mover and leaver access",
+      "track": "cloud-identity",
+      "purpose": "Update access decisions when a person starts, changes duties or leaves.",
+      "evidence": "Fictional identity changes, effective dates and approved exceptions.",
+      "deliverable": "A lifecycle action list tied to current duties and timing.",
+      "prerequisites": "Access review; timeline reconstruction.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "mfa-review",
+      "title": "MFA and account recovery review",
+      "track": "cloud-identity",
+      "purpose": "Check enrolment and recovery evidence against explicit account requirements.",
+      "evidence": "Account types, authentication settings and exception context.",
+      "deliverable": "A control review that distinguishes enrolment from complete protection.",
+      "prerequisites": "Identity lifecycle; authentication basics.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "cloud-audit-triage",
+      "title": "Cloud audit-event investigation",
+      "track": "cloud-identity",
+      "purpose": "Reconstruct identity and configuration activity from saved audit events.",
+      "evidence": "Fictional cloud audit records with outcomes and logging coverage.",
+      "deliverable": "An event handover that separates successful actions, failures and missing evidence.",
+      "prerequisites": "Login triage; access review; timeline reconstruction.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "secret-handling",
+      "title": "Secret handling and exposure review",
+      "track": "cloud-identity",
+      "purpose": "Find fictional sensitive values in the wrong places and plan an appropriate response.",
+      "evidence": "Dummy configuration, changes and logs containing obvious nonfunctional examples.",
+      "deliverable": "An exposure map and ordered remediation checklist.",
+      "prerequisites": "File integrity; public and private data boundaries.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "dependency-review",
+      "title": "Dependency inventory and advisory review",
+      "track": "cloud-identity",
+      "purpose": "Match a small inventory to fictional version-range advisories without assuming exploitability.",
+      "evidence": "Software inventory, synthetic advisories and deployment context.",
+      "deliverable": "An affected-version table with recommended verification and update priorities.",
+      "prerequisites": "Vulnerability prioritisation; basic software version numbers.",
+      "minutes": "30–45 minutes for a first guided pass",
+      "status": "Independent practice not yet assessed"
+    }
+  ]
+}

@@ -1,19 +1,23 @@
-// Contract: build only this project's src into its own dist; no deployment.
+// Contract: refresh the generated guide mirror, then build src into this project's dist; no deployment.
 import { mkdir, readFile, writeFile, cp, rm, readdir } from 'node:fs/promises';
 import { resolve, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { renderLabCatalog, renderPracticeGuide } from './lab-catalog.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const dist=resolve(root,'dist');
 if(dirname(dist)!==root || !root.endsWith('jeremy-bryant-portfolio')) throw Error('Unexpected build directory');
 const config=JSON.parse(await readFile(join(root,'site.config.json'),'utf8'));
 if(config.base!=='/portfolio/') throw Error('Unexpected public scope');
 for(const key of ['linkedin','github']) if(!/^https:\/\//.test(config[key])) throw Error('Invalid public link');
+const catalog = renderLabCatalog(JSON.parse(await readFile(join(root,'labs','foundation-catalog.json'),'utf8')),config.github);
+for (const id of catalog.ids) for (const name of ['README.md','WORKED-EXAMPLE.md','DRILLS.md','lab.py','test_lab.py']) await readFile(join(root,'labs',id,name));
+await writeFile(join(root,'src','security-labs','practice-guide.txt'),renderPracticeGuide(await readFile(join(root,'labs','PRACTICE-GUIDE.md'),'utf8')));
 await rm(dist,{recursive:true,force:true});
 await mkdir(join(dist,'portfolio'),{recursive:true});
 await cp(join(root,'src'),join(dist,'portfolio'),{recursive:true});
 async function files(dir){const out=[];for(const e of await readdir(dir,{withFileTypes:true})){const p=join(dir,e.name);out.push(...(e.isDirectory()?await files(p):[p]));}return out;}
 const heroDiagram=await readFile(join(root,'src','assets','lab-system.svg'),'utf8');
-for(const file of await files(join(dist,'portfolio'))){if(!/\.(html|txt)$/.test(file))continue;let text=await readFile(file,'utf8');for(const [token,value] of Object.entries({__LINKEDIN_URL__:config.linkedin,__GITHUB_URL__:config.github,__UPDATED__:config.updated,__HERO_DIAGRAM__:heroDiagram}))text=text.replaceAll(token,value);await writeFile(file,text);}
+for(const file of await files(join(dist,'portfolio'))){if(!/\.(html|txt)$/.test(file))continue;let text=await readFile(file,'utf8');for(const [token,value] of Object.entries({__LINKEDIN_URL__:config.linkedin,__GITHUB_URL__:config.github,__UPDATED__:config.updated,__HERO_DIAGRAM__:heroDiagram,__LAB_CATALOG__:catalog.html,__LAB_COUNT__:String(catalog.totalCount)}))text=text.replaceAll(token,value);await writeFile(file,text);}
 await cp(join(dist,'portfolio','404.html'),join(dist,'404.html'));
 await writeFile(join(dist,'_headers'),`/*
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests

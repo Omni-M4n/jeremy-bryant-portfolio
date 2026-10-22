@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "lab_id": "tcp-handshake",
+  "case_id": "challenge",
+  "title": "Sequence wrap and a misleading ACK flag",
+  "synthetic": true,
+  "context": {
+    "question": "Which opening events are actually supported by these packet summaries?"
+  },
+  "data": {
+    "flows": [
+      {
+        "id": "wrapped",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 1,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 4294967295,
+            "ack": null
+          },
+          {
+            "frame": 2,
+            "direction": "s2c",
+            "flags": "SYN-ACK",
+            "seq": 99,
+            "ack": 0
+          },
+          {
+            "frame": 4,
+            "direction": "c2s",
+            "flags": "ACK",
+            "seq": 0,
+            "ack": 100
+          }
+        ]
+      },
+      {
+        "id": "mismatch",
+        "client": "192.0.2.15",
+        "server": "198.51.100.20",
+        "server_port": 443,
+        "capture_note": "Synthetic opening excerpt; capture completeness is not guaranteed.",
+        "packets": [
+          {
+            "frame": 3,
+            "direction": "c2s",
+            "flags": "SYN",
+            "seq": 60,
+            "ack": null
+          },
+          {
+            "frame": 5,
+            "direction": "s2c",
+            "flags": "SYN-ACK",
+            "seq": 80,
+            "ack": 61
+          },
+          {
+            "frame": 6,
+            "direction": "c2s",
+            "flags": "ACK",
+            "seq": 61,
+            "ack": 80
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "packets.csv": "flow,frame,direction,flags,sequence,acknowledgement\nwrapped,1,c2s,SYN,4294967295,\nwrapped,2,s2c,SYN-ACK,99,0\nwrapped,4,c2s,ACK,0,100\nmismatch,3,c2s,SYN,60,\nmismatch,5,s2c,SYN-ACK,80,61\nmismatch,6,c2s,ACK,61,80\n"
+  }
+}

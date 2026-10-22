@@ -1,8 +1,10 @@
 # Security foundations: original guided labs
 
-Six small offline exercises prepared for Jeremy Bryant's learning portfolio.
+Twenty-six offline exercises prepared for Jeremy Bryant's learning portfolio.
 The datasets and scenarios are fictional. They are separate practice materials,
 not published university submissions or examples from a live incident.
+
+## The first six
 
 | Lab | Question | Skill |
 | --- | --- | --- |
@@ -15,7 +17,47 @@ not published university submissions or examples from a live incident.
 
 Follow the [practice guide](PRACTICE-GUIDE.md) for short sessions, recall questions,
 changed scenarios and a blank progress record. Start with one topic; there is no
-need to complete all six in one sitting.
+need to complete a whole track in one sitting.
+
+## Twenty additional foundation labs
+
+Every new lab has guided, changed and challenge cases. Start with its README;
+the catalog describes practice scope, not completed professional experience.
+
+### Network investigation and testing
+
+| Lab | Purpose |
+| --- | --- |
+| [Asset discovery and inventory](asset-discovery/README.md) | Compare a saved scan with the authorised asset inventory. |
+| [TCP handshake investigation](tcp-handshake/README.md) | Distinguish a completed handshake, a reset and incomplete evidence. |
+| [TLS certificate review](tls-review/README.md) | Check certificate evidence against the intended hostname and observation time. |
+| [HTTP headers and cookies](http-header-review/README.md) | Review web response settings against the needs of a fictional application. |
+| [Vulnerability prioritisation](vulnerability-prioritisation/README.md) | Explain which fictional findings need attention first using an explicit local rubric. |
+| [Remediation and retesting](vulnerability-retest/README.md) | Decide whether a claimed fix is demonstrated, incomplete or cannot yet be tested. |
+| [Email identity and message triage](email-triage/README.md) | Compare message identities and destinations with trusted receiving evidence. |
+
+### Defensive operations and recovery
+
+| Lab | Purpose |
+| --- | --- |
+| [Endpoint process investigation](endpoint-triage/README.md) | Use process relationships and approved activity to decide what deserves review. |
+| [Scheduled task review](scheduled-task-review/README.md) | Compare recurring task settings and changes with authorised maintenance. |
+| [Evidence timeline reconstruction](timeline-analysis/README.md) | Normalise event times and show where clock uncertainty limits ordering. |
+| [Alert correlation and duplicate handling](alert-correlation/README.md) | Group related records without confusing duplicate alerts with separate incidents. |
+| [Backup and recovery verification](backup-verification/README.md) | Check backup scope, freshness and restore evidence against stated recovery needs. |
+| [Linux file permission review](linux-permissions/README.md) | Work out access from owner, group and other permission bits. |
+| [SSH configuration review](ssh-config-review/README.md) | Evaluate a small supported configuration against stated administration requirements. |
+
+### Cloud, identity and configuration
+
+| Lab | Purpose |
+| --- | --- |
+| [Cloud storage exposure review](cloud-storage-review/README.md) | Reason about public exposure in a deliberately small fictional storage model. |
+| [Joiner, mover and leaver access](identity-lifecycle/README.md) | Update access decisions when a person starts, changes duties or leaves. |
+| [MFA and account recovery review](mfa-review/README.md) | Check enrolment and recovery evidence against explicit account requirements. |
+| [Cloud audit-event investigation](cloud-audit-triage/README.md) | Reconstruct identity and configuration activity from saved audit events. |
+| [Secret handling and exposure review](secret-handling/README.md) | Find fictional sensitive values in the wrong places and plan an appropriate response. |
+| [Dependency inventory and advisory review](dependency-review/README.md) | Match a small inventory to fictional version-range advisories without assuming exploitability. |
 
 ## Status and contribution
 
@@ -32,6 +74,10 @@ README, run `python lab.py --help`, and work inside that lab's folder. Python 3.
 is required; only the standard library is used. The DNS packet file can also be
 opened in Wireshark. The exercises can run on Windows or in an existing Linux VM.
 They do not require a cloud account, a live target or a public service.
+
+The twenty additional labs use consistent `cases`, `prepare`, `show`, `analyse`,
+`check` and `verify` commands. See the [maintained contract](FOUNDATION-CONTRACT.md)
+and each README. The first six retain their original command interfaces.
 
 Keep generated practice runs separate from reference fixtures. Use the documented
 seed option for a new variant. Check whether a command expects an empty output

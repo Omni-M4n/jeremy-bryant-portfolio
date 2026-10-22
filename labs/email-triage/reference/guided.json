@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "notice": "authenticated-domain-review-content",
+    "invoice": "domain-authentication-failed"
+  },
+  "observations": [
+    "notice: trusted notice-relay: SPF=pass, DKIM=pass, DMARC=pass; mismatches=none.",
+    "invoice: trusted invoice-relay: SPF=pass, DKIM=fail, DMARC=fail; mismatches=reply-domain-differs,link-domain-differs."
+  ],
+  "limitations": [
+    "Receiver trust is supplied out of band for this exercise; an Authentication-Results header or matching relay name alone is not proof.",
+    "SPF authorises a sending domain context; DMARC relates authenticated domains to From. Neither authenticates a person or guarantees harmless content.",
+    "Only decoded strict domain alignment is checked; no DNS, signature, ARC, relaxed alignment, attachment or URL-content analysis occurs."
+  ]
+}

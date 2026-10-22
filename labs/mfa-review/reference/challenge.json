@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "unmonitored-emergency": "monitor-emergency-use;secure-emergency-material",
+    "mixed-workload": "replace-static-workload-credential",
+    "new-human": "enrol-mfa;repair-recovery"
+  },
+  "observations": [
+    "unmonitored-emergency: type=breakglass; methods=password; enforced=false; recovery=none; exception=current; missing=monitor-emergency-use,secure-emergency-material.",
+    "unmonitored-emergency: interactive=true; privileged=true; owner=team-owner; credential-lifetime=none; monitored=false; controlled-storage=false; test-age-days=90; exception-until=2026-10-23.",
+    "mixed-workload: type=service; methods=federated-workload,password; enforced=false; recovery=none; exception=none; missing=replace-static-workload-credential.",
+    "mixed-workload: interactive=false; privileged=false; owner=team-owner; credential-lifetime=short-lived; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none.",
+    "new-human: type=human; methods=password; enforced=false; recovery=none; exception=none; missing=enrol-mfa,repair-recovery.",
+    "new-human: interactive=true; privileged=false; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none."
+  ],
+  "limitations": [
+    "Method names describe supplied enrolment records, not proof of a successful multi-factor ceremony or any NIST assurance level.",
+    "The 90-day emergency test interval and exception rules are fictional local policy; real provider recovery and emergency-access designs differ."
+  ]
+}

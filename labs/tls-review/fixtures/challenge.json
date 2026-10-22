@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "lab_id": "tls-review",
+  "case_id": "challenge",
+  "title": "Exact expiry and an unchecked chain",
+  "synthetic": true,
+  "context": {
+    "question": "Which decoded certificate fields need follow-up at the stated evaluation time?"
+  },
+  "data": {
+    "evaluation_time": "2030-01-11T00:00:00Z",
+    "renew_within_days": 14,
+    "certificates": [
+      {
+        "id": "boundary",
+        "requested_host": "boundary.museum.test",
+        "dns_names": [
+          "*.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-01-11T00:00:00Z",
+        "chain_report": "verified"
+      },
+      {
+        "id": "unknown-chain",
+        "requested_host": "unknown-chain.museum.test",
+        "dns_names": [
+          "unknown-chain.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-03-01T00:00:00Z",
+        "chain_report": "unverified"
+      },
+      {
+        "id": "empty-san",
+        "requested_host": "empty-san.museum.test",
+        "dns_names": [],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-03-01T00:00:00Z",
+        "chain_report": "verified"
+      }
+    ]
+  },
+  "artifacts": {}
+}

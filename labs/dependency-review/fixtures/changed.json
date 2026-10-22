@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "lab_id": "dependency-review",
+  "case_id": "changed",
+  "title": "Fixed boundaries and an unproven execution path",
+  "synthetic": true,
+  "context": {
+    "question": "Which supplied versions fall inside fictional ranges and what remains uncertain about exposure?"
+  },
+  "data": {
+    "components": [
+      {
+        "id": "upload-parser",
+        "name": "demo-parser",
+        "version": "1.10.0",
+        "scope": "runtime",
+        "reachability": "reachable",
+        "evidence": "same request map after a proposed update"
+      },
+      {
+        "id": "asset-builder",
+        "name": "demo-builder",
+        "version": "2.0.5",
+        "scope": "development",
+        "reachability": "unknown",
+        "evidence": "build inputs have not been reviewed"
+      },
+      {
+        "id": "report-parser",
+        "name": "demo-parser",
+        "version": "1.9.0",
+        "scope": "runtime",
+        "reachability": "not-demonstrated",
+        "evidence": "one smoke test did not exercise report import"
+      }
+    ],
+    "advisories": [
+      {
+        "id": "DEMO-ADV-001",
+        "package": "demo-parser",
+        "introduced": "1.9.0",
+        "fixed": "1.10.0"
+      },
+      {
+        "id": "DEMO-ADV-002",
+        "package": "demo-builder",
+        "introduced": "2.0.0",
+        "fixed": "2.0.5"
+      }
+    ]
+  },
+  "artifacts": {}
+}

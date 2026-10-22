@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "create-drop": "allowed-by-mode",
+    "list-drop": "denied-by-mode",
+    "read-notes": "denied-by-mode",
+    "search-drop": "allowed-by-mode",
+    "write-notes": "denied-by-mode"
+  },
+  "limitations": [
+    "Owner bits take precedence over group, then other; there is no fallback to a more permissive class. Ancestor directories need search (execute) permission.",
+    "Directory read lists names; search resolves names; creating an entry needs write and search on the target directory. File mode alone does not determine deletion permission.",
+    "This evaluates ordinary mode bits for an unprivileged synthetic actor only. ACLs, SELinux, capabilities, special bits, symlinks and mount restrictions are not modelled. No host permissions were inspected or changed."
+  ],
+  "observations": [
+    "read-notes: read-file /srv/notes.txt; class=owner; selected=0; required=4; target-bits=no; blocked-ancestor-search=none.",
+    "write-notes: write-file /srv/notes.txt; class=owner; selected=0; required=2; target-bits=no; blocked-ancestor-search=none.",
+    "list-drop: list-dir /srv/drop; class=other; selected=3; required=4; target-bits=no; blocked-ancestor-search=none.",
+    "search-drop: search-dir /srv/drop; class=other; selected=3; required=1; target-bits=yes; blocked-ancestor-search=none.",
+    "create-drop: create-entry /srv/drop; class=other; selected=3; required=3; target-bits=yes; blocked-ancestor-search=none."
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "lab_id": "dependency-review",
+  "case_id": "challenge",
+  "title": "A separate later advisory invalidates a blanket fixed-version claim",
+  "synthetic": true,
+  "context": {
+    "question": "Which supplied versions fall inside fictional ranges and what remains uncertain about exposure?"
+  },
+  "data": {
+    "components": [
+      {
+        "id": "new-parser",
+        "name": "demo-parser",
+        "version": "1.10.1",
+        "scope": "runtime",
+        "reachability": "unknown",
+        "evidence": "no call map is supplied"
+      },
+      {
+        "id": "old-parser",
+        "name": "demo-parser",
+        "version": "1.8.9",
+        "scope": "runtime",
+        "reachability": "reachable",
+        "evidence": "legacy import reaches parser"
+      },
+      {
+        "id": "build-parser",
+        "name": "demo-parser",
+        "version": "1.10.1",
+        "scope": "development",
+        "reachability": "reachable",
+        "evidence": "build consumes contributor files"
+      }
+    ],
+    "advisories": [
+      {
+        "id": "DEMO-ADV-001",
+        "package": "demo-parser",
+        "introduced": "1.9.0",
+        "fixed": "1.10.0"
+      },
+      {
+        "id": "DEMO-ADV-002",
+        "package": "demo-builder",
+        "introduced": "2.0.0",
+        "fixed": "2.0.5"
+      },
+      {
+        "id": "DEMO-ADV-003",
+        "package": "demo-parser",
+        "introduced": "1.10.1",
+        "fixed": "1.10.3"
+      }
+    ]
+  },
+  "artifacts": {}
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "lab_id": "mfa-review",
+  "case_id": "challenge",
+  "title": "An exception cannot excuse missing monitoring",
+  "synthetic": true,
+  "context": {
+    "question": "Which specified controls are missing for human, workload and emergency accounts?"
+  },
+  "data": {
+    "as_of": "2026-10-23",
+    "accounts": [
+      {
+        "id": "unmonitored-emergency",
+        "type": "breakglass",
+        "interactive": true,
+        "privileged": true,
+        "methods": [
+          "password"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": false,
+        "controlled_storage": false,
+        "test_age_days": 90,
+        "exception_until": "2026-10-23"
+      },
+      {
+        "id": "mixed-workload",
+        "type": "service",
+        "interactive": false,
+        "privileged": false,
+        "methods": [
+          "password",
+          "federated-workload"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "short-lived",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      },
+      {
+        "id": "new-human",
+        "type": "human",
+        "interactive": true,
+        "privileged": false,
+        "methods": [
+          "password"
+        ],
+        "enforced": false,
+        "recovery": "none",
+        "owner": "team-owner",
+        "credential_lifetime": "none",
+        "monitored": true,
+        "controlled_storage": false,
+        "test_age_days": null,
+        "exception_until": null
+      }
+    ]
+  },
+  "artifacts": {}
+}

@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "gallery": "final-ack-not-observed",
+    "archive": "initial-syn-not-observed"
+  },
+  "observations": [
+    "gallery: SYN-ACK acknowledges 701; final client ACK is absent.",
+    "archive: the excerpt begins after the initial SYN or contains no initial SYN."
+  ],
+  "limitations": [
+    "Missing packets can reflect capture position, loss or a short capture; they do not prove a firewall or server fault.",
+    "Only one ordinary, payload-free opening attempt per flow is supported; this is not a packet decoder or TCP state implementation."
+  ]
+}

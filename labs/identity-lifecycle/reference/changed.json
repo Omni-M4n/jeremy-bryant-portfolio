@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "team-move": "add:none;remove:old-reports;retain:mail,new-queue",
+    "early-starter": "add:none;remove:mail;retain:none",
+    "future-leaver": "add:none;remove:none;retain:casework,mail"
+  },
+  "observations": [
+    "team-move: mover due on 2026-10-22; active-exceptions=none; expired-exceptions=old-reports; target=mail,new-queue.",
+    "early-starter: joiner future on 2026-10-25; active-exceptions=none; expired-exceptions=none; target=none.",
+    "future-leaver: leaver future on 2026-10-25; active-exceptions=none; expired-exceptions=none; target=casework,mail."
+  ],
+  "limitations": [
+    "Dates represent whole UTC review days; expiry is inclusive and no timezone or intraday HR feed is modelled.",
+    "This produces a proposed access delta only; approvals, session revocation, ownership transfer and actual directory changes need separate checks."
+  ]
+}

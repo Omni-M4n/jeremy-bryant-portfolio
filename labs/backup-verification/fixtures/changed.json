@@ -1,0 +1,39 @@
+{
+  "artifacts": {},
+  "case_id": "changed",
+  "context": {
+    "question": "Evaluate retained scope and recovery-point age, then actually decode and hash tiny fictional backup payloads in memory against a supplied manifest."
+  },
+  "data": {
+    "backups": [
+      {
+        "captured_at": "2026-02-01T10:00:00Z",
+        "id": "b1",
+        "payload_base64": {
+          "notes.txt": "RmljdGlvbmFsIHJlY292ZXJ5IHByYWN0aXNlLgo=",
+          "roster.csv": "aWQscm9sZQpsYWItMSxyZWFkZXIK"
+        },
+        "retained_until": "2026-02-03T10:00:00Z"
+      },
+      {
+        "captured_at": "2026-01-31T10:00:00Z",
+        "id": "b0",
+        "payload_base64": {
+          "notes.txt": "RmljdGlvbmFsIHJlY292ZXJ5IHByYWN0aWNlLgo=",
+          "roster.csv": "aWQscm9sZQpsYWItMSxyZWFkZXIK"
+        },
+        "retained_until": "2026-02-02T10:00:00Z"
+      }
+    ],
+    "recovery_time": "2026-02-01T12:00:00Z",
+    "required_sha256": {
+      "notes.txt": "57ab2287ab2b8a3c9fb61efa8b1fd58235cd9cb724b94e4f9c97c90b68525ee9",
+      "roster.csv": "19dbb4749c0af6beebe1223fa4261e69cabf18aefe8455f3b02886466eecc2c7"
+    },
+    "rpo_hours": 4
+  },
+  "lab_id": "backup-verification",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "The recent copy has altered bytes"
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "lab_id": "tls-review",
+  "case_id": "guided",
+  "title": "Check a renewal queue at a fixed time",
+  "synthetic": true,
+  "context": {
+    "question": "Which decoded certificate fields need follow-up at the stated evaluation time?"
+  },
+  "data": {
+    "evaluation_time": "2030-01-11T00:00:00Z",
+    "renew_within_days": 14,
+    "certificates": [
+      {
+        "id": "gallery",
+        "requested_host": "gallery.museum.test",
+        "dns_names": [
+          "gallery.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-03-01T00:00:00Z",
+        "chain_report": "verified"
+      },
+      {
+        "id": "archive",
+        "requested_host": "archive.museum.test",
+        "dns_names": [
+          "archive.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-01-21T00:00:00Z",
+        "chain_report": "verified"
+      },
+      {
+        "id": "kiosk",
+        "requested_host": "kiosk.museum.test",
+        "dns_names": [
+          "kiosk.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-01-10T23:59:59Z",
+        "chain_report": "unverified"
+      }
+    ]
+  },
+  "artifacts": {}
+}

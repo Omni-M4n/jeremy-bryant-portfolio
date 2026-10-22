@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lab_id": "identity-lifecycle",
+  "case_id": "guided",
+  "title": "A move needs new duties and a limited handover",
+  "synthetic": true,
+  "context": {
+    "question": "What access should be added, removed and retained on the stated review date?"
+  },
+  "data": {
+    "as_of": "2026-10-23",
+    "people": [
+      {
+        "id": "new-starter",
+        "event": "joiner",
+        "effective_on": "2026-10-23",
+        "current": [],
+        "required": [
+          "mail",
+          "casework"
+        ],
+        "exceptions": []
+      },
+      {
+        "id": "team-move",
+        "event": "mover",
+        "effective_on": "2026-10-22",
+        "current": [
+          "mail",
+          "old-queue",
+          "old-reports"
+        ],
+        "required": [
+          "mail",
+          "new-queue"
+        ],
+        "exceptions": [
+          {
+            "access": "old-reports",
+            "approved_by": "team-owner",
+            "expires_on": "2026-10-23"
+          }
+        ]
+      },
+      {
+        "id": "departed",
+        "event": "leaver",
+        "effective_on": "2026-10-23",
+        "current": [
+          "mail",
+          "casework"
+        ],
+        "required": [],
+        "exceptions": []
+      }
+    ]
+  },
+  "artifacts": {
+    "hr-note.txt": "Review day: 2026-10-23 UTC. The move took effect yesterday.\nThe old-reports handover is approved through 2026-10-23 inclusive.\nThe leaver event is effective today; this exercise allows no leaver access exceptions.\n"
+  }
+}

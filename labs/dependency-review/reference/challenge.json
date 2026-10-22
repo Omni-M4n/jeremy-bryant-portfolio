@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "new-parser": "affected-investigate-path",
+    "old-parser": "outside-supplied-ranges",
+    "build-parser": "affected-review-build-exposure"
+  },
+  "observations": [
+    "new-parser: demo-parser 1.10.1; scope=runtime; reachability=unknown; matches=DEMO-ADV-003:[1.10.1,1.10.3); evidence=no call map is supplied.",
+    "old-parser: demo-parser 1.8.9; scope=runtime; reachability=reachable; matches=none; evidence=legacy import reaches parser.",
+    "build-parser: demo-parser 1.10.1; scope=development; reachability=reachable; matches=DEMO-ADV-003:[1.10.1,1.10.3); evidence=build consumes contributor files."
+  ],
+  "limitations": [
+    "Only stable three-part numeric versions from 0 to 9999 per part are supported; prereleases, build metadata, ecosystem ranges and backports are rejected or outside scope.",
+    "All packages and advisories are fictional. A range match is not proof of exploitability, and no supplied match is not proof that software is secure."
+  ]
+}

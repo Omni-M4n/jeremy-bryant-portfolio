@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "192.0.2.10": "expected-services-observed",
+    "192.0.2.20": "unapproved-service-observed",
+    "192.0.2.30": "unregistered-host-observed",
+    "192.0.2.40": "not-observed-in-scan"
+  },
+  "observations": [
+    "192.0.2.10: open=[443]; unexpected=[]; expected-not-observed-open=[].",
+    "192.0.2.20: open=[22, 443]; unexpected=[22]; expected-not-observed-open=[].",
+    "192.0.2.30: up with open TCP ports [80]; no approved record.",
+    "192.0.2.40: approved host has no host record."
+  ],
+  "limitations": [
+    "A saved scan is a time-limited observation, not proof of ownership, vulnerability or complete coverage.",
+    "Only this documented XML subset and TCP states open, closed and filtered are supported; no scanning occurs."
+  ]
+}

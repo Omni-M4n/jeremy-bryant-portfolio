@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "192.0.2.10": "unapproved-service-observed",
+    "192.0.2.20": "expected-services-observed"
+  },
+  "observations": [
+    "192.0.2.10: open=[22]; unexpected=[22]; expected-not-observed-open=[443].",
+    "192.0.2.20: open=[]; unexpected=[]; expected-not-observed-open=[]."
+  ],
+  "limitations": [
+    "A saved scan is a time-limited observation, not proof of ownership, vulnerability or complete coverage.",
+    "Only this documented XML subset and TCP states open, closed and filtered are supported; no scanning occurs."
+  ]
+}

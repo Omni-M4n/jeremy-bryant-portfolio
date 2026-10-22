@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "embed": "meets-supplied-requirements",
+    "login": "requirement-gaps:session-cookie"
+  },
+  "observations": [
+    "embed: scheme=https; HSTS-max-age=31536000; gaps=none.",
+    "login: scheme=https; HSTS-max-age=31536000; gaps=session-cookie."
+  ],
+  "limitations": [
+    "Results compare supplied response excerpts with a fictional application policy, not with every browser rule or security requirement.",
+    "The narrow parser rejects folding, duplicate singleton fields and unsupported cookie/CSP/HSTS forms; no browser, server or network is used."
+  ]
+}

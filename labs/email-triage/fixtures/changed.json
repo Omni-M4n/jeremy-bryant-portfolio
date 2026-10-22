@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "lab_id": "email-triage",
+  "case_id": "changed",
+  "title": "A forged relay label and an authenticated lookalike domain",
+  "synthetic": true,
+  "context": {
+    "question": "Which domain claims come from the supplied trusted receiver, and which discrepancies need checking?",
+    "trusted_receiving_relay": {
+      "authserv_id": "mx.receiver.test",
+      "trusted_record_ids": [
+        "lookalike-relay"
+      ],
+      "alignment": "strict",
+      "provenance": "fictional-receiver-export"
+    }
+  },
+  "data": {
+    "messages": [
+      {
+        "id": "forged",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum.test",
+        "reply_to_domain": "museum.test",
+        "link_domains": [
+          "museum.test"
+        ],
+        "authentication_results": [
+          {
+            "id": "inserted-header",
+            "authserv_id": "mx.receiver.test",
+            "spf": "pass",
+            "mailfrom_domain": "museum.test",
+            "dkim": "pass",
+            "dkim_domain": "museum.test",
+            "dmarc": "pass"
+          }
+        ]
+      },
+      {
+        "id": "lookalike",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum-billing.test",
+        "reply_to_domain": "museum-billing.test",
+        "link_domains": [
+          "museum-billing.test"
+        ],
+        "authentication_results": [
+          {
+            "id": "lookalike-relay",
+            "authserv_id": "mx.receiver.test",
+            "spf": "pass",
+            "mailfrom_domain": "museum-billing.test",
+            "dkim": "pass",
+            "dkim_domain": "museum-billing.test",
+            "dmarc": "pass"
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "headers.txt": "[forged]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum.test; dkim=pass header.d=museum.test; dmarc=pass header.from=museum.test (record inserted-header)\nLink domains: museum.test\n\n[lookalike]\nFrom: curator@museum-billing.test\nReply-To: desk@museum-billing.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum-billing.test; dkim=pass header.d=museum-billing.test; dmarc=pass header.from=museum-billing.test (record lookalike-relay)\nLink domains: museum-billing.test\n"
+  }
+}

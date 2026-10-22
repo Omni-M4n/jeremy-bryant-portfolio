@@ -12,6 +12,18 @@ Responses use `Cache-Control: public, max-age=0, must-revalidate, no-transform`.
 
 ## Applicable checks
 
+`node scripts/build.mjs` validates the 20-lab expansion catalog, checks required
+learner files, refreshes the plain-text practice-guide mirror from
+`labs/PRACTICE-GUIDE.md`, and builds the static site. The catalog uses native
+expandable entries; it adds no browser dependency. `npm test` includes catalog
+escaping, destination and identity checks alongside the site checks.
+
+For the new lab family, `python labs/check_foundation_release.py` verifies the
+reviewed source inventory. Its optional `--tests` runs isolated domain suites,
+shared-runtime checks and all sixty reference cases. Test receipts may be reused
+only when their exact source hashes still match. Domain explanations and learner
+readiness require a separate review; file integrity does not establish them.
+
 - Validate links, responsive layout, keyboard navigation, menu and diagram interactions.
 - Validate custom 404, unknown/encoded paths and inaccessible repository files.
 - Use a same-origin CSP, frame denial, MIME protection, referrer and permissions policies, HTTPS and noindex headers.

@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "c01": "authentication-only",
+    "c02": "approved-change-correlated",
+    "c03": "denied-no-success-evidence",
+    "logging": "coverage-configured"
+  },
+  "observations": [
+    "c01: 2026-10-23T10:00:00Z identity=operator session=session-a action=sign-in result=success resource=identity-service; sign-ins=none; approved=false.",
+    "c02: 2026-10-23T10:10:00Z identity=operator session=session-a action=change-policy result=success resource=poster-bucket; sign-ins=c01; approved=true.",
+    "c03: 2026-10-23T10:11:00Z identity=operator session=session-a action=disable-logging result=denied resource=audit-trail; sign-ins=c01; approved=false.",
+    "logging: disabled-categories=none; successful-disable=false."
+  ],
+  "limitations": [
+    "This fictional schema is not a CloudTrail parser; identity/session equality and a 15-minute window support correlation, not attribution to a person.",
+    "Configured logging and supplied events do not prove complete delivery; absent records cannot prove that no activity occurred."
+  ]
+}

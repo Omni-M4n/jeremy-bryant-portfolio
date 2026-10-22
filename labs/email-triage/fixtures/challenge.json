@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "lab_id": "email-triage",
+  "case_id": "challenge",
+  "title": "Forwarding affects SPF, while a temporary error remains unresolved",
+  "synthetic": true,
+  "context": {
+    "question": "Which domain claims come from the supplied trusted receiver, and which discrepancies need checking?",
+    "trusted_receiving_relay": {
+      "authserv_id": "mx.receiver.test",
+      "trusted_record_ids": [
+        "forwarded-relay",
+        "temporary-relay"
+      ],
+      "alignment": "strict",
+      "provenance": "fictional-receiver-export"
+    }
+  },
+  "data": {
+    "messages": [
+      {
+        "id": "forwarded",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum.test",
+        "reply_to_domain": "museum.test",
+        "link_domains": [
+          "museum.test"
+        ],
+        "authentication_results": [
+          {
+            "id": "forwarded-relay",
+            "authserv_id": "mx.receiver.test",
+            "spf": "fail",
+            "mailfrom_domain": "forwarder.test",
+            "dkim": "pass",
+            "dkim_domain": "museum.test",
+            "dmarc": "pass"
+          }
+        ]
+      },
+      {
+        "id": "temporary",
+        "expected_sender_domain": "museum.test",
+        "from_domain": "museum.test",
+        "reply_to_domain": "museum.test",
+        "link_domains": [],
+        "authentication_results": [
+          {
+            "id": "temporary-relay",
+            "authserv_id": "mx.receiver.test",
+            "spf": "temperror",
+            "mailfrom_domain": "museum.test",
+            "dkim": "none",
+            "dkim_domain": null,
+            "dmarc": "temperror"
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "headers.txt": "[forwarded]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=fail smtp.mailfrom=forwarder.test; dkim=pass header.d=museum.test; dmarc=pass header.from=museum.test (record forwarded-relay)\nLink domains: museum.test\n\n[temporary]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=temperror smtp.mailfrom=museum.test; dkim=none; dmarc=temperror header.from=museum.test (record temporary-relay)\nLink domains: \n"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "deep": "hostname-mismatch",
+    "early": "not-yet-valid|chain-failed"
+  },
+  "observations": [
+    "deep: seconds-until-notAfter=4233600; SAN-match=false; supplied-chain=verified.",
+    "early: seconds-until-notAfter=4233600; SAN-match=true; supplied-chain=failed."
+  ],
+  "limitations": [
+    "Certificate fields and a supplied chain report are synthetic; no signature, chain, revocation, protocol or cipher verification is performed.",
+    "Only ASCII DNS SAN names and a single leftmost wildcard are modelled; a matching name does not establish application safety."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "upload-parser": "affected-prioritise-runtime-path",
+    "asset-builder": "affected-review-build-exposure",
+    "theme-helper": "no-advisory-supplied"
+  },
+  "observations": [
+    "upload-parser: demo-parser 1.9.9; scope=runtime; reachability=reachable; matches=DEMO-ADV-001:[1.9.0,1.10.0); evidence=request map reaches the upload parser.",
+    "asset-builder: demo-builder 2.0.4; scope=development; reachability=unknown; matches=DEMO-ADV-002:[2.0.0,2.0.5); evidence=build inputs have not been reviewed.",
+    "theme-helper: demo-theme 1.0.0; scope=runtime; reachability=unknown; matches=none; evidence=inventory only."
+  ],
+  "limitations": [
+    "Only stable three-part numeric versions from 0 to 9999 per part are supported; prereleases, build metadata, ecosystem ranges and backports are rejected or outside scope.",
+    "All packages and advisories are fictional. A range match is not proof of exploitability, and no supplied match is not proof that software is secure."
+  ]
+}

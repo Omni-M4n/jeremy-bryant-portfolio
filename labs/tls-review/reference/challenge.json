@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "boundary": "renewal-due",
+    "unknown-chain": "chain-unverified",
+    "empty-san": "hostname-mismatch"
+  },
+  "observations": [
+    "boundary: seconds-until-notAfter=0; SAN-match=true; supplied-chain=verified.",
+    "unknown-chain: seconds-until-notAfter=4233600; SAN-match=true; supplied-chain=unverified.",
+    "empty-san: seconds-until-notAfter=4233600; SAN-match=false; supplied-chain=verified."
+  ],
+  "limitations": [
+    "Certificate fields and a supplied chain report are synthetic; no signature, chain, revocation, protocol or cipher verification is performed.",
+    "Only ASCII DNS SAN names and a single leftmost wildcard are modelled; a matching name does not establish application safety."
+  ]
+}

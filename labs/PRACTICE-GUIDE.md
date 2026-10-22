@@ -1,6 +1,6 @@
 # Security foundations: practice guide
 
-Prepared 23 October 2026. Six original exercises using fictional data.
+Prepared 23 October 2026. Twenty-six original exercises using fictional data.
 
 Website: https://deadgoodreviews.com/portfolio/security-labs/
 Source: https://github.com/Omni-M4n/jeremy-bryant-portfolio/tree/main/labs
@@ -29,7 +29,7 @@ If a step is unclear, reduce it to one question. Repeat that part with a new
 example before adding the next concept. Keep earlier attempts; a correction is
 useful evidence of learning, not a reason to erase the first answer.
 
-## The six topics
+## Start with these six topics
 
 ### 1. DNS investigation: questions and replies
 
@@ -141,6 +141,127 @@ a protocol difference. Avoid repairing one case by allowing everything.
 Save: the matching rule for each test, before/after decisions and your reasons.
 Common trap: checking only that suspicious traffic is blocked and overlooking
 the connection someone needs for their work.
+
+## Twenty additional topics
+
+Catalog: https://deadgoodreviews.com/portfolio/security-labs/foundations/
+
+These extend the first six exercises. They demonstrate the scope of the practice
+materials, not completed professional experience. Choose one topic using its
+prerequisites. You do not need to finish a whole track before changing topics.
+
+Network investigation and testing:
+
+07. Asset discovery: compare a saved scan with the authorised inventory. Produce
+    an evidence table of observed, expected and unobserved services.
+08. TCP handshakes: trace SYN, SYN/ACK, ACK and reset evidence. Explain why missing
+    packets can prevent a conclusion about the whole connection.
+09. TLS review: check decoded certificate facts against hostname and time. Name
+    the trust assumptions that these saved fields cannot verify.
+10. HTTP headers: review response and cookie settings against a small application
+    policy. Explain the limits of a header-only review.
+11. Vulnerability prioritisation: order fictional findings using a stated local
+    rubric. Explain the reason for each priority and what remains unknown.
+12. Vulnerability retesting: compare before-and-after evidence. Separate a
+    demonstrated fix from an unchanged issue or an inconclusive retest.
+13. Email triage: compare message identities with trusted receiving evidence.
+    Explain why a display name or one authentication result is insufficient.
+
+Defensive operations and recovery:
+
+14. Endpoint triage: trace a process relationship and compare it with authorised
+    activity. Write a next-check request without declaring malware from a name.
+15. Scheduled tasks: review timing, execution identity, paths and approvals.
+    Separate an explained maintenance change from one needing investigation.
+16. Timelines: convert offsets to UTC and account for clock uncertainty.
+    Mark events whose order cannot be established reliably.
+17. Alert correlation: distinguish duplicate records from related activity.
+    Explain why a group of alerts is not automatically one proven incident.
+18. Backup verification: compare scope, age and restore-check evidence with
+    recovery requirements. State which recovery claims remain untested.
+19. Linux permissions: select the correct owner/group/other permission class.
+    Check both file permissions and the required directory traversal rights.
+20. SSH configuration: review the supported directives against stated needs.
+    Identify configurations outside the small parser's model instead of guessing.
+
+Cloud, identity and configuration:
+
+21. Storage exposure: review sharing in a simplified fictional storage model.
+    Explain how its controls interact and what a real platform would still need.
+22. Identity lifecycle: decide what changes when someone joins, moves or leaves.
+    Account for effective dates and documented exceptions.
+23. MFA review: compare account requirements, enrolment and recovery evidence.
+    Explain why an enrolment flag alone does not prove complete protection.
+24. Cloud audit triage: follow identities and actions across saved events.
+    Separate successful actions, failed attempts and missing observations.
+25. Secret handling: locate deliberately fake sensitive values in the wrong
+    places. Describe an ordered response and the places that still need checking.
+26. Dependency review: compare installed versions with fictional advisory ranges.
+    Distinguish a version match from proof that an attack can succeed.
+
+Each folder's README defines exact inputs and supported decisions. Its worked
+example explains the evidence. DRILLS.md adds an independent case, teach-back
+questions and a later recall exercise. Read those limits before using a result.
+
+## A consistent command routine for labs 07–26
+
+Open a terminal in the selected lab folder. Example: `labs/asset-discovery`.
+Use `py` in place of `python` if that is how Python is installed on your computer.
+
+```console
+python lab.py cases
+python lab.py prepare --scenario guided --out run/attempt-01
+python lab.py show --case run/attempt-01/case.json
+```
+
+1. Read the README's decision labels, the case context and any readable evidence
+   files in the new folder.
+2. Predict the findings in `run/attempt-01/notes.txt`.
+3. Fill the decision fields in `run/attempt-01/answers.json`. Add an explanation
+   and specific evidence references. Keep the worked answer closed.
+4. Save the worksheet, then check it:
+
+```console
+python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
+```
+
+The result compares decision fields and checks that written fields are present.
+It cannot judge whether an explanation is correct. We must review that reasoning
+and ask you to locate the evidence again. A matching result is not mastery.
+
+After saving your attempt, inspect the reference analysis and note corrections:
+
+```console
+python lab.py analyse --case run/attempt-01/case.json
+```
+
+Use a new folder when repeating. The commands refuse to overwrite old attempts.
+For the next two passes, prepare `changed` and then `challenge` scenarios:
+
+```console
+python lab.py prepare --scenario changed --out run/attempt-02
+python lab.py prepare --scenario challenge --out run/attempt-03
+```
+
+Use the case path for that attempt in every later command. A new output folder
+does not create a new scenario; repeating a known case is rehearsal. After all
+three, change one permitted input in a practice copy and predict the consequence.
+Follow that lab's drills so the change stays within its supported model.
+
+`python lab.py verify` checks the supplied exercise and reference outputs. It
+does not check a learner attempt. The first six labs retain their own documented
+commands; do not substitute the new routine into them.
+
+## A sensible starting route
+
+Begin with DNS, then asset discovery, TCP evidence and HTTP logs. Continue with
+login triage, timelines and endpoint review. Build access-review understanding
+before identity lifecycle, MFA and storage exposure. Add configuration and
+recovery exercises once their prerequisites make sense to you.
+
+For each lab, create one useful deliverable: a short finding, an access table,
+a retest record or a handover. Practise explaining it as if a colleague needs to
+act on it. Do not measure progress by the number of folders opened.
 
 ## Five practice stages
 

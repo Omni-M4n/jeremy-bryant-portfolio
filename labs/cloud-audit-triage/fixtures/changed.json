@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-audit-triage",
+  "case_id": "changed",
+  "title": "A denied logging change is not a successful interruption",
+  "synthetic": true,
+  "context": {
+    "question": "Which actions succeeded, which correlate with a sign-in and where is logging incomplete?"
+  },
+  "data": {
+    "window_start": "2026-10-23T10:00:00Z",
+    "window_end": "2026-10-23T11:00:00Z",
+    "logging": {
+      "management": true,
+      "data": true
+    },
+    "approved_changes": [
+      {
+        "identity": "operator",
+        "action": "change-policy",
+        "resource": "poster-bucket",
+        "from": "2026-10-23T10:00:00Z",
+        "to": "2026-10-23T10:10:00Z"
+      }
+    ],
+    "events": [
+      {
+        "id": "c01",
+        "at": "2026-10-23T10:00:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "sign-in",
+        "result": "success",
+        "resource": "identity-service"
+      },
+      {
+        "id": "c02",
+        "at": "2026-10-23T10:10:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "change-policy",
+        "result": "success",
+        "resource": "poster-bucket"
+      },
+      {
+        "id": "c03",
+        "at": "2026-10-23T10:11:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "disable-logging",
+        "result": "denied",
+        "resource": "audit-trail"
+      }
+    ]
+  },
+  "artifacts": {}
+}

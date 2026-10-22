@@ -1,0 +1,24 @@
+{
+  "decisions": {
+    "e01": "authentication-only",
+    "e02": "denied-no-success-evidence",
+    "e03": "approved-change-correlated",
+    "e04": "successful-read-correlated",
+    "e05": "successful-action-unattributed",
+    "e06": "unapproved-change-correlated",
+    "logging": "coverage-gap:data;interruption-observed"
+  },
+  "observations": [
+    "e01: 2026-10-23T10:00:00Z identity=operator session=session-a action=sign-in result=success resource=identity-service; sign-ins=none; approved=false.",
+    "e02: 2026-10-23T10:02:00Z identity=operator session=session-a action=change-policy result=denied resource=rota-bucket; sign-ins=e01; approved=false.",
+    "e03: 2026-10-23T10:03:00Z identity=operator session=session-a action=change-policy result=success resource=poster-bucket; sign-ins=e01; approved=true.",
+    "e04: 2026-10-23T10:04:00Z identity=operator session=session-a action=read-object result=success resource=rota-object; sign-ins=e01; approved=false.",
+    "e05: 2026-10-23T10:05:00Z identity=unknown-identity session=session-z action=change-policy result=success resource=rota-bucket; sign-ins=none; approved=false.",
+    "e06: 2026-10-23T10:06:00Z identity=operator session=session-a action=disable-logging result=success resource=audit-trail; sign-ins=e01; approved=false.",
+    "logging: disabled-categories=data; successful-disable=true."
+  ],
+  "limitations": [
+    "This fictional schema is not a CloudTrail parser; identity/session equality and a 15-minute window support correlation, not attribution to a person.",
+    "Configured logging and supplied events do not prove complete delivery; absent records cannot prove that no activity occurred."
+  ]
+}

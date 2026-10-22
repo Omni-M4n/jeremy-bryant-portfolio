@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "lab_id": "tls-review",
+  "case_id": "changed",
+  "title": "A wildcard covers only one label",
+  "synthetic": true,
+  "context": {
+    "question": "Which decoded certificate fields need follow-up at the stated evaluation time?"
+  },
+  "data": {
+    "evaluation_time": "2030-01-11T00:00:00Z",
+    "renew_within_days": 14,
+    "certificates": [
+      {
+        "id": "deep",
+        "requested_host": "images.eu.museum.test",
+        "dns_names": [
+          "*.museum.test"
+        ],
+        "not_before": "2030-01-01T00:00:00Z",
+        "not_after": "2030-03-01T00:00:00Z",
+        "chain_report": "verified"
+      },
+      {
+        "id": "early",
+        "requested_host": "early.museum.test",
+        "dns_names": [
+          "early.museum.test"
+        ],
+        "not_before": "2030-01-12T00:00:00Z",
+        "not_after": "2030-03-01T00:00:00Z",
+        "chain_report": "failed"
+      }
+    ]
+  },
+  "artifacts": {}
+}

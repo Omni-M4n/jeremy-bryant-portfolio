@@ -1,0 +1,42 @@
+{
+  "artifacts": {},
+  "case_id": "changed",
+  "context": {
+    "question": "Compare observed daily tasks with a small approved baseline and distinguish exact maintenance approval from unexplained differences."
+  },
+  "data": {
+    "approvals": [],
+    "baseline": [
+      {
+        "account": "lab-backup",
+        "action": "C:/Lab/bin/archive.exe",
+        "daily_time": "02:00",
+        "id": "archive"
+      },
+      {
+        "account": "lab-inventory",
+        "action": "C:/Lab/bin/inventory.exe",
+        "daily_time": "04:00",
+        "id": "inventory"
+      }
+    ],
+    "observed": [
+      {
+        "account": "lab-backup",
+        "action": "C:/Lab/bin/archive.exe",
+        "daily_time": "02:00",
+        "id": "archive"
+      },
+      {
+        "account": "lab-maintenance",
+        "action": "C:/Lab/bin/cleanup.exe",
+        "daily_time": "05:00",
+        "id": "cleanup"
+      }
+    ]
+  },
+  "lab_id": "scheduled-task-review",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "A new task and an incomplete snapshot"
+}

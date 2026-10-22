@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-audit-triage",
+  "case_id": "guided",
+  "title": "A denied change, an approved change and a logging gap",
+  "synthetic": true,
+  "context": {
+    "question": "Which actions succeeded, which correlate with a sign-in and where is logging incomplete?"
+  },
+  "data": {
+    "window_start": "2026-10-23T10:00:00Z",
+    "window_end": "2026-10-23T11:00:00Z",
+    "logging": {
+      "management": true,
+      "data": false
+    },
+    "approved_changes": [
+      {
+        "identity": "operator",
+        "action": "change-policy",
+        "resource": "poster-bucket",
+        "from": "2026-10-23T10:00:00Z",
+        "to": "2026-10-23T10:10:00Z"
+      }
+    ],
+    "events": [
+      {
+        "id": "e01",
+        "at": "2026-10-23T10:00:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "sign-in",
+        "result": "success",
+        "resource": "identity-service"
+      },
+      {
+        "id": "e02",
+        "at": "2026-10-23T10:02:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "change-policy",
+        "result": "denied",
+        "resource": "rota-bucket"
+      },
+      {
+        "id": "e03",
+        "at": "2026-10-23T10:03:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "change-policy",
+        "result": "success",
+        "resource": "poster-bucket"
+      },
+      {
+        "id": "e04",
+        "at": "2026-10-23T10:04:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "read-object",
+        "result": "success",
+        "resource": "rota-object"
+      },
+      {
+        "id": "e05",
+        "at": "2026-10-23T10:05:00Z",
+        "identity": "unknown-identity",
+        "session": "session-z",
+        "action": "change-policy",
+        "result": "success",
+        "resource": "rota-bucket"
+      },
+      {
+        "id": "e06",
+        "at": "2026-10-23T10:06:00Z",
+        "identity": "operator",
+        "session": "session-a",
+        "action": "disable-logging",
+        "result": "success",
+        "resource": "audit-trail"
+      }
+    ]
+  },
+  "artifacts": {
+    "analyst-note.txt": "A supplied event fragment may exist even when category-wide coverage was disabled.\nThe snapshot records coverage at the window start; successful disable-logging adds interruption evidence.\nThere are no source IPs or real account identifiers in this fictional schema.\n"
+  }
+}

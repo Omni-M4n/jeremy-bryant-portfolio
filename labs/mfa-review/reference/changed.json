@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "emergency-owner": "enrol-mfa;use-phishing-resistant-mfa;test-emergency-access",
+    "nightly-export": "meets-lab-controls",
+    "platform-admin": "meets-lab-controls"
+  },
+  "observations": [
+    "emergency-owner: type=breakglass; methods=password; enforced=false; recovery=none; exception=expired; missing=enrol-mfa,test-emergency-access,use-phishing-resistant-mfa.",
+    "emergency-owner: interactive=true; privileged=true; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=true; test-age-days=91; exception-until=2026-10-23.",
+    "nightly-export: type=service; methods=federated-workload; enforced=false; recovery=none; exception=none; missing=none.",
+    "nightly-export: interactive=false; privileged=false; owner=team-owner; credential-lifetime=short-lived; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none.",
+    "platform-admin: type=human; methods=password,security-key; enforced=true; recovery=backup-codes-secured; exception=none; missing=none.",
+    "platform-admin: interactive=true; privileged=true; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none."
+  ],
+  "limitations": [
+    "Method names describe supplied enrolment records, not proof of a successful multi-factor ceremony or any NIST assurance level.",
+    "The 90-day emergency test interval and exception rules are fictional local policy; real provider recovery and emergency-access designs differ."
+  ]
+}

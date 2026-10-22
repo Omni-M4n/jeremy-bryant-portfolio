@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "lab_id": "identity-lifecycle",
+  "case_id": "challenge",
+  "title": "A planned move and a delayed leaver ticket",
+  "synthetic": true,
+  "context": {
+    "question": "What access should be added, removed and retained on the stated review date?"
+  },
+  "data": {
+    "as_of": "2026-10-23",
+    "people": [
+      {
+        "id": "future-mover",
+        "event": "mover",
+        "effective_on": "2026-10-24",
+        "current": [
+          "mail",
+          "old-queue"
+        ],
+        "required": [
+          "mail",
+          "new-queue"
+        ],
+        "exceptions": []
+      },
+      {
+        "id": "late-leaver",
+        "event": "leaver",
+        "effective_on": "2026-10-20",
+        "current": [
+          "vpn",
+          "mail"
+        ],
+        "required": [],
+        "exceptions": []
+      },
+      {
+        "id": "partial-mover",
+        "event": "mover",
+        "effective_on": "2026-10-23",
+        "current": [
+          "mail",
+          "new-queue",
+          "old-queue"
+        ],
+        "required": [
+          "mail",
+          "new-queue",
+          "casework"
+        ],
+        "exceptions": []
+      }
+    ]
+  },
+  "artifacts": {}
+}

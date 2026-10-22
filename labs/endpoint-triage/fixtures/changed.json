@@ -1,0 +1,55 @@
+{
+  "artifacts": {},
+  "case_id": "changed",
+  "context": {
+    "question": "Read a small process tree and explain which relationships deserve a closer look without declaring that an executable is malware."
+  },
+  "data": {
+    "processes": [
+      {
+        "approved_change": false,
+        "command": "desktop.exe",
+        "id": "p1",
+        "image": "desktop.exe",
+        "location": "system",
+        "parent": null,
+        "role": "desktop",
+        "signature": "verified"
+      },
+      {
+        "approved_change": false,
+        "command": "reader.exe",
+        "id": "p2",
+        "image": "reader.exe",
+        "location": "program",
+        "parent": "p1",
+        "role": "document",
+        "signature": "verified"
+      },
+      {
+        "approved_change": true,
+        "command": "shell.exe -File C:/Lab/demo.ps1",
+        "id": "p3",
+        "image": "shell.exe",
+        "location": "system",
+        "parent": "p2",
+        "role": "shell",
+        "signature": "verified"
+      },
+      {
+        "approved_change": false,
+        "command": "helper.exe",
+        "id": "p4",
+        "image": "helper.exe",
+        "location": "program",
+        "parent": "p1",
+        "role": "utility",
+        "signature": "unsigned"
+      }
+    ]
+  },
+  "lab_id": "endpoint-triage",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "An approved classroom demonstration"
+}

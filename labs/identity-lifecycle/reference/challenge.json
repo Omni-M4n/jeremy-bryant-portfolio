@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "future-mover": "add:none;remove:none;retain:mail,old-queue",
+    "late-leaver": "add:none;remove:mail,vpn;retain:none",
+    "partial-mover": "add:casework;remove:old-queue;retain:mail,new-queue"
+  },
+  "observations": [
+    "future-mover: mover future on 2026-10-24; active-exceptions=none; expired-exceptions=none; target=mail,old-queue.",
+    "late-leaver: leaver due on 2026-10-20; active-exceptions=none; expired-exceptions=none; target=none.",
+    "partial-mover: mover due on 2026-10-23; active-exceptions=none; expired-exceptions=none; target=casework,mail,new-queue."
+  ],
+  "limitations": [
+    "Dates represent whole UTC review days; expiry is inclusive and no timezone or intraday HR feed is modelled.",
+    "This produces a proposed access delta only; approvals, session revocation, ownership transfer and actual directory changes need separate checks."
+  ]
+}

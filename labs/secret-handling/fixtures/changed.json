@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "lab_id": "secret-handling",
+  "case_id": "changed",
+  "title": "Revocation changes priority but does not remove retained copies",
+  "synthetic": true,
+  "context": {
+    "question": "Where do listed dummy values appear, who could see them and what remediation comes first?"
+  },
+  "data": {
+    "secrets": [
+      {
+        "id": "export-token",
+        "marker": "DEMO_ONLY_TOKEN_EXPORT",
+        "state": "revoked"
+      },
+      {
+        "id": "replacement",
+        "marker": "DEMO_ONLY_TOKEN_REPLACEMENT",
+        "state": "active"
+      }
+    ],
+    "files": [
+      {
+        "id": "retained-diff",
+        "kind": "diff",
+        "audience": "shared",
+        "lines": [
+          "- EXPORT_TOKEN=DEMO_ONLY_TOKEN_EXPORT"
+        ]
+      },
+      {
+        "id": "redacted-log",
+        "kind": "log",
+        "audience": "public",
+        "lines": [
+          "header token=[redacted]"
+        ]
+      },
+      {
+        "id": "new-config",
+        "kind": "config",
+        "audience": "local",
+        "lines": [
+          "EXPORT_TOKEN=${SECRET_STORE_EXPORT}"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "retained-diff.txt": "- EXPORT_TOKEN=DEMO_ONLY_TOKEN_EXPORT\n",
+    "redacted-log.txt": "header token=[redacted]\n",
+    "new-config.txt": "EXPORT_TOKEN=${SECRET_STORE_EXPORT}\n"
+  }
+}

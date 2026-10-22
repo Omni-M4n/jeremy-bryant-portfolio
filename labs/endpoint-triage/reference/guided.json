@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "p1": "no-modelled-triage-trigger",
+    "p2": "no-modelled-triage-trigger",
+    "p3": "prioritise-context-review",
+    "p4": "prioritise-context-review"
+  },
+  "limitations": [
+    "A suspicious relationship is a review priority, not proof of malware; a verified signature is not proof of safety.",
+    "Roles, locations, signatures and approval notes are supplied synthetic evidence. The model cannot verify them or establish execution intent.",
+    "This bounded tree omits memory, file contents, network activity and missing telemetry; no host was inspected."
+  ],
+  "observations": [
+    "p1: parent=root; image=desktop.exe; location=system; signature=verified; approval=no; signals=none.",
+    "p2: parent=p1; image=reader.exe; location=program; signature=verified; approval=no; signals=none.",
+    "p3: parent=p2; image=shell.exe; location=system; signature=verified; approval=no; signals=document-spawned-shell.",
+    "p4: parent=p1; image=helper.exe; location=user-temp; signature=unsigned; approval=no; signals=user-temp-execution."
+  ]
+}

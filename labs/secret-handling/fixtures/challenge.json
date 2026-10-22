@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "lab_id": "secret-handling",
+  "case_id": "challenge",
+  "title": "An exact marker boundary and an unlisted dummy value",
+  "synthetic": true,
+  "context": {
+    "question": "Where do listed dummy values appear, who could see them and what remediation comes first?"
+  },
+  "data": {
+    "secrets": [
+      {
+        "id": "short-token",
+        "marker": "DEMO_ONLY_TOKEN_APP",
+        "state": "active"
+      },
+      {
+        "id": "long-token",
+        "marker": "DEMO_ONLY_TOKEN_APP_LONG",
+        "state": "active"
+      }
+    ],
+    "files": [
+      {
+        "id": "package-log",
+        "kind": "log",
+        "audience": "shared",
+        "lines": [
+          "token=DEMO_ONLY_TOKEN_APP_LONG",
+          "unlisted=DEMO_ONLY_TOKEN_UNLISTED"
+        ]
+      },
+      {
+        "id": "draft-config",
+        "kind": "config",
+        "audience": "local",
+        "lines": [
+          "TOKEN=\"DEMO_ONLY_TOKEN_APP\""
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "package-log.txt": "token=DEMO_ONLY_TOKEN_APP_LONG\nunlisted=DEMO_ONLY_TOKEN_UNLISTED\n",
+    "draft-config.txt": "TOKEN=\"DEMO_ONLY_TOKEN_APP\"\n"
+  }
+}

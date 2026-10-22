@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "export-token": "confirm-revocation;clean-copies;review-use",
+    "replacement": "not-seen-in-supplied-artifacts"
+  },
+  "observations": [
+    "export-token: state=revoked; locations=retained-diff.txt:L1(diff,shared); audiences=shared.",
+    "replacement: state=active; locations=none; audiences=none."
+  ],
+  "limitations": [
+    "Only exact listed DEMO_ONLY_TOKEN markers are matched; absence is not proof that an artifact contains no secrets.",
+    "All values are deliberately fake. No credentials are tested, revoked, uploaded or changed; real response needs owner-led containment and service continuity planning."
+  ]
+}

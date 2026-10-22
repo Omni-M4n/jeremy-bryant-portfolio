@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-storage-review",
+  "case_id": "changed",
+  "title": "An account block also stops an approved public site",
+  "synthetic": true,
+  "context": {
+    "question": "Which buckets permit anonymous reads in this deliberately simplified model?"
+  },
+  "data": {
+    "account_block_public": true,
+    "buckets": [
+      {
+        "id": "poster-site",
+        "purpose": "public-site",
+        "data_class": "public",
+        "bucket_block_public": false,
+        "policy_public_read": true,
+        "acl_public_read": false,
+        "explicit_deny_public_read": false,
+        "approval": "approved"
+      },
+      {
+        "id": "volunteer-rota",
+        "purpose": "internal",
+        "data_class": "internal",
+        "bucket_block_public": false,
+        "policy_public_read": false,
+        "acl_public_read": true,
+        "explicit_deny_public_read": false,
+        "approval": "none"
+      },
+      {
+        "id": "no-grant",
+        "purpose": "internal",
+        "data_class": "internal",
+        "bucket_block_public": true,
+        "policy_public_read": false,
+        "acl_public_read": false,
+        "explicit_deny_public_read": false,
+        "approval": "none"
+      }
+    ]
+  },
+  "artifacts": {}
+}

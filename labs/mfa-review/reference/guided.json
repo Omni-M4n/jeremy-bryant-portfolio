@@ -1,0 +1,22 @@
+{
+  "decisions": {
+    "helpdesk-user": "enforce-mfa;repair-recovery",
+    "platform-admin": "use-phishing-resistant-mfa",
+    "nightly-export": "disable-interactive-login;assign-owner;replace-static-workload-credential;monitor-workload-use",
+    "emergency-owner": "exception-current"
+  },
+  "observations": [
+    "helpdesk-user: type=human; methods=password,totp; enforced=false; recovery=shared-mailbox; exception=none; missing=enforce-mfa,repair-recovery.",
+    "helpdesk-user: interactive=true; privileged=false; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none.",
+    "platform-admin: type=human; methods=password,totp; enforced=true; recovery=helpdesk-verified; exception=none; missing=use-phishing-resistant-mfa.",
+    "platform-admin: interactive=true; privileged=true; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=false; test-age-days=none; exception-until=none.",
+    "nightly-export: type=service; methods=password; enforced=false; recovery=none; exception=none; missing=assign-owner,disable-interactive-login,monitor-workload-use,replace-static-workload-credential.",
+    "nightly-export: interactive=true; privileged=false; owner=none; credential-lifetime=long-lived; monitored=false; controlled-storage=false; test-age-days=none; exception-until=none.",
+    "emergency-owner: type=breakglass; methods=password; enforced=false; recovery=none; exception=current; missing=none.",
+    "emergency-owner: interactive=true; privileged=true; owner=team-owner; credential-lifetime=none; monitored=true; controlled-storage=true; test-age-days=30; exception-until=2026-10-23."
+  ],
+  "limitations": [
+    "Method names describe supplied enrolment records, not proof of a successful multi-factor ceremony or any NIST assurance level.",
+    "The 90-day emergency test interval and exception rules are fictional local policy; real provider recovery and emergency-access designs differ."
+  ]
+}

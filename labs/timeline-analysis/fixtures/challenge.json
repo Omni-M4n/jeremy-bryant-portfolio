@@ -1,0 +1,48 @@
+{
+  "artifacts": {},
+  "case_id": "challenge",
+  "context": {
+    "question": "Normalise offset timestamps to UTC, correct known clock error and decide when evidence does or does not establish strict temporal order."
+  },
+  "data": {
+    "events": [
+      {
+        "clock_offset_seconds": -30,
+        "description": "Workstation clock known to be slow",
+        "id": "e1",
+        "time": "2026-01-15T10:00:00+10:00",
+        "uncertainty_seconds": 0
+      },
+      {
+        "clock_offset_seconds": 0,
+        "description": "Gateway event at reported resolution",
+        "id": "e2",
+        "time": "2026-01-15T00:00:20Z",
+        "uncertainty_seconds": 0
+      },
+      {
+        "clock_offset_seconds": 0,
+        "description": "Service event at the same corrected time",
+        "id": "e3",
+        "time": "2026-01-15T01:00:20+01:00",
+        "uncertainty_seconds": 0
+      }
+    ],
+    "pairs": [
+      {
+        "id": "e1-vs-e2",
+        "left": "e1",
+        "right": "e2"
+      },
+      {
+        "id": "e2-vs-e3",
+        "left": "e2",
+        "right": "e3"
+      }
+    ]
+  },
+  "lab_id": "timeline-analysis",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "Clock correction reverses the display order"
+}

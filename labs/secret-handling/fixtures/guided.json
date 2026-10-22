@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "lab_id": "secret-handling",
+  "case_id": "guided",
+  "title": "Deleting a config line leaves a diff and a log",
+  "synthetic": true,
+  "context": {
+    "question": "Where do listed dummy values appear, who could see them and what remediation comes first?"
+  },
+  "data": {
+    "secrets": [
+      {
+        "id": "export-token",
+        "marker": "DEMO_ONLY_TOKEN_EXPORT",
+        "state": "active"
+      },
+      {
+        "id": "local-token",
+        "marker": "DEMO_ONLY_TOKEN_LOCAL",
+        "state": "active"
+      },
+      {
+        "id": "unused-token",
+        "marker": "DEMO_ONLY_TOKEN_UNUSED",
+        "state": "active"
+      }
+    ],
+    "files": [
+      {
+        "id": "app-config",
+        "kind": "config",
+        "audience": "local",
+        "lines": [
+          "EXPORT_TOKEN=${SECRET_STORE_EXPORT}",
+          "LOCAL_TOKEN=DEMO_ONLY_TOKEN_LOCAL"
+        ]
+      },
+      {
+        "id": "change-diff",
+        "kind": "diff",
+        "audience": "shared",
+        "lines": [
+          "- EXPORT_TOKEN=DEMO_ONLY_TOKEN_EXPORT",
+          "+ EXPORT_TOKEN=${SECRET_STORE_EXPORT}"
+        ]
+      },
+      {
+        "id": "debug-log",
+        "kind": "log",
+        "audience": "public",
+        "lines": [
+          "10:01 request destination=export.test",
+          "10:02 header token=DEMO_ONLY_TOKEN_EXPORT"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "app-config.txt": "EXPORT_TOKEN=${SECRET_STORE_EXPORT}\nLOCAL_TOKEN=DEMO_ONLY_TOKEN_LOCAL\n",
+    "change-diff.txt": "- EXPORT_TOKEN=DEMO_ONLY_TOKEN_EXPORT\n+ EXPORT_TOKEN=${SECRET_STORE_EXPORT}\n",
+    "debug-log.txt": "10:01 request destination=export.test\n10:02 header token=DEMO_ONLY_TOKEN_EXPORT\n"
+  }
+}

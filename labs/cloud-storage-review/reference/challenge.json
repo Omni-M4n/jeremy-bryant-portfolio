@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "mislabelled-site": "public-read-unapproved",
+    "deny-overrides": "blocked-public-grant",
+    "forgotten-acl": "public-read-unapproved"
+  },
+  "observations": [
+    "mislabelled-site: grants=policy; blockers=none; purpose=public-site; class=restricted; approval=approved.",
+    "deny-overrides: grants=acl,policy; blockers=deny; purpose=internal; class=internal; approval=none.",
+    "forgotten-acl: grants=acl; blockers=none; purpose=internal; class=internal; approval=none."
+  ],
+  "limitations": [
+    "This is a fictional Boolean read-access model, not an AWS policy or ACL evaluator.",
+    "No object contents, write access, conditions, cross-account roles, access points, signed URLs or real cloud state are examined."
+  ]
+}

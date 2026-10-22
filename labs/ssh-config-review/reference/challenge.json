@@ -1,0 +1,26 @@
+{
+  "decisions": {
+    "access-route": "no-supported-method-enabled",
+    "kbdinteractiveauthentication": "matches-lab-baseline",
+    "maxauthtries": "differs-from-lab-baseline",
+    "passwordauthentication": "matches-lab-baseline",
+    "permitemptypasswords": "matches-lab-baseline",
+    "permitrootlogin": "differs-from-lab-baseline",
+    "pubkeyauthentication": "differs-from-lab-baseline"
+  },
+  "limitations": [
+    "Only six explicit directives are modelled. Missing settings are unknown here; no version-specific defaults are assumed. Match, Include, unknown directives and complex syntax are rejected.",
+    "The fictional baseline is PermitRootLogin no, PasswordAuthentication no, KbdInteractiveAuthentication no, PubkeyAuthentication yes, PermitEmptyPasswords no and MaxAuthTries 1-4. It is not a universal deployment recommendation.",
+    "First occurrence wins for these supported directives. This text review is not sshd validation and cannot establish keys, PAM behaviour, network exposure or a working recovery login. No host configuration was read or changed."
+  ],
+  "observations": [
+    "Line 1: permitrootlogin=yes is the first value.",
+    "Line 2: permitrootlogin=no ignored by first-value rule; effective=yes.",
+    "Line 3: passwordauthentication=no is the first value.",
+    "Line 4: kbdinteractiveauthentication=no is the first value.",
+    "Line 5: pubkeyauthentication=no is the first value.",
+    "Line 6: permitemptypasswords=no is the first value.",
+    "Line 7: maxauthtries=6 is the first value.",
+    "Supported authentication route=no-supported-method-enabled; enabling a method does not establish usable credentials or successful login."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "artifacts": {},
+  "case_id": "guided",
+  "context": {
+    "question": "Evaluate a fictional unprivileged user against owner/group/other mode bits and explain why readable files may be unreachable through a directory."
+  },
+  "data": {
+    "actor": {
+      "groups": [
+        "students"
+      ],
+      "name": "learner"
+    },
+    "nodes": [
+      {
+        "group": "root",
+        "mode": "755",
+        "owner": "root",
+        "path": "/",
+        "type": "directory"
+      },
+      {
+        "group": "students",
+        "mode": "750",
+        "owner": "custodian",
+        "path": "/srv",
+        "type": "directory"
+      },
+      {
+        "group": "students",
+        "mode": "640",
+        "owner": "alex",
+        "path": "/srv/notes.txt",
+        "type": "file"
+      },
+      {
+        "group": "staff",
+        "mode": "733",
+        "owner": "custodian",
+        "path": "/srv/drop",
+        "type": "directory"
+      }
+    ],
+    "requests": [
+      {
+        "id": "read-notes",
+        "operation": "read-file",
+        "path": "/srv/notes.txt"
+      },
+      {
+        "id": "write-notes",
+        "operation": "write-file",
+        "path": "/srv/notes.txt"
+      },
+      {
+        "id": "list-drop",
+        "operation": "list-dir",
+        "path": "/srv/drop"
+      },
+      {
+        "id": "search-drop",
+        "operation": "search-dir",
+        "path": "/srv/drop"
+      },
+      {
+        "id": "create-drop",
+        "operation": "create-entry",
+        "path": "/srv/drop"
+      }
+    ]
+  },
+  "lab_id": "linux-permissions",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "Readable notes and a drop directory"
+}

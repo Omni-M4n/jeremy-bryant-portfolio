@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "forwarded": "authenticated-domain-review-content",
+    "temporary": "domain-authentication-unresolved"
+  },
+  "observations": [
+    "forwarded: trusted forwarded-relay: SPF=fail, DKIM=pass, DMARC=pass; mismatches=none.",
+    "temporary: trusted temporary-relay: SPF=temperror, DKIM=none, DMARC=temperror; mismatches=none."
+  ],
+  "limitations": [
+    "Receiver trust is supplied out of band for this exercise; an Authentication-Results header or matching relay name alone is not proof.",
+    "SPF authorises a sending domain context; DMARC relates authenticated domains to From. Neither authenticates a person or guarantees harmless content.",
+    "Only decoded strict domain alignment is checked; no DNS, signature, ARC, relaxed alignment, attachment or URL-content analysis occurs."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "decisions": {
+    "x01": "authentication-only",
+    "x04": "successful-action-unattributed",
+    "x02": "successful-read-correlated",
+    "x03": "successful-action-unattributed",
+    "logging": "coverage-configured"
+  },
+  "observations": [
+    "x01: 2026-10-23T10:00:00Z identity=operator session=session-a action=sign-in result=success resource=identity-service; sign-ins=none; approved=false.",
+    "x04: 2026-10-23T10:05:00Z identity=different-operator session=session-a action=read-object result=success resource=rota-object; sign-ins=none; approved=false.",
+    "x02: 2026-10-23T10:15:00Z identity=operator session=session-a action=read-object result=success resource=poster-object; sign-ins=x01; approved=false.",
+    "x03: 2026-10-23T10:16:00Z identity=operator session=session-a action=read-object result=success resource=poster-object; sign-ins=none; approved=false.",
+    "logging: disabled-categories=none; successful-disable=false."
+  ],
+  "limitations": [
+    "This fictional schema is not a CloudTrail parser; identity/session equality and a 15-minute window support correlation, not attribution to a person.",
+    "Configured logging and supplied events do not prove complete delivery; absent records cannot prove that no activity occurred."
+  ]
+}

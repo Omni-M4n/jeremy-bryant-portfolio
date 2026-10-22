@@ -1,0 +1,58 @@
+{
+  "artifacts": {},
+  "case_id": "guided",
+  "context": {
+    "question": "Separate repeated deliveries from unique alerts, then group related evidence with a visible time-window rule without equating alerts with incidents."
+  },
+  "data": {
+    "alerts": [
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a1",
+        "kind": "auth-failure",
+        "time": "2026-02-01T00:00:00Z"
+      },
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a2",
+        "kind": "auth-failure",
+        "time": "2026-02-01T00:00:10Z"
+      },
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a3",
+        "kind": "auth-failure",
+        "time": "2026-02-01T00:00:20Z"
+      },
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a4",
+        "kind": "auth-success",
+        "time": "2026-02-01T00:01:00Z"
+      },
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a5",
+        "kind": "process-alert",
+        "time": "2026-02-01T00:02:00Z"
+      },
+      {
+        "account": "student",
+        "host": "workstation.test",
+        "id": "a1",
+        "kind": "auth-failure",
+        "time": "2026-02-01T00:00:00Z"
+      }
+    ],
+    "window_seconds": 300
+  },
+  "lab_id": "alert-correlation",
+  "schema_version": 1,
+  "synthetic": true,
+  "title": "Repeated delivery beside a login sequence"
+}

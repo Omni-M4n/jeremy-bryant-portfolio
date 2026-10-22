@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "workstation.test/student/1": "review-auth-sequence"
+  },
+  "limitations": [
+    "Deduplication uses alert ID and identical full content; different IDs are retained even when text or timestamps match.",
+    "Sessions share exact host and account and span at most the window from their first alert, inclusively; this is a teaching rule, not a universal detection rule.",
+    "Three earlier failure alerts followed by a success warrant review, as do authentication plus process signals. Alerts and review groups are not counts of confirmed incidents.",
+    "Clock accuracy, sensor coverage, account ownership and authorised activity remain unverified; no service or endpoint was contacted."
+  ],
+  "observations": [
+    "Deliveries=6; unique alerts=5; repeated deliveries=1.",
+    "workstation.test/student/1: anchor=2026-02-01T00:00:00Z; IDs=a1,a2,a3,a4,a5; failures=3; successes=1; kinds=auth-failure,auth-success,process-alert."
+  ]
+}
