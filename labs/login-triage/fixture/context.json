@@ -1,0 +1,26 @@
+{
+  "accounts": [
+    {
+      "note": "No user confirmation or device evidence is supplied for this account.",
+      "role": "Fictional human staff account",
+      "user": "practice-staff-041"
+    },
+    {
+      "note": "Invented helpdesk note: the editor reported two typing errors before signing in. This is contextual evidence, not independent identity verification.",
+      "role": "Fictional human editor account",
+      "user": "practice-editor-041"
+    },
+    {
+      "note": "Invented change note: its saved password was not updated after a planned password change. The job retries every 11 minutes. No repair is performed in this lab.",
+      "role": "Fictional automated file-sync account",
+      "user": "practice-sync-041"
+    }
+  ],
+  "address_note": "All source addresses use IPv4 documentation ranges. An address is a log label, not a verified person or device. Shared internet connections can reuse one source address.",
+  "coverage": "Only these invented sign-in records and notes are available. No device logs, multi-factor records, session actions or independent user verification are supplied.",
+  "organization": "Fictional Cedar Practice Co-op",
+  "scenario": "baseline",
+  "seed": 41,
+  "synthetic": true,
+  "time_basis": "Invented UTC timestamps in 2032; no relationship to real activity."
+}

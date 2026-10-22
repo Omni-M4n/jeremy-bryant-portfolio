@@ -1,0 +1,22 @@
+{
+  "capture": "SYNTHETIC-dns.pcap",
+  "clients": [
+    "192.0.2.10",
+    "192.0.2.11"
+  ],
+  "context": "Constructed observation of two clients asking one resolver. No live capture.",
+  "observation_limit": "Only the packets in this file are observable; no evidence after its final packet.",
+  "packet_count": 11,
+  "question_type": "A",
+  "questions": [
+    "synthetic-lantern.test",
+    "synthetic-maple.test",
+    "synthetic-meadow.test",
+    "synthetic-orchard.test",
+    "synthetic-violet.test"
+  ],
+  "resolver": "192.0.2.53",
+  "seed": 37,
+  "synthetic": true,
+  "title": "SYNTHETIC DNS troubleshooting practice"
+}

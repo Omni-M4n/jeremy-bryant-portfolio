@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "title": "Harbour Lantern Supplies: fictional access review",
+  "variant": "guided",
+  "seed": 17,
+  "resources": [
+    {
+      "id": "weekly-reports",
+      "purpose": "Published reports used for business review."
+    },
+    {
+      "id": "supplier-uploads",
+      "purpose": "Incoming submissions that need to be recorded."
+    },
+    {
+      "id": "retention-snapshots",
+      "purpose": "Snapshots held for retention and later removal."
+    }
+  ],
+  "roles": [
+    {
+      "id": "report-reader",
+      "purpose": "Read published reports."
+    },
+    {
+      "id": "intake-operator",
+      "purpose": "Read and record incoming uploads without deleting them."
+    },
+    {
+      "id": "archive-custodian",
+      "purpose": "Read reports and manage archive snapshots."
+    }
+  ],
+  "identities": [
+    {
+      "id": "ellis",
+      "role": "report-reader"
+    },
+    {
+      "id": "blair",
+      "role": "intake-operator"
+    },
+    {
+      "id": "frankie",
+      "role": "archive-custodian"
+    }
+  ],
+  "business_rules": [
+    {
+      "role": "intake-operator",
+      "resource": "supplier-uploads",
+      "actions": [
+        "read",
+        "write"
+      ],
+      "reason": "Inspect and record incoming uploads."
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "retention-snapshots",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ],
+      "reason": "Inspect, create, replace, and remove archive snapshots."
+    },
+    {
+      "role": "report-reader",
+      "resource": "weekly-reports",
+      "actions": [
+        "read"
+      ],
+      "reason": "Read the published reports for daily planning."
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "weekly-reports",
+      "actions": [
+        "read"
+      ],
+      "reason": "Read reports to choose what to archive."
+    }
+  ]
+}

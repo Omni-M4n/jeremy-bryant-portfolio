@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Security Foundations Labs — Jeremy Bryant</title>
+  <meta name="description" content="Three original guided security exercises: DNS investigation, login-event triage and least-privilege access review. Synthetic data, repeatable checks and clear limits.">
+  <meta name="robots" content="noindex, nofollow, noarchive"><meta name="theme-color" content="#14231f">
+  <link rel="canonical" href="https://deadgoodreviews.com/portfolio/security-labs/">
+  <link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg">
+  <link rel="stylesheet" href="/portfolio/styles.css"><script type="module" src="/portfolio/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header container">
+  <a class="brand" href="/portfolio/" aria-label="Jeremy Bryant — portfolio home"><span class="brand-mark" aria-hidden="true">JB<span>·</span></span><span class="brand-name">Jeremy Bryant<span>Cybersecurity portfolio</span></span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><a class="nav-link" href="/portfolio/#work">Selected work</a><a class="nav-link" href="#dns">DNS investigation</a><a class="nav-link" href="#logins">Login triage</a><a class="nav-link" href="#access">Access review</a></nav>
+</header>
+<main id="main">
+  <section class="case-hero container">
+    <a class="text-link" href="/portfolio/">← Back to portfolio</a>
+    <p class="eyebrow">Guided practice / Security foundations</p>
+    <h1 class="case-title">Read the evidence.<br><em>Explain the decision.</em></h1>
+    <p class="case-deck">Three original, repeatable exercises connecting network fundamentals, security operations and access control. Each starts with a small question and ends with an explanation supported by evidence.</p>
+    <div class="case-meta"><div><span>Environment</span><strong>Offline training data</strong></div><div><span>Materials</span><strong>Source, fixtures and checks</strong></div><div><span>Published</span><strong>23 October 2026</strong></div><div><span>Learning status</span><strong>Independent practice pending</strong></div></div>
+  </section>
+  <div class="case-layout container">
+    <aside class="case-toc" aria-label="Lab contents"><p class="eyebrow">Inside the labs</p><nav><a href="#scope">01 / Scope &amp; evidence</a><a href="#dns">02 / DNS investigation</a><a href="#logins">03 / Login triage</a><a href="#access">04 / Access review</a><a href="#practice">05 / Practice progression</a></nav><a class="download-link" href="__GITHUB_URL__/tree/main/labs" target="_blank" rel="noopener noreferrer">Open lab source ↗</a><button class="download-link" data-print>Print / save PDF ↗</button></aside>
+    <article class="case-body">
+      <section class="case-section" id="scope">
+        <p class="eyebrow">01 / Scope &amp; evidence</p><h2 class="case-section-title">Small scenarios. Checkable results.</h2>
+        <p class="lead">These exercises were prepared as guided learning materials for this portfolio. The scenarios, identities and datasets are fictional, and their generation is reproducible.</p>
+        <p>The source repository includes a worked example, a practice route and verification commands for each lab. No university assessment questions, submissions or recordings are included.</p>
+        <div class="note"><span class="note-label">Current status</span><p>The exercise materials have passed automated reference checks. Jeremy's independent completion and explanation of unfamiliar variants remain to be assessed. Reference results describe the exercises; they are not a claim of production experience or independent authorship of every utility.</p></div>
+        <p>All three exercises work offline. They do not scan external systems, attempt real logins, change cloud permissions or expose a vulnerable application.</p>
+      </section>
+      <section class="case-section" id="dns">
+        <p class="eyebrow">02 / Network investigation</p><h2 class="case-section-title">A name lookup did not work. What does the capture show?</h2>
+        <p>Two fictional workstations make DNS requests in a generated packet capture. Some receive successful answers, some receive a name-not-found response, and some have no matching response in the captured interval.</p>
+        <p>The task is to match requests to responses, distinguish those outcomes and support each finding with packet evidence. A missing response is an observation; the capture alone cannot establish whether a server, a network path or the capture itself caused it.</p>
+        <h3>What the exercise develops</h3>
+        <ul><li>Using Wireshark display filters and reading DNS fields.</li><li>Matching transactions and checking timing.</li><li>Writing a short finding without overstating its cause.</li></ul>
+        <div class="note"><span class="note-label">Evidence boundary</span><p>The PCAP contains generated Ethernet, IPv4, UDP and DNS records. It is synthetic training data, not traffic captured from a real incident. The included verifier checks its structure and expected relationships.</p></div>
+        <p><a class="text-link" href="__GITHUB_URL__/tree/main/labs/dns-triage" target="_blank" rel="noopener noreferrer">Open the DNS lab and practice files ↗</a></p>
+        <p class="small">Protocol reference: <a href="https://www.wireshark.org/docs/dfref/d/dns.html" target="_blank" rel="noopener noreferrer">Wireshark DNS display fields ↗</a></p>
+      </section>
+      <section class="case-section" id="logins">
+        <p class="eyebrow">03 / Security operations</p><h2 class="case-section-title">Several failed logins. One successful login. What next?</h2>
+        <p>A fictional login-event dataset contains clustered failures, ordinary typing mistakes and service-account problems. A small training detector highlights patterns using an adjustable threshold and time window.</p>
+        <p>The analyst's job is to reconstruct the timeline, read the surrounding context and decide what further checks an escalation should request. A threshold match can justify investigation; it does not prove account compromise.</p>
+        <h3>What the exercise develops</h3>
+        <ul><li>Grouping events by identity and source.</li><li>Understanding thresholds, time windows and false positives.</li><li>Writing a concise handover that separates facts from hypotheses.</li></ul>
+        <div class="note"><span class="note-label">Evidence boundary</span><p>The log format and events are synthetic. The detector is a teaching heuristic, not a production SIEM or a validated incident verdict. The reference tests exercise timing and input-handling behaviour.</p></div>
+        <p><a class="text-link" href="__GITHUB_URL__/tree/main/labs/login-triage" target="_blank" rel="noopener noreferrer">Open the login-triage lab and practice files ↗</a></p>
+      </section>
+      <section class="case-section" id="access">
+        <p class="eyebrow">04 / Cloud-security foundations</p><h2 class="case-section-title">Keep the access people need. Remove the rest.</h2>
+        <p>A fictional storage service gives roles permission to read, write or delete objects. The exercise starts with broader access than the business requirements justify.</p>
+        <p>The task is to compare every allowed action with the requirements, revise an editable policy and check that necessary access still works. Simply denying everything would fail the business requirements.</p>
+        <h3>What the exercise develops</h3>
+        <ul><li>Separating identity verification from permission decisions.</li><li>Applying least privilege to specific actions and resources.</li><li>Testing both unwanted access and legitimate work after a change.</li></ul>
+        <div class="note"><span class="note-label">Evidence boundary</span><p>This is a deliberately small offline permission model. It is not an AWS or Azure IAM evaluator and does not claim a cloud deployment. It introduces access-review reasoning before adding provider-specific policy complexity.</p></div>
+        <p><a class="text-link" href="__GITHUB_URL__/tree/main/labs/access-review" target="_blank" rel="noopener noreferrer">Open the access-review lab and practice files ↗</a></p>
+      </section>
+      <section class="case-section" id="practice">
+        <p class="eyebrow">05 / Practice progression</p><h2 class="case-section-title">Repeat the reasoning, then change the problem.</h2>
+        <ol><li><strong>Guided attempt:</strong> follow the worked example and explain each result.</li><li><strong>Prompted attempt:</strong> use a short checklist with the full answer hidden.</li><li><strong>Independent attempt:</strong> reset the exercise and complete it without step-by-step instructions.</li><li><strong>New variant:</strong> change the dataset and explain why the answer changes.</li><li><strong>Teach it back:</strong> give a short verbal handover, including what the evidence cannot establish.</li></ol>
+        <p>Completion requires a correct explanation and a successful unfamiliar variant. Running a verification command or memorising one sequence does not establish that understanding. Personal practice evidence will be added after those steps have been completed.</p>
+        <p><a class="text-link" href="__GITHUB_URL__/blob/main/labs/README.md" target="_blank" rel="noopener noreferrer">Read the shared lab guide ↗</a></p>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer container"><p>Jeremy Bryant <span>·</span> Cybersecurity portfolio</p><div class="footer-links"><a href="/portfolio/">Portfolio home</a><a href="#main">Back to top ↑</a></div><p class="small">Original guided exercises · Synthetic evidence · Independent practice pending</p></footer>
+</body></html>

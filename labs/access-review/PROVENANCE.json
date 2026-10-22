@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "origin": "Original fictional lab created as guided portfolio training materials.",
+  "source_inputs": "Synthetic names, scenarios, permissions, and examples; no coursework or production data.",
+  "authorship_scope": "Supplied scaffolding and answer keys; no claim of independent learner implementation.",
+  "learner_status": "Independent practice and understanding have not been assessed.",
+  "cloud_scope": "Offline toy allow-only model; no provider IAM implementation or deployed cloud environment.",
+  "fixture_recipe": "python lab.py generate --variant guided --seed 17 --run fixtures/worked-example",
+  "integrity_scope": "SHA-256 checks file integrity only, not factual acceptance or learner competence.",
+  "sha256_files": {
+    ".gitignore": "8a4ffe7096e1eb2d22b66a80fe6bfde9846c2943fdc6c9c6dd2d3e31cd4b93e8",
+    "fixtures/worked-example/expected-access.json": "c5faa513bfa0d716733764fcc0c0e9b7fe76eccabcc80a6813ad09f22a1d8530",
+    "fixtures/worked-example/practice-policy.json": "7e2e8800dff506ff204e22df207b8c9154eb739fb898c6b70e6a175edc0d6db8",
+    "fixtures/worked-example/scenario.json": "356f46bb2aefbe926bb5c686229884445798af7b0ef3dd5578d66f286ae797d9",
+    "fixtures/worked-example/solution-policy.json": "319238a99171b9da000ff62c0351de0a6c808b1f825d7f9dc394ce69e09cff99",
+    "fixtures/worked-example/START-HERE.txt": "77f429dd3ef99088ab45f226960e054ee372898239828e4f8033aa1247a042be",
+    "fixtures/worked-example/starting-policy.json": "7e2e8800dff506ff204e22df207b8c9154eb739fb898c6b70e6a175edc0d6db8",
+    "lab.py": "34d10b3d84de838b1364f5b527ab7adb728c96f7f29d95098dc5b1535096033d",
+    "README.md": "a4de5e71685ca58b68805a63dea06741d2e647c209ec8e098a03edbf66967703",
+    "test_lab.py": "fe0256f1880406afac1c9afde54d532d4404cd842f3135aae5ae07ca1cc1925c"
+  }
+}

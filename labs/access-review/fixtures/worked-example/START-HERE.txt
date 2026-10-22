@@ -1,0 +1,5 @@
+Fictional offline practice: guided; seed 17.
+Edit practice-policy.json. Keep scenario, expected matrix, and starting policy intact.
+Read each business rule. Remove unrelated grants and trim action lists. Keep required delete access.
+Use lab.py check and lab.py review with --run pointing to this folder.
+solution-policy.json is a supplied answer key. Independent practice is not assessed.

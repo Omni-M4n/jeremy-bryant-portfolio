@@ -1,9 +1,10 @@
 # Jeremy Bryant — cybersecurity portfolio
 
-A personal career portfolio and documented owner-controlled LG webOS home lab.
+A personal career portfolio, documented owner-controlled LG webOS home lab and original guided security exercises.
 
 - **Portfolio:** https://deadgoodreviews.com/portfolio/
 - **Full case study:** https://deadgoodreviews.com/portfolio/lg-webos-lab/
+- **Security foundations labs:** https://deadgoodreviews.com/portfolio/security-labs/
 - **LinkedIn:** https://www.linkedin.com/in/jeremy-bryant-61347a445/
 
 ## The project
@@ -20,6 +21,15 @@ Jeremy owned and operated the hardware, selected goals and appearance, provided 
 
 Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://github.com/throwaway96), [Glasshouse](https://rorygallagher2024.github.io/glasshouse/), [TacticalBill/chiaki-lg](https://github.com/TacticalBill/chiaki-lg), [chiaki-ng](https://github.com/chiaki-ng/chiaki-ng) and [Qt](https://github.com/qt/qtbase).
 
+## Guided security exercises
+
+The [labs](labs/README.md) add three original offline exercises: DNS packet
+investigation, login-event triage and least-privilege access review. Each includes
+synthetic fixtures, a worked example, verification and progressive practice.
+The materials have automated reference checks; Jeremy's independent completion
+of unfamiliar variants remains to be assessed. These exercises do not claim
+production experience or independent authorship of every utility.
+
 ## Repository map
 
 | Path | Contents |
@@ -27,6 +37,7 @@ Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://git
 | `src/` | Portfolio, case study, local assets and downloadable brief |
 | `scripts/` | Dependency-free static build, public-output checks and loopback preview |
 | `tools/` | Qt INI pairing-format converter; no real pairing data |
+| `labs/` | Original guided exercises, synthetic fixtures, checks and practice instructions |
 | `tests/` | Static-site checks and synthetic converter tests |
 | `docs/verification.md` | Sanitised evidence and limitations |
 | `docs/recovery.md` | Recovery design and operational boundaries |

@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "decisions": [
+    {
+      "identity": "ellis",
+      "resource": "weekly-reports",
+      "action": "read",
+      "allowed": true
+    },
+    {
+      "identity": "ellis",
+      "resource": "weekly-reports",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "weekly-reports",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "supplier-uploads",
+      "action": "read",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "supplier-uploads",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "supplier-uploads",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "retention-snapshots",
+      "action": "read",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "retention-snapshots",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "ellis",
+      "resource": "retention-snapshots",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "weekly-reports",
+      "action": "read",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "weekly-reports",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "weekly-reports",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "supplier-uploads",
+      "action": "read",
+      "allowed": true
+    },
+    {
+      "identity": "blair",
+      "resource": "supplier-uploads",
+      "action": "write",
+      "allowed": true
+    },
+    {
+      "identity": "blair",
+      "resource": "supplier-uploads",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "retention-snapshots",
+      "action": "read",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "retention-snapshots",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "blair",
+      "resource": "retention-snapshots",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "weekly-reports",
+      "action": "read",
+      "allowed": true
+    },
+    {
+      "identity": "frankie",
+      "resource": "weekly-reports",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "weekly-reports",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "supplier-uploads",
+      "action": "read",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "supplier-uploads",
+      "action": "write",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "supplier-uploads",
+      "action": "delete",
+      "allowed": false
+    },
+    {
+      "identity": "frankie",
+      "resource": "retention-snapshots",
+      "action": "read",
+      "allowed": true
+    },
+    {
+      "identity": "frankie",
+      "resource": "retention-snapshots",
+      "action": "write",
+      "allowed": true
+    },
+    {
+      "identity": "frankie",
+      "resource": "retention-snapshots",
+      "action": "delete",
+      "allowed": true
+    }
+  ]
+}

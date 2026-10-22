@@ -1,0 +1,109 @@
+{
+  "algorithm": "dns-triage-v1",
+  "expected": {
+    "episodes": [
+      {
+        "client": "192.0.2.10",
+        "client_port": 53771,
+        "dns_id": 11164,
+        "first_response_ms": 1511.0,
+        "outcome": "answer",
+        "qname": "synthetic-lantern.test",
+        "qtype": "A",
+        "request_frames": [
+          8,
+          10
+        ],
+        "resolver": "192.0.2.53",
+        "response_frames": [
+          11
+        ]
+      },
+      {
+        "client": "192.0.2.11",
+        "client_port": 62186,
+        "dns_id": 32783,
+        "first_response_ms": 24.0,
+        "outcome": "answer",
+        "qname": "synthetic-maple.test",
+        "qtype": "A",
+        "request_frames": [
+          6
+        ],
+        "resolver": "192.0.2.53",
+        "response_frames": [
+          7
+        ]
+      },
+      {
+        "client": "192.0.2.11",
+        "client_port": 56637,
+        "dns_id": 38700,
+        "first_response_ms": 48.0,
+        "outcome": "nxdomain",
+        "qname": "synthetic-meadow.test",
+        "qtype": "A",
+        "request_frames": [
+          3
+        ],
+        "resolver": "192.0.2.53",
+        "response_frames": [
+          4
+        ]
+      },
+      {
+        "client": "192.0.2.10",
+        "client_port": 58993,
+        "dns_id": 55811,
+        "first_response_ms": null,
+        "outcome": "unanswered",
+        "qname": "synthetic-orchard.test",
+        "qtype": "A",
+        "request_frames": [
+          5,
+          9
+        ],
+        "resolver": "192.0.2.53",
+        "response_frames": []
+      },
+      {
+        "client": "192.0.2.10",
+        "client_port": 60341,
+        "dns_id": 32783,
+        "first_response_ms": 45.0,
+        "outcome": "answer",
+        "qname": "synthetic-violet.test",
+        "qtype": "A",
+        "request_frames": [
+          1
+        ],
+        "resolver": "192.0.2.53",
+        "response_frames": [
+          2
+        ]
+      }
+    ],
+    "packet_count": 11
+  },
+  "files": {
+    "SYNTHETIC-dns.pcap": {
+      "bytes": 1142,
+      "sha256": "b6344f614e113dcc0dca355424617811e545438d96da6ade435d7c096c7122a1"
+    },
+    "case.json": {
+      "bytes": 623,
+      "sha256": "c7a75d62f8314f1009808d9e7786c0fa7d9e115d944c9b98bd9de7764185405a"
+    }
+  },
+  "provenance": {
+    "addresses": "RFC 5737 documentation IPv4 ranges only.",
+    "mac_addresses": "Constructed locally administered unicast values.",
+    "names": "Synthetic names under reserved .test (RFC 2606).",
+    "personal_data": "None; no third-party traffic, secrets, or real hosts.",
+    "source": "Constructed from scratch by lab.py; no capture or coursework input.",
+    "time": "Fixed invented timestamps; not an observation date."
+  },
+  "schema_version": 1,
+  "seed": 37,
+  "synthetic": true
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "grants": [
+    {
+      "role": "intake-operator",
+      "resource": "supplier-uploads",
+      "actions": [
+        "read",
+        "write"
+      ]
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "retention-snapshots",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "report-reader",
+      "resource": "weekly-reports",
+      "actions": [
+        "read"
+      ]
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "weekly-reports",
+      "actions": [
+        "read"
+      ]
+    }
+  ]
+}

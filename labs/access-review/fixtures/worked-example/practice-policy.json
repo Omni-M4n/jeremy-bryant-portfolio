@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "grants": [
+    {
+      "role": "report-reader",
+      "resource": "weekly-reports",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "report-reader",
+      "resource": "supplier-uploads",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "report-reader",
+      "resource": "retention-snapshots",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "intake-operator",
+      "resource": "weekly-reports",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "intake-operator",
+      "resource": "supplier-uploads",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "intake-operator",
+      "resource": "retention-snapshots",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "weekly-reports",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "supplier-uploads",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    },
+    {
+      "role": "archive-custodian",
+      "resource": "retention-snapshots",
+      "actions": [
+        "read",
+        "write",
+        "delete"
+      ]
+    }
+  ]
+}

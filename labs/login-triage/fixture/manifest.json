@@ -1,0 +1,15 @@
+{
+  "event_count": 19,
+  "generator": "lab.py",
+  "generator_version": "1.0.0",
+  "provenance": "Original fictional training records produced from a numeric seed. No external logs, coursework, personal records or live systems are inputs.",
+  "scenario": "baseline",
+  "schema_version": 1,
+  "seed": 41,
+  "sha256": {
+    "auth.csv": "e990a16f541a8bdc66238fc55cec83fa30f83000e06ad5e1304dd5edc257605f",
+    "auth.jsonl": "6d8f0fc388410655ff66579ab924aa6dd64d0a1212d92ee46393d03ccc804da2",
+    "context.json": "fa373e1c3b3481074711c040d0e9cd0e19f42dc47ac8b4653d46ea47c8114614"
+  },
+  "synthetic": true
+}
