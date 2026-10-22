@@ -1,0 +1,12 @@
+{
+  "changes": [
+    {
+      "after_sha256": "766d640ea3d624d72a6bcaa117f0a3f0cc8d04ec231a3db5a1e3c80f8f7facc9",
+      "before_sha256": "08a81bef2429cd31e39d5561aaa05ec0ece4232f5756a472be80eaf5af499ce0",
+      "path": "docs/notice.txt",
+      "reason": "The fictional owner approved the opening-time update to 10:00.",
+      "ticket": "CHANGE-000023"
+    }
+  ],
+  "schema_version": 1
+}

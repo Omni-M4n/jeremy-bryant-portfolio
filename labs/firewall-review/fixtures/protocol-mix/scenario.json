@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "case": "protocol-mix",
+  "seed": 17,
+  "requirements": [
+    "Permit TCP from 192.0.2.0/24 to portal 198.51.100.32 destination port 443, except the restricted host below. Source ports may vary.",
+    "Permit TCP from admin workstation 192.0.2.63 only to management host 198.51.100.79 destination port 22. Source ports may vary.",
+    "Permit UDP from exporter 192.0.2.48 only to telemetry host 198.51.100.45 destination port 5514. Source ports may vary. TCP to this service is not required in this fictional case.",
+    "Deny all TCP and UDP from restricted host 192.0.2.187, including portal traffic. All other traffic is denied unless a requirement explicitly allows it."
+  ],
+  "probes": [
+    {
+      "id": "portal-client",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "allow",
+      "reason": "Ordinary client needs the portal."
+    },
+    {
+      "id": "portal-new-source-port",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 65535,
+      "destination_port": 443,
+      "expected": "allow",
+      "reason": "A source port change must not break the portal."
+    },
+    {
+      "id": "portal-admin",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.32",
+      "source_port": 1,
+      "destination_port": 443,
+      "expected": "allow",
+      "reason": "Admin remains a client for portal access."
+    },
+    {
+      "id": "portal-near-low-edge",
+      "protocol": "tcp",
+      "source": "192.0.2.1",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "allow",
+      "reason": "The requirement covers the client subnet, not just a named sample client."
+    },
+    {
+      "id": "portal-near-high-edge",
+      "protocol": "tcp",
+      "source": "192.0.2.254",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "allow",
+      "reason": "Do not accidentally reduce the client subnet to its lower half."
+    },
+    {
+      "id": "restricted-portal",
+      "protocol": "tcp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "deny",
+      "reason": "The restricted host is inside the broad client subnet."
+    },
+    {
+      "id": "management-admin",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22,
+      "expected": "allow",
+      "reason": "Keep the administrator's stated management access."
+    },
+    {
+      "id": "management-client",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22,
+      "expected": "deny",
+      "reason": "Portal clients do not automatically need management access."
+    },
+    {
+      "id": "management-wrong-port",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 23,
+      "expected": "deny",
+      "reason": "The management requirement is destination port 22 only."
+    },
+    {
+      "id": "management-udp",
+      "protocol": "udp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22,
+      "expected": "deny",
+      "reason": "TCP permission does not grant UDP at the same number."
+    },
+    {
+      "id": "portal-wrong-destination",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "deny",
+      "reason": "The portal permission names one destination, not every server."
+    },
+    {
+      "id": "portal-wrong-port",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 80,
+      "expected": "deny",
+      "reason": "Port 80 has no stated need."
+    },
+    {
+      "id": "portal-udp",
+      "protocol": "udp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "deny",
+      "reason": "Only TCP portal traffic is required by this case."
+    },
+    {
+      "id": "external-source",
+      "protocol": "tcp",
+      "source": "203.0.113.8",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "deny",
+      "reason": "A source outside the client subnet has no stated need."
+    },
+    {
+      "id": "external-destination",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "203.0.113.9",
+      "source_port": 49152,
+      "destination_port": 443,
+      "expected": "deny",
+      "reason": "An unrelated destination has no stated need."
+    },
+    {
+      "id": "telemetry-udp",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514,
+      "expected": "allow",
+      "reason": "The exporter uses the specified UDP telemetry transport."
+    },
+    {
+      "id": "telemetry-new-source-port",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 32768,
+      "destination_port": 5514,
+      "expected": "allow",
+      "reason": "Source ports can vary independently of the destination port."
+    },
+    {
+      "id": "telemetry-tcp",
+      "protocol": "tcp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514,
+      "expected": "deny",
+      "reason": "Matching port numbers do not make TCP and UDP interchangeable."
+    },
+    {
+      "id": "telemetry-wrong-source",
+      "protocol": "udp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514,
+      "expected": "deny",
+      "reason": "Only the exporter needs telemetry access."
+    },
+    {
+      "id": "telemetry-source-port-trap",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 5514,
+      "destination_port": 5515,
+      "expected": "deny",
+      "reason": "A matching source port does not substitute for the required destination port."
+    },
+    {
+      "id": "restricted-telemetry",
+      "protocol": "udp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514,
+      "expected": "deny",
+      "reason": "The restricted host may not send telemetry either."
+    },
+    {
+      "id": "reverse-direction",
+      "protocol": "tcp",
+      "source": "198.51.100.32",
+      "destination": "192.0.2.76",
+      "source_port": 443,
+      "destination_port": 49152,
+      "expected": "deny",
+      "reason": "This stateless one-way model has no implicit return-traffic permission."
+    }
+  ]
+}

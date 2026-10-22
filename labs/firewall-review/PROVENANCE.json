@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "origin": "Standalone fictional exercise created in October 2026; packets and policies are synthetic, not a capture, production policy, or coursework excerpt.",
+  "scope": "SHA-256 checks file identity only; it does not establish global novelty, policy security, or learner competence.",
+  "fixtures": [
+    {
+      "case": "shadowed-deny",
+      "seed": 17
+    },
+    {
+      "case": "narrow-service",
+      "seed": 17
+    },
+    {
+      "case": "missing-access",
+      "seed": 17
+    },
+    {
+      "case": "protocol-mix",
+      "seed": 17
+    }
+  ],
+  "sha256": {
+    "lab.py": "5d9f258dc76188601c78693e6e29bd201c1326300cb71c8a4a1b05ac41f0ac62",
+    "test_lab.py": "d1a748cac7d6fab74bb347f8512d1da6d792becd2463d8373781d7140aa863b8",
+    "README.md": "fa960191201bc7976ae0a4b019b8fa087bd421cc0daecb00e382bccd4c6224e3",
+    ".gitignore": "e7e60053029acfcff3a3c95aff9b88fa027d731f927c64bf03fc0dceb437b227",
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    "fixtures/missing-access/packets.json": "a248bffcfc5bab87b89dfa1fcd987492025e9bfba2e532796cac64f6dd9e38c6",
+    "fixtures/missing-access/practice-policy.json": "b2890fabdabf6766745a21243ab439b78903f6e9d0822d9fd178fc010fe710b0",
+    "fixtures/missing-access/scenario.json": "94d683f886653a3d1c3a720e2101fc2b4555f6f258444e4cffbaeedaf0532b43",
+    "fixtures/missing-access/solution-policy.json": "700a095c86085f2768e52bfcecb6bd63c6e3df4c7b819ea34007e030976de642",
+    "fixtures/missing-access/START-HERE.txt": "05d11f4a8fee44eae2cac7c264b8003502ca03975023234634fbfeabbf91dc03",
+    "fixtures/missing-access/starting-policy.json": "b2890fabdabf6766745a21243ab439b78903f6e9d0822d9fd178fc010fe710b0",
+    "fixtures/narrow-service/packets.json": "e288bdf1d5c8b7086d0fc4b143129d3a54eace0517ab70d644b9e6e48583291e",
+    "fixtures/narrow-service/practice-policy.json": "1c780071a4d91a06d8d5d767d6fbdb7ec51781458826cf5793facfff7d29174e",
+    "fixtures/narrow-service/scenario.json": "e03d937a114aea0b588c4c3ecc4f3dc419fee35e7c0bde3d0ffd463b3097fd0f",
+    "fixtures/narrow-service/solution-policy.json": "b2890fabdabf6766745a21243ab439b78903f6e9d0822d9fd178fc010fe710b0",
+    "fixtures/narrow-service/START-HERE.txt": "6785b8e023041015e6e2f76f35e2e63a2d73ab9bc8d2414800e0d3a00df37976",
+    "fixtures/narrow-service/starting-policy.json": "1c780071a4d91a06d8d5d767d6fbdb7ec51781458826cf5793facfff7d29174e",
+    "fixtures/protocol-mix/packets.json": "e288bdf1d5c8b7086d0fc4b143129d3a54eace0517ab70d644b9e6e48583291e",
+    "fixtures/protocol-mix/practice-policy.json": "01d47e6e7c701c008a4fd9da4e8ca94eb524e8e7254ae28658c1308ca36db00d",
+    "fixtures/protocol-mix/scenario.json": "ed10075e861c532a834f7bfba6e2ea3e948d6191265c4293ef47eafab9b3deaf",
+    "fixtures/protocol-mix/solution-policy.json": "b2890fabdabf6766745a21243ab439b78903f6e9d0822d9fd178fc010fe710b0",
+    "fixtures/protocol-mix/START-HERE.txt": "eb7bf52feca391a862f7e307fcb8e02c4bf6cb471e2ba94eeb21b45f526087fb",
+    "fixtures/protocol-mix/starting-policy.json": "01d47e6e7c701c008a4fd9da4e8ca94eb524e8e7254ae28658c1308ca36db00d",
+    "fixtures/shadowed-deny/packets.json": "e288bdf1d5c8b7086d0fc4b143129d3a54eace0517ab70d644b9e6e48583291e",
+    "fixtures/shadowed-deny/practice-policy.json": "27a0c45240b4ecc5600b66bdfa3a513d567d8ee91e47b2a60b1bc23fedfe4148",
+    "fixtures/shadowed-deny/scenario.json": "08a295318cd1e2a46f51917ee9f8e07e1492a6ae28bd684c4933812deee629ca",
+    "fixtures/shadowed-deny/solution-policy.json": "b2890fabdabf6766745a21243ab439b78903f6e9d0822d9fd178fc010fe710b0",
+    "fixtures/shadowed-deny/START-HERE.txt": "1986ec0042505e62a10e506449b8859979ee773fd480782eb97d09a7a85f30f2",
+    "fixtures/shadowed-deny/starting-policy.json": "27a0c45240b4ecc5600b66bdfa3a513d567d8ee91e47b2a60b1bc23fedfe4148"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "encoding": "UTF-8 with LF line endings",
+  "event_count": 21,
+  "generator_version": "1.0.0",
+  "provenance": "Original fictional HTTP access-log exercise created in October 2026. Generated records, not a capture or a university submission.",
+  "scenario": "mixed",
+  "schema_version": 1,
+  "seed": 53,
+  "sha256": {
+    "access.csv": "fc51375a326aa008ad3da8c52b845b1ba79540217387789b1b9d0d64f0fab721",
+    "context.json": "be3e9f784f0b6b70a462664f55cb1ae7b4dc745f94be5bfceab65f55f656bd4e"
+  },
+  "synthetic": true
+}

@@ -1,0 +1,5 @@
+Fictional offline file-integrity practice: mixed; seed 23.
+Read scenario.json and approvals.json. Keep reference/ intact.
+Create a baseline from reference/, then check current/.
+Explain differences and baseline confidence before opening expected-findings.json.
+Generated files are dummy text; no execution, networking, or automatic repair occurs.

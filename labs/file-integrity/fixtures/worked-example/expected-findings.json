@@ -1,0 +1,15 @@
+{
+  "answer_key_only": true,
+  "approved": [
+    "docs/notice.txt"
+  ],
+  "baseline_status": "matches-exercise-anchor",
+  "check_exit_code": 1,
+  "reasoning": "Explain each difference using exact before/after hashes and the supplied change list. An unexplained difference needs investigation; its hash alone does not establish malicious intent.",
+  "schema_version": 1,
+  "unexpected": [
+    "config/service.txt",
+    "docs/temporary-note.txt",
+    "reports/archive.txt"
+  ]
+}

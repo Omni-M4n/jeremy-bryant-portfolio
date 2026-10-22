@@ -1,0 +1,15 @@
+{
+  "collection_end": "2032-06-14T09:44:00Z",
+  "collection_start": "2032-06-14T09:39:00Z",
+  "coverage": "complete-for-fixture",
+  "gaps": [],
+  "host": "practice-library-053.test",
+  "notes": [
+    "The fictional site owner scheduled a public-page index refresh from 198.51.100.126 during this interval. Confirm the job records before closing a real case.",
+    "The owner note lists ordinary public pages and stale guide links. It does not authorise requests for configuration, backups or administration paths.",
+    "User-agent strings are client-supplied labels. The same text can appear on unrelated requests.",
+    "Request bodies, response bodies, cookies, authentication results, application audit records and proxy chains are absent.",
+    "A status 200 on POST /login can be an ordinary login page or validation response; this export records no authentication outcome."
+  ],
+  "synthetic": true
+}

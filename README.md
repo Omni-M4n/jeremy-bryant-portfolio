@@ -23,12 +23,16 @@ Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://git
 
 ## Guided security exercises
 
-The [labs](labs/README.md) add three original offline exercises: DNS packet
-investigation, login-event triage and least-privilege access review. Each includes
+The [labs](labs/README.md) add six original offline exercises: DNS packet
+investigation, login-event triage, least-privilege access review, HTTP log triage,
+file integrity and firewall review. Each includes
 synthetic fixtures, a worked example, verification and progressive practice.
 The materials have automated reference checks; Jeremy's independent completion
 of unfamiliar variants remains to be assessed. These exercises do not claim
 production experience or independent authorship of every utility.
+
+The [practice guide](labs/PRACTICE-GUIDE.md) develops each topic through short
+walkthroughs, independent attempts, changed scenarios and later recall checks.
 
 ## Repository map
 

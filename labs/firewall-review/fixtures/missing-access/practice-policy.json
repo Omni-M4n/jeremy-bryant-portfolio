@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "rules": [
+    {
+      "id": "restricted-tcp",
+      "action": "deny",
+      "protocol": "tcp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.0/24",
+      "source_port": "*",
+      "destination_port": "*"
+    },
+    {
+      "id": "restricted-udp",
+      "action": "deny",
+      "protocol": "udp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.0/24",
+      "source_port": "*",
+      "destination_port": "*"
+    },
+    {
+      "id": "portal",
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "192.0.2.0/24",
+      "destination": "198.51.100.32",
+      "source_port": "*",
+      "destination_port": 443
+    },
+    {
+      "id": "management",
+      "action": "allow",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": "*",
+      "destination_port": 22
+    },
+    {
+      "id": "telemetry",
+      "action": "allow",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": "*",
+      "destination_port": 5514
+    }
+  ]
+}

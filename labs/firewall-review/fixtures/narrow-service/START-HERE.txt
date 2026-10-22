@@ -1,0 +1,6 @@
+Fictional offline firewall case: narrow-service; seed 17.
+1. Read scenario.json requirements. Predict which probes the starting policy gets wrong.
+2. Edit only practice-policy.json. Use rule order, exact hosts/CIDRs and transport/port evidence.
+3. Run lab.py check with --run pointing at this folder. Explain missing and excess access.
+4. Try an extra packet with evaluate. Explain what the supplied probes cannot prove.
+The solution-policy.json file is a supplied answer key, not independent learner evidence.

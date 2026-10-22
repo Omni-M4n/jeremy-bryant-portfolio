@@ -1,0 +1,29 @@
+{
+  "authorship_scope": "Supplied guided utility, scenarios and answer key; independent learner completion has not been assessed.",
+  "fixture_recipe": "python lab.py generate --variant mixed --seed 23 --run fixtures/worked-example; python lab.py baseline --run fixtures/worked-example",
+  "origin": "Original fictional offline training lab, created October 2026; no coursework or production inputs.",
+  "schema_version": 1,
+  "scope": "SHA-256 inventory verifies file identity only, not origin, authenticity, factual acceptance or competence.",
+  "sha256_files": {
+    ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
+    ".gitignore": "8a4ffe7096e1eb2d22b66a80fe6bfde9846c2943fdc6c9c6dd2d3e31cd4b93e8",
+    "DRILLS.md": "e54bc634ec6ac799a3ed9eaeb64dca6e9de1d113e36ee4ea76324f0994d30a8b",
+    "README.md": "87613ff78feaef05dc50d472b974c6c0086cc705c35e2449f8eef6e029a306c8",
+    "WORKED-EXAMPLE.md": "48bb9fe7658a6874374da4ceaf2c9b54ca6b58e92be6950d386e9696eba5dcad",
+    "fixtures/worked-example/approvals.json": "5d6f5275d0789ca22caa94905e38948cbe8c02c6e70425c09365822781cdb011",
+    "fixtures/worked-example/baseline.json": "d18f97134ecd437133015910a6a13d7e45096e7dc8c4eeac5eae29b4ce460322",
+    "fixtures/worked-example/current/config/service.txt": "b565e483fa299ce9ffb63d3d8121cc6cbd26a7f7387ab29e9e308955025cbc5a",
+    "fixtures/worked-example/current/docs/contact.txt": "4a6bca901b2132ed71859cc251d5e78f7bced3829beb1573e371715550e1f5e6",
+    "fixtures/worked-example/current/docs/notice.txt": "766d640ea3d624d72a6bcaa117f0a3f0cc8d04ec231a3db5a1e3c80f8f7facc9",
+    "fixtures/worked-example/current/docs/temporary-note.txt": "4461e216833fcbfb838d230168eb419058978eb01bc14bb93bfddb5ea2341fc8",
+    "fixtures/worked-example/expected-findings.json": "fcb616df7ed46939d1ce18fe6c929baab5e1532f69bf637cc17bc92e1d43fe21",
+    "fixtures/worked-example/reference/config/service.txt": "aff2ebaf061b3d972984c7a121fbf2913eb5ff8f5eff652b1f1c77b92b51926d",
+    "fixtures/worked-example/reference/docs/contact.txt": "4a6bca901b2132ed71859cc251d5e78f7bced3829beb1573e371715550e1f5e6",
+    "fixtures/worked-example/reference/docs/notice.txt": "08a81bef2429cd31e39d5561aaa05ec0ece4232f5756a472be80eaf5af499ce0",
+    "fixtures/worked-example/reference/reports/archive.txt": "201bc13eba2267a18031a88256ea015bcba5d9d99bf6957901ee27ac56f64e75",
+    "fixtures/worked-example/scenario.json": "2ba51fc47a83aec74ac7aefbd31b1ffebf80705522b2914b432e457cda16286e",
+    "fixtures/worked-example/start-here.txt": "ad990d275cbbd7a38d6a5d3d49c22cd7d70c8badbc7c3a932d8b6475d0b44c98",
+    "lab.py": "7c55de1642920588d3b89f57fa334d5ee147e3a99a609e89040b6cd5f97fb8e0",
+    "test_lab.py": "42289f7254e54d1067c2f108c3a799c715942a18805863caf139eb0acdf2d6e4"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "packets": [
+    {
+      "id": "portal-client",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "portal-new-source-port",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 65535,
+      "destination_port": 443
+    },
+    {
+      "id": "portal-admin",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.32",
+      "source_port": 1,
+      "destination_port": 443
+    },
+    {
+      "id": "portal-near-low-edge",
+      "protocol": "tcp",
+      "source": "192.0.2.1",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "portal-near-high-edge",
+      "protocol": "tcp",
+      "source": "192.0.2.254",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "restricted-portal",
+      "protocol": "tcp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "management-admin",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22
+    },
+    {
+      "id": "management-client",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22
+    },
+    {
+      "id": "management-wrong-port",
+      "protocol": "tcp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 23
+    },
+    {
+      "id": "management-udp",
+      "protocol": "udp",
+      "source": "192.0.2.63",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 22
+    },
+    {
+      "id": "portal-wrong-destination",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.79",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "portal-wrong-port",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 80
+    },
+    {
+      "id": "portal-udp",
+      "protocol": "udp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "external-source",
+      "protocol": "tcp",
+      "source": "203.0.113.8",
+      "destination": "198.51.100.32",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "external-destination",
+      "protocol": "tcp",
+      "source": "192.0.2.76",
+      "destination": "203.0.113.9",
+      "source_port": 49152,
+      "destination_port": 443
+    },
+    {
+      "id": "telemetry-udp",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514
+    },
+    {
+      "id": "telemetry-new-source-port",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 32768,
+      "destination_port": 5514
+    },
+    {
+      "id": "telemetry-tcp",
+      "protocol": "tcp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514
+    },
+    {
+      "id": "telemetry-wrong-source",
+      "protocol": "udp",
+      "source": "192.0.2.76",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514
+    },
+    {
+      "id": "telemetry-source-port-trap",
+      "protocol": "udp",
+      "source": "192.0.2.48",
+      "destination": "198.51.100.45",
+      "source_port": 5514,
+      "destination_port": 5515
+    },
+    {
+      "id": "restricted-telemetry",
+      "protocol": "udp",
+      "source": "192.0.2.187",
+      "destination": "198.51.100.45",
+      "source_port": 49152,
+      "destination_port": 5514
+    },
+    {
+      "id": "reverse-direction",
+      "protocol": "tcp",
+      "source": "198.51.100.32",
+      "destination": "192.0.2.76",
+      "source_port": 443,
+      "destination_port": 49152
+    }
+  ]
+}

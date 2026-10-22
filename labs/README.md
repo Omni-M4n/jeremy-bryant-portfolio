@@ -1,6 +1,6 @@
 # Security foundations: original guided labs
 
-Three small offline exercises prepared for Jeremy Bryant's learning portfolio.
+Six small offline exercises prepared for Jeremy Bryant's learning portfolio.
 The datasets and scenarios are fictional. They are separate practice materials,
 not published university submissions or examples from a live incident.
 
@@ -9,6 +9,13 @@ not published university submissions or examples from a live incident.
 | [DNS triage](dns-triage/README.md) | What happened to each name lookup? | Packet evidence and careful network diagnosis |
 | [Login triage](login-triage/README.md) | Which events deserve further investigation? | Timelines, thresholds, context and escalation |
 | [Access review](access-review/README.md) | Who needs which actions on which resources? | Least privilege and preserving necessary access |
+| [HTTP log triage](http-triage/README.md) | What do web requests and responses actually show? | Web-log evidence, context and cautious escalation |
+| [File integrity](file-integrity/README.md) | What changed, and was the change expected? | Hashes, baselines and change review |
+| [Firewall review](firewall-review/README.md) | Which rule decides this packet? | Rule order, network boundaries and necessary traffic |
+
+Follow the [practice guide](PRACTICE-GUIDE.md) for short sessions, recall questions,
+changed scenarios and a blank progress record. Start with one topic; there is no
+need to complete all six in one sitting.
 
 ## Status and contribution
 
@@ -56,6 +63,9 @@ notes is normal; the goal is understanding, not speed or memorising every flag.
 - The access model is intentionally smaller than real cloud IAM. The login
   detector is a teaching heuristic. Packet fixtures describe generated events,
   not a real network capture.
+- Web logs do not establish an application's internal outcome. File hashes show
+  byte differences, not malicious intent. The firewall simulator is a small
+  ordered-rule model, not a configuration for a real host or cloud platform.
 
 Read each lab's limitations before interpreting its output. Publish only new,
 checked practice evidence that accurately states who performed the work.

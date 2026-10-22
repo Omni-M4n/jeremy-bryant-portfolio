@@ -1,0 +1,9 @@
+{
+  "baseline_context": "For this exercise, the scenario records the hash of a checked reference inventory from before the change window. Treat this supplied scenario and approvals as training authority. They are editable local files, not authenticated production evidence.",
+  "brief": "Review changes to a fictional community workshop's small folder. The change list is supplied training authority. Record evidence, uncertainty, and a next action; do not repair files automatically.",
+  "format": "fictional-file-integrity-sandbox",
+  "reference_anchor_sha256": "d18f97134ecd437133015910a6a13d7e45096e7dc8c4eeac5eae29b4ce460322",
+  "schema_version": 1,
+  "seed": 23,
+  "variant": "mixed"
+}

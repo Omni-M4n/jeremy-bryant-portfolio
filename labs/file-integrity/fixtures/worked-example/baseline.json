@@ -1,0 +1,21 @@
+{
+  "files": {
+    "config/service.txt": {
+      "bytes": 46,
+      "sha256": "aff2ebaf061b3d972984c7a121fbf2913eb5ff8f5eff652b1f1c77b92b51926d"
+    },
+    "docs/contact.txt": {
+      "bytes": 56,
+      "sha256": "4a6bca901b2132ed71859cc251d5e78f7bced3829beb1573e371715550e1f5e6"
+    },
+    "docs/notice.txt": {
+      "bytes": 39,
+      "sha256": "08a81bef2429cd31e39d5561aaa05ec0ece4232f5756a472be80eaf5af499ce0"
+    },
+    "reports/archive.txt": {
+      "bytes": 31,
+      "sha256": "201bc13eba2267a18031a88256ea015bcba5d9d99bf6957901ee27ac56f64e75"
+    }
+  },
+  "schema_version": 1
+}
