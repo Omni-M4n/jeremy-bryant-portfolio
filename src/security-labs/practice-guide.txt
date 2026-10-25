@@ -1,9 +1,10 @@
 SECURITY FOUNDATIONS: PRACTICE GUIDE
 
-Prepared 23 October 2026. Twenty-six original exercises using fictional data.
+Updated 25 October 2026. Thirty original exercises using fictional data: twenty-six offline foundations and four hands-on tool workflows.
 
-Website: https://deadgoodreviews.com/portfolio/security-labs/
-Source: https://github.com/Omni-M4n/jeremy-bryant-portfolio/tree/main/labs
+Website: https://jeremy-bryant.pages.dev/security-labs/
+Source and downloads: https://jeremy-bryant.pages.dev/source/
+Download: https://jeremy-bryant.pages.dev/downloads/jeremy-bryant-portfolio.zip
 
 THE GOAL
 
@@ -30,6 +31,28 @@ example before adding the next concept. Keep earlier attempts; a correction is
 useful evidence of learning, not a reason to erase the first answer.
 
 START WITH THESE SIX TOPICS
+
+Before presenting an exercise as completed work, save a short evidence record:
+the scoped question, original inputs, commands or actions, result, explanation,
+limitations and any help used. For a repair, include a legitimate case that must
+still work as well as the case that should now be blocked.
+
+Use these readiness stages for each topic:
+
+- **Prepared:** the materials are available; no learner attempt is implied.
+- **Guided:** you completed a case with prompts and can locate the evidence.
+- **Independent:** you saved your reasoning before revealing the answer, and a
+  reviewer checked both the conclusion and its explanation.
+- **Transfer:** you solved an unfamiliar variation, explained an alternative
+  interpretation and identified the evidence that would distinguish it.
+- **Retained:** after a delay, you repeated the essential reasoning on a new
+  case and corrected any mistake without copying the earlier answer.
+
+A reference pass, remembered command or captured flag does not by itself move
+an exercise to the next stage. Looking up command syntax is normal; record the
+help used and distinguish it from help with the reasoning. A later CTF or
+hackathon exercise should use the organiser's authorised scope and end with
+an explanation of why the result works and what its limits are.
 
 1. DNS INVESTIGATION: QUESTIONS AND REPLIES
 
@@ -144,7 +167,7 @@ the connection someone needs for their work.
 
 TWENTY ADDITIONAL TOPICS
 
-Catalog: https://deadgoodreviews.com/portfolio/security-labs/foundations/
+Catalog: https://jeremy-bryant.pages.dev/security-labs/foundations/
 
 These extend the first six exercises. They demonstrate the scope of the practice
 materials, not completed professional experience. Choose one topic using its
@@ -287,6 +310,91 @@ retention or professional competence.
 Passing one tiny lab is evidence for that task, not every real-world incident.
 Any portfolio completion note should say exactly what was performed and what
 help was used. Do not publish a reference answer as a personal investigation.
+
+FOUR HANDS-ON TOOL SESSIONS
+
+Start after the related foundation topic feels familiar. Use one tool per
+session. A short accurate explanation is more useful than a rushed full run.
+The lab READMEs provide the commands; this guide tells you what to practise.
+
+TRAFFIC CAPTURE: COLLECT BEFORE INTERPRETING
+
+Folder: traffic-capture. Read its setup section for loopback capture support.
+
+1. Say which interface and port should carry the test traffic, and why.
+2. Start a narrow capture, make the documented harmless local requests, stop
+   the capture, and check whether the expected exchanges were actually saved.
+3. Explain one successful response, one application error and one failed
+   connection. An HTTP error still means an HTTP response arrived.
+4. Repeat with a checklist. Then change the documented request and predict
+   what the packet evidence should show before you inspect it.
+5. Save a small reviewed capture and a table linking your action to frames.
+
+Recall prompts: capture filter versus display filter; loopback versus the
+network adapter; missing evidence versus proof of no activity. Teach back why
+capturing an unrelated interface can leave you with an empty result.
+
+BURP: TEST THE SERVER'S DECISION
+
+Folder: burp-access-control. Use only the original local training application.
+
+1. Read the scope and name the two fictional identities and their own records.
+2. Intercept a legitimate request and explain method, path and identity.
+3. Change the object reference in Repeater. Predict the correct server decision.
+4. Compare the insecure and repaired modes using both a forbidden request and
+   a request the owner still needs. Record complete response evidence.
+5. Repeat with changed records, then explain the result without the worked
+   answer. The learner is operating the tool, not writing the application.
+
+Recall prompts: authentication versus authorisation; hidden buttons versus
+server checks; why a secure retest needs a successful legitimate request too.
+Teach back the finding, its local scope and why this toy identity scheme is
+not production authentication.
+
+SNORT: TEST BOTH SIDES OF A RULE
+
+Folder: snort-rule-testing. Use the local labelled packet files.
+
+1. Explain the protocol, direction, content and identifier in the simple rule.
+2. Predict which positive, negative and near-miss fixtures should alert.
+3. Run the documented Snort check and offline inspection. Keep actual command
+   output separate from the supplied expected answer.
+4. Change one documented rule condition, retest every case and explain the
+   change in coverage. A missing alert needs investigation, not an automatic
+   clean verdict.
+5. Record the tool version, inputs, rule, observed alerts and limitations.
+
+Recall prompts: rule match versus compromise; false positive versus missed
+traffic; visible payload versus encryption. Teach back one condition where
+this rule would fail to see the behaviour you care about.
+
+WINDOWS EVENTS: FOLLOW IDENTITIES THROUGH TIME
+
+Folder: windows-event-investigation. Begin with the supplied synthetic XML.
+Collect real events only in the disposable Windows lab described in its README.
+
+1. Read one process-creation event and explain timestamp, image, ProcessGuid
+   and ParentProcessGuid. Do not confuse a reused process ID with one process.
+2. Build the guided chain and distinguish an unrelated near-miss.
+3. Work through the missing-parent example. Describe the gap instead of
+   inventing the parent activity.
+4. In the prepared VM, generate the documented harmless activity, export its
+   events and compare your observations with the collection settings.
+5. Keep raw exports private. Review the selected evidence for usernames,
+   machine names and command lines before preparing a public excerpt.
+
+Recall prompts: an event versus an interpretation; UTC and local time;
+collection coverage versus an absence of events. Teach back why Sysmon records
+activity but does not independently decide whether it is malicious.
+
+WHAT COUNTS AS A COMPLETED HANDS-ON ATTEMPT
+
+Record the question, prediction, exact environment, tool version, observed
+evidence, interpretation, uncertainty and help used. Repeat with an unfamiliar
+variant and explain the result. Revisit on another day and about a week later.
+Keep using notes and command help when useful. A test suite checks the utility;
+it does not mark you as competent, and supplied example output is not your
+personal activity record.
 
 HANDOVER TEMPLATE
 

@@ -2,9 +2,10 @@
 
 A personal career portfolio, documented owner-controlled LG webOS home lab and original guided security exercises.
 
-- **Portfolio:** https://deadgoodreviews.com/portfolio/
-- **Full case study:** https://deadgoodreviews.com/portfolio/lg-webos-lab/
-- **Security foundations labs:** https://deadgoodreviews.com/portfolio/security-labs/
+- **Portfolio:** https://jeremy-bryant.pages.dev/
+- **Full case study:** https://jeremy-bryant.pages.dev/lg-webos-lab/
+- **Security foundations labs:** https://jeremy-bryant.pages.dev/security-labs/
+- **Source and downloads:** https://jeremy-bryant.pages.dev/source/
 - **LinkedIn:** https://www.linkedin.com/in/jeremy-bryant-61347a445/
 
 ## The project
@@ -23,13 +24,18 @@ Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://git
 
 ## Guided security exercises
 
-The [labs](labs/README.md) contain 26 original offline exercises. The first six
+The [labs](labs/README.md) contain 30 original guided exercises. The first six
 cover DNS, login events, access review, HTTP logs, file integrity and firewall
 rules. Twenty additional labs develop network investigation and testing,
 defensive operations and recovery, and cloud, identity and configuration review.
 Each includes synthetic fixtures, a worked example, verification and progressive
-practice. The [expanded catalog](https://deadgoodreviews.com/portfolio/security-labs/foundations/)
+practice. The [expanded catalog](https://jeremy-bryant.pages.dev/security-labs/foundations/)
 lists each purpose, prerequisite and deliverable.
+Four [hands-on tool labs](https://jeremy-bryant.pages.dev/security-labs/hands-on/)
+add controlled traffic capture, manual web access-control testing, offline Snort
+rule tests and Windows event investigation. Their setup and evidence boundaries
+are documented separately from the 26 offline exercises. Local utility tests do
+not establish that a learner has completed the external-tool workflows.
 The materials have automated reference checks; Jeremy's independent completion
 of unfamiliar variants remains to be assessed. These exercises do not claim
 production experience or independent authorship of every utility.
@@ -37,14 +43,14 @@ production experience or independent authorship of every utility.
 The [practice guide](labs/PRACTICE-GUIDE.md) develops each topic through short
 walkthroughs, independent attempts, changed scenarios and later recall checks.
 
-## Repository map
+## Source map
 
 | Path | Contents |
 | --- | --- |
 | `src/` | Portfolio, case study, local assets and downloadable brief |
 | `scripts/` | Dependency-free static build, public-output checks and loopback preview |
 | `tools/` | Qt INI pairing-format converter; no real pairing data |
-| `labs/` | Original guided exercises, synthetic fixtures, checks and practice instructions |
+| `labs/` | Original offline and hands-on exercises, fictional fixtures, checks and practice instructions |
 | `tests/` | Static-site checks and synthetic converter tests |
 | `docs/verification.md` | Sanitised evidence and limitations |
 | `docs/recovery.md` | Recovery design and operational boundaries |
@@ -61,7 +67,7 @@ npm test
 npm run preview
 ```
 
-Open `http://127.0.0.1:8796/portfolio/`. The preview binds to loopback only. No device is contacted by website build or tests.
+Extract the download or clone the repository, then run these commands from its project folder. The folder name does not matter. Open `http://127.0.0.1:8797/`. The preview binds to loopback only. No device is contacted by website build or tests.
 
 The converter requires Python 3.9+ and the standard library. Tests use synthetic byte arrays:
 
@@ -73,6 +79,6 @@ See [`tools/README.md`](tools/README.md) before processing an actual export. Pai
 
 ## Publication
 
-The portfolio is a separate Cloudflare static-assets deployment under `/portfolio/`. It does not rebuild the main Dead Good Reviews site or add a main-site navigation item. It is public to anyone with its URL; `noindex` asks search engines not to index it and is not access control.
+The portfolio is a standalone Cloudflare Pages site at `https://jeremy-bryant.pages.dev/`. It is public to anyone with its URL; `noindex` asks search engines not to index it and is not access control.
 
-The repository contains no private keys, pairing exports, raw device logs or user-specific networking data. There is no contact form, analytics, advertising, account system, database or external browser dependency in the portfolio.
+The source download contains no Git history, private keys, pairing exports, raw device logs or user-specific networking data. There is no contact form, analytics, advertising, account system, database or external browser dependency in the portfolio.

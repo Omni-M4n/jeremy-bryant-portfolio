@@ -82,6 +82,16 @@ def validate_events(rows):
     return sorted(clean, key=lambda row: (row["timestamp"], row["event_id"]))
 
 
+def unique_fields(pairs):
+    """Reject ambiguous evidence instead of silently keeping the last value."""
+    record = {}
+    for key, value in pairs:
+        if key in record:
+            raise ValueError(f"Duplicate JSON field: {key}")
+        record[key] = value
+    return record
+
+
 def load_events(path):
     path = Path(path)
     if path.suffix.lower() == ".csv":
@@ -96,7 +106,7 @@ def load_events(path):
             for number, line in enumerate(handle, 1):
                 if not line.strip():
                     raise ValueError(f"JSONL line {number}: blank lines are not events")
-                rows.append(json.loads(line))
+                rows.append(json.loads(line, object_pairs_hook=unique_fields))
     else:
         raise ValueError("input must be a .csv or .jsonl file")
     return validate_events(rows)

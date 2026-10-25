@@ -16,7 +16,7 @@ Check decisions, read the worked example and write one correction with its evide
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Use challenge without the example. Read the changed frame requirement before judging self. Explain why login has one missing-cookie gap rather than three attribute gaps. Keep the reference files closed until your worksheet and handover are saved. Use the README vocabulary as a glossary if necessary and record that help. Ask another person to examine the reasoning rather than merely the exit code.
+Prepare challenge in a fresh folder. Review each response and cookie against the fictional application requirements. Prioritise specific changes and explain which legitimate behaviour must remain. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
 
 ## 4. Changed conditions
 

@@ -16,7 +16,7 @@ Check decisions, read the worked example and write one correction with its evide
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Use challenge without hints. Calculate the wrap from 4294967295 before reading the next packet. Decide whether the final ACK in mismatch acknowledges the SYN correctly. Keep the reference files closed until your worksheet and handover are saved. Use the README vocabulary as a glossary if necessary and record that help. Ask another person to examine the reasoning rather than merely the exit code.
+Prepare challenge in a fresh folder. Classify each connection from its packet evidence. Identify which records support the classification and where the capture limits your conclusion. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
 
 ## 4. Changed conditions
 

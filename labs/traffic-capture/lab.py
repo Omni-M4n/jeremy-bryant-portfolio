@@ -1,0 +1,191 @@
+"""Loopback traffic lab. Contract: README.md; all output is fresh run/NAME."""
+from __future__ import annotations
+
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import http.client
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import json
+import os
+from pathlib import Path
+import re
+import socket
+import stat
+import sys
+import threading
+from urllib.parse import urlsplit
+
+ROOT = Path(__file__).absolute().parent
+HOST = "127.0.0.1"
+MARKER = "ORCHARD-CANARY-42"
+SCENARIOS = {
+    "guided": [("L1", "/hello", ""), ("L2", "/missing", ""), ("L3", "/marker", MARKER)],
+    "changed": [("L1", "/hello?note=missing", ""), ("L2", "/missing?note=hello", ""),
+                ("L3", "/marker", MARKER.lower())],
+    "independent": [("L1", "/absent", ""), ("L2", "/ready", ""), ("L3", "/marker", MARKER)],
+}
+
+
+def safe_path(path):
+    path = Path(os.path.abspath(path))
+    for component in (path, *path.parents):
+        if component.exists() or component.is_symlink():
+            info = component.lstat()
+            if stat.S_ISLNK(info.st_mode) or getattr(info, "st_file_attributes", 0) & 0x400:
+                raise ValueError("linked or reparse paths are refused")
+    return path
+
+
+def fresh_run(output):
+    relative = Path(output)
+    if len(relative.parts) != 2 or relative.parts[0] != "run" or not re.fullmatch(
+            r"[a-z0-9][a-z0-9_-]{0,63}", relative.parts[1]):
+        raise ValueError("use a fresh direct child such as run/attempt-01")
+    if relative.parts[1] in {"con", "prn", "aux", "nul", *[f"{p}{i}" for p in ("com", "lpt") for i in range(1, 10)]}:
+        raise ValueError("reserved output name")
+    target = safe_path(ROOT / relative)
+    if target.exists():
+        raise ValueError("output already exists; choose a new run name")
+    safe_path(ROOT / "run").mkdir(exist_ok=True)
+    target.mkdir()
+    return target
+
+
+def write_new(path, value):
+    data = value if isinstance(value, str) else json.dumps(value, indent=2) + "\n"
+    with safe_path(path).open("x", encoding="utf-8", newline="\n") as stream:
+        stream.write(data)
+
+
+def response_for(path):
+    return (200, "A harmless local practice response.\n") if urlsplit(path).path in {
+        "/hello", "/ready", "/marker"} else (404, "This practice path does not exist.\n")
+
+
+class ToyHandler(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+    server_version = "OrchardPractice/1.0"
+    sys_version = ""
+
+    def do_GET(self):
+        status, body = response_for(self.path)
+        data = body.encode("ascii")
+        self.server.events.append({"id": self.headers.get("X-Lab-Id", "unlabelled")[:32],
+                                   "path": self.path[:256], "status": status})
+        self.send_response(status)
+        self.send_header("Content-Type", "text/plain; charset=ascii")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Connection", "close")
+        self.end_headers()
+        self.wfile.write(data)
+        self.close_connection = True
+
+    def log_message(self, *args):
+        pass
+
+
+def worksheet(scenario):
+    return ("Loopback traffic evidence worksheet\n"
+            f"Scenario: {scenario}\nInterface and Wireshark version:\nCapture started before client?\n"
+            "Capture filename and capture filter:\nDisplay filters used:\n"
+            "For L1, L2 and L3: prediction; request frame; TCP stream; response frame; HTTP code; explanation.\n"
+            "For L4: client error; SYN frame(s); reset or timeout evidence; was any HTTP response present?\n"
+            "Why is an HTTP 404 different from a failed connection?\n"
+            "One conclusion the packets do not support:\nHelp used:\nTeach-back:\nLater recall:\n")
+
+
+def run_experiment(output, scenario, wait_for_capture=True):
+    if scenario not in SCENARIOS:
+        raise ValueError("unknown scenario")
+    target = fresh_run(output)
+    # Both sockets belong to this process; no user-supplied destination exists.
+    server = HTTPServer((HOST, 0), ToyHandler)
+    server.events = []
+    server.timeout = 2
+    closed_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    thread = None
+    try:
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            closed_socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        closed_socket.bind((HOST, 0))  # deliberately never listen; preserve port ownership
+        http_port = server.server_address[1]
+        refused_port = closed_socket.getsockname()[1]
+        capture_filter = f"host {HOST} and tcp and (port {http_port} or port {refused_port})"
+        setup = {"scenario": scenario, "host": HOST, "http_port": http_port,
+                 "non_listening_port": refused_port, "capture_filter": capture_filter,
+                 "display_filter": f"ip.addr == {HOST} && (tcp.port == {http_port} || tcp.port == {refused_port})",
+                 "provenance": "Real local requests generated by a fictional exercise; no capture is made by this script.",
+                 "generator_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                 "capture_performed_by_script": False}
+        write_new(target / "setup.json", setup)
+        write_new(target / "worksheet.txt", worksheet(scenario))
+        print(f"HTTP port: {http_port}; non-listening port: {refused_port}", flush=True)
+        print(f"Capture filter: {capture_filter}", flush=True)
+        print(f"Save your own capture as {target / 'capture.pcapng'}", flush=True)
+        if wait_for_capture:
+            input("Start Wireshark capture on loopback, then press Enter here: ")
+        thread = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.05}, daemon=True)
+        thread.start()
+        results = []
+        for label, path, marker in SCENARIOS[scenario]:
+            connection = http.client.HTTPConnection(HOST, http_port, timeout=3)
+            try:
+                headers = {"X-Lab-Id": label, "Connection": "close"}
+                if marker:
+                    headers["X-Lab-Marker"] = marker
+                connection.request("GET", path, headers=headers)
+                response = connection.getresponse()
+                body = response.read().decode("ascii")
+                results.append({"id": label, "path": path, "status": response.status,
+                                "body": body, "marker": marker})
+            finally:
+                connection.close()
+        try:
+            with socket.create_connection((HOST, refused_port), timeout=3):
+                raise RuntimeError("unexpected listener on the reserved non-listening port")
+        except ConnectionRefusedError as error:
+            results.append({"id": "L4", "outcome": "connection_refused", "errno": error.errno,
+                            "http_response": None})
+        except TimeoutError:
+            results.append({"id": "L4", "outcome": "connection_timeout", "http_response": None})
+        write_new(target / "client-results.json", {"generated_at_utc": datetime.now(timezone.utc).isoformat(),
+                                                   "observations": results})
+        write_new(target / "server-log.json", {"requests": server.events})
+        summary = {"run": str(target), "requests": len(results) - 1, "connection_test": results[-1]["outcome"],
+                   "capture_performed_by_script": False, "next": "Stop capture; save it; complete worksheet with actual frames."}
+        print(json.dumps(summary, indent=2))
+        return results, setup
+    finally:
+        if thread is not None:
+            server.shutdown()
+            thread.join(timeout=4)
+        server.server_close()
+        closed_socket.close()
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("cases", help="list built-in request scenarios")
+    run = sub.add_parser("run", help="make local traffic after a capture-ready pause")
+    run.add_argument("--out", required=True, help="fresh run/NAME, relative to this lab")
+    run.add_argument("--scenario", choices=SCENARIOS, default="guided")
+    run.add_argument("--no-wait", action="store_true", help="skip capture-ready pause; generates traffic, not a capture")
+    args = parser.parse_args(argv)
+    try:
+        if args.command == "cases":
+            print(json.dumps({key: [item[1] for item in rows] for key, rows in SCENARIOS.items()}, indent=2))
+        else:
+            run_experiment(args.out, args.scenario, not args.no_wait)
+        return 0
+    except (OSError, ValueError, EOFError, http.client.HTTPException, RuntimeError) as error:
+        print(f"error: {error}", file=sys.stderr)
+        return 2
+    except KeyboardInterrupt:
+        print("Stopped; sockets closed. Keep any partial run as incomplete evidence.", file=sys.stderr)
+        return 130
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

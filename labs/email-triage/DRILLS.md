@@ -16,7 +16,7 @@ Check decisions, read the worked example and write one correction with its evide
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Use challenge without hints. Explain how forwarded can have SPF fail and DMARC pass in this supplied strict model. Explain why a temporary result is not treated as a permanent failure or a pass. Keep the reference files closed until your worksheet and handover are saved. Use the README vocabulary as a glossary if necessary and record that help. Ask another person to examine the reasoning rather than merely the exit code.
+Prepare challenge in a fresh folder. Evaluate each message using the trusted receiving evidence and stated context. Separate observed identity checks from conclusions about intent. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
 
 ## 4. Changed conditions
 

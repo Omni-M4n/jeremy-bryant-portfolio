@@ -168,6 +168,15 @@ class FixtureTests(unittest.TestCase):
             with self.subTest(path=path), self.assertRaises(ValueError):
                 lab.load_events(path)
 
+    def test_duplicate_json_fields_are_rejected(self):
+        row = lab.load_events(lab.ROOT / "fixture" / "auth.jsonl")[0]
+        path = self.directory / "duplicate.jsonl"
+        for value in (row["outcome"], "success" if row["outcome"] == "failure" else "failure"):
+            text = '{"outcome":' + json.dumps(value) + ',' + json.dumps(row)[1:]
+            path.write_text(text + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Duplicate JSON field"):
+                lab.load_events(path)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -87,6 +87,24 @@ class AccessReviewTests(unittest.TestCase):
         self.assertEqual(review["required_retained"], 0)
         self.assertTrue(review["passed"])
 
+    def test_unassigned_roles_are_checked_against_business_rules(self):
+        scenario = deepcopy(self.scenario)
+        scenario["roles"].append({"id": "dormant-role", "purpose": "Future duty under review"})
+        resource = scenario["resources"][0]["id"]
+        policy = deepcopy(self.solution)
+        policy["grants"].append({"role": "dormant-role", "resource": resource, "actions": ["read", "write", "delete"]})
+        excess = lab.check_policy(scenario, policy, self.expected)
+        self.assertFalse(excess["passed"])
+        self.assertEqual(excess["role_excess_allowed"], 3)
+        self.assertEqual(excess["excess_allowed"], 0)
+        self.assertFalse(lab.review_policies(scenario, self.solution, policy, self.expected)["passed"])
+        scenario["business_rules"].append({"role": "dormant-role", "resource": resource, "actions": ["read"], "reason": "Future assigned reader requires read"})
+        missing = lab.check_policy(scenario, self.solution, self.expected)
+        self.assertFalse(missing["passed"])
+        self.assertEqual(missing["role_missing_required"], 1)
+        policy["grants"][-1]["actions"] = ["read"]
+        self.assertTrue(lab.check_policy(scenario, policy, self.expected)["passed"])
+
     def test_unfamiliar_case_has_independent_read_write_delete_actions(self):
         scenario, expected, starting, solution = lab.make_case("unfamiliar", 71)
         report, intake, archive, quarantine = [entry["id"] for entry in scenario["resources"]]

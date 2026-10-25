@@ -1,10 +1,10 @@
 JEREMY BRYANT | CYBERSECURITY PORTFOLIO
 LG webOS home lab: device administration, customisation and recovery
 
-Portfolio: https://deadgoodreviews.com/portfolio/
-Case study: https://deadgoodreviews.com/portfolio/lg-webos-lab/
+Portfolio: https://jeremy-bryant.pages.dev/
+Case study: https://jeremy-bryant.pages.dev/lg-webos-lab/
 LinkedIn: __LINKEDIN_URL__
-Repository: __GITHUB_URL__
+Source and downloads: https://jeremy-bryant.pages.dev/source/
 
 PROJECT
 Owner-authorised home lab using an LG 50UT8050PSB running webOS 10.3.2.

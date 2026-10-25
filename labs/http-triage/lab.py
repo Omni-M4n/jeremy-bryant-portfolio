@@ -77,7 +77,8 @@ def validate_events(rows):
             raise ValueError(f"event {number}: this lab supports only GET, HEAD and POST")
         if not re.fullmatch(r"/(?:[A-Za-z0-9._~/-]*)(?:\?[A-Za-z0-9._~=&-]+)?", row["target"]):
             raise ValueError(f"event {number}: target must be a simple local path with an optional query")
-        if row["target"].startswith("//") or "/../" in row["target"] or row["target"].endswith("/.."):
+        target_path = row["target"].split("?", 1)[0]
+        if target_path.startswith("//") or ".." in target_path.split("/"):
             raise ValueError(f"event {number}: network-path and traversal forms are outside this lab")
         if not re.fullmatch(r"[1-5]\d\d", row["status"]):
             raise ValueError(f"event {number}: status must be a three-digit value from 100 to 599")

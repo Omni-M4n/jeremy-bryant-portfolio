@@ -7,9 +7,10 @@ prediction before running `analyse`. Fresh folders preserve earlier attempts.
    bucket. Predict decisions before opening the worked example.
 2. **With prompts (5 minutes):** Which route grants the rota? Which field blocks
    the archive? Which three fields make the poster's exposure acceptable here?
-3. **Independent (10 minutes):** use `challenge` without the worked example.
-   Explain why `mislabelled-site` is unapproved despite its approval flag, and
-   why the denied bucket differs from the forgotten ACL.
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
+   Trace each possible public-access path and apply the stated approval requirements. Record a decision and supporting fields for every resource.
+   Save decisions, evidence references and a short handover before opening
+   `analyse`, reference answers or the worked example. Record any help used.
 4. **Changed evidence (5 minutes):** use `changed`. What happens to the approved
    public site when account blocking is enabled? In a copied case, set only the
    account flag false and predict which two decisions change. Do not merely

@@ -8,9 +8,10 @@ prediction before running `analyse`. Fresh folders preserve earlier attempts.
 2. **With prompts (5 minutes):** Is the package name an exact match? Is the
    introduced boundary included? Is this runtime or build exposure? What does
    the reachability evidence actually demonstrate?
-3. **Independent (10 minutes):** use `challenge`. Explain why 1.10.1 is affected
-   by a separate later advisory although it exceeds DEMO-ADV-001's fixed version.
-   Compare runtime unknown reachability with a reachable development dependency.
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
+   Compare every component with the relevant advisory ranges and execution context. Explain affectedness separately from reachability and exploitation.
+   Save decisions, evidence references and a short handover before opening
+   `analyse`, reference answers or the worked example. Record any help used.
 4. **Changed evidence (5 minutes):** use `changed`. Explain 1.9.0 and 1.10.0 at
    opposite boundaries. In a copy change report-parser reachability to `unknown`
    with evidence `no path review performed`; predict the changed decision.

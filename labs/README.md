@@ -1,6 +1,7 @@
 # Security foundations: original guided labs
 
-Twenty-six offline exercises prepared for Jeremy Bryant's learning portfolio.
+Thirty guided exercises prepared for Jeremy Bryant's learning portfolio:
+26 offline foundations and four hands-on tool workflows.
 The datasets and scenarios are fictional. They are separate practice materials,
 not published university submissions or examples from a live incident.
 
@@ -59,6 +60,22 @@ the catalog describes practice scope, not completed professional experience.
 | [Secret handling and exposure review](secret-handling/README.md) | Find fictional sensitive values in the wrong places and plan an appropriate response. |
 | [Dependency inventory and advisory review](dependency-review/README.md) | Match a small inventory to fictional version-range advisories without assuming exploitability. |
 
+## Four hands-on tool labs
+
+| Lab | Practical question | Separate tool |
+| --- | --- | --- |
+| [Traffic capture](traffic-capture/README.md) | Can I collect and explain the traffic from my own controlled requests? | Wireshark |
+| [Web access control](burp-access-control/README.md) | Does the server check who may read each fictional record, before and after a fix? | Burp Suite Community |
+| [Offline detection rule](snort-rule-testing/README.md) | Does one simple rule detect the chosen marker and reject near-misses? | Snort 3 |
+| [Windows event investigation](windows-event-investigation/README.md) | Can I trace a harmless process chain from collected events without confusing reused process IDs? | Sysmon in a disposable Windows VM |
+
+These four use their own documented command interfaces. They include software
+checks and fictional training inputs, but full practice requires operating the
+named tools. A synthetic PCAP or XML sample is not a personal capture. An
+application integration test is not evidence of a manual Burp session. Read each
+README before setup; no installation or host monitoring is performed by the
+website build. Independent hands-on completion remains unassessed.
+
 ## Status and contribution
 
 These are guided learning materials. Their automated reference checks validate
@@ -73,7 +90,9 @@ Each folder has its own README and a single `lab.py` entry point. Start with tha
 README, run `python lab.py --help`, and work inside that lab's folder. Python 3.10+
 is required; only the standard library is used. The DNS packet file can also be
 opened in Wireshark. The exercises can run on Windows or in an existing Linux VM.
-They do not require a cloud account, a live target or a public service.
+The offline exercises do not require a cloud account, live target or public
+service. The hands-on exercises use owned loopback applications, offline packets
+or a disposable lab VM, with separate tool prerequisites documented in each lab.
 
 The twenty additional labs use consistent `cases`, `prepare`, `show`, `analyse`,
 `check` and `verify` commands. See the [maintained contract](FOUNDATION-CONTRACT.md)

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hands-on Security Labs — Jeremy Bryant</title>
+  <meta name="description" content="Four guided beginner labs for Wireshark traffic capture, Burp access-control testing, offline Snort rules and Windows Sysmon investigation.">
+  <meta name="robots" content="noindex, nofollow, noarchive"><meta name="theme-color" content="#14231f">
+  <link rel="canonical" href="https://jeremy-bryant.pages.dev/security-labs/hands-on/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header container">
+  <a class="brand" href="/" aria-label="Jeremy Bryant — portfolio home"><span class="brand-mark" aria-hidden="true">JB<span>·</span></span><span class="brand-name">Jeremy Bryant<span>Cybersecurity portfolio</span></span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">+</span></button>
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation"><a class="nav-link" href="/security-labs/">Lab collection</a><a class="nav-link" href="#traffic-capture">Capture</a><a class="nav-link" href="#burp-access-control">Web testing</a><a class="nav-link" href="#snort-rule-testing">Detection</a><a class="nav-link" href="#windows-event-investigation">Windows</a></nav>
+</header>
+<main id="main">
+  <section class="case-hero container">
+    <a class="text-link" href="/security-labs/">← Back to the lab collection</a>
+    <p class="eyebrow">Four practical exercises / Introductory security</p>
+    <h1 class="case-title">Operate the tool.<br><em>Explain what it shows.</em></h1>
+    <p class="case-deck">Move from supplied evidence to controlled experiments. Capture a request, test a boundary, run a detection rule and reconstruct a process chain.</p>
+    <div class="case-meta"><div><span>Collection</span><strong>Labs 27–30</strong></div><div><span>Environment</span><strong>Loopback, offline files &amp; a lab VM</strong></div><div><span>Starting level</span><strong>Foundations plus tool setup</strong></div><div><span>Learning status</span><strong>Independent practice pending</strong></div></div>
+  </section>
+  <div class="case-layout container">
+    <aside class="case-toc" aria-label="Hands-on lab contents"><p class="eyebrow">A practical sequence</p><nav><a href="#start">Before the first command</a><a href="#traffic-capture">27 / Capture traffic</a><a href="#burp-access-control">28 / Test access controls</a><a href="#snort-rule-testing">29 / Test a detection rule</a><a href="#windows-event-investigation">30 / Investigate events</a><a href="#practice">Repeat and explain</a></nav><a class="download-link" href="/security-labs/practice-guide.txt" download>Download practice guide ↗</a><a class="download-link" href="__SOURCE_URL__">Source and lab download ↗</a></aside>
+    <article class="case-body">
+      <section class="case-section" id="start">
+        <p class="eyebrow">Start with one tool</p><h2 class="case-section-title">Predict. Observe. Explain.</h2>
+        <p class="lead">Read the lab instructions, name the question and predict the result before running anything. Work in short stages and keep your own notes separate from the supplied example.</p>
+        <p>The small local applications use fictional records and bind only to this computer's loopback address. Packet fixtures and sample Windows events are explicitly synthetic. The Windows collection exercise belongs in a disposable lab VM.</p>
+        <p>The Python utilities use the standard library. Wireshark, Burp Community, Snort 3 and Sysmon are separate tools with their own setup instructions. No real cloud account or external target is needed.</p>
+        <div class="note"><span class="note-label">What is demonstrated</span><p>These pages publish the exercise materials and their checks. They do not claim that Jeremy has independently completed the tool workflows. A passing utility test is not a personal packet capture, a manual Burp session, a Snort alert or a Sysmon collection. Personal evidence can be added after the activity and explanation have been checked.</p></div>
+      </section>
+      __HANDS_ON_CATALOG__
+      <section class="case-section" id="practice">
+        <p class="eyebrow">Build recall through use</p><h2 class="case-section-title">Keep the reasoning when the example changes.</h2>
+        <ol><li>Follow the worked example and explain each observation.</li><li>Repeat with a short checklist and the answer closed.</li><li>Change one meaningful condition and predict the difference.</li><li>Complete an unfamiliar variant independently, using command help when needed.</li><li>Give a short handover: evidence, conclusion, uncertainty and next check.</li><li>Return on another day and again about a week later.</li></ol>
+        <p>Record help used and what remains uncertain. Accurate reasoning and a repeatable result matter more than memorising flags or working quickly.</p>
+        <p><a class="text-link" href="/security-labs/practice-guide.txt">Read the expanded practice guide ↗</a></p>
+      </section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer container"><p>Jeremy Bryant <span>·</span> Cybersecurity portfolio</p><div class="footer-links"><a href="/security-labs/">Lab collection</a><a href="#main">Back to top ↑</a></div><p class="small">Original guided exercises · Controlled lab activity · Independent practice pending</p></footer>
+</body></html>

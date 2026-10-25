@@ -1,0 +1,2 @@
+# Harmless marker demonstration. This rule is not evidence of an attack.
+alert tcp 192.0.2.10 any -> 198.51.100.20 18080 (msg:"LAB Orchard harmless marker"; raw_data; content:"ORCHARD-CANARY-42"; sid:1000001; rev:1;)

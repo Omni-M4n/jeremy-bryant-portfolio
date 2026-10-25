@@ -1,0 +1,11 @@
+{
+  "basis": "Manually specified predictions from the rule conditions, not results from executing Snort.",
+  "case-sensitive": {"positive": 1, "near-miss": 0, "negative": 0, "wrong-port": 0},
+  "case-insensitive": {"positive": 1, "near-miss": 1, "negative": 0, "wrong-port": 0},
+  "evidence": {
+    "positive": "Frame 4 contains the exact uppercase marker and its destination is 198.51.100.20:18080.",
+    "near-miss": "Frame 4 changes marker letter case only; the original content match is case-sensitive.",
+    "negative": "Frame 4 carries a different harmless value.",
+    "wrong-port": "Frame 4 has the exact marker but destination port 18081 fails the rule header."
+  }
+}

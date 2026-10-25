@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "source": "Original offline Orchard marker exercise, authored October 2026. No traffic was captured and no packets are sent.",
+  "cases": [
+    {"id": "positive", "source_ip": "192.0.2.10", "destination_ip": "198.51.100.20", "destination_port": 18080, "marker": "ORCHARD-CANARY-42"},
+    {"id": "near-miss", "source_ip": "192.0.2.10", "destination_ip": "198.51.100.20", "destination_port": 18080, "marker": "orchard-canary-42"},
+    {"id": "negative", "source_ip": "192.0.2.10", "destination_ip": "198.51.100.20", "destination_port": 18080, "marker": "ORDINARY-BOOKING-42"},
+    {"id": "wrong-port", "source_ip": "192.0.2.10", "destination_ip": "198.51.100.20", "destination_port": 18081, "marker": "ORCHARD-CANARY-42"}
+  ]
+}

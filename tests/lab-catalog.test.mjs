@@ -1,9 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {renderLabCatalog,renderPracticeGuide} from '../scripts/lab-catalog.mjs';
+import {renderLabCatalog,renderPracticeGuide,renderHandsOnCatalog} from '../scripts/lab-catalog.mjs';
 const source = JSON.parse(await readFile(new URL('../labs/foundation-catalog.json',import.meta.url),'utf8'));
-const repo = 'https://github.com/Omni-M4n/jeremy-bryant-portfolio';
+const repo = '/lab-files/';
+const handsOn = JSON.parse(await readFile(new URL('../labs/hands-on-catalog.json',import.meta.url),'utf8'));
+test('hands-on catalog rejects unreviewed IDs, destinations and mastery claims',()=>{
+  for (const mutate of [c=>c.labs[0].id='../private',c=>c.labs[1].id=c.labs[0].id,c=>c.labs[0].status='Mastered',c=>c.labs.pop()]) {
+    const c=structuredClone(handsOn);mutate(c);assert.throws(()=>renderHandsOnCatalog(c,repo));
+  }
+  assert.throws(()=>renderHandsOnCatalog(handsOn,'https://example.test/'));
+});
+test('hands-on catalog escapes supplied prose and preserves pending practice',()=>{
+  const c=structuredClone(handsOn);c.labs[0].title='<img src=x onerror=alert(1)>';
+  const result=renderHandsOnCatalog(c,repo);
+  assert.equal(result.totalCount,30);assert.equal(result.newCount,4);
+  assert.ok(result.html.includes('&lt;img'));assert.ok(!result.html.includes('<img'));
+  assert.equal((result.html.match(/Independent practice not yet assessed/g)||[]).length,4);
+});
 test('catalog escapes supplied prose rather than rendering markup',()=>{
   const value=structuredClone(source);value.labs[0].title='<script>test</script> "title"';
   const {html}=renderLabCatalog(value,repo);assert.ok(!html.includes('<script>'));assert.ok(html.includes('&lt;script&gt;'));

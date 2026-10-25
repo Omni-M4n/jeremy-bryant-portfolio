@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYNTHETIC teaching records; an earlier process and a later one reuse PID 2000. -->
+<Events>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T10:00:00.0200000Z"/><EventRecordID>201</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>
+    <EventData><Data Name="UtcTime">2026-10-20 10:00:00.000</Data><Data Name="ProcessGuid">{22222222-2222-2222-2222-222222222201}</Data><Data Name="ProcessId">2000</Data><Data Name="Image">C:\Windows\System32\cmd.exe</Data><Data Name="CommandLine">cmd.exe /d /c echo EARLIER-UNRELATED</Data><Data Name="ParentProcessGuid">{22222222-2222-2222-2222-222222222200}</Data><Data Name="ParentProcessId">900</Data><Data Name="ParentImage">C:\Windows\explorer.exe</Data><Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data></EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T10:05:00.0100000Z"/><EventRecordID>202</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>
+    <EventData><Data Name="UtcTime">2026-10-20 10:05:00.000</Data><Data Name="ProcessGuid">{22222222-2222-2222-2222-222222222202}</Data><Data Name="ProcessId">2000</Data><Data Name="Image">C:\Windows\System32\cmd.exe</Data><Data Name="CommandLine">cmd.exe /d /c powershell.exe -NoProfile -Command "Write-Output 'WINDOWS-LAB-CHILD'"</Data><Data Name="ParentProcessGuid">{22222222-2222-2222-2222-222222222290}</Data><Data Name="ParentProcessId">1500</Data><Data Name="ParentImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data><Data Name="ParentCommandLine">powershell.exe -NoProfile</Data></EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T10:05:00.5200000Z"/><EventRecordID>203</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>
+    <EventData><Data Name="UtcTime">2026-10-20 10:05:00.500</Data><Data Name="ProcessGuid">{22222222-2222-2222-2222-222222222203}</Data><Data Name="ProcessId">3000</Data><Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data><Data Name="CommandLine">powershell.exe -NoProfile -Command "Write-Output 'WINDOWS-LAB-CHILD'"</Data><Data Name="ParentProcessGuid">{22222222-2222-2222-2222-222222222202}</Data><Data Name="ParentProcessId">2000</Data><Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data><Data Name="ParentCommandLine">cmd.exe /d /c powershell.exe -NoProfile -Command "Write-Output 'WINDOWS-LAB-CHILD'"</Data></EventData>
+  </Event>
+</Events>

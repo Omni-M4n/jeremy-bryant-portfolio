@@ -7,9 +7,10 @@ prediction before running `analyse`. Fresh folders preserve earlier attempts.
    guided records. Save your deltas before opening the worked example.
 2. **With prompts (5 minutes):** Is the event effective yet? Does each exception
    name old access? Does it expire today or before today? Which access must stay?
-3. **Independent (10 minutes):** use `challenge`. Preserve `future-mover`'s
-   present duties, remove `late-leaver` access, and finish `partial-mover`'s new
-   duties without deleting the new queue already granted.
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
+   Determine the current access requirement for each person at the stated review time. Record additions, removals and retained access with reasons.
+   Save decisions, evidence references and a short handover before opening
+   `analyse`, reference answers or the worked example. Record any help used.
 4. **Changed evidence (5 minutes):** use `changed`. Explain why the same
    `old-reports` exception no longer applies. Why is early joiner access removed
    while future leaver access remains? In a practice copy move `as_of` to

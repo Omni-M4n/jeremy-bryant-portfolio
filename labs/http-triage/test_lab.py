@@ -128,7 +128,8 @@ class InputTests(unittest.TestCase):
             ("synthetic", "false"), ("source_ip", "10.0.0.1"), ("host", "practice.invalid"),
             ("method", "DELETE"), ("target", "https://practice.test/admin"),
             ("target", "//practice.test/admin"), ("target", "/%2e%2e/admin"),
-            ("target", "/../admin"), ("status", "099"), ("status", "600"),
+            ("target", "/../admin"), ("target", "/..?x=1"), ("target", "/admin/..?x=1"),
+            ("status", "099"), ("status", "600"),
             ("body_bytes", "-1"), ("body_bytes", "01"), ("user_agent", "LiveBrowser"),
             ("timestamp", "2032-06-31T09:00:00Z"), ("event_id", "HTTP-1"),
         ):

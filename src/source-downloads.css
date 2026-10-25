@@ -1,0 +1,42 @@
+/* Source pages share the portfolio palette and preserve literal lab instructions. */
+.source-masthead { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+.source-navigation { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; font-size: .85rem; }
+.source-navigation a[aria-current="page"] { font-weight: 650; }
+.source-main { padding-block: clamp(2.5rem, 6vw, 5rem); }
+.source-intro { max-width: 900px; }
+.source-intro h1 { margin-block: .8rem 1.5rem; font-size: clamp(2.5rem, 5vw, 4.6rem); }
+.source-intro > p + p { margin-top: 1.25rem; }
+.source-location { color: var(--muted); font-size: .84rem; overflow-wrap: anywhere; }
+.source-integrity { margin-top: 1.6rem; border-block: 1px solid var(--line); padding-block: 1rem; }
+.source-integrity summary { cursor: pointer; font-weight: 600; }
+.source-integrity p { margin-top: 1rem; }
+.source-integrity pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8rem; }
+.source-start { max-width: 900px; padding-block: 2.5rem; }
+.source-start h2, .source-section-heading h2 { font-size: clamp(1.7rem, 3vw, 2.5rem); }
+.source-start p { margin-top: 1rem; }
+.source-start pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.source-section-heading { margin-block: 1rem 1.5rem; }
+.source-section-heading p { margin-top: .6rem; color: var(--muted); font-size: .9rem; }
+.source-lab-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; padding: 0; }
+.source-lab-list li, .source-lab-list li + li { margin: 0; border-top: 1px solid var(--line); }
+.source-lab-list a { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 1rem; gap: .8rem; align-items: baseline; padding-block: 1.2rem; text-decoration: none; }
+.source-lab-list a:hover { color: var(--green); text-decoration: underline; }
+.source-lab-number { color: var(--muted); font: .75rem var(--mono); }
+.source-document-nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-block: 2.25rem; padding-block: 1.1rem; border-block: 1px solid var(--line); font-size: .9rem; }
+.source-document { margin-top: 2.5rem; }
+.source-document-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .75rem 2rem; margin-bottom: 1rem; }
+.source-document-heading h2 { font-size: 1.7rem; }
+.source-document-heading p { overflow-wrap: anywhere; }
+.source-document-text { margin: 0; padding: clamp(1rem, 2.5vw, 2rem); border: 1px solid var(--line); background: var(--paper-light); color: var(--ink); font: .91rem/1.75 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; tab-size: 4; }
+.source-back { margin-top: 2.5rem; }
+.source-footer { padding-block: 1.75rem 2.5rem; border-top: 1px solid var(--line); font-size: .84rem; color: var(--muted); }
+.source-footer p + p { margin-top: .75rem; }
+@media (max-width: 750px) {
+  .source-masthead { align-items: flex-start; flex-direction: column; gap: 1.2rem; }
+  .source-lab-list { grid-template-columns: minmax(0, 1fr); }
+  .source-document-text { font-size: .83rem; }
+}
+@media print {
+  .source-navigation, .source-document-nav, .source-intro .button, .source-back { display: none; }
+  .source-document-text { border-color: #aaa; background: #fff; color: #000; font-size: 9pt; }
+}

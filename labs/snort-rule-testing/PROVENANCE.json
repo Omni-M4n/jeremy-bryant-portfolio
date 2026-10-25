@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "authored": "2026-10-23",
+  "description": "Original offline packet fixtures. No network capture or Snort execution is claimed.",
+  "sources_sha256": {
+    "fixtures/cases.json": "5590ece8e291da04ce756e3d610c8de63b6c12881bce428160ee113587660139",
+    "reference/expected.json": "6ba3bc6e545dabd84a6d0972b35f376477f3e9960d5dcb05a0a45dcca3241c1b",
+    "local.rules": "9bb961d1d3bf80ee03386ef0646e0224a35874fa19a31bfa9126a72448ae866f"
+  },
+  "generated_pcap_sha256": {
+    "positive": "bec4573bad177e6710f5912303deca24316803e04696f9154d934d0c7a765f7a",
+    "near-miss": "edb06bfd3e1add72256d8a06b36b32c73d4f0011e22bdb0f382e9d6b487ddfb9",
+    "negative": "d94d222ec59fea8ee83458760aea5c1af87d9e93fb04e6c763dfb84f256aa2a4",
+    "wrong-port": "1236f623f1c2a2a70deaca03b6ade8e7085a912f1070dadc0af5124e7ec127b9"
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYNTHETIC teaching records; the actual parent creation is absent. -->
+<Events>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T11:00:01.0200000Z"/><EventRecordID>302</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>
+    <EventData><Data Name="UtcTime">2026-10-20 11:00:01.000</Data><Data Name="ProcessGuid">{33333333-3333-3333-3333-333333333302}</Data><Data Name="ProcessId">3000</Data><Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data><Data Name="CommandLine">powershell.exe -NoProfile -Command "Write-Output 'WINDOWS-LAB-CHILD'"</Data><Data Name="ParentProcessGuid">{33333333-3333-3333-3333-333333333399}</Data><Data Name="ParentProcessId">2000</Data><Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data><Data Name="ParentCommandLine">cmd.exe /d /c powershell.exe -NoProfile -Command "Write-Output 'WINDOWS-LAB-CHILD'"</Data></EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T11:00:00.0200000Z"/><EventRecordID>301</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>
+    <EventData><Data Name="UtcTime">2026-10-20 11:00:00.000</Data><Data Name="ProcessGuid">{33333333-3333-3333-3333-333333333301}</Data><Data Name="ProcessId">2000</Data><Data Name="Image">C:\Windows\System32\cmd.exe</Data><Data Name="CommandLine">cmd.exe /d /c echo DIFFERENT-GUID</Data><Data Name="ParentProcessGuid">{33333333-3333-3333-3333-333333333300}</Data><Data Name="ParentProcessId">900</Data><Data Name="ParentImage">C:\Windows\explorer.exe</Data><Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data></EventData>
+  </Event>
+</Events>

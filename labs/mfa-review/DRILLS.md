@@ -8,9 +8,10 @@ prediction before running `analyse`. Fresh folders preserve earlier attempts.
 2. **With prompts (5 minutes):** Does recovery create a weaker access route?
    Who owns the workload? Does its password remain usable? Which emergency
    controls does a dated exception leave mandatory?
-3. **Independent (10 minutes):** use `challenge`. Explain why the current
-   emergency exception cannot excuse missing monitoring/storage, and why a
-   workload with both federation and a password still has a credential finding.
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
+   Evaluate each account against its type and the stated authentication and recovery requirements. Record evidence for each decision and any untested control.
+   Save decisions, evidence references and a short handover before opening
+   `analyse`, reference answers or the worked example. Record any help used.
 4. **Changed evidence (5 minutes):** use `changed`. Compare the review date to
    exception expiry and 91-day test age. In a copied case, set test age to 90;
    predict exactly which label disappears and which ones remain.

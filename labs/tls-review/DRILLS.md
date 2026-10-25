@@ -16,7 +16,7 @@ Check decisions, read the worked example and write one correction with its evide
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Use challenge without help. Explain exactly-notAfter behaviour, why a good hostname with an unverified chain is incomplete, and why an empty SAN list is not rescued by an imagined common name. Keep the reference files closed until your worksheet and handover are saved. Use the README vocabulary as a glossary if necessary and record that help. Ask another person to examine the reasoning rather than merely the exit code.
+Prepare challenge in a fresh folder. Review each certificate against the stated hostname, time and evidence. State the exact checks supported and any trust questions that remain unanswered. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
 
 ## 4. Changed conditions
 

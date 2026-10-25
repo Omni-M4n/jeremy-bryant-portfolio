@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Disposable VM teaching configuration. Not a production policy. -->
+<Sysmon schemaversion="4.82">
+  <HashAlgorithms>SHA256</HashAlgorithms>
+  <EventFiltering>
+    <!-- Empty exclusions retain process creation events. -->
+    <ProcessCreate onmatch="exclude" />
+    <!-- This exercise does not collect network connection events. -->
+    <NetworkConnect onmatch="include" />
+  </EventFiltering>
+</Sysmon>

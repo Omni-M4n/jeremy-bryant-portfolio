@@ -7,8 +7,10 @@ prediction before running `analyse`. Fresh folders preserve earlier attempts.
    result and possible sign-in link. Predict labels before the worked example.
 2. **With prompts (5 minutes):** Is the result success? Is identity as well as
    session equal? How many minutes elapsed? Does approval match the resource?
-3. **Independent (10 minutes):** use `challenge`. Explain the 15-minute vs
-   16-minute result and why `x04` cannot borrow another identity's session label.
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
+   Build the event timeline and evaluate each possible correlation using the stated identity, resource and time rules. Explain uncertain relationships.
+   Save decisions, evidence references and a short handover before opening
+   `analyse`, reference answers or the worked example. Record any help used.
 4. **Changed evidence (5 minutes):** use `changed`. Why does denied logging
    disablement leave `coverage-configured`? In a copy change only `c03.result`
    to `success` and predict both its event decision and the logging suffix.

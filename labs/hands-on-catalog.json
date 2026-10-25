@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "existing_labs": 26,
+  "labs": [
+    {
+      "id": "traffic-capture",
+      "title": "Capture and explain your own traffic",
+      "purpose": "Generate a few harmless local requests, collect a small capture and connect each action to packet evidence.",
+      "prerequisites": "Client/server basics and the DNS and TCP foundation exercises. Wireshark with loopback capture support.",
+      "evidence": "Your own controlled loopback capture, request observations and capture settings. Supplied instructions are not a personal capture record.",
+      "deliverable": "A small reviewed PCAP, annotated exchanges and an explanation of a failed connection.",
+      "minutes": "35–50 minutes after tool setup",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "burp-access-control",
+      "title": "Test and retest access control with Burp",
+      "purpose": "Use a local two-user training application to compare an insecure object-access check with a repaired version.",
+      "prerequisites": "HTTP requests, responses and access-control basics. Burp Suite Community and its browser.",
+      "evidence": "Manual before-and-after requests and responses from an original loopback-only toy application with fictional records.",
+      "deliverable": "A scoped finding, a denied cross-user request after the fix, and proof that the intended user can still read their record.",
+      "minutes": "45–75 minutes after tool setup",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "snort-rule-testing",
+      "title": "Write, run and tune an offline detection rule",
+      "purpose": "Detect one harmless marker in local packet files, then test a near-miss and explain the rule's limits.",
+      "prerequisites": "Packet basics and a simple Snort rule. Snort 3 in a suitable local lab environment.",
+      "evidence": "Labelled synthetic PCAP fixtures, an inspectable rule and alerts collected by actually running Snort. A generated fixture is not a real capture.",
+      "deliverable": "A positive and negative test table, alert evidence, and a short explanation of false positives and missed traffic.",
+      "minutes": "40–60 minutes after tool setup",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "windows-event-investigation",
+      "title": "Collect Windows events and reconstruct a process chain",
+      "purpose": "Generate harmless activity in a disposable Windows VM, inspect Sysmon process events and explain parent-child relationships.",
+      "prerequisites": "Windows processes and the endpoint foundation exercise. A disposable licensed Windows VM with Sysmon configured for the lab.",
+      "evidence": "Synthetic XML examples for parser practice, followed by a separately labelled collection from your own lab VM.",
+      "deliverable": "An event timeline, process-GUID relationships and a clear account of missing or incomplete evidence.",
+      "minutes": "25–40 minutes for synthetic examples; 30–60 for a prepared VM",
+      "status": "Independent practice not yet assessed"
+    }
+  ]
+}

@@ -28,7 +28,7 @@ Run commands from this folder with Python 3.10 or later. `lab.py` is the maintai
 5. There are no wildcards, explicit deny statements, groups, inheritance, ownership rules, resource policies, conditions, paths, or provider-specific behaviour. Resource IDs represent whole fictional stores; the lab does not model individual objects.
 6. Unknown identities, roles, resources, actions, duplicate entries, unsupported fields, and malformed JSON are errors. Invalid input is rejected instead of being counted as a valid denial.
 
-The expected matrix contains every identity × resource × action combination exactly once. The checker also verifies that this matrix agrees with the scenario's written business rules. The policy is checked against that authority; it is not used to invent its own expected answers.
+The expected matrix contains every identity × resource × action combination exactly once. The checker also verifies that this matrix agrees with the scenario's written business rules. It separately compares every role's grants with those rules, including roles with no currently assigned identity. The policy is checked against that authority; it is not used to invent its own expected answers. Identity counts remain separate from the `role_missing_required`, `role_excess_allowed` and `role_mismatches` fields. Both checks must pass.
 
 ## Worked example
 

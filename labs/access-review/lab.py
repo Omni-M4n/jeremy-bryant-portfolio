@@ -210,13 +210,25 @@ def evaluated_rows(scenario, policy, expected):
 def check_policy(scenario, policy, expected):
     rows = evaluated_rows(scenario, policy, expected)
     mismatches = [row for row in rows if row["actual"] != row["allowed"]]
-    return {"command": "check", "passed": not mismatches, "total_decisions": len(rows),
+    required = rules_index(scenario)
+    permissions = permission_index(policy)
+    # A role still needs review when no current identity is assigned to it.
+    role_mismatches = [
+        {"role": role, "resource": resource, "action": action,
+         "allowed": (role, resource, action) in required,
+         "actual": (role, resource, action) in permissions}
+        for role, resource, action in sorted(required ^ permissions)
+    ]
+    return {"command": "check", "passed": not mismatches and not role_mismatches, "total_decisions": len(rows),
             "allowed": sum(row["actual"] for row in rows),
             "denied": sum(not row["actual"] for row in rows),
             "required_allowed": sum(row["allowed"] and row["actual"] for row in rows),
             "missing_required": sum(row["allowed"] and not row["actual"] for row in rows),
             "excess_allowed": sum(not row["allowed"] and row["actual"] for row in rows),
-            "mismatches": mismatches}
+            "mismatches": mismatches,
+            "role_mismatches": role_mismatches,
+            "role_missing_required": len(required - permissions),
+            "role_excess_allowed": len(permissions - required)}
 
 
 def review_policies(scenario, before, after, expected):
@@ -237,7 +249,10 @@ def review_policies(scenario, before, after, expected):
             "unwanted_introduced": sum(not new["allowed"] and not old["actual"] and new["actual"]
                                        for old, new in pairs),
             "missing_required": check["missing_required"],
-            "excess_allowed": check["excess_allowed"], "mismatches": check["mismatches"]}
+            "excess_allowed": check["excess_allowed"], "mismatches": check["mismatches"],
+            "role_mismatches": check["role_mismatches"],
+            "role_missing_required": check["role_missing_required"],
+            "role_excess_allowed": check["role_excess_allowed"]}
 
 
 def make_case(variant="guided", seed=17):

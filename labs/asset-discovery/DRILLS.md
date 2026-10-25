@@ -16,7 +16,7 @@ Check decisions, read the worked example and write one correction with its evide
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Use challenge without the worked example. Explain both gaps on 192.0.2.10 even though it gets one decision. Explain why an up appliance with no expected listening ports can match the inventory. Keep the reference files closed until your worksheet and handover are saved. Use the README vocabulary as a glossary if necessary and record that help. Ask another person to examine the reasoning rather than merely the exit code.
+Prepare challenge in a fresh folder. Compare the observed services with the authorised inventory for every host. Explain all differences and any limits of the scan evidence. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
 
 ## 4. Changed conditions
 
