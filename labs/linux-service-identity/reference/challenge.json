@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "s1": "identity-mismatch",
+    "q1": "allowed-by-listed-rule",
+    "q2": "not-listed"
+  },
+  "observations": [
+    "s1: configured=labsvc; observed=root; state=active.",
+    "q1: run-as=labsvc; command=/usr/bin/id -u.",
+    "q2: run-as=root; command=/usr/bin/id -u."
+  ],
+  "limitations": [
+    "Only a system service and exact listed sudo command tuples are modelled; no shell, wildcard, alias or inherited sudo policy is inferred.",
+    "A matching identity does not establish safe service code, file permissions or a complete privilege boundary."
+  ]
+}

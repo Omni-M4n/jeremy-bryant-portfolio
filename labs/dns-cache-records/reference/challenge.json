@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "q01": "cached-negative:NXDOMAIN",
+    "q02": "refresh-required",
+    "q03": "refresh-required",
+    "q04": "cached-negative:NODATA"
+  },
+  "observations": [
+    "q01: new.school.test NXDOMAIN remaining=1s.",
+    "q02: new.school.test NXDOMAIN remaining=0s.",
+    "q03: mail.school.test A absent.",
+    "q04: mail.school.test NODATA remaining=15s."
+  ],
+  "limitations": [
+    "One value per owner/type, one supplied cache, integer seconds; no live lookup, refresh, prefetch, serve-stale, DNSSEC or resolver failure caching.",
+    "An expired or missing entry requires fresh evidence; it does not prove that a name or service is unavailable."
+  ]
+}

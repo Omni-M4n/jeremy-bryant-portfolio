@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "lab_id": "file-type-triage",
+  "case_id": "challenge",
+  "title": "Collection 03",
+  "synthetic": true,
+  "context": {
+    "question": "What can a file header tell us when its filename and metadata disagree?",
+    "recording": "Fictional worksheet evidence; practical measurements are saved separately."
+  },
+  "data": {
+    "files": [
+      {
+        "id": "item-01",
+        "name": "item-01.png",
+        "prefix_hex": "89504e47",
+        "size": 4,
+        "reported_mime": "image/png"
+      },
+      {
+        "id": "item-02",
+        "name": "item-02.dat",
+        "prefix_hex": "",
+        "size": 0,
+        "reported_mime": "application/octet-stream"
+      }
+    ]
+  },
+  "artifacts": {}
+}

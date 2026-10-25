@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {
+      "mode": "joined",
+      "status": 200,
+      "response": {
+        "rows": []
+      }
+    },
+    {
+      "mode": "bound",
+      "status": 200,
+      "response": {
+        "rows": []
+      }
+    }
+  ]
+}

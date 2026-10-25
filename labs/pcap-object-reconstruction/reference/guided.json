@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "stream": "complete-matches-known-object"
+  },
+  "observations": [
+    "Body positions present=6/6; missing=0; conflicting positions=0; encrypted=False."
+  ],
+  "limitations": [
+    "The generated PCAP was not collected from a network. The parser handles one small plain HTTP/1.1 response with Content-Length, fixed IPv4/TCP headers and no TLS.",
+    "A complete matching object does not identify a user. Missing packets, encryption, conflicting overlaps, chunked bodies and compression need separate treatment."
+  ]
+}

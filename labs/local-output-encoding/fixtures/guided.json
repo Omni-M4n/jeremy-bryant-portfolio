@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-output-encoding",
+  "case_id": "guided",
+  "title": "Marker card",
+  "synthetic": true,
+  "question": "What is text and what becomes markup?",
+  "data": {
+    "marker": "<b>LOCAL MARKER</b>",
+    "modes": [
+      "reflect",
+      "encoded"
+    ]
+  }
+}

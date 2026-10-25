@@ -1,12 +1,19 @@
-# Worked example: Backup scope, freshness and synthetic restore verification
+# Worked example: check a backup
 
-Try the guided case before reading this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
+Try guided before reading this page. To make a fresh copy, use `python lab.py prepare --scenario guided --out run/worked-01`.
 
-Before checking the decisions below, run `python inspect_payloads.py --case run/worked-01/case.json`. Compare each measured SHA-256 with the same filename in the case's required_sha256 manifest, and record the measured length and bytes. This command reveals the measurements without revealing a decision; use them with the capture and retention timestamps to make your prediction.
+First run `python inspect_payloads.py --case run/worked-01/case.json`. Save the measured bytes, lengths and hashes. Compare each SHA-256 with the same filename in required_sha256. Use the capture and retention dates to predict the decisions. The inspector gives measurements, not answers.
 
-Recovery time is 2026-02-01T12:00:00Z and the RPO is four hours (14,400 seconds). b1 was captured at 10:00Z: age 7,200 seconds. It remains retained, includes notes.txt and roster.csv, and both decoded payload digests match the manifest. b1 is qualified-synthetic-copy. b0 was captured the previous day at 10:00Z: age 93,600 seconds, so its matching bytes do not rescue its RPO failure. recovery selects b1. The test reconstructed only the embedded fictional bytes in memory. It did not restore an application, a disk backup or real user data.
+## Check both copies
 
-The reference decision fields for guided are:
+The recovery time is 2026-02-01T12:00:00Z. The RPO is four hours, or 14,400 seconds.
+
+- b1 was captured at 10:00Z on the same day. Its age is two hours, or 7,200 seconds. Its retention period has not ended. It includes notes.txt and roster.csv. Both measured hashes match the expected hashes. The decision is qualified-synthetic-copy.
+- b0 was captured at 10:00Z on the previous day. Its age is 26 hours, or 93,600 seconds. Its hashes match, but it is too old for this RPO. The decision is rpo-exceeded.
+
+The recovery choice is b1. This check decoded dummy bytes in memory. It did not restore an app, a disk backup or real user data.
+
+The guided decisions are:
 
 ```json
 {
@@ -16,6 +23,6 @@ The reference decision fields for guided are:
 }
 ```
 
-Now open `python lab.py analyse --case run/worked-01/case.json` and compare observations, not only labels. Record one difference between your first prediction and the reference. If there was no difference, explain the rule that produced each decision rather than copying the label.
+Run `python lab.py analyse --case run/worked-01/case.json` after saving your own answer. Compare the measured facts, not just the labels. Keep your first answer and add any correction. If it matched, explain how you reached it.
 
-Handover prompt: explain what this evidence establishes, cite its exact IDs or lines, give a plausible alternative or remaining uncertainty, and name the smallest next check. Record any help used. A correct label by itself is not evidence of independent understanding.
+For a handover, state what these checks show. Cite exact IDs and measurements. Give one remaining doubt and the smallest next check. Include help used. A correct label alone does not show that you can explain it.

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lab_id": "windows-acl",
+  "case_id": "challenge",
+  "title": "Library note",
+  "synthetic": true,
+  "context": {
+    "question": "Which listed operation does this token receive?"
+  },
+  "data": {
+    "token": [
+      "reader",
+      "classroom"
+    ],
+    "file_aces": [
+      {
+        "trustee": "classroom",
+        "kind": "deny",
+        "inherited": false,
+        "rights": [
+          "write",
+          "delete"
+        ]
+      },
+      {
+        "trustee": "reader",
+        "kind": "allow",
+        "inherited": false,
+        "rights": [
+          "read",
+          "write"
+        ]
+      }
+    ],
+    "parent_aces": [
+      {
+        "trustee": "classroom",
+        "kind": "allow",
+        "inherited": true,
+        "rights": [
+          "delete-child"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "right": "read"
+      },
+      {
+        "id": "q2",
+        "right": "write"
+      },
+      {
+        "id": "q3",
+        "right": "delete"
+      }
+    ]
+  },
+  "artifacts": {}
+}

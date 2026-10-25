@@ -1,0 +1,20 @@
+{
+  "decisions": {
+    "r3/tune": "tp=2,fp=2,fn=0,tn=0",
+    "r3/holdout": "tp=1,fp=0,fn=1,tn=2",
+    "r5/tune": "tp=1,fp=0,fn=1,tn=2",
+    "r5/holdout": "tp=0,fp=0,fn=2,tn=2"
+  },
+  "observations": [
+    "r3/tune: labelled=4/4; alerts=4/4; false alarms=2/2 routine; misses=0/2 exercise; false share of alerts=2/4.",
+    "r3/holdout: labelled=4/4; alerts=1/4; false alarms=0/2 routine; misses=1/2 exercise; false share of alerts=0/1.",
+    "r5/tune: labelled=4/4; alerts=1/4; false alarms=0/2 routine; misses=1/2 exercise; false share of alerts=0/1.",
+    "r5/holdout: labelled=4/4; alerts=0/4; false alarms=0/2 routine; misses=2/2 exercise; false share of alerts=undefined(0/0)."
+  ],
+  "limitations": [
+    "All events are harmless synthetic examples. Exercise labels are supplied teaching truth, not observed attacks.",
+    "Fractions describe only their named partition and denominator. This corpus cannot establish production accuracy.",
+    "Choose a candidate using tune rows before inspecting holdout rows. Reusing holdout to tune removes that independent check.",
+    "A count threshold is a simplified query, not a tested Snort rule or a complete detection system."
+  ]
+}

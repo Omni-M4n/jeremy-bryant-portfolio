@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "lab_id": "rate-limit-lab",
+  "case_id": "changed",
+  "title": "Desk routes",
+  "synthetic": true,
+  "question": "Which requests use the ticket allowance?",
+  "data": {
+    "steps": [
+      "other",
+      "post",
+      "ticket",
+      "ticket",
+      "ticket",
+      "ticket"
+    ]
+  }
+}

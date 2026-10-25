@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "case_id": "challenge",
+  "title": "The service folder",
+  "synthetic": true,
+  "context": {
+    "question": "A booking reminder needs a booking code and an email address. It does not need a birthday. Build a register that explains both what to keep and what to leave out."
+  },
+  "data": {
+    "records": [
+      {
+        "id": "item-1",
+        "purpose": "Connect a toy service",
+        "personal": false,
+        "secret": true,
+        "public": false,
+        "fields": [
+          "token",
+          "comment"
+        ],
+        "needed": [
+          "token"
+        ],
+        "age_days": 31,
+        "retain_days": 30,
+        "hold": false,
+        "recipient": "booking-team",
+        "allowed_receivers": [
+          "booking-team"
+        ],
+        "disposal": "all-listed-copies"
+      },
+      {
+        "id": "item-2",
+        "purpose": "Plan staff cover",
+        "personal": false,
+        "secret": false,
+        "public": false,
+        "fields": [
+          "shift",
+          "colour"
+        ],
+        "needed": [
+          "shift"
+        ],
+        "age_days": 12,
+        "retain_days": 30,
+        "hold": false,
+        "recipient": "public",
+        "allowed_receivers": [
+          "booking-team"
+        ],
+        "disposal": "none"
+      }
+    ]
+  },
+  "artifacts": {
+    "register-template.md": "# Data handling register\n\n| Record | Owner role | Purpose | Keep fields | Leave out | Label | Storage | Reader roles | Review date | Share and why |\n|---|---|---|---|---|---|---|---|---|---|\n\nException, reason, approver and expiry:\nDisposal receipt: primary copy, backup copy, authorising role, date, method, verification and limits:\n",
+    "receipt.txt": "SYNTHETIC DISPOSAL REVIEW\nitem-1: listed locations are primary and backup; reported coverage=all-listed-copies; age=31; hold=False\nitem-2: listed locations are primary and backup; reported coverage=none; age=12; hold=False\nThis statement is supplied evidence, not a real deletion receipt.\n"
+  },
+  "lab_id": "data-classification"
+}

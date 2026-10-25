@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "lab_id": "password-vault-recovery",
+  "case_id": "changed",
+  "title": "Garden account record",
+  "synthetic": true,
+  "context": {
+    "question": "Review each record. Save a prediction and evidence before opening the reference."
+  },
+  "data": {
+    "entries": [
+      {
+        "id": "e1",
+        "account": "garden.test",
+        "secret_label": "label-a",
+        "generated": false,
+        "length": 12
+      },
+      {
+        "id": "e2",
+        "account": "club.test",
+        "secret_label": "label-a",
+        "generated": false,
+        "length": 12
+      }
+    ],
+    "backup": {
+      "format": "plaintext",
+      "copy_exists": true,
+      "unlock_test": true,
+      "separate_location": true,
+      "recovery_in_same_store": false
+    }
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

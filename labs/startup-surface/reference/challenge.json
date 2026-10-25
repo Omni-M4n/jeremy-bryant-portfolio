@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "e2": "unexplained-addition",
+    "e3": "missing-follow-up"
+  },
+  "observations": [
+    "e2: before=false; after=true; changed=none; exact-approval=false.",
+    "e3: before=true; after=false; changed=none; exact-approval=false."
+  ],
+  "limitations": [
+    "This comparison covers only the listed startup records and exact approved configurations; it does not detect every persistence method.",
+    "Approval and an unchanged digest do not prove that a program is harmless. Missing or unexplained records need investigation, not automatic removal."
+  ]
+}

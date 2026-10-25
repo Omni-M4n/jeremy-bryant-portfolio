@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "restricted;disposal-due;share-as-approved;receipt-covers-listed-copies",
+    "item-2": "internal;retain-until-review;do-not-share;no-receipt"
+  },
+  "observations": [
+    "item-1: age 31 / retain 30 days; unnecessary fields: comment.",
+    "item-2: age 12 / retain 30 days; unnecessary fields: colour."
+  ],
+  "limitations": [
+    "These are invented handling rules, not legal advice or proof of real deletion."
+  ]
+}

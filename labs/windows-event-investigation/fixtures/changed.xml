@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYNTHETIC teaching records; an earlier process and a later one reuse PID 2000. -->
+<!-- SYNTHETIC teaching records; changed case. -->
 <Events>
   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
     <System><Provider Name="Microsoft-Windows-Sysmon"/><EventID>1</EventID><TimeCreated SystemTime="2026-10-20T10:00:00.0200000Z"/><EventRecordID>201</EventRecordID><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>LAB-VM.test</Computer></System>

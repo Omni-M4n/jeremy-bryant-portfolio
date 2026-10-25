@@ -1,0 +1,15 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "OAIC APP 3 guidance",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-3-app-3-collection-of-solicited-personal-information",
+      "use": "Collect only fields needed for a purpose."
+    },
+    {
+      "title": "OAIC APP 11 guidance",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-11-app-11-security-of-personal-information",
+      "use": "Protection and retention exceptions."
+    }
+  ]
+}

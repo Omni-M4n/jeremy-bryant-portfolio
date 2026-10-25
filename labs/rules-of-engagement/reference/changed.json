@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "outside-time-window",
+    "item-2": "outside-activity-scope"
+  },
+  "observations": [
+    "item-1: desk-lab.test, read-log, minute 630; window [600, 630).",
+    "item-2: desk-lab.test, change-config, minute 615; window [600, 630)."
+  ],
+  "limitations": [
+    "This reviews a fictional written plan. It grants no permission and launches no test."
+  ]
+}

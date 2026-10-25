@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "item-01": "type-undetermined",
+    "item-02": "empty-file"
+  },
+  "observations": [
+    "item-01: 4 prefix bytes inspected from 4 bytes; reported label=image/png.",
+    "item-02: 0 prefix bytes inspected from 0 bytes; reported label=application/octet-stream."
+  ],
+  "limitations": [
+    "A matching signature is a format clue, not proof that the whole file is valid or safe.",
+    "An extension mismatch alone does not establish malware. Only PNG and SQLite signatures are recognized here."
+  ]
+}

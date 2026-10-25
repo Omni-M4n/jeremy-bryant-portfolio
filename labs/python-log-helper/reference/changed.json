@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "line-1": "outside",
+    "line-2": "count",
+    "line-3": "repeat",
+    "line-4": "count"
+  },
+  "observations": [
+    "Lines=4; counted failures=2; rejected=0.",
+    "Counts by account=operator:1,reader:1."
+  ],
+  "limitations": [
+    "The helper counts unique valid failure records in a half-open UTC window; it makes no incident decision.",
+    "Malformed lines are retained by line number; skipped lines can change the conclusion.",
+    "No network, host log or live account is read. A successful run does not show script mastery."
+  ]
+}

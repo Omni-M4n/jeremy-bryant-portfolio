@@ -1,8 +1,8 @@
 # Worked example: the guided VM
 
-Use this only after saving a prediction. The evidence is synthetic and all rows
-refer to `orchard-vm`. Agreement A1 assigns physical hosts to the provider and
-the guest OS to the customer. These are different components.
+Use this only after saving a prediction. The evidence is made up. All rows
+refer to `orchard-vm`. Agreement A1 gives the provider the physical host tasks.
+It gives the customer the guest OS tasks. These are different parts of the service.
 
 | ID | Decision | Evidence and reasoning |
 | --- | --- | --- |
@@ -12,14 +12,16 @@ the guest OS to the customer. These are different components.
 | copy | `customer:owner-matches:evidence-missing` | A3 explicitly excludes managed backup; E4 contains no customer job record. |
 | accept | `customer:owner-matches:evidence-pass` | A4 and E5 show customer acceptance of one historical restored report. |
 
-The useful next action for `guest` is to assign the guest patch task to the
-customer operator and obtain a scoped retest. Do not treat the host attestation
-as guest patch evidence. For `copy`, request a current job record with scope;
-then check retention and perform an isolated restore acceptance check as needed.
-The successful historical `accept` row does not fill the missing current backup
-record. The evidence supports neither "all cloud controls failed" nor "the
-provider has secured everything."
+For `guest`, the next step is to give the guest patch task to the customer's
+operator. Then ask for a new check of that task. The host report does not show
+whether the guest was patched. For `copy`, ask for a current job record that
+states its scope. Then check how long copies are kept. Use an isolated restore
+check if needed to test whether the restored files meet the team's needs.
+The earlier successful `accept` row does not fill the gap in current backup
+records. The evidence does not show that all cloud controls failed. It also does
+not show that the provider has secured everything.
 
-A good handover names A1/E2 for the guest issue, A3/E4 for the copy evidence gap,
-and asks for the omitted backup scope and recovery-time requirements. In the
-worksheet, preserve this reasoning and exact references, not just matching codes.
+A good handover names A1/E2 for the guest issue and A3/E4 for the copy evidence gap.
+Ask which files the backup should cover and how soon they must be recovered.
+These details are missing. Keep this reasoning and the exact references in your
+worksheet, along with the matching codes.

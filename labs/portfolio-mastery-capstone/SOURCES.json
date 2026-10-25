@@ -1,0 +1,20 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "NIST SP 800-115, Appendix B and section 8",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.pdf",
+      "use": "Scope, agreed limits and reporting."
+    },
+    {
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "use": "Identity and permission are separate checks."
+    },
+    {
+      "title": "OWASP Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "use": "Useful evidence and sensitive fields to exclude."
+    }
+  ]
+}

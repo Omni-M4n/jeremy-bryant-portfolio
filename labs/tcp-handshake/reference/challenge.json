@@ -1,11 +1,11 @@
 {
   "decisions": {
     "wrapped": "handshake-observed",
-    "mismatch": "acknowledgement-mismatch"
+    "flow-b": "acknowledgement-mismatch"
   },
   "observations": [
     "wrapped: SYN 4294967295 -> SYN-ACK 99/0 -> ACK 0/100.",
-    "mismatch: final SEQ/ACK=61/80; expected 61/81."
+    "flow-b: final SEQ/ACK=61/80; expected 61/81."
   ],
   "limitations": [
     "Missing packets can reflect capture position, loss or a short capture; they do not prove a firewall or server fault.",

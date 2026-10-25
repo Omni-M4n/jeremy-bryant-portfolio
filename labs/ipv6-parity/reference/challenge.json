@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "s01-ipv4": "reachable-as-intended",
+    "s01-ipv6": "unverified",
+    "s01-parity": "comparison-incomplete"
+  },
+  "observations": [
+    "s01 ipv4: 192.0.2.20:8000; listener=true; rule=allow; outcome=connect.",
+    "s01 ipv6: 2001:db8::20:8000; listener=true; rule=not-reviewed; outcome=not-tested."
+  ],
+  "limitations": [
+    "One named service, client position and time per row; a successful connection does not prove public reachability, and failed connections do not prove a firewall caused them.",
+    "IPv4 and IPv6 rules, listeners and paths need separate evidence. Shared inet tables or dual-stack sockets alone do not establish equal enforcement."
+  ]
+}

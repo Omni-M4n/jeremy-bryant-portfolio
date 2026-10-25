@@ -1,26 +1,55 @@
-# Backup scope, freshness and synthetic restore verification
+# Check a small backup before choosing it
 
-Evaluate retained scope and recovery-point age, then actually decode and hash tiny fictional backup payloads in memory against a supplied manifest.
+A recent backup may still miss a file or contain changed bytes. In this lab, check the file list, age and bytes of tiny fictional copies. Then choose a copy that meets the case's rules.
 
-This is an original, fictional, offline exercise for an introductory security learner. It is independent practice, not copied coursework or a claim of professional experience. Completion and competence remain unassessed.
+The tool decodes the supplied file data in memory and checks its hashes. It does not restore a real disk or app. These are practice materials, not copied coursework or evidence of learner skill.
 
 ## Before you start
 
-Allow **30-45 minutes**: 5 minutes reading, 10 inspecting and predicting, 10 checking and explaining, and 5-20 for a changed or independent case. You need Python 3.10+ (standard library only), a terminal and a text editor. Comfort opening files, reading a small table and basic evidence notes is enough; programming, administrator rights, a Linux installation and cloud accounts are unnecessary. Previous introductory network or Wireshark practice is useful but not required.
+Allow **30–45 minutes**, or split the work into short sessions. Spend 5 minutes reading, 10 on evidence and predictions, and 10 on checks and notes. Use the last 5–20 minutes for another case.
 
-> **Vocabulary:** RPO: recovery point objective, the maximum acceptable age of a recovery point. RTO: recovery time objective, a different measure of restoration duration. Retention: how long a copy is kept. SHA-256: a digest used here to compare exact bytes. Restore test: exercising recovery and checking the result, with scope stated precisely.
+You need Python 3.10 or later, a terminal and a text editor. Python's standard library is enough. You need to open files, read a small table and save notes. You do not need to write code, use admin rights, install Linux or open a cloud account. Earlier network or Wireshark practice may help, but is not required.
 
-## Evidence and exact rules
+These terms will help:
 
-The case JSON is the single authoritative input. Fixtures are guided.json, changed.json and challenge.json. All data is synthetic; artifacts is empty to avoid competing editable copies. Edit only a prepared run copy. The analyser is a pure calculation and never executes evidence text.
+- **RPO:** recovery point objective. It sets how much recent data loss is acceptable. Here, it is the maximum allowed age of a copy.
+- **RTO:** recovery time objective. It sets how long recovery may take. That is a different check from RPO.
+- **Retention:** how long a copy is kept.
+- **SHA-256:** a hash used here to compare the exact file bytes.
+- **Restore test:** trying a recovery and checking its result. Always state what was actually restored.
 
-data contains recovery_time (UTC seconds), integer rpo_hours from 0-168, required_sha256 mapping synthetic .txt/.csv basenames to SHA-256 values, and backups. Each backup has ID, captured_at, retained_until and payload_base64. Payload names must be a subset of required scope. Invalid base64, future captures and invalid retention periods are rejected. The manifest is supplied authority; it is not read from your disk.
+## Read the case
 
-For each copy decode supplied payloads in memory and compute SHA-256. Evaluate at recovery_time; retention expires exactly at retained_until. Decision precedence is retention-expired, required-scope-missing, restore-bytes-mismatch, rpo-exceeded, then qualified-synthetic-copy. Age equals recovery time minus capture time in seconds. Age exactly equal to RPO meets the age limit. The recovery answer is `select:<backup-id>` for the most recent qualifying copy, replacing `<backup-id>` with its exact ID (for example, `select:copy-a` for a qualifying copy named copy-a). If captures tie, the lexically greatest ID wins using case-sensitive string order, not numeric order. If none qualifies, the answer is `no-qualified-copy`. Earlier failures take precedence in the decision, but observations expose every measured scope/hash/age result.
+The case JSON is the one source of input. The supplied files are guided.json, changed.json and challenge.json. The artifacts field is empty, so there is no second copy to edit. Work on a prepared copy below run/. The analyser never runs the evidence text as code.
+
+The data section has:
+
+- recovery_time: the time of the recovery check, in UTC with seconds.
+- rpo_hours: a whole number from 0 to 168.
+- required_sha256: the required filenames and their expected SHA-256 hashes. These are simple .txt or .csv names, with no folder path.
+- backups: the copies to check. Each has an ID, captured_at, retained_until and payload_base64.
+
+Base64 stores bytes as text. Each payload name must be in the required file list, but a copy may lack some required files. Bad base64, future capture times and invalid retention periods are rejected. The expected hashes are supplied in the case. The tool does not fetch them from your disk.
+
+## Use the rules
+
+Decode each copy's payloads and measure their SHA-256 hashes. Compare at recovery_time. A copy expires exactly at retained_until. Its age in seconds is recovery_time minus captured_at.
+
+Use the first rule that fits, in this order:
+
+1. **retention-expired:** the retention period has ended.
+2. **required-scope-missing:** at least one required file is missing.
+3. **restore-bytes-mismatch:** at least one measured hash differs from its expected hash.
+4. **rpo-exceeded:** the copy is older than the allowed RPO.
+5. **qualified-synthetic-copy:** all those checks pass for this fictional copy.
+
+Age exactly equal to the RPO still meets the limit. The decision uses the first failure, but the observations show all measured file, hash and age results.
+
+For the recovery decision, choose the most recent copy that qualifies. Use `select:<backup-id>`, replacing `<backup-id>` with its exact ID. For example, use `select:copy-a` for a selected copy named copy-a. If capture times tie, choose the greatest ID in case-sensitive string order. This is not numeric order. Use `no-qualified-copy` if no copy qualifies.
 
 ## Run the exercise
 
-Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). Commands below use `python` consistently.
+Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). The examples use `python`.
 
 ```text
 python lab.py cases
@@ -29,9 +58,20 @@ python lab.py show --case run/attempt-01/case.json
 python inspect_payloads.py --case run/attempt-01/case.json
 ```
 
-The inspector prints each embedded file's decoded UTF-8 text, exact bytes as hexadecimal, byte length and measured SHA-256. Non-UTF-8 bytes have null in decoded_utf8; the hexadecimal bytes remain exact. It prints no matches, recovery decisions or answer labels, and does not call the analyser. It decodes only the embedded fictional payloads in memory, writes no recovered files and executes no payload text. Exit 0 means measurements were produced; exit 2 means invalid input or a filesystem problem. The default case is the guided fixture; an explicit --case path is relative to your terminal directory.
+The inspector shows each file's UTF-8 text, exact bytes in hexadecimal, byte length and measured SHA-256. If the bytes are not valid UTF-8, decoded_utf8 is null. The hexadecimal form still shows the exact bytes.
 
-Compare the inspector's sha256 for each backup ID/file with required_sha256 in case.json. Check the manifest's required filenames against the files actually measured, then calculate age and retention from the case timestamps. Record these measurements before predicting whether each copy qualifies. In run/attempt-01/answers.json, fill each decision with an exact label from the rules; add an explanation and evidence references such as b1/notes.txt and its measured digest. In notes.txt, separate observation, interpretation, uncertainty, next check and help used. Save your prediction before opening the answer.
+The inspector gives measurements only. It does not call the analyser, label a match or choose a copy. It decodes the embedded dummy data in memory. It writes no recovered files and runs no payload text. Exit 0 means it produced measurements. Exit 2 means bad input or a file problem. With no --case, it uses the guided fixture. An explicit --case path starts from your terminal's current folder.
+
+Before you open the answer:
+
+1. Compare each measured sha256 with that filename in required_sha256 in case.json.
+2. Check for missing required files.
+3. Use the case timestamps to work out age and retention.
+4. Record these measurements. Predict each decision in run/attempt-01/answers.json.
+5. Add your explanation and exact evidence references, such as b1/notes.txt and its hash.
+6. In notes.txt, separate facts, your interpretation, remaining doubt, a next check and help used.
+
+Then check the saved answer:
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -42,18 +82,22 @@ python -m unittest -v test_lab.py test_inspect_payloads.py
 python lab.py verify
 ```
 
-For changed/challenge use the corresponding attempt folder in show, inspect_payloads.py, analyse and check. Run the inspector before saving the prediction and before analyse. prepare refuses an existing output folder. --out is relative to this lab and must be below run/; explicit input paths are relative to your terminal directory. analyse/show default to the guided fixture if --case is omitted. Exit 0 means command success or decision match; 1 means differences/incomplete written fields; 2 means invalid input or a filesystem problem. The checker verifies decision fields and the presence of writing, not the quality of reasoning. verify checks shipped examples, not learner mastery.
+Use the matching attempt folder in show, inspect_payloads.py, analyse and check for each later case. Run the inspector before saving your prediction. Open analyse only afterwards.
 
-## Deliverable and limits
+The prepare command refuses an existing folder. Its --out path starts from this lab and must stay below run/. Explicit input paths start from your terminal's current folder. If you omit --case, analyse and show use the guided fixture.
 
-Keep case.json, answers.json and notes.txt together in the ignored run folder. Deliver a short handover: the question, your conclusion, two precise evidence references, one alternative explanation or limitation, and the next evidence you would request. State whether you used the worked example and whether you completed a fresh case unaided. Do not describe an automated match as assessment or professional experience.
+Exit 0 means the command worked or the decisions match. Exit 1 means a mismatch or missing written fields. Exit 2 means bad input or a file problem. The checker checks decisions and the presence of text. A person must judge its quality. The verify command checks the supplied examples, not learner skill.
 
-Only embedded fictional payloads were decoded into memory and hashed. No real backup, disk file or application was restored. Retention is evaluated from supplied metadata; embedded evidence of an expired copy does not establish its real availability. Media health, encryption keys and full recovery procedures are outside scope.
+## Save the result and state its limits
 
-Use WORKED-EXAMPLE.md after making a first prediction, and DRILLS.md for progressively less support. Do not use these rules as an operational security verdict or modify a real host as part of this exercise.
+Keep case.json, answers.json and notes.txt together in the ignored run folder. Give the question, conclusion, two exact evidence references, one limit or other explanation, and a next check. Record help used, including the worked example. A matching label does not prove understanding or work experience.
 
-## Primary references
+This check handles only dummy bytes held in memory. It does not restore a real backup, disk file or app. A saved payload for an expired copy does not prove that copy would still be available. The model trusts the supplied retention dates. It does not check media health, encryption keys or a full recovery process.
 
-The following documentation supports the underlying concepts; the tiny schema and explicit teaching rules above are specific to this lab. Links were checked during authoring on 23 October 2026. Running the lab needs no internet connection.
+Read WORKED-EXAMPLE.md after your first prediction. Use DRILLS.md for less support on later attempts. Do not change a real host or treat this small check as proof that a real backup works.
+
+## Primary reference
+
+This source explains recovery planning. The input format and decision rules belong to this lab. The link was checked on 23 October 2026. You can run the lab offline.
 
 - [NIST contingency planning guidance, updated revision](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)

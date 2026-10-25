@@ -1,26 +1,36 @@
-# Practice progression: Triage a fictional software inventory and advisory ranges
+# Practice: check software versions
 
-Use the exact prepare/show/check commands in [README.md](README.md). Save a
-prediction before running `analyse`. Fresh folders preserve earlier attempts.
+Use the commands in [README.md](README.md). Work in fresh folders and save your first answer before running `analyse`.
 
-1. **Guided (10 minutes):** turn each installed and boundary version into a
-   numeric triple. Show both comparisons before assigning a decision.
-2. **With prompts (5 minutes):** Is the package name an exact match? Is the
-   introduced boundary included? Is this runtime or build exposure? What does
-   the reachability evidence actually demonstrate?
-3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
-   Compare every component with the relevant advisory ranges and execution context. Explain affectedness separately from reachability and exploitation.
-   Save decisions, evidence references and a short handover before opening
-   `analyse`, reference answers or the worked example. Record any help used.
-4. **Changed evidence (5 minutes):** use `changed`. Explain 1.9.0 and 1.10.0 at
-   opposite boundaries. In a copy change report-parser reachability to `unknown`
-   with evidence `no path review performed`; predict the changed decision.
-5. **Teach back (5 minutes):** explain range match, reachability and exploitability
-   separately. Why is a development-only dependency still worth reviewing?
-6. **Later recall (next day, 5 minutes):** order 1.9.9, 1.10.0 and 1.10.1 without
-   string sorting. Explain why no supplied advisory does not prove security.
+## Start with help — 10 minutes
 
-For each pass record: evidence references, decision, reason, uncertainty, help
-used and one next check. Have another person review the explanation and one
-unfamiliar case if possible. Until that occurs, independent completion is
-unassessed even if every decision matches. Keep all attempts below `run/`.
+Prepare guided. Turn each installed version and each bound into three numbers. Compare the numbers before choosing a label. Use the worked example only after saving your answer.
+
+## Use prompts — 5 minutes
+
+- Does the package name match exactly?
+- Does the range include its lower bound?
+- Is the component used to build the app or to run it?
+- What does the path evidence show? What is still unknown?
+
+## Try without the answer — 10 minutes
+
+Prepare `challenge` in a fresh folder. Compare every component with all relevant ranges. Explain the role of the component and the path evidence. Keep a version match separate from proof that a flaw can be used.
+
+Save decisions, evidence references and a short handover. Then open `analyse`, the reference or worked example. Record help used. Have someone review your reasoning. Until then, the attempt is not independently assessed. A case you have already read is repeat practice, not an unseen test.
+
+## Change the evidence — 5 minutes
+
+Prepare `changed`. Compare every version with the lower and upper bounds in its notices. Show the number comparisons before checking a decision.
+
+In a copy, change report-parser reachability to `unknown`. Set its evidence to `no path review performed`. Predict the effect of those edits, then check. Keep the earlier attempt.
+
+## Teach it back — 5 minutes
+
+Explain a version match, a reachable path and a usable flaw as three separate claims. What evidence would each need? Why might a build-only tool still need review?
+
+## Recall it the next day — 5 minutes
+
+Order 1.9.9, 1.10.0 and 1.10.1 by number, not string sorting. Explain why the absence of a supplied notice does not prove software safe.
+
+For each pass, save the evidence, decision, reason, remaining doubt, help used and next check. Ask someone to review a fresh case and your explanation. Keep all attempts below `run/`. Do not turn a matching output into a claim of assessed skill.

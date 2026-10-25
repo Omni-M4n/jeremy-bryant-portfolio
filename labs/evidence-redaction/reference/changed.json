@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "seeded-values-removed",
+    "item-2": "listed-claims-preserved"
+  },
+  "observations": [
+    "Replacements: 3; distinct seeded values: 2.",
+    "Preserved claim fragments: 3; source and output differ: True."
+  ],
+  "limitations": [
+    "Exact seeded text replacement is not a general redaction detector. A person must review context, hidden data and the final copy."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-output-encoding",
+  "case_id": "changed",
+  "title": "Ampersand card",
+  "synthetic": true,
+  "question": "What happens to an entity-looking sequence?",
+  "data": {
+    "marker": "A &amp; B",
+    "modes": [
+      "reflect",
+      "encoded"
+    ]
+  }
+}

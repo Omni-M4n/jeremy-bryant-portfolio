@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "e1": "unexplained-change",
+    "e2": "approved-change"
+  },
+  "observations": [
+    "e1: before=true; after=true; changed=identity; exact-approval=false.",
+    "e2: before=true; after=true; changed=sha256; exact-approval=true."
+  ],
+  "limitations": [
+    "This comparison covers only the listed startup records and exact approved configurations; it does not detect every persistence method.",
+    "Approval and an unchanged digest do not prove that a program is harmless. Missing or unexplained records need investigation, not automatic removal."
+  ]
+}

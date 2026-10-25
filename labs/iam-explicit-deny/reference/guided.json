@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q1": "allow",
+    "q2": "explicit-deny",
+    "q3": "implicit-deny"
+  },
+  "observations": [
+    "q1: matching statements=s1; result=allow.",
+    "q2: matching statements=s1,s2; result=explicit-deny.",
+    "q3: matching statements=none; result=implicit-deny."
+  ],
+  "limitations": [
+    "Only identity statements for three S3 object actions are modelled; conditions, resource policies, boundaries, session policies and organization policies are excluded.",
+    "This offline subset cannot approve an AWS deployment."
+  ]
+}

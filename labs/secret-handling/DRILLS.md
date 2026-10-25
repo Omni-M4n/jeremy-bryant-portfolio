@@ -1,25 +1,12 @@
 # Practice progression: Trace dummy secret exposure through config, diffs and logs
 
-Use the exact prepare/show/check commands in [README.md](README.md). Save a
-prediction before running `analyse`. Fresh folders preserve earlier attempts.
+Use the prepare, show and check commands in [README.md](README.md). Save a prediction before you run `analyse`. Use fresh folders to keep earlier attempts.
 
-1. **Guided (10 minutes):** read all three artifacts, record audience and line
-   number, then save a proposed remediation sequence before viewing the example.
-2. **With prompts (5 minutes):** Does a removed diff line remain readable? Does
-   redacting one log revoke a credential? Can you report locations without values?
-3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
-   Inspect the supplied configuration, differences and logs. Record exposures, scope limits and an ordered response, including anything the configured analyser might not cover.
-   Save decisions, evidence references and a short handover before opening
-   `analyse`, reference answers or the worked example. Record any help used.
-4. **Changed evidence (5 minutes):** use `changed`. Why does a revoked value
-   still need attention in a retained diff? In a practice copy change only its
-   state back to active, predict the sequence, and check it. Do not edit originals.
-5. **Teach back (5 minutes):** explain deletion, redaction, revocation and
-   rotation using the dummy case. State which action actually invalidates access.
-6. **Later recall (next day, 5 minutes):** name three exposure paths beyond the
-   current config and two things an exact-marker scan cannot establish.
+1. **Guided (10 minutes):** read all three evidence files. Record the audience and line numbers. Save your proposed response steps before you open the worked example.
+2. **With prompts (5 minutes):** can someone still read a removed diff line? Does hiding a value in one log revoke it? Can you report a location without copying the value?
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder. Inspect the settings, diffs and logs. Record who can see each value and the limits of the evidence. Propose the response steps in order. Check for anything the tool might miss. Save your answers, evidence and a short handover first. Then open `analyse`, the reference answers or worked example. Record any help used.
+4. **Changed evidence (5 minutes):** prepare `changed`. Check the states, locations and audiences. Predict a result for each value. In a practice copy, change only the revoked value's state to active. Predict the full response before you check it. Do not edit the originals.
+5. **Teach back (5 minutes):** use the fake case to explain deletion, redaction, revocation and rotation. State which action makes a value stop granting access.
+6. **Later recall (next day, 5 minutes):** name three exposure paths beyond the current settings. Name two things an exact-marker scan cannot prove.
 
-For each pass record: evidence references, decision, reason, uncertainty, help
-used and one next check. Have another person review the explanation and one
-unfamiliar case if possible. Until that occurs, independent completion is
-unassessed even if every decision matches. Keep all attempts below `run/`.
+For each pass, record your decision and reason. Cite the evidence. State what is unclear, any help used and one next check. If you can, ask someone to review your words and a new case. Until then, your skill at doing this alone is unassessed, even if all labels match. Keep all attempts below `run/`.

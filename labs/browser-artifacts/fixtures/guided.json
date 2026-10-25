@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "lab_id": "browser-artifacts",
+  "case_id": "guided",
+  "title": "Collection 01",
+  "synthetic": true,
+  "context": {
+    "question": "Which history, download and cache records can be linked in this fictional session?",
+    "recording": "Fictional worksheet evidence; practical measurements are saved separately."
+  },
+  "data": {
+    "events": [
+      {
+        "id": "item-01",
+        "kind": "history",
+        "time": "2025-01-12T10:00:00Z",
+        "url": "http://library.test/item.txt",
+        "session": "session-01",
+        "state": "recorded",
+        "received": 0,
+        "expected": 0
+      },
+      {
+        "id": "item-02",
+        "kind": "download",
+        "time": "2025-01-12T10:00:08Z",
+        "url": "http://library.test/item.txt",
+        "session": "session-01",
+        "state": "complete",
+        "received": 40,
+        "expected": 40
+      },
+      {
+        "id": "item-03",
+        "kind": "cache",
+        "time": "2025-01-12T10:00:10Z",
+        "url": "http://library.test/item.txt",
+        "session": "session-01",
+        "state": "recorded",
+        "received": 0,
+        "expected": 0
+      }
+    ]
+  },
+  "artifacts": {}
+}

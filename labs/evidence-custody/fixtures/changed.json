@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "lab_id": "evidence-custody",
+  "case_id": "changed",
+  "title": "Collection 02",
+  "synthetic": true,
+  "context": {
+    "question": "Can this copy be traced to the recorded source without hiding a handling gap?",
+    "recording": "Fictional worksheet evidence; practical measurements are saved separately."
+  },
+  "data": {
+    "files": [
+      {
+        "id": "item-01",
+        "source": "source-01",
+        "acquired_utc": "2025-01-12T10:00:00Z",
+        "handler": "handler-01",
+        "source_before": "b6a98d9ce9a2d9149288fa3df42d377c3e42737afdcdaf714e33c0a100b51060",
+        "copy": "5da8f23decf397b13f4f55b6fb8a61936238bfe08ed9d901132974f1beccc45c",
+        "source_after": "b6a98d9ce9a2d9149288fa3df42d377c3e42737afdcdaf714e33c0a100b51060",
+        "handling": [
+          {
+            "time": "2025-01-12T10:00:01Z",
+            "action": "copy"
+          },
+          {
+            "time": "2025-01-12T10:00:02Z",
+            "action": "hash"
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {}
+}

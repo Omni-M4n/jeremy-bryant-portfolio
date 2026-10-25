@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "lab_id": "api-schema-validation",
+  "case_id": "changed",
+  "title": "Order limits",
+  "synthetic": true,
+  "question": "Which values sit at or beyond the documented edges?",
+  "data": {
+    "requests": [
+      {
+        "body": "{\"name\":\"ABCDEFGHIJKLMNOPQRST\",\"count\":5}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"ABCDEFGHIJKLMNOPQRSTU\",\"count\":5}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"Pear\",\"count\":true}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "content_type": "application/json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "item-01": "history-record",
+    "item-02": "download-complete-linked",
+    "item-03": "cache-linked"
+  },
+  "observations": [
+    "item-01: kind=history; earlier same-session URL records=none; bytes=0/0.",
+    "item-02: kind=download; earlier same-session URL records=item-01; bytes=40/40.",
+    "item-03: kind=cache; earlier same-session URL records=item-01; bytes=0/0."
+  ],
+  "limitations": [
+    "This is a fictional SQLite schema with explicit UTC times, not a Chrome/Firefox profile parser. No real browser history is read.",
+    "Records do not identify the person at the keyboard or prove page attention. Missing history can reflect deletion, private browsing, collection gaps or no visit."
+  ]
+}

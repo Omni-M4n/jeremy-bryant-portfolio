@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "status": 200,
+      "response": {
+        "method": "GET",
+        "target": "/inspect?item=red+apple",
+        "query": {
+          "item": [
+            "red apple"
+          ]
+        },
+        "note": "desk-1",
+        "body": "",
+        "form": {}
+      }
+    },
+    {
+      "status": 200,
+      "response": {
+        "method": "POST",
+        "target": "/inspect",
+        "query": {},
+        "note": "desk-1",
+        "body": "item=red+apple",
+        "form": {
+          "item": [
+            "red apple"
+          ]
+        }
+      }
+    }
+  ]
+}

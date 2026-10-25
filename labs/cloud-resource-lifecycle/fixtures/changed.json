@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-resource-lifecycle",
+  "case_id": "changed",
+  "title": "Garden resource register",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "today": 10,
+    "budget_units": 100,
+    "spent_units": 100,
+    "resources": [
+      {
+        "id": "r1",
+        "owner": "team-garden",
+        "expires_day": 20,
+        "daily_units": 4,
+        "depends_on": [
+          "r2"
+        ],
+        "retain": false
+      },
+      {
+        "id": "r2",
+        "owner": "team-garden",
+        "expires_day": 20,
+        "daily_units": 2,
+        "depends_on": [],
+        "retain": false
+      }
+    ],
+    "delete_order": [
+      "r2",
+      "r1"
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

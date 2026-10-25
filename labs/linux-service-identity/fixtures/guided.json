@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "lab_id": "linux-service-identity",
+  "case_id": "guided",
+  "title": "Room timer",
+  "synthetic": true,
+  "context": {
+    "question": "Which identity is running, and which exact command is listed?"
+  },
+  "data": {
+    "service": {
+      "id": "s1",
+      "configured_user": "labsvc",
+      "observed_user": "labsvc",
+      "state": "active"
+    },
+    "rules": [
+      {
+        "run_as": "labsvc",
+        "executable": "/usr/bin/id",
+        "arguments": [
+          "-u"
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "run_as": "labsvc",
+        "executable": "/usr/bin/id",
+        "arguments": [
+          "-u"
+        ]
+      },
+      {
+        "id": "q2",
+        "run_as": "labsvc",
+        "executable": "/usr/bin/id",
+        "arguments": [
+          "-un"
+        ]
+      }
+    ]
+  },
+  "artifacts": {}
+}

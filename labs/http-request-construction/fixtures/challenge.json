@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "lab_id": "http-request-construction",
+  "case_id": "challenge",
+  "title": "Label desk",
+  "synthetic": true,
+  "question": "How are plus signs, repeats and empty values recorded?",
+  "data": {
+    "requests": [
+      {
+        "method": "GET",
+        "target": "/inspect?tag=a%2Bb&tag=a+b&empty=",
+        "body": "",
+        "content_type": "",
+        "note": ""
+      },
+      {
+        "method": "GET",
+        "target": "/inspect?tag=%ZZ",
+        "body": "",
+        "content_type": "",
+        "note": ""
+      }
+    ]
+  }
+}

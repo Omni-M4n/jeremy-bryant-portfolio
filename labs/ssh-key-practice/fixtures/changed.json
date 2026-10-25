@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "lab_id": "ssh-key-practice",
+  "case_id": "changed",
+  "title": "Window connection",
+  "synthetic": true,
+  "context": {
+    "question": "What did each login test prove, and is recovery tested?"
+  },
+  "data": {
+    "expected_user": "labuser",
+    "expected_key": "k1",
+    "host_fingerprint_match": true,
+    "recovery_console_tested": true,
+    "trials": [
+      {
+        "id": "t1",
+        "user": "labuser",
+        "key": "k1",
+        "result": "accepted",
+        "method": "password"
+      },
+      {
+        "id": "t2",
+        "user": "labuser",
+        "key": "k2",
+        "result": "transport-error",
+        "method": "none"
+      }
+    ]
+  },
+  "artifacts": {}
+}

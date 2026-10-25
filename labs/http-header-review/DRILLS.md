@@ -2,40 +2,40 @@
 
 ## 1. Guided evidence pass
 
-Prepare guided as `run/attempt-01`. Keep WORKED-EXAMPLE closed initially. Read the question, mark scope and evidence sources, then fill every decision and a short explanation. Use the vocabulary if needed and record that help. Allow 30-45 minutes for this first pass.
+Prepare guided as `run/attempt-01`. Keep WORKED-EXAMPLE closed. Read the question and note the scope. Find the evidence, predict each decision and explain it. Use the word list if needed and record that help. Allow 30–45 minutes, or split the work into short sessions.
 
 ## 2. Fewer prompts
 
-Work through these questions before opening the analysis:
+Try these questions before opening the analysis:
 
-- Which requirements apply to every response, and which depend on response context?
+- Which rules apply to every response? Which depend on what the response contains?
 - Are Secure and HttpOnly answering the same question?
 - Why does private not satisfy the supplied no-store requirement?
 
-Check decisions, read the worked example and write one correction with its evidence reference. If every label matched, still explain the hardest choice; a lucky label is not evidence of understanding.
+Check the decisions and read the worked example. Add one correction and cite the fact that changed your mind. If every label matched, explain your hardest choice. A lucky label does not show understanding.
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Review each response and cookie against the fictional application requirements. Prioritise specific changes and explain which legitimate behaviour must remain. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
+Prepare challenge in a fresh folder. Check each response and cookie against the app's rules. Choose which gaps need attention first. Explain which valid use must still work. Save your decisions, evidence references and notes before opening analyse or any answer. The README can help with syntax and terms. Record that help. Then compare results and ask someone to review your reasons. A case you have already read is repeat practice, not an unseen test.
 
 ## 4. Changed conditions
 
-Prepare changed separately and compare its evidence with guided; keep both attempts. Predict each result before revealing analysis.
+Prepare changed in a new folder. Compare its facts with guided and keep both attempts. Predict each result before opening analysis.
 
 - Does an HSTS field on an HTTP response satisfy HTTPS delivery?
-- Why can the public non-HTML feed satisfy its requirements without CSP, a session cookie or no-store?
+- Which rules apply to each response type in this case? Cite the fields that make each rule apply or not apply.
 - Would adding every header everywhere prove the application safe? Explain the evidence limit.
 
-Write which fact changed, why the relevant rule changed or did not change, and what remains uncertain. Do not edit the shipped fixture or reference files to make an answer match.
+Name each changed fact. Show how the same rules apply to the new facts. State what remains unknown. Keep the supplied case and reference files intact.
 
 ## 5. Teach-back
 
-Explain one response-specific requirement and why a header name alone does not establish its intended effect. Use one record ID and a counterexample. If you need the worked example, say so in the help-used note, then try again later with it closed.
+Explain a rule that applies to one response type. Does the header name alone show that its control works? Use a record ID and a counterexample. If you need the worked example, log that help. Try later with it closed.
 
 ## 6. Later recall
 
-Two days later, list the separate purposes of Secure, HttpOnly and the application SameSite rule. Then reconstruct the difference between private and no-store for this exercise. Record the date, what you recalled unaided, what you checked and one remaining question. This is a practice record, not a claim of complete real-world competence.
+Two days later, recall the roles of Secure, HttpOnly and this app's SameSite rule. Explain how private and no-store differ. Record what you knew without help, what you checked and one open question. This records practice, not full skill with real systems.
 
 ## Handover
 
-Submit your own saved worksheet and a short note answering: "What is observed, where is the evidence, what is uncertain, and what should be checked next?" Include initial prediction, correction and help used. No upload or publication is part of this lab.
+Keep your worksheet and a short note. State what you saw, where the evidence is, what remains unknown and the next check. Include your first answer, corrections and help used. This lab requires no upload or public post.

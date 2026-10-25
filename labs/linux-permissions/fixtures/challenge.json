@@ -72,5 +72,5 @@
   "lab_id": "linux-permissions",
   "schema_version": 1,
   "synthetic": true,
-  "title": "A permissive file behind an unsearchable directory"
+  "title": "File and directory access review"
 }

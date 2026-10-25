@@ -1,26 +1,26 @@
 # Endpoint process context triage
 
-Read a small process tree and explain which relationships deserve a closer look without declaring that an executable is malware.
+Read a small process tree. Explain which links need a closer look. A link alone does not prove that a program is malware.
 
-This is an original, fictional, offline exercise for an introductory security learner. It is independent practice, not copied coursework or a claim of professional experience. Completion and competence remain unassessed.
+This made-up lab was written for beginners and runs offline. It is practice, not copied coursework or proof of work done in a job. No one has yet assessed your work or skill.
 
 ## Before you start
 
-Allow **30-45 minutes**: 5 minutes reading, 10 inspecting and predicting, 10 checking and explaining, and 5-20 for a changed or independent case. You need Python 3.10+ (standard library only), a terminal and a text editor. Comfort opening files, reading a small table and basic evidence notes is enough; programming, administrator rights, a Linux installation and cloud accounts are unnecessary. Previous introductory network or Wireshark practice is useful but not required.
+Allow **30-45 minutes**. Spend 5 minutes reading, then 10 on the evidence and your first choices. Spend 10 minutes checking and explaining your work. Allow 5-20 minutes for a changed case or one you try alone. You need Python 3.10+ with its built-in library, a terminal and a text editor. You should know how to open files, read a small table and make evidence notes. You do not need to write code, install Linux or have admin rights or cloud accounts. Basic network or Wireshark practice may help, but you can start without it.
 
-> **Vocabulary:** Parent: the process recorded as starting another process. Process tree: parent/child relationships. Signature: evidence about a signed file, not a promise of harmless behaviour. Triage: deciding what to inspect next. False positive: a signal with a benign explanation.
+A **parent** is the process recorded as starting another process. A **process tree** shows these parent and child links. A **signature** gives evidence about a signed file. It does not promise that the file is harmless. **Triage** means choosing what to inspect next. A **false positive** is a signal with a harmless cause.
 
 ## Evidence and exact rules
 
-The case JSON is the single authoritative input. Fixtures are guided.json, changed.json and challenge.json. All data is synthetic; artifacts is empty to avoid competing editable copies. Edit only a prepared run copy. The analyser is a pure calculation and never executes evidence text.
+The case JSON is the source used for all results. The supplied cases are guided.json, changed.json and challenge.json. All data is made up. The artifacts field is empty, so there is no second copy to edit. Edit only a copy made by prepare. The analyser just works out results. It never runs text from the evidence as a command.
 
-data.processes contains unique ID, parent ID (or null), image, role, location, signature evidence, a boolean documented-change note and an inert command string. Parents must be present and the tree must be acyclic. Roles are desktop/document/shell/service/utility; locations are system/program/user-temp; signatures are verified/unsigned/unknown. These labels are supplied evidence, not facts discovered from your computer.
+Each row in data.processes has a unique ID and parent ID, or null for no parent. It also has an image, role, location, signature evidence, approved_change and a command string. approved_change is true or false. The command is text to read, never to run. Each named parent must be present. Parent links must not form a loop. Roles are desktop, document, shell, service or utility. Locations are system, program or user-temp. Signatures are verified, unsigned or unknown. These labels come with the case. The lab does not find them on your computer.
 
-A shell whose immediate parent is a document process, or execution in user-temp, gives prioritise-context-review when there is no documented approval. Any documented change gives documented-change-context. Otherwise unsigned/unknown evidence gives signature-context-incomplete; remaining rows give no-modelled-triage-trigger. A verified signature never cancels a contextual trigger. Rules are applied in that order. The exact labels belong in answers.json.
+Use the rules in this order. First look for either of two triggers. One is a shell whose direct parent is a document process. The other is a process run from user-temp. With no documented approval, either trigger gives prioritise-context-review. Any documented change gives documented-change-context. If neither rule applies, an unsigned or unknown signature gives signature-context-incomplete. All remaining rows give no-modelled-triage-trigger. A verified signature never cancels a trigger from the process context. Put these exact labels in answers.json.
 
 ## Run the exercise
 
-Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). Commands below use `python` consistently.
+Open a terminal in this lab folder. Use your usual Python command: `python`, or `py -3` if your setup needs it. The steps below all use `python`.
 
 ```text
 python lab.py cases
@@ -28,7 +28,7 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the evidence. In run/attempt-01/answers.json, fill each decision with an exact label from the rules; add an explanation and evidence references such as record IDs or configuration line numbers. In notes.txt, separate observation, interpretation, uncertainty, next check and help used. Save your prediction before opening the answer.
+Read the evidence. Open run/attempt-01/answers.json. Fill each decision with an exact label from the rules. Add your reasons and cite the evidence. You can use record IDs or the line numbers in settings files. In notes.txt, state what you saw and what you think it means. Then state what is unknown, what to check next and what help you used. Keep these parts separate. Save your first choices before you open the answer.
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -39,18 +39,20 @@ python -m unittest -v test_lab.py
 python lab.py verify
 ```
 
-For changed/challenge use the corresponding attempt folder in show/analyse/check. prepare refuses an existing output folder. --out is relative to this lab and must be below run/; explicit input paths are relative to your terminal directory. analyse/show default to the guided fixture if --case is omitted. Exit 0 means command success or decision match; 1 means differences/incomplete written fields; 2 means invalid input or a filesystem problem. The checker verifies decision fields and the presence of writing, not the quality of reasoning. verify checks shipped examples, not learner mastery.
+For changed/challenge, use that attempt folder in show/analyse/check. prepare rejects an output folder that already exists. --out starts from this lab and must be inside run/. Input paths that you supply start from your terminal folder. analyse/show use the guided case if you omit --case.
+
+Exit 0 means the command worked or your decision fields match. Exit 1 means a choice differs or written fields are incomplete. Exit 2 means the input is invalid or there is a file error. The checker checks decision fields and whether you wrote something. It cannot judge your reasons. verify checks the supplied cases. It does not assess your skill.
 
 ## Deliverable and limits
 
-Keep case.json, answers.json and notes.txt together in the ignored run folder. Deliver a short handover: the question, your conclusion, two precise evidence references, one alternative explanation or limitation, and the next evidence you would request. State whether you used the worked example and whether you completed a fresh case unaided. Do not describe an automated match as assessment or professional experience.
+Keep case.json, answers.json and notes.txt together in the ignored run folder. Write a short handover. Include the question, your finding and two exact sources from the evidence. Give one other possible cause or limit of the evidence. State what evidence you would ask for next. Say if you used the worked example or tried a fresh case on your own. A match from the checker is not an assessment or proof of job experience.
 
-A suspicious relationship is a review priority, not proof of malware; a verified signature is not proof of safety. This bounded tree omits memory, file contents, network activity and missing telemetry; no host was inspected.
+A suspicious link is a reason to review the process. It does not prove malware. A verified signature does not prove safety. This small tree leaves out memory, file contents and network activity. It also leaves out gaps in collected data. No host was inspected.
 
-Use WORKED-EXAMPLE.md after making a first prediction, and DRILLS.md for progressively less support. Do not use these rules as an operational security verdict or modify a real host as part of this exercise.
+Use WORKED-EXAMPLE.md after you save your first choices. Use DRILLS.md to try tasks with less help. Do not use these lesson rules to judge a real host. Do not change a real host as part of this lab.
 
 ## Primary references
 
-The following documentation supports the underlying concepts; the tiny schema and explicit teaching rules above are specific to this lab. Links were checked during authoring on 23 October 2026. Running the lab needs no internet connection.
+These sources explain the ideas used here. The small data format and teaching rules belong to this lab. The links were checked when the lab was written on 23 October 2026. You need no internet link to run it.
 
 - [Microsoft Sysmon event documentation](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)

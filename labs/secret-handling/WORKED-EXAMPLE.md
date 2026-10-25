@@ -1,26 +1,12 @@
 # Worked example: Trace dummy secret exposure through config, diffs and logs
 
-Open this after saving a prediction for the guided case. The reference explains
-these fictional records; it does not assess your independent performance.
+Save a prediction for the guided case before you read this page. These are made-up records. The answer does not assess your skill at doing this alone.
 
-1. Read `app-config.txt`, `change-diff.txt` and `debug-log.txt` with their
-   audience fields. Current config uses a store reference for the export value,
-   but this is only one possible copy.
-2. `export-token` occurs at `change-diff.txt:L1` in a removed line and at
-   `debug-log.txt:L2`. Their audiences are shared and public. The supplied state
-   is active. Use `contain;revoke-and-replace;clean-copies;review-use`.
-   Deleting the config line did not invalidate the value or erase retained copies.
-3. `local-token` occurs only at `app-config.txt:L2` with audience local. Use
-   `relocate-before-sharing`. Do not paste the value into a real report.
-4. `unused-token` has no exact listed occurrence: `not-seen-in-supplied-artifacts`.
-   This does not establish it was never exposed or that these files are secret-free.
+1. Read `app-config.txt`, `change-diff.txt` and `debug-log.txt`. Check each audience field. The current settings use a store reference for the export value. That does not rule out other copies.
+2. `export-token` appears in a removed line at `change-diff.txt:L1`. It also appears at `debug-log.txt:L2`. Those files are shared and public. The state is active. Use `contain;revoke-and-replace;clean-copies;review-use`. Deleting the settings line did not stop the value from working. It did not erase the saved copies.
+3. `local-token` appears only at `app-config.txt:L2`. The audience is local. Use `relocate-before-sharing`. Do not paste the value into a real report.
+4. `unused-token` has no exact listed match. Use `not-seen-in-supplied-artifacts`. This does not prove that it was never exposed. It does not prove that these files have no other secrets.
 
-A handover can cite IDs and locations without reproducing credential text.
-Explain that access restriction and revocation/rotation address ongoing misuse;
-cleaning history and logs then addresses retained copies. Review use for evidence
-of earlier access. All these are proposed steps for dummy evidence, not actions
-performed by the command.
+Cite IDs and locations in your handover without copying secret text. Restricting access and revoking or rotating a value can stop ongoing misuse. Cleaning history and logs deals with saved copies. Review use for signs of past access. These are proposed steps for fake evidence. The command does not carry them out.
 
-After comparison, keep your original prediction and add a correction in
-`notes.txt`. State the evidence that changed your judgment. Copying the answer
-without reconstructing the evidence leaves independent understanding unassessed.
+Keep your first prediction. Add a correction in `notes.txt` after you compare it with the answer. State which evidence changed your view. Work through the evidence yourself. Copying an answer does not show that you understand it.

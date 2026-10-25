@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "step": "login",
+      "status": 200,
+      "state": "signed-in"
+    },
+    {
+      "step": "profile",
+      "status": 200,
+      "state": "signed-in"
+    },
+    {
+      "step": "logout",
+      "status": 200,
+      "state": "signed-out"
+    },
+    {
+      "step": "old-profile",
+      "status": 401,
+      "state": "signed-out"
+    },
+    {
+      "step": "login",
+      "status": 200,
+      "state": "signed-in"
+    },
+    {
+      "step": "profile",
+      "status": 200,
+      "state": "signed-in"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "item-1": "path-reachable;review-resource-permission",
+    "item-2": "path-block-observed;listed-service-checks-present",
+    "item-3": "unexpected-block;review-named-identity"
+  },
+  "observations": [
+    "item-1: staff-wifi -> records-service.test; network allow/reachable; Wi-Fi access named-users.",
+    "item-2: guest-wifi -> records-service.test; network block/blocked; Wi-Fi access named-users.",
+    "item-3: device-segment -> records-service.test; network allow/blocked; Wi-Fi access named-users."
+  ],
+  "limitations": [
+    "Configuration is a claim. Supplied observations cover one fictional path only; no radio or network test is run."
+  ]
+}

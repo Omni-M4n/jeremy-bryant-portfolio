@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "email-triage",
   "case_id": "changed",
-  "title": "A forged relay label and an authenticated lookalike domain",
+  "title": "Two message identity records",
   "synthetic": true,
   "context": {
     "question": "Which domain claims come from the supplied trusted receiver, and which discrepancies need checking?",
@@ -18,7 +18,7 @@
   "data": {
     "messages": [
       {
-        "id": "forged",
+        "id": "message-a",
         "expected_sender_domain": "museum.test",
         "from_domain": "museum.test",
         "reply_to_domain": "museum.test",
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "id": "lookalike",
+        "id": "message-b",
         "expected_sender_domain": "museum.test",
         "from_domain": "museum-billing.test",
         "reply_to_domain": "museum-billing.test",
@@ -60,6 +60,6 @@
     ]
   },
   "artifacts": {
-    "headers.txt": "[forged]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum.test; dkim=pass header.d=museum.test; dmarc=pass header.from=museum.test (record inserted-header)\nLink domains: museum.test\n\n[lookalike]\nFrom: curator@museum-billing.test\nReply-To: desk@museum-billing.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum-billing.test; dkim=pass header.d=museum-billing.test; dmarc=pass header.from=museum-billing.test (record lookalike-relay)\nLink domains: museum-billing.test\n"
+    "headers.txt": "[message-a]\nFrom: curator@museum.test\nReply-To: desk@museum.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum.test; dkim=pass header.d=museum.test; dmarc=pass header.from=museum.test (record inserted-header)\nLink domains: museum.test\n\n[message-b]\nFrom: curator@museum-billing.test\nReply-To: desk@museum-billing.test\nAuthentication-Results: mx.receiver.test; spf=pass smtp.mailfrom=museum-billing.test; dkim=pass header.d=museum-billing.test; dmarc=pass header.from=museum-billing.test (record lookalike-relay)\nLink domains: museum-billing.test\n"
   }
 }

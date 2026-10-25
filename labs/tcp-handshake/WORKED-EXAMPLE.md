@@ -1,17 +1,19 @@
 # Worked example: TCP handshake investigation
 
-Use this only after saving a first prediction for guided. It explains one case; matching it does not establish independent performance.
+Save your first choices for guided before you read this page. It explains one case. A match does not prove that you can do a new case on your own.
 
 ## Read, calculate, interpret
 
-For `gallery`, frame 1 has SYN sequence 1000. The next client number is 1001. Frame 2 has server sequence 9000 and acknowledges 1001. The next server number is 9001. Frame 3 carries client sequence 1001 and acknowledgement 9001, so all three events support `handshake-observed`.
+For `gallery`, frame 1 has SYN sequence 1000. The next client number is 1001. Frame 2 has server sequence 9000 and ACK 1001. The next server number is 9001. Frame 3 has client sequence 1001 and ACK 9001. All three events support `handshake-observed`.
 
-For `archive`, frame 4 has SYN 2000 and frame 5 is RST-ACK acknowledging 2001. Record `reset-observed`; the sender or an intermediary could explain a reset, and this excerpt cannot establish the cause. For `catalogue`, frames 6 and 8 contain the same SYN sequence 3000 with no server response. Use `no-response-observed`. Do not turn that observation into "the firewall blocked it".
+For `archive`, frame 4 has SYN 2000. Frame 5 is RST-ACK with ACK 2001. Record `reset-observed`. The sender or a device on the path could cause a reset. This excerpt cannot prove the cause.
 
-Record frame IDs with the arithmetic before opening the reference output. An example limitation is: "The excerpt may omit a server response because capture completeness is not guaranteed."
+For `catalogue`, frames 6 and 8 have the same SYN sequence 3000. There is no server response in the excerpt. Use `no-response-observed`. Do not turn that finding into "the firewall blocked it".
+
+Record frame IDs and your sums before opening the set answer. You could state this limit: "The excerpt may miss a server response. We do not know if the capture is complete."
 
 ## Check and revise
 
-Run `python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json`, then reveal `python lab.py analyse --case run/attempt-01/case.json`. Compare decision fields and the reasoning. If a label differs, identify the exact missed input or rule; copying the reference label without explaining the change is not enough.
+Run `python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json`. Then view `python lab.py analyse --case run/attempt-01/case.json`. Compare the decision fields and reasons. If a label differs, find the exact input or rule you missed. Explain the change in your own words.
 
-Keep a short correction in notes: "I first predicted __ because __. The evidence at __ changed that to __. I still cannot conclude __." A matching label can still have a mistaken explanation, so use the handover prompt with another person or teach it back aloud.
+Keep a short note: "I first chose __ because __. The evidence at __ changed that to __. I still cannot conclude __." A label can match even if your reason is wrong. Use the handover questions with another person, or explain your choices aloud.

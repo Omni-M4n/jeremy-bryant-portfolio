@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "lab_id": "network-loss-diagnosis",
+  "case_id": "guided",
+  "title": "Flow notebook 1",
+  "synthetic": true,
+  "context": {
+    "question": "What can these bytes and times support, and which causes remain unknown?",
+    "note": "Hand-built packet extract, not an actual capture. Sequence anchors are supplied from the imagined handshake. Both directions share one capture clock."
+  },
+  "data": {
+    "client_start": 1000,
+    "server_start": 5000,
+    "request_bytes": 100,
+    "capture_drops": 0,
+    "packets": [
+      {
+        "id": "f01",
+        "at_ms": 0,
+        "side": "client",
+        "kind": "data",
+        "seq": 1000,
+        "length": 100,
+        "ack": null
+      },
+      {
+        "id": "f02",
+        "at_ms": 200,
+        "side": "client",
+        "kind": "data",
+        "seq": 1000,
+        "length": 100,
+        "ack": null
+      },
+      {
+        "id": "f03",
+        "at_ms": 210,
+        "side": "server",
+        "kind": "ack",
+        "seq": null,
+        "length": 0,
+        "ack": 1100
+      },
+      {
+        "id": "f04",
+        "at_ms": 220,
+        "side": "server",
+        "kind": "data",
+        "seq": 5000,
+        "length": 20,
+        "ack": null
+      }
+    ]
+  },
+  "artifacts": {}
+}

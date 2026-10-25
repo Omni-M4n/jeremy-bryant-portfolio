@@ -34,5 +34,5 @@
   "lab_id": "backup-verification",
   "schema_version": 1,
   "synthetic": true,
-  "title": "Missing scope and a retention boundary"
+  "title": "Recovery requirements and retained copies"
 }

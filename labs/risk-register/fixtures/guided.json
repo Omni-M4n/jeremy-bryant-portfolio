@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "case_id": "guided",
+  "title": "The loan cupboard",
+  "synthetic": true,
+  "context": {
+    "question": "A loan laptop is missing. A score alone does not tell anyone what to do. Write who owns the concern, what they will change and when they will review it.",
+    "score_evidence": "Read risk-notes.txt and cite its evidence IDs. Scores are proposals; record unsupported reasons as gaps."
+  },
+  "data": {
+    "as_of": "2026-10-25",
+    "risks": [
+      {
+        "id": "item-1",
+        "scenario": "A lost loan laptop may expose a fictional contact list",
+        "likelihood": 2,
+        "impact": 3,
+        "treatment": "reduce",
+        "owner": "device-owner",
+        "review": "2026-11-01",
+        "likelihood_after": 1,
+        "impact_after": 2,
+        "control_verified": false,
+        "acceptance": false,
+        "controls": [
+          "physical: locked storage",
+          "process: lost-device reporting",
+          "technical: encryption, lock and limited offline contact cache"
+        ],
+        "assumption": "The laptop may have been unlocked when lost"
+      },
+      {
+        "id": "item-2",
+        "scenario": "An unverified visitor may enter the work room",
+        "likelihood": 1,
+        "impact": 2,
+        "treatment": "accept",
+        "owner": "device-owner",
+        "review": "2026-11-01",
+        "likelihood_after": 1,
+        "impact_after": 2,
+        "control_verified": false,
+        "acceptance": false,
+        "controls": [
+          "physical: staffed entry",
+          "process: verify booking",
+          "technical: screen lock"
+        ],
+        "assumption": "Visitor identity has not been checked"
+      }
+    ]
+  },
+  "artifacts": {
+    "risk-template.md": "# Risk register\n\n| ID | Event and harm | Likelihood reason and evidence ID | Impact reason and evidence ID | Treatment and why | Owner | Action and date | Residual reason | Review | Assumption |\n|---|---|---|---|---|---|---|---|---|---|\n\nPhysical control:\nProcess control:\nTechnical control:\nDraft reporting action (not sent):\n",
+    "risk-notes.txt": "Fictional case notes, not records of a real test. G1-G5 describe the baseline; G3 separately describes proposed changes.\nG1 | item-1 | A loan laptop went missing after one scheduled handover at a desk beside the public waiting area. Visitors could approach that desk during the handover. No repeated unattended handovers are documented.\nG2 | item-1 | The supplied inventory lists an offline contact file containing home addresses and confidential support needs. The laptop's lock and encryption state at the time of loss are not supplied. No access to the file is confirmed; the harm being assessed is possible sensitive-record exposure.\nG3 | item-1 | Proposed changes: locked storage with named checkout, prompt lost-device reporting, encryption and automatic lock, and removal of sensitive support fields from the offline cache. The remaining cache would contain only a small team's work numbers. None of these changes has a supplied verification record; the lower opportunity and limited-exposure scores are projections.\nG4 | item-2 | The unverified visitor is waiting in reception. The workroom badge door is closed and a receptionist normally admits booked visitors. No unauthorised entry or repeated entry opportunity is documented; entry would require an unusual access mistake or tailgate.\nG5 | item-2 | The room contains the sole paper shift rota used by a two-person booking team. Misplacement would stop that team's scheduling until it was reconstructed. No sensitive client file is listed in the room. Staffed entry, booking checks and screen lock are proposed controls, but no new check or owner acceptance is supplied.\n"
+  },
+  "lab_id": "risk-register"
+}

@@ -1,0 +1,20 @@
+{
+  "decisions": {
+    "c1": "not-observed",
+    "c2": "matches-requirement",
+    "c3": "exception-active",
+    "c4": "exception-expired",
+    "u1": "normal-use-not-tested"
+  },
+  "observations": [
+    "c1: service-active; observed=none; age-days=none; active-exception=false.",
+    "c2: updates-pending; observed=0; age-days=1; active-exception=false.",
+    "c3: standard-user; observed=false; age-days=1; active-exception=true.",
+    "c4: lock-seconds; observed=600; age-days=1; active-exception=false.",
+    "u1: normal-use=not-run."
+  ],
+  "limitations": [
+    "This is a four-control lab baseline, not a complete hardening standard or a measure of endpoint safety.",
+    "Supplied observations and approvals need real evidence. Passing controls does not replace a normal-use test or resolve an expired exception."
+  ]
+}

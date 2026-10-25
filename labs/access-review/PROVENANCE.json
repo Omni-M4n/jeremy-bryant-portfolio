@@ -15,8 +15,8 @@
     "fixtures/worked-example/solution-policy.json": "319238a99171b9da000ff62c0351de0a6c808b1f825d7f9dc394ce69e09cff99",
     "fixtures/worked-example/START-HERE.txt": "77f429dd3ef99088ab45f226960e054ee372898239828e4f8033aa1247a042be",
     "fixtures/worked-example/starting-policy.json": "7e2e8800dff506ff204e22df207b8c9154eb739fb898c6b70e6a175edc0d6db8",
-    "lab.py": "34d10b3d84de838b1364f5b527ab7adb728c96f7f29d95098dc5b1535096033d",
-    "README.md": "a4de5e71685ca58b68805a63dea06741d2e647c209ec8e098a03edbf66967703",
-    "test_lab.py": "fe0256f1880406afac1c9afde54d532d4404cd842f3135aae5ae07ca1cc1925c"
+    "lab.py": "cbe708a4d0bf27c45f41ae2661242985e03b029c1b1ed77e55b9a71fe9405f84",
+    "README.md": "7d77c1ce7a7e1bb63f9d044e0532fdfb216e6474776f5261f92685c31e04ad33",
+    "test_lab.py": "ab0362374cb4301cca2ff923c82f21ee4fb2c8e777ec74eeaefca8ad248d12b8"
   }
 }

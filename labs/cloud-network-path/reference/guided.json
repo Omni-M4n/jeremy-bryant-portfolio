@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q1": "reachable-in-model",
+    "q2": "inbound-not-allowed",
+    "q3": "no-public-address"
+  },
+  "observations": [
+    "q1: direct 192.0.2.8 -> e1:443; result=reachable-in-model.",
+    "q2: direct 198.51.100.8 -> e1:443; result=inbound-not-allowed.",
+    "q3: direct 192.0.2.8 -> e2:443; result=no-public-address."
+  ],
+  "limitations": [
+    "IPv4 TCP only. Return routing uses longest-prefix match. Inbound rules allow traffic; established replies and internal outbound traffic are assumed allowed.",
+    "No NAT gateway, IPv6, DNS, network ACL, operating-system firewall or application authentication is modelled. A relay exists only when explicitly listed; this is not a cloud test."
+  ]
+}

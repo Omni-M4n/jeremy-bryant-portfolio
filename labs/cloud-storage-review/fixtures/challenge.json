@@ -11,7 +11,7 @@
     "account_block_public": false,
     "buckets": [
       {
-        "id": "mislabelled-site",
+        "id": "bucket-c1",
         "purpose": "public-site",
         "data_class": "restricted",
         "bucket_block_public": false,
@@ -21,7 +21,7 @@
         "approval": "approved"
       },
       {
-        "id": "deny-overrides",
+        "id": "bucket-c2",
         "purpose": "internal",
         "data_class": "internal",
         "bucket_block_public": false,
@@ -31,7 +31,7 @@
         "approval": "none"
       },
       {
-        "id": "forgotten-acl",
+        "id": "bucket-c3",
         "purpose": "internal",
         "data_class": "internal",
         "bucket_block_public": false,

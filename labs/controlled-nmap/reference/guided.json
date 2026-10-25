@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "s01": "open-listener-corroborated;label-probe-consistent",
+    "s02": "closed-consistent-with-snapshot",
+    "s03": "closed-consistent-with-snapshot"
+  },
+  "observations": [
+    "s01: 192.0.2.10:8000 open; local=target/http; label=probe/http.",
+    "s02: 192.0.2.10:8001 closed; local=loopback/http; label=none/-.",
+    "s03: 192.0.2.10:8002 closed; local=none; label=none/-."
+  ],
+  "limitations": [
+    "Supplied TCP connect scan rows and local listener notes are separate observations; timing, filtering and forwarding can explain disagreement.",
+    "Port-name guesses and service probes do not establish a precise product version, vulnerability or ownership. No scan is executed by this helper."
+  ]
+}

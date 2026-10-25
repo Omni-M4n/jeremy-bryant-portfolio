@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "lab_id": "rate-limit-lab",
+  "case_id": "guided",
+  "title": "Ticket desk",
+  "synthetic": true,
+  "question": "When does the next request become usable?",
+  "data": {
+    "steps": [
+      "ticket",
+      "ticket",
+      "ticket",
+      "ticket",
+      "wait",
+      "ticket"
+    ]
+  }
+}

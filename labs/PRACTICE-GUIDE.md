@@ -1,9 +1,15 @@
 # Security foundations: practice guide
 
-Updated 25 October 2026. Original guided exercises using fictional data. The
+Updated 25 October 2026. These guided exercises use fictional data. The
 [complete lab library](https://jeremy-bryant.pages.dev/security-labs/library/)
-lists the current core labs and extensions. Prepared materials and independent
-skill are tracked separately.
+lists all 86 packages: 61 core labs and 25 extensions. An extension adds practice
+to a core topic. Prepared materials do not show that a learner has done the work.
+
+Use the [full summer study plan](SUMMER-STUDY-PLAN.md) to choose your route and
+pace. It places all 86 packages in a checked order. Its
+[JSON companion](SUMMER-STUDY-PLAN.json) lists exact session codes and the skills
+needed first. The [website study plan](https://jeremy-bryant.pages.dev/security-labs/study-plan/)
+offers the same starting point. This guide explains how to practise one task.
 
 Website: https://jeremy-bryant.pages.dev/security-labs/
 Source and downloads: https://jeremy-bryant.pages.dev/source/
@@ -11,70 +17,90 @@ Download: https://jeremy-bryant.pages.dev/downloads/jeremy-bryant-portfolio.zip
 
 ## The goal
 
-Understand each task well enough to perform it, explain your decisions, spot a
-mistake and handle a changed example. A successful reference check tests the
-materials; it does not assess the learner. Independent practice is pending.
+Learn to do each task, explain your choices, spot a mistake and handle new facts.
+A reference check tests the materials. It does not assess the learner. No
+reviewed solo completion is recorded here.
 
-You can use command help and your own notes. Understanding the evidence matters
-more than memorising flags or typing quickly. These are beginner exercises;
-writing the supporting Python utilities is not part of the learner's task.
+You can use command help and your own notes. A command is an instruction you type
+for a program. A flag is an option that changes what the command does. Evidence
+is the record that supports a finding. Focus on what it shows, not typing speed.
+Most labs use helper tools that are already written. The Python log-helper lab
+is an exception: it asks you to write a small helper from a clear set of rules.
 
 ## Choose the next skill
 
-Start with the listed prerequisites. A new package is not a deadline or a claim
-that you should already know the topic. Each package includes its own worked
-example, fresh cases and questions to explain aloud.
+Start with the listed prerequisites: the skills needed before this task. A new
+package is not a deadline. Each package has a worked example, cases and questions
+to explain aloud. A case is one set of facts to work through. A case you have
+already read is useful for rehearsal, but it is no longer unseen.
 
-For the workbench, first draw the boundary between the practice computer and
-your everyday files. For command practice, predict what path or process a
-command will refer to. For routing and ARP/DHCP, draw one packet's path and name
-the record that supports each step. For cloud responsibility, name the exact
-job before assigning its owner. For recovery keys, list what a saved file still
-needs before it can be restored.
+The summer plan starts with scope, shell practice and the workbench boundary.
+Scope means the work and systems you are allowed to use. A shell runs typed
+commands. For shell practice, predict which path or process a command will use.
+A path tells you where a file is. A process is a running program.
 
-Use the offline evidence first. Complete a real tool workflow only in the
-separate environment named in its README. Save which part you actually ran.
-Later, try an unfamiliar case with the worked example and reference answer
-closed. Record a result as independent only after a reviewer checks both the
-evidence and your explanation.
+For the workbench, draw a line between the practice computer and everyday files.
+For routing and ARP/DHCP, draw one packet's path. A packet is a small chunk of
+network data. Point to the record for each step. For cloud responsibility, name
+the job before choosing who must do it. For recovery keys, list what else a
+saved file needs before it can be restored.
+
+Use the offline evidence first. Run a real tool task only in the prepared
+environment named in its README. Save which part you actually ran. A supplied
+log or packet file is useful practice. It does not prove that you collected it.
+Keep an offline review and an actual tool review as separate records.
 
 ## One short session
 
-Allow roughly 15 to 25 minutes, or stop after one concept if that suits you.
+Allow roughly 20 to 25 minutes, or stop after one idea if that suits you. Split
+a longer task across sessions. Stop at a safe point and save the next step.
 
 1. Recall: explain one idea from the last session before opening your notes.
 2. Predict: write what you expect a check to show and why.
 3. Do: perform one small task and keep the evidence visible.
-4. Explain: say what the result means, and what it cannot establish.
+4. Explain: say what the result means, and what it cannot prove.
 5. Record: save the attempt, help used and one thing to revisit.
 
-If a step is unclear, reduce it to one question. Repeat that part with a new
-example before adding the next concept. Keep earlier attempts; a correction is
-useful evidence of learning, not a reason to erase the first answer.
+If a step is unclear, reduce it to one question. Try that part with new facts
+before adding the next idea. Keep earlier attempts. Save corrections beside the
+first answer so you can see what changed and why.
 
-## Start with these six topics
+## Keep the practice stages clear
 
-Before presenting an exercise as completed work, save a short evidence record:
-the scoped question, original inputs, commands or actions, result, explanation,
-limitations and any help used. For a repair, include a legitimate case that must
-still work as well as the case that should now be blocked.
+Before calling work complete, save a short record. Include the scoped question,
+original inputs, commands or actions, result, explanation, limits and help used.
+For a repair, test a case that should be blocked. Also test normal use that must
+still work. Save both results.
 
-Use these readiness stages for each topic:
+Use these stages for each topic. The summer plan gives each pass a code.
 
-- **Prepared:** the materials are available; no learner attempt is implied.
-- **Guided:** you completed a case with prompts and can locate the evidence.
-- **Independent:** you saved your reasoning before revealing the answer, and a
-  reviewer checked both the conclusion and its explanation.
-- **Transfer:** you solved an unfamiliar variation, explained an alternative
-  interpretation and identified the evidence that would distinguish it.
-- **Retained:** after a delay, you repeated the essential reasoning on a new
-  case and corrected any mistake without copying the earlier answer.
+- **Prepared:** the materials are ready. This says nothing about a learner attempt.
+- **Guided (G):** follow the example. Explain each step and locate its evidence.
+- **Solo (S):** on another day, try without the worked answer. Save your first
+  answer before a check shows the solution. Solo work still needs review.
+- **Unseen (U):** on another day, try fresh facts that need different reasoning.
+  Close worked examples, old answers and answer keys. Explain the result aloud.
+- **Reviewed:** a person checks the saved answer, evidence and explanation.
+  They also check an alternative explanation and what evidence could separate it.
+  Record "awaiting review" if a reviewer or fresh case is not ready.
+- **Recall (R7 and R28):** about 7 and 28 days after U, try different facts.
+  Save what you remembered and fix errors without copying the old answer.
 
-A reference pass, remembered command or captured flag does not by itself move
-an exercise to the next stage. Looking up command syntax is normal; record the
-help used and distinguish it from help with the reasoning. A later CTF or
-hackathon exercise should use the organiser's authorised scope and end with
-an explanation of why the result works and what its limits are.
+A reference pass, remembered command or captured flag cannot award a stage.
+Command help and model rules are allowed. Log them. If you need a hint about the
+answer, record a prompted attempt. Try fresh facts later. Save your first answer
+before a check or analysis reveals the result.
+
+Transfer means using the skill on a new problem. Retained means you can still
+use it after a delay. These need evidence and review. A later capture-the-flag
+challenge (CTF) or hackathon must stay within the organiser's permitted scope.
+A flag is a task's answer token. Explain why your result works and its limits;
+a guessed token alone is not enough.
+
+## The original six topic guides
+
+These were the first six labs in the library. Their numbers are historical;
+the summer plan sets the starting route for the full library.
 
 ### 1. DNS investigation: questions and replies
 
@@ -88,10 +114,11 @@ Start in `dns-triage/README.md`. Use the generated packet file in Wireshark.
 Explain without notes: Why is a name-not-found reply different from silence?
 Why could two different requests have the same transaction number?
 
-Changed case: use a new seed, find the late answer, and identify the reused
-transaction number without copying the earlier frame numbers.
+Changed case: use the documented variant. Match each question to any visible
+reply. Work out the timing and explain any gaps or overlap. Save the packet
+references before checking the answer. A new seed may change only labels.
 
-Save: a small table of findings, packet references, timing and two limitations.
+Save: a small table of findings, packet references, timing and two limits.
 Common trap: calling an absent reply proof that the DNS server is broken.
 
 ### 2. Login triage: a pattern needs context
@@ -106,10 +133,10 @@ Start in `login-triage/README.md`, then use `PRACTICE.md`.
 Explain without notes: What makes a threshold useful? Why does a successful
 login after failures still leave questions about who used the account?
 
-Changed case: compare a late success with failures spread over several source
-addresses. Explain what the original detector misses and why.
+Changed case: build a new timeline from the supplied events and account notes.
+Compare it with the detector output. Explain what each can and cannot show.
 
-Save: event IDs, times, an observed fact, a possible explanation and a handover.
+Save: event IDs, times, a fact, a possible explanation and a handover note.
 Common trap: treating an empty detector report as proof that nothing happened.
 
 ### 3. Access review: enough access to do the work
@@ -124,8 +151,8 @@ Start in `access-review/README.md`. Edit a practice copy of the small policy.
 Explain without notes: How does proving identity differ from deciding access?
 Why would a policy that blocks everything fail this exercise?
 
-Changed case: work through the unfamiliar roles and requirements. Do not assume
-that write access must include read access, or that everyone needs delete.
+Changed case: work through fresh roles and work needs. Decide each action from
+those needs. Do not copy the access choices from the worked example.
 
 Save: before/after policy copies, decisions and reasons tied to requirements.
 Common trap: copying the guided answer when the business requirements change.
@@ -136,16 +163,16 @@ Start in `http-triage/README.md` and follow its worked example and drills.
 
 - Find the source, time, method, requested path and response status.
 - Group related requests and read the surrounding context.
-- Separate an ordinary crawler from a pattern that deserves investigation.
+- Compare each request pattern with its context and decide what needs a check.
 - Name the extra evidence needed to understand the application outcome.
 
 Explain without notes: What does a 404 tell you? What does a 200 response fail
 to tell you about whether an attempted action succeeded?
 
-Changed case: compare scenarios with different context or incomplete logging.
-Decide whether your confidence or next check should change.
+Changed case: read the new request records and context. Decide what the evidence
+supports, where it is weak and what to check next.
 
-Save: request references, a short timeline and a measured escalation decision.
+Save: request references, a short timeline and reasons to pass the case on or stop.
 Common trap: calling an unusual URL or a 200 response proof of compromise.
 
 ### 5. File integrity: changed does not mean malicious
@@ -160,8 +187,8 @@ Start in `file-integrity/README.md`. Work only with the generated dummy files.
 Explain without notes: What does a SHA-256 mismatch establish? Why could an
 untrusted baseline make a correct comparison unhelpful?
 
-Changed case: compare approved edits with unexpected changes. Check how your
-conclusion changes when the baseline cannot be trusted.
+Changed case: compare the new files with the supplied baseline and approval
+notes. Check the source of that baseline. Explain what you can conclude.
 
 Save: the comparison, approval evidence, unknowns and proposed next action.
 Common trap: treating a changed hash as proof of malware, or a matching hash as
@@ -180,73 +207,79 @@ Explain without notes: Why might a deny rule never take effect? Why does a TCP
 rule not automatically allow the same port number over UDP? Why does allowing
 one packet not prove that a complete connection will succeed?
 
-Changed case: fix a broad allow, then check missing legitimate traffic and
-a protocol difference. Avoid repairing one case by allowing everything.
+Changed case: trace the supplied packets through the new rules. Compare each
+result with the stated needs. If a change is needed, test it against every case.
 
 Save: the matching rule for each test, before/after decisions and your reasons.
 Common trap: checking only that suspicious traffic is blocked and overlooking
 the connection someone needs for their work.
 
-## Twenty additional topics
+## The original twenty additional topics
 
 Catalog: https://jeremy-bryant.pages.dev/security-labs/foundations/
 
-These extend the first six exercises. They demonstrate the scope of the practice
-materials, not completed professional experience. Choose one topic using its
-prerequisites. You do not need to finish a whole track before changing topics.
+These twenty followed the first six. Numbers 07–26 below refer to that original
+set, not the new study-plan order. They show what the materials cover, not work
+experience. Check the skills needed first. You may then choose a ready topic.
 
 Network investigation and testing:
 
-07. Asset discovery: compare a saved scan with the authorised inventory. Produce
-    an evidence table of observed, expected and unobserved services.
-08. TCP handshakes: trace SYN, SYN/ACK, ACK and reset evidence. Explain why missing
-    packets can prevent a conclusion about the whole connection.
-09. TLS review: check decoded certificate facts against hostname and time. Name
-    the trust assumptions that these saved fields cannot verify.
-10. HTTP headers: review response and cookie settings against a small application
-    policy. Explain the limits of a header-only review.
-11. Vulnerability prioritisation: order fictional findings using a stated local
-    rubric. Explain the reason for each priority and what remains unknown.
-12. Vulnerability retesting: compare before-and-after evidence. Separate a
-    demonstrated fix from an unchanged issue or an inconclusive retest.
-13. Email triage: compare message identities with trusted receiving evidence.
-    Explain why a display name or one authentication result is insufficient.
+07. Asset discovery: compare a saved scan with the approved list of assets.
+    Make a table of services seen, expected and not seen.
+08. TCP handshakes: trace SYN, SYN/ACK, ACK and reset evidence. These are steps
+    that start or reject a connection. Explain what missing packets leave unclear.
+09. TLS review: check the saved certificate facts against the host name and time.
+    A certificate helps prove a server's identity. State which trust checks need
+    more evidence than these saved fields.
+10. HTTP headers: review response and cookie settings against the app's rules.
+    Headers carry details with a web request or reply. State what they cannot prove.
+11. Vulnerability prioritisation: rank fictional findings with the given rules.
+    A vulnerability is a weakness that could cause harm. Explain each rank and
+    what is still unknown.
+12. Vulnerability retesting: compare evidence from before and after a change.
+    Decide if the fix is shown, the issue remains or the test leaves doubt.
+13. Email triage: compare the message identities with trusted records from the
+    receiving system. Explain why a display name or one identity check is not enough.
 
 Defensive operations and recovery:
 
-14. Endpoint triage: trace a process relationship and compare it with authorised
-    activity. Write a next-check request without declaring malware from a name.
-15. Scheduled tasks: review timing, execution identity, paths and approvals.
-    Separate an explained maintenance change from one needing investigation.
-16. Timelines: convert offsets to UTC and account for clock uncertainty.
-    Mark events whose order cannot be established reliably.
-17. Alert correlation: distinguish duplicate records from related activity.
-    Explain why a group of alerts is not automatically one proven incident.
-18. Backup verification: compare scope, age and restore-check evidence with
-    recovery requirements. State which recovery claims remain untested.
-19. Linux permissions: select the correct owner/group/other permission class.
-    Check both file permissions and the required directory traversal rights.
-20. SSH configuration: review the supported directives against stated needs.
-    Identify configurations outside the small parser's model instead of guessing.
+14. Endpoint triage: trace which process started another. Compare this with
+    approved work. Ask for the next check. A name alone does not prove malware.
+15. Scheduled tasks: check when a task runs, its account, paths and approvals.
+    Decide whether the change is explained or needs more work.
+16. Timelines: convert time offsets to UTC, the shared world time standard.
+    Allow for clock error. Mark events whose order is unclear.
+17. Alert correlation: separate copies of the same record from related activity.
+    Explain why a group of alerts does not prove one incident.
+18. Backup verification: check what was saved, when it was saved and any restore
+    tests. Compare this with recovery needs. State which claims still need a test.
+19. Linux permissions: choose the correct owner/group/other class. Check rights
+    for the file and for passing through each folder on its path.
+20. SSH configuration: review the supported settings against the stated needs.
+    SSH provides remote login. State when a setting is outside this small model.
 
 Cloud, identity and configuration:
 
-21. Storage exposure: review sharing in a simplified fictional storage model.
-    Explain how its controls interact and what a real platform would still need.
+21. Storage exposure: review sharing in a small fictional storage model.
+    Explain how the controls work together. State what a real service still needs.
 22. Identity lifecycle: decide what changes when someone joins, moves or leaves.
-    Account for effective dates and documented exceptions.
-23. MFA review: compare account requirements, enrolment and recovery evidence.
-    Explain why an enrolment flag alone does not prove complete protection.
+    Use the dates when changes take effect and any recorded exceptions.
+23. MFA review: compare account needs, setup records and recovery evidence.
+    MFA means using more than one kind of proof to sign in. Explain why a setup
+    flag alone does not prove that the whole account is protected.
 24. Cloud audit triage: follow identities and actions across saved events.
-    Separate successful actions, failed attempts and missing observations.
-25. Secret handling: locate deliberately fake sensitive values in the wrong
-    places. Describe an ordered response and the places that still need checking.
-26. Dependency review: compare installed versions with fictional advisory ranges.
-    Distinguish a version match from proof that an attack can succeed.
+    Separate actions that worked, failed attempts and gaps in the record.
+25. Secret handling: find fake sensitive values in the wrong places. Secrets
+    include passwords and access keys. Set out the response steps in order.
+    List places that still need a check.
+26. Dependency review: compare installed versions with fictional warning ranges.
+    A dependency is software that another program needs. Explain why a version
+    match does not prove that an attack would work.
 
-Each folder's README defines exact inputs and supported decisions. Its worked
-example explains the evidence. DRILLS.md adds an independent case, teach-back
-questions and a later recall exercise. Read those limits before using a result.
+Each folder's README gives the exact inputs and allowed decision labels. Its
+worked example explains the evidence. DRILLS.md adds solo practice, teach-back
+questions and later recall. Read the limits before using a result. Keep a shipped
+case for rehearsal once you have seen its answer.
 
 ## A consistent command routine for labs 07–26
 
@@ -270,9 +303,9 @@ python lab.py show --case run/attempt-01/case.json
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
 ```
 
-The result compares decision fields and checks that written fields are present.
-It cannot judge whether an explanation is correct. We must review that reasoning
-and ask you to locate the evidence again. A matching result is not mastery.
+The result compares decision fields. It also checks that written fields have
+content. It cannot judge whether an explanation is right. A reviewer must check
+the reasoning and ask you to locate the evidence again. A match is not mastery.
 
 After saving your attempt, inspect the reference analysis and note corrections:
 
@@ -288,38 +321,131 @@ python lab.py prepare --scenario changed --out run/attempt-02
 python lab.py prepare --scenario challenge --out run/attempt-03
 ```
 
-Use the case path for that attempt in every later command. A new output folder
-does not create a new scenario; repeating a known case is rehearsal. After all
-three, change one permitted input in a practice copy and predict the consequence.
-Follow that lab's drills so the change stays within its supported model.
+Use that attempt's case path in every later command. A new folder does not make
+a new case. Repeating a known case is rehearsal. After all three, change one
+permitted input in a practice copy. Predict the result before checking it.
+Follow the lab's drills to keep the change within its supported model.
 
 `python lab.py verify` checks the supplied exercise and reference outputs. It
 does not check a learner attempt. The first six labs retain their own documented
 commands; do not substitute the new routine into them.
 
-## A sensible starting route
+## Use the full study plan for the order
 
-Begin with DNS, then asset discovery, TCP evidence and HTTP logs. Continue with
-login triage, timelines and endpoint review. Build access-review understanding
-before identity lifecycle, MFA and storage exposure. Add configuration and
-recovery exercises once their prerequisites make sense to you.
+Begin with the study plan's short entry check. Bring earlier work to a reviewer
+if it may show a skill you already have. If the evidence and a fresh case support
+it, the reviewer can skip guided and solo passes for that topic. Keep the unseen
+attempt and later recalls. Record the reason for the choice.
 
-For each lab, create one useful deliverable: a short finding, an access table,
-a retest record or a handover. Practise explaining it as if a colleague needs to
-act on it. Do not measure progress by the number of folders opened.
+The gentle route starts with scope, shell use, the workbench, DNS, login logs and
+access. The steady route adds file checks, web logs, timelines, address paths,
+TCP and asset discovery. These routes cover 6 or 12 packages over 12 flexible
+weeks. They do not promise completion of all 86 in a summer.
 
-## Five practice stages
+Before a later topic, a reviewer checks each required skill through an unseen
+attempt or equivalent saved evidence. A lower row number is not proof of skill.
+Use the full plan for exact links between topics and for tool gates. A tool gate
+is a setup or scope rule that must be met before a real tool run.
 
-A. Guided: follow the worked example. Explain each result in your own words.
-B. Prompted: close the answer and use only a short checklist.
-C. Independent: start fresh and save your answer before viewing the solution.
-D. Changed scenario: solve a case whose findings differ, not just its names.
-E. Teach-back: explain the evidence, uncertainty, next action and a possible
-   innocent explanation to someone else.
+For each lab, save something useful: a short finding, an access table, a retest
+record or a handover. Explain it as if someone else must act on it. Count the
+work you can explain and support with evidence, not the folders you have opened.
 
-Changing only labels is useful rehearsal but is not a new reasoning challenge.
-Use the documented scenario variants, changed requirements or new packet
-relationships. Record command-help use and other hints honestly.
+## Find a topic in the full 86-package library
+
+This is a topic menu, not a second timetable. All 86 packages appear below, once
+in this menu. Use the full summer plan for the order and exact prerequisites.
+Do not assume that nearby links can be done in any order. Each README still sets
+the task's inputs, limits and tool needs.
+
+### Network and DNS — 14 packages
+
+DNS looks up names. These labs follow how data moves and what the saved traffic
+can show. Learn names, addresses and ports before tracing a connection. A port
+is a number used to direct traffic to a service.
+
+- [DNS triage](dns-triage/README.md), [address paths](network-address-path/README.md), [TCP handshakes](tcp-handshake/README.md), [asset discovery](asset-discovery/README.md)
+- [Firewall review](firewall-review/README.md), [TLS certificates](tls-review/README.md), [traffic capture](traffic-capture/README.md), [ARP and DHCP](arp-dhcp-evidence/README.md)
+- [DNS cache and records](dns-cache-records/README.md), [controlled Nmap](controlled-nmap/README.md), [firewall enforcement](firewall-enforcement/README.md)
+- [IPv6 parity](ipv6-parity/README.md), [network loss](network-loss-diagnosis/README.md), [VPN routes](vpn-routing-review/README.md)
+
+### Windows, Linux and endpoint — 14 packages
+
+An endpoint is a device such as a laptop. These labs cover programs, accounts,
+files and settings on a host. Learn the workbench boundary and read-only shell
+checks first. A read-only check looks at data without changing it.
+
+- [Lab workbench](isolated-lab-workbench/README.md), [shell checks](shell-troubleshooting/README.md), [endpoint processes](endpoint-triage/README.md), [scheduled tasks](scheduled-task-review/README.md)
+- [Linux permissions](linux-permissions/README.md), [SSH settings](ssh-config-review/README.md), [dependency review](dependency-review/README.md), [Windows events](windows-event-investigation/README.md)
+- [Windows access lists](windows-acl/README.md), [Linux service identity](linux-service-identity/README.md), [patch rollback](patch-rollback/README.md)
+- [Startup checks](startup-surface/README.md), [SSH keys](ssh-key-practice/README.md), [endpoint baseline](endpoint-baseline/README.md)
+
+### Web and API — 11 packages
+
+An API lets programs send requests to each other. Start with web requests,
+responses and access rules. Later tasks use only the named local training app.
+Check its scope before sending or changing a request.
+
+- [HTTP logs](http-triage/README.md), [headers and cookies](http-header-review/README.md), [Burp access control](burp-access-control/README.md), [build a request](http-request-construction/README.md)
+- [Session lifecycle](session-lifecycle/README.md), [local SQL injection](local-sql-injection/README.md), [output encoding](local-output-encoding/README.md), [local CSRF](csrf-local/README.md)
+- [API schema checks](api-schema-validation/README.md), [rate limits](rate-limit-lab/README.md), [file upload paths](file-upload-path/README.md)
+
+### Identity and cloud — 14 packages
+
+Identity asks who is acting. Access rules say what that identity may do. Start
+with access review before changing roles or account rights. Keep real accounts
+and keys out of the fictional cases.
+
+- [Access review](access-review/README.md), [storage exposure](cloud-storage-review/README.md), [identity lifecycle](identity-lifecycle/README.md), [MFA review](mfa-review/README.md)
+- [Cloud audit events](cloud-audit-triage/README.md), [secret handling](secret-handling/README.md), [password vault and recovery](password-vault-recovery/README.md), [MFA tool practice](mfa-hands-on/README.md)
+- [Explicit deny rules](iam-explicit-deny/README.md), [temporary credentials](temporary-credentials/README.md), [shared responsibility](shared-responsibility/README.md)
+- [Cloud network paths](cloud-network-path/README.md), [encryption and key recovery](encryption-key-recovery/README.md), [cloud resource lifecycle](cloud-resource-lifecycle/README.md)
+
+### Logs, SOC and incident response — 12 packages
+
+A log records events. A SOC is a security operations centre: a team that checks
+alerts and responds to threats. Start with login records and careful timelines.
+Log ingestion means bringing logs into a usable form. The Python helper task
+needs login triage first. Write only the small helper that its README asks for.
+
+- [Login triage](login-triage/README.md), [email triage](email-triage/README.md), [alert correlation](alert-correlation/README.md), [Snort rules](snort-rule-testing/README.md)
+- [Log ingestion](log-ingestion/README.md), [SOC queries](soc-query-workbook/README.md), [Python log helper](python-log-helper/README.md), [detection corpus](detection-corpus/README.md)
+- [Logging health](logging-health/README.md), [incident case](incident-case/README.md), [indicator quality](indicator-quality/README.md), [containment tabletop](containment-tabletop/README.md)
+
+### Forensics and recovery — 11 packages
+
+Forensics uses records and files to work out what happened. Keep the originals
+and work from copies. Start with file checks and time evidence. A restore claim
+needs a test that matches the stated recovery needs.
+
+- [File integrity](file-integrity/README.md), [timelines](timeline-analysis/README.md), [backup checks](backup-verification/README.md), [evidence custody](evidence-custody/README.md)
+- [File types](file-type-triage/README.md), [file times](file-time-analysis/README.md), [deleted-file recovery](deleted-file-recovery/README.md), [browser artifacts](browser-artifacts/README.md)
+- [Restore drill](restore-drill/README.md), [packet object recovery](pcap-object-reconstruction/README.md), [cross-source checks](cross-source-corroboration/README.md)
+
+### Governance and reporting — 10 packages
+
+Governance sets who may act, who decides and which rules apply. Begin with scope
+and stop rules. Later, write findings that someone else can check and act on.
+The capstone draws on reviewed work across topics; opening it does not prove
+that the earlier skills are ready.
+
+- [Rules of engagement](rules-of-engagement/README.md), [data classification](data-classification/README.md), [small threat model](small-threat-model/README.md), [risk register](risk-register/README.md)
+- [Vulnerability priorities](vulnerability-prioritisation/README.md), [retesting](vulnerability-retest/README.md), [finding report](finding-report/README.md)
+- [Incident messages](incident-communications/README.md), [evidence redaction](evidence-redaction/README.md), [portfolio capstone](portfolio-mastery-capstone/README.md)
+
+## Prompts, fresh facts and teach-back
+
+Use a short checklist when full guidance is no longer needed. Log any hints
+about the answer as prompted help. Then try fresh facts on another day. A solo
+attempt does not become independently assessed until a person reviews it.
+
+For teach-back, explain the evidence, doubt and next action. Give a possible
+innocent explanation and a check that could distinguish it. The reviewer should
+choose an unseen case within the lab's model. Its facts must change the reasoning.
+
+Changing only labels is useful rehearsal. It is not a new reasoning challenge.
+Use the documented variants, changed work needs or new packet relationships.
+Record command-help use and other hints honestly.
 
 ## Readiness checks
 
@@ -332,99 +458,109 @@ Mark a topic ready for a later recall check only when you can:
 - Solve an unfamiliar variant without the worked answer.
 - Give a short handover someone else could follow.
 
-Revisit the topic on another day, then roughly a week later. Start with a brief
-recall question and a changed case. If part is shaky, practise that part and
-check again later. This schedule is a practical plan, not a promise of perfect
-retention or professional competence.
+Revisit about 7 and 28 days after the unseen attempt. Start with a recall question
+and different facts. If part is shaky, work on that part and check again later.
+Pause later tasks that need the weak skill. Move the dates when needed. These
+dates are a plan, not a promise of lasting recall or professional skill.
 
-Passing one tiny lab is evidence for that task, not every real-world incident.
-Any portfolio completion note should say exactly what was performed and what
-help was used. Do not publish a reference answer as a personal investigation.
+Passing one small lab gives evidence for that task. It does not cover every real
+incident. A portfolio note should say exactly what was done and what help was
+used. Do not publish a reference answer as a personal investigation.
 
-## Four hands-on tool sessions
+## The original four hands-on tool sessions
 
-Start after the related foundation topic feels familiar. Use one tool per
-session. A short accurate explanation is more useful than a rushed full run.
-The lab READMEs provide the commands; this guide tells you what to practise.
+Start after the required skills have been reviewed. Use one tool per session.
+Take time to explain a small result well. The lab READMEs give the commands;
+this guide tells you what to practise. Later tool packages have their own gates.
+Follow the full study plan and each README for those tasks too.
 
 ### Traffic capture: collect before interpreting
 
 Folder: `traffic-capture`. Read its setup section for loopback capture support.
 
 1. Say which interface and port should carry the test traffic, and why.
-2. Start a narrow capture, make the documented harmless local requests, stop
-   the capture, and check whether the expected exchanges were actually saved.
-3. Explain one successful response, one application error and one failed
+2. Start a narrow capture. Make the documented harmless local requests, then
+   stop the capture. Check whether the expected exchanges were saved.
+3. For the guided run, explain a successful reply, an app error and a failed
    connection. An HTTP error still means an HTTP response arrived.
 4. Repeat with a checklist. Then change the documented request and predict
    what the packet evidence should show before you inspect it.
 5. Save a small reviewed capture and a table linking your action to frames.
 
 Recall prompts: capture filter versus display filter; loopback versus the
-network adapter; missing evidence versus proof of no activity. Teach back why
-capturing an unrelated interface can leave you with an empty result.
+network adapter; missing evidence versus proof of no activity. A capture filter
+chooses what to collect. A display filter chooses what saved data to show.
+Loopback keeps traffic on one computer. Explain why capturing the wrong network
+interface can leave an empty result.
 
 ### Burp: test the server's decision
 
 Folder: `burp-access-control`. Use only the original local training application.
 
 1. Read the scope and name the two fictional identities and their own records.
-2. Intercept a legitimate request and explain method, path and identity.
-3. Change the object reference in Repeater. Predict the correct server decision.
+2. Intercept a valid request and explain its method, path and identity.
+3. Change the object reference in Repeater. This is the record ID in the request.
+   Predict the correct server decision.
 4. Compare the insecure and repaired modes using both a forbidden request and
    a request the owner still needs. Record complete response evidence.
-5. Repeat with changed records, then explain the result without the worked
-   answer. The learner is operating the tool, not writing the application.
+5. Repeat with changed records. Explain the result with the worked answer closed.
+   This task uses the tool; it does not ask you to write the app.
 
 Recall prompts: authentication versus authorisation; hidden buttons versus
-server checks; why a secure retest needs a successful legitimate request too.
-Teach back the finding, its local scope and why this toy identity scheme is
-not production authentication.
+server checks; why a retest needs a valid request to work too. Authentication
+checks identity. Authorisation decides what that identity may do. Explain the
+finding and its local scope. Explain why this toy identity scheme is not fit
+for a real app's sign-in system.
 
 ### Snort: test both sides of a rule
 
 Folder: `snort-rule-testing`. Use the local labelled packet files.
 
 1. Explain the protocol, direction, content and identifier in the simple rule.
+   The identifier is the rule's label.
 2. Predict which positive, negative and near-miss fixtures should alert.
+   A fixture is a supplied test file. A near-miss is close to the rule's match
+   conditions but does not meet them all.
 3. Run the documented Snort check and offline inspection. Keep actual command
    output separate from the supplied expected answer.
-4. Change one documented rule condition, retest every case and explain the
-   change in coverage. A missing alert needs investigation, not an automatic
-   clean verdict.
-5. Record the tool version, inputs, rule, observed alerts and limitations.
+4. Change one documented rule condition. Retest every case and explain what the
+   rule now covers. Check why an alert is missing before calling a case clean.
+5. Record the tool version, inputs, rule, observed alerts and limits.
 
 Recall prompts: rule match versus compromise; false positive versus missed
-traffic; visible payload versus encryption. Teach back one condition where
-this rule would fail to see the behaviour you care about.
+traffic; visible payload versus encryption. Payload is the data carried in a
+packet. Encryption hides readable data unless you have the right key. Explain
+one case where this rule would miss the behaviour you need to see.
 
 ### Windows events: follow identities through time
 
 Folder: `windows-event-investigation`. Begin with the supplied synthetic XML.
 Collect real events only in the disposable Windows lab described in its README.
 
-1. Read one process-creation event and explain timestamp, image, ProcessGuid
-   and ParentProcessGuid. Do not confuse a reused process ID with one process.
-2. Build the guided chain and distinguish an unrelated near-miss.
-3. Work through the missing-parent example. Describe the gap instead of
-   inventing the parent activity.
+1. Read one process-creation event. Explain timestamp, image, ProcessGuid and
+   ParentProcessGuid. The image is the program file. A GUID is a longer identity
+   value. Do not confuse a reused process ID with one process.
+2. Build the guided chain. Use the recorded identities to decide which events
+   belong to it.
+3. In a fresh case, trace the relationships supported by the events. State where
+   evidence is absent or unclear. Do not invent activity to fill a gap.
 4. In the prepared VM, generate the documented harmless activity, export its
    events and compare your observations with the collection settings.
 5. Keep raw exports private. Review the selected evidence for usernames,
    machine names and command lines before preparing a public excerpt.
 
 Recall prompts: an event versus an interpretation; UTC and local time;
-collection coverage versus an absence of events. Teach back why Sysmon records
-activity but does not independently decide whether it is malicious.
+collection coverage versus an absence of events. Collection coverage means what
+the setup was able to record. Explain why Sysmon logs activity but cannot decide
+on its own whether the activity is harmful.
 
 ### What counts as a completed hands-on attempt
 
-Record the question, prediction, exact environment, tool version, observed
-evidence, interpretation, uncertainty and help used. Repeat with an unfamiliar
-variant and explain the result. Revisit on another day and about a week later.
-Keep using notes and command help when useful. A test suite checks the utility;
-it does not mark you as competent, and supplied example output is not your
-personal activity record.
+Record the question, prediction, exact setup, tool version and observed evidence.
+Add your explanation, doubts and help used. Try an unseen variant and explain it
+to a reviewer. Revisit about 7 and 28 days later. Keep using notes and command
+help when useful. A test suite checks the helper tool. It does not prove your
+skill. Supplied output is not a record of your own actions.
 
 ## Handover template
 
@@ -438,11 +574,15 @@ Validation: How would I know that the change worked without breaking normal use?
 ## Keep a private practice record
 
 Copy this block into your own notes for each attempt. Do not commit personal
-notes automatically. All topics currently start as not yet assessed.
+notes automatically. Keep them private unless you choose to share a checked copy.
+All topics start as not yet assessed.
 
 Date:
 Topic and case/seed/scenario:
-Stage: guided / prompted / independent / changed / teach-back / later recall
+Stage: guided / prompted / solo / unseen (changed case) / reviewed independent / teach-back / later recall
+Study-plan code: G / S / U / R7 / R28
+Attempt status: prepared / attempted / awaiting review / reviewed
+Evidence type: supplied offline case / actual tool run
 Prediction before running the check:
 Evidence references and result:
 Help used:
@@ -451,31 +591,41 @@ Correction and why it changes the answer:
 Next small task:
 Later recall date:
 Review outcome: repeat / ready for changed case / ready for later recall
+Reviewer and review date:
 
 ## Small glossary
 
-Baseline: a recorded starting point used for comparison.
-Context: surrounding information that helps interpret an observation.
-Default deny: reject an action or connection unless a rule permits it.
-False positive: a detection that looks concerning but does not represent the
-specific problem being investigated.
-Hash: a calculated fingerprint of bytes; it is not a safety certificate.
-Least privilege: give only the access needed for the agreed work.
-Protocol: the rules a type of network communication follows.
-Source and destination: where the traffic comes from and where it is going.
-Threshold: the value at which a chosen rule starts reporting a pattern.
-Triage: decide what deserves attention and what to check next.
+- Baseline: a saved starting point used to check for change.
+- Context: facts around an event that help explain it.
+- Default deny: reject an action or connection unless a rule allows it.
+- False positive: a rule flags something that is not the problem being checked.
+- Hash: a calculated fingerprint of bytes. It is not a safety certificate.
+- Least privilege: give only the access needed for the agreed work.
+- Protocol: the rules used to send a type of network data.
+- Source and destination: where traffic comes from and where it is going.
+- Threshold: the value where a chosen rule starts reporting a pattern.
+- Triage: decide what needs attention and what to check next.
+- Artifact: a saved item used as evidence, such as a file or report.
+- Fixture: an example file supplied for a test or exercise.
+- Host and guest: the host runs the VM; the guest is the computer inside it.
+- Seed: a value used to make repeatable example data. It may change only labels.
+- Synthetic: made for the exercise, rather than collected from a real incident.
+- Uncertainty: what the evidence leaves in doubt.
 
 ## Getting started
 
 Open the repository's `labs` folder, choose one lab and read its README. Each
 has one `lab.py` entry point: run `python lab.py --help` from that lab's folder.
-Python 3.10 or later is required; the utilities use its standard library.
+Python 3.10 or later is required. The helper tools use its standard library,
+which comes with Python.
 The DNS exercise also supports inspecting its capture with Wireshark.
 
 Keep the supplied fixtures intact. Use the documented practice folder and a
-fresh output name for each attempt. No cloud account or live target is needed.
+fresh output name for each attempt. Offline cases need no cloud account or live
+target. Actual tool tasks need the prepared environment named in each README.
+Stop if the path, command effect or scope is unclear. Also stop if a real account
+or personal file appears, or a required tool is missing. Save one clear next step.
 
-First question, before any command: which proves that a DNS response arrived —
-a name-not-found reply, or no visible reply? Explain your answer. Then find
-both cases in the capture and point to the evidence.
+For a guided DNS review, first explain which proves that a response arrived:
+a name-not-found reply, or no visible reply. Then inspect the supplied capture.
+State which outcomes you can support and point to the evidence for each.

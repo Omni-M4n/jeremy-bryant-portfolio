@@ -1,15 +1,10 @@
 # Worked example: one changed ID
 
-This is the expected reasoning for the guided scenario. It is not a record of
-a learner's completed session. Keep it closed until you have written your first
-prediction in the generated worksheet.
+This explains the guided case. It is not a record of a learner's completed session. Keep it closed until you save your first prediction in the worksheet.
 
-The seeded roster says Ada owns 101 and 103; Ben owns 102. A legitimate task is
-for each person to read their own order. Hiding Ben's link from Ada is useful
-presentation, but a user can edit a request independently of the page.
+The owner list says Ada owns 101 and 103. Ben owns 102. Each person should be able to read their own order. Hiding Ben's link from Ada changes the page. But a user can edit a request without using that page.
 
-An intercepted baseline will resemble this. The cookie shown is a placeholder;
-keep the real disposable token captured in your own current run.
+A captured baseline will look like this. The cookie shown is a placeholder. Keep the real temporary token captured in your current run.
 
 ```http
 GET /api/orders/101 HTTP/1.1
@@ -18,24 +13,13 @@ Cookie: lab_session=<Ada token captured in this run>
 
 ```
 
-After sending the unchanged baseline through Repeater, the response is 200 and
-its JSON includes `"id": "101"`, `"owner": "ada"`, and the fictional lantern
-note. Record `X-Lab-Mode: vulnerable` and `X-Lab-Scenario: guided` as context.
+Send the unchanged baseline through Repeater. The response is 200. Its JSON includes `"id": "101"`, `"owner": "ada"`, and the made-up lantern note. Record `X-Lab-Mode: vulnerable` and `X-Lab-Scenario: guided` to show the test setup.
 
-Change only the request path to `/api/orders/102`. The selected Ada cookie stays
-the same. In vulnerable mode the response is also 200, but the body says
-`"owner": "ben"` and contains `Fictional order: 1 silver cardboard moon.`
-The owner roster, unchanged account, requested ID and returned content together
-support a finding: **the order-read endpoint returns another account's record
-to Ada in the guided vulnerable configuration**. The status alone would not
-establish that the wrong content was disclosed.
+Change only the path to `/api/orders/102`. Keep the same Ada cookie. In vulnerable mode, the response is also 200. But its body says `"owner": "ben"` and includes `Fictional order: 1 silver cardboard moon.` Read this with the owner list, unchanged account and requested ID. Together, they support this finding: **this order-read endpoint returns Ben's record to Ada in guided vulnerable mode**. Status alone would not prove that the wrong content was returned.
 
-Reverse the direction with a freshly captured Ben request. His own 102 returns
-200; changing only its ID to 101 returns Ada's record in vulnerable mode. These
-two comparisons test the same failure in both directions.
+Reverse the test with a fresh captured Ben request. His own 102 returns 200. Change only its ID to 101. Vulnerable mode returns Ada's record. These two checks test the same failure in both directions.
 
-After stopping the server and starting fixed mode, select each account again
-and capture new requests. The same-ID comparisons now have these outcomes:
+Stop the server and start fixed mode. Select each account again and capture fresh requests. The same-ID checks now give these results:
 
 | Current account | ID | Vulnerable | Fixed | Meaning |
 | --- | --- | --- | --- | --- |
@@ -45,27 +29,12 @@ and capture new requests. The same-ID comparisons now have these outcomes:
 | Ben | 102 | 200, Ben record | 200, Ben record | Ben's necessary access retained |
 | Ben | 101 / 103 | 200, Ada record | 403, error only | Reverse direction denied |
 
-The server checks the selected account against the stored order owner before
-returning a record in fixed mode. If every request returned 403, the change
-would break legitimate use and would not satisfy this exercise's rule.
+In fixed mode, the server checks the chosen account against the stored owner. It does this before returning the record. If every request returned 403, valid use would break. That would fail this lab's rule.
 
-With a valid account, ID 999 returns 404 because no record was seeded. `abc`
-returns 400 because it is not a supported three-digit ID. Removing the session
-cookie returns 401. Those outcomes describe different conditions: none is a
-substitute for testing a known other user's existing object with a valid
-session. In particular, a stale token returning 401 after restart does not prove
-the ownership check worked.
+With a valid account, ID 999 returns 404. There is no such stored record. `abc` returns 400 because it is not a supported three-digit ID. Removing the session cookie returns 401. These results test different conditions. None replaces a test for another user's known record with a valid session. A 401 from an old token after restart does not prove the owner check worked.
 
-A bounded handover might read:
+A handover could read:
 
-> In the local guided configuration, I kept Ada's session unchanged and changed
-> order 101 to 102 in Repeater. The vulnerable response returned Ben's fictional
-> note. After restarting in fixed mode and selecting fresh sessions, cross-user
-> requests returned 403 without record content. Both accounts still received
-> their own records. This supports the owner check for the tested read endpoint;
-> it does not assess real authentication, writes or other application routes.
+> I used the local guided setup. I kept Ada's session and changed order 101 to 102 in Repeater. Vulnerable mode returned Ben's made-up note. I restarted in fixed mode and chose fresh sessions. Requests across accounts returned 403 with no record content. Each account could still read its own records. This supports the owner check for this read endpoint. It does not assess real authentication, writes or other app routes.
 
-Use that wording only after doing and documenting those actions yourself.
-Replace it with your actual observations and any mismatch. Keep the request and
-response evidence private in the run folder and ask a reviewer to challenge
-your explanation, especially the difference between 401, 403 and 404.
+Use this wording only after you do and record those steps. Replace it with what you saw, including any mismatch. Keep request and response evidence private in the run folder. Ask a reviewer to test your reasons. Be ready to explain how 401, 403 and 404 differ.

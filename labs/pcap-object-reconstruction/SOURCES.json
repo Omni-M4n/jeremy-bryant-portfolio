@@ -1,0 +1,47 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "Wireshark User Guide, Export Objects",
+      "url": "https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html",
+      "used_for": "Required own-capture HTTP export workflow; capture/export not executed on preparation machine.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "RFC 9112, HTTP/1.1 message framing",
+      "url": "https://www.rfc-editor.org/rfc/rfc9112.html",
+      "used_for": "Content-Length body framing and incomplete messages.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "IETF PCAP format draft 05 (historical draft)",
+      "url": "https://www.ietf.org/archive/id/draft-ietf-opsawg-pcap-05.html",
+      "used_for": "Classic PCAP layout; historical draft, not presented as a final standard.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "libpcap current public header",
+      "url": "https://raw.githubusercontent.com/the-tcpdump-group/libpcap/master/pcap/pcap.h",
+      "used_for": "Current file format version and header fields; source consulted, no code copied.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Dumpcap manual",
+      "url": "https://www.wireshark.org/docs/man-pages/dumpcap.html",
+      "used_for": "Interface list, capture filter, full snapshot and bounded autostop for actual loopback capture.",
+      "access": "opened with web tool on 2026-10-25; relevant body text available"
+    },
+    {
+      "title": "TShark manual",
+      "url": "https://www.wireshark.org/docs/man-pages/tshark.html",
+      "used_for": "Read-only capture dissection, TCP-port Decode As, disabled name resolution and HTTP object export.",
+      "access": "opened with web tool on 2026-10-25; relevant body text available"
+    },
+    {
+      "title": "Npcap loopback documentation",
+      "url": "https://npcap.com/guide/npcap-devguide.html",
+      "used_for": "NPF_Loopback device and DLT_NULL link-layer format; do not send real captures to the synthetic Ethernet parser.",
+      "access": "opened with web tool on 2026-10-25; relevant body text available"
+    }
+  ]
+}

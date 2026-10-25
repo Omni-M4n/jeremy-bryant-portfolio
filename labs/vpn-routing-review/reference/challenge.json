@@ -1,0 +1,20 @@
+{
+  "decisions": {
+    "f01": "before:local;after:local;intent:unmet",
+    "f02": "before:local;after:tunnel;intent:met",
+    "f03": "before:local;after:tunnel;intent:met",
+    "q01": "before:local;after:local+tunnel;intent:unmet",
+    "q02": "before:local;after:tunnel;intent:met"
+  },
+  "observations": [
+    "f01: before 0.0.0.0/0 metric=100; after 198.51.100.0/24 metric=200; intended=tunnel.",
+    "f02: before 0.0.0.0/0 metric=100; after 0.0.0.0/0 metric=10; intended=tunnel.",
+    "f03: before ::/0 metric=100; after ::/0 metric=10; intended=tunnel.",
+    "q01: before .->192.0.2.53 via local (0.0.0.0/0 metric=100); after office.test->198.51.100.53 via local (198.51.100.0/24 metric=200); office.test->203.0.113.53 via tunnel (0.0.0.0/0 metric=10); intended=tunnel.",
+    "q02: before .->192.0.2.53 via local (0.0.0.0/0 metric=100); after .->203.0.113.53 via tunnel (0.0.0.0/0 metric=10); intended=tunnel."
+  ],
+  "limitations": [
+    "This is one simple destination-routing table per snapshot: longest prefix, then lowest metric. No policy rules, ECMP, source routing, tunnel handshake or reachability is modelled.",
+    "DNS uses explicit suffix rules with unbound resolver addresses, then routes to those addresses. Real per-link resolver binding, fallback, caches, encrypted DNS and application-specific DNS require separate evidence."
+  ]
+}

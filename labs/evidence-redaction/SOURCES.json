@@ -1,0 +1,15 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "OWASP Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "use": "Useful evidence and sensitive fields to exclude."
+    },
+    {
+      "title": "OAIC APP 11 guidance",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-11-app-11-security-of-personal-information",
+      "use": "Protection and retention exceptions."
+    }
+  ]
+}

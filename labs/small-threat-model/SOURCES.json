@@ -1,0 +1,15 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "OWASP Threat Modeling Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html",
+      "use": "Data flows, threats, controls and review."
+    },
+    {
+      "title": "OWASP Authorization Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html",
+      "use": "Identity and permission are separate checks."
+    }
+  ]
+}

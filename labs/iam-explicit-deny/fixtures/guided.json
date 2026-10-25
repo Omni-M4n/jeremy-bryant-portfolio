@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "lab_id": "iam-explicit-deny",
+  "case_id": "guided",
+  "title": "Library object requests",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "statements": [
+      {
+        "id": "s1",
+        "effect": "Allow",
+        "actions": [
+          "s3:GetObject"
+        ],
+        "resource": "arn:aws:s3:::practice-library/*"
+      },
+      {
+        "id": "s2",
+        "effect": "Deny",
+        "actions": [
+          "s3:GetObject"
+        ],
+        "resource": "arn:aws:s3:::practice-library/staff/*"
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "action": "s3:GetObject",
+        "resource": "arn:aws:s3:::practice-library/poster.txt"
+      },
+      {
+        "id": "q2",
+        "action": "s3:GetObject",
+        "resource": "arn:aws:s3:::practice-library/staff/rota.txt"
+      },
+      {
+        "id": "q3",
+        "action": "s3:PutObject",
+        "resource": "arn:aws:s3:::practice-library/poster.txt"
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "tls-review",
   "case_id": "challenge",
-  "title": "Exact expiry and an unchecked chain",
+  "title": "Certificate review at the recorded time",
   "synthetic": true,
   "context": {
     "question": "Which decoded certificate fields need follow-up at the stated evaluation time?"

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "case_id": "guided",
+  "title": "The library service",
+  "synthetic": true,
+  "context": {
+    "question": "You can follow a worked example and still be unsure when the facts change. Ask a reviewer for a short unfamiliar case, save your first explanation, and show what evidence changed your mind."
+  },
+  "data": {
+    "observations": [
+      {
+        "id": "item-1",
+        "track": "dns",
+        "claim": "name-resolved",
+        "facts": {
+          "answer": true,
+          "http_status": null
+        }
+      },
+      {
+        "id": "item-2",
+        "track": "access",
+        "claim": "all-permissions-correct",
+        "facts": {
+          "current_roles": [
+            "reader"
+          ],
+          "checked_accounts": 1,
+          "total_accounts": 2
+        }
+      }
+    ]
+  },
+  "artifacts": {
+    "portfolio-template.md": "# Evidence bundle index\n\nDate and case identifier:\nStage: first attempt / prompted / corrected / independently reviewed / recall attempted\nFresh case source and scope:\nPrediction before help:\nClaim, evidence reference and limits:\nNext safe action and why:\nEvidence files and hashes:\nHelp log: time, source or hint, what changed:\nReviewer questions and comments (blank until reviewed):\nCorrections in a separate file:\nRecall date, result and help used (blank until attempted):\n",
+    "observations.txt": "SYNTHETIC OBSERVATIONS\nitem-1 | dns | {\"answer\": true, \"http_status\": null}\nitem-2 | access | {\"checked_accounts\": 1, \"current_roles\": [\"reader\"], \"total_accounts\": 2}\n"
+  },
+  "lab_id": "portfolio-mastery-capstone"
+}

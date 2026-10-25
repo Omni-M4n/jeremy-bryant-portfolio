@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "p1": "regression-rollback-verified"
+  },
+  "observations": [
+    "p1: target=1.1; installed=1.1; exit=0; smoke=fail; rollback=1.0/pass."
+  ],
+  "limitations": [
+    "Version strings are compared exactly; this helper does not order versions or prove that a release fixes a vulnerability.",
+    "Smoke and source fields are supplied evidence summaries. A real package change needs retained tool output and a VM recovery test."
+  ]
+}

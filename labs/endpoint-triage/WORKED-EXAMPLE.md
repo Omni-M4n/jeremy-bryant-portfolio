@@ -1,10 +1,12 @@
 # Worked example: Endpoint process context triage
 
-Try the guided case before reading this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
+Try the guided case before you read this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
 
-Start at p1, the desktop root, then trace p1 -> p2 -> p3. p2 is a document process and p3 is a shell. p3 therefore deserves context review even though its signature is verified and it runs from system. p4 is an unsigned utility in user-temp, a separate trigger. p1 and p2 have no modelled triggers; that is not a clean bill of health. The inert command text gives a collection lead, not something to run. Ask whether a helpdesk demonstration or approved macro explains p3, and request the executable hash and collection context for p4.
+Start at p1, the desktop root. Trace p1 -> p2 -> p3. p2 is a document process and p3 is a shell. This gives p3 a context review trigger. Its verified signature and system location do not cancel that trigger. p4 is an unsigned utility in user-temp. This is a separate trigger. p1 and p2 have no triggers in this model. That does not prove that they are safe.
 
-The reference decision fields for guided are:
+Use the command text as a lead for what to collect. Do not run it. Ask if a helpdesk demo or approved macro explains p3. For p4, ask for the program file hash and details of how the evidence was collected.
+
+The set decision fields for guided are:
 
 ```json
 {
@@ -15,6 +17,6 @@ The reference decision fields for guided are:
 }
 ```
 
-Now open `python lab.py analyse --case run/worked-01/case.json` and compare observations, not only labels. Record one difference between your first prediction and the reference. If there was no difference, explain the rule that produced each decision rather than copying the label.
+Now open `python lab.py analyse --case run/worked-01/case.json`. Compare what you found as well as the labels. Record one change from your first choice. If all choices matched, explain the rule behind each one in your own words.
 
-Handover prompt: explain what this evidence establishes, cite its exact IDs or lines, give a plausible alternative or remaining uncertainty, and name the smallest next check. Record any help used. A correct label by itself is not evidence of independent understanding.
+In your handover, state what the evidence shows. Cite the exact IDs or lines. Give another possible cause or say what is still unknown. Name the smallest next check. Record any help used. A correct label alone does not show that you understood the rule.

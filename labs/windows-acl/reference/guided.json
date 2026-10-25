@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q1": "allow",
+    "q2": "deny",
+    "q3": "deny"
+  },
+  "observations": [
+    "q1: read; file=true; parent-delete-route=false.",
+    "q2: write; file=false; parent-delete-route=false.",
+    "q3: delete; file=false; parent-delete-route=false."
+  ],
+  "limitations": [
+    "Only ordered allow/deny entries for enabled identities are modelled; no privileges, share permissions, integrity levels, owner rights or file locks.",
+    "Delete can use file delete OR parent delete-child. Read/write here mean one data right, not every right requested by a real application."
+  ]
+}

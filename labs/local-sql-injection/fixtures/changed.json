@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-sql-injection",
+  "case_id": "changed",
+  "title": "Name card",
+  "synthetic": true,
+  "question": "What should happen to a name containing an apostrophe?",
+  "data": {
+    "name": "O'Reed"
+  }
+}

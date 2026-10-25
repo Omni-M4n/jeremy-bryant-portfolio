@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "lab_id": "file-upload-path",
+  "case_id": "challenge",
+  "title": "Desk limits",
+  "synthetic": true,
+  "question": "Which boundary and platform names fit the stated rules?",
+  "data": {
+    "uploads": [
+      {
+        "filename": "limit.txt",
+        "content_type": "text/plain",
+        "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "filename": "more.txt",
+        "content_type": "text/plain",
+        "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "filename": "CON.txt",
+        "content_type": "text/plain",
+        "text": "Hello\n"
+      },
+      {
+        "filename": "again.txt",
+        "content_type": "text/plain",
+        "text": "x"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "item-1": "retest-not-comparable",
+    "item-2": "original-claim-not-supported",
+    "item-3": "correction-not-demonstrated"
+  },
+  "observations": [
+    "item-1: original 200, retest 403, owner 200; evidence transcript.txt lines 1-4.",
+    "item-2: original 403, retest 403, owner 200; evidence transcript.txt lines 5-8.",
+    "item-3: original 200, retest 200, owner 200; evidence transcript.txt lines 9-12."
+  ],
+  "limitations": [
+    "The transcript is authored training data. No live test ran, and one retest does not establish security for every route."
+  ]
+}

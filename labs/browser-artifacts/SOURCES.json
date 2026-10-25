@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "SQLite URI filenames",
+      "url": "https://www.sqlite.org/uri.html",
+      "used_for": "Read-only mode=ro database opening.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "SQLite database file format",
+      "url": "https://www.sqlite.org/fileformat.html",
+      "used_for": "Database signature and journal/WAL context.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Google Chrome Incognito documentation",
+      "url": "https://support.google.com/chrome/answer/95464?hl=en",
+      "used_for": "Limits on retained history and persistent downloaded files.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

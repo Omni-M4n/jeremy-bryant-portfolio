@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "lab_id": "containment-tabletop",
+  "case_id": "challenge",
+  "title": "Desk record set C",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "incident": {
+      "scope": "uncertain",
+      "active": false,
+      "urgent": false,
+      "preserved": true,
+      "authority": "pending",
+      "evidence_id": "a1"
+    },
+    "service": {
+      "name": "booking-desk",
+      "available": true,
+      "bytes_restored": true,
+      "evidence_id": "s1"
+    },
+    "dependencies": [
+      {
+        "name": "identity",
+        "available": true,
+        "owner": "identity-operator",
+        "evidence_id": "d1"
+      },
+      {
+        "name": "booking-store",
+        "available": true,
+        "owner": "data-operator",
+        "evidence_id": "d2"
+      }
+    ],
+    "fallback": {
+      "ready": true,
+      "owner": "desk-supervisor",
+      "capacity_per_hour": 8,
+      "need_per_hour": 6,
+      "evidence_id": "f1"
+    },
+    "roles": {
+      "incident_lead": "response-lead",
+      "service_owner": "service-manager"
+    },
+    "checks": {
+      "security": {
+        "passed": true,
+        "evidence_id": "g1"
+      },
+      "workflow": {
+        "passed": true,
+        "evidence_id": "g2"
+      },
+      "queue": {
+        "passed": true,
+        "evidence_id": "g3"
+      },
+      "owner_release": {
+        "passed": true,
+        "evidence_id": "g4"
+      }
+    },
+    "evidence": {
+      "a1": "01:10 case note: no active unwanted activity remains in the supplied follow-up checks. Prior scope is uncertain. No new restriction is approved.",
+      "s1": "01:12 service note: restored files passed file checks and booking-desk is available for the supervised workflow check.",
+      "d1": "01:12 identity check passed; identity-operator recorded the result.",
+      "d2": "00:12 dependency check: booking-store answers its fictional test request; data-operator owns the data check.",
+      "f1": "00:15 fallback rehearsal: desk-supervisor can accept 8 paper bookings per hour; demand is 6. Give every paper entry a unique queue ID, keep it in the locked desk tray, and reconcile it once against the digital queue before normal service returns.",
+      "g1": "01:15 security reviewer checked session expiry and revised access; no active issue remains in the supplied checks.",
+      "g2": "01:18 service-manager witnessed booking create, read and cancel with a test record and confirmed normal response.",
+      "g3": "01:20 desk-supervisor matched each paper queue ID to exactly one digital booking, checked cancellations, and found no missing or double bookings.",
+      "g4": "01:25 service-manager recorded release approval, named response-lead for monitoring, and recorded a rollback contact if the checks regress."
+    }
+  },
+  "artifacts": {}
+}

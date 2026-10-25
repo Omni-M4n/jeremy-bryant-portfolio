@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "working-hypothesis": "consistent-with-change",
+    "coverage": "four-kinds-present",
+    "timeline": "e1,e2,e3,e4"
+  },
+  "observations": [
+    "Change=c1; approved=true; matching scope uses host, account, time, process and destination.",
+    "Ordered IDs=e1,e2,e3,e4; outside change=none; missing kinds=none."
+  ],
+  "limitations": [
+    "A matching change record is a plausible innocent explanation, not proof of who acted or whether code was safe.",
+    "The four event kinds are simplified summaries. A DNS lookup and HTTP destination do not prove transferred content.",
+    "Exact time order assumes accurate UTC clocks. Missing kinds may be collection gaps rather than absent activity.",
+    "No real incident, endpoint, account, DNS server or website was contacted. Human review still chooses the response."
+  ]
+}

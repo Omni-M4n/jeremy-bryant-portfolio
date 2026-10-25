@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "http-header-review",
   "case_id": "challenge",
-  "title": "A same-origin embed requirement and a missing session cookie",
+  "title": "Embedding and login response review",
   "synthetic": true,
   "context": {
     "question": "Which exact supplied requirements are met by each saved response?"

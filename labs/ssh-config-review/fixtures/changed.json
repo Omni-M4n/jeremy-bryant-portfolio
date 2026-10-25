@@ -10,5 +10,5 @@
   "lab_id": "ssh-config-review",
   "schema_version": 1,
   "synthetic": true,
-  "title": "Six explicit settings meet the fictional baseline"
+  "title": "Six explicit SSH settings"
 }

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "lab_id": "containment-tabletop",
+  "case_id": "guided",
+  "title": "Desk record set A",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "incident": {
+      "scope": "account",
+      "active": true,
+      "urgent": false,
+      "preserved": true,
+      "authority": "approved",
+      "evidence_id": "a1"
+    },
+    "service": {
+      "name": "booking-desk",
+      "available": false,
+      "bytes_restored": false,
+      "evidence_id": "s1"
+    },
+    "dependencies": [
+      {
+        "name": "identity",
+        "available": false,
+        "owner": "identity-operator",
+        "evidence_id": "d1"
+      },
+      {
+        "name": "booking-store",
+        "available": true,
+        "owner": "data-operator",
+        "evidence_id": "d2"
+      }
+    ],
+    "fallback": {
+      "ready": true,
+      "owner": "desk-supervisor",
+      "capacity_per_hour": 8,
+      "need_per_hour": 6,
+      "evidence_id": "f1"
+    },
+    "roles": {
+      "incident_lead": "response-lead",
+      "service_owner": "service-manager"
+    },
+    "checks": {
+      "security": {
+        "passed": false,
+        "evidence_id": "g1"
+      },
+      "workflow": {
+        "passed": false,
+        "evidence_id": "g2"
+      },
+      "queue": {
+        "passed": false,
+        "evidence_id": "g3"
+      },
+      "owner_release": {
+        "passed": false,
+        "evidence_id": "g4"
+      }
+    },
+    "evidence": {
+      "a1": "00:10 case note: repeated unwanted account use is in scope. The response lead approved the account card. The session export was preserved. This case has no imminent safety harm.",
+      "s1": "00:12 service note: booking-desk cannot accept new bookings because sign-in is unavailable. The service manager owns its return. No restore has been verified.",
+      "d1": "00:12 dependency check: the identity service is unavailable; identity-operator owns the repair check.",
+      "d2": "00:12 dependency check: booking-store answers its fictional test request; data-operator owns the data check.",
+      "f1": "00:15 fallback rehearsal: desk-supervisor can accept 8 paper bookings per hour; demand is 6. Give every paper entry a unique queue ID, keep it in the locked desk tray, and reconcile it once against the digital queue before normal service returns.",
+      "g1": "Security review remains open: session and access checks are not complete.",
+      "g2": "A full booking-create/read/cancel test has not passed.",
+      "g3": "The paper queue has not been reconciled with digital bookings.",
+      "g4": "service-manager has not released the service to normal work."
+    }
+  },
+  "artifacts": {}
+}

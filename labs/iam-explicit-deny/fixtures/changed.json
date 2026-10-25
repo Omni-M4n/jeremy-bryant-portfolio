@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "lab_id": "iam-explicit-deny",
+  "case_id": "changed",
+  "title": "Garden object requests",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "statements": [
+      {
+        "id": "s1",
+        "effect": "Allow",
+        "actions": [
+          "s3:GetObject",
+          "s3:PutObject"
+        ],
+        "resource": "arn:aws:s3:::practice-garden/reports/*"
+      },
+      {
+        "id": "s2",
+        "effect": "Deny",
+        "actions": [
+          "s3:DeleteObject"
+        ],
+        "resource": "arn:aws:s3:::practice-garden/*"
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "action": "s3:PutObject",
+        "resource": "arn:aws:s3:::practice-garden/reports/may.txt"
+      },
+      {
+        "id": "q2",
+        "action": "s3:GetObject",
+        "resource": "arn:aws:s3:::practice-garden/Reports/may.txt"
+      },
+      {
+        "id": "q3",
+        "action": "s3:DeleteObject",
+        "resource": "arn:aws:s3:::practice-garden/reports/may.txt"
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

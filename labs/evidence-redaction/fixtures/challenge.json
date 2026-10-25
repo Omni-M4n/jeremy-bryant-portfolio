@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "case_id": "challenge",
+  "title": "A case note excerpt",
+  "synthetic": true,
+  "context": {
+    "question": "A log can show a refused request and still contain a token or personal detail. Make a separate copy that keeps the useful result and removes the supplied fake sensitive values."
+  },
+  "data": {
+    "remove": [
+      "Example Person 44",
+      "birthday=2000-01-02",
+      "FAKE-KEY-73"
+    ],
+    "keep": [
+      "record=item-8",
+      "result=blocked",
+      "result=allowed"
+    ]
+  },
+  "artifacts": {
+    "record.txt": "SYNTHETIC TRAINING RECORD\nrecord=item-8 result=blocked name=Example Person 44 birthday=2000-01-02\nrecord=item-8 result=allowed key=FAKE-KEY-73\n",
+    "redaction-template.md": "# Private redaction checklist\n\nClaim to support:\nOriginal filename and hash:\nFields to remove and why:\nFields to keep and why:\nCopy filename and hash:\nSeed search results:\nClaim preservation check:\nContext clues still present:\nReviewer and limits:\n"
+  },
+  "lab_id": "evidence-redaction"
+}

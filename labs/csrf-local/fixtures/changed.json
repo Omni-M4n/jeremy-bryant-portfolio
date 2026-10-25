@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "lab_id": "csrf-local",
+  "case_id": "changed",
+  "title": "Form variations",
+  "synthetic": true,
+  "question": "Which pieces of the form and session are needed?",
+  "data": {
+    "rotate": false,
+    "requests": [
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "same",
+        "token": "missing",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "same",
+        "token": "wrong",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "same",
+        "token": "valid",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "gold",
+        "origin": "same",
+        "token": "valid",
+        "cookie": false
+      }
+    ]
+  }
+}

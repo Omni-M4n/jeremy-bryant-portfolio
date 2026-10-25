@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lab_id": "dns-cache-records",
+  "case_id": "challenge",
+  "title": "Cache notebook 3",
+  "synthetic": true,
+  "context": {
+    "question": "Which supplied entries can answer each query at its stated time?",
+    "note": "Times are invented seconds on one clock; queries are independent observations of the snapshot."
+  },
+  "data": {
+    "records": [],
+    "negatives": [
+      {
+        "owner": "new.school.test",
+        "kind": "NXDOMAIN",
+        "qtype": "A",
+        "received": 10,
+        "soa_ttl": 120,
+        "minimum": 45
+      },
+      {
+        "owner": "mail.school.test",
+        "kind": "NODATA",
+        "qtype": "AAAA",
+        "received": 0,
+        "soa_ttl": 30,
+        "minimum": 60
+      }
+    ],
+    "queries": [
+      {
+        "id": "q01",
+        "name": "new.school.test",
+        "type": "AAAA",
+        "at": 54
+      },
+      {
+        "id": "q02",
+        "name": "new.school.test",
+        "type": "A",
+        "at": 55
+      },
+      {
+        "id": "q03",
+        "name": "mail.school.test",
+        "type": "A",
+        "at": 15
+      },
+      {
+        "id": "q04",
+        "name": "mail.school.test",
+        "type": "AAAA",
+        "at": 15
+      }
+    ]
+  },
+  "artifacts": {
+    "notebook.txt": "Fictional cache snapshot. Read the records, negative entries and query times in case.json. Do not make live DNS requests.\n"
+  }
+}

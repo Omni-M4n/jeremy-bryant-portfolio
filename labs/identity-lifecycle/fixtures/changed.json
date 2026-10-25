@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "identity-lifecycle",
   "case_id": "changed",
-  "title": "Handover expires while a starter is provisioned too early",
+  "title": "Access records at the review date",
   "synthetic": true,
   "context": {
     "question": "What access should be added, removed and retained on the stated review date?"

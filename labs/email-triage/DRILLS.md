@@ -2,40 +2,40 @@
 
 ## 1. Guided evidence pass
 
-Prepare guided as `run/attempt-01`. Keep WORKED-EXAMPLE closed initially. Read the question, mark scope and evidence sources, then fill every decision and a short explanation. Use the vocabulary if needed and record that help. Allow 30-45 minutes for this first pass.
+Prepare guided as `run/attempt-01`. Keep WORKED-EXAMPLE closed at first. Read the question. Mark what is in scope and where the evidence comes from. Fill each decision and give a short reason. Use the word list if needed, and note that help. Allow 35-45 minutes for this first pass.
 
 ## 2. Fewer prompts
 
-Work through these questions before opening the analysis:
+Answer these questions before you open the analysis:
 
-- Which record IDs are trusted independently of the message?
+- Which record IDs are trusted by a source separate from the message?
 - Which domain does the SPF result refer to?
-- Does a domain-authentication result say anything conclusive about the human author or requested action?
+- What can a domain check tell you about the person or the action they ask you to take?
 
-Check decisions, read the worked example and write one correction with its evidence reference. If every label matched, still explain the hardest choice; a lucky label is not evidence of understanding.
+Check your choices and read the worked example. Write one correction and cite the evidence for it. If all labels matched, explain your hardest choice. A lucky guess does not show that you understood the rule.
 
 ## 3. Independent case
 
-Prepare challenge in a fresh folder. Evaluate each message using the trusted receiving evidence and stated context. Separate observed identity checks from conclusions about intent. Keep reference outputs, the worked example and analyse closed until your decisions, evidence references and handover are saved. Use the README for syntax or vocabulary if needed and record that help. Afterwards, compare results and have another person assess the reasoning. A matching label alone does not establish understanding.
+Prepare challenge in a fresh folder. Review each message using the trusted receiver evidence and the stated context. Keep what the identity checks show separate from claims about intent. Keep the set answers, worked example and analyse closed for now. First save your choices, source notes and handover. Use the README for terms or syntax if needed, and note that help. Then compare the results. Ask another person to assess your reasons. A label that matches does not show what you understood.
 
 ## 4. Changed conditions
 
-Prepare changed separately and compare its evidence with guided; keep both attempts. Predict each result before revealing analysis.
+Prepare changed in a separate folder. Compare its evidence with guided and keep both attempts. Save your first choice for each result before you view the analysis.
 
-- Why is inserted-header unverified even though it claims mx.receiver.test?
-- What does a valid result for museum-billing.test establish when the expected sender is museum.test?
-- What further evidence would distinguish an authorised sender service from impersonation?
+- Which results meet both parts of the receiver trust rule?
+- How do the reported domains compare with From and the expected sender?
+- What extra evidence would help you check who was allowed to send the message?
 
-Write which fact changed, why the relevant rule changed or did not change, and what remains uncertain. Do not edit the shipped fixture or reference files to make an answer match.
+State which fact changed. Explain why the rule gives the same or a new result. State what is still unknown. Do not edit the supplied cases or set answers to make your choice match.
 
 ## 5. Teach-back
 
-Explain the receiver trust boundary, the difference between SPF and From, and why domain authentication never guarantees safe content. Use one record ID and a counterexample. If you need the worked example, say so in the help-used note, then try again later with it closed.
+Explain which receiver results you can trust and why. Show how SPF differs from From. Explain why a domain check cannot promise safe content. Cite one record ID. Give one example where the rule would give a different result. If you need the worked example, note that help. Try again later with it closed.
 
 ## 6. Later recall
 
-Two days later, sketch one aligned SPF example, one aligned DKIM example with SPF failure, and one forged untrusted Authentication-Results claim. Check each against the decision vocabulary. Record the date, what you recalled unaided, what you checked and one remaining question. This is a practice record, not a claim of complete real-world competence.
+Two days later, sketch three examples. In the first, make SPF pass and align with From. In the next, make DKIM pass and align while SPF fails. In the last, add a forged, untrusted Authentication-Results claim. Check each against the label rules. Record the date. State what you recalled on your own and what you had to check. Add one question you still have. This records your practice. It does not prove full skill in real work.
 
 ## Handover
 
-Submit your own saved worksheet and a short note answering: "What is observed, where is the evidence, what is uncertain, and what should be checked next?" Include initial prediction, correction and help used. No upload or publication is part of this lab.
+Keep your own saved worksheet and a short handover note. Answer: "What did I see? Where is the evidence? What is unknown? What should be checked next?" Include your first choices, corrections and help used. This lab does not ask you to upload or publish anything.

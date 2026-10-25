@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "i1": "narrow-scope",
+    "i2": "seek-origin"
+  },
+  "observations": [
+    "i1: report=r1; source=direct; stated confidence=80; scope=shared-service; review=2026-01-15T00:00:00Z.",
+    "i2: report=r2; source=direct; stated confidence=unspecified; scope=single-host; review=2026-01-15T00:00:00Z."
+  ],
+  "limitations": [
+    "All indicators and reports are fictional. No lookup, reputation check, block or external submission is performed.",
+    "A supplied confidence number is the report author opinion, not a measured probability or proof.",
+    "A repeated report is not independent corroboration. A shared service can serve unrelated users.",
+    "The seven-day review rule and 70 threshold are local teaching choices, not STIX requirements. This is not a STIX implementation."
+  ]
+}

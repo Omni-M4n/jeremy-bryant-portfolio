@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "failures": "1",
+    "joined": "0",
+    "linked": "0",
+    "web": "0"
+  },
+  "observations": [
+    "Unique rows: login=1; endpoint=1; web=1.",
+    "Failed login rows=1; joined rows=0; distinct linked login IDs=0; HTTP status 400-599 rows=0."
+  ],
+  "limitations": [
+    "Joins link equal host and account fields in this small dataset; they do not prove cause or compromise.",
+    "One row is one distinct event ID in its own table. Repeated deliveries are removed before querying.",
+    "Time, sensor coverage and account ownership need separate checks before an incident claim."
+  ]
+}

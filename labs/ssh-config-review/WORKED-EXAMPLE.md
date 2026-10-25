@@ -1,8 +1,10 @@
 # Worked example: Small SSH server configuration review
 
-Try the guided case before reading this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
+Try guided before reading this page. To make a fresh copy, use `python lab.py prepare --scenario guided --out run/worked-01`.
 
-The guided text has PermitRootLogin prohibit-password. This still permits some root authentication methods, so it differs from the lab requirement no. PasswordAuthentication yes also differs. Keyboard-interactive no, public keys yes, empty passwords no and MaxAuthTries 4 match. access-route says public-key-method-enabled because that method is explicitly enabled; it does not say that a working key or recovery login exists. The exercise never loads host configuration or starts a server.
+The guided text sets PermitRootLogin to prohibit-password. This still allows some ways to log in as root. It differs from the lab's required value, no. PasswordAuthentication yes also differs from the baseline.
+
+Four settings match: keyboard-interactive no, public keys yes, empty passwords no and MaxAuthTries 4. The access-route result is public-key-method-enabled. The text enables that method. It does not show that a working key or recovery login exists. The exercise reads no host settings and starts no server.
 
 The reference decision fields for guided are:
 
@@ -18,6 +20,6 @@ The reference decision fields for guided are:
 }
 ```
 
-Now open `python lab.py analyse --case run/worked-01/case.json` and compare observations, not only labels. Record one difference between your first prediction and the reference. If there was no difference, explain the rule that produced each decision rather than copying the label.
+Run `python lab.py analyse --case run/worked-01/case.json` after saving your own answer. Compare the facts, not just the labels. Keep the first answer and add corrections. If it matched, explain the rule behind each result.
 
-Handover prompt: explain what this evidence establishes, cite its exact IDs or lines, give a plausible alternative or remaining uncertainty, and name the smallest next check. Record any help used. A correct label by itself is not evidence of independent understanding.
+For a handover, state what the evidence shows. Cite exact IDs or lines. Give one other explanation or remaining doubt, then the smallest next check. Include help used. A correct label alone does not show that you understand it.

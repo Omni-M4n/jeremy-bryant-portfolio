@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-output-encoding",
+  "case_id": "challenge",
+  "title": "Display desk",
+  "synthetic": true,
+  "question": "Does the response type change the way the same bytes are read?",
+  "data": {
+    "marker": "<b>LOCAL MARKER</b>",
+    "modes": [
+      "text",
+      "reflect",
+      "encoded"
+    ]
+  }
+}

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "tcp-handshake",
   "case_id": "challenge",
-  "title": "Sequence wrap and a misleading ACK flag",
+  "title": "Sequence and acknowledgement review",
   "synthetic": true,
   "context": {
     "question": "Which opening events are actually supported by these packet summaries?"
@@ -40,7 +40,7 @@
         ]
       },
       {
-        "id": "mismatch",
+        "id": "flow-b",
         "client": "192.0.2.15",
         "server": "198.51.100.20",
         "server_port": 443,
@@ -72,6 +72,6 @@
     ]
   },
   "artifacts": {
-    "packets.csv": "flow,frame,direction,flags,sequence,acknowledgement\nwrapped,1,c2s,SYN,4294967295,\nwrapped,2,s2c,SYN-ACK,99,0\nwrapped,4,c2s,ACK,0,100\nmismatch,3,c2s,SYN,60,\nmismatch,5,s2c,SYN-ACK,80,61\nmismatch,6,c2s,ACK,61,80\n"
+    "packets.csv": "flow,frame,direction,flags,sequence,acknowledgement\nwrapped,1,c2s,SYN,4294967295,\nwrapped,2,s2c,SYN-ACK,99,0\nwrapped,4,c2s,ACK,0,100\nflow-b,3,c2s,SYN,60,\nflow-b,5,s2c,SYN-ACK,80,61\nflow-b,6,c2s,ACK,61,80\n"
   }
 }

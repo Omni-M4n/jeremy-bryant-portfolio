@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "stop-and-contact-owner",
+    "item-2": "stop-and-contact-owner"
+  },
+  "observations": [
+    "item-1: desk-lab.test, read-log, minute 610; window [600, 630).",
+    "item-2: other-lab.test, read-config, minute 620; window [600, 630)."
+  ],
+  "limitations": [
+    "This reviews a fictional written plan. It grants no permission and launches no test."
+  ]
+}

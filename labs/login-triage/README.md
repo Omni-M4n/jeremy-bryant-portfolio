@@ -1,12 +1,12 @@
 # Login triage: original guided practice
 
-Practise reading sign-in records, reconstructing a timeline, checking an alert rule, and writing a short handover. A **security operations centre (SOC)** is a team that reviews possible security problems. **Triage** means deciding what deserves attention first and what evidence is needed next.
+Which sign-in records need a closer look? Read the records and put them in time order. Check an alert rule, then write a short handover. A handover gives the next reviewer what they need. A **security operations centre (SOC)** reviews possible security problems. **Triage** means choosing what to review first. It also means deciding what evidence to seek next.
 
-These are original guided practice materials for a beginner. The records, organisation, accounts, notes and future timestamps are fictional. This lab is independent learner practice, not an assessed exercise or evidence of professional SOC experience. Following the worked example does not establish independent mastery, and the supplied utility is not a claim that Jeremy independently built a production security tool.
+This is new guided practice for a beginner. The records, organisation, accounts, notes and future times are made up. It is separate learner practice. It is not assessed work or proof of professional SOC experience. Following the worked example does not prove independent mastery. The supplied tool does not show that Jeremy built a production security tool without help.
 
 ## Start here
 
-Use Python 3.9 or newer. Only Python's standard library is required: no packages, sign-in, network traffic or live authentication. Open a terminal in this folder. On Windows, `py` can replace `python` if that is your installed Python command.
+Use Python 3.9 or newer. Only Python's standard library is needed. There are no packages to add. There is no sign-in, network traffic or live authentication. Open a terminal in this folder. On Windows, `py` can replace `python` if that is your installed Python command.
 
 ```sh
 python lab.py --help
@@ -17,13 +17,13 @@ python lab.py triage
 python lab.py verify --report runs/report.json
 ```
 
-Read the three invented account notes in [`fixture/context.json`](fixture/context.json). Write your own interpretation before opening the [worked example](WORKED-EXAMPLE.md). Continue with the [practice drills](PRACTICE.md).
+Read the three made-up account notes in [`fixture/context.json`](fixture/context.json). Write what you think the records show. Then open the [worked example](WORKED-EXAMPLE.md). Continue with the [practice drills](PRACTICE.md).
 
-`triage` writes `runs/report.json`. Open that file in a text editor to inspect the counted events and linked successes. Repeating a command that writes an existing output is refused; give `--output` a fresh name to preserve earlier work. Relative **output** paths are resolved from this lab folder. Relative **input** paths are resolved from your terminal's current folder, so run the examples here.
+`triage` writes `runs/report.json`. Open it in a text editor. Check the counted events and linked successes. The tool refuses to write over an existing output. Give `--output` a fresh name to keep earlier work. Relative **output** paths start from this lab folder. Relative **input** paths start from your terminal's current folder. Run the examples here so the inputs are found.
 
 ## Compact command contract
 
-`lab.py` is the single maintained command entry point. It reads local synthetic files only. Generated cases, reports and test scratch files stay under this folder's ignored `runs/` directory. It will not overwrite existing outputs. Tests remove only their own temporary subdirectories. No command changes the checked-in fixture or performs account actions.
+`lab.py` is the single maintained command entry point. It reads only local, made-up files. New cases, reports and test scratch files stay in `runs/`. Git ignores this folder. The tool will not overwrite outputs. Tests remove only the temporary subfolders they created. No command changes the checked-in fixture or acts on an account.
 
 | Command | Input | Result |
 | --- | --- | --- |
@@ -33,21 +33,48 @@ Read the three invented account notes in [`fixture/context.json`](fixture/contex
 | `verify [--case DIRECTORY] [--report FILE]` | Fixture directory by default | Recreates the seed's expected files, compares every byte and optionally recalculates the report |
 | `test` | Supplied fixture and temporary synthetic cases | Timing, grouping, invalid-input and integrity checks; exit status 0 when all pass |
 
-Exit status 0 means the command completed, 1 means tests failed, and 2 means invalid input or a file problem. A status is a number the terminal can use to distinguish completion from failure. `verify` checks file integrity and calculation consistency; it does **not** assess your explanation or validate the rule for a real organisation. A hash is not a digital signature or proof of who authored a file.
+An exit status is a number the terminal can read. It shows whether a command finished or failed.
+
+| Exit status | Meaning |
+| --- | --- |
+| 0 | Command completed |
+| 1 | Tests failed |
+| 2 | Invalid input or a file problem |
+
+`verify` checks the files and repeats the calculations. It does **not** assess your explanation. It does not validate the rule for a real organisation. A hash is not a digital signature. It does not prove who wrote a file.
 
 ## What the rule actually counts
 
-The default **threshold** is five failures. The default **window** is 300 seconds (five minutes). For each distinct failure timestamp, the program counts only failures for the **same account and same source address**, between `timestamp − 300 seconds` and that timestamp, including both endpoints. Earlier failures outside that window are excluded. Successes do not count as failures and do not reset the window.
+The **threshold** is the count needed to match the rule. Its default is five failures. The **window** is the span of time to count. Its default is 300 seconds, or five minutes.
 
-A qualifying window is a **candidate** for review. Each qualifying end time is reported, so two overlapping windows can describe one sequence. Do not count the two windows as two proven incidents. Records are sorted by timestamp; file order does not establish event order. All failures sharing a second are counted together. Their event IDs are labels, not evidence of subsecond order.
+For each distinct failure time, apply these rules:
 
-A **linked success** means the same account and source address had a success strictly after a qualifying window ended, within the next 120 seconds, including the upper boundary. A success in the same second is not linked because the data cannot establish which event came first. `--success-seconds 0` disables links. A timing link does not establish the same person, a successful attack, or what happened after sign-in.
+| Rule | What counts |
+| --- | --- |
+| Group | Only failures for the **same account and same source address** |
+| Start | `timestamp − 300 seconds`, included |
+| End | That failure timestamp, included |
+| Earlier failures | Excluded if outside this window |
+| Successes | Do not count as failures and do not reset the window |
 
-This is a deliberately small **heuristic**: a useful rule of thumb, not proof of compromise. It can miss failures spread across several addresses or accounts. A shared internet address can also represent several people. A lack of candidates means only that this rule found none in these records; it does not establish that an account is safe.
+A window that meets the threshold is a **candidate** for review. Each matching end time is reported. Two windows can overlap and describe one sequence. Do not count them as two proven incidents. The tool sorts records by time. File order does not prove event order. It counts all failures in the same second together. Event IDs are labels. They cannot show the order within a second.
+
+A **linked success** is a later success for the same account and source address. The link uses these exact limits:
+
+| Limit | Rule |
+| --- | --- |
+| Start | Strictly after a qualifying window ends |
+| End | Within the next 120 seconds, including second 120 |
+| Same second as the window end | Not linked; the data cannot show which event came first |
+| `--success-seconds 0` | Turns links off |
+
+A time link does not prove it was the same person. It does not prove an attack worked. It says nothing about actions after sign-in.
+
+This small **heuristic** is a rule of thumb. It does not prove that someone broke into an account. It can miss failures spread across several addresses or accounts. Several people may share one internet address. No candidates means this rule found none in these records. It does not prove that an account is safe.
 
 ## Reading the evidence
 
-The fixture contains 19 events in deliberately shuffled order. CSV and JSONL contain the same events in two formats; they are alternatives, not two independent evidence sources.
+The fixture has 19 events in shuffled order. CSV and JSONL hold the same events in two formats. Choose either format. They are not two separate evidence sources.
 
 | Field | Plain-language meaning |
 | --- | --- |
@@ -59,24 +86,40 @@ The fixture contains 19 events in deliberately shuffled order. CSV and JSONL con
 | `reason` | `invalid_password` for a failure or `accepted` for a success; it does not identify the person typing |
 | `synthetic` | The literal text `true`, making each row explicitly fictional |
 
-**CSV** is a text table with comma-separated fields. **JSONL** is a text file with one structured JSON record per line. **JSON** names fields so a program or reader can inspect them. An **IP address** is a network address; these documentation values do not identify real hosts. A **service account** is used by an automated job rather than a person. A **stale password** is an old saved password that no longer works.
+| Term | Meaning |
+| --- | --- |
+| **CSV** | A text table with fields split by commas |
+| **JSONL** | A text file with one structured JSON record per line |
+| **JSON** | A format with named fields for a program or reader to inspect |
+| **IP address** | A network address; these documentation values do not identify real hosts |
+| **Service account** | An account for an automated job rather than a person |
+| **Stale password** | An old saved password that no longer works |
 
-The parser rejects missing or unexpected fields, duplicate event IDs, invalid dates, unsupported outcomes, non-documentation addresses and rows without explicit synthetic labels. These constraints help keep this exercise scoped; they cannot prove that arbitrary user-edited text contains no personal data. Use the supplied generator and fictional edits only.
+The parser rejects missing or extra fields. It also rejects these inputs:
+
+| Invalid input | Reason |
+| --- | --- |
+| Duplicate event IDs | Each record needs its own ID |
+| Invalid dates or unsupported outcomes | The tool cannot read these as valid events |
+| Non-documentation addresses | Only reserved example addresses belong in this lab |
+| Rows with no explicit synthetic label | Each row must be marked as made up |
+
+These rules help keep the exercise within its scope. They cannot prove that edited text has no personal data. Use the supplied generator and fictional edits only.
 
 ## Evidence, interpretation and next action
 
 Keep these three parts separate in your notes:
 
-1. **Observed:** name the account, source address, UTC interval, event IDs and counts. State the exact rule settings.
-2. **Interpretation:** describe a plausible explanation and what remains unknown. A helpdesk note supports an explanation but is not independent verification of the actor.
-3. **Next check:** request the missing evidence that could change your decision, such as confirmation from the account owner, device records, an additional sign-in verification record, or actions taken after the sign-in. In this exercise, write the request only.
+1. **Observed:** name the account, source address and UTC interval. Add event IDs, counts and the exact rule settings.
+2. **Interpretation:** give a possible explanation. State what is still unknown. A helpdesk note can support your view. It does not confirm who used the account.
+3. **Next check:** request missing evidence that could change your view. You could ask the account owner to confirm the activity. You could seek device records, an extra sign-in verification record, or actions after sign-in. In this exercise, write the request only.
 
-A **false positive** is a rule match that turns out not to be the suspected security problem. It may still reveal an operational fault. An **escalation** asks a more experienced reviewer to investigate; a **handover** provides enough evidence for that person to continue. Neither requires claiming an attacker was identified.
+A **false positive** starts with a rule match. Further review shows it is not the suspected security problem. It may still show a fault that needs fixing. An **escalation** asks a more skilled reviewer to investigate. A **handover** gives them enough evidence to continue. Neither needs a claim that you found an attacker.
 
 ## Reproducibility and scope
 
-A **seed** is a number that produces the same fictional case again. Change the seed to vary account labels, addresses, times and file order. Use `baseline`, `late-success` or `distributed` to change the sequence's behaviour. [`fixture/manifest.json`](fixture/manifest.json) records synthetic provenance, seed, scenario, generator version and SHA-256 hashes of the data and context. **SHA-256** produces a fingerprint of file bytes; a changed file normally has a different fingerprint.
+A **seed** is a number that makes the same fictional case again. A new seed changes account labels, addresses, times and file order. To change how the sequence behaves, choose `baseline`, `late-success` or `distributed`. [`fixture/manifest.json`](fixture/manifest.json) records the made-up origin, seed, scenario and generator version. It also holds SHA-256 hashes of the data and context. **SHA-256** makes a fingerprint of file bytes. A changed file normally has a different fingerprint.
 
-The checked-in fixture is seed 41, baseline, generator version 1.0.0. `verify` compares it with regenerated content, including the manifest, rather than merely trusting hashes written in the manifest. Preserve LF line endings when copying fixture files. Keep your notes and new cases in `runs/`; it is excluded from Git, the repository history system. No personal data, passwords or real authentication logs are needed.
+The checked-in fixture is seed 41, baseline, generator version 1.0.0. `verify` rebuilds the content, including the manifest, and compares it. It does not just trust the hashes in the manifest. Keep LF line endings when copying fixture files. Put your notes and new cases in `runs/`. Git, the file history system, ignores it. You need no personal data, passwords or real authentication logs.
 
-Run `python lab.py test` after changing the tool. Passing software checks and following the worked answer are distinct from factual judgement or independent learner performance. This lab has no external grader, no badge and no automatic mastery claim.
+Run `python lab.py test` after changing the tool. Passing checks tests the software. Following the worked answer gives practice. Neither proves sound judgement or skill without help. This lab has no external grader or badge. It makes no automatic mastery claim.

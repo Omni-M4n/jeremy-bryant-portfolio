@@ -47,5 +47,5 @@
   "lab_id": "alert-correlation",
   "schema_version": 1,
   "synthetic": true,
-  "title": "The success falls just outside the anchored window"
+  "title": "Alerts across a collection window"
 }

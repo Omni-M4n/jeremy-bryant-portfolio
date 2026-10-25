@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "confidential;disposal-due;share-as-approved;receipt-incomplete",
+    "item-2": "confidential;retain-on-hold;do-not-share;no-receipt"
+  },
+  "observations": [
+    "item-1: age 30 / retain 30 days; unnecessary fields: birthday.",
+    "item-2: age 80 / retain 30 days; unnecessary fields: birthday."
+  ],
+  "limitations": [
+    "These are invented handling rules, not legal advice or proof of real deletion."
+  ]
+}

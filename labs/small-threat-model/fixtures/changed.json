@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "A service review",
+  "synthetic": true,
+  "context": {
+    "question": "A guest uses office Wi-Fi. A small temperature sensor also connects. Draw how both could reach a records service, and what must check each request along the way."
+  },
+  "data": {
+    "wifi_access": "named-users",
+    "paths": [
+      {
+        "id": "item-1",
+        "source": "guest-wifi",
+        "destination": "records-service.test",
+        "configured": "block",
+        "observed": "reachable",
+        "identity": "named",
+        "resource_check": true,
+        "transport": "tls"
+      },
+      {
+        "id": "item-2",
+        "source": "device-segment",
+        "destination": "records-service.test",
+        "configured": "allow",
+        "observed": "reachable",
+        "identity": "shared",
+        "resource_check": true,
+        "transport": "plain"
+      }
+    ]
+  },
+  "artifacts": {
+    "diagram-template.md": "# Office flow sketch\n\nDraw boxes and arrows here. Label staff Wi-Fi, guest Wi-Fi, sensor, service and store.\n\nNetwork boundary:\nApplication boundary:\n\n| Path | Asset | Possible failure | Control | Supplied evidence | Next validation |\n|---|---|---|---|---|---|\n\nIf one check is missing:\nShared password versus named user:\n",
+    "config.txt": "SYNTHETIC CONFIGURATION REVIEW\nWi-Fi access=named-users\nitem-1 | guest-wifi -> records-service.test | configured=block | observed=reachable | service identity=named | permission check=True | transport=tls\nitem-2 | device-segment -> records-service.test | configured=allow | observed=reachable | service identity=shared | permission check=True | transport=plain\nSensor role: temperature readings only; no record-reading purpose.\n"
+  },
+  "lab_id": "small-threat-model"
+}

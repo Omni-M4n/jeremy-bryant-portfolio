@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "lab_id": "firewall-enforcement",
+  "case_id": "changed",
+  "title": "Connection notebook 2",
+  "synthetic": true,
+  "context": {
+    "question": "Do these observations support the intended rule effect and rollback?",
+    "note": "Fictional export hashes and connection notes; one client and no forwarding. Counter deltas cover only the named attempt."
+  },
+  "data": {
+    "baseline_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restored_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rule_removed": true,
+    "probes": [
+      {
+        "id": "p01",
+        "port": 8000,
+        "expected": "allow",
+        "before": {
+          "listener": true,
+          "outcome": "connect"
+        },
+        "during": {
+          "listener": true,
+          "outcome": "connect"
+        },
+        "after": {
+          "listener": true,
+          "outcome": "connect"
+        },
+        "hits": 0
+      },
+      {
+        "id": "p02",
+        "port": 8001,
+        "expected": "deny",
+        "before": {
+          "listener": true,
+          "outcome": "connect"
+        },
+        "during": {
+          "listener": false,
+          "outcome": "refused"
+        },
+        "after": {
+          "listener": true,
+          "outcome": "connect"
+        },
+        "hits": 0
+      }
+    ]
+  },
+  "artifacts": {
+    "connections.txt": "A target has two temporary HTTP listeners. Compare the before, during and after columns in case.json.\n"
+  }
+}

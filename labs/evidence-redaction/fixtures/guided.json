@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "case_id": "guided",
+  "title": "A desk log excerpt",
+  "synthetic": true,
+  "context": {
+    "question": "A log can show a refused request and still contain a token or personal detail. Make a separate copy that keeps the useful result and removes the supplied fake sensitive values."
+  },
+  "data": {
+    "remove": [
+      "person-17@office.test",
+      "DEMO-TOKEN-418"
+    ],
+    "keep": [
+      "event=download-denied",
+      "status=403"
+    ]
+  },
+  "artifacts": {
+    "record.txt": "SYNTHETIC TRAINING RECORD\ntime=10:00Z event=download-denied status=403\nuser=person-17@office.test token=DEMO-TOKEN-418\nreview=user person-17@office.test\n",
+    "redaction-template.md": "# Private redaction checklist\n\nClaim to support:\nOriginal filename and hash:\nFields to remove and why:\nFields to keep and why:\nCopy filename and hash:\nSeed search results:\nClaim preservation check:\nContext clues still present:\nReviewer and limits:\n"
+  },
+  "lab_id": "evidence-redaction"
+}

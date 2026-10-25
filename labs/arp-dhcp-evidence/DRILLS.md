@@ -1,6 +1,6 @@
 # Exchange practice with fewer prompts
 
-Use a fresh `run/attempt-NN` for every pass. Record date, Python version, case ID, prediction, evidence, help used and correction. Preserve the first worksheet before running `check`; it reveals reference labels for differences. Stages describe observed work, for example "guided with prompts" or "independent attempt awaiting review". A passing utility does not assess mastery.
+Use a fresh `run/attempt-NN` for every pass. Record the date, Python version, case ID, prediction, evidence, help used and correction. Save the first worksheet before running `check`. It reveals answer labels where yours differ. Name the stage that fits your work, such as "guided with prompts" or "independent attempt awaiting review". A passing tool does not prove skill.
 
 ## Guided: 30-45 minutes
 
@@ -12,16 +12,16 @@ Prepare `guided` in a fresh folder and close the worked example. Use these promp
 
 ## Independent: 20-30 minutes
 
-Prepare `challenge`. Close worked solutions, reference files, tests and previous answers. Use only its evidence, the README's model rules and a blank table. Classify each query, identify all relevant and excluded frames, and explain at least one unresolved question without inventing a missing event. Complete every `-lease-link` entry separately from the ARP exchange result. Save first; check and request human review afterwards. No case-specific answers are supplied in this drill.
+Prepare `challenge`. Close worked solutions, answer files, tests and past answers. Use only its evidence, the README's model rules and a blank table. Choose a label for each query. List all matching and excluded frames. Explain at least one open question. Do not invent an event to fill a gap. Complete every `-lease-link` entry apart from the ARP exchange result. Save first, then check and ask a person to review it. This drill gives no case answers.
 
 ## Changed observations: 20-30 minutes
 
-Prepare `changed`. Do not carry a label forward just because a message name looks familiar. Determine the request form from its fields, correlate the required identifiers, and record the evidence for each excluded packet. Explain what the excerpt's end time and observation point do and do not establish. Save a new first attempt before checking. No lease release/renewal, adapter edit or network transmission is required.
+Prepare `changed`. A familiar message name is not enough to reuse a label. Find the request form from its fields. Match the required IDs. Record why each excluded packet does not fit. Explain what the excerpt's end time and capture point can and cannot show. Save a new first attempt before checking. Do not release or renew a lease, edit an adapter or send network traffic.
 
 ## Teach-back: 5-10 minutes
 
-Explain why a DHCP Request can be meaningful without a preceding Discover/Offer in the same attempt. Explain why xid alone is insufficient here, how you match an ARP reply, and why a correctly matched pair does not prove the sender's ownership. Have a reviewer point to one frame and ask which conclusion it supports and which it cannot support. Keep the questions and corrections.
+Explain why a DHCP Request can make sense without an earlier Discover/Offer in the same attempt. Why is xid alone not enough here? How do you match an ARP reply? Why does a matched pair not prove the sender owns the address? Ask a reviewer to point to one frame. Say which claim it supports and which it cannot support. Keep the questions and corrections.
 
 ## Later recall
 
-On another day, write the minimum fields you would compare for DHCP, ARP and the link between them before looking at notes. About a week later, ask a reviewer to choose an unfamiliar excerpt from your authorised saved lab material, or verbally remove one observation from a supplied case. Predict which conclusions remain supported and justify the difference. Keep the exercise offline; do not create real missing-message conditions. Record uncertainty and help honestly, then compare with a reviewer rather than assuming the fixture checker covers the new scenario.
+On another day, write the fields you need to compare for DHCP, ARP and the link between them. Do this before looking at notes. About a week later, ask a reviewer to choose a new excerpt from your approved saved lab files. Or ask them to describe a given case with one record removed. Predict which claims still hold and explain why. Keep the task offline. Do not create real missing-message conditions. Record doubts and help used. Review the new case with a person. The fixture checker may not cover it.

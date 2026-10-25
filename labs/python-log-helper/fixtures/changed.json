@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "lab_id": "python-log-helper",
+  "case_id": "changed",
+  "title": "Desk record set B",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "start": "2026-01-15T00:01:00Z",
+    "end": "2026-01-15T00:03:00Z"
+  },
+  "artifacts": {
+    "events.jsonl": "{\"id\":\"e1\",\"time\":\"2026-01-15T00:00:00Z\",\"account\":\"reader\",\"outcome\":\"failure\"}\n{\"id\":\"e2\",\"time\":\"2026-01-15T00:01:00Z\",\"account\":\"reader\",\"outcome\":\"failure\"}\n{\"id\":\"e2\",\"time\":\"2026-01-15T00:01:00Z\",\"account\":\"reader\",\"outcome\":\"failure\"}\n{\"id\":\"e3\",\"time\":\"2026-01-15T00:02:00Z\",\"account\":\"operator\",\"outcome\":\"failure\"}\n"
+  }
+}

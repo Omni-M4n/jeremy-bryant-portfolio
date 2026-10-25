@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "step": "other",
+      "status": 404,
+      "remaining": null,
+      "retry_after_present": false
+    },
+    {
+      "step": "post",
+      "status": 405,
+      "remaining": null,
+      "retry_after_present": false
+    },
+    {
+      "step": "ticket",
+      "status": 200,
+      "remaining": 2,
+      "retry_after_present": false
+    },
+    {
+      "step": "ticket",
+      "status": 200,
+      "remaining": 1,
+      "retry_after_present": false
+    },
+    {
+      "step": "ticket",
+      "status": 200,
+      "remaining": 0,
+      "retry_after_present": false
+    },
+    {
+      "step": "ticket",
+      "status": 429,
+      "remaining": 0,
+      "retry_after_present": true
+    }
+  ]
+}

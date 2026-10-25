@@ -1,34 +1,121 @@
-# HTTP headers and cookies
+# Check HTTP headers and cookies
 
-Compare saved response headers and session-cookie attributes with the stated requirements of a fictional museum application. These are original fictional practice cases, not copied coursework or completed professional work.
+A browser gets more than a page's text. It also gets headers with rules about
+how to handle that page. Does a saved response meet the needs of a made-up
+museum site? Check the page rules and the sign-in cookie separately.
 
-## Before starting
+These cases are made up and separate from coursework. They do not claim that
+you have reviewed a real site or proved a skill.
 
-Prerequisites: HTTP requests/responses and the HTTP log triage lab are helpful. No web server, browser automation or prior application-security experience is required. Use Python 3.10+ with the standard library. Run the commands from this lab folder. The learner reads evidence, makes decisions and edits a worksheet; programming is not required.
+## Start here
 
-Allow **30-45 minutes** for the first guided pass: 5 minutes for vocabulary and scope, 15 for prediction, 10 for checking and correction, and 5-15 for explanation. Changed and later recall exercises are separate practice. Personal completion and independent competence have not been assessed.
+It helps to know HTTP requests and responses and to try http-triage first.
+You need Python 3.10 or newer, a terminal and a text editor. You do not need
+to write code, run a web server or have prior web security work.
 
-## Vocabulary
+Allow 30–45 minutes. Read for 5 minutes, predict for 15, then check for 10.
+Use the time left to explain your result. Leave later cases for fresh sessions.
+Run commands from this lab folder.
 
-**HSTS:** a browser policy delivered over HTTPS. **CSP:** Content-Security-Policy. **frame-ancestors:** the CSP control used here for permitted framing. **Secure:** a cookie transport restriction. **HttpOnly:** restricts script access to a cookie. **SameSite:** a cookie sending constraint. **no-store:** a cache storage directive.
+| Term | Meaning here |
+| --- | --- |
+| Header | A named field sent with a response |
+| HSTS | A rule received over HTTPS that tells a browser to use HTTPS |
+| CSP | Content-Security-Policy, a set of rules for page content |
+| frame-ancestors | A CSP rule for which pages may frame this page |
+| Cookie | A value the browser can keep and send on later requests |
+| Secure | Cookie flag that restricts transport |
+| HttpOnly | Cookie flag that stops script access to that cookie |
+| SameSite | A rule that limits when a cookie is sent |
+| no-store | A rule that tells caches not to store the response |
 
-## Evidence and exact input model
+## Read the case
 
-Readable synthetic response-header blocks plus application requirements and per-response HTML, session and private-data context.
+The case holds the site's rules and saved response fields. It also says which
+responses contain HTML, private data or a session. A session links requests
+to a sign-in. No browser or network is used here.
 
-Each case has exactly `schema_version: 1`, `lab_id: "http-header-review"`, `case_id` (`guided`, `changed`, `challenge`), `title`, `synthetic: true`, `context`, `data`, `artifacts`. `context.question` is nonempty text. Objects reject unknown/missing fields; record IDs are unique lowercase names. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). Files are small UTF-8 JSON; readable artifacts are supplied through prepare where relevant.
+Read the [shared file rules](../FOUNDATION-CONTRACT.md) for the format.
+The parser rejects missing or extra fields. IDs are unique lowercase names.
 
-`data.requirements` contains `hsts_min_seconds` (positive integer), `frame_ancestors` (`'none'` or `'self'`), `session_cookie` (case-sensitive token name), and `cookie_samesite` (`Strict` or `Lax`). `data.responses` records have `id`, `scheme` (`http`/`https`), boolean `is_html`, `requires_session`, `private_data`, and `headers` (LF-separated fields without a status line). JSON is authoritative; `artifacts.headers.txt` is a required exact mirror. Header names are case-insensitive; repeated Set-Cookie is allowed but repeated cookie names are rejected. Other duplicate headers, folded fields, controls and empty values are rejected. Unknown header names are ignored. HSTS supports max-age and optional includeSubDomains. CSP supports only default-src and frame-ancestors, each with one quoted self/none source. Cookies support simple alphanumeric/underscore/hyphen values and Path=/, Secure, HttpOnly, SameSite. Cache-Control supports no-store, private, public, no-cache, max-age=N. Duplicate or unsupported directives/attributes are errors, not safe results.
+| Case field | Required value |
+| --- | --- |
+| schema_version | 1 |
+| lab_id | http-header-review |
+| case_id | guided, changed or challenge |
+| title | Case title |
+| synthetic | true |
+| context.question | Nonempty question |
+| data | Requirements and responses below |
+| artifacts.headers.txt | Exact readable copy of the header data |
 
-## Decision vocabulary
+The JSON file is the source used for decisions. Its text copy must agree.
+JSON is a text format with named fields and values. Each header starts on a
+new line, using LF line breaks. Do not include an HTTP status line.
 
-Use `meets-supplied-requirements` if there are no gaps. Otherwise use `requirement-gaps:` followed by applicable comma-separated tokens in this order: `https-required` (HTTP response), **or** `hsts-duration` (HTTPS with absent/short HSTS); `nosniff`; `frame-ancestors` (HTML only); `cache-no-store` (private data only); `session-cookie` (required cookie missing), **or** `cookie-secure`, `cookie-httponly`, `cookie-samesite` for its missing/wrong attributes.
+| Requirements field | Allowed value |
+| --- | --- |
+| hsts_min_seconds | Positive whole number |
+| frame_ancestors | 'none' or 'self', including the single quotes |
+| session_cookie | HTTP token name; letter case matters |
+| cookie_samesite | Strict or Lax |
 
-Every response requires HTTPS and nosniff. HTML requires the exact supplied frame-ancestors value; default-src is not its substitute. Private data requires no-store, not merely private. Required sessions need the named cookie and both flags plus the exact supplied SameSite value. The parser is deliberately narrower than browser syntax.
+Each response has an ID, a scheme of `http` or `https`, and header text.
+Its `is_html`, `requires_session` and `private_data` fields are true or false.
+An HTTP token is a name made from letters, digits and allowed symbols.
+It cannot contain spaces or colons. Other unsupported characters are refused.
+
+## Small parser rules
+
+Header names ignore letter case. More than one `Set-Cookie` field is allowed,
+but each must name a different cookie. Other repeated headers are refused.
+Folded fields, control characters and empty values are also refused.
+Unknown header names are ignored. This small reader accepts only these forms:
+
+| Field | Supported parts |
+| --- | --- |
+| HSTS | max-age, plus optional includeSubDomains |
+| CSP | default-src and frame-ancestors; one quoted 'self' or 'none' source each |
+| Cookie value | Letters, digits, underscore or hyphen; may be empty |
+| Cookie attributes | Path=/, Secure, HttpOnly, SameSite |
+| Cache-Control | no-store, private, public, no-cache, max-age=N |
+
+A repeated or unsupported rule or attribute is an input error. It is not a
+safe result. These rules are narrower than a browser's full syntax.
+
+## Choose a result
+
+Every response needs HTTPS and `nosniff`. For HTTPS, the HSTS time must meet
+the stated minimum. HTML also needs the exact frame-ancestors value given.
+A default-src rule does not replace it. Private data needs no-store;
+private alone is not enough.
+
+If a session is needed, find the exact cookie named in the requirements.
+It needs both Secure and HttpOnly, plus the stated SameSite value.
+
+Use `meets-supplied-requirements` if all the needed checks pass.
+Otherwise start with `requirement-gaps:`. Add the matching tokens below in
+order, joined by commas without spaces.
+
+| Order | Missing or wrong requirement | Exact token |
+| --- | --- | --- |
+| 1 | Response uses HTTP | https-required |
+| 1 | HTTPS has absent or short HSTS | hsts-duration |
+| 2 | Required nosniff value | nosniff |
+| 3 | HTML framing rule | frame-ancestors |
+| 4 | Storage rule for private data | cache-no-store |
+| 5 | Required session cookie is absent | session-cookie |
+| 5 | Present cookie lacks Secure | cookie-secure |
+| 6 | Present cookie lacks HttpOnly | cookie-httponly |
+| 7 | Present cookie has wrong or absent SameSite | cookie-samesite |
+
+Use only one token at order 1. If the cookie is absent, report session-cookie.
+Do not also report missing flags for a cookie that is not there.
 
 ## Run the practice
 
-Use a new attempt number if the destination already exists. Prepare writes only beneath this lab's ignored `run/` folder and refuses existing or linked paths.
+Prepare writes under this lab's `run/` folder. It refuses old or linked paths.
+Use a new attempt number if your folder already exists.
 
 ```console
 python lab.py cases
@@ -36,7 +123,11 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and its readable evidence. Before viewing the analysis, edit `run/attempt-01/answers.json`: replace every blank decision with an exact label above, write `explanation` as a paragraph, and put record/field/line references in the `evidence` list. Keep predictions, uncertainty, next check and help used in `notes.txt`. JSON strings use double quotes; do not add comments or trailing commas. An evidence entry can be a record ID plus the relevant field name.
+Read the case before opening the answer. Fill each blank decision in
+`run/attempt-01/answers.json` with the exact labels above. Add a short reason.
+In the evidence list, give record IDs and field names. Keep your prediction,
+unknowns, next check and help used in `notes.txt`. Use double quotes in JSON.
+Do not add comments or commas after the last item.
 
 ```console
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
@@ -47,22 +138,40 @@ python lab.py verify
 python test_lab.py
 ```
 
-Repeat show/check/analyse with the new attempt path. Default case is `fixtures/guided.json` beside the script. Explicit input paths are relative to your current directory; prepare output is relative to this lab. Exit 0 means command success or matching decision fields, 1 means differences/incomplete worksheet, and 2 means invalid input or a filesystem error. Analyse shows the reference reasoning and should stay closed until a prediction is saved. Verify compares three shipped fixtures with fixed reference outputs; it does not assess a learner. Check requires prose and references but cannot judge their accuracy.
+Use the matching attempt path for later cases. The default is the guided
+fixture. Input paths are relative to your current folder. Prepare output is
+relative to this lab. Analyse shows the answer; save a prediction first.
 
-## Deliverable and handover
+| Exit code | Meaning |
+| --- | --- |
+| 0 | Command ran, or decision fields match |
+| 1 | Decisions differ, or the worksheet is incomplete |
+| 2 | Invalid input or a file error |
 
-A configuration review stating each requirement gap, the exact field that supports it, a proposed correction and a parser limitation. Keep your first prediction and correction in the notes. Include an honest help-used statement. Use [the worked example](WORKED-EXAMPLE.md) for the guided case and [the drills](DRILLS.md) to reduce prompts over time.
+Verify compares the three supplied cases with fixed answers. It does not
+assess your skill. Check needs reasons and references, but cannot judge them.
 
-Handover prompt: "What did you observe, which exact evidence supports it, what remains uncertain, and what narrow check should happen next?" A person should review your reasoning and an unfamiliar case before treating the practice as independently demonstrated.
+## Save and explain
 
-## Limits and primary references
+List each gap, its exact evidence and a proposed fix. State one limit of this
+small parser. Keep your first prediction and correction. Note any help used.
+Read [the worked example](WORKED-EXAMPLE.md) after your first attempt.
+Use [the drills](DRILLS.md) to practise with less help.
 
-- Results compare supplied response excerpts with a fictional application policy, not with every browser rule or security requirement.
-- The narrow parser rejects folding, duplicate singleton fields and unsupported cookie/CSP/HSTS forms; no browser, server or network is used.
+For a handover, state what you saw, which fields support it, what is unknown
+and the next check. Ask a person to review your reasons and a fresh case.
+A label match alone does not prove that you can review a real site.
 
-Runtime is offline: no external target, packet transmission, email action or host configuration change occurs. All addresses and names are reserved fictional examples. The local decision rules are teaching choices; the references explain underlying concepts, not a claim of tool certification.
+## Limits and sources
+
+The check uses saved excerpts and one made-up site's rules. It does not cover
+every browser rule or security need. Unsupported syntax is refused.
+No browser, server or network is used. No host settings change.
+
+These sources explain the real concepts. The small schema and local policy
+are teaching choices. This lab does not grant a tool qualification.
 
 - [OWASP Secure Headers Project](https://owasp.org/projects/secure-headers-project)
-- [IETF RFC 6265, sections 4.1.2.5-6: Secure and HttpOnly](https://www.rfc-editor.org/rfc/rfc6265.html#section-4.1.2.5)
-- [IETF RFC 6797: HTTP Strict Transport Security](https://www.rfc-editor.org/rfc/rfc6797.html)
+- [IETF RFC 6265: Secure and HttpOnly](https://www.rfc-editor.org/rfc/rfc6265.html#section-4.1.2.5)
+- [IETF RFC 6797: HSTS](https://www.rfc-editor.org/rfc/rfc6797.html)
 - [W3C CSP3 working draft: frame-ancestors](https://www.w3.org/TR/CSP3/#directive-frame-ancestors)

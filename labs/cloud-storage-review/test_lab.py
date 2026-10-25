@@ -39,7 +39,7 @@ class DomainTests(unittest.TestCase):
         case = load("challenge")
         row = case["data"]["buckets"][2]
         self.assertFalse(row["policy_public_read"])
-        self.assertEqual(analyse(case)["decisions"]["forgotten-acl"], "public-read-unapproved")
+        self.assertEqual(analyse(case)["decisions"]["bucket-c3"], "public-read-unapproved")
 
     def test_account_block_applies_to_approved_site(self):
         case = load()
@@ -47,10 +47,10 @@ class DomainTests(unittest.TestCase):
         self.assertEqual(analyse(case)["decisions"]["poster-site"], "blocked-public-grant")
 
     def test_explicit_deny_overrides_both_grants(self):
-        self.assertEqual(analyse(load("challenge"))["decisions"]["deny-overrides"], "blocked-public-grant")
+        self.assertEqual(analyse(load("challenge"))["decisions"]["bucket-c2"], "blocked-public-grant")
 
     def test_restricted_data_is_not_approved_public_material(self):
-        self.assertEqual(analyse(load("challenge"))["decisions"]["mislabelled-site"], "public-read-unapproved")
+        self.assertEqual(analyse(load("challenge"))["decisions"]["bucket-c1"], "public-read-unapproved")
 
     def test_no_grant_is_distinct_from_blocked_grant(self):
         self.assertEqual(analyse(load("changed"))["decisions"]["no-grant"], "no-public-grant")

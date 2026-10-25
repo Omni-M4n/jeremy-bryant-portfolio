@@ -1,0 +1,63 @@
+{
+  "status": "Reviewed practice materials; learner skill has not been assessed.",
+  "checked_on": "2026-10-25",
+  "python_version": "3.12.14",
+  "isolated_unit_tests": {
+    "run": 20,
+    "passed": 19,
+    "skipped": 1,
+    "failed": 0,
+    "skip_reason": "Local symlink creation was unavailable; dynamic symlink refusal was not exercised."
+  },
+  "references": {
+    "cases": 3,
+    "matched": 3,
+    "method": "Expected decisions and observations were independently specified in source before analyser imports."
+  },
+  "cli": {
+    "neutral_case_titles": true,
+    "fresh_challenge_preparation": true,
+    "answers_initially_blank": true,
+    "blank_check_exit_code": 1
+  },
+  "actual_operations": [
+    {
+      "scenario": "guided",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "copied source register and explicit clock-correction timeline"
+    },
+    {
+      "scenario": "changed",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "copied source register and explicit clock-correction timeline"
+    },
+    {
+      "scenario": "challenge",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "copied source register and explicit clock-correction timeline"
+    }
+  ],
+  "unrun": [
+    "No real endpoint, web server or packet logs were acquired. Clock errors are supplied training measurements rather than live synchronization tests."
+  ],
+  "review_boundary": "Unit tests and hashes establish bounded behavior and byte identity, not factual completeness or learner mastery.",
+  "fix_validation": {
+    "findings": [
+      "F3"
+    ],
+    "tests_and_references_exit_zero": true,
+    "original_source_snapshot_retained": true
+  },
+  "corrected_date_bounds": {
+    "underflow_cli_exit": 2,
+    "overflow_cli_exit": 2,
+    "input_error_without_traceback": true,
+    "valid_date_bounds_and_signed_corrections_tested": true,
+    "unpaired_records_validated": true,
+    "timeline_uses_same_safe_correction": true
+  },
+  "summary_scope": "Public summary of recorded checks. Detailed run records are kept privately."
+}

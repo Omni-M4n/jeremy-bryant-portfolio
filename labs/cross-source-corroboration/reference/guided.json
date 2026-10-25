@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "pair-01": "link-supported-within-clock-bounds"
+  },
+  "observations": [
+    "pair-01: corrected separation=1 seconds; combined uncertainty=2 seconds; sources=source-01,source-02."
+  ],
+  "limitations": [
+    "A shared ID and compatible time interval support a link within this fictional model; IDs and logs can be reused, copied or wrong.",
+    "Clock correction is supplied evidence, not a fitted value chosen to force agreement. Timing alone does not identify a person or establish causation."
+  ]
+}

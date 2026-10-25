@@ -1,48 +1,43 @@
 # Reconcile joiner, mover and leaver access
 
-Turn a dated staffing change into an access delta. Preserve legitimate new duties, remove stale access, and explain why an approved handover exception ends at a specific date.
+Turn a dated staff change into a list of access changes. Keep the access needed for new duties. Remove access that is no longer needed. Check when a short-term handover rule ends.
 
-**Time:** 30-45 minutes for a first pass; use the later recall task on another day.
-**Prerequisites:** Basic file navigation, editing a small JSON worksheet, and introductory networking/security vocabulary. No professional security experience, cloud account, coding background or programming changes are required.
+**Time:** Allow 30-45 minutes for your first pass. Try the recall task on another day.
+**Before you start:** You need to open files and edit a small JSON worksheet. JSON stores named fields and lists as text. Basic network and security terms will help. You do not need work experience, a cloud account or coding skills. You will not change code.
 
-> **Vocabulary:** **Joiner**: someone starting a role. **Mover**: someone changing duties. **Leaver**: someone whose access must end. **Entitlement**: one named access item. **Delta**: the difference between current and target access. **Exception**: a limited, approved departure from the normal target.
+## Key words
 
-## Evidence and exact semantics
+A **joiner** is starting a role. A **mover** is changing duties. A **leaver** must lose access. An **entitlement** is one named item of access. A **delta** is the change from current access to target access. The **target** is the access the person should have. An **exception** allows a specific, approved break from the usual rule for a limited time. A **set** is a group of items with no repeats.
 
-`data` has `as_of` (`YYYY-MM-DD`) and nonempty `people`. Each person has
-`id`, `event` (`joiner`, `mover`, `leaver`), `effective_on`, `current`, `required`,
-and `exceptions`. Access lists contain unique lowercase labels. An exception
-has exactly `access`, `approved_by`, and `expires_on`. Only movers can have
-exceptions; each must name existing access that is absent from `required`, have
-a nonempty approver ID, and expire on or after the move date. Leavers must have
-empty `required` and no exceptions. Invalid dates and unknown fields fail.
+## Evidence and exact rules
 
-Dates are whole UTC days. An event is due when `effective_on <= as_of`.
-Exception expiry is inclusive: an exception expiring on the review day remains
-valid through that day. Here "active-exceptions" means unexpired exceptions;
-they contribute to the target only when the move is due.
+The `data` field has a review date, `as_of`, in `YYYY-MM-DD` form. It also has a `people` list that must not be empty. Each person has `id`, `event`, `effective_on`, `current`, `required` and `exceptions`. The event must be `joiner`, `mover` or `leaver`. Access lists use unique lowercase labels.
+
+An exception has just `access`, `approved_by` and `expires_on`. Only movers can have exceptions. Each one must name current access that is absent from `required`. It must name an approver with a nonempty ID. Its end date must be on or after the move date. Leavers must have an empty `required` list and no exceptions. Bad dates and unknown fields fail the check.
+
+Dates are whole UTC days. UTC is the time standard used here. An event is due when `effective_on <= as_of`. This means its start date is on or before the review date. An exception still works on its end date. Here, "active-exceptions" means exceptions that have not expired. They affect the target only once the move is due.
 
 | Situation | Target access |
 | --- | --- |
 | Due joiner | Required access. |
-| Due mover | Required access plus unexpired handover exceptions. |
-| Due leaver | Empty. |
-| Future joiner | Empty; early access is proposed for removal. |
-| Future mover or leaver | Current access; the future event is deferred. |
+| Due mover | Required access plus handover exceptions that have not expired. |
+| Due leaver | No access. |
+| Future joiner | No access. Propose removal of early access. |
+| Future mover or leaver | Current access. The event is not due yet. |
 
-For each person use the exact decision syntax
-`add:ITEMS;remove:ITEMS;retain:ITEMS`. Each `ITEMS` is a comma-separated,
-alphabetically sorted list with no spaces, or the literal `none`. The three
-sets are `target - current`, `current - target`, and `current intersection target`.
-For example, `add:new-queue;remove:old-queue;retain:mail` is valid syntax.
-The reserved output word `none` means an empty set, not an entitlement.
+Use this exact syntax for each person: `add:ITEMS;remove:ITEMS;retain:ITEMS`. Each `ITEMS` is a list sorted from A to Z. Put commas between items, with no spaces. Use the literal word `none` for an empty list.
+
+- The items to add are `target - current`. These are needed but not held yet.
+- The items to remove are `current - target`. These are held but no longer needed.
+- The items to retain are `current intersection target`. These are in both sets.
+
+For example, `add:new-queue;remove:old-queue;retain:mail` has valid syntax. The word `none` means an empty set. It is not an access item.
 
 ## Run the exercise
 
 From the repository root, enter this folder with `cd labs/identity-lifecycle`.
-Use Python 3.10 or newer. On Windows, `py` may replace `python` if that is your
-installed launcher. No package install, account, cloud subscription or billing
-setup is needed. Commands run entirely offline and change no real service.
+
+Use Python 3.10 or newer. On Windows, you may use `py` in place of `python` if it is your installed launcher. You do not need to install packages or set up an account or billing. All commands run offline. They change no real service.
 
 ```text
 python lab.py cases
@@ -50,11 +45,9 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and any extracted `.txt` evidence. Edit the blank
-`run/attempt-01/answers.json`: fill every decision with the exact vocabulary
-below, write your own explanation, and cite record IDs or line references in
-`evidence`. Keep `notes.txt` for prediction, uncertainty and help used.
-Only after saving your prediction:
+Read the case and any `.txt` evidence files. Open the blank `run/attempt-01/answers.json` worksheet. Fill in each decision with an exact label from the rules above. Write your own reason for each choice. In `evidence`, cite record IDs or line numbers from this case. Use `notes.txt` to record your first prediction, doubts and any help used.
+
+Save your prediction before you run these commands:
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -63,46 +56,39 @@ python test_lab.py
 python lab.py verify
 ```
 
-The worksheet has exactly `decisions` (object), `explanation` (text), and
-`evidence` (list of text references). For example, an evidence entry can be a
-record ID plus its field name. Use your own case IDs, not invented references.
-`check` compares decision strings and requires nonempty written fields; a person
-must assess their accuracy. `verify` checks shipped fixtures, not learner skill.
-Exit codes are 0 for success/match, 1 for differences or incomplete written
-fields, and 2 for invalid input. Default `--case` is the guided fixture beside
-the script. Explicit input paths are relative to the working directory; `--out`
-is relative to this lab and must be a new folder below `run/`.
+The worksheet has just three fields:
 
-For the next cases, prepare fresh folders:
+- `decisions` is an object. It pairs each record ID with your chosen label.
+- `explanation` is text. Write why you chose those labels.
+- `evidence` is a list of text references. You could name a record ID and its field. Use IDs from your case. Do not invent them.
+
+`check` compares the decision labels. It also checks that you filled in the written fields. A person must judge whether those words are right. `verify` checks the supplied test cases. It does not assess your skill.
+
+The exit code tells you what happened. Code 0 means success or a match. Code 1 means a mismatch or blank written fields. Code 2 means invalid input. If you omit `--case`, the command uses the guided case beside the script. Input paths start from your current terminal folder. The `--out` path starts from this lab folder. It must name a new folder below `run/`.
+
+Use fresh folders for the next cases:
 
 ```text
 python lab.py prepare --scenario changed --out run/attempt-02
 python lab.py prepare --scenario challenge --out run/attempt-03
 ```
 
-Replace `attempt-01` in `show`, `analyse` and `check` with the chosen folder.
-Edit practice copies only. Do not overwrite fixture or reference files.
+Replace `attempt-01` in `show`, `analyse` and `check` with your chosen folder. Edit practice copies only. Do not overwrite the supplied fixtures or reference answers. Fixtures are the starting cases.
 
 ## Deliverable and handover
 
-Save one completed worksheet and a short evidence note for each case. Include
-your prediction, changed judgment, uncertainty, and one next check you cannot
-perform from this evidence. Record whether you used the worked example or help.
-Ask a reviewer: "Can you reproduce my decision from these record IDs, and which
-claim goes beyond the evidence?" Your independent status remains **unassessed**;
-matching output is not a qualification, professional experience or proof of
-mastery. These are original fictional practice cases, not assessment submissions.
+Save a filled worksheet and a short evidence note for each case. Include your first prediction and any change to it. State what is still unclear. Name one next check that these files cannot answer. Record any help used, including the worked example.
+
+Ask a reviewer: "Can you reach my decision from these record IDs? Which claim goes beyond the evidence?" Your skill at doing this alone is still **unassessed**. A matching output does not prove skill, a qualification or work experience. These are made-up practice cases. They are not work for assessment.
 
 ## Limits
 
-This fictional policy does not implement directory changes, approval authenticity, sessions, access inherited through groups, account disablement, leave of absence, emergency termination or asset ownership transfer. A future mover keeps current access in this bounded model; separate baseline violations would need another review.
+This made-up policy does not change a directory or prove who approved an exception. It does not handle active sessions or access gained through groups. It does not disable accounts or deal with leave, urgent departures or asset ownership changes. A future mover keeps current access in this model. Any separate breach of the normal access rules needs its own review.
 
 ## Primary references
 
-The official overview distinguishes joiner, mover and leaver processes and time-based conditions. The set operations and inclusive exception rule here are explicit fictional practice policy.
+The official guide describes joiners, movers, leavers and time-based rules. This lab's set rules are made up for practice. So is its rule that an exception works through its end date.
 
 - [Microsoft: lifecycle workflows](https://learn.microsoft.com/en-us/entra/id-governance/what-are-lifecycle-workflows)
 
-Links are optional further reading, checked 2026-10-23. Running this lab does
-not fetch them. See [the worked example](WORKED-EXAMPLE.md) after your prediction
-and [the drills](DRILLS.md) for varied practice.
+The links are optional extra reading. They were checked on 2026-10-23. The lab does not fetch them. Read [the worked example](WORKED-EXAMPLE.md) after you save your prediction. Use [the drills](DRILLS.md) for more practice.

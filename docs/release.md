@@ -13,14 +13,20 @@ Responses use `Cache-Control: public, max-age=0, must-revalidate, no-transform` 
 ## Applicable checks
 
 `node scripts/build.mjs` validates the original catalogs and `labs/release-catalog.json`, checks required
-learner files, refreshes the plain-text practice-guide mirror from
-`labs/PRACTICE-GUIDE.md`, and builds the static site. The catalog uses native
+learner files and builds the static site. It refreshes the plain-text practice
+guide from `labs/PRACTICE-GUIDE.md`. It also copies the reviewed summer plan from
+`labs/SUMMER-STUDY-PLAN.md` and `labs/SUMMER-STUDY-PLAN.json` to public downloads.
+The study plan's package IDs must exactly match the release catalog. A partial
+catalog stops the build before it replaces the existing output. The catalog uses native
 expandable entries; it adds no browser dependency. `npm test` includes catalog
 escaping, destination and identity checks alongside the site checks.
 
 The release catalog lists the accepted core labs and extensions separately.
 Only those package directories enter the website and source download; other
-workspace drafts are excluded. The original four hands-on workflows use
+workspace drafts are excluded. A lab's reading page shows its main guides first,
+then any other top-level Markdown guides. These include local capture steps,
+helper-writing tasks and notes for reviewers. The source ZIP keeps the rest of
+the accepted package. The original four hands-on workflows use
 separate lab directories and do not change the reviewed twenty-lab fixture
 manifest. Their Python suites check application behaviour, packet generation
 and XML interpretation. Record actual Wireshark, Burp, Snort and Sysmon runs

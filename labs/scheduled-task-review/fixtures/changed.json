@@ -38,5 +38,5 @@
   "lab_id": "scheduled-task-review",
   "schema_version": 1,
   "synthetic": true,
-  "title": "A new task and an incomplete snapshot"
+  "title": "Scheduled-task snapshot comparison"
 }

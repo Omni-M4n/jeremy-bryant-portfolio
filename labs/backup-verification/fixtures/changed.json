@@ -35,5 +35,5 @@
   "lab_id": "backup-verification",
   "schema_version": 1,
   "synthetic": true,
-  "title": "The recent copy has altered bytes"
+  "title": "Two retained backup copies"
 }

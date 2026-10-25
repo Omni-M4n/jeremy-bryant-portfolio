@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "lab_id": "detection-corpus",
+  "case_id": "guided",
+  "title": "Desk record set A",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "thresholds": [
+      3,
+      5
+    ],
+    "events": [
+      {
+        "id": "a1",
+        "failures": 3,
+        "label": "exercise",
+        "partition": "tune"
+      },
+      {
+        "id": "a2",
+        "failures": 6,
+        "label": "exercise",
+        "partition": "tune"
+      },
+      {
+        "id": "a3",
+        "failures": 1,
+        "label": "routine",
+        "partition": "tune"
+      },
+      {
+        "id": "a4",
+        "failures": 4,
+        "label": "routine",
+        "partition": "tune"
+      },
+      {
+        "id": "b1",
+        "failures": 4,
+        "label": "exercise",
+        "partition": "holdout"
+      },
+      {
+        "id": "b2",
+        "failures": 6,
+        "label": "exercise",
+        "partition": "holdout"
+      },
+      {
+        "id": "b3",
+        "failures": 0,
+        "label": "routine",
+        "partition": "holdout"
+      },
+      {
+        "id": "b4",
+        "failures": 5,
+        "label": "routine",
+        "partition": "holdout"
+      }
+    ]
+  },
+  "artifacts": {}
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "A monthly review",
+  "synthetic": true,
+  "context": {
+    "question": "A booking reminder needs a booking code and an email address. It does not need a birthday. Build a register that explains both what to keep and what to leave out."
+  },
+  "data": {
+    "records": [
+      {
+        "id": "item-1",
+        "purpose": "Send a fictional booking reminder",
+        "personal": true,
+        "secret": false,
+        "public": false,
+        "fields": [
+          "booking",
+          "email",
+          "birthday"
+        ],
+        "needed": [
+          "booking",
+          "email"
+        ],
+        "age_days": 30,
+        "retain_days": 30,
+        "hold": false,
+        "recipient": "booking-team",
+        "allowed_receivers": [
+          "booking-team"
+        ],
+        "disposal": "primary-only"
+      },
+      {
+        "id": "item-2",
+        "purpose": "Send a fictional booking reminder",
+        "personal": true,
+        "secret": false,
+        "public": false,
+        "fields": [
+          "booking",
+          "email",
+          "birthday"
+        ],
+        "needed": [
+          "booking",
+          "email"
+        ],
+        "age_days": 80,
+        "retain_days": 30,
+        "hold": true,
+        "recipient": "events-team",
+        "allowed_receivers": [
+          "booking-team"
+        ],
+        "disposal": "none"
+      }
+    ]
+  },
+  "artifacts": {
+    "register-template.md": "# Data handling register\n\n| Record | Owner role | Purpose | Keep fields | Leave out | Label | Storage | Reader roles | Review date | Share and why |\n|---|---|---|---|---|---|---|---|---|---|\n\nException, reason, approver and expiry:\nDisposal receipt: primary copy, backup copy, authorising role, date, method, verification and limits:\n",
+    "receipt.txt": "SYNTHETIC DISPOSAL REVIEW\nitem-1: listed locations are primary and backup; reported coverage=primary-only; age=30; hold=False\nitem-2: listed locations are primary and backup; reported coverage=none; age=80; hold=True\nThis statement is supplied evidence, not a real deletion receipt.\n"
+  },
+  "lab_id": "data-classification"
+}

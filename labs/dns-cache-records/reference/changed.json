@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q01": "refresh-required",
+    "q02": "cached-answer:192.0.2.20",
+    "q03": "refresh-required"
+  },
+  "observations": [
+    "q01: www.school.test CNAME remaining=0s.",
+    "q02: site.school.test A remaining=60s.",
+    "q03: site.school.test AAAA remaining=0s."
+  ],
+  "limitations": [
+    "One value per owner/type, one supplied cache, integer seconds; no live lookup, refresh, prefetch, serve-stale, DNSSEC or resolver failure caching.",
+    "An expired or missing entry requires fresh evidence; it does not prove that a name or service is unavailable."
+  ]
+}

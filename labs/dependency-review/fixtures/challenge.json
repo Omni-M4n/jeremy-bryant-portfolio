@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "dependency-review",
   "case_id": "challenge",
-  "title": "A separate later advisory invalidates a blanket fixed-version claim",
+  "title": "Component versions and supplied advisories",
   "synthetic": true,
   "context": {
     "question": "Which supplied versions fall inside fictional ranges and what remains uncertain about exposure?"

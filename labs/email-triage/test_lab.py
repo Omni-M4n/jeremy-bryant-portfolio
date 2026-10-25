@@ -53,7 +53,7 @@ class LabTests(unittest.TestCase):
         self.assertEqual(lab.analyse(self.case())["decisions"]["invoice"], "domain-authentication-failed")
 
     def test_relay_name_alone_is_not_trusted(self):
-        self.assertEqual(lab.analyse(self.case("changed"))["decisions"]["forged"], "authentication-unverified")
+        self.assertEqual(lab.analyse(self.case("changed"))["decisions"]["message-a"], "authentication-unverified")
 
     def test_aligned_dkim_can_support_dmarc_when_spf_fails(self):
         self.assertEqual(lab.analyse(self.case("challenge"))["decisions"]["forwarded"], "authenticated-domain-review-content")
@@ -101,7 +101,7 @@ class LabTests(unittest.TestCase):
         a = case["data"]["messages"][0]["authentication_results"][0]
         a["mailfrom_domain"] = "sender.test"
         a["dkim"] = "fail"
-        self.assertEqual(lab.analyse(self.sync(case))["decisions"]["forged"], "authentication-unverified")
+        self.assertEqual(lab.analyse(self.sync(case))["decisions"]["message-a"], "authentication-unverified")
 
     def test_absent_dkim_signature_has_no_signing_domain(self):
         case = self.case("challenge")

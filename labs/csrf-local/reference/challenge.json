@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "status": 403,
+      "preference_after": "grey"
+    },
+    {
+      "status": 403,
+      "preference_after": "grey"
+    },
+    {
+      "status": 403,
+      "preference_after": "grey"
+    },
+    {
+      "status": 200,
+      "preference_after": "blue"
+    }
+  ]
+}

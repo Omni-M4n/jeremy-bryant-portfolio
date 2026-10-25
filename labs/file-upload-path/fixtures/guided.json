@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "lab_id": "file-upload-path",
+  "case_id": "guided",
+  "title": "Noticeboard note",
+  "synthetic": true,
+  "question": "Where may the supplied file name lead?",
+  "data": {
+    "uploads": [
+      {
+        "filename": "note.txt",
+        "content_type": "text/plain",
+        "text": "Hello\n"
+      },
+      {
+        "filename": "../note.txt",
+        "content_type": "text/plain",
+        "text": "Hello\n"
+      },
+      {
+        "filename": "next.txt",
+        "content_type": "text/plain",
+        "text": "Hello\n"
+      }
+    ]
+  }
+}

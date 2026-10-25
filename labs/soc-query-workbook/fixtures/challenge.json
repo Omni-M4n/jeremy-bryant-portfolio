@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "lab_id": "soc-query-workbook",
+  "case_id": "challenge",
+  "title": "Desk record set C",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "login": [
+      {
+        "id": "l1",
+        "host": "desk.test",
+        "account": "reader",
+        "outcome": "failure"
+      },
+      {
+        "id": "l2",
+        "host": "desk.test",
+        "account": "helper",
+        "outcome": "success"
+      }
+    ],
+    "endpoint": [
+      {
+        "id": "p1",
+        "host": "desk.test",
+        "account": "reader",
+        "kind": "process"
+      },
+      {
+        "id": "p1",
+        "host": "desk.test",
+        "account": "reader",
+        "kind": "process"
+      },
+      {
+        "id": "p2",
+        "host": "desk.test",
+        "account": "reader",
+        "kind": "process"
+      }
+    ],
+    "web": [
+      {
+        "id": "w1",
+        "host": "desk.test",
+        "account": "reader",
+        "status": 400
+      },
+      {
+        "id": "w2",
+        "host": "desk.test",
+        "account": "reader",
+        "status": 500
+      }
+    ]
+  },
+  "artifacts": {}
+}

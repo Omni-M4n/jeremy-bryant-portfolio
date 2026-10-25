@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "status": 400,
+      "response": {
+        "error": "invalid-json"
+      }
+    },
+    {
+      "status": 400,
+      "response": {
+        "error": "invalid-json"
+      }
+    },
+    {
+      "status": 415,
+      "response": {
+        "error": "json-required"
+      }
+    },
+    {
+      "status": 201,
+      "response": {
+        "accepted": {
+          "name": "Pear",
+          "count": 1
+        }
+      }
+    }
+  ]
+}

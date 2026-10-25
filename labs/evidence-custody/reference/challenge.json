@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "item-01": "handling-record-incomplete"
+  },
+  "observations": [
+    "item-01: source stable=True; copy matches initial hash=True; handling entries=2; handler recorded=False."
+  ],
+  "limitations": [
+    "Matching hashes support byte identity at the recorded checks; they do not prove who created the file or that its contents are true.",
+    "This is a dummy logical-file copy, not disk imaging, a write blocker, or a legal chain-of-custody process."
+  ]
+}

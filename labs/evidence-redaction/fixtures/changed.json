@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "A service trace excerpt",
+  "synthetic": true,
+  "context": {
+    "question": "A log can show a refused request and still contain a token or personal detail. Make a separate copy that keeps the useful result and removes the supplied fake sensitive values."
+  },
+  "data": {
+    "remove": [
+      "SYNTHETIC-SESSION-9",
+      "device-name-22"
+    ],
+    "keep": [
+      "request=alpha",
+      "request=beta",
+      "status=200"
+    ]
+  },
+  "artifacts": {
+    "record.txt": "SYNTHETIC TRAINING RECORD\nrequest=alpha status=200 session=SYNTHETIC-SESSION-9\nrequest=beta status=200 session=SYNTHETIC-SESSION-9 device=device-name-22\n",
+    "redaction-template.md": "# Private redaction checklist\n\nClaim to support:\nOriginal filename and hash:\nFields to remove and why:\nFields to keep and why:\nCopy filename and hash:\nSeed search results:\nClaim preservation check:\nContext clues still present:\nReviewer and limits:\n"
+  },
+  "lab_id": "evidence-redaction"
+}

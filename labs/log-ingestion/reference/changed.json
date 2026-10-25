@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "row-1": "import",
+    "row-2": "reject",
+    "row-3": "import"
+  },
+  "observations": [
+    "Source rows=3; imported=2; repeats=0; rejected=1.",
+    "e11: 2026-01-15T00:00:00Z operator failure.",
+    "e13: 2026-01-15T00:02:00Z operator success."
+  ],
+  "limitations": [
+    "Rows describe fictional login records, not confirmed incidents.",
+    "UTC conversion needs an explicit offset; clock accuracy remains unverified.",
+    "A rejected row is retained as evidence and is not evidence of a safe event."
+  ]
+}

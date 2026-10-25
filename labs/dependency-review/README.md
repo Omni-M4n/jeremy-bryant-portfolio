@@ -1,52 +1,53 @@
-# Triage a fictional software inventory and advisory ranges
+# Check software versions against a notice
 
-Read a small software inventory, compare versions numerically, and distinguish an affected range from demonstrated exposure. Include build dependencies and uncertainty in a practical handover.
+A software list can help you find items that need review. It cannot prove that a flaw can be used. In this lab, compare fictional versions with a notice about affected versions. Then explain what the supplied path evidence does and does not show.
 
-**Time:** 30-45 minutes for a first pass; use the later recall task on another day.
-**Prerequisites:** Basic file navigation, editing a small JSON worksheet, and introductory networking/security vocabulary. No professional security experience, cloud account, coding background or programming changes are required.
+Allow **30–45 minutes** for a first pass. Split the task if needed. Return to the recall task on another day. You need to open files, edit a small JSON worksheet and read basic security terms. You do not need work experience, a cloud account or coding skills. No program changes are required.
 
-> **Vocabulary:** **SBOM**: software bill of materials, an inventory of components. **Advisory**: a notice describing affected versions. **Range**: version interval. **Runtime**: when the deployed application runs. **Development dependency**: software used to build or test. **Reachability**: whether a relevant execution path can reach a component. **Exploitability**: whether conditions permit harmful use.
+## Useful terms
 
-## Evidence and exact semantics
+- **SBOM:** software bill of materials. It lists the parts used in software.
+- **Advisory:** a notice that names affected versions.
+- **Range:** the versions between two bounds.
+- **Runtime:** when the deployed app runs.
+- **Development dependency:** a tool or package used to build or test the app.
+- **Reachability:** whether a path through the program can reach a part.
+- **Exploitability:** whether the needed conditions exist to use a flaw to cause harm.
 
-`data` contains nonempty `components` and an `advisories` list, which may be
-empty. A component has unique `id`, fictional `name` starting `demo-`, `version`,
-`scope` (`runtime`, `development`), `reachability` (`reachable`,
-`not-demonstrated`, `unknown`), and nonempty `evidence` describing that claim.
-Different component IDs may name different installed versions of the same package.
-An advisory has a unique fictional `DEMO-ADV-NNN` ID, `package`, `introduced`,
-and `fixed`. These are not real CVEs or claims about real packages.
+## Read the case
 
-Versions must be stable `X.Y.Z`: each part is an integer from 0 through 9999,
-with no leading zeroes except the single digit 0. Compare integer triples,
-not strings: `(1, 9, 9) < (1, 10, 0)`. Prefixes, pre-releases, build metadata,
-wildcards and shortened forms are rejected. The range is `[introduced,fixed)`:
-introduced is included; fixed is excluded; introduced must be less than fixed.
-All supplied ranges for an exact package name are examined.
+The `data` section has a nonempty `components` list and an `advisories` list. The latter may be empty.
 
-Use one exact decision per component ID, with this precedence:
+Each component has a unique `id`, a fictional `name` that starts with `demo-`, and a `version`. Its `scope` is either `runtime` or `development`. Its `reachability` is `reachable`, `not-demonstrated` or `unknown`. The nonempty `evidence` field states what supports that claim. Different component IDs may list different installed versions of the same package.
+
+Each advisory has a unique fictional `DEMO-ADV-NNN` ID, a `package`, an `introduced` version and a `fixed` version. These are dummy notices. They are not real CVEs or claims about real packages. A CVE is an identifier for a publicly known security flaw.
+
+## Compare the versions
+
+Use stable three-part versions in the form `X.Y.Z`. Each part is a whole number from 0 to 9999. Leading zeroes are not allowed, except the single digit 0.
+
+Compare the three parts as numbers, from left to right. For example, `(1, 9, 9) < (1, 10, 0)`. Do not sort the version text as a string. This model rejects prefixes, pre-release forms, build metadata, wildcards and shortened forms.
+
+The affected range is `[introduced,fixed)`. It includes `introduced` and stops just before `fixed`. The introduced version must be lower than the fixed version. Check every supplied range for the exact package name. Being above one range does not rule out a match with a later range.
+
+## Choose a decision
+
+Use one exact decision per component ID. Apply the rows in this order:
 
 | Decision | Meaning |
 | --- | --- |
-| `no-advisory-supplied` | No advisory for that package in the supplied set. |
-| `outside-supplied-ranges` | Advisory exists, but this version matches no supplied range. |
-| `affected-review-build-exposure` | Affected development dependency, regardless of reachability label. |
-| `affected-prioritise-runtime-path` | Affected runtime component with supplied reachable-path evidence. |
-| `affected-validate-path` | Affected runtime component where a path has not been demonstrated. |
-| `affected-investigate-path` | Affected runtime component with unknown reachability. |
+| `no-advisory-supplied` | There is no notice for this package in the supplied set. |
+| `outside-supplied-ranges` | A notice exists, but this version matches none of its supplied ranges. |
+| `affected-review-build-exposure` | The version matches a range and its scope is development. Use this row for any reachability label. |
+| `affected-prioritise-runtime-path` | The version matches, runs in the app and has supplied evidence of a reachable path. |
+| `affected-validate-path` | The version matches and runs in the app, but a path has not been demonstrated. |
+| `affected-investigate-path` | The version matches and runs in the app, but reachability is unknown. |
 
-"Not demonstrated" does not mean unreachable. Multiple advisories may have
-separate ranges; exceeding one fixed boundary does not exclude a different
-later range. Output lists matching advisory IDs and intervals. Compatibility,
-actual vulnerable functions, mitigations and exploit preconditions still need
-review before selecting and testing an update.
+"Not demonstrated" does not mean unreachable. The output lists each matching advisory ID and range. Before choosing an update, review the functions at risk, ways to reduce the risk and conditions needed to use the flaw. Check that the update works with the app. Then test it. A version match alone does not answer all those questions.
 
 ## Run the exercise
 
-From the repository root, enter this folder with `cd labs/dependency-review`.
-Use Python 3.10 or newer. On Windows, `py` may replace `python` if that is your
-installed launcher. No package install, account, cloud subscription or billing
-setup is needed. Commands run entirely offline and change no real service.
+From the repository root, use `cd labs/dependency-review`. Use Python 3.10 or later. On Windows, `py` may replace `python` if that is your installed launcher. No package install, account or billing setup is needed. The commands work offline and change no real service.
 
 ```text
 python lab.py cases
@@ -54,11 +55,9 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and any extracted `.txt` evidence. Edit the blank
-`run/attempt-01/answers.json`: fill every decision with the exact vocabulary
-below, write your own explanation, and cite record IDs or line references in
-`evidence`. Keep `notes.txt` for prediction, uncertainty and help used.
-Only after saving your prediction:
+Read the case and any extracted `.txt` evidence. Edit `run/attempt-01/answers.json`. Use the exact labels in the table above. Write your own explanation. In `evidence`, cite IDs or lines from your case. Keep `notes.txt` for your prediction, remaining doubt and help used.
+
+Save that first answer before checking it:
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -67,46 +66,35 @@ python test_lab.py
 python lab.py verify
 ```
 
-The worksheet has exactly `decisions` (object), `explanation` (text), and
-`evidence` (list of text references). For example, an evidence entry can be a
-record ID plus its field name. Use your own case IDs, not invented references.
-`check` compares decision strings and requires nonempty written fields; a person
-must assess their accuracy. `verify` checks shipped fixtures, not learner skill.
-Exit codes are 0 for success/match, 1 for differences or incomplete written
-fields, and 2 for invalid input. Default `--case` is the guided fixture beside
-the script. Explicit input paths are relative to the working directory; `--out`
-is relative to this lab and must be a new folder below `run/`.
+The worksheet has exactly three fields: `decisions` (an object), `explanation` (text) and `evidence` (a list of text references). An evidence entry could be an actual record ID and field name. Do not invent a reference.
 
-For the next cases, prepare fresh folders:
+The `check` command compares decision strings and requires text in the written fields. A person must judge that text. The `verify` command checks the supplied cases, not learner skill.
+
+Exit 0 means success or a match. Exit 1 means a difference or missing written fields. Exit 2 means bad input. The default `--case` is the guided fixture beside the script. Explicit input paths start from the current working folder. The `--out` path starts from this lab and must be a new folder below `run/`.
+
+Prepare new folders for the next cases:
 
 ```text
 python lab.py prepare --scenario changed --out run/attempt-02
 python lab.py prepare --scenario challenge --out run/attempt-03
 ```
 
-Replace `attempt-01` in `show`, `analyse` and `check` with the chosen folder.
-Edit practice copies only. Do not overwrite fixture or reference files.
+Replace `attempt-01` in `show`, `analyse` and `check` with the chosen folder. Edit practice copies only. Keep the fixture and reference files intact.
 
-## Deliverable and handover
+## Hand over the evidence
 
-Save one completed worksheet and a short evidence note for each case. Include
-your prediction, changed judgment, uncertainty, and one next check you cannot
-perform from this evidence. Record whether you used the worked example or help.
-Ask a reviewer: "Can you reproduce my decision from these record IDs, and which
-claim goes beyond the evidence?" Your independent status remains **unassessed**;
-matching output is not a qualification, professional experience or proof of
-mastery. These are original fictional practice cases, not assessment submissions.
+Save a worksheet and short note for each case. Include your prediction, any change in your answer, a limit and one next check. Record help used, including the worked example. Ask a reviewer to trace your decision from the cited records and spot any claim that goes too far.
+
+Independent skill remains **unassessed** until someone checks the evidence and reasoning. A matching output is not a qualification or work experience. These are fictional practice cases, not assessment submissions.
 
 ## Limits
 
-There is no package installation, network advisory feed, exploit, dependency resolver or ecosystem-specific version logic. Inventory freshness and reachability evidence are supplied assertions. Being outside these fictional ranges establishes no universal safety claim.
+This lab does not install packages, fetch live notices or use an exploit. It does not resolve a full chain of packages or model each ecosystem's version rules. It trusts the supplied inventory and path evidence. Being outside these dummy ranges does not prove software safe.
 
-## Primary references
+## Primary reference
 
-The specification defines numeric major/minor/patch ordering and no leading zeroes. This exercise intentionally supports only the stable three-part subset and a fictional half-open advisory range convention.
+This specification defines numeric major, minor and patch order. It also rules out leading zeroes in those numbers. The lab uses only stable three-part versions. Its affected-range rule is a teaching rule.
 
 - [Semantic Versioning 2.0.0 specification](https://semver.org/)
 
-Links are optional further reading, checked 2026-10-23. Running this lab does
-not fetch them. See [the worked example](WORKED-EXAMPLE.md) after your prediction
-and [the drills](DRILLS.md) for varied practice.
+The link was checked on 23 October 2026. It is optional reading; the lab does not fetch it. Read [the worked example](WORKED-EXAMPLE.md) after your prediction. Use [the drills](DRILLS.md) for varied practice.

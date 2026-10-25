@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "lab_id": "patch-rollback",
+  "case_id": "challenge",
+  "title": "Printer record three",
+  "synthetic": true,
+  "context": {
+    "question": "What do the version, function and recovery evidence establish?"
+  },
+  "data": {
+    "changes": [
+      {
+        "id": "p1",
+        "baseline_version": "1.0",
+        "target_version": "1.1",
+        "installed_version": "1.1",
+        "source": "official",
+        "install_exit": 0,
+        "smoke": "fail",
+        "rollback_version": "1.0",
+        "rollback_smoke": "pass"
+      }
+    ]
+  },
+  "artifacts": {}
+}

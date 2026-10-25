@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "lab_id": "soc-query-workbook",
+  "case_id": "changed",
+  "title": "Desk record set B",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "login": [
+      {
+        "id": "l1",
+        "host": "desk.test",
+        "account": "reader",
+        "outcome": "failure"
+      }
+    ],
+    "endpoint": [
+      {
+        "id": "p1",
+        "host": "kiosk.test",
+        "account": "reader",
+        "kind": "process"
+      }
+    ],
+    "web": [
+      {
+        "id": "w1",
+        "host": "desk.test",
+        "account": "reader",
+        "status": 399
+      }
+    ]
+  },
+  "artifacts": {}
+}

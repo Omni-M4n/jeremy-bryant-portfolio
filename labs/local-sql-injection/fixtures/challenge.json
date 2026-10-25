@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-sql-injection",
+  "case_id": "challenge",
+  "title": "Third name card",
+  "synthetic": true,
+  "question": "What status and rows does each route return, and what would those results show?",
+  "data": {
+    "name": "Missing"
+  }
+}

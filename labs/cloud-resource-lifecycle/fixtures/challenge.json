@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-resource-lifecycle",
+  "case_id": "challenge",
+  "title": "Club resource register",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "today": 10,
+    "budget_units": 100,
+    "spent_units": 120,
+    "resources": [
+      {
+        "id": "r1",
+        "owner": "team-club",
+        "expires_day": 8,
+        "daily_units": 4,
+        "depends_on": [
+          "r2"
+        ],
+        "retain": false
+      },
+      {
+        "id": "r2",
+        "owner": "team-club",
+        "expires_day": 8,
+        "daily_units": 2,
+        "depends_on": [],
+        "retain": false
+      },
+      {
+        "id": "r3",
+        "owner": "team-club",
+        "expires_day": 30,
+        "daily_units": 1,
+        "depends_on": [],
+        "retain": true
+      }
+    ],
+    "delete_order": [
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

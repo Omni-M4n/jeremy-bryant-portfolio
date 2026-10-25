@@ -156,6 +156,32 @@ test('hands-on instructions explain separate tooling rather than claiming offlin
   assert.ok(!html.includes('Core lab / offline practice'));
 });
 
+test('extra accepted teaching guides are readable online as well as in the archive', async t => {
+  const context = await fixture(t);
+  const folder = join(context.root, 'labs', 'lab-01');
+  const names = ['LOCAL-CAPTURE.md', 'WRITE-YOUR-HELPER.md', 'REVIEWER.md', 'NOTES & CHECKS.md'];
+  for (const name of names) await writeFile(join(folder, name), '# ' + name + '\n\nGuide: <keep literal>.\n');
+  await mkdir(join(folder, 'private'));
+  await writeFile(join(folder, 'private', 'NOTES.md'), 'PRIVATE_GUIDE_MUST_NOT_SHIP');
+  await buildSourceDownloads(context);
+  const html = await readFile(join(context.dist, 'lab-files', 'lab-01', 'index.html'), 'utf8');
+  const entries = parseZip(await readFile(archivePath(context.root)));
+  for (const name of names) {
+    const escapedName = name.replaceAll('&', '&amp;');
+    assert.ok(html.includes('labs/lab-01/' + escapedName));
+    assert.ok(entries.has(prefix + 'labs/lab-01/' + name));
+  }
+  assert.ok(html.includes('Guide: &lt;keep literal&gt;.'));
+  assert.ok(html.includes('href="#local-capture"'));
+  assert.ok(html.includes('id="write-your-helper"'));
+  assert.ok(html.includes('NOTES &amp; CHECKS'));
+  assert.ok(!html.includes('undefined'));
+  assert.ok(!html.includes('PRIVATE_GUIDE_MUST_NOT_SHIP'));
+  const targets = [...html.matchAll(/href="#([^"]+)"/gu)].map(match => match[1]);
+  for (const target of targets) assert.ok(html.includes(`id="${target}"`));
+  assert.ok(html.indexOf('id="readme"') < html.indexOf('id="local-capture"'));
+});
+
 test('archive excludes private, generated, environment, history and receipt paths', async t => {
   const context = await fixture(t);
   const excluded = ['run', 'runs', 'dist', 'node_modules', '.git', '.wrangler', 'private', 'receipts', '__pycache__', 'pycache', 'env', 'logs', '.venv'];

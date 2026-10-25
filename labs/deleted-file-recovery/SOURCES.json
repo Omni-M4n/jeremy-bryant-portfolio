@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "Linux FAT structures and constants",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/msdos_fs.h",
+      "used_for": "Directory layout, allocation constants and deleted-entry marker.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Linux FAT directory implementation",
+      "url": "https://raw.githubusercontent.com/torvalds/linux/master/fs/fat/dir.c",
+      "used_for": "Directory deletion behavior; source consulted, no code copied.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "NIST SP 800-86, sections 3.1.2 and 4",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf",
+      "used_for": "Evidence handling and bounded forensic interpretation.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

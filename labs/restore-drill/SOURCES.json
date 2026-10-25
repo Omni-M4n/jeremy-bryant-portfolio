@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "Python shutil documentation",
+      "url": "https://docs.python.org/3/library/shutil.html",
+      "used_for": "copyfile/copy2 behavior and metadata limitations.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Python hashlib documentation",
+      "url": "https://docs.python.org/3/library/hashlib.html",
+      "used_for": "SHA-256 byte hashing API.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "NIST SP 800-86, sections 3.1.2 and 4",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf",
+      "used_for": "Evidence handling and bounded forensic interpretation.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

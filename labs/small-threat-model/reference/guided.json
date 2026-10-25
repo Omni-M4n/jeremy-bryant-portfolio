@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "item-1": "configured-only;listed-service-checks-present",
+    "item-2": "path-reachable;listed-service-checks-present",
+    "item-3": "configured-only;listed-service-checks-present"
+  },
+  "observations": [
+    "item-1: guest-wifi -> records-service.test; network block/unrun; Wi-Fi access shared-password.",
+    "item-2: staff-wifi -> records-service.test; network allow/reachable; Wi-Fi access shared-password.",
+    "item-3: device-segment -> records-service.test; network block/unrun; Wi-Fi access shared-password."
+  ],
+  "limitations": [
+    "Configuration is a claim. Supplied observations cover one fictional path only; no radio or network test is run."
+  ]
+}

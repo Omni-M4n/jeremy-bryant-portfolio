@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "lab_id": "vpn-routing-review",
+  "case_id": "changed",
+  "title": "Route notebook 2",
+  "synthetic": true,
+  "context": {
+    "question": "Which path does each destination or name query select before and after the change?",
+    "note": "Fictional tables. All DNS addresses are unbound to interfaces; this is not an operating-system resolver configuration."
+  },
+  "data": {
+    "before_routes": [
+      {
+        "prefix": "0.0.0.0/0",
+        "metric": 100,
+        "path": "local"
+      },
+      {
+        "prefix": "::/0",
+        "metric": 100,
+        "path": "local"
+      }
+    ],
+    "after_routes": [
+      {
+        "prefix": "0.0.0.0/0",
+        "metric": 100,
+        "path": "local"
+      },
+      {
+        "prefix": "::/0",
+        "metric": 100,
+        "path": "local"
+      },
+      {
+        "prefix": "0.0.0.0/0",
+        "metric": 10,
+        "path": "tunnel"
+      },
+      {
+        "prefix": "192.0.2.53/32",
+        "metric": 5,
+        "path": "local"
+      }
+    ],
+    "before_dns": [
+      {
+        "suffix": ".",
+        "server": "192.0.2.53"
+      }
+    ],
+    "after_dns": [
+      {
+        "suffix": ".",
+        "server": "192.0.2.53"
+      }
+    ],
+    "flows": [
+      {
+        "id": "f01",
+        "destination": "198.51.100.20",
+        "intended": "tunnel"
+      },
+      {
+        "id": "f02",
+        "destination": "203.0.113.20",
+        "intended": "tunnel"
+      },
+      {
+        "id": "f03",
+        "destination": "2001:db8:1::20",
+        "intended": "tunnel"
+      }
+    ],
+    "queries": [
+      {
+        "id": "q01",
+        "name": "files.office.test",
+        "intended": "tunnel"
+      },
+      {
+        "id": "q02",
+        "name": "not-office.test",
+        "intended": "tunnel"
+      }
+    ]
+  },
+  "artifacts": {
+    "routes.txt": "Compare before/after destination prefixes separately from DNS suffix rules. No VPN is connected.\n"
+  }
+}

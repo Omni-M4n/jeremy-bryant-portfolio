@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "status": 200,
+      "response": {
+        "method": "POST",
+        "target": "/inspect?item=pear",
+        "query": {
+          "item": [
+            "pear"
+          ]
+        },
+        "note": "",
+        "body": "item=plum",
+        "form": {
+          "item": [
+            "plum"
+          ]
+        }
+      }
+    },
+    {
+      "status": 415,
+      "response": {
+        "error": "form-required"
+      }
+    }
+  ]
+}

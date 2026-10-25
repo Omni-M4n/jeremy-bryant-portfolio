@@ -396,6 +396,620 @@
       "extends": [],
       "mode": "offline",
       "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "iam-explicit-deny",
+      "kind": "extension",
+      "group": "Identity and cloud",
+      "title": "Evaluate provider-style IAM policy precedence",
+      "summary": "Reason about allow/deny precedence and resource scope in a richer policy model.",
+      "start_with": "Access review; Joiner, mover and leaver access",
+      "extends": [
+        "access-review"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "temporary-credentials",
+      "kind": "core",
+      "group": "Identity and cloud",
+      "title": "Trace temporary role credentials and expiry",
+      "summary": "Distinguish a human identity from an assumed role, and explain expiry, delegation and session attribution.",
+      "start_with": "Access review; Joiner, mover and leaver access; Cloud audit-event investigation",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "cloud-resource-lifecycle",
+      "kind": "core",
+      "group": "Identity and cloud",
+      "title": "Review resource ownership, cost controls and teardown",
+      "summary": "Identify unowned resources, missing expiry/ownership tags and incomplete teardown; distinguish a budget alert from an enforced spending cap.",
+      "start_with": "Asset discovery and inventory; Map cloud shared responsibility and controls",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "password-vault-recovery",
+      "kind": "core",
+      "group": "Identity and cloud",
+      "title": "Practise password-vault and recovery hygiene",
+      "summary": "Demonstrate unique generated credentials, recovery planning and safe handling of exported or backup data.",
+      "start_with": "MFA and account recovery review",
+      "extends": [],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "cloud-network-path",
+      "kind": "extension",
+      "group": "Identity and cloud",
+      "title": "Trace cloud network reachability",
+      "summary": "Show how routing and filtering combine, including a private service reached through an unintended path.",
+      "start_with": "Firewall review; Map addresses, subnets and a packet's route",
+      "extends": [
+        "firewall-review"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "windows-acl",
+      "kind": "extension",
+      "group": "Windows, Linux and endpoint",
+      "title": "Measure effective Windows file permissions",
+      "summary": "Test inheritance and effective access with actual accounts; this adds Windows ACL behaviour beyond a small policy model.",
+      "start_with": "Access review; Build and verify a disposable lab workbench",
+      "extends": [
+        "access-review",
+        "linux-permissions"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "linux-service-identity",
+      "kind": "extension",
+      "group": "Windows, Linux and endpoint",
+      "title": "Trace Linux service identities and sudo scope",
+      "summary": "Explain service accounts, privilege boundaries and when an administration command requires elevation.",
+      "start_with": "Linux file permission review; Build and verify a disposable lab workbench",
+      "extends": [
+        "linux-permissions"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "patch-rollback",
+      "kind": "extension",
+      "group": "Windows, Linux and endpoint",
+      "title": "Apply and verify a lab patch with rollback",
+      "summary": "Confirm the actual installed version, service health and rollback path rather than relying on a success message.",
+      "start_with": "Dependency inventory and advisory review; Remediation and retesting; Build and verify a disposable lab workbench",
+      "extends": [
+        "dependency-review",
+        "vulnerability-retest"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "startup-surface",
+      "kind": "extension",
+      "group": "Windows, Linux and endpoint",
+      "title": "Inventory startup mechanisms beyond scheduled tasks",
+      "summary": "Recognise several startup mechanisms and distinguish unexplained changes from authorised configuration.",
+      "start_with": "Scheduled task review; Endpoint process investigation; Build and verify a disposable lab workbench",
+      "extends": [
+        "scheduled-task-review"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "ssh-key-practice",
+      "kind": "extension",
+      "group": "Windows, Linux and endpoint",
+      "title": "Configure and verify SSH key access in the lab",
+      "summary": "Move from configuration review to actual authentication evidence, permissions and recovery.",
+      "start_with": "SSH configuration review; Linux file permission review; Build and verify a disposable lab workbench",
+      "extends": [
+        "ssh-config-review"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "endpoint-baseline",
+      "kind": "core",
+      "group": "Windows, Linux and endpoint",
+      "title": "Create and verify a small endpoint baseline",
+      "summary": "Translate requirements into observable controls and document justified exceptions without assuming every restriction is beneficial.",
+      "start_with": "Use shell commands for read-only troubleshooting; Apply and verify a lab patch with rollback; Access review",
+      "extends": [],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "dns-cache-records",
+      "kind": "extension",
+      "group": "Network and DNS",
+      "title": "Investigate DNS records and caching",
+      "summary": "Explain alias chains, record purpose and cached/stale answers; this extends transaction matching into cache behaviour.",
+      "start_with": "DNS triage",
+      "extends": [
+        "dns-triage"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "controlled-nmap",
+      "kind": "extension",
+      "group": "Network and DNS",
+      "title": "Run a scoped Nmap service inventory",
+      "summary": "Collect the scan personally, compare observed services with known listeners and state uncertainty in service labels.",
+      "start_with": "Asset discovery and inventory; TCP handshake investigation; Build and verify a disposable lab workbench",
+      "extends": [
+        "asset-discovery"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "firewall-enforcement",
+      "kind": "extension",
+      "group": "Network and DNS",
+      "title": "Test real firewall enforcement and rollback",
+      "summary": "Move from the packet simulator to actual connection outcomes, rule logging and safe rollback.",
+      "start_with": "Firewall review; Map addresses, subnets and a packet's route; Build and verify a disposable lab workbench",
+      "extends": [
+        "firewall-review"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "ipv6-parity",
+      "kind": "core",
+      "group": "Network and DNS",
+      "title": "Check IPv4 and IPv6 exposure parity",
+      "summary": "Recognise when an IPv4 restriction leaves a separate IPv6 path and verify both paths.",
+      "start_with": "Map addresses, subnets and a packet's route; Run a scoped Nmap service inventory",
+      "extends": [],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "network-loss-diagnosis",
+      "kind": "extension",
+      "group": "Network and DNS",
+      "title": "Diagnose latency, loss and failed connections",
+      "summary": "Distinguish retransmission evidence, application delay and capture loss without assuming one root cause.",
+      "start_with": "TCP handshake investigation; Capture and explain your own traffic",
+      "extends": [
+        "tcp-handshake"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "vpn-routing-review",
+      "kind": "core",
+      "group": "Network and DNS",
+      "title": "Review VPN routes and DNS scope",
+      "summary": "Explain full versus split routing and identify traffic or name queries outside the intended tunnel.",
+      "start_with": "Map addresses, subnets and a packet's route; Investigate DNS records and caching",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "session-lifecycle",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Test session expiry and logout",
+      "summary": "Determine whether logout and expiry invalidate a session at the server and whether legitimate login still works.",
+      "start_with": "HTTP headers and cookies; Test and retest access control with Burp",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "http-request-construction",
+      "kind": "extension",
+      "group": "Web and API",
+      "title": "Construct and trace an HTTP request",
+      "summary": "Relate URL components, method, headers, body and encoding to the server's recorded request; this adds request construction.",
+      "start_with": "HTTP log triage; Capture and explain your own traffic",
+      "extends": [
+        "http-triage",
+        "traffic-capture"
+      ],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "local-sql-injection",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Explain and retest a simple SQL injection",
+      "summary": "Explain the difference between data and query instructions, then demonstrate the provided parameterised fix.",
+      "start_with": "Construct and trace an HTTP request; Test and retest access control with Burp",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "local-output-encoding",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Compare reflected text and safe output encoding",
+      "summary": "Explain why an untrusted value rendered as markup/script differs from escaped text, and verify the supplied fix.",
+      "start_with": "Construct and trace an HTTP request",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "csrf-local",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Test a state-changing request's CSRF protection",
+      "summary": "Explain ambient session use, anti-CSRF validation and why the intended request must remain usable.",
+      "start_with": "Test session expiry and logout; Construct and trace an HTTP request",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "api-schema-validation",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Validate API input and error handling",
+      "summary": "Separate validation failures from server errors and check that error responses avoid exposing internals.",
+      "start_with": "Construct and trace an HTTP request",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "rate-limit-lab",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Test a small request limit without load testing",
+      "summary": "Measure threshold/reset behaviour and legitimate recovery while recognising that a local demonstration does not establish production capacity.",
+      "start_with": "Construct and trace an HTTP request; Login triage",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "file-upload-path",
+      "kind": "core",
+      "group": "Web and API",
+      "title": "Review upload validation and path containment",
+      "summary": "Check filename, file-type and storage-path handling, then verify that the supplied fix preserves allowed uploads.",
+      "start_with": "Construct and trace an HTTP request; File integrity",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "mfa-hands-on",
+      "kind": "extension",
+      "group": "Identity and cloud",
+      "title": "Enrol and recover a local training MFA account",
+      "summary": "Perform enrolment, successful/failed challenges and approved recovery; this adds observed lifecycle behaviour to review of enrolment flags.",
+      "start_with": "MFA and account recovery review; Test session expiry and logout",
+      "extends": [
+        "mfa-review"
+      ],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "log-ingestion",
+      "kind": "core",
+      "group": "Logs, SOC and incident response",
+      "title": "Import and normalise logs into a small local workspace",
+      "summary": "Map timestamps and fields, identify malformed rows and verify record counts before investigating.",
+      "start_with": "Login triage; Evidence timeline reconstruction",
+      "extends": [],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "soc-query-workbook",
+      "kind": "extension",
+      "group": "Logs, SOC and incident response",
+      "title": "Build a small SOC query workbook",
+      "summary": "Write filters, counts and joins that answer explicit investigation questions without double-counting alerts.",
+      "start_with": "Import and normalise logs into a small local workspace; Login triage; Alert correlation and duplicate handling",
+      "extends": [
+        "login-triage",
+        "alert-correlation"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "python-log-helper",
+      "kind": "core",
+      "group": "Logs, SOC and incident response",
+      "title": "Write a small auditable Python log helper",
+      "summary": "Validate inputs, handle a malformed record and compute a reproducible count or timeline rather than copying opaque code.",
+      "start_with": "Basic Python variables, loops and files; Login triage",
+      "extends": [],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "detection-corpus",
+      "kind": "extension",
+      "group": "Logs, SOC and incident response",
+      "title": "Evaluate a detection against a labelled benign corpus",
+      "summary": "Move beyond one marker exercise to measure false positives/misses and justify a threshold change without fitting only the example.",
+      "start_with": "Write, run and tune an offline detection rule; Build a small SOC query workbook",
+      "extends": [
+        "snort-rule-testing"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "logging-health",
+      "kind": "core",
+      "group": "Logs, SOC and incident response",
+      "title": "Investigate missing or delayed telemetry",
+      "summary": "Distinguish an apparently quiet system from a collection gap and decide whether a query can support a conclusion.",
+      "start_with": "Import and normalise logs into a small local workspace; Evidence timeline reconstruction",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "incident-case",
+      "kind": "extension",
+      "group": "Logs, SOC and incident response",
+      "title": "Work an end-to-end benign incident case",
+      "summary": "Combine separate lab skills into a defensible hypothesis, evidence requests and a final scoped conclusion.",
+      "start_with": "Build a small SOC query workbook; Investigate missing or delayed telemetry",
+      "extends": [
+        "login-triage",
+        "endpoint-triage",
+        "http-triage",
+        "alert-correlation",
+        "timeline-analysis"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "indicator-quality",
+      "kind": "core",
+      "group": "Logs, SOC and incident response",
+      "title": "Assess indicator quality and expiry",
+      "summary": "Explain confidence, source reliability, scope and expiry instead of treating every listed indicator as malicious.",
+      "start_with": "DNS triage; Email identity and message triage",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "containment-tabletop",
+      "kind": "core",
+      "group": "Logs, SOC and incident response",
+      "title": "Choose proportionate containment in a tabletop",
+      "summary": "Balance evidence preservation, business impact, authority and reversibility when selecting the next action.",
+      "start_with": "Work an end-to-end benign incident case; Access review; Backup and recovery verification",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "evidence-custody",
+      "kind": "extension",
+      "group": "Forensics and recovery",
+      "title": "Acquire and register a small evidence set",
+      "summary": "Add source, time, handling and integrity records to simple hashing, and explain what chain of custody does not prove.",
+      "start_with": "File integrity",
+      "extends": [
+        "file-integrity"
+      ],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "file-type-triage",
+      "kind": "core",
+      "group": "Forensics and recovery",
+      "title": "Identify file types beyond the extension",
+      "summary": "Distinguish a filename label from file-format evidence and avoid concluding malware from a mismatch.",
+      "start_with": "File integrity; Use shell commands for read-only troubleshooting",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "file-time-analysis",
+      "kind": "extension",
+      "group": "Forensics and recovery",
+      "title": "Interpret filesystem timestamps and copies",
+      "summary": "Explain that creation/modification/access values reflect filesystem operations and do not directly prove a person's actions.",
+      "start_with": "Evidence timeline reconstruction; Acquire and register a small evidence set",
+      "extends": [
+        "timeline-analysis"
+      ],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "deleted-file-recovery",
+      "kind": "core",
+      "group": "Forensics and recovery",
+      "title": "Recover a deleted dummy file from a disposable image",
+      "summary": "Practise read-only image handling, recovery to a separate folder and checking whether a recovered file is complete.",
+      "start_with": "Acquire and register a small evidence set; Identify file types beyond the extension; Build and verify a disposable lab workbench",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "browser-artifacts",
+      "kind": "core",
+      "group": "Forensics and recovery",
+      "title": "Reconstruct a benign browsing session from a lab profile",
+      "summary": "Correlate history/download/cache clues while distinguishing stored records from proof of who used the browser.",
+      "start_with": "Evidence timeline reconstruction; Acquire and register a small evidence set",
+      "extends": [],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "restore-drill",
+      "kind": "extension",
+      "group": "Forensics and recovery",
+      "title": "Perform and measure a real dummy-data restore",
+      "summary": "Move from reviewing supplied restore evidence to verifying file contents, completeness and elapsed recovery time personally.",
+      "start_with": "Backup and recovery verification; File integrity",
+      "extends": [
+        "backup-verification"
+      ],
+      "mode": "hands-on",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "data-classification",
+      "kind": "core",
+      "group": "Governance and reporting",
+      "title": "Classify a fictional team's data and handling needs",
+      "summary": "Link sensitivity and business purpose to access, retention, storage and sharing requirements.",
+      "start_with": "Access review; Secret handling and exposure review",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "small-threat-model",
+      "kind": "core",
+      "group": "Governance and reporting",
+      "title": "Threat-model a small application or home-lab service",
+      "summary": "Identify assets, entry points, plausible failures and proportionate controls before adding tools.",
+      "start_with": "Map addresses, subnets and a packet's route; Construct and trace an HTTP request; Access review",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "evidence-redaction",
+      "kind": "extension",
+      "group": "Governance and reporting",
+      "title": "Prepare a public-safe evidence excerpt",
+      "summary": "Remove unnecessary identifiers/secrets while keeping claims verifiable and preserving private originals.",
+      "start_with": "Secret handling and exposure review; Acquire and register a small evidence set",
+      "extends": [
+        "secret-handling"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "pcap-object-reconstruction",
+      "kind": "extension",
+      "group": "Forensics and recovery",
+      "title": "Recover a benign object from your own capture",
+      "summary": "Relate stream completeness to recovered content and explain why encrypted or missing traffic changes what can be recovered.",
+      "start_with": "Capture and explain your own traffic; File integrity",
+      "extends": [
+        "traffic-capture"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "cross-source-corroboration",
+      "kind": "extension",
+      "group": "Forensics and recovery",
+      "title": "Resolve a disagreement between two evidence sources",
+      "summary": "Distinguish a supported cross-source link from coincidental matching and preserve alternative explanations.",
+      "start_with": "Acquire and register a small evidence set; Interpret filesystem timestamps and copies; Investigate missing or delayed telemetry",
+      "extends": [
+        "timeline-analysis",
+        "http-triage",
+        "endpoint-triage"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "rules-of-engagement",
+      "kind": "core",
+      "group": "Governance and reporting",
+      "title": "Write scope and rules of engagement for a lab",
+      "summary": "Turn a vague testing idea into a bounded, reviewable activity.",
+      "start_with": "Basic ownership and permission concepts",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "risk-register",
+      "kind": "extension",
+      "group": "Governance and reporting",
+      "title": "Create a small risk register with treatment choices",
+      "summary": "Extend technical finding priority into ownership, treatment, residual risk and review dates.",
+      "start_with": "Vulnerability prioritisation; Classify a fictional team's data and handling needs",
+      "extends": [
+        "vulnerability-prioritisation"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "incident-communications",
+      "kind": "core",
+      "group": "Governance and reporting",
+      "title": "Prepare an incident brief and update for different audiences",
+      "summary": "Separate confirmed facts, working hypotheses, action ownership and the next update need in technical and nontechnical wording.",
+      "start_with": "Login triage; Evidence timeline reconstruction",
+      "extends": [],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "finding-report",
+      "kind": "extension",
+      "group": "Governance and reporting",
+      "title": "Write a reproducible finding and retest report",
+      "summary": "Explain scope, observation, impact, reproduction, correction and retest so another person can verify the claim.",
+      "start_with": "Test and retest access control with Burp; Remediation and retesting; Write scope and rules of engagement for a lab",
+      "extends": [
+        "vulnerability-retest",
+        "burp-access-control"
+      ],
+      "mode": "mixed",
+      "status": "Independent practice not yet assessed"
+    },
+    {
+      "id": "portfolio-mastery-capstone",
+      "kind": "extension",
+      "group": "Governance and reporting",
+      "title": "Complete an unfamiliar case and explain it to a reviewer",
+      "summary": "Demonstrate transfer, accurate limitations, useful next action and recall beyond following a guide.",
+      "start_with": "At least one independently assessed network, endpoint, web or identity track; Write a reproducible finding and retest report; Prepare a public-safe evidence excerpt",
+      "extends": [
+        "dns-triage",
+        "login-triage",
+        "access-review",
+        "vulnerability-retest"
+      ],
+      "mode": "offline",
+      "status": "Independent practice not yet assessed"
     }
   ]
 }

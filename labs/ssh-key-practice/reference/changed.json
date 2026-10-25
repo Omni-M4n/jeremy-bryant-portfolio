@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "r1": "recovery-tested",
+    "t1": "other-method-accepted",
+    "t2": "transport-inconclusive"
+  },
+  "observations": [
+    "r1: console-tested=true; host-fingerprint-match=true.",
+    "t1: user=labuser; offered-key=k1; result=accepted; method=password.",
+    "t2: user=labuser; offered-key=k2; result=transport-error; method=none."
+  ],
+  "limitations": [
+    "These are supplied authentication observations, not an SSH implementation or proof that a live server has this configuration.",
+    "A rejection caused by a network error proves no key boundary. Keep a tested console recovery route and verify the server fingerprint."
+  ]
+}

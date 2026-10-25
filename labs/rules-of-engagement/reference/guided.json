@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "within-written-plan-only",
+    "item-2": "outside-target-scope"
+  },
+  "observations": [
+    "item-1: desk-lab.test, read-config, minute 600; window [600, 630).",
+    "item-2: other-lab.test, read-log, minute 610; window [600, 630)."
+  ],
+  "limitations": [
+    "This reviews a fictional written plan. It grants no permission and launches no test."
+  ]
+}

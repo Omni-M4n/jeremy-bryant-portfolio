@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "lab_id": "file-time-analysis",
+  "case_id": "changed",
+  "title": "Collection 02",
+  "synthetic": true,
+  "context": {
+    "question": "Did file contents, timestamps, or both change during a recorded operation?",
+    "recording": "Fictional worksheet evidence; practical measurements are saved separately."
+  },
+  "data": {
+    "snapshots": [
+      {
+        "id": "item-01",
+        "operation": "copyfile",
+        "before_sha256": "b6a98d9ce9a2d9149288fa3df42d377c3e42737afdcdaf714e33c0a100b51060",
+        "after_sha256": "b6a98d9ce9a2d9149288fa3df42d377c3e42737afdcdaf714e33c0a100b51060",
+        "before_mtime_ns": 1735689600000000000,
+        "after_mtime_ns": 1735689720000000000
+      }
+    ]
+  },
+  "artifacts": {}
+}

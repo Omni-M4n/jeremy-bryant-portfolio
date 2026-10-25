@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "Microsoft File Times",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/file-times",
+      "used_for": "Platform-specific file-time behavior.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Python os.stat_result documentation",
+      "url": "https://docs.python.org/3/library/os.html#os.stat_result",
+      "used_for": "mtime, birthtime and platform differences.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Python shutil documentation",
+      "url": "https://docs.python.org/3/library/shutil.html",
+      "used_for": "copyfile/copy2 behavior and metadata limitations.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

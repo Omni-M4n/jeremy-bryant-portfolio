@@ -1,34 +1,94 @@
-# TLS certificate review
+# Review a TLS certificate's names and dates
 
-Check decoded certificate dates and DNS names at a fixed observation time while keeping supplied trust reports separate from verified trust. These are original fictional practice cases, not copied coursework or completed professional work.
+A site name can fit a certificate while its date has expired. A date can fit
+while the name is wrong. Check both, then ask what evidence of trust is missing.
+A certificate is a signed record used to help check a site's identity.
 
-## Before starting
+These cases are made up. This is offline practice, separate from coursework.
+It does not claim past work or proven skill.
 
-Prerequisites: Domain names, UTC time and HTTPS basics. No certificate command-line utility or coding experience is required. Use Python 3.10+ with the standard library. Run the commands from this lab folder. The learner reads evidence, makes decisions and edits a worksheet; programming is not required.
+## Start here
 
-Allow **30-45 minutes** for the first guided pass: 5 minutes for vocabulary and scope, 15 for prediction, 10 for checking and correction, and 5-15 for explanation. Changed and later recall exercises are separate practice. Personal completion and independent competence have not been assessed.
+You need basic domain names, UTC time and HTTPS. Use Python 3.10 or newer,
+a terminal and a text editor. You do not need to write code or use a real
+certificate tool. Run commands from this lab folder.
 
-## Vocabulary
+Allow 30–45 minutes. Read for 5 minutes, predict for 15, then check for 10.
+Use the time left to explain your result. Do the later cases in fresh sessions.
+No one has assessed your skill from these files.
 
-**SAN:** subject alternative name, including a certificate DNS identity. **notBefore/notAfter:** the inclusive validity interval. **Wildcard:** here, one entire leftmost DNS label. **Chain report:** a supplied claim about validation, not work performed by this script.
+| Term | Meaning here |
+| --- | --- |
+| SAN | A name listed in a certificate's subject alternative name field |
+| notBefore | First valid date and time, including that exact instant |
+| notAfter | Last valid date and time, including that exact instant |
+| Wildcard | A star that can stand for one leftmost name part |
+| Chain report | A supplied claim about a trust check, not a check this script ran |
 
-## Evidence and exact input model
+## Read the case
 
-Decoded fictional DNS subject alternative names, validity timestamps, requested hosts and an explicitly supplied chain report.
+The case holds names, dates, a requested host and a chain report. It is the
+only source. The `artifacts` object is empty. There are no real certificates.
+Read the [shared file rules](../FOUNDATION-CONTRACT.md) for the case file format.
 
-Each case has exactly `schema_version: 1`, `lab_id: "tls-review"`, `case_id` (`guided`, `changed`, `challenge`), `title`, `synthetic: true`, `context`, `data`, `artifacts`. `context.question` is nonempty text. Objects reject unknown/missing fields; record IDs are unique lowercase names. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). Files are small UTF-8 JSON; readable artifacts are supplied through prepare where relevant.
+| Case field | Required value |
+| --- | --- |
+| schema_version | 1 |
+| lab_id | tls-review |
+| case_id | guided, changed or challenge |
+| title | Case title |
+| synthetic | true |
+| context.question | Nonempty question |
+| data | Fields in the next table |
+| artifacts | Empty object |
 
-`data` contains exactly `evaluation_time` (UTC `YYYY-MM-DDTHH:MM:SSZ`), `renew_within_days` (integer 0-365), and `certificates`. Each certificate has `id`, `requested_host`, unique `dns_names` (possibly empty), `not_before`, `not_after`, and `chain_report` (`verified`, `failed`, `unverified`). Hosts and names are ASCII `.test` domains; a SAN may start with a single whole-label `*.`. DNS comparison is case-insensitive. Calendar dates must exist, and notBefore must not exceed notAfter. `artifacts` is empty; decoded JSON is the only source. No common-name fallback, IP SANs or internationalised-name conversion is implemented.
+The parser rejects missing or extra fields. IDs must be unique lowercase names.
+Files use UTF-8 JSON. That is a text format made from named fields and values.
 
-## Decision vocabulary
+| Data field | Meaning and range |
+| --- | --- |
+| evaluation_time | Time used for every check: UTC YYYY-MM-DDTHH:MM:SSZ |
+| renew_within_days | Whole number from 0 to 365 |
+| certificates | List of records |
+| id | Unique record name |
+| requested_host | Host name being checked |
+| dns_names | Unique SAN names; the list can be empty |
+| not_before, not_after | First and last valid times, in the same UTC form |
+| chain_report | verified, failed or unverified |
 
-A decision is either `fields-and-reported-chain-pass`, or the following applicable labels joined by `|` in this order: `not-yet-valid` (time before notBefore) **or** `expired` (time after notAfter); `hostname-mismatch` (no SAN match); `chain-failed` **or** `chain-unverified` (the supplied report); then `renewal-due` (time currently within the validity interval and seconds remaining <= days x 86400).
+The last five rows describe each certificate record. Dates must be real
+calendar dates. The first valid time must not be after the last one.
+Hosts and names use ASCII characters and end in `.test`. Letter case does not
+change a name match. A SAN may start with one `*.` wildcard.
 
-At exactly notAfter the date is still within the interval and renewal is due. Wildcards match one label only, so `*.museum.test` matches `east.museum.test` but neither `museum.test` nor `a.east.museum.test`. Passing these fields is a narrow result; the script has not validated a certificate chain.
+The wildcard matches one name part only. For example, `*.museum.test` matches
+`east.museum.test`. It does not match `museum.test` or `a.east.museum.test`.
+There is no fallback to a common name. IP address SANs and name conversion
+for other character sets are outside this lab.
+
+## Choose a result
+
+Use `fields-and-reported-chain-pass` when no issue below applies.
+Otherwise join the matching labels with `|` in this order:
+
+| Order | Condition | Label |
+| --- | --- | --- |
+| 1 | Check time is before the first valid time | not-yet-valid |
+| 1 | Check time is after the last valid time | expired |
+| 2 | No SAN name matches the host | hostname-mismatch |
+| 3 | Supplied chain report says failed | chain-failed |
+| 3 | Supplied chain report says unverified | chain-unverified |
+| 4 | Date is valid now and renewal is due | renewal-due |
+
+Only one date-state label and one chain-state label can apply.
+Renewal is due when seconds left are at most the day count times 86,400.
+Apply that rule only while the date is valid. At the exact last valid instant,
+the date still fits and renewal is due. A pass here does not prove trust.
 
 ## Run the practice
 
-Use a new attempt number if the destination already exists. Prepare writes only beneath this lab's ignored `run/` folder and refuses existing or linked paths.
+Prepare writes under this lab's `run/` folder. It refuses old or linked paths.
+Use a new attempt number if your folder already exists.
 
 ```console
 python lab.py cases
@@ -36,7 +96,11 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and its readable evidence. Before viewing the analysis, edit `run/attempt-01/answers.json`: replace every blank decision with an exact label above, write `explanation` as a paragraph, and put record/field/line references in the `evidence` list. Keep predictions, uncertainty, next check and help used in `notes.txt`. JSON strings use double quotes; do not add comments or trailing commas. An evidence entry can be a record ID plus the relevant field name.
+Read the case before viewing the answer. Fill each blank in
+`run/attempt-01/answers.json` with an exact label above. Add a short reason.
+In the evidence list, give record IDs and field names. Keep your prediction,
+unknowns, next check and help used in `notes.txt`. JSON needs double quotes.
+Do not add comments or commas after the last item.
 
 ```console
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
@@ -47,20 +111,39 @@ python lab.py verify
 python test_lab.py
 ```
 
-Repeat show/check/analyse with the new attempt path. Default case is `fixtures/guided.json` beside the script. Explicit input paths are relative to your current directory; prepare output is relative to this lab. Exit 0 means command success or matching decision fields, 1 means differences/incomplete worksheet, and 2 means invalid input or a filesystem error. Analyse shows the reference reasoning and should stay closed until a prediction is saved. Verify compares three shipped fixtures with fixed reference outputs; it does not assess a learner. Check requires prose and references but cannot judge their accuracy.
+Use the matching path for later attempts. The default is the guided fixture.
+Input paths are relative to your current folder. Prepare output is relative
+to this lab. Analyse shows the answer, so save a prediction first.
 
-## Deliverable and handover
+| Exit code | Meaning |
+| --- | --- |
+| 0 | Command ran, or decision fields match |
+| 1 | Decisions differ, or the worksheet is incomplete |
+| 2 | Invalid input or a file error |
 
-A certificate review listing date/name issues, the remaining renewal window, supplied chain status and the next verification needed. Keep your first prediction and correction in the notes. Include an honest help-used statement. Use [the worked example](WORKED-EXAMPLE.md) for the guided case and [the drills](DRILLS.md) to reduce prompts over time.
+Verify checks the three supplied cases against fixed answers. It does not
+assess your skill. Check needs reasons and references, but cannot judge them.
 
-Handover prompt: "What did you observe, which exact evidence supports it, what remains uncertain, and what narrow check should happen next?" A person should review your reasoning and an unfamiliar case before treating the practice as independently demonstrated.
+## Save and explain
 
-## Limits and primary references
+Write a short review of the names, dates, time left and supplied chain status.
+State the next trust check needed. Keep both your first answer and correction.
+Note any help used. Open [the worked example](WORKED-EXAMPLE.md) after your
+first attempt. Use [the drills](DRILLS.md) to practise with less help.
 
-- Certificate fields and a supplied chain report are synthetic; no signature, chain, revocation, protocol or cipher verification is performed.
-- Only ASCII DNS SAN names and a single leftmost wildcard are modelled; a matching name does not establish application safety.
+In a handover, state what you saw and cite exact evidence. Then state what you
+still do not know and what you would check next. A person should review your
+reasoning and a fresh case before treating the skill as shown.
 
-Runtime is offline: no external target, packet transmission, email action or host configuration change occurs. All addresses and names are reserved fictional examples. The local decision rules are teaching choices; the references explain underlying concepts, not a claim of tool certification.
+## Limits and sources
 
-- [IETF RFC 5280, section 4.1.2.5: validity](https://www.rfc-editor.org/rfc/rfc5280.html#section-4.1.2.5)
-- [IETF RFC 9525, section 6.3: DNS identity comparison](https://www.rfc-editor.org/rfc/rfc9525.html#section-6.3)
+The script checks fields from made-up records. It does not check signatures,
+trust chains, revoked certificates, protocol versions or cipher choices.
+A name match cannot show that an application is safe. Nothing is sent over
+a network, and no host settings are changed.
+
+These sources explain the concepts. The small model's rules are teaching
+choices; passing them is not a tool qualification.
+
+- [IETF RFC 5280: validity](https://www.rfc-editor.org/rfc/rfc5280.html#section-4.1.2.5)
+- [IETF RFC 9525: DNS identity checks](https://www.rfc-editor.org/rfc/rfc9525.html#section-6.3)

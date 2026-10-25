@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "lab_id": "ipv6-parity",
+  "case_id": "challenge",
+  "title": "Address notebook 3",
+  "synthetic": true,
+  "context": {
+    "question": "What does each address path show about the stated access intent?",
+    "note": "Same fictional client position and target service; no forwarding. Rule fields are supplied summaries that still need original configuration evidence."
+  },
+  "data": {
+    "services": [
+      {
+        "id": "s01",
+        "port": 8000,
+        "intended": "allow",
+        "ipv4": {
+          "address": "192.0.2.20",
+          "listener": true,
+          "configured_rule": "allow",
+          "outcome": "connect"
+        },
+        "ipv6": {
+          "address": "2001:db8::20",
+          "listener": true,
+          "configured_rule": "not-reviewed",
+          "outcome": "not-tested"
+        }
+      }
+    ]
+  },
+  "artifacts": {
+    "addresses.txt": "One service has separate IPv4 and IPv6 observations. Draw both paths before comparing them.\n"
+  }
+}

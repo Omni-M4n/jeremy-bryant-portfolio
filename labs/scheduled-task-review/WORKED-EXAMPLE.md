@@ -1,10 +1,12 @@
 # Worked example: Scheduled task change review
 
-Try the guided case before reading this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
+Try the guided case before you read this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
 
-archive was approved for 02:00, lab-backup and C:/Lab/bin/archive.exe. Its observed 03:00 time exactly matches the maintenance approval, so the difference is explained by that note. inventory changes from 04:00/lab-inventory/C:/Lab/bin/inventory.exe to 04:00/SYSTEM/C:/Lab/temp/inventory.exe without an approval. Both account and path differ, so it needs review. A benign repair could explain the change, but that explanation must be checked; the snapshot alone does not establish persistence or malicious intent.
+archive had a baseline time of 02:00, account lab-backup and action C:/Lab/bin/archive.exe. Its observed 03:00 time matches the maintenance approval exactly. The account and path also match that approval. This explains the difference.
 
-The reference decision fields for guided are:
+inventory had time 04:00, account lab-inventory and action C:/Lab/bin/inventory.exe. The observed time is still 04:00. But the account is now SYSTEM and the action is C:/Lab/temp/inventory.exe. There is no approval. Both account and path differ, so it needs review. A harmless repair could explain the change, but you must check that idea. This snapshot alone does not prove an attempt to keep access or cause harm.
+
+The set decision fields for guided are:
 
 ```json
 {
@@ -13,6 +15,6 @@ The reference decision fields for guided are:
 }
 ```
 
-Now open `python lab.py analyse --case run/worked-01/case.json` and compare observations, not only labels. Record one difference between your first prediction and the reference. If there was no difference, explain the rule that produced each decision rather than copying the label.
+Now open `python lab.py analyse --case run/worked-01/case.json`. Compare what you found as well as the labels. Record one change from your first choice. If all choices matched, explain the rule behind each one in your own words.
 
-Handover prompt: explain what this evidence establishes, cite its exact IDs or lines, give a plausible alternative or remaining uncertainty, and name the smallest next check. Record any help used. A correct label by itself is not evidence of independent understanding.
+In your handover, state what the evidence shows. Cite the exact IDs or lines. Give another possible cause or say what is still unknown. Name the smallest next check. Record any help used. A correct label alone does not show that you understood the rule.

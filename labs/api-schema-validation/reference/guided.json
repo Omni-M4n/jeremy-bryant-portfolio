@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "status": 201,
+      "response": {
+        "accepted": {
+          "name": "Pear",
+          "count": 2
+        }
+      }
+    },
+    {
+      "status": 422,
+      "response": {
+        "error": "schema",
+        "rule": "name 1-20 characters; count integer 1-5; only these fields"
+      }
+    },
+    {
+      "status": 422,
+      "response": {
+        "error": "schema",
+        "rule": "name 1-20 characters; count integer 1-5; only these fields"
+      }
+    }
+  ]
+}

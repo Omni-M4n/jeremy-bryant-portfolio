@@ -1,24 +1,28 @@
 # Email identity and message triage
 
-Separate supplied receiver authentication evidence from untrusted header claims, then review domain discrepancies without declaring a message safe. These are original fictional practice cases, not copied coursework or completed professional work.
+Check which sender results came from the trusted receiver. Keep them separate from untrusted header claims. Then review domain names that differ. Do not claim that a message is safe. These made-up cases were written for practice. They are not copied coursework. They do not show work done in a job.
 
 ## Before starting
 
-Prerequisites: DNS and domain-name basics. No mailbox access, real messages, DNS queries or email-security experience is needed. Use Python 3.10+ with the standard library. Run the commands from this lab folder. The learner reads evidence, makes decisions and edits a worksheet; programming is not required.
+Know the basics of DNS and domain names first. You do not need mailbox access, real messages or email security experience. The lab makes no DNS queries. Use Python 3.10+ with its built-in library. Run each command from this lab folder. Read the evidence, choose labels and fill in a worksheet. You do not need to write code.
 
-Allow **30-45 minutes** for the first guided pass: 5 minutes for vocabulary and scope, 15 for prediction, 10 for checking and correction, and 5-15 for explanation. Changed and later recall exercises are separate practice. Personal completion and independent competence have not been assessed.
+Allow **35-45 minutes** for the first guided case. Spend 5 minutes on terms and scope, then 15 on your first choices. Allow 10 minutes to check and correct them. Spend 5-15 minutes on your reasons. Do the changed case and recall tasks as separate practice. No one has yet assessed your work or skill.
 
 ## Vocabulary
 
-**From domain:** the domain shown by the message author field. **MAIL FROM:** the SMTP envelope identity used in this SPF model. **DKIM domain:** the reported signing domain. **DMARC:** domain authentication alignment with From. **authserv-id:** the claimed reporting service. **Trust register:** separate supplied evidence of which records came from the receiving relay.
+The **From domain** is the domain in the message author field. **MAIL FROM** is the SMTP envelope identity used for SPF here. The **DKIM domain** is the domain said to have signed the message. **DMARC** checks how authenticated domains line up with From. **authserv-id** names the service that claims to report the result. The **trust register** is a separate supplied record. It says which results came from the receiving relay.
 
 ## Evidence and exact input model
 
-Decoded synthetic From, Reply-To and link domains, Authentication-Results records, and an out-of-band fictional receiver trust register.
+You get made-up From, Reply-To and link domains that are already decoded. You also get Authentication-Results records. A separate trust register names results from the made-up receiver.
 
-Each case has exactly `schema_version: 1`, `lab_id: "email-triage"`, `case_id` (`guided`, `changed`, `challenge`), `title`, `synthetic: true`, `context`, `data`, `artifacts`. `context.question` is nonempty text. Objects reject unknown/missing fields; record IDs are unique lowercase names. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). Files are small UTF-8 JSON; readable artifacts are supplied through prepare where relevant.
+Each case needs `schema_version: 1` and `lab_id: "email-triage"`. The `case_id` is `guided`, `changed` or `challenge`. It also needs `title`, `synthetic: true`, `context`, `data` and `artifacts`. No other top-level fields are allowed. `context.question` must contain text. Each object must have the listed fields and no others. Each record ID must be a unique lowercase name. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). The files use UTF-8 JSON and are small. Where needed, prepare also makes a copy of the evidence that you can read.
 
-`context` adds `trusted_receiving_relay` with `authserv_id` (a `.test` name), unique `trusted_record_ids`, `alignment`=`strict`, and `provenance`=`fictional-receiver-export`. This context is supplied independently of the message, not extracted from a header. `data.messages` records have `id`, `expected_sender_domain`, `from_domain`, `reply_to_domain`, unique `link_domains`, and `authentication_results`. Each result has unique global `id`, `authserv_id`, `spf`, `mailfrom_domain`, `dkim`, `dkim_domain`, `dmarc`; result values are pass/fail/none/temperror. A DKIM none result has null dkim_domain; other DKIM results require a domain. All domains are ASCII `.test`; names compare case-insensitively. A result is trusted only when its ID is registered and its relay matches. At most one trusted result per message is supported. A registered absent ID, wrong relay or contradictory trusted DMARC result is rejected. JSON is authoritative; `artifacts.headers.txt` is an exact readable mirror, not a general email parser.
+`context` adds `trusted_receiving_relay`. This has `authserv_id`, which is a `.test` name, and unique `trusted_record_ids`. It also has `alignment`=`strict` and `provenance`=`fictional-receiver-export`. This context comes from a source separate from the message. It is not taken from a header.
+
+Each `data.messages` record has `id`, `expected_sender_domain`, `from_domain` and `reply_to_domain`. It also has unique `link_domains` and `authentication_results`. Each result has `id`, `authserv_id`, `spf`, `mailfrom_domain`, `dkim`, `dkim_domain` and `dmarc`. A result ID must be unique across the whole case. Results use pass, fail, none or temperror. A DKIM none result needs a null dkim_domain. Other DKIM results need a domain. All domains use ASCII and end in `.test`. Uppercase and lowercase versions of a name compare as equal.
+
+Trust a result only if its ID is in the register and its relay matches. There can be at most one trusted result per message. The tool rejects a registered ID that is missing or has the wrong relay. It also rejects trusted DMARC results that conflict with the strict rule below. JSON is the source used for results. `artifacts.headers.txt` must be an exact copy you can read. The tool does not parse email in general.
 
 ## Decision vocabulary
 
@@ -30,11 +34,11 @@ Each case has exactly `schema_version: 1`, `lab_id: "email-triage"`, `case_id` (
 | `authenticated-domain-with-mismatch` | Trusted DMARC passes, but From differs from the expected sender, Reply-To differs from From, or a link domain differs from From. |
 | `authenticated-domain-review-content` | Trusted DMARC passes and none of those domain discrepancies is present; content still needs review. |
 
-Apply in that order. In this strict-alignment exercise, a trusted DMARC pass needs SPF pass with MAIL FROM exactly matching From, or DKIM pass with signing domain exactly matching From. A trusted fail with either aligned pass is contradictory. Untrusted claims do not gain authority by being internally plausible. Domain differences are review prompts, not automatic proof of phishing.
+Use the rules in the order shown. This lab uses strict alignment: the domain must match From exactly. For a trusted DMARC pass, at least one of two checks must pass. SPF can pass with MAIL FROM exactly matching From. Or DKIM can pass with its signing domain exactly matching From. A trusted DMARC fail conflicts with either of those aligned passes. An untrusted claim is still untrusted even if its fields seem to make sense. A domain difference is a reason to review the message. By itself, it does not prove phishing.
 
 ## Run the practice
 
-Use a new attempt number if the destination already exists. Prepare writes only beneath this lab's ignored `run/` folder and refuses existing or linked paths.
+Use a new attempt number if that folder already exists. Prepare writes only inside this lab's ignored `run/` folder. It rejects paths that already exist or use links.
 
 ```console
 python lab.py cases
@@ -42,7 +46,7 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and its readable evidence. Before viewing the analysis, edit `run/attempt-01/answers.json`: replace every blank decision with an exact label above, write `explanation` as a paragraph, and put record/field/line references in the `evidence` list. Keep predictions, uncertainty, next check and help used in `notes.txt`. JSON strings use double quotes; do not add comments or trailing commas. An evidence entry can be a record ID plus the relevant field name.
+Read the case and its evidence. Save your first choices before you view the analysis. Edit `run/attempt-01/answers.json`. Fill each blank decision with an exact label from the table. Write a paragraph in `explanation`. In the `evidence` list, cite the records, fields or lines you used. One entry can give a record ID and its field name. In `notes.txt`, keep your first choices, doubts, next check and help used. JSON text strings need double quotes. Do not add comments or a comma after the last item.
 
 ```console
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
@@ -53,21 +57,23 @@ python lab.py verify
 python test_lab.py
 ```
 
-Repeat show/check/analyse with the new attempt path. Default case is `fixtures/guided.json` beside the script. Explicit input paths are relative to your current directory; prepare output is relative to this lab. Exit 0 means command success or matching decision fields, 1 means differences/incomplete worksheet, and 2 means invalid input or a filesystem error. Analyse shows the reference reasoning and should stay closed until a prediction is saved. Verify compares three shipped fixtures with fixed reference outputs; it does not assess a learner. Check requires prose and references but cannot judge their accuracy.
+Repeat show/check/analyse with the path for your new attempt. The default case is `fixtures/guided.json`, beside the script. Input paths that you supply start from your current folder. The prepare output path starts from this lab folder.
+
+Exit 0 means the command worked or your decision fields match. Exit 1 means a choice differs or your worksheet is incomplete. Exit 2 means the input is invalid or there is a file error. Analyse shows the set answers and reasons. Keep it closed until you save your first choices. Verify compares the three supplied cases with fixed expected outputs. It does not assess your skill. Check requires written reasons and sources. It cannot judge whether they are right.
 
 ## Deliverable and handover
 
-A measured triage note identifying trusted result records, domain alignment, discrepancies, a next check and unresolved content risk. Keep your first prediction and correction in the notes. Include an honest help-used statement. Use [the worked example](WORKED-EXAMPLE.md) for the guided case and [the drills](DRILLS.md) to reduce prompts over time.
+Write a careful triage note. Name the trusted result records and show which domains line up. List differences, a next check and any content risk that is still unknown. Keep your first choices and any corrections in the notes. State what help you used. Use [the worked example](WORKED-EXAMPLE.md) for the guided case. Use [the drills](DRILLS.md) to try tasks with less help over time.
 
-Handover prompt: "What did you observe, which exact evidence supports it, what remains uncertain, and what narrow check should happen next?" A person should review your reasoning and an unfamiliar case before treating the practice as independently demonstrated.
+In your handover, answer: "What did you see? Which exact evidence supports it? What is still unknown? What small check should happen next?" Ask someone to review your reasons and your work on a new case. Until then, your skill without help has not been assessed.
 
 ## Limits and primary references
 
-- Receiver trust is supplied out of band for this exercise; an Authentication-Results header or matching relay name alone is not proof.
-- SPF authorises a sending domain context; DMARC relates authenticated domains to From. Neither authenticates a person or guarantees harmless content.
-- Only decoded strict domain alignment is checked; no DNS, signature, ARC, relaxed alignment, attachment or URL-content analysis occurs.
+- Trust in the receiver comes from a separate source in this lab. An Authentication-Results header or matching relay name alone does not prove trust.
+- SPF checks permission to send for a domain in a given context. DMARC links authenticated domains to From. Neither proves who the person is or that the content is harmless.
+- The tool checks only decoded domains with strict alignment. It does not check DNS, signatures, ARC, relaxed alignment, attachments or URL content.
 
-Runtime is offline: no external target, packet transmission, email action or host configuration change occurs. All addresses and names are reserved fictional examples. The local decision rules are teaching choices; the references explain underlying concepts, not a claim of tool certification.
+The lab runs offline. It contacts no outside target, sends no packets or email, and changes no host settings. All names and addresses are reserved for made-up examples. The rules were chosen for this lesson. The sources explain the ideas behind them. They do not certify this tool.
 
 - [IETF RFC 8601, section 1.2: Authentication-Results trust boundary](https://www.rfc-editor.org/rfc/rfc8601.html#section-1.2)
 - [IETF RFC 7208: SPF domain authorisation](https://www.rfc-editor.org/rfc/rfc7208.html)

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "identity-lifecycle",
   "case_id": "challenge",
-  "title": "A planned move and a delayed leaver ticket",
+  "title": "Move and departure access records",
   "synthetic": true,
   "context": {
     "question": "What access should be added, removed and retained on the stated review date?"

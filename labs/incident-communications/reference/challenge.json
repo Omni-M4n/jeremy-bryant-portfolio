@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "item-1": "use-confirmed-fact-for-manager",
+    "item-2": "state-unknown-and-next-check",
+    "item-3": "label-hypothesis-do-not-present-as-fact",
+    "item-4": "assign-action-and-owner"
+  },
+  "observations": [
+    "item-1: confirmed; source case-notes.txt line 1; owner response-lead; next update minute 750.",
+    "item-2: unknown; source case-notes.txt line 2; owner response-lead; next update minute 750.",
+    "item-3: hypothesis; source case-notes.txt line 3; owner response-lead; next update minute 750.",
+    "item-4: action; source case-notes.txt line 4; owner response-lead; next update minute 750."
+  ],
+  "limitations": [
+    "These are drafts about fictional facts. No message is sent and no real incident, breach or person is assessed."
+  ]
+}

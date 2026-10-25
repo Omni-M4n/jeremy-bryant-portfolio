@@ -1,58 +1,59 @@
 # Jeremy Bryant — cybersecurity portfolio
 
-A personal career portfolio, documented owner-controlled LG webOS home lab and original guided security exercises.
+A career portfolio with an LG TV home lab and guided security practice. The home lab used hardware owned by Jeremy. The security cases use made-up data.
 
 - **Portfolio:** https://jeremy-bryant.pages.dev/
 - **Full case study:** https://jeremy-bryant.pages.dev/lg-webos-lab/
 - **Security foundations labs:** https://jeremy-bryant.pages.dev/security-labs/
 - **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
+- **Summer study plan:** https://jeremy-bryant.pages.dev/security-labs/study-plan/
 - **Source and downloads:** https://jeremy-bryant.pages.dev/source/
 - **LinkedIn:** https://www.linkedin.com/in/jeremy-bryant-61347a445/
 
 ## The project
 
-The completed core lab integrates existing community Homebrew tooling and Glasshouse on an LG 50UT8050PSB running webOS 10.3.2. The goal was a maintainable, customised television that retained its everyday functions and a tested stock-home fallback.
+The LG home lab uses existing community Homebrew tools and Glasshouse. The TV is an LG 50UT8050PSB with webOS 10.3.2. The aim was a custom TV setup that still worked for daily use. It also needed a tested way back to the stock home screen.
 
-Verified project checks include administrator access, key-based SSH with Telnet disabled, startup after restart, Glasshouse startup and fallback, and restoration of temporary installation networking. Normal PS5 and streaming use was owner-tested. These are point-in-time results from 21 October 2026, not a live service status or comprehensive security assessment.
+The project checks covered admin access, SSH access with a key and Telnet turned off. They also covered restart, Glasshouse startup and the stock-home fallback. Temporary network settings used for setup were put back. Jeremy tested normal PS5 and streaming use. These results date from 21 October 2026. They do not show the device's current state or prove that every security risk was checked.
 
-The separate Chiaki extension remains **in progress**: desktop registration and TV configuration transfer succeeded, but streaming audio/video and Bluetooth controller behaviour still need verification.
+The separate Chiaki extension is **in progress**. Desktop registration and the transfer of TV settings worked. Streaming sound, video and Bluetooth controller use still need checks.
 
 ## Contribution and attribution
 
-Jeremy owned and operated the hardware, selected goals and appearance, provided observations and performed physical restarts and playback tests. The scripts in this repository are project utilities; upstream developers authored the exploit and applications.
+Jeremy owned and used the hardware. He chose the goals and appearance, shared what he saw, and tested restarts and playback. The scripts here help with the project. The developers credited below wrote the exploit and apps.
 
 Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://github.com/throwaway96), [Glasshouse](https://rorygallagher2024.github.io/glasshouse/), [TacticalBill/chiaki-lg](https://github.com/TacticalBill/chiaki-lg), [chiaki-ng](https://github.com/chiaki-ng/chiaki-ng) and [Qt](https://github.com/qt/qtbase).
 
 ## Guided security exercises
 
 <!-- LAB_COUNTS_START -->
-This release has **36 core labs** and **0 extensions**.
+This release has **61 core labs** and **25 extensions**.
 <!-- LAB_COUNTS_END -->
 
-The [labs](labs/README.md) contain original guided exercises. The first six
-cover DNS, login events, access review, HTTP logs, file integrity and firewall
-rules. Twenty additional labs develop network investigation and testing,
-defensive operations and recovery, and cloud, identity and configuration review.
-Each includes synthetic fixtures, a worked example, verification and progressive
-practice. The [expanded catalog](https://jeremy-bryant.pages.dev/security-labs/foundations/)
-lists each purpose, prerequisite and deliverable.
+The [labs](labs/README.md) contain guided exercises. The first six cover DNS,
+login events, access review, HTTP logs, file checks and firewall rules. Twenty
+more cover networks, defence, recovery, cloud access and settings. Each has
+made-up case files, a worked example, checks and practice tasks. The
+[foundation catalog](https://jeremy-bryant.pages.dev/security-labs/foundations/)
+lists the aim, skills needed first and work to save.
 Four [hands-on tool labs](https://jeremy-bryant.pages.dev/security-labs/hands-on/)
-add controlled traffic capture, manual web access-control testing, offline Snort
-rule tests and Windows event investigation. Their setup and evidence boundaries
-are documented separately from the first 26 offline exercises. Local utility tests do
-not establish that a learner has completed the external-tool workflows.
-The materials have automated reference checks; Jeremy's independent completion
-of unfamiliar variants remains to be assessed. These exercises do not claim
-production experience or independent authorship of every utility.
+add traffic capture, web access tests, offline Snort rule tests and Windows
+event review. Each states its own setup and safe scope. A local script check
+does not show that a learner used the separate tool. The supplied cases have
+reference checks. Jeremy's work on fresh cases still needs review. These
+materials do not claim work on production systems or that Jeremy wrote every
+helper on his own.
 
 The [complete library](https://jeremy-bryant.pages.dev/security-labs/library/)
-groups all accepted packages by topic. An extension adds an operation or evidence
-source to a core lab; it does not count as a new core topic. Draft packages are
-excluded from the website and download. Each new package has its own setup,
-worked case, practice tasks, checks and limits.
+groups the checked packages by topic. An extension adds a task or evidence
+source to a core lab. It does not count as a new core topic. Draft packages stay
+out of the website and download. Each new package has its own setup, worked
+case, practice tasks, checks and limits.
 
-The [practice guide](labs/PRACTICE-GUIDE.md) develops each topic through short
-walkthroughs, independent attempts, changed scenarios and later recall checks.
+Use the [practice guide](labs/PRACTICE-GUIDE.md) for short sessions and fresh
+cases. The [summer study plan](labs/SUMMER-STUDY-PLAN.md) puts skills in order.
+It includes two flexible summer starts and recall checks. It is a plan for
+learning, not a record of completed work.
 
 ## Source map
 
@@ -69,7 +70,7 @@ walkthroughs, independent attempts, changed scenarios and later recall checks.
 
 ## Local development
 
-Requires a current Node.js release; the website has no runtime or npm dependencies.
+Use a current Node.js release. The website needs no extra npm packages.
 
 ```sh
 npm run build
@@ -78,18 +79,28 @@ npm test
 npm run preview
 ```
 
-Extract the download or clone the repository, then run these commands from its project folder. The folder name does not matter. Open `http://127.0.0.1:8797/`. The preview binds to loopback only. No device is contacted by website build or tests.
+Extract the download or clone the repository. Run these commands from that
+project folder; its name does not matter. Open `http://127.0.0.1:8797/`.
+The preview uses loopback, so only this computer can reach it. The website
+build and tests do not contact a device.
 
-The converter requires Python 3.9+ and the standard library. Tests use synthetic byte arrays:
+The converter needs Python 3.9+ and its standard library. Its tests use made-up bytes:
 
 ```sh
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-See [`tools/README.md`](tools/README.md) before processing an actual export. Pairing exports and generated configuration are credentials and must remain outside this repository.
+Read [`tools/README.md`](tools/README.md) before using a real export. Pairing
+exports and the settings made from them grant access. Keep them outside this
+repository, like passwords.
 
 ## Publication
 
-The portfolio is a standalone Cloudflare Pages site at `https://jeremy-bryant.pages.dev/`. It is public to anyone with its URL; `noindex` asks search engines not to index it and is not access control.
+The portfolio uses Cloudflare Pages at `https://jeremy-bryant.pages.dev/`.
+Anyone with the URL can view it. The `noindex` tag asks search engines to leave
+it out of results. It does not block access.
 
-The source download contains no Git history, private keys, pairing exports, raw device logs or user-specific networking data. There is no contact form, analytics, advertising, account system, database or external browser dependency in the portfolio.
+The source download leaves out Git history, private keys, pairing exports, raw
+device logs and personal network details. The site has no contact form, usage
+tracking, ads, accounts or database. It loads no extra browser code from other
+sites.

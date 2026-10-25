@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "e1": "meets-practice-checks",
+    "e2": "below-practice-length",
+    "backup": "meets-practice-checks"
+  },
+  "observations": [
+    "e1: label_count=1; generated=true; length=20.",
+    "e2: label_count=1; generated=true; length=19.",
+    "Backup format=encrypted; copy=true; tested=true; separate=true; recovery_inside=false."
+  ],
+  "limitations": [
+    "Labels stand for fake passwords; length and a generated flag do not prove entropy or resistance to attack.",
+    "A copied file is not a tested recovery. The bundled file exercise is unencrypted and must never hold real secrets."
+  ]
+}

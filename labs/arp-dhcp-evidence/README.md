@@ -1,20 +1,20 @@
 # Read ARP and DHCP exchanges
 
-**Question:** which DHCP messages and ARP replies belong together, and what can a short excerpt establish about a client obtaining and using an address?
+**Question:** which DHCP messages and ARP replies belong together? What can a short excerpt show about a client getting and using an address?
 
-Work from original fictional packet summaries. You will match fields and frame order, distinguish a renewal from an incomplete allocation, and explain why an unrelated reply does not fill a gap. This is an offline evidence exercise: the supplied files are **not PCAPs** and no packets are sent. They do not demonstrate actual capture-tool operation or anyone's independent completion.
+Work from made-up packet summaries. Match fields and frame order. Tell a lease renewal apart from an incomplete first lease exchange. Explain why a reply from another exchange does not fill a gap. This task is offline. The files are **not PCAPs**, and no packets are sent. These files do not show use of a real capture tool or work that a learner has done alone.
 
 ## Before starting
 
-Prerequisites: [addresses and routes](../network-address-path/README.md), plus the client/packet/capture concepts in [traffic capture](../traffic-capture/README.md). You need Python 3.10+ with the standard library, a terminal and a text editor. Run commands from this folder. No administrator access, VM, DHCP server or software installation is needed. Allow **30-45 minutes** for the guided pass and a separate 20-30 minutes for a changed or independent case.
+First complete [addresses and routes](../network-address-path/README.md). Learn the client, packet and capture terms in [traffic capture](../traffic-capture/README.md). You need Python 3.10+ and its built-in tools, a terminal and a text editor. Run commands from this folder. You need no admin rights, VM, DHCP server or new software. Allow **30-45 minutes** for the guided pass. Allow a further 20-30 minutes for a changed case or one you try alone.
 
 ## Two kinds of address
 
-An **IP address**, such as `192.0.2.20`, helps a packet travel to its destination across networks. It has four numbers, each from 0 through 255. A **MAC address**, such as `02:00:00:00:00:10`, is used to deliver a frame to a network adapter on the local link. It has six pairs of symbols; those pairs can use digits and the letters a to f. An IP address and a MAC address have different jobs. Neither one tells you which person is using a device.
+An **IP address**, such as `192.0.2.20`, helps a packet reach its destination across networks. It has four numbers, each from 0 through 255. A **MAC address**, such as `02:00:00:00:00:10`, is used to send a frame to a network adapter on the local link. It has six pairs of symbols. Each pair can use digits and the letters a to f. IP and MAC addresses have different jobs. Neither tells you which person is using a device.
 
 Think about sending to another network. The final IP destination may be far away, but the local frame goes first to the gateway's MAC address. **ARP** asks which MAC address goes with a particular IP address on the local link. An ARP request means, "Who has this IP address? Tell me your MAC address." A reply supplies a claimed mapping between those two addresses.
 
-**Broadcast** means a message addressed to all devices on the local network. **Unicast** means a message addressed to one device. `255.255.255.255` is the IPv4 broadcast destination used in these examples. `0.0.0.0` in a DHCP client-address field means that field does not give a current address to use.
+**Broadcast** means a message sent to all devices on the local network. **Unicast** means a message sent to one device. `255.255.255.255` is the IPv4 broadcast address used here. `0.0.0.0` in a DHCP client-address field gives no current address to use.
 
 ## What the DHCP messages say
 
@@ -30,9 +30,9 @@ Think about sending to another network. The final IP destination may be far away
 
 Asking for more time is called **renewal**. It can use Request and ACK without repeating Discover and Offer. Read what the Request fields say before deciding which kind of exchange you are seeing.
 
-Some field names are short because they come from the packet format. **xid** is the transaction number used to link a request and reply. **Client MAC** is another field checked alongside it here; one matching number alone is not enough. **ciaddr** is the client's current-address field. **yiaddr** is the address offered or assigned to the client. **Server identifier** names the DHCP server. **Frame** is the saved packet's number, used to find it again and compare order. A **capture gap** means an observation is absent from the saved view; it does not tell us whether the message was ever sent.
+Some field names come from the packet format. **xid** is a transaction number. It helps link a request and reply. Check **Client MAC** too. One matching number alone is not enough. **ciaddr** is the client's current-address field. **yiaddr** is the address offered or given to the client. **Server identifier** names the DHCP server. **Frame** is the saved packet's number. Use it to find the packet and check order. A **capture gap** means a message is missing from the saved view. It does not tell us whether that message was ever sent.
 
-A DHCP server is not necessarily the gateway that forwards traffic. The guided example happens to use the same fictional IP for both roles. Matching these fields does not depend on the two roles sharing an address.
+A DHCP server need not be the gateway that forwards traffic. The guided case uses the same made-up IP for both roles. The field checks still work when those roles use different addresses.
 
 ## Prepare and predict
 
@@ -43,9 +43,9 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read `run/attempt-01/packets.txt` and the authoritative case JSON. Build a table with columns: query ID, relevant frames, ignored frames and why, address fields, result, uncertainty and next check. For each ARP query also fill its `-lease-link` worksheet entry: does the earlier matched DHCP exchange support a link to the address used in the observed ARP request?
+Read `run/attempt-01/packets.txt` and the case JSON, which is the source of truth. Build a table with these columns: query ID, matching frames, ignored frames and why, address fields, result, doubts and next check. For each ARP query, also fill its `-lease-link` entry. Check whether an earlier matched DHCP exchange supports a link to the address in the ARP request.
 
-Edit `answers.json` using the exact labels below. Add a paragraph to `explanation` and frame/field references to `evidence`, such as `lease-a frame 3 requested_ip`. Use `notes.txt` for predictions, limits and help used. Save a separate `answers-first.json` copy in your editor before checking. Keep corrections alongside the initial attempt.
+Edit `answers.json` using the exact labels below. Add a paragraph to `explanation`. Add frame and field references to `evidence`, such as `lease-a frame 3 requested_ip`. Use `notes.txt` for predictions, limits and help used. Save a separate `answers-first.json` copy in your editor before checking. Keep corrections beside the first attempt.
 
 ```console
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
@@ -56,19 +56,19 @@ python lab.py verify
 python test_lab.py
 ```
 
-Repeat `show`, `check` and `analyse` with the new attempt paths. Keep reference files, tests, the worked example and `analyse` closed during independent practice. `check` reveals expected labels for differences, so preserve your prediction first. It requires written fields but cannot judge the accuracy of their explanation. `verify` compares three authored fixtures with fixed reference outputs; it does not assess a learner.
+Repeat `show`, `check` and `analyse` with the new attempt paths. Keep answer files, tests, the worked example and `analyse` closed while working alone. `check` reveals expected labels where yours differ. Save your prediction first. It requires written fields but cannot judge whether the reason is right. `verify` compares three made-up cases with fixed answers. It does not assess a learner.
 
-Prepare writes only below this lab's ignored `run/`, refuses linked paths and requires a fresh destination. Explicit input paths are relative to your current working directory; default input is `fixtures/guided.json`. Exit codes: 0 success/matching completed worksheet, 1 differences/incomplete worksheet, 2 invalid input/filesystem problem. Preserve attempts for review. No service, adapter or lease is changed, so there is no network rollback. Any later cleanup is limited to disposable copies of your own practice evidence after retaining the first attempt and correction.
+Prepare writes only below this lab's ignored `run/`. It refuses linked paths and needs a new folder. Paths you enter start from your current working folder. The default input is `fixtures/guided.json`. Exit code 0 means success or a complete worksheet with matching labels. Code 1 means differences or missing work. Code 2 means bad input or a file-system problem. Keep attempts for review. No service, adapter or lease changes, so no network state needs to be restored. For cleanup, keep your first attempt and correction. Remove only spare copies of your own practice evidence.
 
 ## Exact supported evidence model
 
-The [shared contract](../FOUNDATION-CONTRACT.md) defines the eight case-envelope fields. `context` has only a nonempty `question`. `data` contains exactly `capture_note`, `dhcp_sessions`, `arp_exchanges`. The two lists each contain 1-10 queries, each with 1-30 packets. JSON is authoritative; `artifacts.packets.txt` must mirror it exactly. Every frame is an integer 1-1000000, unique across the case and strictly increasing within its own excerpt. All excerpts share one observation point and frame-number sequence. Their lists may be grouped by query rather than global time. The following tables describe the file format; the plain-language explanation above is the starting point for understanding the exchanges.
+The [shared contract](../FOUNDATION-CONTRACT.md) defines the eight outer case fields. `context` has only a nonempty `question`. `data` holds exactly `capture_note`, `dhcp_sessions`, `arp_exchanges`. Each list holds 1-10 queries. Each query holds 1-30 packets. JSON is the source of truth. `artifacts.packets.txt` must match it exactly. Each frame is a whole number from 1 to 1000000. Frame numbers are unique across the case and rise within each excerpt. All excerpts share one capture point and frame sequence. Lists may group packets by query, not by time across the whole case. The tables below describe the file format. Start with the plain explanation above to learn how the exchanges work.
 
-Query IDs use lowercase letters, digits and hyphens, start with a letter and have at most 40 characters. DHCP and ARP output IDs, including generated `-lease-link` IDs, must be unique. Addresses use the three documentation IPv4 blocks; `0.0.0.0` and `255.255.255.255` have only the special roles listed below. MACs are lowercase six-octet synthetic unicast values starting `02:`; a request target MAC is `00:00:00:00:00:00` in this fixture format.
+Query IDs use lowercase letters, digits and hyphens. They start with a letter and have at most 40 characters. DHCP and ARP output IDs must be unique. This includes the added `-lease-link` IDs. Addresses use the three IPv4 blocks set aside for examples. `0.0.0.0` and `255.255.255.255` have only the special roles listed below. MACs are made-up unicast values in lowercase, with six pairs of hex digits. They start with `02:`. A request's target MAC is `00:00:00:00:00:00` in this file format.
 
 ### DHCP inputs and matching
 
-A session has `id`, `client_mac`, integer `xid` from 0 to 4294967295, and `packets`. Each DHCP packet has exactly `frame`, `message`, `xid`, `client_mac`, `ciaddr`, `yiaddr`, `requested_ip`, `server_id`, `ip_destination`, `lease_seconds`. Null option values mean absent from this teaching summary. Valid packet fields do not by themselves establish that the packet belongs to the queried client transaction.
+A session has `id`, `client_mac`, integer `xid` from 0 to 4294967295, and `packets`. Each DHCP packet has exactly `frame`, `message`, `xid`, `client_mac`, `ciaddr`, `yiaddr`, `requested_ip`, `server_id`, `ip_destination`, `lease_seconds`. A null option means it is absent from this teaching summary. Valid fields alone do not link a packet to the client exchange you are checking.
 
 | Message form | Fields required by this model |
 |---|---|
@@ -79,11 +79,11 @@ A session has `id`, `client_mac`, integer `xid` from 0 to 4294967295, and `packe
 | ACK | Nonzero yiaddr, server identifier and positive integer lease seconds (maximum 4294967295), no requested-IP option. When its Request is observed, ciaddr must be zero or copied from that Request, and delivery follows the rules below. |
 | NAK | Zero ciaddr/yiaddr, server identifier, no requested-IP or lease value; broadcast destination because this model has no relay. |
 
-Match both client MAC and xid. Ignore other packets, retaining their frame numbers as evidence. For matching packets there is at most one of each message and one ending reply, either ACK or NAK; order follows Discover, Offer, Request, ACK/NAK with gaps allowed. Retransmissions, multiple offers, both ACK and NAK for the same attempt, or renewal mixed with initial-allocation steps are outside this small model and rejected. A renewal is recognised from the Request fields, not from a label supplied by the learner.
+Match both client MAC and xid. Ignore other packets but keep their frame numbers as evidence. Matching packets have at most one of each message. The ending reply can be ACK or NAK, not both. Their order is Discover, Offer, Request, ACK/NAK, with gaps allowed. This small model rejects repeats and multiple offers. It also rejects both ending replies in one attempt, or renewal mixed with first-lease steps. The Request fields identify a renewal. The learner's label does not.
 
-For an allocation Request, compare ACK server/address with `server_id`/`requested_ip`. For renewal, compare them with Request `ip_destination`/`ciaddr`. An allocation ACK may be broadcast or sent to its yiaddr; the summary omits the broadcast flag, so both delivery forms are allowed. A renewal ACK must be sent to the Request's current client address. Its ciaddr field may copy that address or be zero. Contradictory ciaddr or destination fields are rejected. A complete initial allocation additionally needs Discover and a matching Offer. A NAK must match the expected server.
+For a first-lease Request, compare the ACK server and address with `server_id`/`requested_ip`. For renewal, compare them with the Request's `ip_destination`/`ciaddr`. A first-lease ACK may be broadcast or sent to its yiaddr. This summary leaves out the broadcast flag, so it allows both forms. A renewal ACK must go to the Request's current client address. Its ciaddr may copy that address or be zero. The helper rejects ciaddr or destination fields that conflict with these rules. A full first-lease exchange also needs Discover and a matching Offer. A NAK must match the expected server.
 
-Without a matching observed Request, the helper cannot check whether an ACK's ciaddr was copied correctly or whether its destination follows that Request. Those two fields receive address-format checks only, and the result remains `request-not-observed`, with no established lease link. Relay fields, the broadcast flag, Ethernet destination and UDP ports are not supplied or validated. The whole exercise assumes no relay. Even a matching ACK is evidence of a reply, not proof that the client accepted the address or that the address remains leased now.
+Without a matching Request in the records, the helper cannot check two ACK fields against it. It cannot check whether ciaddr was copied correctly or whether the destination follows the Request. It checks only the address format for those fields. The result stays `request-not-observed`, with no established lease link. The records omit relay fields, the broadcast flag, Ethernet destination and UDP ports. The helper does not check those fields. The task assumes no relay. Even a matching ACK shows only a reply. It does not prove the client took the address or still has the lease now.
 
 | DHCP decision | Exact meaning |
 |---|---|
@@ -97,9 +97,9 @@ Without a matching observed Request, the helper cannot check whether an ACK's ci
 
 ### ARP inputs and matching
 
-An exchange has `id`, `requester_ip`, `requester_mac`, `target_ip`, `related_dhcp` and `packets`. The related DHCP ID must exist and have the same client MAC. Each ARP packet has `frame`, `opcode` (`request`/`reply`), `sender_ip`, `sender_mac`, `target_ip`, `target_mac`. Requester and target IPs differ. Probes with a zero sender address and announcements with identical sender/target IPs are deliberately excluded.
+An exchange has `id`, `requester_ip`, `requester_mac`, `target_ip`, `related_dhcp` and `packets`. The linked DHCP ID must exist and use the same client MAC. Each ARP packet has `frame`, `opcode` (`request`/`reply`), `sender_ip`, `sender_mac`, `target_ip`, `target_mac`. Requester and target IPs must differ. This model leaves out probes with a zero sender address. It also leaves out announcements with the same sender and target IP.
 
-Match a request on requester IP, requester MAC and sought target IP. Match a reply on sender IP equal to the sought address, target IP equal to the requester and target MAC equal to the requester MAC. Other frames stay visible but do not complete this exchange. Matching replies describe observed mapping claims; they are not authenticated ownership records.
+Match a request using the requester IP, requester MAC and target IP being sought. For a reply, first check that its sender IP is the sought address. Its target IP must be the requester's IP. Its target MAC must be the requester's MAC. Other frames stay visible but do not complete this exchange. Matching replies show claims about an IP-to-MAC mapping. They do not prove who owns the address.
 
 | ARP decision | Exact meaning |
 |---|---|
@@ -109,27 +109,27 @@ Match a request on requester IP, requester MAC and sought target IP. Match a rep
 | `no-matching-frames` | Neither request nor reply matches the query. |
 | `mapping-disagreement` | Matching replies give more than one MAC for the target; cause is undetermined. |
 
-If an excerpt contains an early reply followed by a matching request and a later reply, the later pair counts as `exchange-observed`. The earlier reply remains listed as having no earlier observed matching request. Different claimed MACs take priority as `mapping-disagreement`, even when a request/reply pair is also present. This prevents one early unpaired reply from hiding a later observed exchange.
+An excerpt may have an early reply, then a matching request and a later reply. The later pair counts as `exchange-observed`. The early reply stays listed as having no earlier matching request in view. Different claimed MACs take priority as `mapping-disagreement`. This holds even when a request/reply pair is present. An early unpaired reply thus cannot hide a later exchange.
 
-Each ARP query also produces a `query-id-lease-link` decision. `same-client-address-observed` requires a matched DHCP Request/ACK, an ARP request later than the ACK, and agreement between ACK yiaddr and the ARP requester's address. `lease-address-disagreement` reports a later ARP request using a different address. `arp-precedes-ack` reports that the earliest matching ARP request predates the ACK, so this reply cannot explain earlier use. `lease-link-not-established` means the matched ACK or matching ARP request is missing. This is field/time correlation, not proof of identity, acceptance or causality.
+Each ARP query also gives a `query-id-lease-link` decision. `same-client-address-observed` needs a matched DHCP Request/ACK. The ARP request must come after the ACK. ACK yiaddr must match the ARP requester's address. `lease-address-disagreement` means a later ARP request uses a different address. `arp-precedes-ack` means the earliest matching ARP request came before the ACK. That reply cannot explain the earlier address use. `lease-link-not-established` means the matched ACK or matching ARP request is missing. These checks link fields and order. They do not prove identity, acceptance or cause.
 
 ## Deliverable and handover
 
-Save your annotated exchange table, case ID, Python version, first worksheet, correction and help-used notes. Include one missing-message explanation that distinguishes "not seen" from "did not happen", and one proportional next check such as extending an authorised capture window or comparing a client-side lease record. Use [the worked example](WORKED-EXAMPLE.md) only for the guided case and [the drills](DRILLS.md) to reduce help.
+Save your marked exchange table, case ID, Python version, first worksheet, correction and help notes. Explain one missing message. Show why "not seen" differs from "did not happen". Choose one small next check. This could be a longer approved capture window or a client-side lease record. Use [the worked example](WORKED-EXAMPLE.md) only for the guided case. Use [the drills](DRILLS.md) to practise with less help.
 
 Handover prompt: "Which exact fields link these frames, which tempting frame did you exclude, and what remains unknown after the link?"
 
 ## Optional saved-capture comparison
 
-If you already have Wireshark and a benign, reviewed capture from an isolated owned lab, open a **copy** with File > Open. Do not start capture or renew/release a lease for this activity. Select one ARP packet and one DHCP packet in the packet list; expand their protocol details and compare the actual fields with this simplified summary format. Record actual frame references and what is absent or more complex. If the saved file has no such traffic, record that limitation instead of manufacturing an exchange. The supplied text files cannot be opened as PCAPs, and this optional comparison has not been performed by running the helper tests. Closing the file needs no configuration rollback; preserve the original capture and keep any annotated copy private.
+Use this part only if you already have Wireshark and a safe, reviewed capture from an isolated lab you own. Open a **copy** with File > Open. Do not start capture or renew or release a lease. Select one ARP packet and one DHCP packet. Expand their protocol details. Compare the real fields with this simple summary format. Record frame numbers and note missing or more complex fields. If the file has no such traffic, write that down. Do not make up an exchange. The given text files cannot be opened as PCAPs. Running the helper tests has not performed this optional comparison. Close the file when done. No settings need to be restored. Keep the original capture and keep marked copies private.
 
 ## Limits and primary sources
 
-The helper is not a DHCP server, ARP cache, packet decoder or complete protocol state machine. It excludes relays, broadcast rebinding, INIT-REBOOT, DHCPINFORM, retransmissions, multiple Offers, ARP probes and announcements. Frame order has no elapsed-time measurement; a positive lease duration alone cannot establish current validity. Capture position, packet loss and the start/end window can leave missing messages. A disagreeing mapping or address does not establish an attack, intent or fault cause. There is no poisoning, spoofing or attack exercise.
+The helper is not a DHCP server, ARP cache, packet decoder or full protocol state machine. It leaves out relays, broadcast rebinding, INIT-REBOOT, DHCPINFORM, retransmissions, multiple Offers, ARP probes and announcements. Frame order does not measure elapsed time. A positive lease length alone cannot show that the lease is valid now. Capture position, lost packets and the start/end window can leave gaps. A mapping or address mismatch does not prove an attack, intent or cause of a fault. This is no poisoning, spoofing or attack task.
 
 - [IETF RFC 826: ARP request/reply fields and address resolution](https://www.rfc-editor.org/rfc/rfc826.html)
 - [IETF RFC 2131, sections 3.1, 4.1 and 4.4.5: allocation, transaction matching and renewal](https://www.rfc-editor.org/rfc/rfc2131.html)
 - [IETF RFC 5737: IPv4 documentation address blocks](https://www.rfc-editor.org/rfc/rfc5737.html)
 - [Wireshark User's Guide: viewing previously captured packets and protocol fields](https://www.wireshark.org/docs/wsug_html_chunked/ChapterWork.html)
 
-Sources were opened during preparation on 2026-10-25. The sources explain protocol concepts; the finite input forms and decision labels here are teaching choices.
+Sources were opened while making this lab on 2026-10-25. They explain the protocols. The limited input forms and labels were chosen for teaching.

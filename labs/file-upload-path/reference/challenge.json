@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "status": 201,
+      "bytes": 128,
+      "contained": true,
+      "content_matches": true
+    },
+    {
+      "status": 422,
+      "bytes": null,
+      "contained": false,
+      "content_matches": false
+    },
+    {
+      "status": 422,
+      "bytes": null,
+      "contained": false,
+      "content_matches": false
+    },
+    {
+      "status": 201,
+      "bytes": 1,
+      "contained": true,
+      "content_matches": true
+    }
+  ]
+}

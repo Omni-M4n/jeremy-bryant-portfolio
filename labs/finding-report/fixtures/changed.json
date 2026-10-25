@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "A second check",
+  "synthetic": true,
+  "context": {
+    "question": "A toy record page once showed the wrong person's record. A developer says it is fixed. Explain what the evidence shows, then check that the record owner can still use the page.",
+    "origin": "Authored fictional transcript; None means no observation was supplied."
+  },
+  "data": {
+    "expected_unauthorised": 403,
+    "expected_owner": 200,
+    "attempts": [
+      {
+        "id": "item-1",
+        "original_code": 200,
+        "original_other_record": true,
+        "fix_claimed": true,
+        "retest_code": 403,
+        "retest_other_record": false,
+        "owner_code": 403,
+        "same_route": true,
+        "evidence_ref": "transcript.txt lines 1-4"
+      },
+      {
+        "id": "item-2",
+        "original_code": 200,
+        "original_other_record": true,
+        "fix_claimed": true,
+        "retest_code": null,
+        "retest_other_record": false,
+        "owner_code": null,
+        "same_route": true,
+        "evidence_ref": "transcript.txt lines 5-8"
+      }
+    ]
+  },
+  "artifacts": {
+    "report-template.md": "# Finding draft\n\nEvidence origin: supplied authored transcript\nScope and date:\nTitle based on observation:\nExpected behaviour:\nObserved behaviour with line references:\nPreconditions and numbered steps:\nLimited impact:\nCorrection suggestion and owner:\nUnauthorised retest:\nLegitimate owner retest:\nUncertainty and untested routes:\n",
+    "transcript.txt": "item-1 original: account-a GET /records/8; status=200; account-b record present=True\nitem-1 developer note: correction claimed=True\nitem-1 non-owner retest: account-a GET /records/8; status=403; account-b record present=False\nitem-1 owner retest: account-b GET /records/8; status=403\nitem-2 original: account-a GET /records/8; status=200; account-b record present=True\nitem-2 developer note: correction claimed=True\nitem-2 non-owner retest: account-a GET /records/8; status=None; account-b record present=False\nitem-2 owner retest: account-b GET /records/8; status=None\n"
+  },
+  "lab_id": "finding-report"
+}

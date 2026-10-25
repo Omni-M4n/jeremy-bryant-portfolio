@@ -10,7 +10,7 @@ const PREFIX = 'jeremy-bryant-pages/';
 const DOWNLOAD = 'downloads/jeremy-bryant-portfolio.zip';
 const DIRECTORIES = ['docs', 'labs', 'scripts', 'src', 'tests', 'tools'];
 const TOP_FILES = ['README.md', 'package.json', 'site.config.json', 'wrangler.jsonc', '.gitignore', '.gitattributes'];
-const DOCUMENTS = ['README.md', 'WORKED-EXAMPLE.md', 'DRILLS.md', 'PRACTICE.md'];
+const PRIMARY_DOCUMENTS = ['README.md', 'WORKED-EXAMPLE.md', 'DRILLS.md', 'PRACTICE.md'];
 const OMIT_COMPONENTS = new Set(['run', 'runs', 'dist', 'node_modules', '.git', '.wrangler', 'private', 'receipts', '__pycache__', 'pycache', 'env', 'logs', 'log', '.venv', 'venv']);
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
@@ -180,7 +180,11 @@ function labPage(id, documents, registry) {
   const lab = registry.labs.find(item => item.id === id);
   const handsOn = lab.mode !== 'offline';
   const labels = { 'README.md': 'Lab instructions', 'WORKED-EXAMPLE.md': 'Worked example', 'DRILLS.md': 'Practice drills', 'PRACTICE.md': 'Practice notes' };
-  const anchor = name => name.toLowerCase().replace('.md', '');
+  const label = name => labels[name] || name.replace(/\.md$/iu, '').replaceAll('-', ' ');
+  const anchor = name => {
+    const stem = name.toLowerCase().replace(/\.md$/u, '');
+    return /^[a-z0-9][a-z0-9_-]*$/u.test(stem) ? stem : 'document-' + Buffer.from(name).toString('hex');
+  };
   const body = `
   <section class="source-intro">
     <p class="eyebrow">${lab.kind === 'extension' ? 'Extension' : 'Core lab'} / ${escape(lab.mode)} practice</p>
@@ -189,8 +193,8 @@ function labPage(id, documents, registry) {
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
     <p class="source-location">Archive folder: <code>${PREFIX}labs/${id}/</code></p>
   </section>
-  <nav class="source-document-nav" aria-label="Documents in this lab">${documents.map(({ name }) => `<a href="#${anchor(name)}">${labels[name]}</a>`).join('')}</nav>
-  ${documents.map(({ name, text }) => `<section class="source-document" id="${anchor(name)}"><div class="source-document-heading"><h2>${labels[name]}</h2><p><code>labs/${id}/${name}</code></p></div><pre class="source-document-text">${escape(text.replaceAll('\r\n', '\n'))}</pre></section>`).join('\n')}
+  <nav class="source-document-nav" aria-label="Documents in this lab">${documents.map(({ name }) => `<a href="#${anchor(name)}">${escape(label(name))}</a>`).join('')}</nav>
+  ${documents.map(({ name, text }) => `<section class="source-document" id="${anchor(name)}"><div class="source-document-heading"><h2>${escape(label(name))}</h2><p><code>labs/${id}/${escape(name)}</code></p></div><pre class="source-document-text">${escape(text.replaceAll('\r\n', '\n'))}</pre></section>`).join('\n')}
   <p class="source-back"><a href="/source/">Browse all ${registry.totalCount} practice packages</a></p>`;
   return { title, html: page({ title, path: `/lab-files/${id}/`, description: 'Readable instructions for an original guided security exercise.', body }) };
 }
@@ -203,7 +207,7 @@ function indexPage(labs, receipt, registry) {
     <p>The complete portfolio source includes the static website, documentation, project utilities, ${registry.coreCount} core labs and ${registry.extensionCount} extensions. Extensions build on an existing topic; they are not counted as new core labs. Supplied cases are fictional. Personal tool evidence must be collected separately. Independent completion of fresh cases has not yet been assessed.</p>
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
     <p class="source-location">${receipt.files} files · ${receipt.bytes.toLocaleString('en-AU')} bytes · Standard-library Python utilities</p>
-    <details class="source-integrity"><summary>Archive integrity and contents</summary><p>The ZIP contains <code>docs/</code>, <code>labs/</code>, <code>scripts/</code>, <code>src/</code>, <code>tests/</code>, <code>tools/</code> and the project README and configuration. Generated runs, local credentials, private notes, receipts and version history are excluded. Upstream attribution remains in the source.</p><p>SHA-256 checks file identity; it does not assess the exercises or the learner.</p><pre>${receipt.sha256}</pre></details>
+    <details class="source-integrity"><summary>Archive integrity and contents</summary><p>The ZIP contains <code>docs/</code>, <code>labs/</code>, <code>scripts/</code>, <code>src/</code>, <code>tests/</code>, <code>tools/</code> and the project README and configuration. Generated runs, local credentials, private notes, raw check records and version history are excluded. Public <code>VALIDATION.json</code> files give brief check summaries and list untested steps. Upstream attribution remains in the source.</p><p>SHA-256 checks file identity; it does not assess the exercises or the learner.</p><pre>${receipt.sha256}</pre></details>
   </section>
   <section class="source-start" aria-labelledby="source-start-title">
     <h2 id="source-start-title">Run it locally</h2>
@@ -214,6 +218,7 @@ node scripts/build.mjs</code></pre>
     <p>The website build writes a local <code>dist/</code> folder. It does not publish a site or connect to a lab target.</p>
   </section>
   <section class="source-labs" aria-labelledby="source-labs-title">
+    <p>Choose a pace with the <a href="/security-labs/study-plan/">summer study plan</a>. Keep the guides and your own evidence separate.</p>
     <div class="source-section-heading"><h2 id="source-labs-title">Read a lab before downloading</h2><p>${registry.coreCount} core labs · ${registry.extensionCount} extensions · <a href="/security-labs/library/">Browse by topic</a></p></div>
     <ol class="source-lab-list">${labs.map(({ id, title }, index) => `<li><a href="/lab-files/${id}/"><span class="source-lab-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><span>${escape(title)}</span><span aria-hidden="true">↗</span></a></li>`).join('\n')}</ol>
   </section>`;
@@ -249,7 +254,13 @@ export async function buildSourceDownloads({ root, dist, config }) {
   const { entries, labIds, excludedSymlinks } = await collectSource(await realpath(root), registry);
   const source = new Map(entries.map(entry => [entry.path, entry.data]));
   const pages = labIds.map(id => {
-    const documents = DOCUMENTS.filter(name => source.has(`labs/${id}/${name}`)).map(name => ({ name, text: source.get(`labs/${id}/${name}`).toString('utf8') }));
+    const folder = `labs/${id}/`;
+    // Extra guides are part of the accepted package too. Keep the main sequence
+    // first, then show the other top-level Markdown files in a stable order.
+    const extra = entries.map(entry => entry.path).filter(path => path.startsWith(folder))
+      .map(path => path.slice(folder.length)).filter(name => !name.includes('/') && /\.md$/iu.test(name) && !PRIMARY_DOCUMENTS.includes(name)).sort(compare);
+    const documents = [...PRIMARY_DOCUMENTS, ...extra].filter(name => source.has(folder + name))
+      .map(name => ({ name, text: source.get(folder + name).toString('utf8') }));
     if (documents[0]?.name !== 'README.md') throw Error('Missing regular lab README: ' + id);
     return { id, ...labPage(id, documents, registry) };
   });

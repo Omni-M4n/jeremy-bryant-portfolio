@@ -1,26 +1,46 @@
-# Timeline normalisation and uncertainty
+# Put event times in order
 
-Normalise offset timestamps to UTC, correct known clock error and decide when evidence does or does not establish strict temporal order.
+Two logs may show different times for the same moment. In this lab, put times on the UTC scale. Then correct a known clock error. Use the remaining margin of error to decide whether one event must have come first.
 
-This is an original, fictional, offline exercise for an introductory security learner. It is independent practice, not copied coursework or a claim of professional experience. Completion and competence remain unassessed.
+These are fictional practice records. They are not copied coursework or records from a real incident. The materials do not show that a learner has completed the work.
 
 ## Before you start
 
-Allow **30-45 minutes**: 5 minutes reading, 10 inspecting and predicting, 10 checking and explaining, and 5-20 for a changed or independent case. You need Python 3.10+ (standard library only), a terminal and a text editor. Comfort opening files, reading a small table and basic evidence notes is enough; programming, administrator rights, a Linux installation and cloud accounts are unnecessary. Previous introductory network or Wireshark practice is useful but not required.
+Allow **30–45 minutes**, or split the task into short sessions. Spend 5 minutes reading, 10 on evidence and predictions, and 10 on checks and notes. Use the remaining 5–20 minutes for another case.
 
-> **Vocabulary:** UTC offset: the displayed timezone difference from UTC. Clock skew: device clock error relative to a reference. Uncertainty bound: the allowed interval around an estimate. Causation: one event producing another, which timing alone cannot prove.
+You need Python 3.10 or later, a terminal and a text editor. Python's standard library is enough. You need to open files, read a small table and save notes. You do not need to write code, use admin rights, install Linux or open a cloud account. Earlier network or Wireshark practice may help, but is not required.
 
-## Evidence and exact rules
+Four terms matter here:
 
-The case JSON is the single authoritative input. Fixtures are guided.json, changed.json and challenge.json. All data is synthetic; artifacts is empty to avoid competing editable copies. Edit only a prepared run copy. The analyser is a pure calculation and never executes evidence text.
+- **UTC offset:** how far a displayed time is ahead of or behind UTC.
+- **Clock skew:** an error in a device's clock, compared with a reference clock.
+- **Uncertainty bound:** how far the true time may be from your estimate.
+- **Causation:** one event causing another. Time order alone does not prove this.
 
-data.events provides ID, timestamp with seconds and explicit Z or numeric offset, signed clock_offset_seconds, uncertainty_seconds and description. Offset is bounded to +/-86400 and uncertainty to 0-3600 seconds. data.pairs names two different known event IDs and a unique comparison ID. Naive dates and impossible timestamps are rejected.
+## Read the case
 
-Convert the recorded timestamp to UTC, then subtract clock_offset_seconds: positive means a fast device clock. Construct a closed interval centre +/- uncertainty. The left event is definitely-before only when its upper bound is strictly less than the right lower bound; definitely-after uses the reverse strict comparison. Every overlap, touching endpoint or identical timestamp gives order-uncertain. Ordering is temporal only and never evidence of causation by itself.
+The case JSON is the one source of input. The supplied files are guided.json, changed.json and challenge.json. The artifacts field is empty, so there is no second copy to edit. Work on a prepared copy below run/. The analyser does maths on the records. It never runs text from them as code.
+
+Each record in data.events has an ID, timestamp, clock_offset_seconds, uncertainty_seconds and description. A timestamp must include seconds and either Z or a numeric UTC offset. Dates with no timezone, or impossible dates, are rejected.
+
+The signed clock offset can be from -86400 to +86400 seconds. Uncertainty can be from 0 to 3600 seconds. Each item in data.pairs has a unique comparison ID and two different event IDs. Both events must exist in the case.
+
+## Use the rules
+
+1. Convert the recorded time to UTC.
+2. Subtract clock_offset_seconds. A positive value means the device clock was fast.
+3. Treat this corrected time as the centre of a range. Subtract uncertainty_seconds for its lower bound. Add it for the upper bound. Both endpoints belong to the range.
+4. Compare the two ranges, using these exact labels:
+
+- **definitely-before:** the left event's upper bound is strictly below the right event's lower bound.
+- **definitely-after:** the left event's lower bound is strictly above the right event's upper bound.
+- **order-uncertain:** every other case. The ranges may overlap, touch at one endpoint or be identical.
+
+These labels describe time order. They do not say that one event caused another.
 
 ## Run the exercise
 
-Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). Commands below use `python` consistently.
+Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). The examples use `python`.
 
 ```text
 python lab.py cases
@@ -28,7 +48,7 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the evidence. In run/attempt-01/answers.json, fill each decision with an exact label from the rules; add an explanation and evidence references such as record IDs or configuration line numbers. In notes.txt, separate observation, interpretation, uncertainty, next check and help used. Save your prediction before opening the answer.
+Read the records. In run/attempt-01/answers.json, give each pair an exact decision label. Add your explanation and event IDs as evidence. In notes.txt, keep facts, your interpretation, remaining doubt, the next check and help used separate. Save this first answer before viewing a solution.
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -39,18 +59,20 @@ python -m unittest -v test_lab.py
 python lab.py verify
 ```
 
-For changed/challenge use the corresponding attempt folder in show/analyse/check. prepare refuses an existing output folder. --out is relative to this lab and must be below run/; explicit input paths are relative to your terminal directory. analyse/show default to the guided fixture if --case is omitted. Exit 0 means command success or decision match; 1 means differences/incomplete written fields; 2 means invalid input or a filesystem problem. The checker verifies decision fields and the presence of writing, not the quality of reasoning. verify checks shipped examples, not learner mastery.
+Use the matching attempt folder in show, analyse and check for each later case. The prepare command refuses an existing folder. Its --out path starts from this lab and must stay below run/. Explicit input paths start from your terminal's current folder. If you omit --case, analyse and show use the supplied guided case.
 
-## Deliverable and limits
+Exit 0 means the command worked or the decisions match. Exit 1 means a mismatch or missing written fields. Exit 2 means bad input or a file problem. The checker looks for decision matches and written text. It cannot judge the quality of that text. The verify command checks the supplied examples, not learner skill.
 
-Keep case.json, answers.json and notes.txt together in the ignored run folder. Deliver a short handover: the question, your conclusion, two precise evidence references, one alternative explanation or limitation, and the next evidence you would request. State whether you used the worked example and whether you completed a fresh case unaided. Do not describe an automated match as assessment or professional experience.
+## Save the result and state its limits
 
-A positive clock offset means the device clock is fast and is subtracted after UTC normalisation. The supplied uncertainty is a bound, not a probability. The model assumes supplied offset and uncertainty estimates are valid; collection delay, timestamp granularity and omitted events need separate investigation.
+Keep case.json, answers.json and notes.txt together in the ignored run folder. Write a short handover. Give the question, conclusion, two exact evidence references, one limit or other explanation, and a next check. Record help used, including the worked example. A matching label does not prove understanding or work experience.
 
-Use WORKED-EXAMPLE.md after making a first prediction, and DRILLS.md for progressively less support. Do not use these rules as an operational security verdict or modify a real host as part of this exercise.
+This model takes the given clock error and uncertainty as valid. Uncertainty is a bound, not a probability. Delays in collecting logs, rounded timestamps and missing events need their own checks.
 
-## Primary references
+Read WORKED-EXAMPLE.md after your first prediction. Use DRILLS.md for less support on later attempts. Stay with the local files. Do not change a real host or use this small model to declare a real system safe.
 
-The following documentation supports the underlying concepts; the tiny schema and explicit teaching rules above are specific to this lab. Links were checked during authoring on 23 October 2026. Running the lab needs no internet connection.
+## Primary reference
+
+This source explains log management. The small input format and decision rules belong to this lab. The link was checked on 23 October 2026. You can run the lab offline.
 
 - [NIST Guide to Computer Security Log Management](https://csrc.nist.gov/pubs/sp/800/92/final)

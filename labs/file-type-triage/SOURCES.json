@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "W3C PNG specification, file signature",
+      "url": "https://www.w3.org/TR/png/",
+      "used_for": "PNG signature bytes; a header is not full validation.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "SQLite database file format",
+      "url": "https://www.sqlite.org/fileformat.html",
+      "used_for": "Database signature and journal/WAL context.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Python hashlib documentation",
+      "url": "https://docs.python.org/3/library/hashlib.html",
+      "used_for": "SHA-256 byte hashing API.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

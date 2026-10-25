@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "lab_id": "api-schema-validation",
+  "case_id": "challenge",
+  "title": "Order envelope",
+  "synthetic": true,
+  "question": "What happens before field rules can be checked?",
+  "data": {
+    "requests": [
+      {
+        "body": "{",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"Pear\",\"count\":1,\"count\":2}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"Pear\",\"count\":1}",
+        "content_type": "text/plain"
+      },
+      {
+        "body": "{\"name\":\"Pear\",\"count\":1}",
+        "content_type": "application/json"
+      }
+    ]
+  }
+}

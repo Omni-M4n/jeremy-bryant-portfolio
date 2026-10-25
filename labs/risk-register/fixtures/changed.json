@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "The next review",
+  "synthetic": true,
+  "context": {
+    "question": "A loan laptop is missing. A score alone does not tell anyone what to do. Write who owns the concern, what they will change and when they will review it.",
+    "score_evidence": "Read risk-notes.txt and cite its evidence IDs. Scores are proposals; record unsupported reasons as gaps."
+  },
+  "data": {
+    "as_of": "2026-11-01",
+    "risks": [
+      {
+        "id": "item-1",
+        "scenario": "A lost loan laptop may expose a fictional contact list",
+        "likelihood": 2,
+        "impact": 3,
+        "treatment": "reduce",
+        "owner": "device-owner",
+        "review": "2026-11-01",
+        "likelihood_after": 1,
+        "impact_after": 2,
+        "control_verified": true,
+        "acceptance": false,
+        "controls": [
+          "physical: locked storage",
+          "process: lost-device reporting",
+          "technical: encryption, lock and limited offline contact cache"
+        ],
+        "assumption": "The laptop may have been unlocked when lost"
+      },
+      {
+        "id": "item-2",
+        "scenario": "A repeated kiosk export may be left available",
+        "likelihood": 3,
+        "impact": 2,
+        "treatment": "avoid",
+        "owner": "device-owner",
+        "review": "2026-11-01",
+        "likelihood_after": 1,
+        "impact_after": 1,
+        "control_verified": false,
+        "acceptance": false,
+        "controls": [
+          "process: stop making the export"
+        ],
+        "assumption": "Existing copies still need review"
+      }
+    ]
+  },
+  "artifacts": {
+    "risk-template.md": "# Risk register\n\n| ID | Event and harm | Likelihood reason and evidence ID | Impact reason and evidence ID | Treatment and why | Owner | Action and date | Residual reason | Review | Assumption |\n|---|---|---|---|---|---|---|---|---|---|\n\nPhysical control:\nProcess control:\nTechnical control:\nDraft reporting action (not sent):\n",
+    "risk-notes.txt": "Fictional case notes, not records of a real test. C1 describes the original baseline. C2-C3 describe the supplied review state; they do not prove what happened during the earlier loss.\nC1 | item-1 | At the original assessment, one public-area handover gave a plausible opportunity to take the laptop. Its offline file contained home addresses and confidential support needs. Its lock state at the loss was unknown; possible sensitive exposure supported the original concern.\nC2 | item-1 | The fictional review record says the recovered training laptop is now checked out by one named custodian from locked storage. It records encryption enabled, a restart stopping at the login screen, automatic lock and a received practice loss report. No repeated uncontrolled handover remains in the supplied record; a future exposure would require an unusual custody or access failure.\nC3 | item-1 | The same review record says sensitive support fields were removed from the loan image; its remaining offline file contains only that small team's work numbers. This narrows the stated future harm to limited record exposure. The check does not establish the earlier lock state or whether another old copy exists; retain those gaps.\nC4 | item-2 | A kiosk task produces the same export at the end of each of three daily shifts, even though staff rarely use it. The file remains readable on the shared kiosk after each shift. These are repeated opportunities, not a measured probability.\nC5 | item-2 | The export contains one team's business contact details, with no support needs or home addresses. Exposure is limited to that list. The proposed avoidance is to stop making the export; no stop or copy-removal check is supplied. The proposed residual assumes old copies are removed and the only remaining harm is one clerk's short manual lookup delay; existing-copy coverage remains a gap.\n"
+  },
+  "lab_id": "risk-register"
+}

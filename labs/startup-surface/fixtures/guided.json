@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "lab_id": "startup-surface",
+  "case_id": "guided",
+  "title": "Office inventory",
+  "synthetic": true,
+  "context": {
+    "question": "Which startup changes have matching approval evidence?"
+  },
+  "data": {
+    "baseline": [
+      {
+        "id": "e1",
+        "mechanism": "windows-service",
+        "command": "C:\\Lab\\timer.exe",
+        "identity": "LocalService",
+        "owner": "lab-admin",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "observed": [
+      {
+        "id": "e1",
+        "mechanism": "windows-service",
+        "command": "C:\\Lab\\timer.exe",
+        "identity": "LocalService",
+        "owner": "lab-admin",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "id": "e2",
+        "mechanism": "startup-folder",
+        "command": "C:\\Lab\\note.cmd",
+        "identity": "lab-reader",
+        "owner": "lab-reader",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ],
+    "approvals": [
+      {
+        "id": "e2",
+        "mechanism": "startup-folder",
+        "command": "C:\\Lab\\note.cmd",
+        "identity": "lab-reader",
+        "owner": "lab-reader",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ]
+  },
+  "artifacts": {}
+}

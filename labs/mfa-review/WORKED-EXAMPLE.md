@@ -1,27 +1,12 @@
 # Worked example: Review MFA and recovery controls by account type
 
-Open this after saving a prediction for the guided case. The reference explains
-these fictional records; it does not assess your independent performance.
+Save a prediction for the guided case before you read this page. These are made-up records. The answer does not assess your skill at doing this alone.
 
-1. `helpdesk-user` has `password` and `totp`, but `enforced=false`. Record
-   `enforce-mfa`, not `enrol-mfa`. Its recovery is a shared mailbox, so add
-   `repair-recovery`: `enforce-mfa;repair-recovery`.
-2. `platform-admin` is privileged. TOTP is enrolled and enforced, but this
-   fictional privileged-account policy requires `security-key`. Use
-   `use-phishing-resistant-mfa`. This does not claim all MFA methods are equal.
-3. `nightly-export` is a service identity with interactive login, no owner,
-   password-based long-lived credentials, and no monitoring. In order, use
-   `disable-interactive-login;assign-owner;replace-static-workload-credential;monitor-workload-use`.
-   Declaring it a service identity is not an exemption from these controls.
-4. `emergency-owner` has a dated exception expiring on the review day,
-   `2026-10-23`. It remains current today. The named owner, monitoring,
-   controlled storage and 30-day test meet this model's other conditions.
-   Recovery `none` is allowed for this emergency design. Use `exception-current`.
+1. `helpdesk-user` has `password` and `totp`. But `enforced=false`, so use `enforce-mfa` instead of `enrol-mfa`. Recovery uses a shared mailbox. Add `repair-recovery`. The full answer is `enforce-mfa;repair-recovery`.
+2. `platform-admin` has extra access rights. TOTP is set up and required. But this lab requires `security-key` for this account type. Use `use-phishing-resistant-mfa`. Different MFA methods give different protection.
+3. `nightly-export` is a software account. It allows a person to sign in. It has no owner and uses a long-lived password. Its use is not monitored. Use `disable-interactive-login;assign-owner;replace-static-workload-credential;monitor-workload-use`, in that order. Being a service account does not waive these checks.
+4. The exception for `emergency-owner` ends on the review date, `2026-10-23`. It is still current today. The account has an owner, monitoring and controlled storage. Its test age is 30 days. Recovery `none` is allowed in this design. These meet the other lab rules. Use `exception-current`.
 
-The handover should distinguish an observed inventory gap from a verified login
-failure. Cite the actual fields and request provider-specific validation rather
-than claiming the accounts are globally secure after a label changes.
+In your handover, keep record gaps separate from tested sign-in failures. Cite the fields you used. Ask for checks in the real provider's system. A changed label alone does not prove that all access is safe.
 
-After comparison, keep your original prediction and add a correction in
-`notes.txt`. State the evidence that changed your judgment. Copying the answer
-without reconstructing the evidence leaves independent understanding unassessed.
+Keep your first prediction. Add a correction in `notes.txt` after you compare it with the answer. State which evidence changed your view. Work through the evidence yourself. Copying an answer does not show that you understand it.

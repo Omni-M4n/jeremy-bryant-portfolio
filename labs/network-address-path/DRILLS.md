@@ -1,6 +1,6 @@
 # Practice with fewer prompts
 
-Use a new `run/attempt-NN` folder each time. Record date, Python version, case identity, first prediction and help used. Preserve the initial worksheet before `check` or `analyse`, because either command can reveal reference labels. Mark a stage such as "guided with help", "independent attempt awaiting review" or "corrected after review"; do not turn a passing script into a mastery claim.
+Use a new `run/attempt-NN` folder each time. Record the date, Python version, case ID, first prediction and help used. Save the first worksheet before `check` or `analyse`. Both commands can reveal answer labels. Mark the stage: "guided with help", "independent attempt awaiting review" or "corrected after review". A passing script does not prove skill.
 
 ## Guided pass: 30-40 minutes
 
@@ -12,16 +12,16 @@ Prepare `guided` again in a new folder with the worked example closed. Ask yours
 
 ## Independent case: 20-30 minutes
 
-Prepare `challenge` and use only its case, snapshot, the README's model rules and a blank worksheet. Close `WORKED-EXAMPLE.md`, `reference/`, tests and previous answers. Produce an annotated diagram and one evidence-supported sentence per request. State uncertainty explicitly and propose a narrow next check. Save your first attempt before using `check`; ask a reviewer to assess it. This section deliberately provides no case answers.
+Prepare `challenge`. Use only its case, snapshot, the README's model rules and a blank worksheet. Close `WORKED-EXAMPLE.md`, `reference/`, tests and past answers. Draw and label the network. Write one sentence per request and name the evidence for it. State what is still unknown and choose a small next check. Save your first attempt before using `check`. Ask a reviewer to assess it. This section gives no case answers.
 
 ## Changed subnet: 15-25 minutes
 
-Prepare `changed`. Before analysing, compare the interface prefix and each route with the guided case. Identify which earlier assumptions need reconsideration. Work out the address ranges on paper and complete a fresh worksheet. Explain why a changed mask can change delivery even when the destination's dotted address is identical. Do not alter a real adapter or route table. Keep the changed-case decisions unrevealed until the prediction is saved.
+Prepare `changed`. Before analysis, compare its interface prefix and each route with the guided case. Which earlier assumptions still hold? Work out the address ranges on paper and fill in a new worksheet. Explain why changing the mask can change the path even if the dotted address stays the same. Do not change a real adapter or route table. Save your prediction before revealing the changed-case decisions.
 
 ## Teach-back: 5 minutes
 
-Explain a name-to-IP step, an on-link step and a gateway step to a reviewer. Have them ask why a lower metric might still lose, why the IP destination does not become the gateway, and what a first-hop prediction cannot prove. Point to the fields rather than reciting labels. Save the questions, any correction and help used.
+Explain a name-to-IP step, an on-link step and a gateway step to a reviewer. Ask them to question each step. Why might a lower metric still lose? Why does the IP destination not become the gateway? What can a first-hop prediction not prove? Point to the fields, not just the labels. Save the questions, corrections and help used.
 
 ## Later recall
 
-On another day, reconstruct the selection order without opening the notes. About a week later, have a reviewer choose one unfamiliar destination within an existing supplied route and ask for a prediction from the snapshot alone. They should check the prefix arithmetic independently. If using a new JSON case, keep all mirrored text consistent and the original files untouched; a custom case has no shipped reference receipt. Retain the first answer, then review it.
+On another day, write the route choice steps without your notes. About a week later, ask a reviewer to choose a new destination within one of the given routes. Predict its path from the snapshot alone. The reviewer should check the prefix maths on their own. If you use a new JSON case, keep all matching text in sync. Keep the original files untouched. A custom case has no answer receipt in this package. Save the first answer, then review it.

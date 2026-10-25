@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "item-01": "file-matches",
+    "item-02": "file-matches",
+    "inventory": "inventory-has-extra",
+    "recovery-time": "within-time-target",
+    "recovery-point": "older-than-data-age-target"
+  },
+  "observations": [
+    "item-01: expected item-01.txt, 6 bytes; restored entry present=True.",
+    "item-02: expected item-02.txt, 6 bytes; restored entry present=True.",
+    "Unexpected names=item-03.txt; restore=100/100 ms; backup age=31/30 minutes."
+  ],
+  "limitations": [
+    "A local byte-copy drill does not establish application startup, permissions, cloud availability, full-machine recovery or a disaster recovery time.",
+    "The supplied worksheet times and ages are fictional. The practical receipt separately records actual copy and validation durations."
+  ]
+}

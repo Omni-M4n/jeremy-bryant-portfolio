@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "lab_id": "endpoint-baseline",
+  "case_id": "changed",
+  "title": "Reading desk snapshot",
+  "synthetic": true,
+  "context": {
+    "question": "Which requirements are supported by fresh observations, and which need action?"
+  },
+  "data": {
+    "as_of": "2026-10-25",
+    "controls": [
+      {
+        "id": "c1",
+        "kind": "service-active",
+        "required": true,
+        "observed": true,
+        "observed_on": "2026-10-24",
+        "evidence": "service output line 1"
+      },
+      {
+        "id": "c2",
+        "kind": "updates-pending",
+        "required": 0,
+        "observed": 0,
+        "observed_on": "2026-10-16",
+        "evidence": "approved update check line 1"
+      },
+      {
+        "id": "c3",
+        "kind": "standard-user",
+        "required": true,
+        "observed": true,
+        "observed_on": "2026-10-24",
+        "evidence": "id and sudo policy notes"
+      },
+      {
+        "id": "c4",
+        "kind": "lock-seconds",
+        "required": 300,
+        "observed": 0,
+        "observed_on": "2026-10-24",
+        "evidence": "idle lock timing note"
+      }
+    ],
+    "exceptions": [],
+    "normal_use": "fail"
+  },
+  "artifacts": {}
+}

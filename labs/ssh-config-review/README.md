@@ -1,26 +1,81 @@
-# Small SSH server configuration review
+# Review a small SSH server file
 
-Review a deliberately small SSH server configuration against a fictional explicit baseline and notice first-value precedence and access-route gaps.
+A server file can list the same setting twice. Which value takes effect?
+Is a way to sign in still enabled? Use six settings to answer those questions.
 
-This is an original, fictional, offline exercise for an introductory security learner. It is independent practice, not copied coursework or a claim of professional experience. Completion and competence remain unassessed.
+This is an offline exercise with made-up data. It is separate from coursework.
+It does not claim that you have used a real server or passed a skills test.
 
-## Before you start
+## Start here
 
-Allow **30-45 minutes**: 5 minutes reading, 10 inspecting and predicting, 10 checking and explaining, and 5-20 for a changed or independent case. You need Python 3.10+ (standard library only), a terminal and a text editor. Comfort opening files, reading a small table and basic evidence notes is enough; programming, administrator rights, a Linux installation and cloud accounts are unnecessary. Previous introductory network or Wireshark practice is useful but not required.
+Allow 30–45 minutes. Read for 5 minutes, inspect for 10, then check and explain.
+Use the time left for another case. You need Python 3.10 or newer, a terminal
+and a text editor. You do not need to write code or have a Linux machine.
+No admin rights or cloud account are needed.
 
-> **Vocabulary:** sshd: the SSH server. Directive: a configuration keyword/value. Public-key authentication: a method using possession of a private key, with server authorisation also required. Keyboard-interactive: an authentication mechanism distinct from PasswordAuthentication. Precedence: which repeated value takes effect.
+| Word | Meaning here |
+| --- | --- |
+| SSH | A tool used to sign in to a remote machine |
+| sshd | The SSH server |
+| Directive | One setting name and its value |
+| Public-key sign-in | Prove you hold the private key; the server must also allow that key |
+| Keyboard-interactive | A sign-in method separate from the password setting |
+| Precedence | Which value takes effect when a setting appears twice |
+| Baseline | The stated rules used for this lab's check |
 
-## Evidence and exact rules
+## Read the evidence
 
-The case JSON is the single authoritative input. Fixtures are guided.json, changed.json and challenge.json. All data is synthetic; artifacts is empty to avoid competing editable copies. Edit only a prepared run copy. The analyser is a pure calculation and never executes evidence text.
+Use the case file as the source. It holds the server text in `data.config`.
+There are three cases: guided, changed and challenge. All are made up.
+There are no separate data copies in `artifacts`. Edit only a prepared run copy.
+The script reads the text as data. It never runs that text as a command.
 
-data.config is the authoritative raw configuration text. The only supported directives are PermitRootLogin, PasswordAuthentication, KbdInteractiveAuthentication, PubkeyAuthentication, PermitEmptyPasswords and MaxAuthTries. Keywords are case-insensitive; values are case-sensitive. Lines must be one plain keyword and value, with empty lines and whole-line # comments allowed. Quoting, inline comments, Match, Include, unknown directives and other complex syntax are rejected. This is deliberately narrower than sshd_config.
+The parser reads only the six settings below. A parser is code that reads a
+file's structure. Each line must have one plain name and one value.
+Blank lines and whole lines starting with `#` are allowed.
+Setting names ignore letter case. Values are case-sensitive.
 
-For supported directives, first occurrence wins and later occurrences are reported as ignored. The fictional baseline is root/password/keyboard-interactive/empty-password settings no, public-key setting yes, and MaxAuthTries 1-4. MaxAuthTries accepts 1-100 for comparison. Each setting is matches-lab-baseline, differs-from-lab-baseline or missing-explicit-setting. No missing default is guessed. access-route is insufficient-explicit-method-settings when any of the three authentication settings is missing; otherwise public-key-method-enabled if keys are enabled, alternative-method-enabled if only another supported method is enabled, or no-supported-method-enabled if all three are off.
+| Setting | Lab baseline | Allowed input |
+| --- | --- | --- |
+| PermitRootLogin | no | yes, no, prohibit-password or forced-commands-only |
+| PasswordAuthentication | no | yes or no |
+| KbdInteractiveAuthentication | no | yes or no |
+| PubkeyAuthentication | yes | yes or no |
+| PermitEmptyPasswords | no | yes or no |
+| MaxAuthTries | 1–4 | Whole number from 1 to 100 |
+
+This small reader rejects quotes, comments after a value, and unknown settings.
+It also rejects `Match` and `Include`. It cannot read every real server file.
+The first value wins. A later value for that setting is shown as ignored.
+A missing setting stays unknown. The script does not guess the server's default.
+
+## Choose a result
+
+Use one of these exact labels for each setting:
+
+| Label | Meaning |
+| --- | --- |
+| matches-lab-baseline | The first value fits the baseline column |
+| differs-from-lab-baseline | The first value does not fit the baseline column |
+| missing-explicit-setting | The setting is absent |
+
+The `access-route` result uses the three sign-in method settings. Read these
+rules in order. Stop at the first row that fits.
+
+| Condition | Exact label |
+| --- | --- |
+| Any method setting is missing | insufficient-explicit-method-settings |
+| Public-key method is enabled | public-key-method-enabled |
+| Another supported method is enabled | alternative-method-enabled |
+| All three methods are off | no-supported-method-enabled |
+
+An enabled method does not prove that a key works. The account, key and network
+still need their own checks. Do not use this result to change a real server.
 
 ## Run the exercise
 
-Open a terminal in this lab folder. Use your Python command (`python`, or `py -3` if that is how Python is installed). Commands below use `python` consistently.
+Open a terminal in this lab folder. The commands use `python`.
+Use `py -3` instead if that is your installed Python command.
 
 ```text
 python lab.py cases
@@ -28,7 +83,10 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the evidence. In run/attempt-01/answers.json, fill each decision with an exact label from the rules; add an explanation and evidence references such as record IDs or configuration line numbers. In notes.txt, separate observation, interpretation, uncertainty, next check and help used. Save your prediction before opening the answer.
+Read the case. Open `run/attempt-01/answers.json` and fill each blank decision.
+Use an exact label from the tables. Add your reason and the lines that support
+it. In `notes.txt`, keep facts, meaning, unknowns, next checks and help used apart.
+Save your first prediction before opening the answer.
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -39,18 +97,39 @@ python -m unittest -v test_lab.py
 python lab.py verify
 ```
 
-For changed/challenge use the corresponding attempt folder in show/analyse/check. prepare refuses an existing output folder. --out is relative to this lab and must be below run/; explicit input paths are relative to your terminal directory. analyse/show default to the guided fixture if --case is omitted. Exit 0 means command success or decision match; 1 means differences/incomplete written fields; 2 means invalid input or a filesystem problem. The checker verifies decision fields and the presence of writing, not the quality of reasoning. verify checks shipped examples, not learner mastery.
+Use the matching attempt path for each later case. Prepare needs a new folder
+below `run/`. It will not replace an old attempt. Its output path is relative
+to this lab. Other paths are relative to your terminal's current folder.
+Show and analyse use the guided case if you leave out `--case`.
 
-## Deliverable and limits
+| Exit code | Meaning |
+| --- | --- |
+| 0 | Command ran, or decision fields match |
+| 1 | Decisions differ, or written fields are incomplete |
+| 2 | Invalid input or a file error |
 
-Keep case.json, answers.json and notes.txt together in the ignored run folder. Deliver a short handover: the question, your conclusion, two precise evidence references, one alternative explanation or limitation, and the next evidence you would request. State whether you used the worked example and whether you completed a fresh case unaided. Do not describe an automated match as assessment or professional experience.
+The checker checks labels and whether writing is present. It cannot judge the
+quality of your reasons. Verify checks the supplied cases, not your skill.
 
-Only six explicit directives are modelled. Missing settings are unknown here; no version-specific defaults are assumed. Match, Include, unknown directives and complex syntax are rejected. First occurrence wins for these supported directives. This text review is not sshd validation and cannot establish keys, PAM behaviour, network exposure or a working recovery login. No host configuration was read or changed.
+## Save and explain
 
-Use WORKED-EXAMPLE.md after making a first prediction, and DRILLS.md for progressively less support. Do not use these rules as an operational security verdict or modify a real host as part of this exercise.
+Keep the case, answers and notes together in your run folder. Write a short
+handover: the question, your result, two exact evidence references, one limit,
+and the next check. State which help you used. State whether the case was fresh
+and you attempted it without help.
 
-## Primary references
+Open WORKED-EXAMPLE.md after your first prediction. Use DRILLS.md to practise
+with less help. A script match is not a skills assessment or work experience.
 
-The following documentation supports the underlying concepts; the tiny schema and explicit teaching rules above are specific to this lab. Links were checked during authoring on 23 October 2026. Running the lab needs no internet connection.
+## Limits and source
+
+Only six explicit settings are checked. The script reads and writes local
+practice files. It does not inspect or change your SSH settings.
+It cannot prove that real sshd accepts the file. It does not test
+keys, PAM sign-in rules, network access or a recovery login.
+
+The baseline is a teaching choice. It is not a rule for every real server.
+The manual supports the real setting names and their meaning. The link was
+checked on 23 October 2026. No internet is needed to run this lab.
 
 - [OpenSSH sshd_config manual](https://man.openbsd.org/sshd_config)

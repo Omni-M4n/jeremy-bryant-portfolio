@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "tcp-handshake",
   "case_id": "changed",
-  "title": "A missing final packet and a late capture",
+  "title": "Two saved opening excerpts",
   "synthetic": true,
   "context": {
     "question": "Which opening events are actually supported by these packet summaries?"

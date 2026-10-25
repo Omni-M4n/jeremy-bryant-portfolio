@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "A later desk update",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied fictional statements to draft audience-scoped sections. Write a staff notice only if its facts, action and recipients are supplied; otherwise justify a hold.",
+    "staff_recipient_scope": "Not supplied. Draft a request to communications-owner for the intended recipients and any approved staff fact and action."
+  },
+  "data": {
+    "now_minute": 630,
+    "next_update_minute": 660,
+    "reporting_route": "service-desk.test",
+    "statements": [
+      {
+        "id": "item-1",
+        "text": "A planned test generated the three prompts.",
+        "status": "confirmed",
+        "audience": "manager",
+        "source": "case-notes.txt line 1",
+        "owner": "response-lead"
+      },
+      {
+        "id": "item-2",
+        "text": "Whether all affected users received the test notice.",
+        "status": "unknown",
+        "audience": "technical",
+        "source": "case-notes.txt line 2",
+        "owner": "response-lead"
+      },
+      {
+        "id": "item-3",
+        "text": "Check the test notice delivery list.",
+        "status": "action",
+        "audience": "technical",
+        "source": "case-notes.txt line 3",
+        "owner": "communications-owner"
+      }
+    ]
+  },
+  "artifacts": {
+    "communications-template.md": "# Draft sections - NOT SENT\n\nAnalyst handover: technical statements, evidence, labelled hypotheses, unknowns, action owners, gaps, next update:\n\nManager update: manager statements, effect, uncertainty, decision needed or gap, next update:\n\nStaff section: notice OR HOLD - NOT SENT:\nIntended recipients or missing scope:\nStaff-approved known fact and source, or gap:\nOne staff action and owner, or gap:\nKnown route and next update:\nIf held: missing material, evidence IDs, owner request and review time (request NOT SENT):\n\n| Statement | Fact, hypothesis, unknown or action | Audience | Source | Owner | Next check or gap |\n|---|---|---|---|---|---|---|\n",
+    "case-notes.txt": "item-1 | confirmed | A planned test generated the three prompts. | audience=manager | owner=response-lead\nitem-2 | unknown | Whether all affected users received the test notice. | audience=technical | owner=response-lead\nitem-3 | action | Check the test notice delivery list. | audience=technical | owner=communications-owner\n"
+  },
+  "lab_id": "incident-communications"
+}

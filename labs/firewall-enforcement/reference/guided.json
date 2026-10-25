@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "p01": "permitted-supported",
+    "p02": "deny-supported-by-control-and-counter",
+    "rollback": "rollback-supported"
+  },
+  "observations": [
+    "p01: port=8000; intended=allow; before=connect; during=connect; listener-during=true; drop-hits=0; after=connect.",
+    "p02: port=8001; intended=deny; before=connect; during=timeout; listener-during=true; drop-hits=3; after=connect.",
+    "rollback: export-match=true; temporary-rule-removed=true."
+  ],
+  "limitations": [
+    "Synthetic snapshots assume one client, fresh TCP attempts, no forwarding and counter deltas isolated to each attempted connection; packet counts need not equal connection counts.",
+    "A timeout alone does not identify a firewall. Export equality and restored connectivity support only this temporary-rule rollback, not the whole system's security."
+  ]
+}

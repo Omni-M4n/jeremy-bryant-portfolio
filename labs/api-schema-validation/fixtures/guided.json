@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "lab_id": "api-schema-validation",
+  "case_id": "guided",
+  "title": "Lunch order",
+  "synthetic": true,
+  "question": "How do types and missing fields affect the response?",
+  "data": {
+    "requests": [
+      {
+        "body": "{\"name\":\"Pear\",\"count\":2}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"Pear\",\"count\":\"2\"}",
+        "content_type": "application/json"
+      },
+      {
+        "body": "{\"name\":\"Pear\"}",
+        "content_type": "application/json"
+      }
+    ]
+  }
+}

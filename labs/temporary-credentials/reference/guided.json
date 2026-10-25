@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "q1": "not-yet-issued",
+    "q2": "allowed-in-model",
+    "q3": "action-not-granted",
+    "q4": "expired"
+  },
+  "observations": [
+    "q1: human=h1; role=role1; session=t1; interval=[10,70); at=9; result=not-yet-issued.",
+    "q2: human=h1; role=role1; session=t1; interval=[10,70); at=10; result=allowed-in-model.",
+    "q3: human=h1; role=role1; session=t1; interval=[10,70); at=69; result=action-not-granted.",
+    "q4: human=h1; role=role1; session=t1; interval=[10,70); at=70; result=expired."
+  ],
+  "limitations": [
+    "Times are fictional seconds. Revocation is a model rule applied at revoke_at to sessions issued strictly before it; provider propagation is excluded.",
+    "An attributed human is a recorded issuer, not proof of who held a token. No real credentials or AWS calls are used."
+  ]
+}

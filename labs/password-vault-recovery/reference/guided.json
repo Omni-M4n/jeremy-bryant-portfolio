@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "e1": "meets-practice-checks",
+    "e2": "meets-practice-checks",
+    "backup": "restore-untested+same-location-risk+circular-recovery"
+  },
+  "observations": [
+    "e1: label_count=1; generated=true; length=24.",
+    "e2: label_count=1; generated=true; length=24.",
+    "Backup format=encrypted; copy=true; tested=false; separate=false; recovery_inside=true."
+  ],
+  "limitations": [
+    "Labels stand for fake passwords; length and a generated flag do not prove entropy or resistance to attack.",
+    "A copied file is not a tested recovery. The bundled file exercise is unencrypted and must never hold real secrets."
+  ]
+}

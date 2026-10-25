@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "access-blocked-but-owner-regressed",
+    "item-2": "retest-missing"
+  },
+  "observations": [
+    "item-1: original 200, retest 403, owner 403; evidence transcript.txt lines 1-4.",
+    "item-2: original 200, retest None, owner None; evidence transcript.txt lines 5-8."
+  ],
+  "limitations": [
+    "The transcript is authored training data. No live test ran, and one retest does not establish security for every route."
+  ]
+}

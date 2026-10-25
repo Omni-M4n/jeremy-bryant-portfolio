@@ -1,0 +1,15 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "NIST SP 800-115, Appendix B and section 8",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.pdf",
+      "use": "Scope, agreed limits and reporting."
+    },
+    {
+      "title": "NIST IR 8286A Rev. 1",
+      "url": "https://csrc.nist.gov/pubs/ir/8286/a/r1/final",
+      "use": "Risk scenarios, likelihood, impact and registers."
+    }
+  ]
+}

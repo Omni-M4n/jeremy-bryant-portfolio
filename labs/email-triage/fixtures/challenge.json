@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "email-triage",
   "case_id": "challenge",
-  "title": "Forwarding affects SPF, while a temporary error remains unresolved",
+  "title": "Message authentication evidence: case C",
   "synthetic": true,
   "context": {
     "question": "Which domain claims come from the supplied trusted receiver, and which discrepancies need checking?",

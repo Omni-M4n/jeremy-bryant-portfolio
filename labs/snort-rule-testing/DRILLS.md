@@ -1,29 +1,10 @@
 # Practice stages
 
-1. **Guided.** Prepare `run/guided-01`, predict four counts, run installed Snort
-   with the README command and locate the actual rule identifier in stdout.
-2. **Prompts only.** Use a fresh attempt and result folder. Keep this checklist:
-   header; exact marker; positive and negative controls; rule version; engine
-   exit; stderr; observed counts; limitation. Keep the worked example closed.
-3. **Independent.** Prepare `run/independent-01`. Explain all four inputs,
-   inspect frame 4 in Wireshark if available, operate Snort and produce a short
-   finding from actual outputs. Name any help used.
-4. **Changed input to the detector.** Prepare `run/changed-01`; make the README's
-   nocase/revision edit; predict and test the new outcomes. Explain why the
-   wrong-port control is unaffected. In a separate fresh attempt, changing the
-   rule destination port from 18080 to 18081 tests a different condition:
-   predict wrong-port one and the other three zero. The wrapper's two built-in
-   expectation sets do not describe this optional variant, so its
-   `needs_review` result is expected; compare saved actual counts with your own
-   written prediction and explain the mismatch.
-5. **Teach-back.** Explain why an alert on a harmless marker is not an attack
-   finding. Explain how the negative controls challenge the rule. Show the
-   difference between an expected count and a recorded engine result.
-6. **Later recall.** After two days, describe `-r`, `-R`, SID and nocase without
-   the guide. After a week, repeat a fresh run and explain why the same marker
-   in the loopback capture would require different rule-header conditions.
+1. **Guided.** Prepare `run/guided-01` and predict four counts. Use the README command to run installed Snort. Find the rule ID in its real stdout output.
+2. **Prompts only.** Use fresh attempt and result folders. Check the header and exact marker. Check the positive and negative controls. Record the rule version, engine exit, stderr and counts. State a limit. Keep the worked example closed.
+3. **Independent.** Prepare `run/independent-01`. Explain all four inputs. Inspect frame 4 in Wireshark if it is available. Run Snort and write a short finding from its actual output. Name any help used.
+4. **Changed input to the detector.** Prepare `run/changed-01`. Make the README's nocase and revision edit. Predict all four outcomes before you test them. Explain any difference. In a separate fresh attempt, change the rule's port from 18080 to 18081. Save your own prediction for each file before running it. The wrapper's two built-in expectation sets do not cover this optional test. Review its `needs_review` result against your own predictions and the saved counts. Explain any mismatch and check the engine status.
+5. **Teach-back.** Explain why an alert on a harmless marker does not prove an attack. Show how negative controls test the rule. Explain how an expected count differs from a saved engine result.
+6. **Later recall.** After two days, describe `-r`, `-R`, SID and nocase without the guide. After a week, try a fresh run. Explain why the same marker in loopback traffic needs different header conditions.
 
-Do not edit the shipped fixtures or their hashes to make a check pass. If the
-engine is unavailable, complete the prediction work and label practical
-execution pending. A reviewer should assess the explanation and operation,
-not merely whether an output file exists.
+Do not edit supplied files or their hashes to make a check pass. If Snort is absent, finish your predictions and mark practical execution pending. Ask a reviewer to check your reasons and tool use. An output file alone does not prove the task is done.

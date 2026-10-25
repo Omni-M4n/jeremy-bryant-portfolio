@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "r1": "review-due",
+    "r2": "review-due",
+    "r3": "tags-current",
+    "plan": "blocked",
+    "cost": "residual-cost",
+    "budget": "alert-threshold-reached"
+  },
+  "observations": [
+    "r1: owner=team-club; expiry=8; daily_units=4; retain=false.",
+    "r2: owner=team-club; expiry=8; daily_units=2; retain=false.",
+    "r3: owner=team-club; expiry=30; daily_units=1; retain=true.",
+    "Plan issues=r3:retention-hold; remaining=r3; daily_units=1.",
+    "Spent=120; budget=100; charges are not capped by an alert."
+  ],
+  "limitations": [
+    "Costs are invented whole practice units per day, not provider prices or a bill. Budget alerts do not stop this model's charges.",
+    "A teardown plan is reviewed but never executed. Dependencies and retention approval must be checked again on a real inventory."
+  ]
+}

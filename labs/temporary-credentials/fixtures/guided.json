@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "lab_id": "temporary-credentials",
+  "case_id": "guided",
+  "title": "Library session timeline",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "humans": [
+      {
+        "id": "h1",
+        "disabled_at": null
+      }
+    ],
+    "roles": [
+      {
+        "id": "role1",
+        "trusted_humans": [
+          "h1"
+        ],
+        "actions": [
+          "read"
+        ],
+        "revoke_at": null
+      }
+    ],
+    "sessions": [
+      {
+        "id": "t1",
+        "human": "h1",
+        "role": "role1",
+        "issued": 10,
+        "expires": 70
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "session": "t1",
+        "at": 9,
+        "action": "read"
+      },
+      {
+        "id": "q2",
+        "session": "t1",
+        "at": 10,
+        "action": "read"
+      },
+      {
+        "id": "q3",
+        "session": "t1",
+        "at": 69,
+        "action": "write"
+      },
+      {
+        "id": "q4",
+        "session": "t1",
+        "at": 70,
+        "action": "read"
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

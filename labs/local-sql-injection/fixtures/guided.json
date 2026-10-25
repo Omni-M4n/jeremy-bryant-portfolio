@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "lab_id": "local-sql-injection",
+  "case_id": "guided",
+  "title": "Book desk lookup",
+  "synthetic": true,
+  "question": "Do both routes return the same rows?",
+  "data": {
+    "name": "Mira' OR '1'='1"
+  }
+}

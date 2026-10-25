@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "lab_id": "windows-acl",
+  "case_id": "changed",
+  "title": "Workshop note",
+  "synthetic": true,
+  "context": {
+    "question": "Which listed operation does this token receive?"
+  },
+  "data": {
+    "token": [
+      "reader",
+      "classroom"
+    ],
+    "file_aces": [
+      {
+        "trustee": "reader",
+        "kind": "allow",
+        "inherited": false,
+        "rights": [
+          "write"
+        ]
+      },
+      {
+        "trustee": "classroom",
+        "kind": "deny",
+        "inherited": true,
+        "rights": [
+          "write"
+        ]
+      },
+      {
+        "trustee": "classroom",
+        "kind": "allow",
+        "inherited": true,
+        "rights": [
+          "read"
+        ]
+      }
+    ],
+    "parent_aces": [],
+    "requests": [
+      {
+        "id": "q1",
+        "right": "read"
+      },
+      {
+        "id": "q2",
+        "right": "write"
+      },
+      {
+        "id": "q3",
+        "right": "delete"
+      }
+    ]
+  },
+  "artifacts": {}
+}

@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "medium;transfer;review-planned;projection-only",
+    "item-2": "low;accept;review-due;supported-in-case"
+  },
+  "observations": [
+    "item-1: 1 x 3 = 3; proposed residual 1 x 3 = 3; owner device-owner.",
+    "item-2: 1 x 1 = 1; proposed residual 1 x 1 = 1; owner device-owner."
+  ],
+  "limitations": [
+    "The scores are a teaching scale, not measured probabilities. Proposed controls do not prove a lower real risk."
+  ]
+}

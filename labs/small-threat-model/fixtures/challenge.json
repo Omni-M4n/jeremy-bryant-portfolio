@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "case_id": "challenge",
+  "title": "The evening setup",
+  "synthetic": true,
+  "context": {
+    "question": "A guest uses office Wi-Fi. A small temperature sensor also connects. Draw how both could reach a records service, and what must check each request along the way."
+  },
+  "data": {
+    "wifi_access": "named-users",
+    "paths": [
+      {
+        "id": "item-1",
+        "source": "staff-wifi",
+        "destination": "records-service.test",
+        "configured": "allow",
+        "observed": "reachable",
+        "identity": "named",
+        "resource_check": false,
+        "transport": "tls"
+      },
+      {
+        "id": "item-2",
+        "source": "guest-wifi",
+        "destination": "records-service.test",
+        "configured": "block",
+        "observed": "blocked",
+        "identity": "named",
+        "resource_check": true,
+        "transport": "tls"
+      },
+      {
+        "id": "item-3",
+        "source": "device-segment",
+        "destination": "records-service.test",
+        "configured": "allow",
+        "observed": "blocked",
+        "identity": "none",
+        "resource_check": true,
+        "transport": "tls"
+      }
+    ]
+  },
+  "artifacts": {
+    "diagram-template.md": "# Office flow sketch\n\nDraw boxes and arrows here. Label staff Wi-Fi, guest Wi-Fi, sensor, service and store.\n\nNetwork boundary:\nApplication boundary:\n\n| Path | Asset | Possible failure | Control | Supplied evidence | Next validation |\n|---|---|---|---|---|---|\n\nIf one check is missing:\nShared password versus named user:\n",
+    "config.txt": "SYNTHETIC CONFIGURATION REVIEW\nWi-Fi access=named-users\nitem-1 | staff-wifi -> records-service.test | configured=allow | observed=reachable | service identity=named | permission check=False | transport=tls\nitem-2 | guest-wifi -> records-service.test | configured=block | observed=blocked | service identity=named | permission check=True | transport=tls\nitem-3 | device-segment -> records-service.test | configured=allow | observed=blocked | service identity=none | permission check=True | transport=tls\nSensor role: temperature readings only; no record-reading purpose.\n"
+  },
+  "lab_id": "small-threat-model"
+}

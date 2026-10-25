@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "repetition": "no-repeat-in-extract",
+    "acknowledgement": "no-unseen-ack-in-extract",
+    "termination": "no-reset-in-extract",
+    "timing": "request-ack-to-response:2000ms",
+    "capture": "drop-count-unavailable"
+  },
+  "observations": [
+    "Repeated exact ranges at: none.",
+    "Acknowledgements beyond contiguous captured bytes at: none.",
+    "Timing: request-ack=10ms; first-response=2010ms; wait=2000ms."
+  ],
+  "limitations": [
+    "Repeated bytes can reflect retransmission or duplicate capture; they do not prove packet loss or locate its cause. Acknowledged unseen bytes show incomplete observation, not that those bytes were lost in transit.",
+    "The acknowledgement-to-response interval includes endpoint work and transport effects; it is not a pure application-delay or round-trip-time measurement. Reset origin and capture completeness need separate evidence."
+  ]
+}

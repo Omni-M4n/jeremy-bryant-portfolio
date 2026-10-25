@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "item-01": "content-equal-time-differs"
+  },
+  "observations": [
+    "item-01: hash equal=True; modified-time difference=120000000000 ns."
+  ],
+  "limitations": [
+    "File timestamps can be copied or set explicitly; they do not identify a person or prove an action occurred at that exact time.",
+    "Creation/access behavior and timestamp precision vary by operating system and filesystem. ctime is not treated as a portable creation time."
+  ]
+}

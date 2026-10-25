@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "case_id": "changed",
+  "title": "The ticket service",
+  "synthetic": true,
+  "context": {
+    "question": "You can follow a worked example and still be unsure when the facts change. Ask a reviewer for a short unfamiliar case, save your first explanation, and show what evidence changed your mind."
+  },
+  "data": {
+    "observations": [
+      {
+        "id": "item-1",
+        "track": "identity",
+        "claim": "intrusion-confirmed",
+        "facts": {
+          "failed_count": 2,
+          "later_success": true,
+          "user_reports_typo": true
+        }
+      },
+      {
+        "id": "item-2",
+        "track": "retest",
+        "claim": "correction-demonstrated",
+        "facts": {
+          "nonowner_code": 403,
+          "owner_code": null,
+          "same_route": true
+        }
+      }
+    ]
+  },
+  "artifacts": {
+    "portfolio-template.md": "# Evidence bundle index\n\nDate and case identifier:\nStage: first attempt / prompted / corrected / independently reviewed / recall attempted\nFresh case source and scope:\nPrediction before help:\nClaim, evidence reference and limits:\nNext safe action and why:\nEvidence files and hashes:\nHelp log: time, source or hint, what changed:\nReviewer questions and comments (blank until reviewed):\nCorrections in a separate file:\nRecall date, result and help used (blank until attempted):\n",
+    "observations.txt": "SYNTHETIC OBSERVATIONS\nitem-1 | identity | {\"failed_count\": 2, \"later_success\": true, \"user_reports_typo\": true}\nitem-2 | retest | {\"nonowner_code\": 403, \"owner_code\": null, \"same_route\": true}\n"
+  },
+  "lab_id": "portfolio-mastery-capstone"
+}

@@ -1,29 +1,14 @@
 # Worked example: Build a cloud audit evidence timeline
 
-Open this after saving a prediction for the guided case. The reference explains
-these fictional records; it does not assess your independent performance.
+Save a prediction for the guided case before you read this page. These are made-up records. The answer does not assess your skill at doing this alone.
 
-1. Sort the timeline. `e01` at 10:00 is a successful sign-in for `operator`
-   and `session-a`: `authentication-only`.
-2. `e02` at 10:02 has the same identity/session, but `result=denied`. Use
-   `denied-no-success-evidence`; correlation does not turn failure into success.
-3. `e03` changes `poster-bucket` at 10:03. It is three minutes after `e01`
-   and matches the approval's identity, action, resource and 10:00-10:10 window.
-   Use `approved-change-correlated`.
-4. `e04` reads `rota-object` at 10:04 and links to `e01`, so use
-   `successful-read-correlated`. It is not evidence that the read was authorised
-   by a data-access approval: this model does not include those approvals.
-5. `e05` has a different identity and session with no matching supplied sign-in.
-   It succeeds, so use `successful-action-unattributed`. Do not invent a person.
-6. `e06` successfully disables logging, links to `e01` and has no approval.
-   Use `unapproved-change-correlated`. The `logging` decision is
-   `coverage-gap:data;interruption-observed`: initial data coverage was false,
-   and the later successful disable adds interruption evidence.
+1. Sort the time line. At 10:00, `e01` is a successful sign-in for `operator` and `session-a`. Use `authentication-only`.
+2. At 10:02, `e02` has the same identity and session. But `result=denied`. Use `denied-no-success-evidence`. A sign-in link does not turn failure into success.
+3. At 10:03, `e03` changes `poster-bucket`. It is three minutes after `e01`. It matches the approval's identity, action and resource. It also falls within the approved time of 10:00-10:10. Use `approved-change-correlated`.
+4. At 10:04, `e04` reads `rota-object` and links to `e01`. Use `successful-read-correlated`. This does not prove that a data-access approval allowed the read. This model has no such approvals.
+5. `e05` has a different identity and session. No supplied sign-in matches it. The action worked, so use `successful-action-unattributed`. Do not invent a person behind it.
+6. `e06` turns logging off. It links to `e01` but has no approval. Use `unapproved-change-correlated`. The `logging` answer is `coverage-gap:data;interruption-observed`. Data logging was off at the start. The later successful disable event adds evidence of an interruption.
 
-The existing `e04` fragment does not fill the data gap. A sound handover asks for
-the missing coverage and change-authorisation evidence while distinguishing
-known successes, denied attempts and uncertainty about unrecorded activity.
+The `e04` record does not fill the data gap. In your handover, ask for the missing logs and change approvals. Keep known successes separate from denied attempts. State what you cannot know about activity that was not logged.
 
-After comparison, keep your original prediction and add a correction in
-`notes.txt`. State the evidence that changed your judgment. Copying the answer
-without reconstructing the evidence leaves independent understanding unassessed.
+Keep your first prediction. Add a correction in `notes.txt` after you compare it with the answer. State which evidence changed your view. Work through the evidence yourself. Copying an answer does not show that you understand it.

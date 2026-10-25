@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "item-01": "type-undetermined",
+    "item-02": "sqlite-signature-extension-differs"
+  },
+  "observations": [
+    "item-01: 15 prefix bytes inspected from 15 bytes; reported label=image/png.",
+    "item-02: 16 prefix bytes inspected from 8192 bytes; reported label=application/octet-stream."
+  ],
+  "limitations": [
+    "A matching signature is a format clue, not proof that the whole file is valid or safe.",
+    "An extension mismatch alone does not establish malware. Only PNG and SQLite signatures are recognized here."
+  ]
+}

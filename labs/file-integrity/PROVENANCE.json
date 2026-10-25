@@ -7,9 +7,9 @@
   "sha256_files": {
     ".gitattributes": "a79691a93b46e49ce460c26ef22afcc03d6eca1e63bf2edbc20e96159510f6c9",
     ".gitignore": "8a4ffe7096e1eb2d22b66a80fe6bfde9846c2943fdc6c9c6dd2d3e31cd4b93e8",
-    "DRILLS.md": "e54bc634ec6ac799a3ed9eaeb64dca6e9de1d113e36ee4ea76324f0994d30a8b",
-    "README.md": "87613ff78feaef05dc50d472b974c6c0086cc705c35e2449f8eef6e029a306c8",
-    "WORKED-EXAMPLE.md": "48bb9fe7658a6874374da4ceaf2c9b54ca6b58e92be6950d386e9696eba5dcad",
+    "DRILLS.md": "51e6cbfdccf5080a00114d44883086b2c015f8ed3c8d941b0f15ae8ec1ff614a",
+    "README.md": "015769fc3ede931a09d97dca60332fffa143b5f63e12728c419b662b370cfe90",
+    "WORKED-EXAMPLE.md": "45abe4886a154a596f2a8bb0b1f8a8a8e8b67f3604216feae852d99b6d79e0c2",
     "fixtures/worked-example/approvals.json": "5d6f5275d0789ca22caa94905e38948cbe8c02c6e70425c09365822781cdb011",
     "fixtures/worked-example/baseline.json": "d18f97134ecd437133015910a6a13d7e45096e7dc8c4eeac5eae29b4ce460322",
     "fixtures/worked-example/current/config/service.txt": "b565e483fa299ce9ffb63d3d8121cc6cbd26a7f7387ab29e9e308955025cbc5a",

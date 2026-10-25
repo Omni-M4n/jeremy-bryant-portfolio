@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "lab_id": "session-lifecycle",
+  "case_id": "guided",
+  "title": "Reading room visit",
+  "synthetic": true,
+  "question": "What happens when the earlier cookie is sent again?",
+  "data": {
+    "steps": [
+      "login",
+      "profile",
+      "logout",
+      "old-profile",
+      "login",
+      "profile"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "lab_id": "csrf-local",
+  "case_id": "challenge",
+  "title": "Another visit",
+  "synthetic": true,
+  "question": "What happens to an earlier form token after a new visit?",
+  "data": {
+    "rotate": true,
+    "requests": [
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "same",
+        "token": "previous",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "other",
+        "token": "valid",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "absent",
+        "token": "valid",
+        "cookie": true
+      },
+      {
+        "route": "protected",
+        "preference": "blue",
+        "origin": "same",
+        "token": "valid",
+        "cookie": true
+      }
+    ]
+  }
+}

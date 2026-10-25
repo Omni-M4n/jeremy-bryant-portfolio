@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "configuration-observation-conflict;listed-service-checks-present",
+    "item-2": "path-reachable;review-named-identity,transport-protection"
+  },
+  "observations": [
+    "item-1: guest-wifi -> records-service.test; network block/reachable; Wi-Fi access named-users.",
+    "item-2: device-segment -> records-service.test; network allow/reachable; Wi-Fi access named-users."
+  ],
+  "limitations": [
+    "Configuration is a claim. Supplied observations cover one fictional path only; no radio or network test is run."
+  ]
+}

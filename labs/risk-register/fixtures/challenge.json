@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "case_id": "challenge",
+  "title": "The storage proposal",
+  "synthetic": true,
+  "context": {
+    "question": "A loan laptop is missing. A score alone does not tell anyone what to do. Write who owns the concern, what they will change and when they will review it.",
+    "score_evidence": "Read risk-notes.txt and cite its evidence IDs. Scores are proposals; record unsupported reasons as gaps."
+  },
+  "data": {
+    "as_of": "2026-10-25",
+    "risks": [
+      {
+        "id": "item-1",
+        "scenario": "A lost loan laptop from kit A may expose its fictional contact list",
+        "likelihood": 1,
+        "impact": 3,
+        "treatment": "transfer",
+        "owner": "device-owner",
+        "review": "2026-11-01",
+        "likelihood_after": 1,
+        "impact_after": 3,
+        "control_verified": false,
+        "acceptance": false,
+        "controls": [
+          "process: agree supplier responsibility"
+        ],
+        "assumption": "The proposed supplier agreement covers replacement cost and return only; other responsibilities still need an owner decision"
+      },
+      {
+        "id": "item-2",
+        "scenario": "A lost loan laptop from kit B may expose its fictional contact list and delay a clerk",
+        "likelihood": 1,
+        "impact": 1,
+        "treatment": "accept",
+        "owner": "device-owner",
+        "review": "2026-10-25",
+        "likelihood_after": 1,
+        "impact_after": 1,
+        "control_verified": true,
+        "acceptance": true,
+        "controls": [
+          "physical: locked storage",
+          "process: lost-device reporting",
+          "technical: encryption and lock"
+        ],
+        "assumption": "Owner approved acceptance for this review period"
+      }
+    ]
+  },
+  "artifacts": {
+    "risk-template.md": "# Risk register\n\n| ID | Event and harm | Likelihood reason and evidence ID | Impact reason and evidence ID | Treatment and why | Owner | Action and date | Residual reason | Review | Assumption |\n|---|---|---|---|---|---|---|---|---|---|\n\nPhysical control:\nProcess control:\nTechnical control:\nDraft reporting action (not sent):\n",
+    "risk-notes.txt": "Fictional case notes, not records of a real test. H1-H4 concern two different loan kits; their files and operational consequences differ.\nH1 | item-1 | Kit A is normally shut down in a locked supplier cage and collected once per month by a named courier. No open public handover or repeated access is documented. Loss would require an unusual custody failure. Encryption on this kit has not been verified, so shutdown is not proof that its stored file is inaccessible.\nH2 | item-1 | Kit A's stored contact list contains home addresses and confidential support needs. Exposure of this file would affect sensitive records. The proposed supplier agreement assigns replacement cost and return responsibility only; it does not change custody, remove the file or establish who accessed it. No implemented agreement or new control check is supplied.\nH3 | item-2 | Kit B is a separate locked training loan kit with named checkout. The supplied check records encryption enabled, login required after restart and no saved account session. No public handover or repeated uncontrolled access is documented. Loss or useful access would require an unusual control failure; the check cannot prove all future failures impossible.\nH4 | item-2 | Kit B contains only the same published switchboard names and work extensions already printed in the reception directory. It contains no home addresses, support needs, credentials or unique work. A spare kit is ready; the stated business consequence of a loss is one clerk's twenty-minute setup delay. The owner has accepted this stated risk for the current review period; accepting it makes no further reduction.\n"
+  },
+  "lab_id": "risk-register"
+}

@@ -1,4 +1,4 @@
-// Contract: refresh the generated guide mirror, then build src into this project's dist; no deployment.
+// Contract: refresh generated study guides, then build src into this project's dist; no deployment.
 import { mkdir, readFile, writeFile, cp, rm, readdir, realpath, lstat } from 'node:fs/promises';
 import { resolve, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +20,13 @@ const catalog = renderLabCatalog(JSON.parse(await readFile(join(root,'labs','fou
 const handsOn = renderHandsOnCatalog(JSON.parse(await readFile(join(root,'labs','hands-on-catalog.json'),'utf8')),config.labSource);
 const originalSix=new Set(['dns-triage','login-triage','access-review','http-triage','file-integrity','firewall-review']);
 for (const id of registry.ids) for (const name of originalSix.has(id)?['README.md','lab.py','test_lab.py']:['README.md','WORKED-EXAMPLE.md','DRILLS.md','lab.py','test_lab.py']) await readFile(join(root,'labs',id,name));
+const studyPlanText=await readFile(join(root,'labs','SUMMER-STUDY-PLAN.json'),'utf8');
+const studyPlan=JSON.parse(studyPlanText);
+const studyIds=studyPlan.packages.map(item=>item.id);
+if(studyIds.length!==registry.totalCount || new Set(studyIds).size!==studyIds.length || studyIds.some(id=>!registry.ids.includes(id))) throw Error('Study plan requires the complete accepted lab collection');
 await writeFile(join(root,'src','security-labs','practice-guide.txt'),renderPracticeGuide(await readFile(join(root,'labs','PRACTICE-GUIDE.md'),'utf8')));
+await writeFile(join(root,'src','security-labs','summer-study-plan.txt'),renderPracticeGuide(await readFile(join(root,'labs','SUMMER-STUDY-PLAN.md'),'utf8')));
+await writeFile(join(root,'src','security-labs','summer-study-plan.json'),studyPlanText);
 await rm(dist,{recursive:true,force:true});
 await mkdir(dist,{recursive:true});
 await cp(join(root,'src'),dist,{recursive:true});

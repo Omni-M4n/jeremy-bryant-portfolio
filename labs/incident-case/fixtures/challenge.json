@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "lab_id": "incident-case",
+  "case_id": "challenge",
+  "title": "Desk record set C",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "change": {
+      "id": "c1",
+      "host": "desk.test",
+      "account": "operator",
+      "start": "2026-01-15T00:00:00Z",
+      "end": "2026-01-15T00:10:00Z",
+      "process": "update-check",
+      "destination": "packages.test",
+      "approved": true
+    },
+    "events": [
+      {
+        "id": "e4",
+        "time": "2026-01-15T00:04:00Z",
+        "kind": "http",
+        "host": "desk.test",
+        "account": "operator",
+        "value": "packages.test"
+      },
+      {
+        "id": "e1",
+        "time": "2026-01-15T00:01:00Z",
+        "kind": "login",
+        "host": "desk.test",
+        "account": "operator",
+        "value": "success"
+      },
+      {
+        "id": "e3",
+        "time": "2026-01-15T00:03:00Z",
+        "kind": "dns",
+        "host": "desk.test",
+        "account": "operator",
+        "value": "packages.test"
+      }
+    ]
+  },
+  "artifacts": {}
+}

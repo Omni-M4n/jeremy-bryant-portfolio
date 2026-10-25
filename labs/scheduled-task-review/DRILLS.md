@@ -2,36 +2,36 @@
 
 ## Guided practice
 
-Prepare guided in a fresh run folder, read the README rules, and make a prediction for every decision ID. Use WORKED-EXAMPLE.md only after saving that prediction. Correct your explanation in a different paragraph so the original reasoning remains visible.
+Prepare guided in a fresh run folder. Read the README rules. Save your first choice for each decision ID before you open WORKED-EXAMPLE.md. If you change your reason, write it in a new paragraph. Keep your first reason so you can see what changed.
 
 ## Prompts only
 
-Close the worked example and use these questions to reconsider the evidence:
+Close the worked example. Use these questions to review the evidence:
 
 - Which three fields must match an approval?
 - Why is a missing row not enough to prove a task was deleted?
 
 ## Independent attempt
 
-Prepare challenge in a fresh folder. Keep reference outputs, worked example and analyse closed until you have saved answers.json plus a five-sentence handover in notes.txt. Include the observation, interpretation, an alternative, uncertainty and next check. Use the README for syntax if needed and record that help. Afterwards run analyse/check and have a person inspect the explanation. Independent completion is unassessed unless someone actually reviews it.
+Prepare challenge in a fresh folder. Keep the set answers, worked example and analyse closed for now. First save answers.json and a five-sentence handover in notes.txt. State what you saw, what it may mean and one other possible cause. Add what is unknown and what to check next. Use the README for syntax if needed, and note that help. Then run analyse/check and ask someone to assess your reasons. Work done alone is still unassessed until someone reviews it.
 
 ## Changed case
 
-Prepare changed. Predict which conclusions change and which do not. Explain the changed evidence before checking:
+Prepare changed. Predict which findings will change and which will stay the same. Explain the changes in the evidence before you check your answers:
 
-- What separates a new cleanup task from an existing task with changed settings?
-- What collection check would you make before reporting inventory deleted?
+- Which IDs appear in each list, and which fields have changed?
+- What source would you check before claiming that a task was deleted?
 
-Small edit drill: In the copied guided case, change only the approved archive time to 03:30. Predict whether the observed 03:00 task still matches the approval.
+For a small edit drill, use a copied guided case. Change only the approved archive time to 03:30. Predict whether the observed 03:00 task still matches the approval.
 
 ## Teach-back
 
-Explain the difference between an authorised time change and an approval that does not cover the observed account or path. Use exact record IDs from your attempt. A partner should ask one counterexample rather than accepting a memorised label. Record the question and your response.
+Explain what approval for a time change covers. Show why you must also check the observed account and path. Use exact record IDs from your attempt. Ask a partner to give a case where the rule would give a different result. Record the question and your answer. A label learned by heart is not enough.
 
 ## Later recall
 
-After 24-72 hours, reopen only your own notes and a fresh case. Write the central rule from memory, identify one boundary or missing-evidence condition and predict the result. Then check the documentation and record what you forgot. Do not count rereading an answer as an independent attempt.
+After 24-72 hours, open only your own notes and a fresh case. Write the main rule from memory. Find one limit or gap in the evidence and predict the result. Then check the guide and note what you forgot. Reading an answer again does not count as trying a case on your own.
 
 ## Handover
 
-Keep the copied case, completed worksheet and notes together. State the scope, conclusion, two evidence references, unresolved uncertainty and requested next check. Include help used and whether someone assessed the reasoning. Do not claim experience beyond this fictional exercise.
+Keep your case copy, filled worksheet and notes together. State the scope, your finding and two exact sources from the evidence. Add what is still unknown and what to check next. List any help used and say if someone assessed your reasons. Describe only the practice you did in this made-up lab.

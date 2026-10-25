@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "mode": "joined",
+      "status": 200,
+      "response": {
+        "rows": [
+          [
+            1,
+            "Mira",
+            "Clouds"
+          ],
+          [
+            2,
+            "O'Reed",
+            "Rivers"
+          ],
+          [
+            3,
+            "Tao",
+            "Trees"
+          ]
+        ]
+      }
+    },
+    {
+      "mode": "bound",
+      "status": 200,
+      "response": {
+        "rows": []
+      }
+    }
+  ]
+}

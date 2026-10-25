@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "lab_id": "session-lifecycle",
+  "case_id": "changed",
+  "title": "Afternoon visit",
+  "synthetic": true,
+  "question": "What changes after the server lifetime ends?",
+  "data": {
+    "steps": [
+      "login",
+      "profile",
+      "wait",
+      "profile",
+      "login",
+      "profile"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "lab_id": "rate-limit-lab",
+  "case_id": "challenge",
+  "title": "Two visits",
+  "synthetic": true,
+  "question": "What changes when the window ends before the allowance is used?",
+  "data": {
+    "steps": [
+      "ticket",
+      "ticket",
+      "wait",
+      "ticket",
+      "ticket",
+      "ticket",
+      "ticket"
+    ]
+  }
+}

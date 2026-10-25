@@ -2,13 +2,20 @@
 
 **SYNTHETIC practice. This is an answer explanation, not evidence of learner completion.**
 
-Use `fixtures/guided/SYNTHETIC-dns.pcap`. Other seeds produce different evidence. Start with the first question, then use the full key only after attempting the worksheet.
+Use `fixtures/guided/SYNTHETIC-dns.pcap`. Other seeds give different evidence. Start with the first question. Try the worksheet before reading the full key.
 
 ## One question, carefully matched
 
-Apply `dns.qry.name == "synthetic-violet.test"`. Frame 1 asks for an A record from `192.0.2.10:60341` to `192.0.2.53:53`. Its DNS transaction ID is `0x800f` (32783). Frame 2 reverses those endpoints and repeats the same question and ID. The response has code 0 and an A address in its answer section.
+Apply `dns.qry.name == "synthetic-violet.test"`. Check these fields in the first two frames:
 
-That is sufficient to label this episode `answer`. It does not prove an application subsequently connected to the returned address. Frame 2 occurs 0.045 seconds after frame 1: `0.045 × 1000 = 45` milliseconds.
+| Field | Frame 1 | Frame 2 |
+| --- | --- | --- |
+| Direction | From `192.0.2.10:60341` to `192.0.2.53:53` | The endpoints are reversed |
+| Question | Asks for an A record | Same question |
+| DNS transaction ID | `0x800f` (32783) | Same ID |
+| Reply | This is the request | Code 0; an A address in the answer section |
+
+These facts support the label `answer`. They do not prove that an app connected to that address. Frame 2 comes 0.045 seconds after frame 1. In milliseconds, that is `0.045 × 1000 = 45`.
 
 The worksheet entry becomes:
 
@@ -24,7 +31,7 @@ The worksheet entry becomes:
 }
 ```
 
-Now apply `dns.id == 0x800f`. Frames 6 and 7 also appear. They concern `synthetic-maple.test` and the other client, `192.0.2.11:62186`. Reusing the same 16-bit ID does not make them replies to frame 1.
+Now apply `dns.id == 0x800f`. Frames 6 and 7 also appear. Their name is `synthetic-maple.test`. Their client is different: `192.0.2.11:62186`. They share the same 16-bit ID. That does not make them replies to frame 1.
 
 ## Full evidence key — spoilers
 
@@ -38,14 +45,14 @@ The interval below always starts at the **first** request in the episode.
 | `synthetic-maple.test` | `192.0.2.11` | 6 | 7 | `answer` | 24 ms |
 | `synthetic-lantern.test` | `192.0.2.10` | 8, 10 | 11 | `answer` | 1511 ms |
 
-Frame 4 is a reply with RCODE 3 (NXDOMAIN), not a missing response. The defensible statement is that the resolver's reply reports the name as nonexistent. This constructed file does not independently validate that claim.
+Frame 4 is a reply with RCODE 3 (NXDOMAIN). The reply is present. It says the name does not exist. This made-up file cannot confirm that claim from another source.
 
-Frames 5 and 9 repeat the same orchard question, client port and ID. No matching response exists in the file. Record one unanswered episode with two observed requests. Do not convert that into “the firewall blocked it”; this capture cannot identify why the reply is absent.
+Frames 5 and 9 repeat the orchard question. They have the same client port and ID. No matching reply exists in the file. Record one unanswered episode with two seen requests. Do not turn that into “the firewall blocked it”. This capture cannot show why the reply is absent.
 
-Frames 8 and 10 repeat the lantern question. Frame 11 supplies a matching A answer. The first request is at 0.800 seconds and the response at 2.311 seconds: `(2.311 - 0.800) × 1000 = 1511` ms. Measured from the repeated request at 1.800 seconds, the interval would be 511 ms, but that is not the worksheet's requested measure. The matching identifiers do not reveal which request caused the reply.
+Frames 8 and 10 repeat the lantern question. Frame 11 gives a matching A answer. The first request is at 0.800 seconds. The reply is at 2.311 seconds. The gap is `(2.311 - 0.800) × 1000 = 1511` ms. The retry is at 1.800 seconds. Timing from that retry would give 511 ms. The worksheet asks for the time from the first request. Matching IDs cannot tell us which request caused the reply.
 
 ## Example observation note
 
-“Within this synthetic 11-packet file, three question episodes have A answers, one has an NXDOMAIN reply, and one has no visible reply. The lantern episode includes a repeated request followed by an answer 1511 ms after its first request. The orchard episode repeats without a visible answer. This evidence does not establish packet loss, application success, or a particular faulty device.”
+“This made-up file has 11 packets. Three question episodes have A answers. One has an NXDOMAIN reply. One has no visible reply. The lantern episode has a repeat request. Its answer comes 1511 ms after the first request. The orchard episode repeats with no visible answer. This does not prove packet loss or app success. It does not identify a faulty device.”
 
-Copying this key can check the software and your understanding of the format. It does not establish independent mastery, which remains **NOT assessed**.
+Copying this key can check the software and your grasp of the format. It does not prove independent mastery. That remains **NOT assessed**.

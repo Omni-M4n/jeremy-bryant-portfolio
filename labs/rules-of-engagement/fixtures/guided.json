@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "case_id": "guided",
+  "title": "A desk exercise",
+  "synthetic": true,
+  "context": {
+    "question": "You agree to read a toy computer log for half an hour. Does that also let you change its settings? Write the limits before you touch a system.",
+    "owner_role": "training-target-owner",
+    "evidence_rule": "Private reviewer access; review disposal after 14 days; pause if any real data appears.",
+    "stop_note": "No stop condition is reported in this fictional case."
+  },
+  "data": {
+    "owned": true,
+    "isolated": true,
+    "approved": true,
+    "stop_active": false,
+    "start_minute": 600,
+    "end_minute": 630,
+    "targets": [
+      "desk-lab.test"
+    ],
+    "allowed": [
+      "read-config",
+      "read-log"
+    ],
+    "requests": [
+      {
+        "id": "item-1",
+        "target": "desk-lab.test",
+        "activity": "read-config",
+        "minute": 600
+      },
+      {
+        "id": "item-2",
+        "target": "other-lab.test",
+        "activity": "read-log",
+        "minute": 610
+      }
+    ]
+  },
+  "artifacts": {
+    "scope-template.md": "# Written scope draft\n\nPurpose:\nOwner role:\nApproval status: pending\nIn-scope target:\nOut-of-scope targets:\nAllowed actions:\nExcluded actions:\nTime window and time zone:\nStop conditions and owner contact route:\nPrivate evidence location and permitted reader roles:\nRetention rule and deletion review:\nAssumptions:\n"
+  },
+  "lab_id": "rules-of-engagement"
+}

@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "a/coverage": "complete-at-cutoff",
+    "a/delivery": "late-delivery",
+    "a/heartbeat": "present"
+  },
+  "observations": [
+    "a: source=2; received=2; missing=none; maximum delay seconds=120; budget=60."
+  ],
+  "limitations": [
+    "Coverage is measured only against the supplied source IDs at the stated cutoff, not all activity on a host.",
+    "A heartbeat proves only that its small signal was received; it does not prove event collection is complete.",
+    "Delays may reflect transport, queueing or clock problems. This model assumes the recorded clocks are correct.",
+    "A complete empty source list supports zero listed events in this interval, not a claim that nothing happened anywhere."
+  ]
+}

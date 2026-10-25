@@ -1,0 +1,15 @@
+{
+  "opened_on": "2026-10-25",
+  "references": [
+    {
+      "title": "NIST SP 800-61 Rev. 3",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf",
+      "use": "Response roles and communication."
+    },
+    {
+      "title": "OWASP Logging Cheat Sheet",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+      "use": "Useful evidence and sensitive fields to exclude."
+    }
+  ]
+}

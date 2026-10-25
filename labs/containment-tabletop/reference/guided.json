@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "action-card": "account-card",
+    "continuity": "use-manual-fallback",
+    "resumption": "hold-service-resumption"
+  },
+  "observations": [
+    "Incident lead=response-lead; service owner=service-manager; incident evidence=a1; service evidence=s1.",
+    "Unavailable dependencies=identity; unpassed checks=security,workflow,queue,owner_release.",
+    "Fallback owner=desk-supervisor; ready=true; capacity=8/hour; demand=6/hour; uncovered demand=0/hour; evidence=f1."
+  ],
+  "limitations": [
+    "This is a written non-emergency exercise. It executes no account restriction, host isolation, backup restore or service change.",
+    "The emergency card means use an authorised emergency path; evidence collection must not create unsafe delay.",
+    "Restored bytes alone do not prove that dependencies, secure access, business work or queued tasks are ready.",
+    "The small gate model checks supplied claims and references. People must verify the evidence and approve any real action."
+  ]
+}

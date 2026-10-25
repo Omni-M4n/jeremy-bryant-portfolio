@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "case_id": "guided",
+  "title": "A sign-in desk update",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied fictional statements to draft audience-scoped sections. Write a staff notice only if its facts, action and recipients are supplied; otherwise justify a hold.",
+    "staff_recipient_scope": "Only the three staff who reported the sign-in prompts; this is a draft recipient scope, not permission to send."
+  },
+  "data": {
+    "now_minute": 600,
+    "next_update_minute": 630,
+    "reporting_route": "service-desk.test",
+    "statements": [
+      {
+        "id": "item-1",
+        "text": "Three staff reported repeated sign-in prompts.",
+        "status": "confirmed",
+        "audience": "staff",
+        "source": "case-notes.txt line 1",
+        "owner": "response-lead"
+      },
+      {
+        "id": "item-2",
+        "text": "A copied session may be involved.",
+        "status": "hypothesis",
+        "audience": "technical",
+        "source": "case-notes.txt line 2",
+        "owner": "response-lead"
+      },
+      {
+        "id": "item-3",
+        "text": "Report an unexpected prompt using the known service desk route.",
+        "status": "action",
+        "audience": "staff",
+        "source": "case-notes.txt line 3",
+        "owner": "response-lead"
+      }
+    ]
+  },
+  "artifacts": {
+    "communications-template.md": "# Draft sections - NOT SENT\n\nAnalyst handover: technical statements, evidence, labelled hypotheses, unknowns, action owners, gaps, next update:\n\nManager update: manager statements, effect, uncertainty, decision needed or gap, next update:\n\nStaff section: notice OR HOLD - NOT SENT:\nIntended recipients or missing scope:\nStaff-approved known fact and source, or gap:\nOne staff action and owner, or gap:\nKnown route and next update:\nIf held: missing material, evidence IDs, owner request and review time (request NOT SENT):\n\n| Statement | Fact, hypothesis, unknown or action | Audience | Source | Owner | Next check or gap |\n|---|---|---|---|---|---|---|\n",
+    "case-notes.txt": "item-1 | confirmed | Three staff reported repeated sign-in prompts. | audience=staff | owner=response-lead\nitem-2 | hypothesis | A copied session may be involved. | audience=technical | owner=response-lead\nitem-3 | action | Report an unexpected prompt using the known service desk route. | audience=staff | owner=response-lead\n"
+  },
+  "lab_id": "incident-communications"
+}

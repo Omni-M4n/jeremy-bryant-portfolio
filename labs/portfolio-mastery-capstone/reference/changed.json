@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "item-1": "collect-bounded-evidence",
+    "item-2": "collect-bounded-evidence"
+  },
+  "observations": [
+    "item-1: identity; evidence incomplete.",
+    "item-2: retest; evidence incomplete."
+  ],
+  "limitations": [
+    "The helper checks bounded supplied facts only. A fresh case, human review and later recall are needed; mastery is not assessed."
+  ]
+}

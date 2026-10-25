@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "lab_id": "dns-cache-records",
+  "case_id": "changed",
+  "title": "Cache notebook 2",
+  "synthetic": true,
+  "context": {
+    "question": "Which supplied entries can answer each query at its stated time?",
+    "note": "The source changed site.school.test A to 192.0.2.21 at second 30. Its new TTL is 20. No refresh is present in this cache snapshot."
+  },
+  "data": {
+    "records": [
+      {
+        "owner": "www.school.test",
+        "type": "CNAME",
+        "value": "site.school.test",
+        "received": 0,
+        "ttl": 60
+      },
+      {
+        "owner": "site.school.test",
+        "type": "A",
+        "value": "192.0.2.20",
+        "received": 0,
+        "ttl": 120
+      },
+      {
+        "owner": "site.school.test",
+        "type": "AAAA",
+        "value": "2001:db8::20",
+        "received": 0,
+        "ttl": 40
+      },
+      {
+        "owner": "school.test",
+        "type": "MX",
+        "value": "10 mail.school.test",
+        "received": 0,
+        "ttl": 90
+      }
+    ],
+    "negatives": [],
+    "queries": [
+      {
+        "id": "q01",
+        "name": "www.school.test",
+        "type": "A",
+        "at": 60
+      },
+      {
+        "id": "q02",
+        "name": "site.school.test",
+        "type": "A",
+        "at": 60
+      },
+      {
+        "id": "q03",
+        "name": "site.school.test",
+        "type": "AAAA",
+        "at": 40
+      }
+    ]
+  },
+  "artifacts": {
+    "notebook.txt": "Fictional cache snapshot. Read the records, negative entries and query times in case.json. Do not make live DNS requests.\n"
+  }
+}

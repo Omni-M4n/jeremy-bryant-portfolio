@@ -1,28 +1,14 @@
 # Capture traffic you generated
 
-Run a small HTTP service on your own computer, capture its requests in
-Wireshark, and explain the difference between a successful response, HTTP 404
-and a failed connection. This is an operational exercise: the script makes real
-loopback traffic, and you operate Wireshark. It does not generate a capture file
-or claim that you captured anything.
+Run a small HTTP service on your own computer. Capture its requests in Wireshark. Compare a successful response, HTTP 404 and a failed connection. The script makes real loopback traffic, which stays on your machine. You operate Wireshark. The script does not make a capture file or claim that you captured anything.
 
-Allow 35-50 minutes. You need Python 3.10+, a terminal and an existing Wireshark
-installation with permission to capture loopback traffic. On Windows, loopback
-capture requires Npcap. On Linux, capture permissions must already be configured.
-If the interface is missing or access is denied, record that limitation and ask
-the owner of the computer to arrange setup. No installation, firewall changes or
-VM changes are part of this lab. No programming is required.
+Allow 35-50 minutes. You need Python 3.10+, a terminal, and Wireshark already installed. You must have permission to capture loopback traffic. On Windows, this needs Npcap. On Linux, capture access must already be set up. If the interface is missing or access is denied, note the limit. Ask the computer's owner to arrange setup. This lab includes no installs or changes to firewalls or VMs. You do not need to write code.
 
-The service binds only to `127.0.0.1`. It serves fixed text, never local files.
-The client has no destination option and uses no proxy. A second socket reserves
-a local port without listening, giving the failed connection its own target.
-Both sockets close at completion or interruption. This is a temporary teaching
-service, not a service to leave running.
+The service binds only to `127.0.0.1`. It serves fixed text and never serves local files. The client has no destination option and uses no proxy. A second socket holds a local port but does not listen on it. This gives the failed connection its own target. Both sockets close when the run ends or is stopped. Do not leave this teaching service running.
 
 ## Maintained entry point
 
-Open a terminal in this folder. On Windows use `python`; on Linux use `python3`
-if that is your Python 3 command. Substitute it consistently below.
+Open a terminal in this folder. On Windows, use `python`. On Linux, use `python3` if that is your Python 3 command. Use that choice in all commands below.
 
 ```text
 python lab.py --help
@@ -30,55 +16,19 @@ python lab.py cases
 python lab.py run --scenario guided --out run/guided-01
 ```
 
-Each run needs a fresh direct child of this folder's `run/`. Existing folders,
-linked paths and path traversal are refused. Names use lowercase letters,
-digits, hyphens or underscores. Outputs include `setup.json`, a blank
-`worksheet.txt`, and, after traffic runs, `client-results.json` and
-`server-log.json`. The setup records the generator's SHA-256 for traceability.
-These files stay ignored by version control. Ports and packet
-timing vary; request labels, order and content are fixed for each scenario.
+Each run needs a fresh direct child of this folder's `run/`. This means a folder one level inside it. The tool refuses existing folders, linked paths and paths that escape this folder. Names use lowercase letters, digits, hyphens or underscores. Each run writes `setup.json` and a blank `worksheet.txt`. After it makes traffic, it adds `client-results.json` and `server-log.json`. Setup records the generator's SHA-256 hash, a value used to check which file was used. Version control ignores these files. Ports and packet timing vary. Request labels, order and content stay fixed for each scenario.
 
-Exit codes are `0` for completed traffic generation, `2` for an input/runtime
-error and `130` for interruption. No exit code awards learner completion.
-`--no-wait` skips the capture pause for maintenance checks; it does not capture.
+Exit code `0` means traffic was made. Code `2` means an input or runtime error. Code `130` means the run was stopped. No exit code proves you finished the lab. `--no-wait` skips the capture pause for maintenance checks. It does not capture traffic.
 
 ## Guided capture: Windows or Linux
 
-1. Run the command above. Leave the terminal at its prompt. Record the **HTTP
-   port** and **non-listening port**; the example letters `P` and `Q` below mean
-   these printed numbers, not literal filter text.
-2. Open Wireshark and choose **Capture > Options**. On Windows select only
-   **Adapter for loopback traffic capture**. On Linux select only **lo**. Do not
-   select Wi-Fi, Ethernet or an all-interface capture. Wireshark's
-   [loopback guide](https://wiki.wireshark.org/captureSetup/loopback) explains why
-   traffic sent to the local machine uses a different capture interface.
-3. Copy the complete printed capture filter into that interface's capture
-   filter box. It has this form:
-   `host 127.0.0.1 and tcp and (port P or port Q)`.
-   Click **Start**. Capture filters select what is recorded; packets excluded
-   now cannot be recovered by changing a display filter later. See the
-   [capture filter guide](https://www.wireshark.org/docs/wsug_html_chunked/ChCapCaptureFilterSection.html).
-4. Return to the terminal and press Enter. Wait for its summary, then stop the
-   Wireshark capture with the red square. Use **File > Save As** to save all
-   captured packets as `capture.pcapng` inside this run folder. This is your
-   actual capture, separate from the script's application logs.
-5. In the display filter bar, paste `display_filter` from `setup.json`. It uses
-   different syntax: `ip.addr == 127.0.0.1 && (tcp.port == P || tcp.port == Q)`.
-   If HTTP is not recognised on the changing port, select a packet to port P,
-   use **Analyze > Decode As**, set that TCP port's current protocol to **HTTP**
-   and apply. This is a decoding choice for this session, described in the
-   [protocol dissection guide](https://www.wireshark.org/docs/wsug_html_chunked/ChCustProtocolDissectionSection.html).
-6. Try `http.request`, `http.response.code == 200`, and
-   `http.response.code == 404` separately. Select a request and use **Follow >
-   TCP Stream**. Find its `X-Lab-Id` label, request path and response. Record
-   actual frame numbers and stream numbers; these are not predetermined.
-7. Clear the HTTP filter. Use `tcp.port == Q` with your Q value, then
-   `tcp.flags.reset == 1` to examine resets. Compare this evidence with L4's
-   client result. A refusal normally produces a reset; a local policy may
-   instead cause a timeout. Record what you observed. An HTTP-only display
-   filter would hide this failed connection. The
-   [display filter guide](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html)
-   describes field and value matching.
+1. Run the command above and leave the terminal at its prompt. Record the **HTTP port** and **non-listening port**. Below, `P` and `Q` stand for these printed numbers. Do not type the letters into the filters.
+2. Open Wireshark and choose **Capture > Options**. On Windows, select only **Adapter for loopback traffic capture**. On Linux, select only **lo**. Do not select Wi-Fi, Ethernet or all interfaces. Wireshark's [loopback guide](https://wiki.wireshark.org/captureSetup/loopback) explains why traffic to this machine uses its own interface.
+3. Copy the full printed capture filter into that interface's capture filter box. It has this form: `host 127.0.0.1 and tcp and (port P or port Q)`. Click **Start**. A capture filter chooses which packets to record. A later display filter cannot bring back packets you did not record. See the [capture filter guide](https://www.wireshark.org/docs/wsug_html_chunked/ChCapCaptureFilterSection.html).
+4. Return to the terminal and press Enter. Wait for the summary. Stop the Wireshark capture with the red square. Use **File > Save As**. Save all captured packets as `capture.pcapng` in this run folder. This is your actual capture. The script's logs are separate evidence.
+5. Paste `display_filter` from `setup.json` into the display filter bar. Its syntax differs: `ip.addr == 127.0.0.1 && (tcp.port == P || tcp.port == Q)`. If Wireshark does not show HTTP, select a packet to port P. Use **Analyze > Decode As**. Set that TCP port's current protocol to **HTTP** and apply. This tells Wireshark how to read these packets for this session. See the [protocol dissection guide](https://www.wireshark.org/docs/wsug_html_chunked/ChCustProtocolDissectionSection.html).
+6. Try `http.request`, `http.response.code == 200`, and `http.response.code == 404` one at a time. Select a request and use **Follow > TCP Stream**. Find its `X-Lab-Id` label, path and response. Record the real frame and stream numbers from your run. They are not fixed in advance.
+7. Clear the HTTP filter. Use `tcp.port == Q` with your Q value. Then use `tcp.flags.reset == 1` to look for resets. Compare this evidence with L4's client result. A refused connection will often cause a reset. Local rules may cause a timeout instead. Write what you saw. An HTTP-only filter would hide this failed connection. The [display filter guide](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html) explains how to match fields and values.
 
 ## Interpret the evidence
 
@@ -89,26 +39,10 @@ error and `130` for interruption. No exit code awards learner completion.
 | L3 | `GET /marker`, harmless `ORCHARD-CANARY-42` header | Where can you see the marker in clear text? |
 | L4 | connection to the owned non-listening port | Was any HTTP response possible? |
 
-**Vocabulary:** loopback means this machine; a port identifies a local endpoint;
-TCP provides a connection; HTTP provides application requests and responses;
-a reset rejects or terminates a TCP connection; a capture filter limits recorded
-packets; a display filter limits visible packets.
+**Loopback** means this machine. A **port** names a local endpoint, or place where a service can connect. **TCP** provides a connection. **HTTP** carries app requests and responses. A **reset** rejects or ends a TCP connection. A **capture filter** limits which packets are saved. A **display filter** limits which saved packets you can see.
 
-Finish the worksheet with your capture, filter, request/response frame pairs,
-the L4 result and a short explanation. Keep the worked example closed until you
-have made a prediction. Continue with [drills](DRILLS.md).
+Finish the worksheet. Include your capture, filter and pairs of request and response frames. Add L4's result and a short reason for each claim. Keep the worked example closed until you have made a prediction. Continue with [drills](DRILLS.md).
 
-Troubleshoot an empty capture by checking the selected interface, the printed
-ports and whether capture started before Enter. Use a new run for a retry.
-Do not infer firewall blocking from silence alone. Packet counts, source ports,
-retries, checksums reported by capture tools and timestamps can differ between
-systems. There is no TLS, routing, DNS lookup or external network here. A 200
-response is a response from this toy service, not proof that a real business
-operation succeeded. A 404 is an application result, not a network outage.
+If the capture is empty, check the interface and printed ports. Check that capture began before you pressed Enter. Use a new run to retry. Silence alone does not prove a firewall blocked traffic. Packet counts, source ports, retries and times can differ across systems. So can checksums shown by capture tools. There is no TLS encryption, routing, DNS lookup or outside network here. A 200 comes from this toy service. It does not prove a real business task worked. A 404 is an app result. It does not mean the network is down.
 
-The fixtures and text are original fictional practice materials. No university
-questions or live incident evidence are included. Maintainer tests validate the
-toy service and boundaries; packet capture operation and learner understanding
-still require actual evidence. Handover prompt: **Show one successful exchange,
-one HTTP error and one failed connection. What did each layer establish, and
-what would you check next?**
+The files and text were made up for this lab. They contain no university questions or live incident evidence. Maintainer tests check the toy service and its limits. You still need real capture evidence and an explanation of it. Use this handover prompt: **Show one successful exchange, one HTTP error and one failed connection. What did each layer show? What would you check next?**

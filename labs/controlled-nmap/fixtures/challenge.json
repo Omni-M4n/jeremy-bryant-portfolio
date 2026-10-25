@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "lab_id": "controlled-nmap",
+  "case_id": "challenge",
+  "title": "Inventory notebook 3",
+  "synthetic": true,
+  "context": {
+    "question": "Which scan observations agree with the supplied listener snapshot?",
+    "note": "These are hand-built extracts, not actual scan files. Each row has separate scan and local evidence."
+  },
+  "data": {
+    "targets": [
+      "192.0.2.10"
+    ],
+    "ports": [
+      8000,
+      8001,
+      8002
+    ],
+    "listeners": [
+      {
+        "target": "192.0.2.10",
+        "port": 8000,
+        "bind": "target",
+        "service": "http"
+      },
+      {
+        "target": "192.0.2.10",
+        "port": 8001,
+        "bind": "loopback",
+        "service": "http"
+      }
+    ],
+    "scans": [
+      {
+        "id": "s01",
+        "target": "192.0.2.10",
+        "port": 8000,
+        "state": "open",
+        "method": "table",
+        "label": "http-alt"
+      },
+      {
+        "id": "s02",
+        "target": "192.0.2.10",
+        "port": 8001,
+        "state": "closed",
+        "method": "none",
+        "label": ""
+      },
+      {
+        "id": "s03",
+        "target": "192.0.2.10",
+        "port": 8002,
+        "state": "open",
+        "method": "probe",
+        "label": "ssh"
+      }
+    ]
+  },
+  "artifacts": {
+    "inventory.txt": "Scope: one fictional target, 192.0.2.10; TCP ports 8000,8001,8002. Local notes and scan rows are in case.json.\n"
+  }
+}

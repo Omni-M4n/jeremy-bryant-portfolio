@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "item-1": "revise-claim",
+    "item-2": "supported-within-case",
+    "item-3": "supported-within-case"
+  },
+  "observations": [
+    "item-1: dns; evidence contradicted.",
+    "item-2: access; evidence supported.",
+    "item-3: retest; evidence supported."
+  ],
+  "limitations": [
+    "The helper checks bounded supplied facts only. A fresh case, human review and later recall are needed; mastery is not assessed."
+  ]
+}

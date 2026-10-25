@@ -1,0 +1,12 @@
+{
+  "decisions": {
+    "item-01": "matches-known-training-file"
+  },
+  "observations": [
+    "item-01: directory present=True; declared bytes=42; candidate bytes=42; cluster allocated=False."
+  ],
+  "limitations": [
+    "This parser accepts only the generated 32 KiB FAT12 layout and one-cluster deleted entries. It is not a general recovery tool.",
+    "A known-file hash match checks this training file. Missing entries or different bytes do not establish that all old data is gone or why it changed."
+  ]
+}

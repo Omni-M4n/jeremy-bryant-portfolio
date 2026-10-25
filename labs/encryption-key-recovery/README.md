@@ -4,12 +4,12 @@ Can changing how a note looks keep it secret? Does keeping a saved copy mean you
 can get the original note back? A **backup** is a spare copy kept for recovery.
 Use made-up text and records to work through these questions.
 
-This lab runs on your computer. The helper does real text-conversion and
-comparison checks, explained below. The stories about recovering files are made
-up. No real file is encrypted or decrypted. First complete the file-integrity
-lab, which compares files for changes. You also need Python 3.10+. Allow 30
-minutes for the guided case and 20-30 minutes for each later case. Your own work
-and ability to explain it still need a person's review.
+This lab runs on your computer. The helper changes how text is written and
+compares values, as explained below. These are real checks. The file recovery
+stories are made up. No real file is encrypted or decrypted. First complete the
+file-integrity lab, which compares files for changes. You also need Python 3.10+.
+Allow 30 minutes for the guided case and 20-30 minutes for each later case.
+A person still needs to review your work and how you explain it.
 
 ## Vocabulary and the right question
 
@@ -30,12 +30,12 @@ and ability to explain it still need a person's review.
 | Recovery dependency | Something you need to get a file back. For example, you may need both the right key and permission to use it. |
 | Receipt or ledger | A written record of an action or a list of records. Here, these records are made up for practice. |
 
-The helper really converts Base64 and calculates SHA-256 hashes using tools that
-come with Python. It also hashes the supplied dummy recovered text and compares
-the result with a saved digest. The encrypted-file, key and decryption records
-are fictional, also called synthetic. Checking them does not prove that a real
-restore took place. You need no real key data, account, installation or online
-cloud service.
+The helper really converts Base64 and works out SHA-256 hashes. It uses tools
+that come with Python. It also hashes the given dummy recovered text. Then it
+compares the result with a saved digest. The encrypted-file, key and decryption
+records are made up, also called synthetic. Checking them does not prove a real
+restore took place. You need no real key data, account or online cloud service.
+No extra tool install is needed.
 
 A matching digest does not tell you who wrote a file. Someone who can replace
 both a file and its unprotected saved digest can make the comparison look right.
@@ -45,8 +45,8 @@ safely needs a special password-hashing method, outside this lab.
 
 ## Run a small attempt
 
-Open a terminal in this directory. Use your Python 3.10+ command (`python` below;
-`py -3` may be the Windows command).
+Open a terminal in this folder. Use your Python 3.10+ command (`python` below).
+On Windows, the command may be `py -3`.
 
 ```text
 python lab.py cases
@@ -54,49 +54,52 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the three text ledgers in the attempt folder and the JSON byte boundaries.
-Save predictions in `notes.txt`; fill the blank decisions, explanation and
-evidence list in `answers.json`. Use IDs and ledger references. Only afterwards:
+Read the three text ledgers in the attempt folder. Check which bytes the JSON
+includes. Save predictions in `notes.txt`. Fill the blank decisions, reason and
+evidence list in `answers.json`. Use IDs and ledger references. Only then run:
 
 ```text
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
 python lab.py analyse --case run/attempt-01/case.json
 ```
 
-`check` compares decisions and requires nonempty written fields; a person must
-assess the reasoning. `analyse`, `reference/` and the worked example reveal
-answers. Keep them closed for independent work. Use fresh attempt folders to
-preserve first answers, tool output, help used and corrections. No real secret
-belongs in these records.
+`check` compares decisions and requires written fields. A person must assess
+your reasons. `analyse`, `reference/` and the worked example reveal answers.
+Keep them closed while working alone. Use new attempt folders. Keep first
+answers, tool output, help used and corrections. Do not put real secrets in
+these records.
 
 ## Exact input and decision rules
 
-`samples` records have a method (`base64` or `sha256`), goal (`transport`,
-`change-detection` or `confidentiality`), exact `source_text`, `supplied_output`
-and evidence reference. Text uses UTF-8 without an added newline. JSON `\n` is
-one LF byte. Source text is at most 1024 bytes. Base64 uses the standard canonical
-padded alphabet, with no whitespace; SHA-256 uses 64 lowercase hex characters.
+`samples` records have a method (`base64` or `sha256`). They have a goal
+(`transport`, `change-detection` or `confidentiality`). They also have exact
+`source_text`, `supplied_output` and an evidence reference. Text uses UTF-8
+without an added newline. JSON `\n` is one LF byte. Source text can be at most
+1024 bytes. Base64 uses the standard canonical padded alphabet. It allows no
+whitespace. SHA-256 uses 64 lowercase hex characters.
 
-A sample decision is `method:matches-or-differs:fit`. Base64 is decoded and its
-bytes compared with the source. SHA-256 is recomputed and compared with the
-supplied digest. `fits-stated-goal` means Base64 for transport or SHA-256 for
-change detection; all other combinations are `wrong-purpose`. A method can fit
-the goal while the supplied output differs. Neither supported method fits
-confidentiality. Choose a documented encryption tool for a real confidentiality
-exercise; this package intentionally uses supplied recovery evidence.
+A sample decision is `method:matches-or-differs:fit`. The helper decodes Base64
+and compares its bytes with the source. It works out SHA-256 again and compares
+it with the given digest. `fits-stated-goal` means Base64 for transport or
+SHA-256 for change detection. All other pairs are `wrong-purpose`. A method can
+fit the goal even if the given output differs. Neither method keeps data secret.
+Use a documented encryption tool for a real secrecy task. This package uses
+given recovery records instead.
 
-`keys` records contain `available`, `lost`, `disabled` or `unknown` state and
-`allowed`, `denied` or `unknown` operator access. IDs are inventory references,
-not secrets. `backups` name exactly one required key, ciphertext presence, a
-supplied ciphertext check, an attempt state, a trusted `baseline_sha256`, and
-`restored_text`. `null` means no text supplied; `""` is an actual zero-byte result.
-A reported success with supplied text causes a real SHA-256 comparison of that
-dummy text. Any attempt requires present ciphertext, an available key and allowed
-access; non-success attempts must have null restored text. Contradictions,
-duplicates, unknown keys/fields and malformed encodings are rejected.
+`keys` records have an `available`, `lost`, `disabled` or `unknown` state.
+Operator access is `allowed`, `denied` or `unknown`. IDs point to inventory
+records. They are not secrets. Each entry in `backups` names exactly one required
+key. It states whether ciphertext is present, gives a ciphertext check and
+records the attempt state. It also has a trusted `baseline_sha256` and
+`restored_text`. Here, `null` means no text was given. In contrast, `""` is a
+real zero-byte result. A success record with text triggers a real SHA-256 check
+of that dummy text. Every attempt needs ciphertext, an available key and allowed
+access. If the attempt did not succeed, restored text must be null. The helper
+rejects conflicting records and duplicates. It also rejects unknown keys or
+fields and badly formed encodings.
 
-For backups the helper reports the first applicable condition in this order;
-its observation retains every dependency:
+For backups, the helper reports the first condition that applies in this list.
+Its output still records all the things needed for recovery:
 
 | Condition | Decision |
 | --- | --- |
@@ -112,15 +115,14 @@ its observation retains every dependency:
 | Success, no restored text supplied | `restored-content-unverified` |
 | Success and restored digest matches baseline | `restore-verified-in-supplied-evidence` |
 
-The last result is scoped to the supplied receipt and dummy content. A missing
-ciphertext baseline does not prevent comparing restored bytes with their trusted
-plaintext baseline; the absent ciphertext check remains visible. A changed
-ciphertext record takes priority and requires investigation, even if other
-records look encouraging. The model has no plaintext copies, alternate wrapping
-keys, caches, replicas of key material or external recovery path. "Unavailable"
-is bounded to this inventory, not a universal assertion that recovery is
-mathematically impossible. A provider may have documented exceptions and
-service-specific recovery procedures.
+The last result applies only to the given receipt and dummy content. A missing
+ciphertext baseline does not block the restored-byte check. Those bytes can still
+be compared with their trusted plaintext baseline. The missing ciphertext check
+stays visible. A changed ciphertext record takes priority. It needs review even
+if other records look good. This model has no plaintext copies, other wrapping
+keys, caches, key copies or outside recovery path. Here, "unavailable" means
+unavailable in this inventory. It does not mean recovery is always impossible.
+A real provider may document exceptions or recovery steps for its service.
 
 ## Evidence and a recovery plan
 
@@ -149,29 +151,30 @@ python test_lab.py
 python lab.py verify
 ```
 
-These validate the helper and fixtures. They do not demonstrate practical use of
-an encryption tool or learner mastery. Cleanup means removing only your own
-new `run/attempt-*` folders after retaining the evidence you want. There is no
-host setting to roll back. Keep original fixtures and first attempts unchanged.
+These check the helper and fixtures. They do not show real use of an encryption
+tool or prove learner skill. For cleanup, save the evidence you want first.
+Remove only your own new `run/attempt-*` folders. No host setting needs to be
+restored. Keep original fixtures and first attempts unchanged.
 
 ## Primary sources and limits
 
 Opened 25 October 2026:
 
 * [RFC 4648, sections 4, 10 and 12](https://www.rfc-editor.org/rfc/rfc4648)
-  specifies Base64, provides test vectors and states that encoding offers no
-  computational confidentiality.
+  defines Base64 and gives test examples. It states that encoding does not keep
+  data secret.
 * [NIST FIPS 180-4: Secure Hash Standard](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)
-  defines message digests for detecting changes. This lab uses SHA-256 through
-  the standard library; it is not a cryptographic implementation exercise.
+  defines digests used to detect changes. This lab uses SHA-256 from Python's
+  standard library. You do not build a hash algorithm here.
 * [NIST SP 800-57 Part 1 Revision 5](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final)
-  supplies the key-management context: key material needs protection and lifecycle
-  planning, including availability and recovery.
+  explains how to manage keys. Key data needs protection and a plan for each
+  stage of its use. This includes access and recovery.
 * [AWS KMS: Delete an AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html)
-  provides a real service example of decryption dependence on key material,
-  distinguishes deletion from disabling and documents exceptions. This lab is
-  not a KMS state machine and gives no cloud deletion instructions.
+  gives a real example of how reading encrypted data depends on keys. It
+  distinguishes deleting a key from disabling it and lists exceptions. This lab
+  does not model every KMS state or give cloud deletion steps.
 
-No encryption algorithm, tool compatibility, real ciphertext, authentication tag,
-cryptographic randomness or provider account state is verified. Fictional
-success/failure receipts are exercise inputs, never a claim of completed work.
+The helper does not check an encryption algorithm or whether tools work together.
+It checks no real ciphertext, authentication tag, cryptographic randomness or
+provider account state. Made-up success and failure receipts are task inputs.
+They do not claim that the work was done.

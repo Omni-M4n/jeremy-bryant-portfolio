@@ -1,49 +1,55 @@
 # Trace a storage exposure path
 
-Practise tracing anonymous read access through two grant routes and three blocking controls. Explain the difference between an effective exposure and a dormant grant that could reappear after a setting changes.
+Trace who can read stored files without signing in. Check two ways to grant access and three ways to block it. Explain when a grant is blocked and what could make it work again.
 
-**Time:** 30-45 minutes for a first pass; use the later recall task on another day.
-**Prerequisites:** Basic file navigation, editing a small JSON worksheet, and introductory networking/security vocabulary. No professional security experience, cloud account, coding background or programming changes are required.
+**Time:** Allow 30-45 minutes for your first pass. Try the recall task on another day.
+**Before you start:** You need to open files and edit a small JSON worksheet. JSON stores named fields and lists as text. Basic network and security terms will help. You do not need work experience, a cloud account or coding skills. You will not change code.
 
-> **Vocabulary:** **Bucket**: a container of objects. **Policy**: rules granting or denying access. **ACL**: another permission list. **Anonymous read**: reading without signing in. **Dormant grant**: a grant currently blocked by another control.
+## Key words
 
-## Evidence and exact semantics
+A **bucket** holds stored objects, such as files. A **policy** sets rules that grant or deny access. An **ACL** is another list of access rights. **Anonymous read** means reading without signing in. A **dormant grant** is a grant that a control blocks for now. A **Boolean** is either `true` or `false`.
 
-The case envelope is defined in [the shared contract](../FOUNDATION-CONTRACT.md).
-`data` contains `account_block_public` (Boolean) and a nonempty `buckets` list.
-Each bucket has a unique lowercase `id`; `purpose` is `internal` or `public-site`;
-`data_class` is `public`, `internal` or `restricted`; `approval` is `approved` or
-`none`. The remaining fields are Booleans: `bucket_block_public`,
-`policy_public_read`, `acl_public_read`, and `explicit_deny_public_read`.
-Unknown keys, duplicate IDs and non-Boolean flags are rejected.
+## Evidence and exact rules
 
-This is a deliberately simplified exercise model, **not an AWS evaluator**.
-Evaluate in this order:
+The case format is set out in [the shared contract](../FOUNDATION-CONTRACT.md). The `data` field has `account_block_public` and a `buckets` list. The list must not be empty. `account_block_public` is a Boolean.
 
-1. A public grant exists when policy **OR** ACL allows public read.
-2. A blocker exists when account block **OR** bucket block **OR** explicit deny
-   is true. Any blocker overrides both grant routes here.
-3. Effective public access is approved only when purpose is `public-site`, class
-   is `public`, and approval is `approved` together.
+Each bucket has these fields. Each `id` must be unique and lowercase.
 
-Use these exact decision strings for each bucket ID:
+| Field | Allowed values |
+| --- | --- |
+| `id` | A unique lowercase ID. |
+| `purpose` | `internal` or `public-site`. |
+| `data_class` | `public`, `internal` or `restricted`. |
+| `approval` | `approved` or `none`. |
+| `bucket_block_public` | A Boolean. |
+| `policy_public_read` | A Boolean. |
+| `acl_public_read` | A Boolean. |
+| `explicit_deny_public_read` | A Boolean. |
+
+The tool rejects unknown keys and repeated IDs. Each flag must be a Boolean.
+
+This is a small practice model. It is **not an AWS evaluator**. Apply the rules in this order:
+
+1. There is a public grant if the policy **OR** the ACL allows public read. Either route is enough.
+2. A block applies if the account block, bucket block **OR** explicit deny is true. Any one of these blocks both grant routes here.
+3. A grant works only if no block applies. That public access is approved only if all three approval tests pass. The purpose must be `public-site`, the class must be `public`, and approval must be `approved`.
+
+Use an exact decision string for each bucket ID:
 
 | Decision | Exact meaning |
 | --- | --- |
-| `no-public-grant` | Neither grant exists, whether or not blockers exist. |
-| `blocked-public-grant` | At least one grant exists, but at least one blocker applies. |
-| `public-read-approved` | An effective grant and all three publication conditions exist. |
-| `public-read-unapproved` | An effective grant exists without all publication conditions. |
+| `no-public-grant` | Neither grant exists. Blocks do not affect this label. |
+| `blocked-public-grant` | At least one grant exists and at least one block applies. |
+| `public-read-approved` | A grant works and all three approval tests pass. |
+| `public-read-unapproved` | A grant works but not all three approval tests pass. |
 
-An approval does not override data classification. Removing a policy grant does
-not remove an ACL grant. This model examines read access only.
+Approval does not override the data class. Removing a policy grant does not remove an ACL grant. This model checks read access only.
 
 ## Run the exercise
 
 From the repository root, enter this folder with `cd labs/cloud-storage-review`.
-Use Python 3.10 or newer. On Windows, `py` may replace `python` if that is your
-installed launcher. No package install, account, cloud subscription or billing
-setup is needed. Commands run entirely offline and change no real service.
+
+Use Python 3.10 or newer. On Windows, you may use `py` in place of `python` if it is your installed launcher. You do not need to install packages or set up an account or billing. All commands run offline. They change no real service.
 
 ```text
 python lab.py cases
@@ -51,11 +57,9 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and any extracted `.txt` evidence. Edit the blank
-`run/attempt-01/answers.json`: fill every decision with the exact vocabulary
-below, write your own explanation, and cite record IDs or line references in
-`evidence`. Keep `notes.txt` for prediction, uncertainty and help used.
-Only after saving your prediction:
+Read the case and any `.txt` evidence files. Open the blank `run/attempt-01/answers.json` worksheet. Fill in each decision with an exact label from the rules above. Write your own reason for each choice. In `evidence`, cite record IDs or line numbers from this case. Use `notes.txt` to record your first prediction, doubts and any help used.
+
+Save your prediction before you run these commands:
 
 ```text
 python lab.py analyse --case run/attempt-01/case.json
@@ -64,46 +68,39 @@ python test_lab.py
 python lab.py verify
 ```
 
-The worksheet has exactly `decisions` (object), `explanation` (text), and
-`evidence` (list of text references). For example, an evidence entry can be a
-record ID plus its field name. Use your own case IDs, not invented references.
-`check` compares decision strings and requires nonempty written fields; a person
-must assess their accuracy. `verify` checks shipped fixtures, not learner skill.
-Exit codes are 0 for success/match, 1 for differences or incomplete written
-fields, and 2 for invalid input. Default `--case` is the guided fixture beside
-the script. Explicit input paths are relative to the working directory; `--out`
-is relative to this lab and must be a new folder below `run/`.
+The worksheet has just three fields:
 
-For the next cases, prepare fresh folders:
+- `decisions` is an object. It pairs each record ID with your chosen label.
+- `explanation` is text. Write why you chose those labels.
+- `evidence` is a list of text references. You could name a record ID and its field. Use IDs from your case. Do not invent them.
+
+`check` compares the decision labels. It also checks that you filled in the written fields. A person must judge whether those words are right. `verify` checks the supplied test cases. It does not assess your skill.
+
+The exit code tells you what happened. Code 0 means success or a match. Code 1 means a mismatch or blank written fields. Code 2 means invalid input. If you omit `--case`, the command uses the guided case beside the script. Input paths start from your current terminal folder. The `--out` path starts from this lab folder. It must name a new folder below `run/`.
+
+Use fresh folders for the next cases:
 
 ```text
 python lab.py prepare --scenario changed --out run/attempt-02
 python lab.py prepare --scenario challenge --out run/attempt-03
 ```
 
-Replace `attempt-01` in `show`, `analyse` and `check` with the chosen folder.
-Edit practice copies only. Do not overwrite fixture or reference files.
+Replace `attempt-01` in `show`, `analyse` and `check` with your chosen folder. Edit practice copies only. Do not overwrite the supplied fixtures or reference answers. Fixtures are the starting cases.
 
 ## Deliverable and handover
 
-Save one completed worksheet and a short evidence note for each case. Include
-your prediction, changed judgment, uncertainty, and one next check you cannot
-perform from this evidence. Record whether you used the worked example or help.
-Ask a reviewer: "Can you reproduce my decision from these record IDs, and which
-claim goes beyond the evidence?" Your independent status remains **unassessed**;
-matching output is not a qualification, professional experience or proof of
-mastery. These are original fictional practice cases, not assessment submissions.
+Save a filled worksheet and a short evidence note for each case. Include your first prediction and any change to it. State what is still unclear. Name one next check that these files cannot answer. Record any help used, including the worked example.
+
+Ask a reviewer: "Can you reach my decision from these record IDs? Which claim goes beyond the evidence?" Your skill at doing this alone is still **unassessed**. A matching output does not prove skill, a qualification or work experience. These are made-up practice cases. They are not work for assessment.
 
 ## Limits
 
-Real storage services have richer policy languages, conditional access, object ownership and separate public-access settings. Do not paste this Boolean model into a provider account. A blocked grant still deserves review because later configuration changes can expose it.
+Real storage services have more complex policy rules. Access may depend on conditions, object ownership and separate public-access settings. Do not apply this Boolean model to a real provider account. Review a blocked grant too. A later settings change could make it public.
 
 ## Primary references
 
-The provider documentation explains that several access routes and blocking settings interact. The exercise collapses them into named Boolean fields; it does not reproduce the four provider settings or their full evaluation rules.
+The provider guide explains how access grants and blocks interact. This exercise puts them into a few Boolean fields. It does not copy the provider's four settings or all their rules.
 
 - [AWS: blocking public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
 
-Links are optional further reading, checked 2026-10-23. Running this lab does
-not fetch them. See [the worked example](WORKED-EXAMPLE.md) after your prediction
-and [the drills](DRILLS.md) for varied practice.
+The links are optional extra reading. They were checked on 2026-10-23. The lab does not fetch them. Read [the worked example](WORKED-EXAMPLE.md) after you save your prediction. Use [the drills](DRILLS.md) for more practice.

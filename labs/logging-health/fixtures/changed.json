@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "lab_id": "logging-health",
+  "case_id": "changed",
+  "title": "Desk record set B",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "observed_at": "2026-01-15T00:05:00Z",
+    "delay_budget_seconds": 60,
+    "intervals": [
+      {
+        "id": "a",
+        "start": "2026-01-15T00:00:00Z",
+        "end": "2026-01-15T00:02:00Z",
+        "source_ids": [
+          "e1",
+          "e2"
+        ],
+        "received": [
+          {
+            "id": "e1",
+            "event_at": "2026-01-15T00:00:10Z",
+            "ingested_at": "2026-01-15T00:02:10Z"
+          },
+          {
+            "id": "e2",
+            "event_at": "2026-01-15T00:01:00Z",
+            "ingested_at": "2026-01-15T00:02:00Z"
+          }
+        ],
+        "heartbeat": true
+      }
+    ]
+  },
+  "artifacts": {}
+}

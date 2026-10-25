@@ -1,0 +1,48 @@
+{
+  "status": "Reviewed practice materials; learner skill has not been assessed.",
+  "checked_on": "2026-10-25",
+  "python_version": "3.12.14",
+  "isolated_unit_tests": {
+    "run": 16,
+    "passed": 15,
+    "skipped": 1,
+    "failed": 0,
+    "skip_reason": "Local symlink creation was unavailable; dynamic symlink refusal was not exercised."
+  },
+  "references": {
+    "cases": 3,
+    "matched": 3,
+    "method": "Expected decisions and observations were independently specified in source before analyser imports."
+  },
+  "cli": {
+    "neutral_case_titles": true,
+    "fresh_challenge_preparation": true,
+    "answers_initially_blank": true,
+    "blank_check_exit_code": 1
+  },
+  "actual_operations": [
+    {
+      "scenario": "guided",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "dummy-file acquisition and handling register"
+    },
+    {
+      "scenario": "changed",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "dummy-file acquisition and handling register"
+    },
+    {
+      "scenario": "challenge",
+      "completed": true,
+      "source_bytes_unchanged": true,
+      "operation": "dummy-file acquisition and handling register"
+    }
+  ],
+  "unrun": [
+    "Physical device imaging, forensic write blockers, real evidence handling and legal admissibility were not tested."
+  ],
+  "review_boundary": "Unit tests and hashes establish bounded behavior and byte identity, not factual completeness or learner mastery.",
+  "summary_scope": "Public summary of recorded checks. Detailed run records are kept privately."
+}

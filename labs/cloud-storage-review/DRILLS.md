@@ -1,28 +1,12 @@
 # Practice progression: Trace a storage exposure path
 
-Use the exact prepare/show/check commands in [README.md](README.md). Save a
-prediction before running `analyse`. Fresh folders preserve earlier attempts.
+Use the prepare, show and check commands in [README.md](README.md). Save a prediction before you run `analyse`. Use fresh folders to keep earlier attempts.
 
-1. **Guided (10 minutes):** complete the Boolean expression for each guided
-   bucket. Predict decisions before opening the worked example.
-2. **With prompts (5 minutes):** Which route grants the rota? Which field blocks
-   the archive? Which three fields make the poster's exposure acceptable here?
-3. **Independent (10 minutes):** prepare `challenge` in a fresh folder.
-   Trace each possible public-access path and apply the stated approval requirements. Record a decision and supporting fields for every resource.
-   Save decisions, evidence references and a short handover before opening
-   `analyse`, reference answers or the worked example. Record any help used.
-4. **Changed evidence (5 minutes):** use `changed`. What happens to the approved
-   public site when account blocking is enabled? In a copied case, set only the
-   account flag false and predict which two decisions change. Do not merely
-   rename a bucket.
-5. **Teach back (5 minutes):** explain to a teammate why "policy removed" and
-   "public read removed" are different claims. Name one real provider feature
-   this model omits.
-6. **Later recall (next day, 5 minutes):** without the reference, reconstruct the
-   three blockers and two grant paths. Revisit one misprediction and cite the
-   exact field you had overlooked.
+1. **Guided (10 minutes):** write the true/false rule for each guided bucket. Save your decisions before you open the worked example.
+2. **With prompts (5 minutes):** which route grants access to the rota? Which field blocks the archive? Which three fields approve the poster's public access here?
+3. **Independent (10 minutes):** prepare `challenge` in a fresh folder. Trace each route that might grant public access. Apply the approval rules. Record a decision and its supporting fields for each resource. Save your answers, evidence and a short handover first. Then open `analyse`, the reference answers or worked example. Record any help used.
+4. **Changed evidence (5 minutes):** prepare `changed`. Work out each result from its fields. In a practice copy, set only the account flag to false. Predict the result for every bucket before you check it. Cite the rule for each result that stays the same or changes. Do more than rename a bucket.
+5. **Teach back (5 minutes):** explain why removing a policy and removing public read are different claims. Name one real provider feature that this model leaves out.
+6. **Later recall (next day, 5 minutes):** write the three blocks and two grant routes without the reference. Revisit one wrong prediction. Cite the exact field you missed.
 
-For each pass record: evidence references, decision, reason, uncertainty, help
-used and one next check. Have another person review the explanation and one
-unfamiliar case if possible. Until that occurs, independent completion is
-unassessed even if every decision matches. Keep all attempts below `run/`.
+For each pass, record your decision and reason. Cite the evidence. State what is unclear, any help used and one next check. If you can, ask someone to review your words and a new case. Until then, your skill at doing this alone is unassessed, even if all labels match. Keep all attempts below `run/`.

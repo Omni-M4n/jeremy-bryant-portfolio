@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "asset-discovery",
   "case_id": "challenge",
-  "title": "Two gaps on one host and an approved silent appliance",
+  "title": "Saved scan and inventory: case C",
   "synthetic": true,
   "context": {
     "question": "Which saved observations agree with the approved inventory, and which need an owner check?"

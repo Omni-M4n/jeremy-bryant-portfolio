@@ -1,22 +1,12 @@
 # HTTP access-log triage: original guided practice
 
-Read a small web-server access-log export, reconstruct a request sequence and
-explain which evidence deserves a closer look. The busiest source is not
-necessarily the most concerning. A response status alone cannot tell you what
-information a visitor received or whether an account was accessed.
+Which web requests need a closer look? Read this small access-log export and put its requests in order. An access log records requests seen by a server. The busiest source may not be the most concerning. A response status alone cannot show what a visitor received. It also cannot show whether they accessed an account.
 
-These are original guided materials for someone with introductory networking or
-Wireshark experience. Everything in the cases is fictional: the site, addresses,
-events, notes and future dates. This is separate practice, not a university
-submission or evidence of professional experience. Jeremy's independent
-completion has not been assessed. The supplied utility is a tool for the exercise;
-the learner is not expected to develop Python or claim independent authorship of it.
+These new guided materials suit someone with basic networking or Wireshark experience. The site, addresses, events, notes and future dates are made up. This is separate practice. It is not a university submission or proof of professional experience. Jeremy's independent completion has not been assessed. Use the supplied tool for this exercise. You do not need to write Python. Do not claim you wrote the tool without help.
 
 ## Start here
 
-Use Python 3.10 or newer. Only its standard library is needed. Open a terminal in
-this folder; on Windows, `py` can replace `python` if that is the installed command.
-No command makes network requests, starts a server or contacts a target.
+Use Python 3.10 or newer. Only its standard library is needed. Open a terminal in this folder. On Windows, `py` can replace `python` if that is the installed command. No command makes network requests, starts a server or contacts a target.
 
 ```sh
 python lab.py --help
@@ -26,19 +16,11 @@ python lab.py triage
 python lab.py check --report runs/report.json
 ```
 
-Read [`fixture/context.json`](fixture/context.json) alongside the sorted timeline.
-The table itself is [`fixture/access.csv`](fixture/access.csv). Open the generated
-`runs/report.json` in a text editor. Write a short interpretation before opening
-the [worked example](WORKED-EXAMPLE.md), then try the [drills](PRACTICE.md).
+Read [`fixture/context.json`](fixture/context.json) beside the sorted timeline. The data table is [`fixture/access.csv`](fixture/access.csv). Open the generated `runs/report.json` in a text editor. Write a short note about what the data shows. Then open the [worked example](WORKED-EXAMPLE.md) and try the [drills](PRACTICE.md).
 
 ## Compact command contract
 
-`lab.py` is the only maintained command entry point. Input paths are relative to
-the terminal's current folder; output paths are relative to this lab folder.
-Generated cases and reports must be inside this lab's ignored `runs/` folder.
-Every output must be new, including a case directory that would otherwise be
-empty. Repeating an output path is refused to protect fixtures and your notes.
-Use a fresh name to repeat an exercise.
+`lab.py` is the only maintained command entry point. Input paths start from the terminal's current folder. Output paths start from this lab folder. New cases and reports must go in this lab's `runs/` folder. Git ignores it. Every output must be new. Even an empty case folder cannot be reused. The tool refuses repeated paths to protect fixtures and notes. Use a fresh name to repeat an exercise.
 
 | Command | Input | Result |
 | --- | --- | --- |
@@ -48,17 +30,19 @@ Use a fresh name to repeat an exercise.
 | `check [--case DIRECTORY] [--report FILE]` | Manifest and case files; optional report | Recreate expected bytes from the seed, compare all three files, and optionally recalculate the report |
 | `test` | Supplied fixture and temporary cases | Standard-library unit checks; temporary folders removed only from the test's own locations |
 
-`generate --output runs/my-case` sets a fresh case directory. Exit status `0`
-means completion, `1` means software tests failed, and `2` means invalid input or
-a file problem. These numbers are not learner grades. `check` tests reproducible
-file content and calculations; it does not judge an explanation or prove security.
+`generate --output runs/my-case` sets a fresh case folder. An exit status is the number returned by a command:
+
+| Status | Meaning |
+| --- | --- |
+| `0` | Completed |
+| `1` | Software tests failed |
+| `2` | Invalid input or a file problem |
+
+These numbers are not learner grades. `check` rebuilds file content and repeats the calculations. It does not judge an explanation or prove security.
 
 ## Reading an HTTP request
 
-**HTTP** is the application protocol used for web requests and responses. An
-access log records what the logging component observed. This lab uses a deliberately
-small **CSV** export, a text table with comma-separated fields. It is not a raw
-packet capture or a parser for every web-server log format.
+**HTTP** sets the rules for web requests and responses. An access log records what the logging component saw. This lab uses a small **CSV** export. CSV is a text table with fields split by commas. This is not a raw packet capture. Its parser does not support every web-server log format.
 
 | Field | Meaning in this export |
 | --- | --- |
@@ -73,10 +57,13 @@ packet capture or a parser for every web-server log format.
 | `user_agent` | A client-supplied label beginning `Practice`; not verified identity |
 | `synthetic` | Literal `true`, marking every record fictional |
 
-`GET` requests a representation of a resource. `HEAD` requests similar response
-metadata without a response body. `POST` asks a resource to process submitted
-content; this export omits that content. These meanings follow
-[HTTP method definitions](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3).
+| Method | Meaning |
+| --- | --- |
+| `GET` | Requests a representation of a resource, such as a page |
+| `HEAD` | Requests similar response metadata, without a response body |
+| `POST` | Asks a resource to process submitted content; that content is absent from this export |
+
+These meanings follow the [HTTP method definitions](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3). Metadata describes a response, such as its type or length. The body holds the returned content.
 
 | Status used here | Basic meaning |
 | --- | --- |
@@ -85,60 +72,48 @@ content; this export omits that content. These meanings follow
 | `403` | The server understood the request and refuses it |
 | `404` | No current representation was found, or the server is unwilling to disclose one |
 
-See the [HTTP status definitions](https://www.rfc-editor.org/rfc/rfc9110.html#section-15).
-For this exercise, `HEAD` with `body_bytes=0` is expected. A `POST /login` response
-with status `200` is not an authentication-result field. Body size does not tell
-you whether a response was a form, a fallback page or sensitive information.
+See the [HTTP status definitions](https://www.rfc-editor.org/rfc/rfc9110.html#section-15). In this exercise, `HEAD` with `body_bytes=0` is expected. A `POST /login` response with status `200` is not a sign-in result. Body size alone cannot show what came back. It might be a form, a fallback page or sensitive information. A fallback page is returned when a requested route is not found.
 
 ## What the three review rules count
 
-The program groups requests by the exact `(host, source_ip)` pair over the
-**whole collection interval**, including both endpoints. It reports:
+The program groups requests by the exact `(host, source_ip)` pair. It uses the **whole collection interval**, including both endpoints. These three rules produce prompts for review:
 
-1. **Request volume:** at least eight requests by default. This is a count, not
-   requests per second. Compare collection durations before comparing counts.
-2. **Watched-path variety:** at least three distinct paths from `/.env`, `/admin`,
-   `/backup.zip` and `/debug`. These are exercise choices, not a universal list
-   of malicious paths. An authorised tester or normal site feature could use them.
-3. **Watched-path 200:** any request for a watched path with status exactly `200`.
-   This asks what the server returned; it does not establish disclosure.
+1. **Request volume:** at least eight requests by default. This counts requests, not requests per second. Compare the time spans before comparing counts.
+2. **Watched-path variety:** at least three distinct paths from `/.env`, `/admin`, `/backup.zip` and `/debug`. We chose these paths for the exercise. They are not a universal list of harmful paths. An authorised tester or normal site feature could use them.
+3. **Watched-path 200:** any request for a watched path with status exactly `200`. This asks what the server returned. It does not prove that data was disclosed.
 
-For rules 2 and 3, only text after `?` is removed before comparison. Matching is
-case-sensitive and exact. `/admin?view=1` matches `/admin`; `/Admin` and `/admin/`
-do not. Repeated requests and query variations do not increase path variety.
-The parser accepts simple paths and queries only. It rejects percent encoding,
-network-path references, traversal forms, unsupported methods and live addresses.
-It does not decode or normalise paths, classify payloads or detect every attack.
+For rules 2 and 3, matching is exact and case-sensitive. Letter case matters. The query, from `?` onward, is removed before comparison. No other path changes are made.
 
-Rules do not trust user-agent labels or automatically excuse a source described
-in a context note. They do not combine different addresses. Shared addresses,
-proxies, changing addresses and missing logs can change the interpretation.
-Several prompts can refer to the same sequence. Neither prompt counts nor
-request counts are counts of incidents, attackers or affected people.
+| Path or input | Treatment |
+| --- | --- |
+| `/admin?view=1` | Matches `/admin` |
+| `/Admin` and `/admin/` | Do not match `/admin` |
+| Repeats and query variations | Do not increase path variety |
+| Accepted paths and queries | Simple forms only |
+| Rejected forms | Percent encoding, network-path references, traversal forms, unsupported methods and live addresses |
+
+The parser does not decode or normalise paths. It does not classify payloads or detect every attack.
+
+Rules do not trust user-agent labels. A context note does not automatically excuse a source. The rules do not combine different addresses. Shared addresses, proxies, changing addresses and missing logs can affect your view. Several prompts can refer to the same sequence. Prompt and request counts do not count incidents, attackers or affected people.
 
 ## Write an evidence-led handover
 
 Keep three things separate in a short note saved under `runs/`:
 
-- **Observed:** collection interval and coverage, source, methods, targets,
-  statuses, counts and evidence IDs. Record the rule settings.
-- **Interpretation:** one plausible explanation, one alternative, and what the
-  export cannot establish. A context note supports an explanation but needs
-  corroboration before being treated as confirmed operational history.
-- **Next check:** the smallest additional evidence that would change the
-  decision, such as scheduled-job records, route configuration, a corresponding
-  application event or the preserved response content. Describe the request;
-  do not contact these invented addresses or replay the requests.
+- **Observed:** record the collection interval and coverage. Add the source, methods, targets, statuses, counts and evidence IDs. Record the rule settings.
+- **Interpretation:** give one possible explanation and one alternative. State what the export cannot prove. A context note can support your view. Check it against other evidence before treating it as confirmed history.
+- **Next check:** name the smallest extra evidence that could change the decision. Examples include scheduled-job records, route settings, a matching app event or the saved response content. Describe the request only. Do not contact these made-up addresses or replay the requests.
 
-There are no authentication results, request or response bodies, cookies, proxy
-chains, process activity or file changes in this export. `compromise_assessed`
-is `false` because that assessment is not made. It does not mean the site has
-been declared uncompromised.
+| Missing from this export | Why it matters |
+| --- | --- |
+| Authentication results, request and response bodies, cookies, proxy chains, process activity and file changes | The log alone cannot show these facts |
+| A compromise assessment | `compromise_assessed` is `false` because no such assessment was made |
+
+That `false` value does not mean the site has been declared free of compromise.
 
 ## Variants and reproducibility
 
-A **seed** reproduces the same fictional case. Changing it varies addresses,
-site label, date and file order. The **scenario** changes the evidence:
+A **seed** makes the same fictional case again. A new seed changes addresses, site label, date and file order. The **scenario** changes the evidence:
 
 | Scenario | Reasoning change |
 | --- | --- |
@@ -147,22 +122,8 @@ site label, date and file order. The **scenario** changes the evidence:
 | `logging-gap` | A known missing interval hides some requests, so a rule can stop matching |
 | `crawler-only` | Ordinary crawling still matches the volume rule |
 
-`complete-for-fixture` means all planned events were exported by this generator.
-It is not a claim that real access logs could establish completeness. `known-gap`
-means the listed inclusive interval has no retained rows. The number and content
-of missing events are not inferred by triage. Counts are lower bounds for that
-collection period. A lack of prompts is especially weak evidence when records
-are missing.
+`complete-for-fixture` means the generator exported all planned events. It does not mean real access logs could prove their own completeness. `known-gap` means no rows remain for the listed interval, including both endpoints. Triage does not infer how many events are missing or what they contained. Counts give only a lower bound for that period. Missing records make a lack of prompts especially weak evidence.
 
-The checked-in fixture uses seed **53**, scenario **mixed**, generator **1.0.0**.
-[`fixture/manifest.json`](fixture/manifest.json) records its fictional provenance
-and SHA-256 fingerprints of the CSV and context. The program regenerates expected
-bytes instead of trusting rewritten hashes. Files are UTF-8 with LF endings;
-local `.gitattributes` preserves LF in Git. A hash verifies file identity, not
-authorship, global novelty or learner competence.
+The checked-in fixture uses seed **53**, scenario **mixed**, generator **1.0.0**. [`fixture/manifest.json`](fixture/manifest.json) records its made-up origin. It also holds SHA-256 fingerprints of the CSV and context. A fingerprint is a value made from the file's bytes. The program rebuilds expected bytes rather than trusting rewritten hashes. Files are UTF-8 with LF endings. Local `.gitattributes` preserves LF in Git. A hash checks file identity. It does not prove who wrote it, global novelty or learner skill.
 
-The addresses use the [IPv4 documentation ranges](https://www.rfc-editor.org/rfc/rfc5737.html#section-3),
-and the site uses the [reserved `.test` name](https://www.rfc-editor.org/rfc/rfc2606.html#section-2).
-Do not substitute real logs or personal data. Run `python lab.py test` after
-changing the utility. Independent learning evidence requires an explanation and
-an unfamiliar variant; running the utility or reading the answer is practice.
+Addresses use the [IPv4 documentation ranges](https://www.rfc-editor.org/rfc/rfc5737.html#section-3). The site uses the [reserved `.test` name](https://www.rfc-editor.org/rfc/rfc2606.html#section-2). Do not substitute real logs or personal data. Run `python lab.py test` after changing the tool. Evidence of independent learning needs an explanation and an unfamiliar variant. Running the tool or reading the answer is practice.

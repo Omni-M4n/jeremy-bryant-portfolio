@@ -2,7 +2,7 @@
   "schema_version": 1,
   "lab_id": "cloud-storage-review",
   "case_id": "changed",
-  "title": "An account block also stops an approved public site",
+  "title": "Account and bucket access settings",
   "synthetic": true,
   "context": {
     "question": "Which buckets permit anonymous reads in this deliberately simplified model?"

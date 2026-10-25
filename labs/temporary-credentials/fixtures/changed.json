@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "lab_id": "temporary-credentials",
+  "case_id": "changed",
+  "title": "Garden session timeline",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "humans": [
+      {
+        "id": "h1",
+        "disabled_at": 40
+      }
+    ],
+    "roles": [
+      {
+        "id": "role1",
+        "trusted_humans": [
+          "h1"
+        ],
+        "actions": [
+          "read"
+        ],
+        "revoke_at": null
+      }
+    ],
+    "sessions": [
+      {
+        "id": "t1",
+        "human": "h1",
+        "role": "role1",
+        "issued": 10,
+        "expires": 90
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "session": "t1",
+        "at": 39,
+        "action": "read"
+      },
+      {
+        "id": "q2",
+        "session": "t1",
+        "at": 40,
+        "action": "read"
+      },
+      {
+        "id": "q3",
+        "session": "t1",
+        "at": 90,
+        "action": "read"
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

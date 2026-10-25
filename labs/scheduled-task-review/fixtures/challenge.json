@@ -46,5 +46,5 @@
   "lab_id": "scheduled-task-review",
   "schema_version": 1,
   "synthetic": true,
-  "title": "An approval that does not cover the account"
+  "title": "Task change and maintenance record"
 }

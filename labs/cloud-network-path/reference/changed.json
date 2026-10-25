@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q1": "return-route-missing",
+    "q2": "reachable-in-model",
+    "q3": "reachable-in-model"
+  },
+  "observations": [
+    "q1: direct 192.0.2.8 -> e1:443; result=return-route-missing.",
+    "q2: direct 198.51.100.8 -> e1:443; result=reachable-in-model.",
+    "q3: direct 10.44.2.8 -> e1:443; result=reachable-in-model."
+  ],
+  "limitations": [
+    "IPv4 TCP only. Return routing uses longest-prefix match. Inbound rules allow traffic; established replies and internal outbound traffic are assumed allowed.",
+    "No NAT gateway, IPv6, DNS, network ACL, operating-system firewall or application authentication is modelled. A relay exists only when explicitly listed; this is not a cloud test."
+  ]
+}

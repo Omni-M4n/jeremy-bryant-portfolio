@@ -1,0 +1,23 @@
+{
+  "opened_on": "2026-10-25",
+  "sources": [
+    {
+      "title": "RFC 3339, timestamps",
+      "url": "https://www.rfc-editor.org/rfc/rfc3339.html",
+      "used_for": "Explicit UTC date-time representation.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "NIST SP 800-86, sections 3.1.2 and 4",
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf",
+      "used_for": "Evidence handling and bounded forensic interpretation.",
+      "access": "opened with web tool; relevant body text available"
+    },
+    {
+      "title": "Microsoft File Times",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/sysinfo/file-times",
+      "used_for": "Platform-specific file-time behavior.",
+      "access": "opened with web tool; relevant body text available"
+    }
+  ]
+}

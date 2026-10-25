@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "lab_id": "http-request-construction",
+  "case_id": "changed",
+  "title": "Two order fields",
+  "synthetic": true,
+  "question": "What happens when a query and a form use the same name?",
+  "data": {
+    "requests": [
+      {
+        "method": "POST",
+        "target": "/inspect?item=pear",
+        "body": "item=plum",
+        "content_type": "application/x-www-form-urlencoded",
+        "note": ""
+      },
+      {
+        "method": "POST",
+        "target": "/inspect",
+        "body": "item=plum",
+        "content_type": "text/plain",
+        "note": ""
+      }
+    ]
+  }
+}

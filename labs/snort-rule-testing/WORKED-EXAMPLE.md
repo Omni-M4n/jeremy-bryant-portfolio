@@ -1,44 +1,17 @@
 # Worked reasoning: marker rule
 
-These are predictions from the fixture specification and rule text, not a
-transcript of an executed Snort session. Your actual evidence belongs in a
-fresh run folder.
+These are guided predictions from the packet plan and rule text. They are not a record of a Snort run. Save your first prediction before reading this. Keep your real evidence in a fresh run folder.
 
-The original rule requires both a matching header and an exact byte pattern.
-For `positive.pcap`, frame 4 is from `192.0.2.10:45000` to
-`198.51.100.20:18080`. Its HTTP request contains the uppercase marker. Predict
-one SID 1000001 alert. Inspect the engine's alert object and recorded packet
-number rather than treating the prediction as observed evidence.
+The original rule needs both a matching header and exact bytes. In `positive.pcap`, frame 4 goes from `192.0.2.10:45000` to `198.51.100.20:18080`. The HTTP request has the uppercase marker. Predict one SID 1000001 alert. Then inspect the actual alert object and its packet number. Do not report a prediction as something you saw.
 
-`near-miss.pcap` has the same endpoints and port but a lowercase marker.
-Without `nocase`, the marker does not meet the content condition. Predict zero.
-The controls were deliberately specified before engine execution; the writer
-does not read the rule and invent an expected result from it.
+`near-miss.pcap` has the same endpoints and port. Its marker is lowercase. Without `nocase`, it does not match the content. Predict zero. The controls were set before the engine ran. The packet writer does not read the rule to make up an expected result.
 
-`negative.pcap` carries `ORDINARY-BOOKING-42`. The text is harmless and different
-from the rule's content. Predict zero. `wrong-port.pcap` carries the exact
-uppercase marker but sends it to port 18081, outside the header's condition.
-Predict zero there too. Searching only for the marker string would miss this
-important distinction.
+`negative.pcap` has `ORDINARY-BOOKING-42`. This harmless text differs from the rule's content. Predict zero. `wrong-port.pcap` has the exact uppercase marker. But it sends to port 18081, which the rule's header does not match. Predict zero there too. A search for the marker alone would miss the port condition.
 
-After adding `,nocase` and increasing the revision, only the near-miss's
-prediction changes from zero to one. The address/port requirements are
-unchanged. If the wrong-port fixture alerts, inspect the exact rule copy and
-command before explaining the result away. If all four cases show zero, check
-the positive control, engine exit codes, stderr and rule identity. An engine
-that failed to run has supplied no detection evidence.
+For the changed test, close this answer. Use the rule options to make your own prediction for each file. Save it before you run the engine. Check any mismatch against the exact rule and command. If all four cases show zero, check the positive control. Read the exit codes, stderr and rule identity. An engine that failed to run gives no detection evidence.
 
-The wrapper stores `version.txt`, the final rule, `result.json` and per-case
-`command.json`, `stdout.txt`, `stderr.txt` and `input.pcap`. The command uses
-offline PCAP input; it does not open a capture interface. Matching expected
-counts is useful evidence about this exact experiment, not evidence that the
-rule can detect arbitrary attacks.
+The wrapper stores `version.txt`, the final rule and `result.json`. It also stores `command.json`, `stdout.txt`, `stderr.txt` and `input.pcap` for each case. The command reads offline PCAP input. It does not open a capture interface. Matching counts support this exact test. They do not prove the rule can detect all attacks.
 
-A useful finding is: "With rule revision ___ and Snort version ___, the
-positive control produced ___ SID 1000001 alerts; the near-miss produced ___.
-After the nocase edit, ___ changed. The raw output in ___ supports this. The
-wrong-port control remained ___ because ___. These are harmless test markers."
+A useful guided finding is: "I used rule revision ___ and Snort version ___. The positive control produced ___ SID 1000001 alerts. The near-miss produced ___. The other controls produced ___. The raw output in ___ supports these counts. These are harmless test markers." Fill this with your real results.
 
-If Snort is absent, the accurate finding is: "I generated and structurally
-checked the synthetic fixtures and predicted the rule outcomes. Snort execution
-is pending." Do not complete the blanks with expected counts as if observed.
+If Snort is absent, report only work you actually did. You could write: "I generated the made-up packet files and checked their structure. I predicted the rule outcomes. Snort execution is pending." Do not fill blanks with expected counts as if you saw them.

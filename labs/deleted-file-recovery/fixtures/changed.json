@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "lab_id": "deleted-file-recovery",
+  "case_id": "changed",
+  "title": "Collection 02",
+  "synthetic": true,
+  "context": {
+    "question": "Does a candidate recovered from this generated image match the known training file?",
+    "recording": "Fictional worksheet evidence; practical measurements are saved separately."
+  },
+  "data": {
+    "entries": [
+      {
+        "id": "item-01",
+        "directory_present": true,
+        "cluster_allocated": false,
+        "declared_size": 42,
+        "candidate_hex": "585858585858585858585858585858585858585858585858585858585858585858585858585858585858",
+        "known_sha256": "05cff20dcca1021b27ace469ec765cd644d09b396e1c0b7296fffa3aceecf8a6"
+      }
+    ]
+  },
+  "artifacts": {}
+}

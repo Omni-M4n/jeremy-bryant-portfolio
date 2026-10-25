@@ -1,0 +1,14 @@
+{
+  "decisions": {
+    "e1": "matches-baseline",
+    "e2": "approved-addition"
+  },
+  "observations": [
+    "e1: before=true; after=true; changed=none; exact-approval=false.",
+    "e2: before=false; after=true; changed=none; exact-approval=true."
+  ],
+  "limitations": [
+    "This comparison covers only the listed startup records and exact approved configurations; it does not detect every persistence method.",
+    "Approval and an unchanged digest do not prove that a program is harmless. Missing or unexplained records need investigation, not automatic removal."
+  ]
+}

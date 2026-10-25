@@ -1,24 +1,26 @@
 # Asset discovery and inventory
 
-Compare a saved synthetic Nmap XML excerpt with an approved asset inventory and identify the next ownership or service check. These are original fictional practice cases, not copied coursework or completed professional work.
+Compare a made-up Nmap XML scan with an approved list of devices. Decide what to check next about each device owner or service. These made-up cases were written for practice. They are not copied coursework. They do not show work done in a job.
 
 ## Before starting
 
-Prerequisites: Basic IP addresses, TCP ports and services; the DNS investigation lab is useful. No Nmap installation or previous professional experience is needed. Use Python 3.10+ with the standard library. Run the commands from this lab folder. The learner reads evidence, makes decisions and edits a worksheet; programming is not required.
+Know the basics of IP addresses, TCP ports and services first. The DNS lab may help. You do not need Nmap installed or any job experience. Use Python 3.10+ with its built-in library. Run each command from this lab folder. Read the evidence, choose labels and fill in a worksheet. You do not need to write code.
 
-Allow **30-45 minutes** for the first guided pass: 5 minutes for vocabulary and scope, 15 for prediction, 10 for checking and correction, and 5-15 for explanation. Changed and later recall exercises are separate practice. Personal completion and independent competence have not been assessed.
+Allow **35-45 minutes** for the first guided case. Spend 5 minutes on terms and scope, then 15 on your first choices. Allow 10 minutes to check and correct them. Spend 5-15 minutes on your reasons. Do the changed case and recall tasks as separate practice. No one has yet assessed your work or skill.
 
 ## Vocabulary
 
-**Asset:** a device or service being tracked. **Port:** a numbered transport endpoint. **Inventory:** the approved record. **Open:** the saved probe observed a listening service. **Filtered:** the probe could not determine the usual open/closed state. **Scope:** the addresses included in this fictional review.
+An **asset** is a device or service being tracked. A **port** is a numbered point used for network traffic. The **inventory** is the approved record. **Open** means the saved scan saw a service listening on a port. **Filtered** means the probe could not tell if the port was open or closed. **Scope** means the addresses allowed in this made-up review.
 
 ## Evidence and exact input model
 
-A small Nmap-shaped XML export, an explicit authorised scope and an inventory of expected TCP ports.
+You get a small XML export in Nmap form. You also get an approved scope and a list of expected TCP ports.
 
-Each case has exactly `schema_version: 1`, `lab_id: "asset-discovery"`, `case_id` (`guided`, `changed`, `challenge`), `title`, `synthetic: true`, `context`, `data`, `artifacts`. `context.question` is nonempty text. Objects reject unknown/missing fields; record IDs are unique lowercase names. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). Files are small UTF-8 JSON; readable artifacts are supplied through prepare where relevant.
+Each case needs `schema_version: 1` and `lab_id: "asset-discovery"`. The `case_id` is `guided`, `changed` or `challenge`. It also needs `title`, `synthetic: true`, `context`, `data` and `artifacts`. No other top-level fields are allowed. `context.question` must contain text. Each object must have the listed fields and no others. Each record ID must be a unique lowercase name. Read the [shared file and command contract](../FOUNDATION-CONTRACT.md). The files use UTF-8 JSON and are small. Where needed, prepare also makes a copy of the evidence that you can read.
 
-`data` has exactly `scope` (unique documentation IPv4 strings), `approved` (records with `ip`, a lowercase fictional `owner`, and unique integer `expected_tcp_ports` from 1 to 65535), and `nmap_xml` (text). The XML is authoritative; `artifacts.scan.xml` must be an exact readable mirror. The supported XML grammar is `nmaprun scanner="nmap"` containing `host` elements with `status state="up|down"`, `address addr="..." addrtype="ipv4"`, and optional `ports/port protocol="tcp" portid="..."/state state="open|closed|filtered"`. Element order is status, address, ports. No extra attributes, declarations, DTDs, entities, service names or UDP are accepted. A down host has no port results. All scan/inventory hosts must be in scope; duplicate hosts or ports are errors.
+`data` has only three fields: `scope`, `approved` and `nmap_xml`. In `scope`, use unique IPv4 text strings reserved for examples. Each `approved` record has `ip`, `owner` and `expected_tcp_ports`. The owner is a made-up lowercase name. The port list uses unique whole numbers from 1 to 65535. `nmap_xml` holds text. This XML is the source used for results. `artifacts.scan.xml` must be an exact copy you can read.
+
+The XML starts with `nmaprun scanner="nmap"`. It contains `host` elements. Each host needs `status state="up|down"` and `address addr="..." addrtype="ipv4"`. It may also have `ports/port protocol="tcp" portid="..."/state state="open|closed|filtered"`. Keep the order: status, address, then ports. No extra attributes are allowed. Declarations, DTDs, entities, service names and UDP are also rejected. A down host must have no port results. All scan and inventory hosts must be in scope. A repeated host or port is an error.
 
 ## Decision vocabulary
 
@@ -31,11 +33,11 @@ Each case has exactly `schema_version: 1`, `lab_id: "asset-discovery"`, `case_id
 | `expected-service-not-observed` | No unexpected open port, but at least one expected port was not observed open. |
 | `expected-services-observed` | Observed open ports equal expected ports, including an empty expected set. |
 
-Evaluate in that order. Unexpected open ports take precedence over missing expected ports, but observations retain both gaps. Closed, filtered and omitted ports all fail to demonstrate an expected open service; their underlying states still differ in the evidence.
+Use the rules in the order shown. An unexpected open port takes priority over an expected port that was not seen open. Keep both facts in your notes. A closed, filtered or unlisted port does not show the expected service open. These three states still mean different things. Keep those details from the evidence.
 
 ## Run the practice
 
-Use a new attempt number if the destination already exists. Prepare writes only beneath this lab's ignored `run/` folder and refuses existing or linked paths.
+Use a new attempt number if that folder already exists. Prepare writes only inside this lab's ignored `run/` folder. It rejects paths that already exist or use links.
 
 ```console
 python lab.py cases
@@ -43,7 +45,7 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read the case and its readable evidence. Before viewing the analysis, edit `run/attempt-01/answers.json`: replace every blank decision with an exact label above, write `explanation` as a paragraph, and put record/field/line references in the `evidence` list. Keep predictions, uncertainty, next check and help used in `notes.txt`. JSON strings use double quotes; do not add comments or trailing commas. An evidence entry can be a record ID plus the relevant field name.
+Read the case and its evidence. Save your first choices before you view the analysis. Edit `run/attempt-01/answers.json`. Fill each blank decision with an exact label from the table. Write a paragraph in `explanation`. In the `evidence` list, cite the records, fields or lines you used. One entry can give a record ID and its field name. In `notes.txt`, keep your first choices, doubts, next check and help used. JSON text strings need double quotes. Do not add comments or a comma after the last item.
 
 ```console
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
@@ -54,20 +56,22 @@ python lab.py verify
 python test_lab.py
 ```
 
-Repeat show/check/analyse with the new attempt path. Default case is `fixtures/guided.json` beside the script. Explicit input paths are relative to your current directory; prepare output is relative to this lab. Exit 0 means command success or matching decision fields, 1 means differences/incomplete worksheet, and 2 means invalid input or a filesystem error. Analyse shows the reference reasoning and should stay closed until a prediction is saved. Verify compares three shipped fixtures with fixed reference outputs; it does not assess a learner. Check requires prose and references but cannot judge their accuracy.
+Repeat show/check/analyse with the path for your new attempt. The default case is `fixtures/guided.json`, beside the script. Input paths that you supply start from your current folder. The prepare output path starts from this lab folder.
+
+Exit 0 means the command worked or your decision fields match. Exit 1 means a choice differs or your worksheet is incomplete. Exit 2 means the input is invalid or there is a file error. Analyse shows the set answers and reasons. Keep it closed until you save your first choices. Verify compares the three supplied cases with fixed expected outputs. It does not assess your skill. Check requires written reasons and sources. It cannot judge whether they are right.
 
 ## Deliverable and handover
 
-An inventory table with one row per decision, observed open ports, expected ports, a source reference, uncertainty and a proposed owner check. Keep your first prediction and correction in the notes. Include an honest help-used statement. Use [the worked example](WORKED-EXAMPLE.md) for the guided case and [the drills](DRILLS.md) to reduce prompts over time.
+Make an inventory table with one row for each decision. Show the open ports seen, the expected ports and the source. Add what is unknown and what you would check with the owner. Keep your first choices and any corrections in the notes. State what help you used. Use [the worked example](WORKED-EXAMPLE.md) for the guided case. Use [the drills](DRILLS.md) to try tasks with less help over time.
 
-Handover prompt: "What did you observe, which exact evidence supports it, what remains uncertain, and what narrow check should happen next?" A person should review your reasoning and an unfamiliar case before treating the practice as independently demonstrated.
+In your handover, answer: "What did you see? Which exact evidence supports it? What is still unknown? What small check should happen next?" Ask someone to review your reasons and your work on a new case. Until then, your skill without help has not been assessed.
 
 ## Limits and primary references
 
-- A saved scan is a time-limited observation, not proof of ownership, vulnerability or complete coverage.
-- Only this documented XML subset and TCP states open, closed and filtered are supported; no scanning occurs.
+- A saved scan shows what was seen at one time. It does not prove who owns a host, that it has a security flaw, or that the scan saw all hosts and ports.
+- The tool reads only the XML form described here. It accepts the TCP states open, closed and filtered. It does not run a scan.
 
-Runtime is offline: no external target, packet transmission, email action or host configuration change occurs. All addresses and names are reserved fictional examples. The local decision rules are teaching choices; the references explain underlying concepts, not a claim of tool certification.
+The lab runs offline. It contacts no outside target, sends no packets or email, and changes no host settings. All names and addresses are reserved for made-up examples. The rules were chosen for this lesson. The sources explain the ideas behind them. They do not certify this tool.
 
 - [Nmap: XML output](https://nmap.org/book/output-formats-xml-output.html)
 - [Nmap: port scanning basics and port states](https://nmap.org/book/man-port-scanning-basics.html)

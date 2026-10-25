@@ -2,36 +2,36 @@
 
 ## Guided practice
 
-Prepare guided in a fresh run folder, read the README rules, and make a prediction for every decision ID. Use WORKED-EXAMPLE.md only after saving that prediction. Correct your explanation in a different paragraph so the original reasoning remains visible.
+Prepare guided in a new run folder. Read the rules and predict each decision. Save your answer before opening WORKED-EXAMPLE.md. Add any correction in a new paragraph. Keep your first answer.
 
 ## Prompts only
 
-Close the worked example and use these questions to reconsider the evidence:
+Close the worked example. Try these questions:
 
 - Why does prohibit-password differ from no for root login?
-- Can PasswordAuthentication no alone establish that every password-like authentication route is disabled?
+- PasswordAuthentication is no. Is that enough to rule out every other password-like login method? Explain the missing checks.
 
 ## Independent attempt
 
-Prepare challenge in a fresh folder. Keep reference outputs, worked example and analyse closed until you have saved answers.json plus a five-sentence handover in notes.txt. Include the observation, interpretation, an alternative, uncertainty and next check. Use the README for syntax if needed and record that help. Afterwards run analyse/check and have a person inspect the explanation. Independent completion is unassessed unless someone actually reviews it.
+Prepare challenge in a fresh folder. Keep all answers and analyse output closed. Save answers.json and a short note in notes.txt. State a fact, your view of it, another possible explanation, a limit and a next check. Use the README for syntax if needed. Record that help. Then run analyse and check. Ask someone to review your reasons. Until then, the attempt is not independently assessed. A case you have already read is repeat practice, not an unseen test.
 
 ## Changed case
 
-Prepare changed. Predict which conclusions change and which do not. Explain the changed evidence before checking:
+Prepare changed. Predict each result and show the facts before checking:
 
-- Which changes make the six explicit settings match the fictional baseline?
-- Why does matching this baseline still not prove that a login works or the server is secure?
+- Which of the six settings match the baseline now? Which, if any, differ?
+- What can this text show about a working login? What would need a real test?
 
-Small edit drill: In a copied challenge case, move PermitRootLogin no before PermitRootLogin yes. Predict the root-setting result and explain why the authentication-route gap remains.
+Copy challenge into a new attempt. Move PermitRootLogin no before PermitRootLogin yes. Predict all decisions from the new order. Explain which rules apply. Do not change the original file.
 
 ## Teach-back
 
-Explain first-value precedence and why an unsupported Match or Include must stop this small reviewer rather than be ignored. Use exact record IDs from your attempt. A partner should ask one counterexample rather than accepting a memorised label. Record the question and your response.
+Explain why the first value is used. Show why an unsupported Match or Include stops this small tool. Use exact IDs from your case. Ask a partner to change one fact and challenge your answer. Save the question and your reply.
 
 ## Later recall
 
-After 24-72 hours, reopen only your own notes and a fresh case. Write the central rule from memory, identify one boundary or missing-evidence condition and predict the result. Then check the documentation and record what you forgot. Do not count rereading an answer as an independent attempt.
+After 24–72 hours, use your notes and a fresh case. Recall the main rule. Name one boundary or missing fact, then predict the result. Check the rules and record what you forgot. Rereading an answer is not a fresh attempt.
 
 ## Handover
 
-Keep the copied case, completed worksheet and notes together. State the scope, conclusion, two evidence references, unresolved uncertainty and requested next check. Include help used and whether someone assessed the reasoning. Do not claim experience beyond this fictional exercise.
+Keep the case, worksheet and notes together. State the scope, conclusion, two evidence references, a limit and the next check. Include help used and whether someone reviewed your reasons. Describe only the practice you actually did.

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "lab_id": "cloud-network-path",
+  "case_id": "changed",
+  "title": "Garden endpoint map",
+  "synthetic": true,
+  "context": {
+    "question": "Save a prediction and cite the input records before opening the reference."
+  },
+  "data": {
+    "endpoints": [
+      {
+        "id": "e1",
+        "private": "10.44.1.5",
+        "public": "203.0.113.5",
+        "subnet": "10.44.1.0/24",
+        "routes": [
+          {
+            "cidr": "10.44.0.0/16",
+            "target": "local"
+          },
+          {
+            "cidr": "0.0.0.0/0",
+            "target": "igw"
+          },
+          {
+            "cidr": "192.0.2.0/24",
+            "target": "blackhole"
+          }
+        ],
+        "inbound": [
+          {
+            "cidr": "0.0.0.0/0",
+            "port": 443
+          }
+        ]
+      }
+    ],
+    "relays": [],
+    "requests": [
+      {
+        "id": "q1",
+        "source": "192.0.2.8",
+        "target": "e1",
+        "port": 443,
+        "via": null
+      },
+      {
+        "id": "q2",
+        "source": "198.51.100.8",
+        "target": "e1",
+        "port": 443,
+        "via": null
+      },
+      {
+        "id": "q3",
+        "source": "10.44.2.8",
+        "target": "e1",
+        "port": 443,
+        "via": null
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

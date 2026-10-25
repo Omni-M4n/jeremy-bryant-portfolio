@@ -1,37 +1,39 @@
-# Drills: Timeline normalisation and uncertainty
+# Practice: put event times in order
 
-## Guided practice
+## Start with help
 
-Prepare guided in a fresh run folder, read the README rules, and make a prediction for every decision ID. Use WORKED-EXAMPLE.md only after saving that prediction. Correct your explanation in a different paragraph so the original reasoning remains visible.
+Prepare guided in a new run folder. Read the README rules and predict each decision. Save your answer before opening WORKED-EXAMPLE.md. Put any correction in a new paragraph. Keep your first answer.
 
-## Prompts only
+## Use prompts
 
-Close the worked example and use these questions to reconsider the evidence:
+Close the worked example. Try these questions:
 
-- Why do you subtract a positive device-clock offset?
-- Which two bounds must be compared to establish definitely-before?
+- Why do you subtract a positive clock offset?
+- Which two bounds do you compare to show that one event came first?
 
-## Independent attempt
+## Try without the answer
 
-Prepare challenge in a fresh folder. Keep reference outputs, worked example and analyse closed until you have saved answers.json plus a five-sentence handover in notes.txt. Include the observation, interpretation, an alternative, uncertainty and next check. Use the README for syntax if needed and record that help. Afterwards run analyse/check and have a person inspect the explanation. Independent completion is unassessed unless someone actually reviews it.
+Prepare challenge in a new folder. Keep the worked example, reference answers and analyse output closed. Save answers.json and a short note in notes.txt. Include a fact, your interpretation, another possible explanation, a limit and a next check.
 
-## Changed case
+You may use the README for syntax. Record that help. Then run analyse and check. Ask someone to review both your evidence and explanation. Until then, the attempt has not been independently assessed. A case you have already read is repeat practice, not an unseen test.
 
-Prepare changed. Predict which conclusions change and which do not. Explain the changed evidence before checking:
+## Change the evidence
 
-- Why does a wider uncertainty interval remove the first ordering conclusion?
-- Does exactly one common endpoint allow strict ordering?
+Prepare changed. Recalculate each time range before checking any answer.
 
-Small edit drill: Change only e1 uncertainty_seconds from 5 to 12 in a copied guided case. Its upper bound becomes 23:59:42Z and touches e2; predict the comparison before analysis.
+- What are the lower and upper bounds for each event now?
+- Which ranges are separate, overlap or touch? How does each pair fit the rules?
 
-## Teach-back
+For a small edit, copy guided into a new attempt folder. Change only e1 uncertainty_seconds from 5 to 12. Work out both bounds yourself. Predict each pair's result, then check. Keep the original case intact.
 
-Show the UTC conversion, offset correction and interval comparison separately, then state what remains unknown. Use exact record IDs from your attempt. A partner should ask one counterexample rather than accepting a memorised label. Record the question and your response.
+## Teach it back
 
-## Later recall
+Show the UTC conversion, clock correction and range comparison as three steps. Use the event IDs from your case. Say what remains unknown. Ask a partner to change one fact and challenge your answer. Save the question and your reply.
 
-After 24-72 hours, reopen only your own notes and a fresh case. Write the central rule from memory, identify one boundary or missing-evidence condition and predict the result. Then check the documentation and record what you forgot. Do not count rereading an answer as an independent attempt.
+## Recall it later
 
-## Handover
+After 24–72 hours, use your notes and a fresh case. Write the main rule from memory. Name one boundary or missing fact that could matter. Predict the result before checking the rules. Record what you forgot. Rereading an answer is not a fresh attempt.
 
-Keep the copied case, completed worksheet and notes together. State the scope, conclusion, two evidence references, unresolved uncertainty and requested next check. Include help used and whether someone assessed the reasoning. Do not claim experience beyond this fictional exercise.
+## Hand it over
+
+Keep the case, worksheet and notes together. State the scope, conclusion, two evidence references, one limit and the next check. Include help used and whether someone reviewed your reasoning. Describe only the practice you actually did.

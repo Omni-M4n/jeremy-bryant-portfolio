@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "lab_id": "mfa-hands-on",
+  "case_id": "guided",
+  "title": "Library account event sample",
+  "synthetic": true,
+  "context": {
+    "question": "Review each record. Save a prediction and evidence before opening the reference."
+  },
+  "data": {
+    "records": [
+      {
+        "id": "q1",
+        "operation": "confirm",
+        "password_ok": true,
+        "enrolled": false,
+        "proof_matches": true,
+        "proof_used": false,
+        "observed": "accept"
+      },
+      {
+        "id": "q2",
+        "operation": "challenge",
+        "password_ok": true,
+        "enrolled": true,
+        "proof_matches": false,
+        "proof_used": false,
+        "observed": "reject"
+      },
+      {
+        "id": "q3",
+        "operation": "challenge",
+        "password_ok": true,
+        "enrolled": true,
+        "proof_matches": true,
+        "proof_used": false,
+        "observed": "accept"
+      }
+    ]
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

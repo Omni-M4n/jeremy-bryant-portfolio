@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "lab_id": "log-ingestion",
+  "case_id": "changed",
+  "title": "Desk record set B",
+  "synthetic": true,
+  "context": {
+    "question": "Apply this lab question to the supplied evidence. Save your first reasoning."
+  },
+  "data": {
+    "format": "json"
+  },
+  "artifacts": {
+    "records.txt": "[{\"id\": \"e11\", \"time\": \"2026-01-15T00:00:00Z\", \"account\": \"operator\", \"outcome\": \"failure\"}, {\"id\": \"e12\", \"time\": \"2026-01-15T00:01:00Z\", \"account\": \"operator\", \"outcome\": \"failed\"}, {\"id\": \"e13\", \"time\": \"2026-01-14T20:02:00-04:00\", \"account\": \"operator\", \"outcome\": \"success\"}]"
+  }
+}

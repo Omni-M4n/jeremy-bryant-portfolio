@@ -1,0 +1,298 @@
+A STUDY PATH THROUGH THE SECURITY LAB LIBRARY
+
+Reviewed learning plan, 25 October 2026. This is a learning plan. It records no completed learner attempts.
+
+The library has **86 packages: 30 earlier core packages, 31 added core packages and 25 extensions**. An extension adds practice or a new kind of evidence to an earlier topic. It is not counted as another new core concept. There are 61 core packages in total.
+
+You do not need to finish all 86 in one summer. Start at a pace that fits care, study and rest. Keep a clear record of what you can explain and what still needs help. Your university work can provide useful evidence for the starting check.
+
+START WITH A SHORT CHECK
+
+Use four short slots before choosing your pace. They are a starting allowance, not a test you must finish in one sitting.
+
+- **E1 — Find your place.** Locate the lab folder. Save a practice copy and keep the original. Explain who owns the practice system and what work is allowed. Note which tools are already available.
+- **E2 — Check the words you need next.** Explain file, folder, command and evidence. Add host and guest for the workbench; name, address and port for networks; identity and access for permissions. Learn only the missing words before the next task.
+- **D1 — Bring existing evidence.** Choose up to two familiar topics from university or earlier practice. Show the actual work to a reviewer. Explain your choices, the evidence, its limits and the help you used. Do not share restricted coursework or personal data publicly.
+- **D2 — Try new facts.** Let the reviewer choose one small local case you have not seen. Save an answer before seeing a solution. The reviewer decides whether guided practice or a direct unseen-case attempt is the better next step.
+
+A self-rating or a subject enrolment does not show a skill on its own. If retained evidence and the fresh case support a topic, the reviewer can skip its guided and solo passes. Keep its unseen attempt and later recall checks. This saves time without erasing that topic from the pathway. Write down the reason for the decision.
+
+If the required program or practice environment is missing, record the gap. Use the supplied evidence where the README allows it. Reading a transcript is useful, but it does not show that you operated the tool. This plan does not ask you to install software, make accounts, create a VM or change cloud or security settings.
+
+MAKE EACH SESSION SMALL
+
+Set aside **20–25 minutes**. One useful pattern is 3 minutes to recall, 2 to predict, 12 for one small task, 5 to explain and 3 to save your notes. With 20 minutes, shorten the task. A README task that takes 30–45 minutes needs two slots. Use a safe pause point; do not rush a command or lose evidence to meet the timer.
+
+Each package has five planned passes. The codes stay the same in both summer schedules.
+
+| Code | What to do | What to save |
+|---|---|---|
+| G | Work through one guided example. Stop to explain each step. | Prediction, evidence and the help used. |
+| S | On another day, try without the worked answer. Use a new attempt folder. | Your first answer before any check reveals the solution. |
+| U | On another day, solve a fresh unseen case, then teach it back to a reviewer. | First answer, evidence, explanation, review and separate corrections. |
+| R7 | About 7 days after U, recall the method and try different facts. | What you remembered, what changed and any help. |
+| R28 | About 28 days after U, repeat the key reasoning on different facts. | A dated recall attempt and the next practice need. |
+
+These are passes, not a promise that five slots will be enough. Add a continuation slot when needed. Keep G, S and U on different days. In an eight-slot week, you may use two slots on a day with a break, on different topics or passes that do not depend on same-day recall.
+
+For U, the reviewer changes the reasoning needed, within the lab's supported model. A new name, folder or seed alone may leave the same answer pattern. Keep worked examples, prior answers and answer keys closed. A shipped case you have already read is rehearsal. If no fresh case or reviewer is ready, mark the attempt **awaiting review**. Do not call it independently assessed.
+
+Command help and model rules are allowed. Log them. If you need a hint about the answer, record a prompted attempt and try fresh facts later. Save your first answer before check or analyse: these can reveal the expected result. A helper's pass result does not judge the quality of your explanation.
+
+KNOW WHEN TO MOVE ON
+
+Before a dependent topic, a reviewer should check the prerequisite skill through U or equivalent retained evidence. Point to the actual records. Explain why the chosen check answers the question, what it cannot tell you and what you would check next. For a repair, show both a case that should be blocked and normal use that must still work.
+
+The two later recalls can follow while you learn another ready topic. If recall shows a gap, pause topics that rely on it. Review one weak step, preserve the first attempt, and retry different facts on another day. Update the dates. A busy week creates no study debt.
+
+Stop if the scope, path, command effect or evidence is unclear. Stop if a real account or personal file appears, a required tool is missing, or a task needs an unprepared environment. Also stop when your time or energy runs out. Save the current state and one clear next step. Use another ready offline topic if that helps.
+
+For actual tool work, the README's environment and scope are an extra gate. Supplied packets do not prove capture skill; supplied alerts do not prove a Snort run; supplied event XML does not prove a Windows collection. Keep **offline case reviewed** and **actual tool attempt reviewed** as separate records.
+
+TWO FLEXIBLE SUMMER EXAMPLES
+
+Week numbers are placeholders. Start when ready, move a week when needed, or spread one week across two. No reminders or appointments are created. Both examples keep time for repeat work and care or study needs.
+
+| Pace | Weekly allowance | Twelve-week capacity | Starting route | Time reserved |
+|---|---|---|---|---|
+| Gentle | 4 slots, 80–100 minutes | 48 slots, 16–20 hours | First 6 packages, P01–P06 | 4 entry/check slots + 30 package passes + 14 flexible slots |
+| Steady | 8 slots, 160–200 minutes | 96 slots, 32–40 hours | First 12 packages, P01–P12 | 4 entry/check slots + 60 package passes + 32 flexible slots |
+
+The gentle route practises scope, shell evidence, the workbench boundary, DNS, login logs and access. The steady route adds file checks, web logs, timelines, address paths, TCP and asset inventory. The workbench begins with saved evidence. Its real VM workflow remains separate.
+
+Prior study may make the direct U route suitable for some topics. Reuse the saved slots for a ready branch, a real tool session in an already approved environment, or rest. The counts above assume every starting topic needs all five passes. They are a budget, not a required repeat of work already demonstrated.
+
+**F means flexible:** a longer task, review, retry, missing word, catch-up or rest. Leave it open until you know what you need. A later branch is an option only when its prerequisites are ready. Do not fill every spare slot by default.
+
+The tables below show one workable day order. Day 1 can be any chosen starting weekday. A dash means no planned slot. Two entries on one day are separate slots with a break; follow their order. G, S and U for one package stay on different days. R7 is seven days after U, and R28 is 28 days after U. If U slips, move its recalls and any dependent work too. These are examples, not appointments or a promise that a reviewer is free.
+
+GENTLE EXAMPLE: FOUR SHORT SLOTS
+
+| Week | Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7 |
+|---|---|---|---|---|---|---|---|
+| 1 | E1 | E2 | — | D1 | D2 | — | — |
+| 2 | P01.G | F | P01.S | — | P01.U | — | — |
+| 3 | P02.G | P02.S | — | P02.U | P01.R7 | — | — |
+| 4 | P03.G | P03.S | P03.U | P02.R7 | — | — | — |
+| 5 | P04.G | P04.S | P03.R7 | P04.U | — | — | — |
+| 6 | P05.G | P05.S | — | P04.R7 | P01.R28 | — | — |
+| 7 | P05.U | P06.G | P06.S | P02.R28 | — | — | — |
+| 8 | P05.R7 | P06.U | P03.R28 | F | — | — | — |
+| 9 | F | P06.R7 | F | P04.R28 | — | — | — |
+| 10 | F | F | F | F | — | — | — |
+| 11 | P05.R28 | F | F | F | — | — | — |
+| 12 | F | P06.R28 | F | F | — | — | — |
+
+STEADY EXAMPLE: EIGHT SHORT SLOTS
+
+| Week | Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Day 7 |
+|---|---|---|---|---|---|---|---|
+| 1 | E1, E2 | D1, D2 | P01.G | P01.S | P01.U, P02.G | — | — |
+| 2 | P02.S | P02.U, P03.G | P03.S | P03.U, P04.G | P04.S, P01.R7 | — | — |
+| 3 | P04.U, P05.G | P05.S, P02.R7 | P05.U, P06.G | P06.S, P03.R7 | — | — | — |
+| 4 | P06.U, P04.R7 | P07.G | P07.S, P05.R7 | P07.U, P08.G | P08.S | — | — |
+| 5 | P08.U, P06.R7 | P09.G | P09.S | P09.U, P07.R7 | P10.G, P01.R28 | — | — |
+| 6 | P10.S, P08.R7 | P10.U, P02.R28 | P11.G | P03.R28, P09.R7 | P11.S | — | — |
+| 7 | P11.U, P04.R28 | P12.G, P10.R7 | P05.R28, F | P12.S | P12.U | — | — |
+| 8 | P06.R28, P11.R7 | F, F | F, F | P07.R28 | P12.R7 | — | — |
+| 9 | P08.R28, F | F, F | F, F | P09.R28, F | — | — | — |
+| 10 | F, F | P10.R28, F | F, F | F, F | — | — | — |
+| 11 | P11.R28, F | F, F | F, F | F | P12.R28 | — | — |
+| 12 | F, F | F, F | F, F | F, F | — | — | — |
+
+THE COMPLETE ORDERED PATHWAY
+
+Every package appears once in the route below. The number gives its stable code: row 04 means P04.G, P04.S, P04.U, P04.R7 and P04.R28. The JSON companion gives every exact session code, prerequisite and revisit rule.
+
+**Earlier** means one of the original 30 core packages. **Added** means one of the 31 added core packages. **Extension** means extra practice linked to a core topic. None of these labels records learner completion.
+
+This is one valid order, not a requirement to finish a whole phase before following an interest. Later phases can be studied as branches when all their listed prerequisites are ready. A lower row number alone is not evidence that a skill is ready. The companion record includes the dependencies and separates basic entry knowledge from lab packages.
+
+PHASE A: MAKE PRACTICE SAFE AND REPEATABLE
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P01 | rules-of-engagement | Write the scope and stop rules | Added |
+| P02 | shell-troubleshooting | Choose a useful read-only command | Added |
+| P03 | isolated-lab-workbench | Check the practice boundary | Added |
+
+PHASE B: READ YOUR FIRST EVIDENCE
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P04 | dns-triage | Match DNS questions and replies | Earlier |
+| P05 | login-triage | Explain a login pattern | Earlier |
+| P06 | access-review | Give only the access needed | Earlier |
+
+PHASE C: BUILD THE SHARED FOUNDATIONS
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P07 | file-integrity | Compare files with a trusted starting copy | Earlier |
+| P08 | http-triage | Read a web request log | Earlier |
+| P09 | timeline-analysis | Put events on a careful timeline | Earlier |
+| P10 | network-address-path | Draw the next step in a packet path | Added |
+| P11 | tcp-handshake | Explain how a connection starts | Earlier |
+| P12 | asset-discovery | Compare services with the inventory | Earlier |
+| P13 | firewall-review | Trace the first matching firewall rule | Earlier |
+| P14 | tls-review | Check names and dates in a certificate | Earlier |
+| P15 | http-header-review | Review headers and cookies | Earlier |
+| P16 | email-triage | Check message identities and context | Earlier |
+| P17 | endpoint-triage | Follow a process and its parent | Earlier |
+| P18 | scheduled-task-review | Review a repeated task and its approval | Earlier |
+| P19 | alert-correlation | Separate duplicate alerts from related events | Earlier |
+| P20 | backup-verification | Check what a backup can restore | Earlier |
+| P21 | linux-permissions | Work out Linux file access | Earlier |
+| P22 | ssh-config-review | Review remote-login settings | Earlier |
+| P23 | cloud-storage-review | Trace a storage-sharing path | Earlier |
+| P24 | identity-lifecycle | Review access when duties change | Earlier |
+| P25 | mfa-review | Review sign-in and recovery controls | Earlier |
+| P26 | cloud-audit-triage | Follow saved cloud events | Earlier |
+| P27 | secret-handling | Find dummy secrets in the wrong places | Earlier |
+| P28 | vulnerability-prioritisation | Explain which finding comes first | Earlier |
+| P29 | vulnerability-retest | Check whether a claimed fix holds | Earlier |
+| P30 | dependency-review | Match software versions to advice | Earlier |
+
+PHASE D: FOLLOW AND COLLECT NETWORK EVIDENCE
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P31 | traffic-capture | Capture and explain your own traffic | Earlier |
+| P32 | arp-dhcp-evidence | Read ARP and DHCP exchanges | Added |
+| P33 | dns-cache-records | Investigate DNS records and caching | Extension |
+| P34 | controlled-nmap | Run a scoped Nmap service inventory | Extension |
+| P35 | firewall-enforcement | Test real firewall enforcement and rollback | Extension |
+| P36 | ipv6-parity | Check IPv4 and IPv6 exposure parity | Added |
+| P37 | network-loss-diagnosis | Diagnose latency, loss and failed connections | Extension |
+| P38 | vpn-routing-review | Review VPN routes and DNS scope | Added |
+
+PHASE E: TEST A SMALL LOCAL WEB APPLICATION
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P39 | burp-access-control | Test and retest access control with Burp | Earlier |
+| P40 | http-request-construction | Construct and trace an HTTP request | Extension |
+| P41 | session-lifecycle | Test session expiry and logout | Added |
+| P42 | local-sql-injection | Explain and retest a simple SQL injection | Added |
+| P43 | local-output-encoding | Compare reflected text and safe output encoding | Added |
+| P44 | csrf-local | Test a state-changing request's CSRF protection | Added |
+| P45 | api-schema-validation | Validate API input and error handling | Added |
+| P46 | rate-limit-lab | Test a small request limit without load testing | Added |
+| P47 | file-upload-path | Review upload validation and path containment | Added |
+
+PHASE F: CHECK A PRACTICE COMPUTER
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P48 | windows-event-investigation | Collect Windows events and reconstruct a process chain | Earlier |
+| P49 | windows-acl | Measure effective Windows file permissions | Extension |
+| P50 | linux-service-identity | Trace Linux service identities and sudo scope | Extension |
+| P51 | patch-rollback | Apply and verify a lab patch with rollback | Extension |
+| P52 | startup-surface | Inventory startup mechanisms beyond scheduled tasks | Extension |
+| P53 | ssh-key-practice | Configure and verify SSH key access in the lab | Extension |
+| P54 | endpoint-baseline | Create and verify a small endpoint baseline | Added |
+
+PHASE G: TRACE IDENTITY AND CLOUD DECISIONS
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P55 | password-vault-recovery | Practise password-vault and recovery hygiene | Added |
+| P56 | mfa-hands-on | Enrol and recover a local training MFA account | Extension |
+| P57 | iam-explicit-deny | Evaluate provider-style IAM policy precedence | Extension |
+| P58 | temporary-credentials | Trace temporary role credentials and expiry | Added |
+| P59 | shared-responsibility | Map cloud shared responsibility and controls | Added |
+| P60 | cloud-network-path | Trace cloud network reachability | Extension |
+| P61 | encryption-key-recovery | Compare encryption, encoding, hashing and key recovery | Added |
+| P62 | cloud-resource-lifecycle | Review resource ownership, cost controls and teardown | Added |
+
+PHASE H: INVESTIGATE LOGS AND EXPLAIN AN INCIDENT
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P63 | log-ingestion | Import and normalise logs into a small local workspace | Added |
+| P64 | soc-query-workbook | Build a small SOC query workbook | Extension |
+| P65 | python-log-helper | Write a small auditable Python log helper | Added |
+| P66 | snort-rule-testing | Write, run and tune an offline detection rule | Earlier |
+| P67 | detection-corpus | Evaluate a detection against a labelled benign corpus | Extension |
+| P68 | logging-health | Investigate missing or delayed telemetry | Added |
+| P69 | incident-case | Work an end-to-end benign incident case | Extension |
+| P70 | indicator-quality | Assess indicator quality and expiry | Added |
+| P71 | containment-tabletop | Choose proportionate containment in a tabletop | Added |
+
+PHASE I: PRESERVE EVIDENCE AND PRACTISE RECOVERY
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P72 | evidence-custody | Acquire and register a small evidence set | Extension |
+| P73 | file-type-triage | Identify file types beyond the extension | Added |
+| P74 | file-time-analysis | Interpret filesystem timestamps and copies | Extension |
+| P75 | deleted-file-recovery | Recover a deleted dummy file from a disposable image | Added |
+| P76 | browser-artifacts | Reconstruct a benign browsing session from a lab profile | Added |
+| P77 | restore-drill | Perform and measure a real dummy-data restore | Extension |
+| P78 | pcap-object-reconstruction | Recover a benign object from your own capture | Extension |
+| P79 | cross-source-corroboration | Resolve a disagreement between two evidence sources | Extension |
+
+PHASE J: WRITE USEFUL DECISIONS AND A FINAL CASE
+
+| Code | Package ID | Task | Kind |
+|---|---|---|---|
+| P80 | data-classification | Classify a fictional team's data and handling needs | Added |
+| P81 | small-threat-model | Threat-model a small application or home-lab service | Added |
+| P82 | risk-register | Create a small risk register with treatment choices | Extension |
+| P83 | finding-report | Write a reproducible finding and retest report | Extension |
+| P84 | incident-communications | Prepare an incident brief and update for different audiences | Added |
+| P85 | evidence-redaction | Prepare a public-safe evidence excerpt | Extension |
+| P86 | portfolio-mastery-capstone | Explain a fresh mixed case to a reviewer | Extension |
+
+CHOOSE A LATER BRANCH
+
+After the starting check and first lane, choose a useful question. Keep the whole library as the long-term route; choosing a branch does not remove other packages.
+
+- **Networks:** continue with firewall review, then the capture and network phase. Explain one packet path, save your own small capture when the tool gate is ready, and compare the result with the prediction.
+- **Logs and response:** add endpoint review and alert correlation to the timeline work. Continue to log import, queries, missing-log checks and the fictional incident. Containment also needs access and backup understanding.
+- **Web and identity:** add headers, the local access-control test and request construction before session tests. The request-construction path also needs traffic capture and its DNS/TCP prerequisites. Follow identity lifecycle before MFA review and its practice extension.
+- **Evidence and recovery:** add backup review and evidence custody. Follow the file and timeline prerequisites before file-type, timestamp, restore and redaction work. Use only the generated dummy data.
+
+For a topic that needs Python writing, first check simple variables, loops and files. Running the supplied utility is different from writing a log helper. Learning this missing entry skill is useful work, but it is not another package in the 86 count.
+
+LATER LOCAL CTF AND TEAM PRACTICE
+
+A CTF is a challenge with a small answer, often called a flag. Use local fictional cases first. A flag can be guessed or copied, so require an explanation as well.
+
+1. **Evidence challenge:** after reviewed DNS, login and access work, a reviewer prepares three fresh evidence questions. Earn each answer by pointing to exact records and naming one limit. Keep the scope to the supplied files.
+2. **Repair challenge:** after the local access-control test, retest work and finding report, use the supplied local app. Show that a cross-user request is refused and the owner can still use the record. Explain the fix and its limit.
+3. **Small team handover:** after the incident, communication, custody and redaction topics, use a fresh fictional packet. One person investigates, one checks evidence, and one writes an update. Swap roles next time. Keep private notes and save a separate redacted excerpt.
+
+These are future practice choices, not additional packages or completed challenges. They need no external signup. Before a later public CTF or hackathon, read its current official rules. Check exact targets, permitted methods, data handling and stop time. Stay inside that event's written permission. This plan does not authorise testing another system.
+
+KEEP A PRIVATE EVIDENCE AND HELP JOURNAL
+
+Use a new attempt folder each time. Keep supplied inputs and early answers intact. Corrections go in a separate file or a clearly dated section. Keep personal notes private; do not publish them automatically.
+
+Date and package:
+Case, seed or reviewer packet:
+Stage and exact scope:
+Environment and tool version, if used:
+Prediction before the check:
+Original inputs and actions:
+Evidence references and first answer:
+Help used: command syntax / model rules / reasoning hint / other:
+Correction and why it changes the answer:
+What is still uncertain:
+Reviewer feedback and current status:
+Next small step:
+Actual recall date and next due date:
+
+Good progress notes are specific: “I matched this request and reply without a hint. I still mixed up the first retry time.” Use stages such as guided, prompted, awaiting review, reviewed unseen attempt and recall attempted. Do not turn a reference result, course grade or package title into a claim about all real systems.
+
+KEEP THE TIME ESTIMATE HONEST
+
+Five short passes across 86 packages give **430 slots**: **143 hours 20 minutes to 179 hours 10 minutes** at 20–25 minutes each. The four entry and starting-check slots bring that allowance to **144 hours 40 minutes to 180 hours 50 minutes**. Tool preparation, longer tasks, reviewer time, breaks and repeats are extra. Reviewed prior evidence can remove guided and solo passes.
+
+At four slots a week, 434 slots take 108.5 weeks before those extras. At eight, they take 54.25 weeks. This is simple capacity arithmetic, not a prediction of learning speed. The full route is a longer project. A useful summer outcome is a smaller set of well-evidenced skills, a reliable practice habit and a clear next branch.
+
+PLAN CHECKS AND LIMITS
+
+The plan was checked against the topic map. It has 86 distinct package IDs: 30 earlier core labs, 31 added core labs and 25 extensions. No package is missing or duplicated in the ordered route. Every mapped package prerequisite and every extension parent is earlier in the route. Basic entry skills and tool setup are listed separately. The two summer tables have 48 and 96 slots, with each planned package's five passes once and explicit days for recall. The day-level checks passed for both example schedules.
+
+These checks cover which labs are included and their order. They do not test the learner or judge a new case's answer. They do not prove tool use or show that the plan was published. The final capstone needs reviewed work from each of the two or three tracks in its fresh case. It also needs evidence-redaction and finding-report, including the report from an actual owned local attempt. A supplied worksheet or one reviewed track alone is not enough. A reviewer checks readiness and prepares the fresh case. The capstone directory name is not a result.

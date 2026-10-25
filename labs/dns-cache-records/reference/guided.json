@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q01": "cached-answer:192.0.2.20",
+    "q02": "cached-answer:2001:db8::20",
+    "q03": "cached-answer:10 mail.school.test"
+  },
+  "observations": [
+    "q01: www.school.test CNAME remaining=30s; site.school.test A remaining=90s.",
+    "q02: site.school.test AAAA remaining=10s.",
+    "q03: school.test MX remaining=60s."
+  ],
+  "limitations": [
+    "One value per owner/type, one supplied cache, integer seconds; no live lookup, refresh, prefetch, serve-stale, DNSSEC or resolver failure caching.",
+    "An expired or missing entry requires fresh evidence; it does not prove that a name or service is unavailable."
+  ]
+}

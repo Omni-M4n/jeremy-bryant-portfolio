@@ -1,11 +1,11 @@
 {
   "decisions": {
-    "forged": "authentication-unverified",
-    "lookalike": "authenticated-domain-with-mismatch"
+    "message-a": "authentication-unverified",
+    "message-b": "authenticated-domain-with-mismatch"
   },
   "observations": [
-    "forged: no trusted receiver result; mismatches=none.",
-    "lookalike: trusted lookalike-relay: SPF=pass, DKIM=pass, DMARC=pass; mismatches=from-not-expected."
+    "message-a: no trusted receiver result; mismatches=none.",
+    "message-b: trusted lookalike-relay: SPF=pass, DKIM=pass, DMARC=pass; mismatches=from-not-expected."
   ],
   "limitations": [
     "Receiver trust is supplied out of band for this exercise; an Authentication-Results header or matching relay name alone is not proof.",

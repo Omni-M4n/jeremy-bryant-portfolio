@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "lab_id": "file-upload-path",
+  "case_id": "changed",
+  "title": "Picture card",
+  "synthetic": true,
+  "question": "Does a matching name alone establish the file type?",
+  "data": {
+    "uploads": [
+      {
+        "filename": "pixel.ppm",
+        "content_type": "image/x-portable-pixmap",
+        "text": "P3\n1 1\n255\n0 128 255\n"
+      },
+      {
+        "filename": "pixel.ppm",
+        "content_type": "image/x-portable-pixmap",
+        "text": "Hello\n"
+      },
+      {
+        "filename": "note.txt",
+        "content_type": "image/x-portable-pixmap",
+        "text": "Hello\n"
+      }
+    ]
+  }
+}

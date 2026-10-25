@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "r1": "review-due",
+    "r2": "owner-missing+expiry-missing",
+    "plan": "order-valid-in-model",
+    "cost": "residual-cost",
+    "budget": "below-alert-threshold"
+  },
+  "observations": [
+    "r1: owner=team-library; expiry=10; daily_units=4; retain=false.",
+    "r2: owner=none; expiry=None; daily_units=2; retain=false.",
+    "Plan issues=none; remaining=r2; daily_units=2.",
+    "Spent=80; budget=100; charges are not capped by an alert."
+  ],
+  "limitations": [
+    "Costs are invented whole practice units per day, not provider prices or a bill. Budget alerts do not stop this model's charges.",
+    "A teardown plan is reviewed but never executed. Dependencies and retention approval must be checked again on a real inventory."
+  ]
+}

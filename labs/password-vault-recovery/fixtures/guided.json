@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "lab_id": "password-vault-recovery",
+  "case_id": "guided",
+  "title": "Library account record",
+  "synthetic": true,
+  "context": {
+    "question": "Review each record. Save a prediction and evidence before opening the reference."
+  },
+  "data": {
+    "entries": [
+      {
+        "id": "e1",
+        "account": "library.test",
+        "secret_label": "label-a",
+        "generated": true,
+        "length": 24
+      },
+      {
+        "id": "e2",
+        "account": "garden.test",
+        "secret_label": "label-b",
+        "generated": true,
+        "length": 24
+      }
+    ],
+    "backup": {
+      "format": "encrypted",
+      "copy_exists": true,
+      "unlock_test": false,
+      "separate_location": false,
+      "recovery_in_same_store": true
+    }
+  },
+  "artifacts": {
+    "worksheet.txt": "Record ID | predicted result | evidence | uncertainty\n"
+  }
+}

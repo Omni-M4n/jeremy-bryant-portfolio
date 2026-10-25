@@ -1,10 +1,22 @@
-# Worked example: Timeline normalisation and uncertainty
+# Worked example: put event times in order
 
-Try the guided case before reading this page. Use `python lab.py prepare --scenario guided --out run/worked-01` if you need a fresh ignored copy.
+Try guided before reading this page. To make a fresh copy, use `python lab.py prepare --scenario guided --out run/worked-01`.
 
-e1 at 2026-01-15T10:00:00+10:00 becomes 00:00:00Z. Its clock is 30 seconds fast, so the corrected centre is 2026-01-14T23:59:30Z; +/-5 seconds gives 23:59:25Z through 23:59:35Z. e2 centres on 23:59:45Z with +/-3 seconds, giving 23:59:42Z through 23:59:48Z. The seven-second gap between e1 upper and e2 lower supports definitely-before for e1-vs-e2. e3 centres on 00:00:20Z with +/-2 seconds, so e2-vs-e3 is also definitely-before. None of these comparisons says the earlier event caused the later event.
+## Correct the times
 
-The reference decision fields for guided are:
+1. e1 shows 2026-01-15T10:00:00+10:00. Subtract ten hours to get 00:00:00Z on 15 January.
+2. Its clock is 30 seconds fast. Subtract those seconds. The centre is now 2026-01-14T23:59:30Z, on the previous day.
+3. Its uncertainty is five seconds in either direction. The range runs from 23:59:25Z to 23:59:35Z.
+4. e2 has a corrected centre of 23:59:45Z. Three seconds in either direction gives 23:59:42Z to 23:59:48Z.
+5. e3 has a corrected centre of 00:00:20Z on 15 January. Two seconds in either direction gives 00:00:18Z to 00:00:22Z.
+
+## Compare the bounds
+
+e1's upper bound is 23:59:35Z. e2's lower bound is 23:59:42Z. They have a seven-second gap. That gives definitely-before for e1-vs-e2.
+
+e2's upper bound is also below e3's lower bound. That gives definitely-before for e2-vs-e3. Neither result proves that the earlier event caused the later one.
+
+The guided decisions are:
 
 ```json
 {
@@ -13,6 +25,6 @@ The reference decision fields for guided are:
 }
 ```
 
-Now open `python lab.py analyse --case run/worked-01/case.json` and compare observations, not only labels. Record one difference between your first prediction and the reference. If there was no difference, explain the rule that produced each decision rather than copying the label.
+Run `python lab.py analyse --case run/worked-01/case.json` after your own answer is saved. Compare the times and bounds, not just the labels. Keep the first answer and add any correction. If you were right, explain how the evidence led to that result.
 
-Handover prompt: explain what this evidence establishes, cite its exact IDs or lines, give a plausible alternative or remaining uncertainty, and name the smallest next check. Record any help used. A correct label by itself is not evidence of independent understanding.
+For a handover, cite the event IDs and bounds. Give the conclusion, one remaining doubt and the smallest next check. Include help used. A correct label alone does not show that you can explain it.

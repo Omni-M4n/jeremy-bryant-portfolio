@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "status": 200,
+      "response": {
+        "method": "GET",
+        "target": "/inspect?tag=a%2Bb&tag=a+b&empty=",
+        "query": {
+          "tag": [
+            "a+b",
+            "a b"
+          ],
+          "empty": [
+            ""
+          ]
+        },
+        "note": "",
+        "body": "",
+        "form": {}
+      }
+    },
+    {
+      "status": 400,
+      "response": {
+        "error": "invalid-request"
+      }
+    }
+  ]
+}

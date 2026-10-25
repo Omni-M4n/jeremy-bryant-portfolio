@@ -1,0 +1,15 @@
+{
+  "decisions": {
+    "item-1": "use-confirmed-fact-for-staff",
+    "item-2": "label-hypothesis-do-not-present-as-fact",
+    "item-3": "assign-action-and-owner"
+  },
+  "observations": [
+    "item-1: confirmed; source case-notes.txt line 1; owner response-lead; next update minute 630.",
+    "item-2: hypothesis; source case-notes.txt line 2; owner response-lead; next update minute 630.",
+    "item-3: action; source case-notes.txt line 3; owner response-lead; next update minute 630."
+  ],
+  "limitations": [
+    "These are drafts about fictional facts. No message is sent and no real incident, breach or person is assessed."
+  ]
+}

@@ -9,12 +9,12 @@ Follow a made-up team as it changes services. Make a table showing who must do
 each job and which records support your answer. Being responsible for a job does
 not prove that the job was done.
 
-All cases and records are made up. Work happens on your computer; you will not
+All cases and records are made up. Work happens on your computer. You will not
 open an account or change an online service. First complete the cloud storage
-review and backup verification labs. You also need Python 3.10+ and the tools
-that come with it, called its standard library. Allow 25-35 minutes for the
-guided case and 20 minutes each for the later cases. Your own work and ability
-to explain it still need a person's review.
+review and backup verification labs. You also need Python 3.10+ and its built-in
+tools, called its standard library. Allow 25-35 minutes for the guided case.
+Allow 20 minutes each for the later cases. A person still needs to review your
+own work and how you explain it.
 
 ## Vocabulary
 
@@ -37,8 +37,8 @@ to explain it still need a person's review.
 
 ## Start and preserve a first attempt
 
-Open a terminal in this lab directory. `python` means your Python 3.10+ executable;
-use `py -3` on Windows if that is the installed command.
+Open a terminal in this lab folder. `python` means your Python 3.10+ program.
+Use `py -3` on Windows if that is the installed command.
 
 ```text
 python lab.py cases
@@ -46,29 +46,30 @@ python lab.py prepare --scenario guided --out run/attempt-01
 python lab.py show --case run/attempt-01/case.json
 ```
 
-Read `service-description.txt` and `checks.txt` in that new attempt folder. In
-`notes.txt`, record a prediction before opening the worked example. Fill
-`answers.json`: each decision uses the three-part form below; add your explanation
-and a list of precise evidence references. Save the original attempt before
-checking it. Then run:
+Read `service-description.txt` and `checks.txt` in the new attempt folder. In
+`notes.txt`, write a prediction before opening the worked example. Fill
+`answers.json`. Each decision uses the three-part form below. Add your reason
+and a list of exact evidence references. Save the first attempt before checking.
+Then run:
 
 ```text
 python lab.py check --case run/attempt-01/case.json --answers run/attempt-01/answers.json
 python lab.py analyse --case run/attempt-01/case.json
 ```
 
-The first command checks decision strings and whether written fields are present.
-A reviewer still needs to assess the explanation. `analyse`, `reference/` and
-`WORKED-EXAMPLE.md` reveal answers; keep them closed during independent work.
+The first command checks labels and requires written fields. A reviewer still
+needs to assess your reasons. `analyse`, `reference/` and
+`WORKED-EXAMPLE.md` reveal answers. Keep them closed while working alone.
 Make a new attempt folder for each case. The helper refuses to overwrite one.
 
 ## Exact model
 
-Each JSON case has `services` and `controls`. Services supply a model, a specific
-backup-copy agreement and an evidence reference. Controls supply a task, a team
-owner claim and `pass`, `fail` or `missing` evidence. Text files are readable
-companions to those records. For edited experiments update both; the helper reads
-the JSON and cannot establish whether a note truthfully describes a real check.
+Each JSON case has `services` and `controls`. Services give a model, a specific
+backup-copy agreement and an evidence reference. Controls give a task and say
+which team owns it. They also give `pass`, `fail` or `missing` evidence. Text
+files show these records in a readable form. If you edit a copy, update both
+forms. The helper reads the JSON. It cannot check whether a note is a true
+account of a real check.
 
 | Narrow task | IaaS | PaaS | SaaS |
 | --- | --- | --- | --- |
@@ -80,25 +81,28 @@ the JSON and cannot establish whether a note truthfully describes a real check.
 | `backup-copy-creation` | explicit agreement | explicit agreement | explicit agreement |
 | `restore-acceptance` | customer | customer | customer |
 
-Application code means the customer's deployed code in IaaS/PaaS and the
-provider-delivered binary in SaaS. It excludes platform runtime patching, tenant
-settings and customer extensions. Restore acceptance is distinct from the act of
-operating a restore job. The fictional agreement is the authority for these
-narrow assignments; the table is not a complete provider product matrix.
+Application code means the customer's code in IaaS/PaaS. In SaaS it means the
+ready-to-run app supplied by the provider. It leaves out platform runtime
+patching, tenant settings and customer extensions. Running a restore job differs
+from checking that the restored files meet the customer's needs. The made-up
+agreement sets the task split here. This table does not cover every real
+provider or product.
 
 A decision is `owner:assignment:evidence-state`:
 
 * `owner`: `customer`, `provider` or `unspecified`.
-* `assignment`: `clarify-agreement` when the backup agreement is unspecified;
-  otherwise `assign-owner` for an unspecified team claim, `owner-matches` when it
-  matches, or `correct-owner` for any other claim, including a vague `shared`.
-* `evidence-state`: `evidence-pass`, `evidence-fail` or `evidence-missing`, copied
-  from the supplied scoped check. Missing is not proof of failure.
+* `assignment`: use `clarify-agreement` when the backup agreement names no owner.
+  Otherwise, use `assign-owner` when the team names no owner. Use `owner-matches`
+  when its claim matches, or `correct-owner` for any other claim. This includes
+  a vague `shared` claim.
+* `evidence-state`: `evidence-pass`, `evidence-fail` or `evidence-missing`.
+  Copy this from the given check for that task. Missing is not proof of failure.
 
-Responsibility and evidence are independent. Passing evidence does not correct a
-wrong assignment. An unclear agreement remains unclear even if a copy was made.
-Every service/task pair may occur once. Unknown models/tasks/fields, duplicate
-IDs, unsupported states and broken service references are rejected.
+Who owns a task and whether it passed are separate questions. A passing check
+does not fix a wrong owner claim. An unclear agreement stays unclear even if
+someone made a copy. Each service/task pair may appear once. The helper rejects
+unknown models, tasks and fields. It also rejects repeated IDs, states it does
+not support and links to missing services.
 
 ## Evidence to save and hand over
 
@@ -123,24 +127,25 @@ python test_lab.py
 python lab.py verify
 ```
 
-Cleanup is limited to your own new `run/attempt-*` folders after preserving the
-evidence you want. No account, installation, security setting or rollback is
-involved. Keep the fixtures and first attempts intact while practising.
+For cleanup, first save the evidence you want. Remove only your own new
+`run/attempt-*` folders. No account or security setting changes. Nothing is
+installed, so no rollback is needed. Keep the fixtures and first attempts intact
+while practising.
 
 ## Limits and sources
 
-Real contracts, regions, integrations, extensions and individual service options
-can change the split. The helper evaluates neither legal liability nor live
-controls. A backup job record cannot establish complete coverage, retained
-history, a recovery objective or usable restored data.
+Real contracts, regions, linked tools, extensions and service options can change
+the task split. The helper does not judge legal duties or live controls. A backup
+job record alone leaves open several questions. Does it cover all needed files?
+What history is kept? What is the recovery goal? Are the restored files useful?
 
 Primary sources opened 25 October 2026:
 
 * [Microsoft: Shared responsibility in the cloud](https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility)
-  explains service-model differences and retained customer data, identity and
-  configuration duties. Its broad shared application category must be split into
-  concrete actions; this lab's atomic table is an authored fictional agreement.
+  explains how service models differ. Customers keep duties for data, identity
+  and settings. Its broad shared app category needs named actions. This lab's
+  table splits those actions using a made-up agreement.
 * [AWS: Shared Responsibility Model](https://aws.amazon.com/compliance/shared-responsibility-model/)
-  distinguishes provider infrastructure, EC2 guest/application duties and
-  service-dependent responsibilities. Its control discussion separates patching
-  at infrastructure and customer layers and calls for scoped evidence.
+  separates provider equipment from EC2 guest and app duties. The split also
+  depends on the service. It treats provider and customer patching as distinct
+  tasks, each needing evidence for its scope.

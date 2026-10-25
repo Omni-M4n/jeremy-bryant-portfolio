@@ -1,0 +1,16 @@
+{
+  "decisions": {
+    "q1": "investigate-mismatch",
+    "q2": "investigate-mismatch",
+    "q3": "matches-model"
+  },
+  "observations": [
+    "q1: operation=challenge; expected=reject; observed=accept.",
+    "q2: operation=challenge; expected=reject; observed=accept.",
+    "q3: operation=challenge; expected=reject; observed=reject."
+  ],
+  "limitations": [
+    "This worksheet reviews supplied evidence; it does not execute enrolment or prove possession of two separate devices.",
+    "The local training service uses dummy secrets and a chosen clock. It is not a deployable authenticator or a phishing-resistant login."
+  ]
+}
