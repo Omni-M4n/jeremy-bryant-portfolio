@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "host": "provider:owner-matches:evidence-pass",
+    "guest": "customer:correct-owner:evidence-fail",
+    "access": "customer:owner-matches:evidence-missing",
+    "copy": "customer:owner-matches:evidence-missing",
+    "accept": "customer:owner-matches:evidence-pass"
+  },
+  "observations": [
+    "host: service=orchard-vm (IaaS); task=physical-host-patching; agreement=service-description.txt A1-A4; owner=provider; claimed=provider; evidence=pass at checks.txt E1: Provider host patch attestation is current.",
+    "guest: service=orchard-vm (IaaS); task=workload-os-patching; agreement=service-description.txt A1-A4; owner=customer; claimed=provider; evidence=fail at checks.txt E2: Guest update inventory is missing the required patch.",
+    "access: service=orchard-vm (IaaS); task=tenant-access; agreement=service-description.txt A1-A4; owner=customer; claimed=customer; evidence=missing at checks.txt E3: No current user access review was supplied.",
+    "copy: service=orchard-vm (IaaS); task=backup-copy-creation; agreement=service-description.txt A1-A4; owner=customer; claimed=customer; evidence=missing at checks.txt E4: No backup job run record was supplied.",
+    "accept: service=orchard-vm (IaaS); task=restore-acceptance; agreement=service-description.txt A1-A4; owner=customer; claimed=customer; evidence=pass at checks.txt E5: Customer checked the isolated restored report against its approved sample."
+  ],
+  "limitations": [
+    "This fictional agreement allocates narrow tasks, not all controls or legal liability for a real cloud service.",
+    "Evidence states are supplied snapshots, not independently inspected cloud settings or proof of continued security.",
+    "Backup scope, retention, recovery time, restore execution and customer extensions need separate service-specific evidence."
+  ]
+}

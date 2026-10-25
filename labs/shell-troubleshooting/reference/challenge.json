@@ -1,0 +1,26 @@
+{
+  "decisions": {
+    "P3": "requested-file-missing",
+    "S3": "search-command-error",
+    "Q3": "earlier-nonzero-hidden",
+    "D3": "stated-space-budget-met",
+    "V3": "service-not-found",
+    "R3": "process-pid-correlated",
+    "L3": "listener-owner-unresolved"
+  },
+  "observations": [
+    "P3: argument count=1; first resolved path=/lab/run/notes with spaces.txt; wanted=/lab/run/notes with spaces.txt. Command recorded: cat \"./notes with spaces.txt\"",
+    "S3: GNU grep exit=2; matches=0; stderr='grep: ./notes with spaces.txt: No such file or directory'. Command recorded: grep -F READY \"./notes with spaces.txt\"",
+    "Q3: stages=[1, 0]; pipefail=False; reported=0; interpret nonzero using the individual tool contract. Command recorded: grep -F READY ./status.txt | head -n 1",
+    "D3: available=1500 bytes; required=1500 bytes; margin=0 bytes. Command recorded: df -B1 --output=avail .",
+    "V3: query succeeded=True; state=not-found; compare with the expected service before changing anything. Command recorded: systemctl show --property=LoadState,ActiveState -- lab-demo.service",
+    "R3: PID=920; expected PID=920; name=python3; name alone does not establish identity or intent. Command recorded: ps -p 920 -o pid,ppid,comm",
+    "L3: bind=::1; port=8765; owner PID=None; expected PID=920; a bind is not a remote reachability test. Command recorded: ss -ltnp 'sport = :8765'"
+  ],
+  "limitations": [
+    "Commands and fields are supplied fictional evidence, not commands executed or operating-system output parsed by this helper.",
+    "Path resolution is lexical and excludes links, mounts, case-sensitive Windows folders, wildcards, expansion and permission checks. Actual argument tokens are supplied explicitly.",
+    "GNU grep uses only ordinary -F searches here, without -q. PowerShell cmdlet success uses the immediately captured $?; a retained $LASTEXITCODE belongs to a native program.",
+    "Service state, a PID, free bytes and a socket binding do not prove malicious intent or external reachability. Filesystem quotas, changing processes and permissions need separate evidence."
+  ]
+}

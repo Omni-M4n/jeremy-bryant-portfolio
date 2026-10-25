@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "request-a": "via-gateway",
+    "request-b": "on-link",
+    "request-c": "via-gateway",
+    "request-d": "via-gateway"
+  },
+  "observations": [
+    "request-a: 192.0.2.200 -> 192.0.2.200; matches [route-b, route-c]; choose route-c 192.0.2.128/25, metric 40, interface eth0; next-hop/ARP target 192.0.2.126; IP destination stays 192.0.2.200.",
+    "request-b: 192.0.2.126 -> 192.0.2.126; matches [route-a, route-b]; choose route-a 192.0.2.0/25, metric 0, interface eth0; next-hop/ARP target 192.0.2.126; IP destination stays 192.0.2.126.",
+    "request-c: 198.51.100.77 -> 198.51.100.77; matches [route-b, route-d, route-e]; choose route-e 198.51.100.64/26, metric 800, interface eth0; next-hop/ARP target 192.0.2.3; IP destination stays 198.51.100.77.",
+    "request-d: 198.51.100.30 -> 198.51.100.30; matches [route-b, route-d]; choose route-d 198.51.100.0/24, metric 3, interface eth0; next-hop/ARP target 192.0.2.2; IP destination stays 198.51.100.30."
+  ],
+  "limitations": [
+    "This is first-hop selection in one supplied table, not proof of delivery, return routing, DNS availability or firewall permission.",
+    "IPv4 unicast only; no policy routing, recursive gateways, interface failure, NAT, VPN, IPv6 or equal-cost load balancing is simulated.",
+    "Metrics are comparable only inside this teaching table. An equal best prefix and metric is reported as unresolved, not chosen by row order."
+  ]
+}

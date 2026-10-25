@@ -1,0 +1,23 @@
+{
+  "decisions": {
+    "client-a": "renewal-ack-observed",
+    "client-b": "ack-not-observed",
+    "exchange-a": "exchange-observed",
+    "exchange-a-lease-link": "same-client-address-observed",
+    "exchange-b": "request-no-reply-observed",
+    "exchange-b-lease-link": "lease-link-not-established"
+  },
+  "observations": [
+    "client-a: client 02:00:00:00:00:10, xid 2001; matching frames [11, 13]; ignored frames [12]; renewal-ack-observed: ACK frame 13 matches server 192.0.2.1 and address 192.0.2.20, lease 3600 seconds; reply destination 192.0.2.20, ciaddr 0.0.0.0.",
+    "client-b: client 02:00:00:00:00:20, xid 2002; matching frames [21, 22, 23]; ignored frames [24]; allocation Request for 192.0.2.30; no matching ACK/NAK in this excerpt.",
+    "exchange-a: target 192.0.2.1; request frames [14]; reply frames [15]; mappings ['02:00:00:00:00:01']; ignored frames [].",
+    "exchange-a-lease-link: later ARP request uses ACK frame 13 address 192.0.2.20 and the same client MAC; this is correlation, not proof of identity or client acceptance.",
+    "exchange-b: target 192.0.2.40; request frames [25]; reply frames []; mappings []; ignored frames [26].",
+    "exchange-b-lease-link: needs a matched DHCP Request/ACK and an observed ARP request; this is correlation, not proof of identity or client acceptance."
+  ],
+  "limitations": [
+    "Frames are synthetic summaries from one observation point, not a PCAP or proof of client acceptance, connectivity or server trust.",
+    "Missing messages may reflect the capture window or visibility. A renewal need not repeat Discover and Offer; no failure cause is inferred.",
+    "Only one allocation or unicast renewal attempt per client/xid and ordinary ARP request/reply excerpts are supported; relays, rebinding, INIT-REBOOT, probes and announcements are excluded."
+  ]
+}

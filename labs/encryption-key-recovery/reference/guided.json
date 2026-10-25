@@ -1,0 +1,18 @@
+{
+  "decisions": {
+    "encoded-note": "base64:matches:wrong-purpose",
+    "digest-note": "sha256:matches:fits-stated-goal",
+    "blue-copy": "restore-verified-in-supplied-evidence"
+  },
+  "observations": [
+    "encoded-note: 3 UTF-8 bytes; decoded_hex=616263; source_hex=616263; goal=confidentiality; evidence=transforms.txt T1.",
+    "digest-note: 3 UTF-8 bytes; computed_sha256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; supplied_sha256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; goal=change-detection; evidence=transforms.txt T2.",
+    "blue-copy: ciphertext_present=true; ciphertext_check=matches; required_key=blue-v1; key_state=available; access=allowed; attempt=success; restored_check=matches; evidence=restore-ledger.txt R1; key_evidence=key-ledger.txt K1."
+  ],
+  "limitations": [
+    "Base64 and SHA-256 are computed over dummy UTF-8 bytes; neither operation encrypts data or authenticates its origin.",
+    "Encrypted-file and decryption receipts are fictional supplied evidence; only the supplied dummy restored text is hashed, with no encryption or decryption performed.",
+    "Recovery uses one exact required key per object, with no alternate plaintext, cached key, wrapping layer or replica path; unavailable means unavailable in this inventory.",
+    "A supplied successful comparison is limited to that restore attempt and trusted comparison baseline, not future recoverability or proof of confidentiality."
+  ]
+}

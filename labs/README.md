@@ -1,7 +1,11 @@
 # Security foundations: original guided labs
 
-Thirty guided exercises prepared for Jeremy Bryant's learning portfolio:
-26 offline foundations and four hands-on tool workflows.
+<!-- LAB_COUNTS_START -->
+This release has **36 core labs** and **0 extensions**.
+<!-- LAB_COUNTS_END -->
+
+These are guided exercises prepared for Jeremy Bryant's learning portfolio.
+The original set has 26 offline foundations and four hands-on tool workflows.
 The datasets and scenarios are fictional. They are separate practice materials,
 not published university submissions or examples from a live incident.
 
@@ -75,6 +79,34 @@ named tools. A synthetic PCAP or XML sample is not a personal capture. An
 application integration test is not evidence of a manual Burp session. Read each
 README before setup; no installation or host monitoring is performed by the
 website build. Independent hands-on completion remains unassessed.
+
+## Further core labs and extensions
+
+The list below contains only checked packages included in this release. Extensions
+build on a named core lab. Use each README to check the setup and skills it needs.
+
+<!-- ADDITIONS_START -->
+### Network and DNS
+
+| Kind | Package | Practice goal |
+| --- | --- | --- |
+| Core | [Map addresses, subnets and a packet's route](network-address-path/README.md) | Distinguish local-subnet delivery, gateway routing and name resolution; predict the next hop. |
+| Core | [Read ARP and DHCP exchanges](arp-dhcp-evidence/README.md) | Explain address resolution and lease negotiation, and separate normal renewal from a missing step. |
+
+### Windows, Linux and endpoint
+
+| Kind | Package | Practice goal |
+| --- | --- | --- |
+| Core | [Build and verify a disposable lab workbench](isolated-lab-workbench/README.md) | Explain host/guest boundaries and prove that a harmless change can be rolled back. |
+| Core | [Use shell commands for read-only troubleshooting](shell-troubleshooting/README.md) | Choose a relevant command, interpret its fields and explain why its output cannot establish malicious intent. |
+
+### Identity and cloud
+
+| Kind | Package | Practice goal |
+| --- | --- | --- |
+| Core | [Map cloud shared responsibility and controls](shared-responsibility/README.md) | Allocate security and recovery tasks to the customer/provider and name what the service description does not settle. |
+| Core | [Compare encryption, encoding, hashing and key recovery](encryption-key-recovery/README.md) | Choose the appropriate concept for integrity or confidentiality and demonstrate why missing a required key changes recoverability. |
+<!-- ADDITIONS_END -->
 
 ## Status and contribution
 

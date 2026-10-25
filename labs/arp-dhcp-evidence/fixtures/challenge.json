@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "lab_id": "arp-dhcp-evidence",
+  "case_id": "challenge",
+  "title": "Packet excerpt set C",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied evidence to make each decision and explain its limits."
+  },
+  "data": {
+    "capture_note": "Three fictional excerpts: frames 31-32, 41-44 and 51-54, from one client-facing observation point. Collection of the first excerpt began at frame 31. Other traffic is omitted.",
+    "dhcp_sessions": [
+      {
+        "id": "client-a",
+        "client_mac": "02:00:00:00:00:40",
+        "xid": 3001,
+        "packets": [
+          {
+            "frame": 31,
+            "message": "ACK",
+            "xid": 3001,
+            "client_mac": "02:00:00:00:00:40",
+            "ciaddr": "0.0.0.0",
+            "yiaddr": "192.0.2.60",
+            "requested_ip": null,
+            "server_id": "192.0.2.1",
+            "ip_destination": "255.255.255.255",
+            "lease_seconds": 3600
+          }
+        ]
+      },
+      {
+        "id": "client-b",
+        "client_mac": "02:00:00:00:00:50",
+        "xid": 3002,
+        "packets": [
+          {
+            "frame": 41,
+            "message": "REQUEST",
+            "xid": 3002,
+            "client_mac": "02:00:00:00:00:50",
+            "ciaddr": "0.0.0.0",
+            "yiaddr": "0.0.0.0",
+            "requested_ip": "192.0.2.65",
+            "server_id": "192.0.2.1",
+            "ip_destination": "255.255.255.255",
+            "lease_seconds": null
+          },
+          {
+            "frame": 42,
+            "message": "ACK",
+            "xid": 3002,
+            "client_mac": "02:00:00:00:00:50",
+            "ciaddr": "0.0.0.0",
+            "yiaddr": "192.0.2.66",
+            "requested_ip": null,
+            "server_id": "192.0.2.1",
+            "ip_destination": "255.255.255.255",
+            "lease_seconds": 3600
+          }
+        ]
+      },
+      {
+        "id": "client-c",
+        "client_mac": "02:00:00:00:00:60",
+        "xid": 3003,
+        "packets": [
+          {
+            "frame": 51,
+            "message": "REQUEST",
+            "xid": 3003,
+            "client_mac": "02:00:00:00:00:60",
+            "ciaddr": "0.0.0.0",
+            "yiaddr": "0.0.0.0",
+            "requested_ip": "192.0.2.70",
+            "server_id": "192.0.2.1",
+            "ip_destination": "255.255.255.255",
+            "lease_seconds": null
+          },
+          {
+            "frame": 52,
+            "message": "ACK",
+            "xid": 3003,
+            "client_mac": "02:00:00:00:00:60",
+            "ciaddr": "0.0.0.0",
+            "yiaddr": "192.0.2.70",
+            "requested_ip": null,
+            "server_id": "192.0.2.1",
+            "ip_destination": "255.255.255.255",
+            "lease_seconds": 3600
+          }
+        ]
+      }
+    ],
+    "arp_exchanges": [
+      {
+        "id": "exchange-a",
+        "requester_ip": "192.0.2.60",
+        "requester_mac": "02:00:00:00:00:40",
+        "target_ip": "192.0.2.1",
+        "related_dhcp": "client-a",
+        "packets": [
+          {
+            "frame": 32,
+            "opcode": "reply",
+            "sender_ip": "192.0.2.1",
+            "sender_mac": "02:00:00:00:00:01",
+            "target_ip": "192.0.2.60",
+            "target_mac": "02:00:00:00:00:40"
+          }
+        ]
+      },
+      {
+        "id": "exchange-b",
+        "requester_ip": "192.0.2.65",
+        "requester_mac": "02:00:00:00:00:50",
+        "target_ip": "192.0.2.1",
+        "related_dhcp": "client-b",
+        "packets": [
+          {
+            "frame": 43,
+            "opcode": "request",
+            "sender_ip": "192.0.2.65",
+            "sender_mac": "02:00:00:00:00:50",
+            "target_ip": "192.0.2.1",
+            "target_mac": "00:00:00:00:00:00"
+          },
+          {
+            "frame": 44,
+            "opcode": "reply",
+            "sender_ip": "192.0.2.1",
+            "sender_mac": "02:00:00:00:00:01",
+            "target_ip": "192.0.2.65",
+            "target_mac": "02:00:00:00:00:50"
+          }
+        ]
+      },
+      {
+        "id": "exchange-c",
+        "requester_ip": "192.0.2.71",
+        "requester_mac": "02:00:00:00:00:60",
+        "target_ip": "192.0.2.1",
+        "related_dhcp": "client-c",
+        "packets": [
+          {
+            "frame": 53,
+            "opcode": "request",
+            "sender_ip": "192.0.2.71",
+            "sender_mac": "02:00:00:00:00:60",
+            "target_ip": "192.0.2.1",
+            "target_mac": "00:00:00:00:00:00"
+          },
+          {
+            "frame": 54,
+            "opcode": "reply",
+            "sender_ip": "192.0.2.1",
+            "sender_mac": "02:00:00:00:00:01",
+            "target_ip": "192.0.2.71",
+            "target_mac": "02:00:00:00:00:60"
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "packets.txt": "SYNTHETIC PACKET EXCERPTS; not a PCAP or a real capture\nThree fictional excerpts: frames 31-32, 41-44 and 51-54, from one client-facing observation point. Collection of the first excerpt began at frame 31. Other traffic is omitted.\nDHCP query client-a: client=02:00:00:00:00:40 xid=3001\nframe 31: ACK xid=3001 client=02:00:00:00:00:40 ciaddr=0.0.0.0 yiaddr=192.0.2.60 requested=None server=192.0.2.1 destination=255.255.255.255 lease=3600\nDHCP query client-b: client=02:00:00:00:00:50 xid=3002\nframe 41: REQUEST xid=3002 client=02:00:00:00:00:50 ciaddr=0.0.0.0 yiaddr=0.0.0.0 requested=192.0.2.65 server=192.0.2.1 destination=255.255.255.255 lease=None\nframe 42: ACK xid=3002 client=02:00:00:00:00:50 ciaddr=0.0.0.0 yiaddr=192.0.2.66 requested=None server=192.0.2.1 destination=255.255.255.255 lease=3600\nDHCP query client-c: client=02:00:00:00:00:60 xid=3003\nframe 51: REQUEST xid=3003 client=02:00:00:00:00:60 ciaddr=0.0.0.0 yiaddr=0.0.0.0 requested=192.0.2.70 server=192.0.2.1 destination=255.255.255.255 lease=None\nframe 52: ACK xid=3003 client=02:00:00:00:00:60 ciaddr=0.0.0.0 yiaddr=192.0.2.70 requested=None server=192.0.2.1 destination=255.255.255.255 lease=3600\nARP query exchange-a: requester=192.0.2.60/02:00:00:00:00:40 target=192.0.2.1 related-DHCP=client-a\nframe 32: reply sender=192.0.2.1/02:00:00:00:00:01 target=192.0.2.60/02:00:00:00:00:40\nARP query exchange-b: requester=192.0.2.65/02:00:00:00:00:50 target=192.0.2.1 related-DHCP=client-b\nframe 43: request sender=192.0.2.65/02:00:00:00:00:50 target=192.0.2.1/00:00:00:00:00:00\nframe 44: reply sender=192.0.2.1/02:00:00:00:00:01 target=192.0.2.65/02:00:00:00:00:50\nARP query exchange-c: requester=192.0.2.71/02:00:00:00:00:60 target=192.0.2.1 related-DHCP=client-c\nframe 53: request sender=192.0.2.71/02:00:00:00:00:60 target=192.0.2.1/00:00:00:00:00:00\nframe 54: reply sender=192.0.2.1/02:00:00:00:00:01 target=192.0.2.71/02:00:00:00:00:60\n"
+  }
+}

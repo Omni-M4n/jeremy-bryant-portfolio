@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "lab_id": "shell-troubleshooting",
+  "case_id": "guided",
+  "title": "Command notebook from practice session A",
+  "synthetic": true,
+  "context": {
+    "question": "What does each command observation establish, and what is the smallest justified next check?"
+  },
+  "data": {
+    "shell": "bash",
+    "records": [
+      {
+        "id": "P1",
+        "kind": "path",
+        "command": "cat notes with spaces.txt",
+        "cwd": "/lab/run",
+        "wanted": "/lab/run/notes with spaces.txt",
+        "arguments": [
+          "notes",
+          "with",
+          "spaces.txt"
+        ],
+        "existing_files": [
+          "/lab/run/notes with spaces.txt"
+        ]
+      },
+      {
+        "id": "S1",
+        "kind": "search",
+        "command": "grep -F READY \"./notes with spaces.txt\"",
+        "match_count": 0,
+        "exit_status": 1,
+        "success": null,
+        "stderr": "",
+        "last_native_exit": null
+      },
+      {
+        "id": "D1",
+        "kind": "capacity",
+        "command": "df -B1 --output=avail .",
+        "available_bytes": 2000,
+        "required_bytes": 1500
+      },
+      {
+        "id": "V1",
+        "kind": "service",
+        "command": "systemctl show --property=LoadState,ActiveState -- lab-demo.service",
+        "query_succeeded": true,
+        "state": "stopped"
+      },
+      {
+        "id": "R1",
+        "kind": "process",
+        "command": "ps -p 420 -o pid,ppid,comm",
+        "pid": 420,
+        "expected_pid": 420,
+        "name": "python3"
+      },
+      {
+        "id": "L1",
+        "kind": "listener",
+        "command": "ss -ltnp 'sport = :8765'",
+        "bind": "127.0.0.1",
+        "port": 8765,
+        "owner_pid": 420,
+        "expected_pid": 420
+      }
+    ]
+  },
+  "artifacts": {
+    "notebook.txt": "Fictional command notebook. Structured fields below are supplied transcriptions, not live output.\nP1: cat notes with spaces.txt\n{\"arguments\": [\"notes\", \"with\", \"spaces.txt\"], \"cwd\": \"/lab/run\", \"existing_files\": [\"/lab/run/notes with spaces.txt\"], \"wanted\": \"/lab/run/notes with spaces.txt\"}\nS1: grep -F READY \"./notes with spaces.txt\"\n{\"exit_status\": 1, \"last_native_exit\": null, \"match_count\": 0, \"stderr\": \"\", \"success\": null}\nD1: df -B1 --output=avail .\n{\"available_bytes\": 2000, \"required_bytes\": 1500}\nV1: systemctl show --property=LoadState,ActiveState -- lab-demo.service\n{\"query_succeeded\": true, \"state\": \"stopped\"}\nR1: ps -p 420 -o pid,ppid,comm\n{\"expected_pid\": 420, \"name\": \"python3\", \"pid\": 420}\nL1: ss -ltnp 'sport = :8765'\n{\"bind\": \"127.0.0.1\", \"expected_pid\": 420, \"owner_pid\": 420, \"port\": 8765}\n",
+    "status.txt": "WAITING\n",
+    "notes-with-spaces.txt": "WAITING\n"
+  }
+}

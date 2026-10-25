@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "lab_id": "encryption-key-recovery",
+  "case_id": "changed",
+  "title": "Saved text and recovery records from practice session B",
+  "synthetic": true,
+  "context": {
+    "question": "Which transformation fits the stated goal, and what recovery claim does the supplied evidence support?"
+  },
+  "data": {
+    "samples": [
+      {
+        "id": "newline-encoding",
+        "method": "base64",
+        "goal": "transport",
+        "source_text": "abc\n",
+        "supplied_output": "YWJjCg==",
+        "evidence_ref": "transforms.txt T1"
+      },
+      {
+        "id": "newline-digest",
+        "method": "sha256",
+        "goal": "change-detection",
+        "source_text": "abc\n",
+        "supplied_output": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "evidence_ref": "transforms.txt T2"
+      }
+    ],
+    "keys": [
+      {
+        "id": "blue-v1",
+        "state": "lost",
+        "access": "unknown",
+        "evidence_ref": "key-ledger.txt K1"
+      },
+      {
+        "id": "blue-v2",
+        "state": "available",
+        "access": "allowed",
+        "evidence_ref": "key-ledger.txt K2"
+      }
+    ],
+    "backups": [
+      {
+        "id": "archive-copy",
+        "key_id": "blue-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "matches",
+        "attempt": "not-run",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": null,
+        "evidence_ref": "restore-ledger.txt R1"
+      },
+      {
+        "id": "replica-copy",
+        "key_id": "blue-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "matches",
+        "attempt": "not-run",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": null,
+        "evidence_ref": "restore-ledger.txt R2"
+      }
+    ]
+  },
+  "artifacts": {
+    "transforms.txt": "Dummy UTF-8 only.\nT1 Source is the bytes 61 62 63 0a (abc followed by one LF); supplied Base64 is YWJjCg==. Goal: transport through a text-only field.\nT2 Current source is the same four bytes. The saved digest is ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad, from abc without the LF. Goal: detect a byte change against this trusted baseline.\n",
+    "key-ledger.txt": "FICTIONAL RECEIPTS: no encryption or restore was performed. No ciphertext or secret keys are shipped. Key IDs identify dependencies, not key material. Ciphertext checks are supplied statements. The helper hashes only the included dummy source/restored text.\nK1 blue-v1: marked lost after inventory review; no recoverable copy or alternate key path is in scope. Access is unknown.\nK2 blue-v2: a newly generated replacement is available and access is allowed. It is different key material, not a relabelled copy of blue-v1.\n",
+    "restore-ledger.txt": "FICTIONAL RECEIPTS: no encryption or restore was performed. No ciphertext or secret keys are shipped. Key IDs identify dependencies, not key material. Ciphertext checks are supplied statements. The helper hashes only the included dummy source/restored text.\nTrusted comparison baseline for these invented receipts: UTF-8 abc without a newline, SHA-256 ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad. Trust is a stated exercise assumption, not established by hashing.\nR1 archive-copy: ciphertext present, saved integrity check matches; required key blue-v1; no decryption attempted and no restored text.\nR2 replica-copy: second byte-identical ciphertext copy present, saved integrity check matches; required key blue-v1; no decryption attempted and no restored text.\n"
+  }
+}

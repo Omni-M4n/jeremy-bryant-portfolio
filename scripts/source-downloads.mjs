@@ -1,14 +1,13 @@
-// Contract: build 30 escaped lab source pages and one deterministic, allowlisted source ZIP.
+// Contract: build escaped pages and a deterministic ZIP for accepted lab packages only.
 // Called after src is copied into root/dist. No dependencies, network, source edits or deployment.
 import { createHash } from 'node:crypto';
 import { lstat, mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
+import { readRegistry } from './lab-registry.mjs';
 
 const ORIGIN = 'https://jeremy-bryant.pages.dev';
 const PREFIX = 'jeremy-bryant-pages/';
 const DOWNLOAD = 'downloads/jeremy-bryant-portfolio.zip';
-const LAB_COUNT = 30;
-const HANDS_ON = new Set(['traffic-capture', 'burp-access-control', 'snort-rule-testing', 'windows-event-investigation']);
 const DIRECTORIES = ['docs', 'labs', 'scripts', 'src', 'tests', 'tools'];
 const TOP_FILES = ['README.md', 'package.json', 'site.config.json', 'wrangler.jsonc', '.gitignore', '.gitattributes'];
 const DOCUMENTS = ['README.md', 'WORKED-EXAMPLE.md', 'DRILLS.md', 'PRACTICE.md'];
@@ -35,9 +34,10 @@ async function statOrNull(path) {
   try { return await lstat(path); } catch (error) { if (error.code === 'ENOENT') return null; throw error; }
 }
 
-async function collectSource(root) {
+async function collectSource(root, registry) {
   const entries = [];
   const labIds = [];
+  const accepted = new Set(registry.ids);
   let excludedSymlinks = 0;
   async function walk(parts) {
     const path = join(root, ...parts);
@@ -51,6 +51,8 @@ async function collectSource(root) {
         if (omitted(name, child.isDirectory())) continue;
         const next = [...parts, name];
         if (parts.length === 1 && parts[0] === 'labs') {
+          // Draft packages can share the workspace, but never enter the public archive.
+          if (child.isDirectory() && !accepted.has(name)) continue;
           if (child.isDirectory() && !child.isSymbolicLink()) {
             if (!/^[a-z][a-z0-9-]{1,60}$/u.test(name)) throw Error('Unsafe lab identifier');
             labIds.push(name);
@@ -74,7 +76,7 @@ async function collectSource(root) {
     if (!info || !info.isFile() || info.isSymbolicLink()) throw Error('Missing or unsafe source file: ' + name);
     await walk([name]);
   }
-  if (labIds.length !== LAB_COUNT) throw Error(`Expected exactly ${LAB_COUNT} lab directories`);
+  if (labIds.length !== accepted.size || labIds.some(id => !accepted.has(id))) throw Error('Accepted lab directory missing or unsafe');
   entries.sort((a, b) => compare(a.path, b.path));
   const folded = new Set();
   for (const { path } of entries) {
@@ -173,14 +175,15 @@ function titleFrom(markdown, id) {
   return markdown.match(/^#\s+(.+)$/mu)?.[1].trim() || id.replaceAll('-', ' ');
 }
 
-function labPage(id, documents) {
+function labPage(id, documents, registry) {
   const title = titleFrom(documents[0].text, id);
-  const handsOn = HANDS_ON.has(id);
+  const lab = registry.labs.find(item => item.id === id);
+  const handsOn = lab.mode !== 'offline';
   const labels = { 'README.md': 'Lab instructions', 'WORKED-EXAMPLE.md': 'Worked example', 'DRILLS.md': 'Practice drills', 'PRACTICE.md': 'Practice notes' };
   const anchor = name => name.toLowerCase().replace('.md', '');
   const body = `
   <section class="source-intro">
-    <p class="eyebrow">${handsOn ? 'Hands-on security exercise' : 'Offline security exercise'} / source reading</p>
+    <p class="eyebrow">${lab.kind === 'extension' ? 'Extension' : 'Core lab'} / ${escape(lab.mode)} practice</p>
     <h1>${escape(title)}</h1>
     <p>Read the supplied instructions here, then download the complete project to use the Python utilities and training materials. ${handsOn ? 'The tool workflow requires the separate software and controlled environment described below. ' : ''}These are guided practice materials; reference checks do not assess independent understanding.</p>
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
@@ -188,16 +191,16 @@ function labPage(id, documents) {
   </section>
   <nav class="source-document-nav" aria-label="Documents in this lab">${documents.map(({ name }) => `<a href="#${anchor(name)}">${labels[name]}</a>`).join('')}</nav>
   ${documents.map(({ name, text }) => `<section class="source-document" id="${anchor(name)}"><div class="source-document-heading"><h2>${labels[name]}</h2><p><code>labs/${id}/${name}</code></p></div><pre class="source-document-text">${escape(text.replaceAll('\r\n', '\n'))}</pre></section>`).join('\n')}
-  <p class="source-back"><a href="/source/">Browse all ${LAB_COUNT} lab source pages</a></p>`;
+  <p class="source-back"><a href="/source/">Browse all ${registry.totalCount} practice packages</a></p>`;
   return { title, html: page({ title, path: `/lab-files/${id}/`, description: 'Readable instructions for an original guided security exercise.', body }) };
 }
 
-function indexPage(labs, receipt) {
+function indexPage(labs, receipt, registry) {
   const body = `
   <section class="source-intro">
     <p class="eyebrow">Inspectable work / local downloads</p>
     <h1>Source &amp; downloads</h1>
-    <p>The complete portfolio source includes the static website, documentation, project utilities and all ${LAB_COUNT} guided security exercises: 26 offline foundations and four hands-on workflows. Supplied records and packet fixtures are fictional; personal tool evidence must be collected separately. Independent completion of unfamiliar variants has not yet been assessed.</p>
+    <p>The complete portfolio source includes the static website, documentation, project utilities, ${registry.coreCount} core labs and ${registry.extensionCount} extensions. Extensions build on an existing topic; they are not counted as new core labs. Supplied cases are fictional. Personal tool evidence must be collected separately. Independent completion of fresh cases has not yet been assessed.</p>
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
     <p class="source-location">${receipt.files} files · ${receipt.bytes.toLocaleString('en-AU')} bytes · Standard-library Python utilities</p>
     <details class="source-integrity"><summary>Archive integrity and contents</summary><p>The ZIP contains <code>docs/</code>, <code>labs/</code>, <code>scripts/</code>, <code>src/</code>, <code>tests/</code>, <code>tools/</code> and the project README and configuration. Generated runs, local credentials, private notes, receipts and version history are excluded. Upstream attribution remains in the source.</p><p>SHA-256 checks file identity; it does not assess the exercises or the learner.</p><pre>${receipt.sha256}</pre></details>
@@ -211,10 +214,10 @@ node scripts/build.mjs</code></pre>
     <p>The website build writes a local <code>dist/</code> folder. It does not publish a site or connect to a lab target.</p>
   </section>
   <section class="source-labs" aria-labelledby="source-labs-title">
-    <div class="source-section-heading"><h2 id="source-labs-title">Read a lab before downloading</h2><p>${LAB_COUNT} exercises · Instructions and practice documents</p></div>
+    <div class="source-section-heading"><h2 id="source-labs-title">Read a lab before downloading</h2><p>${registry.coreCount} core labs · ${registry.extensionCount} extensions · <a href="/security-labs/library/">Browse by topic</a></p></div>
     <ol class="source-lab-list">${labs.map(({ id, title }, index) => `<li><a href="/lab-files/${id}/"><span class="source-lab-number" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span><span>${escape(title)}</span><span aria-hidden="true">↗</span></a></li>`).join('\n')}</ol>
   </section>`;
-  return page({ title: 'Source & downloads', path: '/source/', description: `Download the portfolio source and read all ${LAB_COUNT} guided lab instructions locally.`, body });
+  return page({ title: 'Source & downloads', path: '/source/', description: `Download the portfolio source and read ${registry.coreCount} core labs plus ${registry.extensionCount} extensions locally.`, body });
 }
 
 async function safeWrite(dist, path, content) {
@@ -242,18 +245,19 @@ export async function buildSourceDownloads({ root, dist, config }) {
   if (!sourceInfo.isDirectory() || sourceInfo.isSymbolicLink()) throw Error('Unsafe source root');
   const outputInfo = await statOrNull(dist);
   if (outputInfo && (!outputInfo.isDirectory() || outputInfo.isSymbolicLink())) throw Error('Unsafe dist directory');
-  const { entries, labIds, excludedSymlinks } = await collectSource(await realpath(root));
+  const registry = await readRegistry(root);
+  const { entries, labIds, excludedSymlinks } = await collectSource(await realpath(root), registry);
   const source = new Map(entries.map(entry => [entry.path, entry.data]));
   const pages = labIds.map(id => {
     const documents = DOCUMENTS.filter(name => source.has(`labs/${id}/${name}`)).map(name => ({ name, text: source.get(`labs/${id}/${name}`).toString('utf8') }));
     if (documents[0]?.name !== 'README.md') throw Error('Missing regular lab README: ' + id);
-    return { id, ...labPage(id, documents) };
+    return { id, ...labPage(id, documents, registry) };
   });
   const archive = sourceZip(entries);
-  const receipt = { files: entries.length, sha256: digest(archive), bytes: archive.length, labCount: pages.length, labIds, downloadPath: '/' + DOWNLOAD, generatedPages: pages.length + 1, excludedSymlinks };
+  const receipt = { files: entries.length, sha256: digest(archive), bytes: archive.length, labCount: pages.length, coreCount:registry.coreCount, extensionCount:registry.extensionCount, labIds, downloadPath: '/' + DOWNLOAD, generatedPages: pages.length + 1, excludedSymlinks };
   if (!outputInfo) await mkdir(dist);
   await safeWrite(dist, DOWNLOAD, archive);
   for (const { id, html } of pages) await safeWrite(dist, `lab-files/${id}/index.html`, html);
-  await safeWrite(dist, 'source/index.html', indexPage(pages, receipt));
+  await safeWrite(dist, 'source/index.html', indexPage(pages, receipt, registry));
   return receipt;
 }

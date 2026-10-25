@@ -1,0 +1,17 @@
+{
+  "decisions": {
+    "lease-a": "allocation-ack-observed",
+    "gateway": "exchange-observed",
+    "gateway-lease-link": "same-client-address-observed"
+  },
+  "observations": [
+    "lease-a: client 02:00:00:00:00:10, xid 1001; matching frames [1, 2, 3, 4]; ignored frames []; allocation-ack-observed: ACK frame 4 matches server 192.0.2.1 and address 192.0.2.20, lease 3600 seconds; reply destination 255.255.255.255, ciaddr 0.0.0.0.",
+    "gateway: target 192.0.2.1; request frames [5]; reply frames [6]; mappings ['02:00:00:00:00:01']; ignored frames [].",
+    "gateway-lease-link: later ARP request uses ACK frame 4 address 192.0.2.20 and the same client MAC; this is correlation, not proof of identity or client acceptance."
+  ],
+  "limitations": [
+    "Frames are synthetic summaries from one observation point, not a PCAP or proof of client acceptance, connectivity or server trust.",
+    "Missing messages may reflect the capture window or visibility. A renewal need not repeat Discover and Offer; no failure cause is inferred.",
+    "Only one allocation or unicast renewal attempt per client/xid and ordinary ARP request/reply excerpts are supported; relays, rebinding, INIT-REBOOT, probes and announcements are excluded."
+  ]
+}

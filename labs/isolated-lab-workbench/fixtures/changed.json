@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "lab_id": "isolated-lab-workbench",
+  "case_id": "changed",
+  "title": "Workbench records from practice session B",
+  "synthetic": true,
+  "context": {
+    "question": "Does this supplied evidence support the disconnected-loopback boundary and a demonstrated dummy-file rollback?"
+  },
+  "data": {
+    "boundary": "disconnected-loopback",
+    "vm_id": "practice-vm-a",
+    "disposable": true,
+    "adapters": [
+      {
+        "slot": 1,
+        "mode": "disabled"
+      },
+      {
+        "slot": 2,
+        "mode": "nat"
+      },
+      {
+        "slot": 3,
+        "mode": "disabled"
+      },
+      {
+        "slot": 4,
+        "mode": "disabled"
+      },
+      {
+        "slot": 5,
+        "mode": "disabled"
+      },
+      {
+        "slot": 6,
+        "mode": "disabled"
+      },
+      {
+        "slot": 7,
+        "mode": "disabled"
+      },
+      {
+        "slot": 8,
+        "mode": "disabled"
+      }
+    ],
+    "channels": {
+      "shared_folders": 0,
+      "clipboard": true,
+      "drag_drop": false,
+      "passthrough": false
+    },
+    "guest": {
+      "default_routes": 1,
+      "non_loopback_addresses": [
+        "192.0.2.12"
+      ]
+    },
+    "loopback": {
+      "bind_address": "127.0.0.1",
+      "http_status": 200,
+      "body": "BASELINE\n",
+      "refused_after_stop": true
+    },
+    "restore": {
+      "snapshot_id": "baseline-a",
+      "snapshot_vm": "practice-vm-a",
+      "restored_id": "baseline-a",
+      "disk_mode": "normal",
+      "baseline_sha256": "8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d",
+      "changed_sha256": "34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25",
+      "restored_sha256": "34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25"
+    }
+  },
+  "artifacts": {
+    "inventory.txt": "Fictional evidence transcription. Each record is a supplied observation, not live output.\nVM practice-vm-a is a separately created disposable VM.\nNIC1: disabled\nNIC2: nat\nNIC3: disabled\nNIC4: disabled\nNIC5: disabled\nNIC6: disabled\nNIC7: disabled\nNIC8: disabled\nHost channels: {'shared_folders': 0, 'clipboard': True, 'drag_drop': False, 'passthrough': False}\nGuest summary: {'default_routes': 1, 'non_loopback_addresses': ['192.0.2.12']}\n",
+    "connectivity.txt": "Fictional loopback service evidence: {'bind_address': '127.0.0.1', 'http_status': 200, 'body': 'BASELINE\\n', 'refused_after_stop': True}\n",
+    "restore.txt": "Fictional normal-mode dummy-disk record. Hash inputs are literal BASELINE followed by LF, and CHANGED followed by LF.\nsnapshot_id: baseline-a\nsnapshot_vm: practice-vm-a\nrestored_id: baseline-a\ndisk_mode: normal\nbaseline_sha256: 8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d\nchanged_sha256: 34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25\nrestored_sha256: 34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25\n"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "lab_id": "network-address-path",
+  "case_id": "guided",
+  "title": "Route snapshot A",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied evidence to make each decision and explain its limits."
+  },
+  "data": {
+    "interfaces": [
+      {
+        "id": "eth0",
+        "cidr": "192.0.2.10/24"
+      }
+    ],
+    "routes": [
+      {
+        "id": "link",
+        "destination": "192.0.2.0/24",
+        "via": null,
+        "interface": "eth0",
+        "metric": 0
+      },
+      {
+        "id": "default",
+        "destination": "0.0.0.0/0",
+        "via": "192.0.2.1",
+        "interface": "eth0",
+        "metric": 5
+      },
+      {
+        "id": "remote",
+        "destination": "198.51.100.0/24",
+        "via": "192.0.2.254",
+        "interface": "eth0",
+        "metric": 90
+      },
+      {
+        "id": "host",
+        "destination": "198.51.100.77/32",
+        "via": "192.0.2.253",
+        "interface": "eth0",
+        "metric": 999
+      }
+    ],
+    "names": {
+      "archive.test": "198.51.100.77",
+      "docs.test": "203.0.113.8",
+      "lost.test": null
+    },
+    "requests": [
+      {
+        "id": "desk",
+        "target": "192.0.2.200"
+      },
+      {
+        "id": "archive",
+        "target": "archive.test"
+      },
+      {
+        "id": "remote-general",
+        "target": "198.51.100.88"
+      },
+      {
+        "id": "docs",
+        "target": "docs.test"
+      },
+      {
+        "id": "unknown",
+        "target": "lost.test"
+      },
+      {
+        "id": "self",
+        "target": "192.0.2.10"
+      }
+    ]
+  },
+  "artifacts": {
+    "snapshot.txt": "SYNTHETIC READ-ONLY SNAPSHOT; not a real VM transcript\nINTERFACES: id address/prefix\neth0 192.0.2.10/24\nROUTES: id destination via interface metric (on-link means no gateway)\nlink 192.0.2.0/24 on-link eth0 0\ndefault 0.0.0.0/0 192.0.2.1 eth0 5\nremote 198.51.100.0/24 192.0.2.254 eth0 90\nhost 198.51.100.77/32 192.0.2.253 eth0 999\nSUPPLIED NAME EVIDENCE: name address (unknown means no address supplied)\narchive.test 198.51.100.77\ndocs.test 203.0.113.8\nlost.test unknown\nREQUESTS: id target\ndesk 192.0.2.200\narchive archive.test\nremote-general 198.51.100.88\ndocs docs.test\nunknown lost.test\nself 192.0.2.10\n"
+  }
+}

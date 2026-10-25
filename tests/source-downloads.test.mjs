@@ -21,12 +21,15 @@ async function fixture(t) {
   });
   for (const directory of ['docs', 'labs', 'scripts', 'src', 'tests', 'tools']) await mkdir(join(root, directory));
   for (const name of ['README.md', 'package.json', 'site.config.json', 'wrangler.jsonc', '.gitignore', '.gitattributes']) await writeFile(join(root, name), name === 'site.config.json' ? JSON.stringify(config) : 'Public source: ' + name + '\n');
+  const labs = [];
   for (let index = 0; index < 30; index++) {
     const id = 'lab-' + String(index + 1).padStart(2, '0');
+    labs.push({id,kind:'core',group:'Test practice',title:'Exercise '+(index+1),summary:'Test source page.',start_with:'Read the example.',extends:[],mode:'offline',status:'Independent practice not yet assessed'});
     await mkdir(join(root, 'labs', id));
     await writeFile(join(root, 'labs', id, 'README.md'), `# Guided exercise ${index + 1}\n\nSynthetic practice, not assessed.\n`);
     await writeFile(join(root, 'labs', id, 'lab.py'), 'print("synthetic fixture")\n');
   }
+  await writeFile(join(root,'labs','release-catalog.json'),JSON.stringify({schema_version:1,labs}));
   await writeFile(join(root, 'docs', 'credits.md'), 'Upstream credit: https://www.webosbrew.org/\n');
   return { root, dist: join(root, 'dist'), config };
 }
@@ -82,6 +85,35 @@ function parseZip(archive) {
   return entries;
 }
 
+test('draft packages are omitted while accepted extensions retain separate counts', async t=>{
+  const context=await fixture(t);
+  await mkdir(join(context.root,'labs','draft-secret'));
+  await writeFile(join(context.root,'labs','draft-secret','README.md'),'UNREVIEWED_CONTENT_MUST_NOT_SHIP');
+  await mkdir(join(context.root,'labs','extra-task'));
+  await writeFile(join(context.root,'labs','extra-task','README.md'),'# Reviewed extra task\n');
+  const path=join(context.root,'labs','release-catalog.json');
+  const registry=JSON.parse(await readFile(path,'utf8'));
+  registry.labs.push({...registry.labs[0],id:'extra-task',kind:'extension',extends:['lab-01']});
+  await writeFile(path,JSON.stringify(registry));
+  const receipt=await buildSourceDownloads(context);
+  assert.deepEqual([receipt.coreCount,receipt.extensionCount,receipt.labCount],[30,1,31]);
+  const entries=parseZip(await readFile(archivePath(context.root)));
+  assert.ok(![...entries.keys()].some(path=>path.includes('draft-secret')));
+  assert.ok(entries.has(prefix+'labs/extra-task/README.md'));
+  const index=await readFile(join(context.dist,'source','index.html'),'utf8');
+  assert.match(index,/30 core labs and 1 extensions/);
+  assert.ok(!index.includes('draft-secret'));
+});
+
+test('a registry entry cannot silently point to a missing package',async t=>{
+  const context=await fixture(t);
+  const path=join(context.root,'labs','release-catalog.json');
+  const registry=JSON.parse(await readFile(path,'utf8'));
+  registry.labs.push({...registry.labs[0],id:'missing-lab'});
+  await writeFile(path,JSON.stringify(registry));
+  await assert.rejects(buildSourceDownloads(context),/Accepted lab directory missing/);
+});
+
 test('renders all 30 local lab pages and literal documents without executable markup', async t => {
   const context = await fixture(t);
   const attack = '<script>alert("test")</script> & <img src=x onerror="alert(1)">';
@@ -93,7 +125,7 @@ test('renders all 30 local lab pages and literal documents without executable ma
   const index = await readFile(join(context.dist, 'source', 'index.html'), 'utf8');
   assert.equal((index.match(/href="\/lab-files\/lab-\d\d\/"/gu) || []).length, 30);
   assert.ok(index.includes(receipt.sha256));
-  assert.ok(index.includes('Independent completion of unfamiliar variants has not yet been assessed.'));
+  assert.ok(index.includes('Independent completion of fresh cases has not yet been assessed.'));
   for (const id of receipt.labIds) {
     const html = await readFile(join(context.dist, 'lab-files', id, 'index.html'), 'utf8');
     assert.ok(html.includes('<meta name="robots" content="noindex, nofollow, noarchive">'));
@@ -113,11 +145,15 @@ test('renders all 30 local lab pages and literal documents without executable ma
 test('hands-on instructions explain separate tooling rather than claiming offline completion', async t => {
   const context = await fixture(t);
   await rename(join(context.root,'labs','lab-01'),join(context.root,'labs','traffic-capture'));
+  const path=join(context.root,'labs','release-catalog.json');
+  const registry=JSON.parse(await readFile(path,'utf8'));
+  registry.labs[0].id='traffic-capture';registry.labs[0].mode='hands-on';
+  await writeFile(path,JSON.stringify(registry));
   await buildSourceDownloads(context);
   const html = await readFile(join(context.dist,'lab-files','traffic-capture','index.html'),'utf8');
-  assert.ok(html.includes('Hands-on security exercise'));
+  assert.ok(html.includes('Core lab / hands-on practice'));
   assert.ok(html.includes('requires the separate software and controlled environment'));
-  assert.ok(!html.includes('Offline security exercise / source reading'));
+  assert.ok(!html.includes('Core lab / offline practice'));
 });
 
 test('archive excludes private, generated, environment, history and receipt paths', async t => {
@@ -185,7 +221,7 @@ test('rejects traversal destinations, malformed lab identifiers and missing requ
   await assert.rejects(buildSourceDownloads({ ...context, config: { ...config, origin: 'https://example.invalid' } }), /configuration/u);
   await assert.rejects(buildSourceDownloads({ ...context, config: { ...config, base: '/elsewhere/' } }), /configuration/u);
   await rename(join(context.root, 'labs', 'lab-01'), join(context.root, 'labs', 'invalid_lab'));
-  await assert.rejects(buildSourceDownloads(context), /Unsafe lab identifier/u);
+  await assert.rejects(buildSourceDownloads(context), /Accepted lab directory missing/u);
   await rename(join(context.root, 'labs', 'invalid_lab'), join(context.root, 'labs', 'lab-01'));
   await rename(join(context.root, 'labs', 'lab-01', 'README.md'), join(context.root, 'labs', 'lab-01', 'NOTES.md'));
   await assert.rejects(buildSourceDownloads(context), /Missing regular lab README/u);

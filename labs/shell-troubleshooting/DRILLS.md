@@ -1,0 +1,11 @@
+# Shell practice sequence
+
+1. **Guided.** Prepare `guided` in a fresh run folder. For each ID, write the question before the decision. Predict the exit-status interpretation and calculate the byte margin yourself. Save the first attempt, then open the worked example and keep corrections visible.
+2. **Prompts only.** Close the solution. Explain the difference between an argument containing spaces and several path arguments. State when `$?`, `$LASTEXITCODE` and Bash pipeline status can mislead someone who records them too late or applies the wrong contract.
+3. **Independent.** Prepare `challenge` in a different run folder. Use only its records, the README's explicit rules and local command help. Explain each outcome, what is still unknown and the narrowest next query. Do not open its reference, run `analyse`, or inspect the implementation before saving your answer. The reference labels are intentionally absent here.
+4. **Changed case.** Prepare `changed`. Adapt your interpretation to the specified shell rather than reusing Bash assumptions. Check location, current command success, the space budget and the relationship between the expected and observed process. Record what additional evidence would settle any unresolved service/socket question. Check only after saving.
+5. **Live notebook.** In an already prepared disposable VM, complete one README lane. Save a successful read, empty search, missing-file error, your own process, one filesystem observation, one service query and one local-port query. Unexpected results are evidence to explain, not reasons to alter the system. Mark missing tools or denied access honestly.
+6. **Teach-back.** Ask a reviewer to point to one output field and ask, “What does this establish?” Then ask, “What would you check next?” Correct any claim that a name, nonzero code, stopped service or wildcard listener alone proves compromise.
+7. **Recall.** Next day, choose the commands for three questions without notes and explain their limits. About a week later, use a fresh fixture copy with a different working directory or an exact space-budget boundary. Predict first, verify later, and preserve the earlier attempt.
+
+Record stage as guided, prompted, independent attempt, reviewer checked, or recall attempted. Automatic decision matches and prepared materials do not establish independent performance.

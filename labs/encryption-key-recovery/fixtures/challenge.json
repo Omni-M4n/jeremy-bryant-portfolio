@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "lab_id": "encryption-key-recovery",
+  "case_id": "challenge",
+  "title": "Saved text and recovery records from practice session C",
+  "synthetic": true,
+  "context": {
+    "question": "Which transformation fits the stated goal, and what recovery claim does the supplied evidence support?"
+  },
+  "data": {
+    "samples": [
+      {
+        "id": "sample-c1",
+        "method": "sha256",
+        "goal": "confidentiality",
+        "source_text": "abc",
+        "supplied_output": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "evidence_ref": "transforms.txt T1"
+      },
+      {
+        "id": "sample-c2",
+        "method": "base64",
+        "goal": "transport",
+        "source_text": "abc",
+        "supplied_output": "YWJk",
+        "evidence_ref": "transforms.txt T2"
+      }
+    ],
+    "keys": [
+      {
+        "id": "green-v1",
+        "state": "available",
+        "access": "denied",
+        "evidence_ref": "key-ledger.txt K1"
+      },
+      {
+        "id": "gold-v1",
+        "state": "available",
+        "access": "allowed",
+        "evidence_ref": "key-ledger.txt K2"
+      },
+      {
+        "id": "grey-v1",
+        "state": "unknown",
+        "access": "unknown",
+        "evidence_ref": "key-ledger.txt K3"
+      }
+    ],
+    "backups": [
+      {
+        "id": "backup-c1",
+        "key_id": "green-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "matches",
+        "attempt": "not-run",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": null,
+        "evidence_ref": "restore-ledger.txt R1"
+      },
+      {
+        "id": "backup-c2",
+        "key_id": "gold-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "matches",
+        "attempt": "success",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": null,
+        "evidence_ref": "restore-ledger.txt R2"
+      },
+      {
+        "id": "backup-c3",
+        "key_id": "gold-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "matches",
+        "attempt": "success",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": "",
+        "evidence_ref": "restore-ledger.txt R3"
+      },
+      {
+        "id": "backup-c4",
+        "key_id": "grey-v1",
+        "ciphertext_present": true,
+        "ciphertext_check": "not-checked",
+        "attempt": "not-run",
+        "baseline_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "restored_text": null,
+        "evidence_ref": "restore-ledger.txt R4"
+      }
+    ]
+  },
+  "artifacts": {
+    "transforms.txt": "Dummy UTF-8 only.\nT1 Source is abc with no newline; supplied SHA-256 is ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad. The stated goal is recoverable confidential storage of that text.\nT2 Source is abc with no newline; supplied Base64 is YWJk. The stated goal is exact transport through a text-only field.\n",
+    "key-ledger.txt": "FICTIONAL RECEIPTS: no encryption or restore was performed. No ciphertext or secret keys are shipped. Key IDs identify dependencies, not key material. Ciphertext checks are supplied statements. The helper hashes only the included dummy source/restored text.\nK1 green-v1: available in inventory; the recovery operator's access is denied.\nK2 gold-v1: available; recovery operator access is allowed.\nK3 grey-v1: availability and access have not been established.\n",
+    "restore-ledger.txt": "FICTIONAL RECEIPTS: no encryption or restore was performed. No ciphertext or secret keys are shipped. Key IDs identify dependencies, not key material. Ciphertext checks are supplied statements. The helper hashes only the included dummy source/restored text.\nTrusted comparison baseline for these invented receipts: UTF-8 abc without a newline, SHA-256 ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad. Trust is a stated exercise assumption, not established by hashing.\nR1 backup-c1: ciphertext present, saved check matches; required key green-v1; no decryption attempted or restored text supplied.\nR2 backup-c2: ciphertext present, saved check matches; required key gold-v1; fictional decrypt receipt reports success but supplies no restored text.\nR3 backup-c3: ciphertext present, saved check matches; required key gold-v1; fictional decrypt receipt reports success and supplies the empty string (zero bytes) as restored text.\nR4 backup-c4: ciphertext present but its integrity has not been checked; required key grey-v1; no decryption attempted or restored text supplied.\n"
+  }
+}

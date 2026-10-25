@@ -1,0 +1,24 @@
+{
+  "decisions": {
+    "sample-c1": "sha256:matches:wrong-purpose",
+    "sample-c2": "base64:differs:fits-stated-goal",
+    "backup-c1": "key-access-denied",
+    "backup-c2": "restored-content-unverified",
+    "backup-c3": "restored-content-mismatch",
+    "backup-c4": "key-state-unknown"
+  },
+  "observations": [
+    "sample-c1: 3 UTF-8 bytes; computed_sha256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; supplied_sha256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; goal=confidentiality; evidence=transforms.txt T1.",
+    "sample-c2: 3 UTF-8 bytes; decoded_hex=616264; source_hex=616263; goal=transport; evidence=transforms.txt T2.",
+    "backup-c1: ciphertext_present=true; ciphertext_check=matches; required_key=green-v1; key_state=available; access=denied; attempt=not-run; restored_check=not-checked; evidence=restore-ledger.txt R1; key_evidence=key-ledger.txt K1.",
+    "backup-c2: ciphertext_present=true; ciphertext_check=matches; required_key=gold-v1; key_state=available; access=allowed; attempt=success; restored_check=not-checked; evidence=restore-ledger.txt R2; key_evidence=key-ledger.txt K2.",
+    "backup-c3: ciphertext_present=true; ciphertext_check=matches; required_key=gold-v1; key_state=available; access=allowed; attempt=success; restored_check=differs; evidence=restore-ledger.txt R3; key_evidence=key-ledger.txt K2.",
+    "backup-c4: ciphertext_present=true; ciphertext_check=not-checked; required_key=grey-v1; key_state=unknown; access=unknown; attempt=not-run; restored_check=not-checked; evidence=restore-ledger.txt R4; key_evidence=key-ledger.txt K3."
+  ],
+  "limitations": [
+    "Base64 and SHA-256 are computed over dummy UTF-8 bytes; neither operation encrypts data or authenticates its origin.",
+    "Encrypted-file and decryption receipts are fictional supplied evidence; only the supplied dummy restored text is hashed, with no encryption or decryption performed.",
+    "Recovery uses one exact required key per object, with no alternate plaintext, cached key, wrapping layer or replica path; unavailable means unavailable in this inventory.",
+    "A supplied successful comparison is limited to that restore attempt and trusted comparison baseline, not future recoverability or proof of confidentiality."
+  ]
+}

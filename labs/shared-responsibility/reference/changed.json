@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "platform-os": "provider:correct-owner:evidence-pass",
+    "app-code": "customer:correct-owner:evidence-fail",
+    "access": "customer:owner-matches:evidence-pass",
+    "copy": "provider:owner-matches:evidence-pass",
+    "accept": "customer:correct-owner:evidence-missing"
+  },
+  "observations": [
+    "platform-os: service=orchard-app (PaaS); task=workload-os-patching; agreement=service-description.txt B1-B4; owner=provider; claimed=customer; evidence=pass at checks.txt E1: Platform OS maintenance evidence meets the stated patch window.",
+    "app-code: service=orchard-app (PaaS); task=application-code-patching; agreement=service-description.txt B1-B4; owner=customer; claimed=provider; evidence=fail at checks.txt E2: Customer-deployed dependency still has the specified unfixed issue.",
+    "access: service=orchard-app (PaaS); task=tenant-access; agreement=service-description.txt B1-B4; owner=customer; claimed=customer; evidence=pass at checks.txt E3: Current tenant members match the approved access list.",
+    "copy: service=orchard-app (PaaS); task=backup-copy-creation; agreement=service-description.txt B1-B4; owner=provider; claimed=provider; evidence=pass at checks.txt E4: Provider supplied a successful in-scope backup job record.",
+    "accept: service=orchard-app (PaaS); task=restore-acceptance; agreement=service-description.txt B1-B4; owner=customer; claimed=provider; evidence=missing at checks.txt E5: No customer acceptance check of restored records was supplied."
+  ],
+  "limitations": [
+    "This fictional agreement allocates narrow tasks, not all controls or legal liability for a real cloud service.",
+    "Evidence states are supplied snapshots, not independently inspected cloud settings or proof of continued security.",
+    "Backup scope, retention, recovery time, restore execution and customer extensions need separate service-specific evidence."
+  ]
+}

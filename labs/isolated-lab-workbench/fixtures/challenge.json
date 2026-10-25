@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "lab_id": "isolated-lab-workbench",
+  "case_id": "challenge",
+  "title": "Workbench records from practice session C",
+  "synthetic": true,
+  "context": {
+    "question": "Does this supplied evidence support the disconnected-loopback boundary and a demonstrated dummy-file rollback?"
+  },
+  "data": {
+    "boundary": "disconnected-loopback",
+    "vm_id": "practice-vm-a",
+    "disposable": true,
+    "adapters": [
+      {
+        "slot": 1,
+        "mode": "disabled"
+      },
+      {
+        "slot": 2,
+        "mode": "disabled"
+      },
+      {
+        "slot": 3,
+        "mode": "disabled"
+      },
+      {
+        "slot": 4,
+        "mode": "disabled"
+      }
+    ],
+    "channels": {
+      "shared_folders": 0,
+      "clipboard": false,
+      "drag_drop": false,
+      "passthrough": false
+    },
+    "guest": {
+      "default_routes": 0,
+      "non_loopback_addresses": []
+    },
+    "loopback": {
+      "bind_address": "127.0.0.1",
+      "http_status": 200,
+      "body": "BASELINE\n",
+      "refused_after_stop": null
+    },
+    "restore": {
+      "snapshot_id": "baseline-a",
+      "snapshot_vm": "practice-vm-a",
+      "restored_id": "baseline-a",
+      "disk_mode": "normal",
+      "baseline_sha256": "8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d",
+      "changed_sha256": "8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d",
+      "restored_sha256": "8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d"
+    }
+  },
+  "artifacts": {
+    "inventory.txt": "Fictional evidence transcription. Each record is a supplied observation, not live output.\nVM practice-vm-a is a separately created disposable VM.\nNIC1: disabled\nNIC2: disabled\nNIC3: disabled\nNIC4: disabled\nHost channels: {'shared_folders': 0, 'clipboard': False, 'drag_drop': False, 'passthrough': False}\nGuest summary: {'default_routes': 0, 'non_loopback_addresses': []}\n",
+    "connectivity.txt": "Fictional loopback service evidence: {'bind_address': '127.0.0.1', 'http_status': 200, 'body': 'BASELINE\\n', 'refused_after_stop': None}\n",
+    "restore.txt": "Fictional normal-mode dummy-disk record. Baseline text: BASELINE followed by LF. Planned edit text: CHANGED followed by LF. The fields below contain hashes recorded at baseline, after the edit step, and after restore.\nsnapshot_id: baseline-a\nsnapshot_vm: practice-vm-a\nrestored_id: baseline-a\ndisk_mode: normal\nbaseline_sha256: 8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d\nchanged_sha256: 8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d\nrestored_sha256: 8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d\n"
+  }
+}

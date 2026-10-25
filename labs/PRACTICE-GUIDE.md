@@ -1,6 +1,9 @@
 # Security foundations: practice guide
 
-Updated 25 October 2026. Thirty original exercises using fictional data: twenty-six offline foundations and four hands-on tool workflows.
+Updated 25 October 2026. Original guided exercises using fictional data. The
+[complete lab library](https://jeremy-bryant.pages.dev/security-labs/library/)
+lists the current core labs and extensions. Prepared materials and independent
+skill are tracked separately.
 
 Website: https://jeremy-bryant.pages.dev/security-labs/
 Source and downloads: https://jeremy-bryant.pages.dev/source/
@@ -15,6 +18,25 @@ materials; it does not assess the learner. Independent practice is pending.
 You can use command help and your own notes. Understanding the evidence matters
 more than memorising flags or typing quickly. These are beginner exercises;
 writing the supporting Python utilities is not part of the learner's task.
+
+## Choose the next skill
+
+Start with the listed prerequisites. A new package is not a deadline or a claim
+that you should already know the topic. Each package includes its own worked
+example, fresh cases and questions to explain aloud.
+
+For the workbench, first draw the boundary between the practice computer and
+your everyday files. For command practice, predict what path or process a
+command will refer to. For routing and ARP/DHCP, draw one packet's path and name
+the record that supports each step. For cloud responsibility, name the exact
+job before assigning its owner. For recovery keys, list what a saved file still
+needs before it can be restored.
+
+Use the offline evidence first. Complete a real tool workflow only in the
+separate environment named in its README. Save which part you actually ran.
+Later, try an unfamiliar case with the worked example and reference answer
+closed. Record a result as independent only after a reviewer checks both the
+evidence and your explanation.
 
 ## One short session
 

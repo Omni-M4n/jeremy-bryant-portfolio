@@ -1,0 +1,24 @@
+{
+  "decisions": {
+    "scope": "disposable-vm-recorded",
+    "network": "network-boundary-violated",
+    "host-paths": "host-transfer-path-present",
+    "connectivity": "loopback-pair-demonstrated",
+    "rollback": "restored-bytes-mismatch",
+    "review": "resolve-evidence-gaps"
+  },
+  "observations": [
+    "VM=practice-vm-a; recorded disposable=true; boundary=disconnected-loopback.",
+    "Adapter slots missing=[]; connected-mode slots=[2]; default routes=1; non-loopback addresses=['192.0.2.12'].",
+    "Enabled listed host transfer paths=['clipboard'].",
+    "Loopback bind=127.0.0.1; HTTP=200; body='BASELINE\\n'; refused after stop=True.",
+    "Snapshot=baseline-a; snapshot VM=practice-vm-a; restored snapshot=baseline-a; disk mode=normal.",
+    "Baseline SHA-256=8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d; changed=34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25; restored=34cd4b2b763ac5fdeb63102b7d7375eb1647ba3b4c52b7b61e9566138d3f6f25."
+  ],
+  "limitations": [
+    "This reviews fictional supplied records only; it does not inspect a hypervisor, verify real isolation or restore a VM.",
+    "The boundary is one disconnected VM with a loopback-only service. Host-only and internal networks require a different authorised design; NAT can permit outbound access.",
+    "Eight adapter records, guest addresses/routes and listed transfer settings support only the stated observation time. Missing devices, host routing, passthrough and later changes require manual review.",
+    "A matching dummy-file hash demonstrates that file's supplied rollback evidence, not a full-system restore, backup quality or protection against malicious software."
+  ]
+}

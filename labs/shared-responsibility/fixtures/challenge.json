@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "lab_id": "shared-responsibility",
+  "case_id": "challenge",
+  "title": "Service agreement records from practice session C",
+  "synthetic": true,
+  "context": {
+    "question": "Who must perform each narrow task, and what does the supplied evidence demonstrate?"
+  },
+  "data": {
+    "services": [
+      {
+        "id": "orchard-desk",
+        "model": "SaaS",
+        "backup_copy_owner": "unspecified",
+        "agreement_ref": "service-description.txt C1-C4"
+      }
+    ],
+    "controls": [
+      {
+        "id": "os",
+        "service_id": "orchard-desk",
+        "task": "workload-os-patching",
+        "claimed_owner": "provider",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E1",
+        "evidence_note": "No current OS assurance evidence was supplied."
+      },
+      {
+        "id": "app-code",
+        "service_id": "orchard-desk",
+        "task": "application-code-patching",
+        "claimed_owner": "shared",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E2",
+        "evidence_note": "Provider release evidence covers the delivered application binary."
+      },
+      {
+        "id": "sharing",
+        "service_id": "orchard-desk",
+        "task": "data-sharing",
+        "claimed_owner": "provider",
+        "evidence": "fail",
+        "evidence_ref": "checks.txt E3",
+        "evidence_note": "Tenant report sharing includes an unapproved external group."
+      },
+      {
+        "id": "copy",
+        "service_id": "orchard-desk",
+        "task": "backup-copy-creation",
+        "claimed_owner": "provider",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E4",
+        "evidence_note": "Sales sheet mentions resilient service but does not identify a backup operator."
+      },
+      {
+        "id": "accept",
+        "service_id": "orchard-desk",
+        "task": "restore-acceptance",
+        "claimed_owner": "unspecified",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E5",
+        "evidence_note": "No acceptance owner or restored-record check was supplied."
+      }
+    ]
+  },
+  "artifacts": {
+    "service-description.txt": "Fictional agreement. No cloud account exists.\nC1 Orchard Desk is SaaS: the provider runs the OS and the delivered application binary. There is no customer extension code in scope.\nC2 The tenant administrator chooses users and report sharing settings.\nC3 The supplied sales sheet says resilient service. It gives no backup-copy operator, copy scope, retention promise or restore procedure. Treat these omissions as unanswered questions.\nC4 The customer determines whether recovered records meet its business needs.\n",
+    "checks.txt": "Synthetic supplied evidence.\nE1 No current OS assurance evidence was supplied. Team claims provider owns OS patching.\nE2 Provider release evidence covers the delivered application binary. Team writes shared for code patching.\nE3 Tenant report sharing includes an unapproved external group. Team claims provider owns sharing settings.\nE4 Sales sheet mentions resilient service but does not identify a backup operator. Team claims provider creates copies.\nE5 No acceptance owner or restored-record check was supplied. Team has no assignment.\n"
+  }
+}

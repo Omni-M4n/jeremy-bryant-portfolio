@@ -1,0 +1,24 @@
+{
+  "decisions": {
+    "P2": "check-working-directory",
+    "S2": "no-matching-lines",
+    "D2": "stated-space-budget-short",
+    "V2": "service-query-inconclusive",
+    "R2": "process-pid-mismatch",
+    "L2": "wildcard-listener-review"
+  },
+  "observations": [
+    "P2: argument count=1; first resolved path=c:\\lab\\other\\notes with spaces.txt; wanted=c:\\lab\\run\\notes with spaces.txt. Command recorded: Get-Content -LiteralPath '.\\notes with spaces.txt'",
+    "S2: Immediate $?=True; matches=0; retained $LASTEXITCODE=9 is not this cmdlet status; error stream=''. Command recorded: Select-String -LiteralPath 'C:\\Lab\\run\\notes with spaces.txt' -SimpleMatch 'READY'",
+    "D2: available=1499 bytes; required=1500 bytes; margin=-1 bytes. Command recorded: Get-PSDrive -Name C",
+    "V2: query succeeded=False; state=None; compare with the expected service before changing anything. Command recorded: Get-Service -Name 'LabDemo'",
+    "R2: PID=612; expected PID=611; name=python; name alone does not establish identity or intent. Command recorded: Get-Process -Id 612",
+    "L2: bind=0.0.0.0; port=8765; owner PID=611; expected PID=611; a bind is not a remote reachability test. Command recorded: Get-NetTCPConnection -State Listen -LocalPort 8765"
+  ],
+  "limitations": [
+    "Commands and fields are supplied fictional evidence, not commands executed or operating-system output parsed by this helper.",
+    "Path resolution is lexical and excludes links, mounts, case-sensitive Windows folders, wildcards, expansion and permission checks. Actual argument tokens are supplied explicitly.",
+    "GNU grep uses only ordinary -F searches here, without -q. PowerShell cmdlet success uses the immediately captured $?; a retained $LASTEXITCODE belongs to a native program.",
+    "Service state, a PID, free bytes and a socket binding do not prove malicious intent or external reachability. Filesystem quotas, changing processes and permissions need separate evidence."
+  ]
+}

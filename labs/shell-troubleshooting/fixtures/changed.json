@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "lab_id": "shell-troubleshooting",
+  "case_id": "changed",
+  "title": "Command notebook from practice session B",
+  "synthetic": true,
+  "context": {
+    "question": "What does each command observation establish, and what is the smallest justified next check?"
+  },
+  "data": {
+    "shell": "powershell",
+    "records": [
+      {
+        "id": "P2",
+        "kind": "path",
+        "command": "Get-Content -LiteralPath '.\\notes with spaces.txt'",
+        "cwd": "C:\\Lab\\other",
+        "wanted": "C:\\Lab\\run\\notes with spaces.txt",
+        "arguments": [
+          ".\\notes with spaces.txt"
+        ],
+        "existing_files": [
+          "C:\\Lab\\run\\notes with spaces.txt"
+        ]
+      },
+      {
+        "id": "S2",
+        "kind": "search",
+        "command": "Select-String -LiteralPath 'C:\\Lab\\run\\notes with spaces.txt' -SimpleMatch 'READY'",
+        "match_count": 0,
+        "exit_status": null,
+        "success": true,
+        "stderr": "",
+        "last_native_exit": 9
+      },
+      {
+        "id": "D2",
+        "kind": "capacity",
+        "command": "Get-PSDrive -Name C",
+        "available_bytes": 1499,
+        "required_bytes": 1500
+      },
+      {
+        "id": "V2",
+        "kind": "service",
+        "command": "Get-Service -Name 'LabDemo'",
+        "query_succeeded": false,
+        "state": null
+      },
+      {
+        "id": "R2",
+        "kind": "process",
+        "command": "Get-Process -Id 612",
+        "pid": 612,
+        "expected_pid": 611,
+        "name": "python"
+      },
+      {
+        "id": "L2",
+        "kind": "listener",
+        "command": "Get-NetTCPConnection -State Listen -LocalPort 8765",
+        "bind": "0.0.0.0",
+        "port": 8765,
+        "owner_pid": 611,
+        "expected_pid": 611
+      }
+    ]
+  },
+  "artifacts": {
+    "notebook.txt": "Fictional command notebook. Structured fields below are supplied transcriptions, not live output.\nP2: Get-Content -LiteralPath '.\\notes with spaces.txt'\n{\"arguments\": [\".\\\\notes with spaces.txt\"], \"cwd\": \"C:\\\\Lab\\\\other\", \"existing_files\": [\"C:\\\\Lab\\\\run\\\\notes with spaces.txt\"], \"wanted\": \"C:\\\\Lab\\\\run\\\\notes with spaces.txt\"}\nS2: Select-String -LiteralPath 'C:\\Lab\\run\\notes with spaces.txt' -SimpleMatch 'READY'\n{\"exit_status\": null, \"last_native_exit\": 9, \"match_count\": 0, \"stderr\": \"\", \"success\": true}\nD2: Get-PSDrive -Name C\n{\"available_bytes\": 1499, \"required_bytes\": 1500}\nV2: Get-Service -Name 'LabDemo'\n{\"query_succeeded\": false, \"state\": null}\nR2: Get-Process -Id 612\n{\"expected_pid\": 611, \"name\": \"python\", \"pid\": 612}\nL2: Get-NetTCPConnection -State Listen -LocalPort 8765\n{\"bind\": \"0.0.0.0\", \"expected_pid\": 611, \"owner_pid\": 611, \"port\": 8765}\n",
+    "status.txt": "WAITING\n",
+    "notes-with-spaces.txt": "WAITING\n"
+  }
+}

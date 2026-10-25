@@ -1,0 +1,48 @@
+{
+  "opened_date": "2026-10-25",
+  "purpose": "Primary-source support for authored instructions; not a record of live lab execution.",
+  "sources": [
+    {
+      "title": "GNU grep: Exit Status",
+      "url": "https://www.gnu.org/software/grep/manual/html_node/Exit-Status.html",
+      "retrieval": "PowerShell Invoke-WebRequest HTTP 200; full short page text inspected after web fetch timeout",
+      "used_for": "Ordinary grep returns 0 for a selected line, 1 for no selected lines and 2 for error; quiet-mode exception excluded from this model."
+    },
+    {
+      "title": "GNU Bash: Pipelines",
+      "url": "https://www.gnu.org/software/bash/manual/html_node/Pipelines.html",
+      "retrieval": "PowerShell Invoke-WebRequest HTTP 200; full page text inspected after web fetch timeout",
+      "used_for": "Foreground pipeline status is last-stage status by default; pipefail selects the rightmost nonzero status or zero."
+    },
+    {
+      "title": "Microsoft Learn: about_Automatic_Variables",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-7.5",
+      "retrieval": "web open and targeted automatic-variable sections succeeded",
+      "used_for": "$? is command execution success; $LASTEXITCODE concerns native programs or scripts and can persist across cmdlets."
+    },
+    {
+      "title": "Microsoft Learn: about_Redirection",
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection?view=powershell-7.5",
+      "retrieval": "web open succeeded",
+      "used_for": "Success/Error and other streams, overwrite behavior, and PowerShell 7.4 native byte-stream change."
+    }
+  ],
+  "authorship_boundary": "Fictional scenarios, data and questions authored for this package. No coursework or production evidence included.",
+  "manual_validation": "No VirtualBox, Ubuntu VM, Windows VM, snapshot or shell live lane operated during package authoring.",
+  "review_sources": [
+    {
+      "opened_date": "2026-10-25",
+      "title": "Microsoft Learn: File path formats on Windows systems",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/io/file-path-formats",
+      "retrieval": "web open succeeded",
+      "used_for": "Distinguish drive-rooted, root-relative, drive-relative and complete UNC paths without relying on hidden current-drive state."
+    },
+    {
+      "opened_date": "2026-10-25",
+      "title": "Python: os.path",
+      "url": "https://docs.python.org/3/library/os.path.html",
+      "retrieval": "web open succeeded",
+      "used_for": "Windows isabs behavior changed in Python 3.13; explicit supported path forms avoid that version-dependent predicate."
+    }
+  ]
+}

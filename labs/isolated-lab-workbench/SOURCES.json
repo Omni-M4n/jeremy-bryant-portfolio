@@ -1,0 +1,32 @@
+{
+  "opened_date": "2026-10-25",
+  "purpose": "Primary-source support for authored instructions; not a record of live lab execution.",
+  "sources": [
+    {
+      "title": "Oracle VirtualBox 7.2: Virtual Networking",
+      "url": "https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/networkingdetails.html",
+      "retrieval": "web open succeeded",
+      "used_for": "Up to eight adapters; Manager configures four; disabled/not attached differs from NAT, bridged, internal and host-only."
+    },
+    {
+      "title": "Oracle VirtualBox 7.2: Working with Virtual Machines",
+      "url": "https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/working-with-vms.html",
+      "retrieval": "web open succeeded",
+      "used_for": "Take and Restore are distinct snapshot operations; restore reverts VM settings and normal virtual disks; write-through disks are excluded."
+    },
+    {
+      "title": "Oracle VirtualBox 7.2: VBoxManage Command Reference",
+      "url": "https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/vboxmanage.html",
+      "retrieval": "web open succeeded",
+      "used_for": "VBoxManage version and showvminfo commands; machine-readable inventory and VM identity."
+    },
+    {
+      "title": "Python: http.server",
+      "url": "https://docs.python.org/3/library/http.server.html",
+      "retrieval": "web open and targeted bind/directory section succeeded",
+      "used_for": "The server defaults to all interfaces; explicit --bind 127.0.0.1 and --directory choose the intended local surface."
+    }
+  ],
+  "authorship_boundary": "Fictional scenarios, data and questions authored for this package. No coursework or production evidence included.",
+  "manual_validation": "No VirtualBox, Ubuntu VM, Windows VM, snapshot or shell live lane operated during package authoring."
+}

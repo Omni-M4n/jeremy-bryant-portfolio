@@ -1,0 +1,21 @@
+{
+  "decisions": {
+    "os": "provider:owner-matches:evidence-missing",
+    "app-code": "provider:correct-owner:evidence-pass",
+    "sharing": "customer:correct-owner:evidence-fail",
+    "copy": "unspecified:clarify-agreement:evidence-missing",
+    "accept": "customer:assign-owner:evidence-missing"
+  },
+  "observations": [
+    "os: service=orchard-desk (SaaS); task=workload-os-patching; agreement=service-description.txt C1-C4; owner=provider; claimed=provider; evidence=missing at checks.txt E1: No current OS assurance evidence was supplied.",
+    "app-code: service=orchard-desk (SaaS); task=application-code-patching; agreement=service-description.txt C1-C4; owner=provider; claimed=shared; evidence=pass at checks.txt E2: Provider release evidence covers the delivered application binary.",
+    "sharing: service=orchard-desk (SaaS); task=data-sharing; agreement=service-description.txt C1-C4; owner=customer; claimed=provider; evidence=fail at checks.txt E3: Tenant report sharing includes an unapproved external group.",
+    "copy: service=orchard-desk (SaaS); task=backup-copy-creation; agreement=service-description.txt C1-C4; owner=unspecified; claimed=provider; evidence=missing at checks.txt E4: Sales sheet mentions resilient service but does not identify a backup operator.",
+    "accept: service=orchard-desk (SaaS); task=restore-acceptance; agreement=service-description.txt C1-C4; owner=customer; claimed=unspecified; evidence=missing at checks.txt E5: No acceptance owner or restored-record check was supplied."
+  ],
+  "limitations": [
+    "This fictional agreement allocates narrow tasks, not all controls or legal liability for a real cloud service.",
+    "Evidence states are supplied snapshots, not independently inspected cloud settings or proof of continued security.",
+    "Backup scope, retention, recovery time, restore execution and customer extensions need separate service-specific evidence."
+  ]
+}

@@ -5,6 +5,7 @@ A personal career portfolio, documented owner-controlled LG webOS home lab and o
 - **Portfolio:** https://jeremy-bryant.pages.dev/
 - **Full case study:** https://jeremy-bryant.pages.dev/lg-webos-lab/
 - **Security foundations labs:** https://jeremy-bryant.pages.dev/security-labs/
+- **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
 - **Source and downloads:** https://jeremy-bryant.pages.dev/source/
 - **LinkedIn:** https://www.linkedin.com/in/jeremy-bryant-61347a445/
 
@@ -24,7 +25,11 @@ Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://git
 
 ## Guided security exercises
 
-The [labs](labs/README.md) contain 30 original guided exercises. The first six
+<!-- LAB_COUNTS_START -->
+This release has **36 core labs** and **0 extensions**.
+<!-- LAB_COUNTS_END -->
+
+The [labs](labs/README.md) contain original guided exercises. The first six
 cover DNS, login events, access review, HTTP logs, file integrity and firewall
 rules. Twenty additional labs develop network investigation and testing,
 defensive operations and recovery, and cloud, identity and configuration review.
@@ -34,11 +39,17 @@ lists each purpose, prerequisite and deliverable.
 Four [hands-on tool labs](https://jeremy-bryant.pages.dev/security-labs/hands-on/)
 add controlled traffic capture, manual web access-control testing, offline Snort
 rule tests and Windows event investigation. Their setup and evidence boundaries
-are documented separately from the 26 offline exercises. Local utility tests do
+are documented separately from the first 26 offline exercises. Local utility tests do
 not establish that a learner has completed the external-tool workflows.
 The materials have automated reference checks; Jeremy's independent completion
 of unfamiliar variants remains to be assessed. These exercises do not claim
 production experience or independent authorship of every utility.
+
+The [complete library](https://jeremy-bryant.pages.dev/security-labs/library/)
+groups all accepted packages by topic. An extension adds an operation or evidence
+source to a core lab; it does not count as a new core topic. Draft packages are
+excluded from the website and download. Each new package has its own setup,
+worked case, practice tasks, checks and limits.
 
 The [practice guide](labs/PRACTICE-GUIDE.md) develops each topic through short
 walkthroughs, independent attempts, changed scenarios and later recall checks.

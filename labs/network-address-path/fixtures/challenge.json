@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "lab_id": "network-address-path",
+  "case_id": "challenge",
+  "title": "Route snapshot C",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied evidence to make each decision and explain its limits."
+  },
+  "data": {
+    "interfaces": [
+      {
+        "id": "eth0",
+        "cidr": "198.51.100.66/26"
+      }
+    ],
+    "routes": [
+      {
+        "id": "route-a",
+        "destination": "198.51.100.64/26",
+        "via": null,
+        "interface": "eth0",
+        "metric": 0
+      },
+      {
+        "id": "route-b",
+        "destination": "203.0.113.0/24",
+        "via": "198.51.100.65",
+        "interface": "eth0",
+        "metric": 20
+      },
+      {
+        "id": "route-c",
+        "destination": "203.0.113.9/32",
+        "via": "198.51.100.126",
+        "interface": "eth0",
+        "metric": 200
+      },
+      {
+        "id": "route-d",
+        "destination": "203.0.113.9/32",
+        "via": "198.51.100.125",
+        "interface": "eth0",
+        "metric": 200
+      }
+    ],
+    "names": {},
+    "requests": [
+      {
+        "id": "request-a",
+        "target": "203.0.113.9"
+      },
+      {
+        "id": "request-b",
+        "target": "203.0.113.90"
+      },
+      {
+        "id": "request-c",
+        "target": "192.0.2.8"
+      },
+      {
+        "id": "request-d",
+        "target": "198.51.100.126"
+      }
+    ]
+  },
+  "artifacts": {
+    "snapshot.txt": "SYNTHETIC READ-ONLY SNAPSHOT; not a real VM transcript\nINTERFACES: id address/prefix\neth0 198.51.100.66/26\nROUTES: id destination via interface metric (on-link means no gateway)\nroute-a 198.51.100.64/26 on-link eth0 0\nroute-b 203.0.113.0/24 198.51.100.65 eth0 20\nroute-c 203.0.113.9/32 198.51.100.126 eth0 200\nroute-d 203.0.113.9/32 198.51.100.125 eth0 200\nSUPPLIED NAME EVIDENCE: name address (unknown means no address supplied)\nREQUESTS: id target\nrequest-a 203.0.113.9\nrequest-b 203.0.113.90\nrequest-c 192.0.2.8\nrequest-d 198.51.100.126\n"
+  }
+}

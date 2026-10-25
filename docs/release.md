@@ -12,13 +12,15 @@ Responses use `Cache-Control: public, max-age=0, must-revalidate, no-transform` 
 
 ## Applicable checks
 
-`node scripts/build.mjs` validates the 20-lab expansion and four hands-on catalogs, checks required
+`node scripts/build.mjs` validates the original catalogs and `labs/release-catalog.json`, checks required
 learner files, refreshes the plain-text practice-guide mirror from
 `labs/PRACTICE-GUIDE.md`, and builds the static site. The catalog uses native
 expandable entries; it adds no browser dependency. `npm test` includes catalog
 escaping, destination and identity checks alongside the site checks.
 
-The source download includes 30 exercises. The four hands-on workflows use
+The release catalog lists the accepted core labs and extensions separately.
+Only those package directories enter the website and source download; other
+workspace drafts are excluded. The original four hands-on workflows use
 separate lab directories and do not change the reviewed twenty-lab fixture
 manifest. Their Python suites check application behaviour, packet generation
 and XML interpretation. Record actual Wireshark, Burp, Snort and Sysmon runs
@@ -26,7 +28,7 @@ separately; a missing external tool must not be replaced with a claimed result.
 The public website serves only static instructions and downloads. It never runs
 the local training servers, packet inspection or Windows collection workflow.
 
-For the new lab family, `python labs/check_foundation_release.py` verifies the
+For the original twenty-lab family, `python labs/check_foundation_release.py` verifies the
 reviewed source inventory. Its optional `--tests` runs isolated domain suites,
 shared-runtime checks and all sixty reference cases. Test receipts may be reused
 only when their exact source hashes still match. Domain explanations and learner

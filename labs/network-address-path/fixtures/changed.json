@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "lab_id": "network-address-path",
+  "case_id": "changed",
+  "title": "Route snapshot B",
+  "synthetic": true,
+  "context": {
+    "question": "Use the supplied evidence to make each decision and explain its limits."
+  },
+  "data": {
+    "interfaces": [
+      {
+        "id": "eth0",
+        "cidr": "192.0.2.10/25"
+      }
+    ],
+    "routes": [
+      {
+        "id": "route-a",
+        "destination": "192.0.2.0/25",
+        "via": null,
+        "interface": "eth0",
+        "metric": 0
+      },
+      {
+        "id": "route-b",
+        "destination": "0.0.0.0/0",
+        "via": "192.0.2.1",
+        "interface": "eth0",
+        "metric": 5
+      },
+      {
+        "id": "route-c",
+        "destination": "192.0.2.128/25",
+        "via": "192.0.2.126",
+        "interface": "eth0",
+        "metric": 40
+      },
+      {
+        "id": "route-d",
+        "destination": "198.51.100.0/24",
+        "via": "192.0.2.2",
+        "interface": "eth0",
+        "metric": 3
+      },
+      {
+        "id": "route-e",
+        "destination": "198.51.100.64/26",
+        "via": "192.0.2.3",
+        "interface": "eth0",
+        "metric": 800
+      }
+    ],
+    "names": {},
+    "requests": [
+      {
+        "id": "request-a",
+        "target": "192.0.2.200"
+      },
+      {
+        "id": "request-b",
+        "target": "192.0.2.126"
+      },
+      {
+        "id": "request-c",
+        "target": "198.51.100.77"
+      },
+      {
+        "id": "request-d",
+        "target": "198.51.100.30"
+      }
+    ]
+  },
+  "artifacts": {
+    "snapshot.txt": "SYNTHETIC READ-ONLY SNAPSHOT; not a real VM transcript\nINTERFACES: id address/prefix\neth0 192.0.2.10/25\nROUTES: id destination via interface metric (on-link means no gateway)\nroute-a 192.0.2.0/25 on-link eth0 0\nroute-b 0.0.0.0/0 192.0.2.1 eth0 5\nroute-c 192.0.2.128/25 192.0.2.126 eth0 40\nroute-d 198.51.100.0/24 192.0.2.2 eth0 3\nroute-e 198.51.100.64/26 192.0.2.3 eth0 800\nSUPPLIED NAME EVIDENCE: name address (unknown means no address supplied)\nREQUESTS: id target\nrequest-a 192.0.2.200\nrequest-b 192.0.2.126\nrequest-c 198.51.100.77\nrequest-d 198.51.100.30\n"
+  }
+}

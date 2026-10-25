@@ -1,0 +1,20 @@
+{
+  "decisions": {
+    "newline-encoding": "base64:matches:fits-stated-goal",
+    "newline-digest": "sha256:differs:fits-stated-goal",
+    "archive-copy": "required-key-unavailable",
+    "replica-copy": "required-key-unavailable"
+  },
+  "observations": [
+    "newline-encoding: 4 UTF-8 bytes; decoded_hex=6162630a; source_hex=6162630a; goal=transport; evidence=transforms.txt T1.",
+    "newline-digest: 4 UTF-8 bytes; computed_sha256=edeaaff3f1774ad2888673770c6d64097e391bc362d7d6fb34982ddf0efd18cb; supplied_sha256=ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad; goal=change-detection; evidence=transforms.txt T2.",
+    "archive-copy: ciphertext_present=true; ciphertext_check=matches; required_key=blue-v1; key_state=lost; access=unknown; attempt=not-run; restored_check=not-checked; evidence=restore-ledger.txt R1; key_evidence=key-ledger.txt K1.",
+    "replica-copy: ciphertext_present=true; ciphertext_check=matches; required_key=blue-v1; key_state=lost; access=unknown; attempt=not-run; restored_check=not-checked; evidence=restore-ledger.txt R2; key_evidence=key-ledger.txt K1."
+  ],
+  "limitations": [
+    "Base64 and SHA-256 are computed over dummy UTF-8 bytes; neither operation encrypts data or authenticates its origin.",
+    "Encrypted-file and decryption receipts are fictional supplied evidence; only the supplied dummy restored text is hashed, with no encryption or decryption performed.",
+    "Recovery uses one exact required key per object, with no alternate plaintext, cached key, wrapping layer or replica path; unavailable means unavailable in this inventory.",
+    "A supplied successful comparison is limited to that restore attempt and trusted comparison baseline, not future recoverability or proof of confidentiality."
+  ]
+}

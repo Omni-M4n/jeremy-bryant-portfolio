@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "lab_id": "shared-responsibility",
+  "case_id": "changed",
+  "title": "Service agreement records from practice session B",
+  "synthetic": true,
+  "context": {
+    "question": "Who must perform each narrow task, and what does the supplied evidence demonstrate?"
+  },
+  "data": {
+    "services": [
+      {
+        "id": "orchard-app",
+        "model": "PaaS",
+        "backup_copy_owner": "provider",
+        "agreement_ref": "service-description.txt B1-B4"
+      }
+    ],
+    "controls": [
+      {
+        "id": "platform-os",
+        "service_id": "orchard-app",
+        "task": "workload-os-patching",
+        "claimed_owner": "customer",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E1",
+        "evidence_note": "Platform OS maintenance evidence meets the stated patch window."
+      },
+      {
+        "id": "app-code",
+        "service_id": "orchard-app",
+        "task": "application-code-patching",
+        "claimed_owner": "provider",
+        "evidence": "fail",
+        "evidence_ref": "checks.txt E2",
+        "evidence_note": "Customer-deployed dependency still has the specified unfixed issue."
+      },
+      {
+        "id": "access",
+        "service_id": "orchard-app",
+        "task": "tenant-access",
+        "claimed_owner": "customer",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E3",
+        "evidence_note": "Current tenant members match the approved access list."
+      },
+      {
+        "id": "copy",
+        "service_id": "orchard-app",
+        "task": "backup-copy-creation",
+        "claimed_owner": "provider",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E4",
+        "evidence_note": "Provider supplied a successful in-scope backup job record."
+      },
+      {
+        "id": "accept",
+        "service_id": "orchard-app",
+        "task": "restore-acceptance",
+        "claimed_owner": "provider",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E5",
+        "evidence_note": "No customer acceptance check of restored records was supplied."
+      }
+    ]
+  },
+  "artifacts": {
+    "service-description.txt": "Fictional agreement. No cloud account exists.\nB1 Orchard App is PaaS: the provider operates the underlying OS and runtime; the customer deploys and patches its own report application and dependencies.\nB2 The customer chooses tenant users and data sharing settings.\nB3 This purchased plan explicitly includes provider operation of a daily copy of the named application data. This statement does not guarantee retention or recovery time.\nB4 The customer must check whether restored records satisfy its business needs.\n",
+    "checks.txt": "Synthetic supplied evidence.\nE1 Platform OS maintenance evidence meets the stated patch window. Team claims customer owns OS patching.\nE2 Customer-deployed dependency still has the specified unfixed issue. Team claims provider owns application code patching.\nE3 Current tenant members match the approved access list. Team claims customer owns access review.\nE4 Provider supplied a successful in-scope backup job record. Team claims provider creates copies.\nE5 No customer acceptance check of restored records was supplied. Team claims provider owns restore acceptance.\n"
+  }
+}

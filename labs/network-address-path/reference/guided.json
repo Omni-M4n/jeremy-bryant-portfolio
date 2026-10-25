@@ -1,0 +1,23 @@
+{
+  "decisions": {
+    "desk": "on-link",
+    "archive": "via-gateway",
+    "remote-general": "via-gateway",
+    "docs": "via-gateway",
+    "unknown": "name-unresolved",
+    "self": "local-host"
+  },
+  "observations": [
+    "desk: 192.0.2.200 -> 192.0.2.200; matches [default, link]; choose link 192.0.2.0/24, metric 0, interface eth0; next-hop/ARP target 192.0.2.200; IP destination stays 192.0.2.200.",
+    "archive: archive.test -> 198.51.100.77; matches [default, host, remote]; choose host 198.51.100.77/32, metric 999, interface eth0; next-hop/ARP target 192.0.2.253; IP destination stays 198.51.100.77.",
+    "remote-general: 198.51.100.88 -> 198.51.100.88; matches [default, remote]; choose remote 198.51.100.0/24, metric 90, interface eth0; next-hop/ARP target 192.0.2.254; IP destination stays 198.51.100.88.",
+    "docs: docs.test -> 203.0.113.8; matches [default]; choose default 0.0.0.0/0, metric 5, interface eth0; next-hop/ARP target 192.0.2.1; IP destination stays 203.0.113.8.",
+    "unknown: lost.test has no supplied address; no route lookup is possible from this evidence.",
+    "self: 192.0.2.10 -> 192.0.2.10 is this host's own interface address; no Ethernet next hop is selected."
+  ],
+  "limitations": [
+    "This is first-hop selection in one supplied table, not proof of delivery, return routing, DNS availability or firewall permission.",
+    "IPv4 unicast only; no policy routing, recursive gateways, interface failure, NAT, VPN, IPv6 or equal-cost load balancing is simulated.",
+    "Metrics are comparable only inside this teaching table. An equal best prefix and metric is reported as unresolved, not chosen by row order."
+  ]
+}

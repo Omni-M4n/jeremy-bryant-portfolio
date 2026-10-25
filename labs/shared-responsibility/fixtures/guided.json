@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "lab_id": "shared-responsibility",
+  "case_id": "guided",
+  "title": "Service agreement records from practice session A",
+  "synthetic": true,
+  "context": {
+    "question": "Who must perform each narrow task, and what does the supplied evidence demonstrate?"
+  },
+  "data": {
+    "services": [
+      {
+        "id": "orchard-vm",
+        "model": "IaaS",
+        "backup_copy_owner": "customer",
+        "agreement_ref": "service-description.txt A1-A4"
+      }
+    ],
+    "controls": [
+      {
+        "id": "host",
+        "service_id": "orchard-vm",
+        "task": "physical-host-patching",
+        "claimed_owner": "provider",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E1",
+        "evidence_note": "Provider host patch attestation is current."
+      },
+      {
+        "id": "guest",
+        "service_id": "orchard-vm",
+        "task": "workload-os-patching",
+        "claimed_owner": "provider",
+        "evidence": "fail",
+        "evidence_ref": "checks.txt E2",
+        "evidence_note": "Guest update inventory is missing the required patch."
+      },
+      {
+        "id": "access",
+        "service_id": "orchard-vm",
+        "task": "tenant-access",
+        "claimed_owner": "customer",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E3",
+        "evidence_note": "No current user access review was supplied."
+      },
+      {
+        "id": "copy",
+        "service_id": "orchard-vm",
+        "task": "backup-copy-creation",
+        "claimed_owner": "customer",
+        "evidence": "missing",
+        "evidence_ref": "checks.txt E4",
+        "evidence_note": "No backup job run record was supplied."
+      },
+      {
+        "id": "accept",
+        "service_id": "orchard-vm",
+        "task": "restore-acceptance",
+        "claimed_owner": "customer",
+        "evidence": "pass",
+        "evidence_ref": "checks.txt E5",
+        "evidence_note": "Customer checked the isolated restored report against its approved sample."
+      }
+    ]
+  },
+  "artifacts": {
+    "service-description.txt": "Fictional agreement. No cloud account exists.\nA1 Orchard VM is IaaS: the provider maintains physical hosts; the customer operates the guest OS and its deployed report application.\nA2 The customer chooses tenant users and data sharing settings.\nA3 No managed backup service is purchased. The customer creates workload backup copies.\nA4 The customer checks whether a restored report satisfies its business needs. A single historical restore does not show current backup operation.\n",
+    "checks.txt": "Synthetic supplied evidence, same review date; no settings were inspected by this lab.\nE1 Provider host patch attestation is current. Team claims provider owns host patching.\nE2 Guest update inventory is missing the required patch. Team claims provider owns guest patching.\nE3 No current user access review was supplied. Team claims customer owns access review.\nE4 No backup job run record was supplied. Team claims customer creates backup copies.\nE5 Customer checked the isolated restored report against its approved sample. Team claims customer owns restore acceptance.\n"
+  }
+}

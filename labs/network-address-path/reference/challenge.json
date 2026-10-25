@@ -1,0 +1,19 @@
+{
+  "decisions": {
+    "request-a": "equal-route-cost",
+    "request-b": "via-gateway",
+    "request-c": "no-route",
+    "request-d": "on-link"
+  },
+  "observations": [
+    "request-a: 203.0.113.9 -> 203.0.113.9; matches [route-b, route-c, route-d]; equal best routes [route-c, route-d] at /32, metric 200; next hop unresolved.",
+    "request-b: 203.0.113.90 -> 203.0.113.90; matches [route-b]; choose route-b 203.0.113.0/24, metric 20, interface eth0; next-hop/ARP target 198.51.100.65; IP destination stays 203.0.113.90.",
+    "request-c: 192.0.2.8 -> 192.0.2.8; no supplied route matches.",
+    "request-d: 198.51.100.126 -> 198.51.100.126; matches [route-a]; choose route-a 198.51.100.64/26, metric 0, interface eth0; next-hop/ARP target 198.51.100.126; IP destination stays 198.51.100.126."
+  ],
+  "limitations": [
+    "This is first-hop selection in one supplied table, not proof of delivery, return routing, DNS availability or firewall permission.",
+    "IPv4 unicast only; no policy routing, recursive gateways, interface failure, NAT, VPN, IPv6 or equal-cost load balancing is simulated.",
+    "Metrics are comparable only inside this teaching table. An equal best prefix and metric is reported as unresolved, not chosen by row order."
+  ]
+}
