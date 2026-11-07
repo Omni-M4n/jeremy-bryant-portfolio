@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Access Notes{% endblock %} · Access Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('notes') }}"><span class="mark" aria-hidden="true">a.</span> Access Notes</a>
+    <span class="local-label">LOCAL PRACTICE</span>
+    {% if g.user %}
+    <form action="{{ url_for('logout') }}" method="post" class="signout">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <span>Signed in as <strong>{{ g.user['username'] }}</strong></span>
+      <button class="quiet" type="submit">Sign out</button>
+    </form>
+    {% endif %}
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer>Small notes. Clear boundaries. <span>Fictional accounts · stored on this computer</span></footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "report_title": "Fictional training scan — sample only",
+  "findings": [
+    {
+      "id": "OBS-003",
+      "resource": "https://app.example.test/",
+      "title": "Response header omitted from a recorded response",
+      "severity": "low",
+      "confidence": "high",
+      "evidence": [
+        "Fictional fixture: the supplied response transcript does not contain a Content-Security-Policy header.",
+        "Only one recorded response is represented. No request was made by this reporter."
+      ]
+    },
+    {
+      "id": "OBS-001",
+      "resource": "build-host.example.test:443",
+      "title": "Scanner reports an outdated service version",
+      "severity": "high",
+      "confidence": "low",
+      "evidence": [
+        "Fictional scanner banner: ExampleServer/1.2.3.",
+        "Banner matching alone does not establish patch status, applicability or successful exploitation."
+      ]
+    },
+    {
+      "id": "OBS-002",
+      "resource": "storage-example.test/public-assets",
+      "title": "Scanner reports a possible storage permission issue",
+      "severity": "medium",
+      "confidence": "medium",
+      "evidence": [
+        "Fictional rule result: listing permission was flagged by the supplied scanner export.",
+        "The export contains no independent authorisation or access test. An owner should validate the intended access policy."
+      ]
+    }
+  ]
+}

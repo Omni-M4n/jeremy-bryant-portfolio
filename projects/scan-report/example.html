@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Fictional training scan — sample only</title>
+<style>
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #172b3a; background: #edf2f5; }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.6; }
+main { max-width: 1050px; margin: 0 auto; padding: 3rem 1.4rem; }
+header { border-top: 6px solid #176b76; padding: 1.5rem 0; }
+h1 { line-height: 1.2; font-size: clamp(1.8rem, 4vw, 2.8rem); margin: .5rem 0 1rem; }
+h2 { font-size: 1.35rem; line-height: 1.35; margin: .35rem 0 .8rem; }
+h3 { font-size: 1rem; margin-bottom: .4rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; font-weight: 700; color: #225a67; }
+.notice { background: #dcecf0; border-left: 4px solid #176b76; padding: 1rem 1.2rem; }
+table { border-collapse: collapse; width: 100%; margin: 1.8rem 0 2.4rem; background: white; }
+caption { text-align: left; font-weight: 700; padding-bottom: .6rem; }
+th, td { text-align: left; padding: .5rem 1rem; border-bottom: 1px solid #dce3e9; }
+td { font-variant-numeric: tabular-nums; }
+thead { background: #172f41; color: white; }
+article { background: white; border: 1px solid #d4dfe6; border-left: 5px solid #557080; border-radius: 4px; padding: 1.3rem; margin: 1.2rem 0; break-inside: avoid; }
+article.critical, article.high { border-left-color: #aa2e39; }
+article.medium { border-left-color: #966115; }
+article.low { border-left-color: #1a6c74; }
+.meta { font-size: .9rem; color: #374c5b; }
+code, pre { font-family: ui-monospace, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { margin: .3rem 0; font-size: .9rem; }
+li { padding-left: .25rem; margin-bottom: .6rem; }
+.resource { background: #f1f5f7; padding: .7rem; overflow-wrap: anywhere; }
+h1, h2, .meta { overflow-wrap: anywhere; }
+footer { color: #435765; font-size: .9rem; margin-top: 2rem; border-top: 1px solid #c9d7df; padding-top: 1rem; }
+@media print {
+  :root { background: white; color: black; }
+  main { max-width: none; padding: 0; }
+  header { padding-top: .5rem; }
+  article { break-inside: auto; }
+  h2, h3 { break-after: avoid; }
+  .notice, thead { background: #f3f3f3; color: black; }
+}
+</style>
+</head>
+<body>
+<main>
+<header><p class="eyebrow">Offline observation report</p>
+<h1>Fictional training scan — sample only</h1>
+<p>3 supplied scanner observations.</p></header>
+<p class="notice">Severity and confidence are supplied by the input. This report does not confirm exploitation or independently validate evidence. Resource names and evidence are displayed as text.</p>
+<table><caption>Supplied severity counts</caption><thead><tr><th scope="col">Severity</th><th scope="col">Observations</th></tr></thead><tbody>
+<tr><th scope="row">Critical</th><td>0</td></tr>
+<tr><th scope="row">High</th><td>1</td></tr>
+<tr><th scope="row">Medium</th><td>1</td></tr>
+<tr><th scope="row">Low</th><td>1</td></tr>
+<tr><th scope="row">Informational</th><td>0</td></tr>
+</tbody></table>
+<section aria-label="Scanner observations">
+<article class="high">
+<p class="meta">OBS-001 · Severity: high · Confidence: low</p>
+<h2>Scanner reports an outdated service version</h2>
+<p class="resource"><strong>Resource:</strong> <code>build-host.example.test:443</code></p>
+<h3>Supplied evidence</h3><ul>
+<li><pre>Fictional scanner banner: ExampleServer/1.2.3.</pre></li>
+<li><pre>Banner matching alone does not establish patch status, applicability or successful exploitation.</pre></li>
+</ul></article>
+<article class="medium">
+<p class="meta">OBS-002 · Severity: medium · Confidence: medium</p>
+<h2>Scanner reports a possible storage permission issue</h2>
+<p class="resource"><strong>Resource:</strong> <code>storage-example.test/public-assets</code></p>
+<h3>Supplied evidence</h3><ul>
+<li><pre>Fictional rule result: listing permission was flagged by the supplied scanner export.</pre></li>
+<li><pre>The export contains no independent authorisation or access test. An owner should validate the intended access policy.</pre></li>
+</ul></article>
+<article class="low">
+<p class="meta">OBS-003 · Severity: low · Confidence: high</p>
+<h2>Response header omitted from a recorded response</h2>
+<p class="resource"><strong>Resource:</strong> <code>https://app.example.test/</code></p>
+<h3>Supplied evidence</h3><ul>
+<li><pre>Fictional fixture: the supplied response transcript does not contain a Content-Security-Policy header.</pre></li>
+<li><pre>Only one recorded response is represented. No request was made by this reporter.</pre></li>
+</ul></article>
+</section><footer>Generated locally from normalized JSON. Findings require human review before remediation or risk decisions.</footer>
+</main>
+</body>
+</html>

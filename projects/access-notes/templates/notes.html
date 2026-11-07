@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Your notebook{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">YOUR PRIVATE NOTEBOOK</p><h1>A place for your thoughts.</h1></div><span class="count">{{ notes|length }} note{% if notes|length != 1 %}s{% endif %}</span></div>
+<div class="notebook-grid">
+  <section aria-labelledby="saved-title">
+    <h2 id="saved-title">Saved notes</h2>
+    <div class="note-list">
+      {% for note in notes %}<a class="note-card" href="{{ url_for('note', note_id=note['id']) }}"><span class="note-number">NOTE {{ '%03d'|format(loop.revindex) }}</span><h3>{{ note['title'] }}</h3><span class="open-note">Open note <span aria-hidden="true">↗</span></span></a>
+      {% else %}<div class="card empty"><h3>A fresh page.</h3><p class="muted">Your first note starts here.</p></div>{% endfor %}
+    </div>
+  </section>
+  <section class="card compose" aria-labelledby="new-title">
+    <p class="eyebrow">MAKE A LITTLE ROOM</p><h2 id="new-title">Write a new note</h2>
+    <form action="{{ url_for('create_note') }}" method="post">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <label for="title">Title</label><input id="title" name="title" maxlength="80" placeholder="Give your thought a name" required>
+      <label for="body">Note</label><textarea id="body" name="body" maxlength="4000" rows="8" placeholder="What's on your mind?" required></textarea>
+      <p class="hint">Up to 80 characters for the title and 4,000 for the note.</p>
+      <button class="primary" type="submit">Save note <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
+</div>
+{% endblock %}

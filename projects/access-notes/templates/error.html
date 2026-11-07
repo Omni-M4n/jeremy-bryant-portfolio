@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}{{ error.name }}{% endblock %}
+{% block content %}
+<section class="card error-card"><p class="eyebrow">{{ error.code }} · {{ error.name }}</p><h1>Let's try that again.</h1><p class="lead">{{ error.description }}</p><a class="button primary" href="{{ url_for('notes') }}">Back to notebook</a></section>
+{% endblock %}

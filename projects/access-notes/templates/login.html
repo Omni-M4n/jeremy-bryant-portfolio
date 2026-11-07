@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<div class="login-layout">
+  <section class="intro">
+    <p class="eyebrow">A SMALL SPACE OF YOUR OWN</p>
+    <h1>Your notes.<br>Your account.</h1>
+    <p class="lead">Keep a thought, revisit an idea, make a little room to think.</p>
+    <div class="detail"><span class="dot" aria-hidden="true"></span> Each account sees its own notebook.</div>
+  </section>
+  <section class="card login-card" aria-labelledby="login-title">
+    <p class="eyebrow">WELCOME BACK</p>
+    <h2 id="login-title">Open your notebook</h2>
+    <p class="muted">Sign in with a local demo account.</p>
+    {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+    <form method="post" action="{{ url_for('login') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf }}">
+      <label for="username">Username</label>
+      <input id="username" name="username" maxlength="40" autocomplete="username" required autofocus>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" maxlength="128" autocomplete="current-password" required>
+      <button class="primary wide" type="submit">Sign in <span aria-hidden="true">→</span></button>
+    </form>
+    <p class="hint">Demo credentials are in the project README. Use fictional notes only.</p>
+  </section>
+</div>
+{% endblock %}

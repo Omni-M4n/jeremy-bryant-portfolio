@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Two small application security projects with readable Python, local demonstrations, tests and practice guides.">
+  <title>Application security projects — Jeremy Bryant</title>
+  <link rel="canonical" href="https://jeremy-bryant.pages.dev/projects/">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/source-downloads.css">
+</head>
+<body class="source-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="source-masthead container">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">JB<span>·</span></span><span class="brand-name">Jeremy Bryant<span>Cybersecurity portfolio</span></span></a>
+  <nav class="source-navigation" aria-label="Main navigation"><a href="/">Portfolio</a><a href="/security-labs/">Security labs</a><a href="/source/">Source &amp; downloads</a></nav>
+</header>
+<main id="main" class="container">
+  <section class="source-intro">
+    <p class="eyebrow">Small programs / visible security decisions</p>
+    <h1>Read the code.<br>Test the boundary.</h1>
+    <p>Two local projects for practising application security. Each has a clear job, a small code base and checks that can be repeated. The guides move from running an example to making and explaining a change.</p>
+    <p>Prepared learning projects · November 2026 · Independent practice and interview demonstration pending</p>
+    <p><a class="button button-primary" href="/downloads/jeremy-bryant-portfolio.zip" download>Download the source</a></p>
+  </section>
+  <section class="source-start" aria-labelledby="notes-title">
+    <p class="eyebrow">01 / Web access controls</p>
+    <h2 id="notes-title">Access Notes</h2>
+    <p>A private notes app with two fictional users. Sign in as each user, create a note and check that changing a note ID never grants access to someone else's work.</p>
+    <dl>
+      <dt>The question</dt><dd>How does a server decide which records a signed-in user may read or change?</dd>
+      <dt>The code</dt><dd>Python, Flask, Werkzeug password hashing and SQLite. SQL queries check both the note ID and its owner.</dd>
+      <dt>The checks</dt><dd>Cross-user access, request tokens, session expiry and logout, unsafe input, and escaped note text.</dd>
+      <dt>The limit</dt><dd>A loopback learning app with fictional accounts. Wider deployment needs a separate review of HTTPS, identity, abuse controls and operations.</dd>
+    </dl>
+    <p><a class="button button-primary" href="/projects/access-notes/">Read the design and practice guide</a></p>
+    <p><a href="https://github.com/Omni-M4n/jeremy-bryant-portfolio/tree/main/projects/access-notes">Inspect Access Notes on GitHub ↗</a></p>
+  </section>
+  <section class="source-start" aria-labelledby="report-title">
+    <p class="eyebrow">02 / Evidence and reporting</p>
+    <h2 id="report-title">Scan Report</h2>
+    <p>A small command-line tool that turns a supplied JSON findings file into an offline HTML report. It groups findings by severity, preserves confidence and evidence, and gives a reviewer a clear next step.</p>
+    <dl>
+      <dt>The question</dt><dd>How can untrusted scan results become a useful report without hiding missing evidence or running supplied markup?</dd>
+      <dt>The code</dt><dd>Python's standard library. Read a file, validate each finding, sort the results, escape text and write a report.</dd>
+      <dt>The checks</dt><dd>Malformed input, file limits, script-like text, stable output and preserving existing files.</dd>
+      <dt>The limit</dt><dd>The input uses a documented, small JSON format. A scanner observation still needs review and a retest before a claim is confirmed.</dd>
+    </dl>
+    <p><a class="button button-primary" href="/projects/scan-report/">Read the design and practice guide</a></p>
+    <p><a href="https://github.com/Omni-M4n/jeremy-bryant-portfolio/tree/main/projects/scan-report">Inspect Scan Report on GitHub ↗</a></p>
+  </section>
+  <section class="source-start" aria-labelledby="learn-title">
+    <h2 id="learn-title">Learn one path at a time</h2>
+    <ol><li>Run the supplied example and explain what you see.</li><li>Trace one request or finding through the code.</li><li>Make one small change and run the related test.</li><li>Fix a fault in a fresh copy.</li><li>Give a short demonstration, then answer questions without the guide.</li></ol>
+    <p>Use each project's practice file to record what you can do with notes and what you can do on your own. These programs extend the existing access-control and finding-report labs. They are tracked as two software projects, so the lab count stays at __LAB_COUNT__ core labs and __EXTENSION_COUNT__ extensions.</p>
+  </section>
+</main>
+<footer class="source-footer container"><p>Jeremy Bryant · Application security practice</p><a href="/">Back to portfolio</a></footer>
+</body>
+</html>

@@ -8,6 +8,7 @@ A career portfolio with an LG TV home lab and guided security practice. The home
 - **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
 - **Summer study plan:** https://jeremy-bryant.pages.dev/security-labs/study-plan/
 - **Source and downloads:** https://jeremy-bryant.pages.dev/source/
+- **Application security projects:** https://jeremy-bryant.pages.dev/projects/
 - **LinkedIn:** https://www.linkedin.com/in/jeremy-bryant-61347a445/
 
 ## The project
@@ -23,6 +24,15 @@ The separate Chiaki extension is **in progress**. Desktop registration and the t
 Jeremy owned and used the hardware. He chose the goals and appearance, shared what he saw, and tested restarts and playback. The scripts here help with the project. The developers credited below wrote the exploit and apps.
 
 Credits: [webOS Homebrew](https://www.webosbrew.org/), [throwaway96](https://github.com/throwaway96), [Glasshouse](https://rorygallagher2024.github.io/glasshouse/), [TacticalBill/chiaki-lg](https://github.com/TacticalBill/chiaki-lg), [chiaki-ng](https://github.com/chiaki-ng/chiaki-ng) and [Qt](https://github.com/qt/qtbase).
+
+## Application security projects
+
+Two small local programs extend the guided labs. [Access Notes](projects/access-notes/)
+uses Flask and SQLite to practise login, sessions and access to private notes.
+[Scan Report](projects/scan-report/) uses Python's standard library to turn
+supplied JSON findings into an escaped offline HTML report. Each has tests,
+a practice guide and interview notes. Prepared software and passing tests do
+not establish independent learner mastery. See [the project register](projects/README.md).
 
 ## Guided security exercises
 

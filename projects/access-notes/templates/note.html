@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ note['title'] }}{% endblock %}
+{% block content %}
+<a class="back" href="{{ url_for('notes') }}">← Your notebook</a>
+<div class="editor-heading"><p class="eyebrow">A THOUGHT TO COME BACK TO</p><h1>Edit your note.</h1></div>
+<section class="card editor" aria-label="Edit note">
+  <form action="{{ url_for('note', note_id=note['id']) }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf }}">
+    <label for="title">Title</label><input id="title" name="title" value="{{ note['title'] }}" maxlength="80" required>
+    <label for="body">Note</label><textarea id="body" name="body" rows="12" maxlength="4000" required>{{ note['body'] }}</textarea>
+    <p class="hint">Up to 80 characters for the title and 4,000 for the note.</p>
+    <button class="primary" type="submit">Save changes <span aria-hidden="true">→</span></button>
+  </form>
+  <form class="delete-form" action="{{ url_for('delete_note', note_id=note['id']) }}" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf }}">
+    <span class="hint">Deleting a note is permanent.</span><button class="danger" type="submit">Delete note</button>
+  </form>
+</section>
+{% endblock %}

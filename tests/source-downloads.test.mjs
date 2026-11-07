@@ -10,6 +10,24 @@ const config = { origin: 'https://jeremy-bryant.pages.dev', base: '/' };
 const prefix = 'jeremy-bryant-pages/';
 const archivePath = root => join(root, 'dist', 'downloads', 'jeremy-bryant-portfolio.zip');
 
+test('software projects ship guides and code while runtime databases and drafts stay private', async t => {
+  const context = await fixture(t);
+  await mkdir(join(context.root, 'projects', 'access-notes', 'instance'), {recursive:true});
+  await mkdir(join(context.root, 'projects', 'draft-project'), {recursive:true});
+  await writeFile(join(context.root, 'projects', 'access-notes', 'README.md'), '# Access Notes\n\n<script>supplied text</script>\n');
+  await writeFile(join(context.root, 'projects', 'access-notes', 'app.py'), '# local app\n');
+  await writeFile(join(context.root, 'projects', 'access-notes', 'instance', 'session.json'), 'PRIVATE_SESSION');
+  await writeFile(join(context.root, 'projects', 'access-notes', 'data.sqlite3-wal'), 'PRIVATE_DATABASE');
+  await writeFile(join(context.root, 'projects', 'draft-project', 'README.md'), 'DRAFT');
+  await buildSourceDownloads(context);
+  const entries = parseZip(await readFile(archivePath(context.root)));
+  assert.ok(entries.has(prefix + 'projects/access-notes/app.py'));
+  assert.ok(![...entries.keys()].some(name => /instance|sqlite3|draft-project/.test(name)));
+  const page = await readFile(join(context.dist, 'projects/access-notes/index.html'), 'utf8');
+  assert.match(page, /&lt;script&gt;supplied text&lt;\/script&gt;/);
+  assert.doesNotMatch(page, /<script>/);
+});
+
 async function fixture(t) {
   const parent = resolve(tmpdir(), 'jeremy-source-downloads-tests');
   await mkdir(parent, { recursive: true });

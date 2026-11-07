@@ -9,9 +9,10 @@ const ORIGIN = 'https://jeremy-bryant.pages.dev';
 const PREFIX = 'jeremy-bryant-pages/';
 const DOWNLOAD = 'downloads/jeremy-bryant-portfolio.zip';
 const DIRECTORIES = ['docs', 'labs', 'scripts', 'src', 'tests', 'tools'];
+const PROJECT_IDS = ['access-notes', 'scan-report'];
 const TOP_FILES = ['README.md', 'package.json', 'site.config.json', 'wrangler.jsonc', '.gitignore', '.gitattributes'];
 const PRIMARY_DOCUMENTS = ['README.md', 'WORKED-EXAMPLE.md', 'DRILLS.md', 'PRACTICE.md'];
-const OMIT_COMPONENTS = new Set(['run', 'runs', 'dist', 'node_modules', '.git', '.wrangler', 'private', 'receipts', '__pycache__', 'pycache', 'env', 'logs', 'log', '.venv', 'venv']);
+const OMIT_COMPONENTS = new Set(['run', 'runs', 'dist', 'node_modules', '.git', '.wrangler', 'private', 'receipts', '__pycache__', 'pycache', 'env', 'logs', 'log', '.venv', 'venv', 'instance']);
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const digest = value => createHash('sha256').update(value).digest('hex');
@@ -25,7 +26,7 @@ function safeComponent(name) {
 function omitted(name, directory = false) {
   const lower = name.toLowerCase();
   return OMIT_COMPONENTS.has(lower) || (directory && /^(?:run|runs)[-_]/u.test(lower)) || lower.startsWith('.env') ||
-    /\.(?:pyc|pyo|log|logs|env)$/u.test(lower) ||
+    /\.(?:pyc|pyo|log|logs|env|db|sqlite|sqlite3)(?:-wal|-shm|-journal)?$/u.test(lower) ||
     /(?:^|[._-])receipts?(?:[._-]|$)/u.test(lower) ||
     lower === '.ds_store' || lower === 'thumbs.db';
 }
@@ -50,6 +51,7 @@ async function collectSource(root, registry) {
         safeComponent(name);
         if (omitted(name, child.isDirectory())) continue;
         const next = [...parts, name];
+        if (parts.length === 1 && parts[0] === 'projects' && !PROJECT_IDS.includes(name) && name !== 'README.md') continue;
         if (parts.length === 1 && parts[0] === 'labs') {
           // Draft packages can share the workspace, but never enter the public archive.
           if (child.isDirectory() && !accepted.has(name)) continue;
@@ -70,6 +72,11 @@ async function collectSource(root, registry) {
     const info = await statOrNull(join(root, name));
     if (!info || !info.isDirectory() || info.isSymbolicLink()) throw Error('Missing or unsafe source directory: ' + name);
     await walk([name]);
+  }
+  const projects = await statOrNull(join(root, 'projects'));
+  if (projects) {
+    if (!projects.isDirectory() || projects.isSymbolicLink()) throw Error('Unsafe projects directory');
+    await walk(['projects']);
   }
   for (const name of TOP_FILES) {
     const info = await statOrNull(join(root, name));
@@ -206,8 +213,9 @@ function indexPage(labs, receipt, registry) {
     <h1>Source &amp; downloads</h1>
     <p>The complete portfolio source includes the static website, documentation, project utilities, ${registry.coreCount} core labs and ${registry.extensionCount} extensions. Extensions build on an existing topic; they are not counted as new core labs. Supplied cases are fictional. Personal tool evidence must be collected separately. Independent completion of fresh cases has not yet been assessed.</p>
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
-    <p class="source-location">${receipt.files} files · ${receipt.bytes.toLocaleString('en-AU')} bytes · Standard-library Python utilities</p>
-    <details class="source-integrity"><summary>Archive integrity and contents</summary><p>The ZIP contains <code>docs/</code>, <code>labs/</code>, <code>scripts/</code>, <code>src/</code>, <code>tests/</code>, <code>tools/</code> and the project README and configuration. Generated runs, local credentials, private notes, raw check records and version history are excluded. Public <code>VALIDATION.json</code> files give brief check summaries and list untested steps. Upstream attribution remains in the source.</p><p>SHA-256 checks file identity; it does not assess the exercises or the learner.</p><pre>${receipt.sha256}</pre></details>
+    <p class="source-location">${receipt.files} files · ${receipt.bytes.toLocaleString('en-AU')} bytes · Python utilities and local learning projects</p>
+    <p><a href="/projects/">Explore the two application security projects</a>. Access Notes uses Flask. Scan Report uses Python's standard library. Each project includes tests and a practice guide.</p>
+    <details class="source-integrity"><summary>Archive integrity and contents</summary><p>The ZIP contains <code>docs/</code>, <code>labs/</code>, <code>projects/</code>, <code>scripts/</code>, <code>src/</code>, <code>tests/</code>, <code>tools/</code> and the project README and configuration. Generated runs, databases, local credentials, private notes, raw check records and version history are excluded. Public <code>VALIDATION.json</code> files give brief check summaries and list untested steps. Upstream attribution remains in the source.</p><p>SHA-256 checks file identity; it does not assess the exercises or the learner.</p><pre>${receipt.sha256}</pre></details>
   </section>
   <section class="source-start" aria-labelledby="source-start-title">
     <h2 id="source-start-title">Run it locally</h2>
@@ -269,6 +277,13 @@ export async function buildSourceDownloads({ root, dist, config }) {
   if (!outputInfo) await mkdir(dist);
   await safeWrite(dist, DOWNLOAD, archive);
   for (const { id, html } of pages) await safeWrite(dist, `lab-files/${id}/index.html`, html);
+  for (const id of PROJECT_IDS) {
+    const folder = `projects/${id}/`;
+    if (!source.has(folder + 'README.md')) continue;
+    const names = ['README.md', 'PRACTICE.md', 'INTERVIEW.md'];
+    const body = `<section class="source-intro"><p class="eyebrow">Application security project</p><h1>${id === 'access-notes' ? 'Access Notes' : 'Scan Report'}</h1><p>Working local software with tests and a practice plan. Independent demonstration by the learner is pending.</p><p><a href="https://github.com/Omni-M4n/jeremy-bryant-portfolio/tree/main/projects/${id}">Read the code on GitHub</a> · <a href="/${DOWNLOAD}">Download the source</a> · <a href="/projects/">Project overview</a></p></section>` + names.filter(name => source.has(folder + name)).map(name => `<section class="source-document"><h2>${name === 'README.md' ? 'Setup and design' : name === 'PRACTICE.md' ? 'Practice guide' : 'Interview walkthrough'}</h2><pre class="source-document-text">${escape(source.get(folder + name).toString('utf8'))}</pre></section>`).join('');
+    await safeWrite(dist, `projects/${id}/index.html`, page({title: id === 'access-notes' ? 'Access Notes' : 'Scan Report', path: `/projects/${id}/`, description: 'A small application security project with code, tests and a learning guide.', body}));
+  }
   await safeWrite(dist, 'source/index.html', indexPage(pages, receipt, registry));
   return receipt;
 }
