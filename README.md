@@ -8,6 +8,7 @@ A career portfolio that starts with governance, risk and compliance practice, th
 - **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
 - **GRC practice path:** https://jeremy-bryant.pages.dev/security-labs/grc/
 - **GRC worked case study:** https://jeremy-bryant.pages.dev/security-labs/grc/loan-cupboard/
+- **Public control review:** https://jeremy-bryant.pages.dev/security-labs/grc/public-control-review/
 - **Portfolio Wiki:** https://github.com/Omni-M4n/jeremy-bryant-portfolio/wiki
 - **Summer study plan:** https://jeremy-bryant.pages.dev/security-labs/study-plan/
 - **Source and downloads:** https://jeremy-bryant.pages.dev/source/
@@ -57,6 +58,12 @@ reference checks. Jeremy's work on fresh cases still needs review. These
 materials do not claim work on production systems or that Jeremy wrote every
 helper on his own.
 
+The [public control review](docs/grc-public-site-control-review.md) applies a
+read-only release rule to the portfolio's own published files. It records the
+observed result, a [blank worksheet](docs/grc-control-review-worksheet.md), and
+controls left untested. It does not add to the guided lab count or claim an
+independent reviewer assessment.
+
 The [complete library](https://jeremy-bryant.pages.dev/security-labs/library/)
 groups the checked packages by topic. An extension adds a task or evidence
 source to a core lab. It does not count as a new core topic. Draft packages stay
@@ -81,7 +88,11 @@ learning, not a record of completed work.
 | `docs/recovery.md` | Recovery design and operational boundaries |
 | `docs/release.md` | Static hosting, publication controls and rollback |
 | `docs/grc-publication-review.md` | GRC source review, evidence and limits |
+| `docs/grc-public-site-control-review.md` | Dated read-only release check and its evidence limits |
+| `docs/grc-public-site-control-manifest.json` | Public paths, digests and status from the checked release |
+| `docs/grc-control-review-worksheet.md` | Blank control evidence review form |
 | `docs/wiki-home.md` | Source copy for the published GRC-first Wiki Home page |
+| `docs/wiki-grc-methods.md` | Source copy for the Wiki GRC methods page |
 
 ## Local development
 

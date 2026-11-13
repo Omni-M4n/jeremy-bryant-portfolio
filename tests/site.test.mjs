@@ -6,13 +6,17 @@ test('GRC route reaches the complete pack and does not claim an assessed result'
   const home=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
   const grc=await readFile(new URL('../dist/security-labs/grc/index.html',import.meta.url),'utf8');
   const study=await readFile(new URL('../dist/security-labs/grc/loan-cupboard/index.html',import.meta.url),'utf8');
+  const review=await readFile(new URL('../dist/security-labs/grc/public-control-review/index.html',import.meta.url),'utf8');
   const lab=await readFile(new URL('../dist/lab-files/risk-register/index.html',import.meta.url),'utf8');
   assert.match(home,/href="\/security-labs\/grc\/"/);
   assert.match(grc,/href="\/lab-files\/risk-register\/#grc-pack"/);
   assert.match(grc,/href="\/security-labs\/grc\/loan-cupboard\/"/);
+  assert.match(grc,/href="\/security-labs\/grc\/public-control-review\/"/);
   assert.match(study,/Fictional, paper-only/);
   assert.match(study,/acceptance: false/);
   assert.match(study,/Exposure is not confirmed/);
+  assert.match(review,/115 requests passed with zero errors/);
+  assert.match(review,/account authentication, recovery and browser-level policy behaviour were outside this review/);
   assert.match(lab,/id="grc-pack"/);
   assert.match(lab,/Independent completion: \*\*not claimed\*\*/);
 });

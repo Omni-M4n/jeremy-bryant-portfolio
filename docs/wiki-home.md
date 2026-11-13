@@ -10,12 +10,13 @@ The [complete GRC decision pack](https://github.com/Omni-M4n/jeremy-bryant-portf
 
 The [loan-cupboard case study](https://jeremy-bryant.pages.dev/security-labs/grc/loan-cupboard/) presents the worked decision and its evidence trail for portfolio readers.
 
+The [public control review](https://jeremy-bryant.pages.dev/security-labs/grc/public-control-review/) checks a dated release of this portfolio against a stated rule. The [GRC methods page](https://github.com/Omni-M4n/jeremy-bryant-portfolio/wiki/GRC-Methods) connects the two cases, their worksheets and their limits.
+
 ## Continue by topic
 
 - **Cybersecurity operations:** [complete lab library](https://jeremy-bryant.pages.dev/security-labs/library/) and [local application security projects](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/projects/README.md).
 - **Systems and recovery:** [LG webOS case study](https://jeremy-bryant.pages.dev/lg-webos-lab/) and [sanitised verification notes](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/verification.md).
 - **Cloud security:** begin with the [cloud storage review](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/cloud-storage-review/README.md), [IAM explicit deny](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/iam-explicit-deny/README.md) and [shared responsibility](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/shared-responsibility/README.md) labs.
-- **AI and security:** planned. Add a case study after its scope, test data, results and limitations are recorded.
 
 ## How to read the work
 

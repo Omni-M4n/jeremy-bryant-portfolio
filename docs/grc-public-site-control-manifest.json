@@ -1,0 +1,596 @@
+{
+  "review": "public-site-control-review",
+  "source_commit": "42148d7bcbccd9931643a8eeefb9cafb86bef922",
+  "checked_at": "2026-11-13T03:00:52.237Z",
+  "checked_origin": "https://jeremy-bryant.pages.dev",
+  "immutable_deployment": "https://2fc0165e.jeremy-bryant.pages.dev",
+  "immutable_deployment_verified_at": "2026-11-13T11:44:31.697Z",
+  "result": {
+    "status": "passed",
+    "requests": 115,
+    "selected_file_matches": 109,
+    "errors": 0
+  },
+  "required_headers_on_home": {
+    "content-security-policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "referrer-policy": "no-referrer",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+    "strict-transport-security": "max-age=31536000"
+  },
+  "selected_files": [
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "973b253c07eb097241fe479643d131ba81367c27359c322e65a6d84d46fee42f"
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "sha256": "2765000c0ecd108ed3222f8811d3f8803fc97003894867b82366c321b56c1587"
+    },
+    {
+      "path": "/assets/favicon.svg",
+      "status": 200,
+      "sha256": "fef660db10f2986946b2c8b331f19af40b4a4a94775a41680afc78487799a4c1"
+    },
+    {
+      "path": "/assets/lab-system.svg",
+      "status": 200,
+      "sha256": "1213dcc5699c45fc18764c8eea1e8b9613663ff55d6555633a5e92fd1bf610ab"
+    },
+    {
+      "path": "/downloads/jeremy-bryant-portfolio.zip",
+      "status": 200,
+      "sha256": "11884318d195c0ef0cd0a9c93b910bfe7857dd969654f040c768d6b8d5736a90"
+    },
+    {
+      "path": "/lab-files/access-review/",
+      "status": 200,
+      "sha256": "0e60e30fde5fa31ccc19930aaad691ce14c86430a4361bb1fc4c52b75c86ad91"
+    },
+    {
+      "path": "/lab-files/alert-correlation/",
+      "status": 200,
+      "sha256": "140308279f5fea740ad3a78976c5ee4e77119f13714292d828399733d368ae13"
+    },
+    {
+      "path": "/lab-files/api-schema-validation/",
+      "status": 200,
+      "sha256": "2ab3f2f9f1a29ab3798925e0d0c9ac8593a7c556f10c3934b4527446305740b1"
+    },
+    {
+      "path": "/lab-files/arp-dhcp-evidence/",
+      "status": 200,
+      "sha256": "0f1cd48856822d7db8ec671485899c27caa8853cfb007b645981802178a85db5"
+    },
+    {
+      "path": "/lab-files/asset-discovery/",
+      "status": 200,
+      "sha256": "9de91560a2a8ebbc6ad71f4dd126f61d692671ceeae9cb92cc169893005265c6"
+    },
+    {
+      "path": "/lab-files/backup-verification/",
+      "status": 200,
+      "sha256": "bbf7ad74840ecb656df800ff9565357b4975410d275786507a8c49d98f80c33c"
+    },
+    {
+      "path": "/lab-files/browser-artifacts/",
+      "status": 200,
+      "sha256": "9143433dc91e186bcdde50a1fa9ec26fcbdb9d25039c780a2552413bda0c11d5"
+    },
+    {
+      "path": "/lab-files/burp-access-control/",
+      "status": 200,
+      "sha256": "d49298179531dc2b7e9e54286da00981ad9bbd977f460d69df47cde6d8dd5972"
+    },
+    {
+      "path": "/lab-files/cloud-audit-triage/",
+      "status": 200,
+      "sha256": "0be6940cc560f6ef693dc39248eedab3d9cfb6516eec1c0aeaca97fcba1b03cb"
+    },
+    {
+      "path": "/lab-files/cloud-network-path/",
+      "status": 200,
+      "sha256": "5c207661578786d6a7b9fd5ab5d9a69cc8cd3c344f0c8f75904b91527ffbd7bd"
+    },
+    {
+      "path": "/lab-files/cloud-resource-lifecycle/",
+      "status": 200,
+      "sha256": "ff67bcf6b4dec58c3207f848db5f6428a021aa443385a90f02178247179ef4e2"
+    },
+    {
+      "path": "/lab-files/cloud-storage-review/",
+      "status": 200,
+      "sha256": "ab43dc9032192ed725db8f0c966ea7c2abba770097ce82ef6f7aab60c6852348"
+    },
+    {
+      "path": "/lab-files/containment-tabletop/",
+      "status": 200,
+      "sha256": "912697cb00cdc56186feb84b5384971a8e189f53f443a21a71d7197a18e500f4"
+    },
+    {
+      "path": "/lab-files/controlled-nmap/",
+      "status": 200,
+      "sha256": "d36d3689f1f9aadfd54d8224d2d42346b8ffff61baef5838a59ef9583c3a29bd"
+    },
+    {
+      "path": "/lab-files/cross-source-corroboration/",
+      "status": 200,
+      "sha256": "b1ca94a496f92a6049f6e36cf1de101a084cac7e43df534ed2d2c39f8c9d4dd8"
+    },
+    {
+      "path": "/lab-files/csrf-local/",
+      "status": 200,
+      "sha256": "e9c7e37c6cb4d12e5b9ecea857c67a1331e8dad32e9aaffa9265ab617647d684"
+    },
+    {
+      "path": "/lab-files/data-classification/",
+      "status": 200,
+      "sha256": "d43bd9a3ae100f6121e3ec1c5fef1eb9ff7e68d05ba3c67354416eb6796e1563"
+    },
+    {
+      "path": "/lab-files/deleted-file-recovery/",
+      "status": 200,
+      "sha256": "92a694b34dd52fe6cd13d3f0dcb1f570c07d904e44d08c18813735d754724b57"
+    },
+    {
+      "path": "/lab-files/dependency-review/",
+      "status": 200,
+      "sha256": "601409d8acca9b9a6469d6c5aeecaec33752645af27390a99fa3b6ff2b07f6e2"
+    },
+    {
+      "path": "/lab-files/detection-corpus/",
+      "status": 200,
+      "sha256": "3b34a45795c505d0fc052a93713739043a37a3fbeb847d5476bd1b6e54837e75"
+    },
+    {
+      "path": "/lab-files/dns-cache-records/",
+      "status": 200,
+      "sha256": "cb9ee72a580a7d6bfc4148bc87639140382973614f7cf036b6ea7f9670412ea4"
+    },
+    {
+      "path": "/lab-files/dns-triage/",
+      "status": 200,
+      "sha256": "097cf06888e7b5525650dfd23c35192b007bf60cc9aa321d72e23d4eea0faa7b"
+    },
+    {
+      "path": "/lab-files/email-triage/",
+      "status": 200,
+      "sha256": "d5a5b8a0ac04c2c6ac0b490f34f5945bea5d03d1bcaa04f273bf4db2aa801b22"
+    },
+    {
+      "path": "/lab-files/encryption-key-recovery/",
+      "status": 200,
+      "sha256": "110a57330ff80d5b48850675e0af7d5ba6bbb585da31aeeb3296a0b88ac10d47"
+    },
+    {
+      "path": "/lab-files/endpoint-baseline/",
+      "status": 200,
+      "sha256": "2be5dee51bd651ad13ab4e881f9a27b846d1418a37a41aa364f5863c4fc9de86"
+    },
+    {
+      "path": "/lab-files/endpoint-triage/",
+      "status": 200,
+      "sha256": "41e205f7468ea402404625cd0911d6c7fa1ecfacb81766ed6c8d0be3bbca2ad3"
+    },
+    {
+      "path": "/lab-files/evidence-custody/",
+      "status": 200,
+      "sha256": "66a733cc81602b98e31bf19c0f8cac3bb34d3e36be2a57a1dd03c247d9918f60"
+    },
+    {
+      "path": "/lab-files/evidence-redaction/",
+      "status": 200,
+      "sha256": "21538bdb576414a7c0a228ddeb800a9f0461ffc24ded54dac24c18ba6a953736"
+    },
+    {
+      "path": "/lab-files/file-integrity/",
+      "status": 200,
+      "sha256": "96005a9b99f9bce86c222abe86f1a3929016931c04eb21bfe1ae7fc1372fe4cd"
+    },
+    {
+      "path": "/lab-files/file-time-analysis/",
+      "status": 200,
+      "sha256": "62bcdd0abca46d0c45d220a738bfa2a2899b39318670bf102e072a33f405a485"
+    },
+    {
+      "path": "/lab-files/file-type-triage/",
+      "status": 200,
+      "sha256": "5835569cb6c4171402b1475a7e0d53ad81600a5c073a4fb4adbe2734bde5b8cd"
+    },
+    {
+      "path": "/lab-files/file-upload-path/",
+      "status": 200,
+      "sha256": "626376f15c7d8aaffa69d39b0924d06c0bc30b87db46362ff3b837f73f08ccd0"
+    },
+    {
+      "path": "/lab-files/finding-report/",
+      "status": 200,
+      "sha256": "a06275fa7db9701ca9c0cf0f9185413afee07480263e6fd53c3ad4ad56128853"
+    },
+    {
+      "path": "/lab-files/firewall-enforcement/",
+      "status": 200,
+      "sha256": "ee9b8b4802ffbcddea5ee3f986728a1ed11d6f43c645f62544b62c3fcc07c037"
+    },
+    {
+      "path": "/lab-files/firewall-review/",
+      "status": 200,
+      "sha256": "0c86e12135bd1251abd266c14ccd1dbfc57247a6ebd4b851b8872ec5a0f7269d"
+    },
+    {
+      "path": "/lab-files/http-header-review/",
+      "status": 200,
+      "sha256": "83c590c86c340c2b3773ea310d112624ac7a92c824dc3cfe2418473c8623d2aa"
+    },
+    {
+      "path": "/lab-files/http-request-construction/",
+      "status": 200,
+      "sha256": "ebf5200e7bd0c7195a8790bf7f6ac6e94f92248f2566fa521a08420b75492b52"
+    },
+    {
+      "path": "/lab-files/http-triage/",
+      "status": 200,
+      "sha256": "edbef231a85e5a151190d245170dd729cb88f3682a01621fff9d1f1f1761b2cc"
+    },
+    {
+      "path": "/lab-files/iam-explicit-deny/",
+      "status": 200,
+      "sha256": "66bfd0e3856bce1523e8cbf230db022268465df80b95e3364b2c01dcc9fda7f7"
+    },
+    {
+      "path": "/lab-files/identity-lifecycle/",
+      "status": 200,
+      "sha256": "3e58c7f88563b7d5aa5ea9efa250fec91899e01d2c5ca64d226be1dea0e6e88a"
+    },
+    {
+      "path": "/lab-files/incident-case/",
+      "status": 200,
+      "sha256": "6c53086d42b46661ca7104771bed4d886894c5ff52cdccac7834334fb0b49110"
+    },
+    {
+      "path": "/lab-files/incident-communications/",
+      "status": 200,
+      "sha256": "03963f9953239efd7f59ac986c21094948fbcc8b7fe9c3106cc0d7acfb86c848"
+    },
+    {
+      "path": "/lab-files/indicator-quality/",
+      "status": 200,
+      "sha256": "8611e81ae08d4d7343bad164ae50f361fc026a1f4efb47662a1a230571bca6da"
+    },
+    {
+      "path": "/lab-files/ipv6-parity/",
+      "status": 200,
+      "sha256": "24a498ae74acac31b60188f475bd6786caf4366d246329d597623c18d2269d1e"
+    },
+    {
+      "path": "/lab-files/isolated-lab-workbench/",
+      "status": 200,
+      "sha256": "8e4f19ccae61ac80ad91e7aef39a75d7c0609798aa6370ddce5998f99e9d7307"
+    },
+    {
+      "path": "/lab-files/linux-permissions/",
+      "status": 200,
+      "sha256": "763fd221617c55966349462cd0515f704463832a8f86027870eeaefa81cead91"
+    },
+    {
+      "path": "/lab-files/linux-service-identity/",
+      "status": 200,
+      "sha256": "11e0718180075b4991b027db4c45857354c6219bc42b01a92b3d6f7a3ffebe3e"
+    },
+    {
+      "path": "/lab-files/local-output-encoding/",
+      "status": 200,
+      "sha256": "a20e79d8aa91a7dc2724f74bb57030a65e3c8b26bceb4da8557d9aea80817091"
+    },
+    {
+      "path": "/lab-files/local-sql-injection/",
+      "status": 200,
+      "sha256": "0bc86c126fef6c437cfc9fdda9db0cf14d6c30ccc6b9ba984ce20212649ccc33"
+    },
+    {
+      "path": "/lab-files/log-ingestion/",
+      "status": 200,
+      "sha256": "9074248343801032ad0381df48586fd4347e84efa1efd4b60a808a3eaf73062e"
+    },
+    {
+      "path": "/lab-files/logging-health/",
+      "status": 200,
+      "sha256": "29773483a46c5fda910556740af93e2f97b2f15ec0693cc7f1e9cb6df5a7dcef"
+    },
+    {
+      "path": "/lab-files/login-triage/",
+      "status": 200,
+      "sha256": "11974d5ed8decafb5872f56ac575d945e488cb31ade3a7e4cd13b7aec4c4d206"
+    },
+    {
+      "path": "/lab-files/mfa-hands-on/",
+      "status": 200,
+      "sha256": "7a4df315e58f0fbd0abf956cd2f1cfd2f1f1fa1f534afe0e35226474d982e11f"
+    },
+    {
+      "path": "/lab-files/mfa-review/",
+      "status": 200,
+      "sha256": "4eda57ecb6bd0e60c3d67b242215f362ebd81be85b7769a1049ab4b73ecae895"
+    },
+    {
+      "path": "/lab-files/network-address-path/",
+      "status": 200,
+      "sha256": "531e7bfe9dc2f9c077f7e6abbc4fff0912a9d575ed16d65c8e6eb6a5edfcde08"
+    },
+    {
+      "path": "/lab-files/network-loss-diagnosis/",
+      "status": 200,
+      "sha256": "3414d54b723c68df156216db51cf42fb61621088e1c601ea62f27546c04ef303"
+    },
+    {
+      "path": "/lab-files/password-vault-recovery/",
+      "status": 200,
+      "sha256": "e68a8d979c36daa12242ac5b7e32b7a79d26547ca0c33e56e44bbea85898a420"
+    },
+    {
+      "path": "/lab-files/patch-rollback/",
+      "status": 200,
+      "sha256": "2417a80dd5260aa866bb66e702b5277ef690a1db54abf4a31bfe6f4e079d641b"
+    },
+    {
+      "path": "/lab-files/pcap-object-reconstruction/",
+      "status": 200,
+      "sha256": "a165da00144dc148dc2b3ffaa9cbe770c0bdfdd694d946c14593798db9c3328c"
+    },
+    {
+      "path": "/lab-files/portfolio-mastery-capstone/",
+      "status": 200,
+      "sha256": "fcb9227d01a09ba05376f10d4c0046c812da551810b4d5eb20c22b7c1cba4943"
+    },
+    {
+      "path": "/lab-files/python-log-helper/",
+      "status": 200,
+      "sha256": "1113b669a28c6997c1b62c79398e4bea5f59f0793c7af26d7fc5cde9e936c1df"
+    },
+    {
+      "path": "/lab-files/rate-limit-lab/",
+      "status": 200,
+      "sha256": "b0abe6f114356ba00df94f722f3787d791976580dd55396a8dce05bd765e5886"
+    },
+    {
+      "path": "/lab-files/restore-drill/",
+      "status": 200,
+      "sha256": "bcde53ce3a3b627856cb249cb93e55e8c7d94a0ebee10c4d2984a3e298b8d861"
+    },
+    {
+      "path": "/lab-files/risk-register/",
+      "status": 200,
+      "sha256": "a75102feafde974a369fbf384d2df9ef16ea3e9abf4423558286a4e2935ada12"
+    },
+    {
+      "path": "/lab-files/rules-of-engagement/",
+      "status": 200,
+      "sha256": "1c2b550cff2c95fae8f307552dd037c91f3f793cc5611021b95f1a74f4392879"
+    },
+    {
+      "path": "/lab-files/scheduled-task-review/",
+      "status": 200,
+      "sha256": "a34a00fa2c04975aae5bf2f9245c9d25fda167253895610b4d7b28f4ca2e5205"
+    },
+    {
+      "path": "/lab-files/secret-handling/",
+      "status": 200,
+      "sha256": "bae978c5e31bb3f6bb465692268998e9fee60344d19867c3dd81c863d8567db8"
+    },
+    {
+      "path": "/lab-files/session-lifecycle/",
+      "status": 200,
+      "sha256": "76ca1ce90389b2fbff7d024b3521dfd2ec86764e46aa5f1f18ddaebe3180693b"
+    },
+    {
+      "path": "/lab-files/shared-responsibility/",
+      "status": 200,
+      "sha256": "abc1ec943f345a27764df62904c5ebae661e7c1018227ac4edcd2ba07c193cb3"
+    },
+    {
+      "path": "/lab-files/shell-troubleshooting/",
+      "status": 200,
+      "sha256": "f7dca78db00f20be86e1806e5da6d57a5e783786a0a574babcfec1719a891a92"
+    },
+    {
+      "path": "/lab-files/small-threat-model/",
+      "status": 200,
+      "sha256": "40dedfa87c43fde1044863765cfa50c2778645fa84ed2f6c0d73e93aa380d170"
+    },
+    {
+      "path": "/lab-files/snort-rule-testing/",
+      "status": 200,
+      "sha256": "5ee055c9443d9093d94e9a44cf66636a4c33f2a4fc7876e5727b4d040ac12b77"
+    },
+    {
+      "path": "/lab-files/soc-query-workbook/",
+      "status": 200,
+      "sha256": "6bc8267a1e4dfcd9d2146f20b77e9a89a3cfcbd0533db0079938a479e96eb2a3"
+    },
+    {
+      "path": "/lab-files/ssh-config-review/",
+      "status": 200,
+      "sha256": "e4a6ef343681a0381df6c3cf485ad6d3ce847c0a12e7b42bb092c54426bd596c"
+    },
+    {
+      "path": "/lab-files/ssh-key-practice/",
+      "status": 200,
+      "sha256": "3daa7e23734d8424faacda32d93456abecd47377e8b20b1d32b036c7786f16e5"
+    },
+    {
+      "path": "/lab-files/startup-surface/",
+      "status": 200,
+      "sha256": "088a4b2ff71d58a4fd55c46b1816cca9fac22446ee0cacfcacb64af7dc1f2f36"
+    },
+    {
+      "path": "/lab-files/tcp-handshake/",
+      "status": 200,
+      "sha256": "87aea44c2894acadb025e3f5be0db19cd8e953db93dc59e1fe28567fb6ce3753"
+    },
+    {
+      "path": "/lab-files/temporary-credentials/",
+      "status": 200,
+      "sha256": "9856118f59e4d616c688fef27ed8f8beb0f8069ad819ec2e24c2f91a2ff356b2"
+    },
+    {
+      "path": "/lab-files/timeline-analysis/",
+      "status": 200,
+      "sha256": "cc513581d3bb0b7fb3289abda224e122dce5b657258fb8087c099decd4726751"
+    },
+    {
+      "path": "/lab-files/tls-review/",
+      "status": 200,
+      "sha256": "9cbd78e284d3f4ceca824ad750b372885c01da8cb10095fd6e6ede2644df78f1"
+    },
+    {
+      "path": "/lab-files/traffic-capture/",
+      "status": 200,
+      "sha256": "9546699578e57ba141a5ea6029102ac032b4fa7dabd9915c62bbc627ac7a6946"
+    },
+    {
+      "path": "/lab-files/vpn-routing-review/",
+      "status": 200,
+      "sha256": "37956d737a5728cee08f09f9c06ed9d173893b1a2ee3977c932b67c8cfdad738"
+    },
+    {
+      "path": "/lab-files/vulnerability-prioritisation/",
+      "status": 200,
+      "sha256": "4e117a8c8baee41ccc48d7e4989c535d3b9a193f8d36d876748e693dc05b02b9"
+    },
+    {
+      "path": "/lab-files/vulnerability-retest/",
+      "status": 200,
+      "sha256": "88e3c4046403d76a99e9c7f61aeac40838101bbb5dc32c3a7a2d3f1b31951088"
+    },
+    {
+      "path": "/lab-files/windows-acl/",
+      "status": 200,
+      "sha256": "5414da31d2578212919c7a201d02e0681959b22f86e0e9f7351e676132aad3e8"
+    },
+    {
+      "path": "/lab-files/windows-event-investigation/",
+      "status": 200,
+      "sha256": "3fdd27172675d495aae315fdecd78bdf883c2fd193638975278676cd0d6986c5"
+    },
+    {
+      "path": "/lg-webos-lab/",
+      "status": 200,
+      "sha256": "82534364ade30cb0164ee0791225d718c0baa977a3a26272cc20512552e26b90"
+    },
+    {
+      "path": "/project-brief.txt",
+      "status": 200,
+      "sha256": "87d3fb51182c145c9dcc25062dd94e31a79dbcbeb4b2e85b5480452a094865f0"
+    },
+    {
+      "path": "/projects/",
+      "status": 200,
+      "sha256": "0fe9c8c76a2c9591c76c15cca7318b6485b171a367d238e195e0e735852c37e4"
+    },
+    {
+      "path": "/projects/access-notes/",
+      "status": 200,
+      "sha256": "205c73445fe97a4f2b9ba7b0bf8756d9d3d7b1b54fb97e8b396229a944c09fe3"
+    },
+    {
+      "path": "/projects/scan-report/",
+      "status": 200,
+      "sha256": "88d81e879522938ac4c4edafee42302c11071ba4d64985af536bd0ba39b8b7e8"
+    },
+    {
+      "path": "/security-labs/",
+      "status": 200,
+      "sha256": "5562538c880e96da42003a82eef473f801b4065e9aea1de48dbec46a5503f3e8"
+    },
+    {
+      "path": "/security-labs/foundations/",
+      "status": 200,
+      "sha256": "66eb2a2a694a23a79c9bb172f8c1639b5172e02a09403ceb46c5930e6adbba36"
+    },
+    {
+      "path": "/security-labs/grc/",
+      "status": 200,
+      "sha256": "e27e11762320d658647233b432c654630d6916eb339dd899dcfed3e393659abf"
+    },
+    {
+      "path": "/security-labs/grc/loan-cupboard/",
+      "status": 200,
+      "sha256": "91a76aca19918a4995783a74dbb1eacd45da150f36b8484469f675fa46d1c137"
+    },
+    {
+      "path": "/security-labs/hands-on/",
+      "status": 200,
+      "sha256": "5d898761eb7a8e21825ca535566d549fb71d4e8635e7f06039b282825e5863b9"
+    },
+    {
+      "path": "/security-labs/library/",
+      "status": 200,
+      "sha256": "780d481efa3ba7e9c4d236a177b0f6116abfae11a42089d637268e89d9928573"
+    },
+    {
+      "path": "/security-labs/practice-guide.txt",
+      "status": 200,
+      "sha256": "8915ef2529cc05327862f88cbd93700a2e4df0b0a052635a8a7e2a99a4dee3d4"
+    },
+    {
+      "path": "/security-labs/study-plan/",
+      "status": 200,
+      "sha256": "2b024ee3cd21f5412a7e24ee8c4a44d67d350df2dc1956bcb141f7a33f153d23"
+    },
+    {
+      "path": "/security-labs/summer-study-plan.json",
+      "status": 200,
+      "sha256": "00e18d407794394ef3f963bd535ef56d38984a77ae4c08b4e1f38b03f02d9e29"
+    },
+    {
+      "path": "/security-labs/summer-study-plan.txt",
+      "status": 200,
+      "sha256": "3a5e4080a82050c8ec5b49c211f614d7c78f1d53ded70fa029b21d7481ae792d"
+    },
+    {
+      "path": "/source-downloads.css",
+      "status": 200,
+      "sha256": "de0f04c7331febb4e85c6d89b6b012d231c0b151431fb2816148d5fa7fb92804"
+    },
+    {
+      "path": "/source/",
+      "status": 200,
+      "sha256": "c116edee5666ce69df2e424b73821d4fb1eb008c0df76320aad929aa5c0bda6f"
+    },
+    {
+      "path": "/styles.css",
+      "status": 200,
+      "sha256": "dfe0934dd6a113d34bf50cbd3f1fed23fb785e95d99950148054782fc3306bd9"
+    }
+  ],
+  "absent_path_probes": [
+    {
+      "path": "/.env",
+      "status": 404
+    },
+    {
+      "path": "/.git/config",
+      "status": 404
+    },
+    {
+      "path": "/absent-page-for-release-check/",
+      "status": 404
+    },
+    {
+      "path": "/labs/foundation_runtime.py",
+      "status": 404
+    },
+    {
+      "path": "/private/",
+      "status": 404
+    },
+    {
+      "path": "/wrangler.jsonc",
+      "status": 404
+    }
+  ],
+  "note": "Generated from the local release receipt. The immutable deployment was checked against all 109 selected file digests. This is project evidence, not independent review."
+}
