@@ -32,7 +32,7 @@ await mkdir(dist,{recursive:true});
 await cp(join(root,'src'),dist,{recursive:true});
 async function files(dir){const out=[];for(const e of await readdir(dir,{withFileTypes:true})){const p=join(dir,e.name);out.push(...(e.isDirectory()?await files(p):[p]));}return out;}
 const heroDiagram=await readFile(join(root,'src','assets','lab-system.svg'),'utf8');
-for(const file of await files(dist)){if(!/\.(html|txt)$/.test(file))continue;let text=await readFile(file,'utf8');for(const [token,value] of Object.entries({__LINKEDIN_URL__:config.linkedin,__SOURCE_URL__:config.source,__UPDATED__:config.updated,__HERO_DIAGRAM__:heroDiagram,__LAB_CATALOG__:catalog.html,__HANDS_ON_CATALOG__:handsOn.html,__LAB_COUNT__:String(registry.coreCount),__EXTENSION_COUNT__:String(registry.extensionCount),__LAB_LIBRARY__:renderLibrary(registry)}))text=text.replaceAll(token,value);await writeFile(file,text);}
+for(const file of await files(dist)){if(!/\.(html|txt)$/.test(file))continue;let text=await readFile(file,'utf8');for(const [token,value] of Object.entries({__LINKEDIN_URL__:config.linkedin,__SOURCE_URL__:config.source,__UPDATED__:config.updated,__HERO_DIAGRAM__:heroDiagram,__LAB_CATALOG__:catalog.html,__HANDS_ON_CATALOG__:handsOn.html,__LAB_COUNT__:String(registry.coreCount),__EXTENSION_COUNT__:String(registry.extensionCount),__LAB_LIBRARY__:renderLibrary(registry),__GRC_LABS__:renderLibrary(registry,'Governance and reporting')}))text=text.replaceAll(token,value);await writeFile(file,text);}
 await writeFile(join(dist,'_headers'),`/*
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
@@ -41,7 +41,6 @@ await writeFile(join(dist,'_headers'),`/*
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000
-  X-Robots-Tag: noindex, nofollow, noarchive
   Cache-Control: public, max-age=0, must-revalidate, no-transform
 `);
 const source = await buildSourceDownloads({root,dist,config});

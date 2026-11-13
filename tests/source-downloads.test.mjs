@@ -146,7 +146,7 @@ test('renders all 30 local lab pages and literal documents without executable ma
   assert.ok(index.includes('Independent completion of fresh cases has not yet been assessed.'));
   for (const id of receipt.labIds) {
     const html = await readFile(join(context.dist, 'lab-files', id, 'index.html'), 'utf8');
-    assert.ok(html.includes('<meta name="robots" content="noindex, nofollow, noarchive">'));
+    assert.ok(html.includes('<meta name="robots" content="index, follow">'));
     assert.ok(html.includes(`href="https://jeremy-bryant.pages.dev/lab-files/${id}/"`));
     assert.ok(html.includes('href="/styles.css"'));
     assert.ok(html.includes('href="/source-downloads.css"'));

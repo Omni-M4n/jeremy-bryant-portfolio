@@ -35,8 +35,8 @@ export async function readRegistry(root) {
   return validateRegistry(JSON.parse(await readFile(path,'utf8')));
 }
 
-export function renderLibrary(registry) {
+export function renderLibrary(registry, onlyGroup) {
   const checked = validateRegistry({schema_version:1,labs:registry.labs});
-  const groups = [...new Set(checked.labs.map(lab=>lab.group))];
+  const groups = [...new Set(checked.labs.map(lab=>lab.group))].filter(group=>!onlyGroup || group===onlyGroup);
   return groups.map(group=>`<section class="case-section"><h2 class="case-section-title">${escape(group)}</h2><div class="lab-catalog">${checked.labs.filter(lab=>lab.group===group).map(lab=>`<details class="lab-card" id="${lab.id}"><summary><span class="eyebrow">${lab.kind==='extension'?'Extension':'Core lab'} / ${escape(lab.mode)} practice</span><span class="lab-summary-title">${escape(lab.title)}</span></summary><p>${escape(lab.summary)}</p><p><strong>Start with:</strong> ${escape(lab.start_with)}</p>${lab.extends.length?`<p><strong>Builds on:</strong> ${lab.extends.map(id=>`<a href="/lab-files/${id}/">${escape(checked.labs.find(parent=>parent.id===id).title)}</a>`).join(', ')}.</p>`:''}<p class="small">${escape(lab.status)}. Read the instructions for tools, limits and evidence to save.</p><p><a class="text-link" href="/lab-files/${lab.id}/">Read the lab and practice tasks ↗</a></p></details>`).join('\n')}</div></section>`).join('\n');
 }

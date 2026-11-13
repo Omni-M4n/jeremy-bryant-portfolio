@@ -1,4 +1,4 @@
-# Login triage: original guided practice
+# Login triage: guided practice
 
 Which sign-in records need a closer look? Read the records and put them in time order. Check an alert rule, then write a short handover. A handover gives the next reviewer what they need. A **security operations centre (SOC)** reviews possible security problems. **Triage** means choosing what to review first. It also means deciding what evidence to seek next.
 

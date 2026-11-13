@@ -157,7 +157,7 @@ function page({ title, path, description, body }) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="robots" content="index, follow">
   <meta name="description" content="${escape(description)}">
   <title>${escape(title)} — Jeremy Bryant</title>
   <link rel="canonical" href="${ORIGIN}${path}">
@@ -203,7 +203,7 @@ function labPage(id, documents, registry) {
   <nav class="source-document-nav" aria-label="Documents in this lab">${documents.map(({ name }) => `<a href="#${anchor(name)}">${escape(label(name))}</a>`).join('')}</nav>
   ${documents.map(({ name, text }) => `<section class="source-document" id="${anchor(name)}"><div class="source-document-heading"><h2>${escape(label(name))}</h2><p><code>labs/${id}/${escape(name)}</code></p></div><pre class="source-document-text">${escape(text.replaceAll('\r\n', '\n'))}</pre></section>`).join('\n')}
   <p class="source-back"><a href="/source/">Browse all ${registry.totalCount} practice packages</a></p>`;
-  return { title, html: page({ title, path: `/lab-files/${id}/`, description: 'Readable instructions for an original guided security exercise.', body }) };
+  return { title, html: page({ title, path: `/lab-files/${id}/`, description: 'Readable instructions for a guided security exercise.', body }) };
 }
 
 function indexPage(labs, receipt, registry) {

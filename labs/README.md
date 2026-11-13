@@ -237,7 +237,7 @@ Log that help. If no fresh case or reviewer is ready, record "awaiting review".
 Running a script cannot award mastery. Keep actual tool work separate from
 reading supplied evidence. The goal is to understand each result, not to rush.
 
-## Originality and evidence
+## Source and evidence
 
 - The scenarios, fixtures and tools were made as standalone exercises in October
   2026. They contain no assessment questions, answer sheets, course recordings or

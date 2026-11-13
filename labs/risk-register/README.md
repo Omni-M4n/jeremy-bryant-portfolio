@@ -4,6 +4,11 @@ A loan laptop is missing. A score alone does not tell anyone what to do. Write w
 
 This extends `vulnerability-prioritisation`. You assign an owner to a proposed response. You set review dates and explain the risk left after that response.
 
+For a full governance decision exercise, follow the [GRC decision pack](GRC-PACK.md).
+It joins this risk model with scope, control evidence, pending acceptance,
+reviewer challenge and a sanitized report. Complete your worksheet before
+opening its worked reference.
+
 ## Before you begin
 
 Complete `vulnerability-prioritisation` and `data-classification`. Allow 30 minutes.
@@ -36,6 +41,14 @@ It refuses existing folders and linked paths.
 4. Assess the treatment already in the JSON. In your register, justify it or propose an alternative. Name the owner, action, due date, risk left and open assumption.
 5. Add physical, process and technical controls. These are barriers, work rules and device settings that could limit harm. Explain what each would change.
 6. Draft a reporting action, marked **NOT SENT**. Record the last known time and place. Name the fictional service desk's known internal route. Let the owner decide how to contain harm.
+
+Before recommending acceptance, ask who has authority to accept this risk and
+what risk tolerance or obligation applies. The packet does not supply an
+organisation-wide threshold, legal duty or approval record. Mark each as
+**not supplied**; do not turn the teaching score into a compliance claim.
+Explain which proposed control has actually been checked, what that check
+covers, and what evidence a reviewer would need before treating the lower
+residual score as more than a projection.
 
 For absent facts, write **not supplied** and add a question. Do not confront a
 visitor, test a real person or remotely wipe a device.

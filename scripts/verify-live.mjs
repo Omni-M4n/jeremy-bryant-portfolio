@@ -22,7 +22,7 @@ for(const file of await walk(dist)){
 }
 for(const path of ['/absent-page-for-release-check/','/.git/config','/.env','/private/','/wrangler.jsonc','/labs/foundation_runtime.py'])checks.push({path,status:404});
 const results=[],errors=[];
-const required=['content-security-policy','x-content-type-options','x-frame-options','referrer-policy','permissions-policy','strict-transport-security','x-robots-tag'];
+const required=['content-security-policy','x-content-type-options','x-frame-options','referrer-policy','permissions-policy','strict-transport-security'];
 let next=0;
 async function worker(){while(next<checks.length){const item=checks[next++],url=config.origin+item.path;try{
   const response=await fetch(url,{headers:{'Cache-Control':'no-cache'},signal:AbortSignal.timeout(40000)});
@@ -33,8 +33,8 @@ async function worker(){while(next<checks.length){const item=checks[next++],url=
   if(item.sha256 && actual!==item.sha256)failure.push('content hash');
   if(new URL(response.url).origin!==config.origin)failure.push('redirect origin');
   for(const header of required)if(!headers[header])failure.push('missing '+header);
-  if(!headers['x-robots-tag']?.includes('noindex'))failure.push('indexing policy');
-  if(item.path.endsWith('.zip')&&!headers['content-type']?.includes('application/zip'))failure.push('download MIME');
+  if(headers['x-robots-tag']?.includes('noindex'))failure.push('indexing policy');
+  if(item.path.endsWith('.zip')&&!['application/zip','application/x-zip-compressed'].some(type=>headers['content-type']?.includes(type)))failure.push('download MIME');
   if(failure.length)errors.push({path:item.path,failures:failure});
   results.push({path:item.path,status:response.status,sha256:actual,matchesLocal:item.sha256?actual===item.sha256:null,bytes:data.length,headers,failures:failure});
 }catch(e){errors.push({path:item.path,error:e.message});}}}

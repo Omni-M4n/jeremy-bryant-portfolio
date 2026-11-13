@@ -1,4 +1,4 @@
-# HTTP access-log triage: original guided practice
+# HTTP access-log triage: guided practice
 
 Which web requests need a closer look? Read this small access-log export and put its requests in order. An access log records requests seen by a server. The busiest source may not be the most concerning. A response status alone cannot show what a visitor received. It also cannot show whether they accessed an account.
 

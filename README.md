@@ -1,11 +1,14 @@
 # Jeremy Bryant — cybersecurity portfolio
 
-A career portfolio with an LG TV home lab and guided security practice. The home lab used hardware owned by Jeremy. The security cases use made-up data.
+A career portfolio that starts with governance, risk and compliance practice, then covers security operations, application security and an LG TV home lab. The home lab used hardware owned by Jeremy. The guided security cases use made-up data and are not independently assessed work.
 
 - **Portfolio:** https://jeremy-bryant.pages.dev/
 - **Full case study:** https://jeremy-bryant.pages.dev/lg-webos-lab/
 - **Security foundations labs:** https://jeremy-bryant.pages.dev/security-labs/
 - **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
+- **GRC practice path:** https://jeremy-bryant.pages.dev/security-labs/grc/
+- **GRC worked case study:** https://jeremy-bryant.pages.dev/security-labs/grc/loan-cupboard/
+- **Portfolio Wiki:** https://github.com/Omni-M4n/jeremy-bryant-portfolio/wiki
 - **Summer study plan:** https://jeremy-bryant.pages.dev/security-labs/study-plan/
 - **Source and downloads:** https://jeremy-bryant.pages.dev/source/
 - **Application security projects:** https://jeremy-bryant.pages.dev/projects/
@@ -72,11 +75,13 @@ learning, not a record of completed work.
 | `src/` | Portfolio, case study, local assets and downloadable brief |
 | `scripts/` | Dependency-free static build, public-output checks and loopback preview |
 | `tools/` | Qt INI pairing-format converter; no real pairing data |
-| `labs/` | Original offline and hands-on exercises, fictional fixtures, checks and practice instructions |
+| `labs/` | Offline and hands-on exercises, fictional fixtures, checks and practice instructions |
 | `tests/` | Static-site checks and synthetic converter tests |
 | `docs/verification.md` | Sanitised evidence and limitations |
 | `docs/recovery.md` | Recovery design and operational boundaries |
 | `docs/release.md` | Static hosting, publication controls and rollback |
+| `docs/grc-publication-review.md` | GRC source review, evidence and limits |
+| `docs/wiki-home.md` | Source copy for the published GRC-first Wiki Home page |
 
 ## Local development
 
@@ -107,8 +112,8 @@ repository, like passwords.
 ## Publication
 
 The portfolio uses Cloudflare Pages at `https://jeremy-bryant.pages.dev/`.
-Anyone with the URL can view it. The `noindex` tag asks search engines to leave
-it out of results. It does not block access.
+The portfolio is public and its pages permit search indexing. Search engines
+decide when or whether to list them.
 
 The source download leaves out Git history, private keys, pairing exports, raw
 device logs and personal network details. The site has no contact form, usage
