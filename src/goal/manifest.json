@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 42,
+  "lab_count": 43,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -171,6 +171,17 @@
           "evidence": {
             "artifact": "TCP flow table with exact frame references and sequence/acknowledgement calculations",
             "decision": "I will use the supplied synthetic packet summaries to distinguish an observed handshake, reset, no visible response, missing final ACK, missing initial SYN and acknowledgement mismatch; cite exact frames and show sequence/acknowledgement calculations; and state that the excerpt cannot establish full connection state or root cause, that missing packets do not prove packet loss, firewall failure or server fault, that an observed handshake does not prove application success, and that matching helper results do not prove professional use, completion or mastery."
+          }
+        },
+        {
+          "id": "traffic-capture",
+          "title": "Capture and explain your own traffic",
+          "url": "/lab-files/traffic-capture/",
+          "status": "planned",
+          "dependencies": ["dns-triage", "tcp-handshake", "rules-of-engagement"],
+          "evidence": {
+            "artifact": "I will retain my own controlled loopback PCAP, exact capture and display filters, generator setup and logs, and a worksheet citing actual frame and TCP-stream numbers for one HTTP 200, one HTTP 404 and one failed connection.",
+            "decision": "I will confirm capture permission and existing loopback support, then use only the lab’s `127.0.0.1` service and generated ports. I will start capture before the requests and use visible frames to distinguish a TCP connection, an HTTP 200, an HTTP 404 and a refused or timed-out connection. The generator and maintainer tests create local traffic and logs, not a PCAP, and no fixture or fixed answer will substitute for run-specific frame and stream references. Until I retain those references, I will mark capture pending and claim no Wireshark attempt. Missing packets will not prove firewall blocking, packet loss or server fault; a handshake will not prove application success; and a toy response will not prove a real business outcome. I will send no external traffic, install no software or change firewall or VM settings, and I will not treat generated or test results as proof of completion, mastery, independent assessment or professional use."
           }
         },
         {
