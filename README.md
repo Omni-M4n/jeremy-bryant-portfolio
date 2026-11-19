@@ -43,9 +43,11 @@ not establish independent learner mastery. See [the project register](projects/R
 
 I will use the prepared [goal source note](docs/cyber-cloud-learning-goal.md)
 to set out my cybersecurity and cloud learning direction, scope and claim
-boundaries. I intend to publish it at the
-[portfolio goal route](https://jeremy-bryant.pages.dev/goal/), and I will treat
-that route as pending until I separately verify its deployment. I will keep the
+boundaries. On 19 November 2026, I verified that the
+[portfolio goal route](https://jeremy-bryant.pages.dev/goal/) was live for
+commit `5e51611690f21859b27c2b8bbfc624770fb5198b`. This confirms site
+availability at that check only; I am keeping every lab **Planned**, and I am
+not claiming completion or mastery. I will keep the
 [Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md) as the
 corresponding repository guide. The lab route will remain planned work;
 publishing it will not mean I have completed or been assessed on those labs.

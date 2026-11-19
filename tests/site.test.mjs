@@ -133,12 +133,13 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wiki,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(wiki,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/I will use the prepared \[goal source note\]/);
-  assert.match(readme,/I will treat\s+that route as pending until I separately verify its deployment/);
   assert.doesNotMatch(readme,/\[public goal page\]/);
   assert.match(wiki,/prepared \[learning goal and planned 29-lab route\]/);
-  assert.match(wiki,/I will treat that route as pending until I separately verify its deployment/);
-  assert.match(goalDoc,/I intend to publish this prepared route/);
-  assert.match(goalDoc,/pending until I separately verify their deployment/);
   assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 29 existing labs/);
-  assert.match(wikiGoal,/after I separately verify their deployment/);
+  for(const page of [readme,wiki,goalDoc,wikiGoal]){
+    assert.match(page,/On 19 November 2026, I verified that/);
+    assert.match(page,/5e51611690f21859b27c2b8bbfc624770fb5198b/);
+    assert.match(page,/This confirms site\s+availability at that check only; I am keeping every lab \*\*Planned\*\*, and I am\s+not claiming completion or mastery\./);
+    assert.doesNotMatch(page,/pending until I separately verify|after I separately verify|I intend to publish/);
+  }
 });
