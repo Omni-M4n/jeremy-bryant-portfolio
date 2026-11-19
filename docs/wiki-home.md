@@ -4,7 +4,7 @@ The [portfolio site](https://jeremy-bryant.pages.dev/) presents the same work fo
 
 ## My cybersecurity and cloud learning goal
 
-I’ve prepared [my learning goal and planned 26-lab route](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/cyber-cloud-learning-goal.md) in this repository so readers can see the direction I’m working toward without treating planned work as completed work. I intend to publish it at the [portfolio goal route](https://jeremy-bryant.pages.dev/goal/), which still needs separate deployment verification; the [Wiki goal source](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/wiki-cybersecurity-and-cloud-goal.md) keeps the repository version of this guide.
+I will use the prepared [learning goal and planned 27-lab route](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/cyber-cloud-learning-goal.md) in this repository so readers can see the direction I will work toward without treating planned work as completed work. I intend to publish it at the [portfolio goal route](https://jeremy-bryant.pages.dev/goal/), and I will treat that route as pending until I separately verify its deployment; I will keep the [Wiki goal source](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/wiki-cybersecurity-and-cloud-goal.md) as the repository version of this guide.
 
 ## Start with governance, risk and compliance
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index, follow">
-<meta name="description" content="My planned 26-lab cybersecurity and cloud learning goal, with evidence, review gates and clear claim limits.">
+<meta name="description" content="My planned 27-lab cybersecurity and cloud learning goal, with evidence, review gates and clear claim limits.">
 <title>Cybersecurity and cloud learning goal — Jeremy Bryant</title>
 <link rel="canonical" href="https://jeremy-bryant.pages.dev/goal/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -16,10 +16,10 @@
 <section class="case-hero">
 <p class="eyebrow">My planned learning route</p>
 <h1 class="case-title">Cybersecurity and <em>cloud</em>, built through evidence.</h1>
-<p class="case-deck">I plan to work through 26 existing labs in dependency order, preserve a first attempt, explain each decision and use human review before I describe any skill as independently demonstrated.</p>
+<p class="case-deck">I plan to work through 27 existing labs in dependency order, preserve a first attempt, explain each decision and use human review before I describe any skill as independently demonstrated.</p>
 <dl class="case-meta">
 <div><dt>Current status</dt><dd><span class="evidence-state" data-state="pending">Planned</span></dd></div>
-<div><dt>Route</dt><dd>11 beginner · 9 intermediate · 6 advanced</dd></div>
+<div><dt>Route</dt><dd>11 beginner · 10 intermediate · 6 advanced</dd></div>
 <div><dt>Evidence rule</dt><dd>Artifact + reasoning + limits + next check</dd></div>
 </dl>
 </section>
@@ -73,7 +73,7 @@
 </section>
 
 <section class="case-section" id="intermediate">
-<p class="eyebrow">Stage 2 · 9 labs · all planned</p>
+<p class="eyebrow">Stage 2 · 10 labs · all planned</p>
 <h2 class="case-section-title">Intermediate: connect controls and evidence</h2>
 <p>I will combine earlier reasoning across cloud events, identity policy, network paths, telemetry and recovery.</p>
 <div class="table-scroll"><table class="evidence-table"><caption>My planned intermediate evidence</caption><thead><tr><th scope="col">Lab</th><th scope="col">Evidence I plan to retain</th><th scope="col">Earlier lab dependency</th></tr></thead><tbody>
@@ -86,6 +86,7 @@
 <tr><th scope="row">18 · <a href="/lab-files/logging-health/">Logging health</a></th><td>A coverage timeline showing expected records, arrival times, heartbeat evidence, gaps and the smallest next check.</td><td>Log ingestion; timeline analysis</td></tr>
 <tr><th scope="row">19 · <a href="/lab-files/restore-drill/">Restore drill</a></th><td>A dummy-data restore receipt with copied and verified hashes, measured durations and a comparison with the baseline.</td><td>Backup verification; file integrity</td></tr>
 <tr><th scope="row">20 · <a href="/lab-files/evidence-custody/">Evidence custody</a></th><td>A dummy-file evidence register and copy receipt linking each copy to its recorded source, UTC handling records, hash checks and stated limits.</td><td>File integrity</td></tr>
+<tr><th scope="row">21 · <a href="/lab-files/secret-handling/">Secret handling</a></th><td>I will retain a DEMO-only secret exposure worksheet and evidence note tracing exact listed markers through configuration, saved changes and logs, separating observed exposure from proposed response and stating what the supplied files cannot prove.</td><td>File integrity</td></tr>
 </tbody></table></div>
 </section>
 
@@ -94,12 +95,12 @@
 <h2 class="case-section-title">Advanced: build and communicate a case</h2>
 <p>I will bring several evidence types together while keeping competing explanations, authority and communication boundaries visible.</p>
 <div class="table-scroll"><table class="evidence-table"><caption>My planned advanced evidence</caption><thead><tr><th scope="col">Lab</th><th scope="col">Evidence I plan to retain</th><th scope="col">Earlier lab dependency</th></tr></thead><tbody>
-<tr><th scope="row">21 · <a href="/lab-files/endpoint-triage/">Endpoint triage</a></th><td>A process tree and short handover citing parent/child, location, signature and change-context evidence without asserting malware.</td><td>None</td></tr>
-<tr><th scope="row">22 · <a href="/lab-files/alert-correlation/">Alert correlation</a></th><td>A deduplicated alert set, stated correlation-window rule and grouped evidence that does not equate alert counts with incidents.</td><td>None</td></tr>
-<tr><th scope="row">23 · <a href="/lab-files/soc-query-workbook/">SOC query workbook</a></th><td>Saved SQL, expected and actual result tables, distinct-event counts and a note about join multiplication.</td><td>Log ingestion; login triage; alert correlation</td></tr>
-<tr><th scope="row">24 · <a href="/lab-files/incident-case/">Incident case</a></th><td>A four-part case notebook with timeline, two hypotheses, evidence needs and a bounded handover.</td><td>SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis</td></tr>
-<tr><th scope="row">25 · <a href="/lab-files/containment-tabletop/">Containment tabletop</a></th><td>A containment decision table naming authority, operational effect, evidence preservation, owner and release check.</td><td>Incident case; access review; backup verification</td></tr>
-<tr><th scope="row">26 · <a href="/lab-files/incident-communications/">Incident communications</a></th><td>A staff action message, technical handover and manager update that separate confirmed facts, hypotheses, gaps and owners.</td><td>Login triage; timeline analysis</td></tr>
+<tr><th scope="row">22 · <a href="/lab-files/endpoint-triage/">Endpoint triage</a></th><td>A process tree and short handover citing parent/child, location, signature and change-context evidence without asserting malware.</td><td>None</td></tr>
+<tr><th scope="row">23 · <a href="/lab-files/alert-correlation/">Alert correlation</a></th><td>A deduplicated alert set, stated correlation-window rule and grouped evidence that does not equate alert counts with incidents.</td><td>None</td></tr>
+<tr><th scope="row">24 · <a href="/lab-files/soc-query-workbook/">SOC query workbook</a></th><td>Saved SQL, expected and actual result tables, distinct-event counts and a note about join multiplication.</td><td>Log ingestion; login triage; alert correlation</td></tr>
+<tr><th scope="row">25 · <a href="/lab-files/incident-case/">Incident case</a></th><td>A four-part case notebook with timeline, two hypotheses, evidence needs and a bounded handover.</td><td>SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis</td></tr>
+<tr><th scope="row">26 · <a href="/lab-files/containment-tabletop/">Containment tabletop</a></th><td>A containment decision table naming authority, operational effect, evidence preservation, owner and release check.</td><td>Incident case; access review; backup verification</td></tr>
+<tr><th scope="row">27 · <a href="/lab-files/incident-communications/">Incident communications</a></th><td>A staff action message, technical handover and manager update that separate confirmed facts, hypotheses, gaps and owners.</td><td>Login triage; timeline analysis</td></tr>
 </tbody></table></div>
 </section>
 

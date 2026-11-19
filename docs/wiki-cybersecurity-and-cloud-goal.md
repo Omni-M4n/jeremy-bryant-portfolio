@@ -1,11 +1,11 @@
 # Cybersecurity and cloud learning goal
 
-My public goal is a **planned** route through 26 existing labs. I am publishing the sequence and the evidence I intend to produce; I am not claiming completion, mastery, a credential or professional experience.
+I will use this prepared, **planned** route through 27 existing labs to record the sequence and evidence I intend to produce. I will not claim completion, mastery, a credential or professional experience from the plan.
 
 The three stages describe exercise complexity, not my current ability:
 
 1. **Beginner — make bounded decisions:** rules-of-engagement (scope sheet); access-review (permission matrix); login-triage (sign-in timeline); timeline-analysis (UTC timeline); network-address-path (packet-path diagram); firewall-review (first-match trace); http-triage (observation/interpretation note); file-integrity (baseline comparison); backup-verification (copy-selection worksheet); cloud-storage-review (exposure-path worksheet); identity-lifecycle (joiner/mover/leaver worksheet).
-2. **Intermediate — connect controls and evidence:** cloud-audit-triage (audit timeline); shared-responsibility (service/task ownership table); iam-explicit-deny (policy decision table); temporary-credentials (session timeline); cloud-network-path (two-leg reachability diagram); log-ingestion (import and rejection reconciliation); logging-health (coverage timeline); restore-drill (dummy-data restore receipt); evidence-custody (dummy-file evidence register and copy receipt).
+2. **Intermediate — connect controls and evidence:** cloud-audit-triage (audit timeline); shared-responsibility (service/task ownership table); iam-explicit-deny (policy decision table); temporary-credentials (session timeline); cloud-network-path (two-leg reachability diagram); log-ingestion (import and rejection reconciliation); logging-health (coverage timeline); restore-drill (dummy-data restore receipt); evidence-custody (dummy-file evidence register and copy receipt); secret-handling (I will trace exact listed DEMO-only markers and keep response proposals bounded).
 3. **Advanced — build and communicate a case:** endpoint-triage (process tree); alert-correlation (deduplicated and correlated set); soc-query-workbook (saved SQL and result tables); incident-case (timeline, hypotheses, evidence needs and handover); containment-tabletop (authority and containment decision table); incident-communications (staff, technical and manager messages).
 
 ## Dependencies and review gate
@@ -21,6 +21,7 @@ I will keep the order dependency-closed. The named lab dependencies are:
 - logging-health → log-ingestion, timeline-analysis
 - restore-drill → backup-verification, file-integrity
 - evidence-custody → file-integrity
+- secret-handling → file-integrity
 - soc-query-workbook → log-ingestion, login-triage, alert-correlation
 - incident-case → soc-query-workbook, logging-health, login-triage, endpoint-triage, http-triage, alert-correlation, timeline-analysis
 - containment-tabletop → incident-case, access-review, backup-verification
@@ -32,4 +33,4 @@ I will use five progress labels: **planned**, **guided**, **solo**, **reviewed**
 
 I will use only fictional or dummy evidence within each lab's safety boundary. The route authorises no work on real systems, accounts or data.
 
-Links: [goal page](https://jeremy-bryant.pages.dev/goal/) · [route manifest](https://jeremy-bryant.pages.dev/goal/manifest.json) · [full lab library](https://jeremy-bryant.pages.dev/security-labs/library/) · [study plan](https://jeremy-bryant.pages.dev/security-labs/study-plan/) · [source and downloads](https://jeremy-bryant.pages.dev/source/)
+I intend to use the [portfolio goal route](https://jeremy-bryant.pages.dev/goal/) and [route manifest](https://jeremy-bryant.pages.dev/goal/manifest.json) after I separately verify their deployment. I will use the [full lab library](https://jeremy-bryant.pages.dev/security-labs/library/), [study plan](https://jeremy-bryant.pages.dev/security-labs/study-plan/) and [source and downloads](https://jeremy-bryant.pages.dev/source/) for the supporting materials.

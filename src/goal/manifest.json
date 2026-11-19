@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 26,
+  "lab_count": 27,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -268,6 +268,17 @@
           "evidence": {
             "artifact": "Dummy-file evidence register and copy receipt",
             "decision": "I will link each copy to its recorded source, compare source and copy hashes, record UTC handling gaps and state what those records cannot prove."
+          }
+        },
+        {
+          "id": "secret-handling",
+          "title": "Secret handling",
+          "url": "/lab-files/secret-handling/",
+          "status": "planned",
+          "dependencies": ["file-integrity"],
+          "evidence": {
+            "artifact": "I will retain a DEMO-only secret exposure worksheet and evidence note.",
+            "decision": "I will trace only exact listed markers through configuration, saved changes and logs, distinguish active and revoked values, keep response proposals bounded and state what the supplied files cannot prove."
           }
         }
       ]

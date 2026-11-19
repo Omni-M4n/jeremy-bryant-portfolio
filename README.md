@@ -41,13 +41,14 @@ not establish independent learner mastery. See [the project register](projects/R
 
 ## Guided security exercises
 
-I’ve set out my cybersecurity and cloud learning direction on the
-[public goal page](https://jeremy-bryant.pages.dev/goal/). The supporting
-[goal source note](docs/cyber-cloud-learning-goal.md) explains my scope and
-claim boundaries, and the [Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md)
-keeps the corresponding repository guide ready for publication. The lab route
-is planned work; publishing it does not mean I have completed or been assessed
-on those labs.
+I will use the prepared [goal source note](docs/cyber-cloud-learning-goal.md)
+to set out my cybersecurity and cloud learning direction, scope and claim
+boundaries. I intend to publish it at the
+[portfolio goal route](https://jeremy-bryant.pages.dev/goal/), and I will treat
+that route as pending until I separately verify its deployment. I will keep the
+[Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md) as the
+corresponding repository guide. The lab route will remain planned work;
+publishing it will not mean I have completed or been assessed on those labs.
 
 <!-- LAB_COUNTS_START -->
 This release has **61 core labs** and **25 extensions**.
