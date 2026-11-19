@@ -24,9 +24,9 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   const goal=await readFile(new URL('../dist/goal/index.html',import.meta.url),'utf8');
   assert.match(goal,/<link rel="canonical" href="https:\/\/jeremy-bryant\.pages\.dev\/goal\/">/);
   assert.match(goal,/<meta name="robots" content="index, follow">/);
-  assert.match(goal,/I plan to work through 32 existing labs in dependency order/);
-  assert.match(goal,/15 beginner · 11 intermediate · 6 advanced/);
-  assert.match(goal,/Stage 1 · 15 labs · all planned/);
+  assert.match(goal,/I plan to work through 33 existing labs in dependency order/);
+  assert.match(goal,/16 beginner · 11 intermediate · 6 advanced/);
+  assert.match(goal,/Stage 1 · 16 labs · all planned/);
   assert.match(goal,/Stage 2 · 11 labs · all planned/);
   assert.match(goal,/I will retain a synthetic packet worksheet that cites exact frames and matches each DNS question to any visible reply by endpoints, ports, DNS ID, name and type\./);
   assert.match(goal,/I will distinguish an A answer, NXDOMAIN and no visible reply\./);
@@ -48,7 +48,14 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/apply only the supplied local rubric to supplied fictional findings: unverified evidence becomes investigate; supplied fictional observed-exploitation records become urgent; otherwise I will assign urgent, planned or routine by score/);
   assert.match(goal,/the rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation/);
   assert.match(goal,/helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery/);
-  assert.match(goal,/10 · <a href="\/lab-files\/firewall-review\/">Firewall review<\/a>/);
+  assert.match(goal,/10 · <a href="\/lab-files\/dependency-review\/">Dependency review<\/a>/);
+  assert.match(goal,/fictional component\/advisory worksheet citing component IDs, package names, versions, scope, path evidence, advisory IDs, affected-range comparisons, uncertainty and the next check/);
+  assert.match(goal,/compare each supplied stable three-part version numerically with every supplied exact-package \[introduced,fixed\) range/);
+  assert.match(goal,/distinguish no supplied advisory from outside supplied ranges/);
+  assert.match(goal,/separate build exposure from reachable, not-demonstrated and unknown runtime paths/);
+  assert.match(goal,/offline exercise trusts the supplied inventory and path evidence and does not install packages, fetch live notices, resolve a full dependency chain, model ecosystem-specific version rules or test an exploit/);
+  assert.match(goal,/Version, range and helper results do not prove exploitability, safety, professional use, completion or mastery/);
+  assert.match(goal,/11 · <a href="\/lab-files\/firewall-review\/">Firewall review<\/a>/);
   assert.match(goal,/They do not describe my current ability\./);
   assert.match(goal,/I am publishing a learning intention and a route through existing practice materials\./);
   assert.match(goal,/I am not claiming that I have completed these labs, mastered their topics or used these methods in a professional role\./);
@@ -57,7 +64,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/Helper checks can compare formats and expected decisions, but they cannot judge the quality of my reasoning or prove independent skill\./);
   assert.match(goal,/The route is a plan, not a credential, job history or completion record\./);
 });
-test('goal manifest is a 32-lab planned route with valid ordered dependencies',async()=>{
+test('goal manifest is a 33-lab planned route with valid ordered dependencies',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   const registry=JSON.parse(await readFile(new URL('../labs/release-catalog.json',import.meta.url),'utf8'));
   const studyPlan=JSON.parse(await readFile(new URL('../labs/SUMMER-STUDY-PLAN.json',import.meta.url),'utf8'));
@@ -66,7 +73,7 @@ test('goal manifest is a 32-lab planned route with valid ordered dependencies',a
   assert.equal(manifest.route_url,'/goal/');
   assert.equal(manifest.source_plan,'/security-labs/summer-study-plan.json');
   assert.equal(manifest.initial_status,'planned');
-  assert.equal(manifest.lab_count,32);
+  assert.equal(manifest.lab_count,33);
   assert.equal(manifest.claim_boundary.statement,'I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.');
   assert.equal(manifest.claim_boundary.safe_scope,'I will use the fictional or dummy evidence and the safe boundaries stated in each lab.');
   assert.equal(manifest.claim_boundary.tool_limit,'A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill.');
@@ -80,7 +87,7 @@ test('goal manifest is a 32-lab planned route with valid ordered dependencies',a
   assert.ok(typeof manifest.review_gate.unavailable_reviewer==='string'&&manifest.review_gate.unavailable_reviewer.trim().length>0);
   assert.ok(Array.isArray(manifest.stages));
   assert.deepEqual(manifest.stages.map(stage=>stage.id),['beginner','intermediate','advanced']);
-  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[15,11,6]);
+  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[16,11,6]);
   const labs=manifest.stages.flatMap(stage=>{
     assert.match(stage.id,/^[a-z][a-z0-9-]*$/);
     for(const field of ['title','complexity','mastery_note']) assert.ok(typeof stage[field]==='string'&&stage[field].trim().length>0);
@@ -91,7 +98,7 @@ test('goal manifest is a 32-lab planned route with valid ordered dependencies',a
   assert.equal(labs.length,manifest.lab_count);
   const ids=labs.map(lab=>lab.id);
   assert.deepEqual(ids,[
-    'rules-of-engagement','dns-triage','access-review','login-triage','timeline-analysis','network-address-path','tcp-handshake','asset-discovery','vulnerability-prioritisation','firewall-review','http-triage','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle','mfa-review',
+    'rules-of-engagement','dns-triage','access-review','login-triage','timeline-analysis','network-address-path','tcp-handshake','asset-discovery','vulnerability-prioritisation','dependency-review','firewall-review','http-triage','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle','mfa-review',
     'cloud-audit-triage','shared-responsibility','iam-explicit-deny','temporary-credentials','cloud-network-path','log-ingestion','logging-health','restore-drill','evidence-custody','secret-handling',
     'endpoint-triage','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
   ]);
@@ -137,6 +144,20 @@ test('goal manifest is a 32-lab planned route with valid ordered dependencies',a
   assert.match(vulnerabilityPrioritisation?.evidence.decision,/queue labels do not set deadlines/);
   assert.match(vulnerabilityPrioritisation?.evidence.decision,/proof of concept does not prove exploitation/);
   assert.match(vulnerabilityPrioritisation?.evidence.decision,/helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery/);
+  const dependencyReviews=labs.filter(lab=>lab.id==='dependency-review');
+  assert.equal(dependencyReviews.length,1);
+  const dependencyReview=dependencyReviews[0];
+  assert.equal(ids.indexOf('dependency-review'),ids.indexOf('vulnerability-prioritisation')+1);
+  assert.equal(ids.indexOf('firewall-review'),ids.indexOf('dependency-review')+1);
+  assert.equal(dependencyReview?.status,'planned');
+  assert.deepEqual(dependencyReview?.dependencies,['vulnerability-prioritisation']);
+  assert.equal(dependencyReview?.evidence.artifact,'I will retain a fictional component/advisory worksheet citing component IDs, package names, versions, scope, path evidence, advisory IDs, affected-range comparisons, uncertainty and the next check.');
+  assert.match(dependencyReview?.evidence.decision,/compare each supplied stable three-part version numerically with every supplied exact-package \[introduced,fixed\) range/);
+  assert.match(dependencyReview?.evidence.decision,/distinguish no supplied advisory from outside supplied ranges/);
+  assert.match(dependencyReview?.evidence.decision,/separate build exposure from reachable, not-demonstrated and unknown runtime paths/);
+  assert.match(dependencyReview?.evidence.decision,/offline exercise trusts the supplied inventory and path evidence/);
+  assert.match(dependencyReview?.evidence.decision,/does not install packages, fetch live notices, resolve a full dependency chain, model ecosystem-specific version rules or test an exploit/);
+  assert.match(dependencyReview?.evidence.decision,/Version, range and helper results do not prove exploitability, safety, professional use, completion or mastery/);
   const mfaReview=labs.find(lab=>lab.id==='mfa-review');
   assert.deepEqual(mfaReview?.dependencies,['identity-lifecycle']);
   assert.equal(mfaReview?.status,'planned');
@@ -177,7 +198,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   for(const lab of manifest.stages.flatMap(stage=>stage.labs)) assert.match(goal,new RegExp(`href="\\/lab-files\\/${lab.id}\\/"`));
   for(const page of [home,labs,library]) assert.match(page,/href="\/goal\/"/);
-  assert.match(home,/I will work through 32 mapped labs/);
+  assert.match(home,/I will work through 33 mapped labs/);
   assert.match(readme,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(readme,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/docs\/wiki-cybersecurity-and-cloud-goal\.md/);
@@ -185,8 +206,8 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wiki,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/I will use the prepared \[goal source note\]/);
   assert.doesNotMatch(readme,/\[public goal page\]/);
-  assert.match(wiki,/prepared \[learning goal and planned 32-lab route\]/);
-  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 32 existing labs/);
+  assert.match(wiki,/prepared \[learning goal and planned 33-lab route\]/);
+  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 33 existing labs/);
   assert.match(wikiGoal,/asset-discovery \(I will compare a supplied synthetic scan snapshot with the approved inventory, cite exact host and TCP-port evidence, and not treat the snapshot or a helper match as proof of ownership, vulnerability, current state, complete coverage, professional use, completion or mastery\)/);
   assert.match(wikiGoal,/asset-discovery → dns-triage/);
   assert.match(wikiGoal,/vulnerability-prioritisation \(I will retain a fictional finding-priority queue with exact record and field references, impact, exposure, evidence-of-use, service-importance and confidence inputs, each four-part score, any override, uncertainty and the next owner check/);
@@ -194,6 +215,8 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation/);
   assert.match(wikiGoal,/helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery/);
   assert.match(wikiGoal,/vulnerability-prioritisation → asset-discovery, access-review/);
+  assert.match(wikiGoal,/dependency-review \(I will retain a fictional component\/advisory worksheet citing component IDs, package names, versions, scope, path evidence, advisory IDs, affected-range comparisons, uncertainty and the next check/);
+  assert.match(wikiGoal,/dependency-review → vulnerability-prioritisation/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){
     assert.match(page,/On 19 November 2026, I verified that/);
     assert.match(page,/e01b084c2650eda197fb66d5069f1d02572a2875/);

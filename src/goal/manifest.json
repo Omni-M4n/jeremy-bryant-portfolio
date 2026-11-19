@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 32,
+  "lab_count": 33,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -138,6 +138,17 @@
           "evidence": {
             "artifact": "I will retain a fictional finding-priority queue with exact record and field references, impact, exposure, evidence-of-use, service-importance and confidence inputs, each four-part score, any overriding rule, uncertainty and the next owner check.",
             "decision": "I will apply only the supplied local rubric to supplied fictional findings: unverified evidence becomes investigate; supplied fictional observed-exploitation records become urgent; otherwise I will assign urgent, planned or routine by score. I will state that the rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation, and helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery."
+          }
+        },
+        {
+          "id": "dependency-review",
+          "title": "Dependency review",
+          "url": "/lab-files/dependency-review/",
+          "status": "planned",
+          "dependencies": ["vulnerability-prioritisation"],
+          "evidence": {
+            "artifact": "I will retain a fictional component/advisory worksheet citing component IDs, package names, versions, scope, path evidence, advisory IDs, affected-range comparisons, uncertainty and the next check.",
+            "decision": "I will compare each supplied stable three-part version numerically with every supplied exact-package [introduced,fixed) range; distinguish no supplied advisory from outside supplied ranges; and separate build exposure from reachable, not-demonstrated and unknown runtime paths. I will state that this offline exercise trusts the supplied inventory and path evidence and does not install packages, fetch live notices, resolve a full dependency chain, model ecosystem-specific version rules or test an exploit. Version, range and helper results do not prove exploitability, safety, professional use, completion or mastery."
           }
         },
         {
