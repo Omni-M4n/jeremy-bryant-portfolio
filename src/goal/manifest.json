@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 40,
+  "lab_count": 41,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -138,6 +138,17 @@
           "evidence": {
             "artifact": "Labelled packet-path diagram and worksheet",
             "decision": "I will show route matches, the selected next hop and what the path cannot prove."
+          }
+        },
+        {
+          "id": "vpn-routing-review",
+          "title": "Review VPN routes and DNS scope",
+          "url": "/lab-files/vpn-routing-review/",
+          "status": "planned",
+          "dependencies": ["network-address-path", "dns-cache-records"],
+          "evidence": {
+            "artifact": "I will retain synthetic before-and-after route maps and a separate DNS-path table citing each row ID, destination or name, address family, selected prefix or suffix rule, metric, resolver address, before-and-after path, stated intent, result, uncertainty and next check. I will keep the optional VM comparison and any live path or query test explicitly marked unperformed and separate from the supplied evidence.",
+            "decision": "I will use only the supplied offline snapshots. For each traffic destination, I will select the longest matching prefix in its address family and use the lowest metric only between equally specific routes. For each name query, I will select the most specific whole-name or dot-boundary suffix rule and route every selected resolver address using the same route rule. I will keep IPv4 and IPv6 separate and compare each after-path with the stated local or tunnel intent; no route, no resolver, a different path or mixed resolver paths will not meet that intent. I will not connect a VPN, issue DNS requests or change routes or resolver settings. A selected path does not establish that a tunnel connected, traffic was encrypted, a resolver answered or a destination was reachable. Policy and source routing, multiple tables, equal-cost routing, interface-bound or application-specific DNS, fallback and cache behaviour, and tunnel transport remain outside this model. I will not treat helper or reference matches as evidence of completion, mastery, independent assessment or professional use."
           }
         },
         {
