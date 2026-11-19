@@ -45,7 +45,7 @@ I will use the prepared [goal source note](docs/cyber-cloud-learning-goal.md)
 to set out my cybersecurity and cloud learning direction, scope and claim
 boundaries. On 19 November 2026, I verified that the
 [portfolio goal route](https://jeremy-bryant.pages.dev/goal/) was live for
-commit `00352f8c02ee7b138da1d651cafd677cc1bc35c7`. This confirms site
+commit `b4958021f31dfbb0d25da6bafc15c16954ec8668`. This confirms site
 availability at that check only; I am keeping every lab **Planned**, and I am
 not claiming completion or mastery. I will keep the
 [Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md) as the
