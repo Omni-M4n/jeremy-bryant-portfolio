@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 33,
+  "lab_count": 34,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -257,6 +257,17 @@
           "evidence": {
             "artifact": "Service/task responsibility table",
             "decision": "I will name the responsible party, agreement evidence, control record, gap and next owner."
+          }
+        },
+        {
+          "id": "cloud-resource-lifecycle",
+          "title": "Cloud resource lifecycle",
+          "url": "/lab-files/cloud-resource-lifecycle/",
+          "status": "planned",
+          "dependencies": ["asset-discovery", "shared-responsibility"],
+          "evidence": {
+            "artifact": "I will retain a synthetic cloud-resource lifecycle worksheet citing exact resource IDs, owners, expiry and review flags, dependency arrows, retention holds, proposed teardown order, made-up residual daily cost units, budget-alert state, the approver needed for each proposed step and a later bill check.",
+            "decision": "I will use only supplied offline records; identify missing ownership or expiry data; block proposed removal when a retention hold or remaining dependency applies; and distinguish review or expiry from deletion approval, a budget alert from a spending cap, and a model-valid order or zero model cost from real deletion or stopped charges. I will run no cloud deletion commands and will not treat the exercise as proof of complete inventory, real removal, stopped spending, professional use, completion or mastery."
           }
         },
         {

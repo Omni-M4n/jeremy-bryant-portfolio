@@ -4,7 +4,7 @@ The [portfolio site](https://jeremy-bryant.pages.dev/) presents the same work fo
 
 ## My cybersecurity and cloud learning goal
 
-I will use the prepared [learning goal and planned 33-lab route](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/cyber-cloud-learning-goal.md) in this repository so readers can see the direction I will work toward without treating planned work as completed work. On 19 November 2026, I verified that the [portfolio goal route](https://jeremy-bryant.pages.dev/goal/) was live for commit `add2a3a8cb1ff29415ddfe474ac5ce42ed68fe86`. This confirms site availability at that check only; I am keeping every lab **Planned**, and I am not claiming completion or mastery. I will keep the [Wiki goal source](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/wiki-cybersecurity-and-cloud-goal.md) as the repository version of this guide.
+I will use the prepared [learning goal and planned 34-lab route](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/cyber-cloud-learning-goal.md) in this repository so readers can see the direction I will work toward without treating planned work as completed work. On 19 November 2026, I verified that the [portfolio goal route](https://jeremy-bryant.pages.dev/goal/) was live for commit `add2a3a8cb1ff29415ddfe474ac5ce42ed68fe86`. This confirms site availability at that check only; I am keeping every lab **Planned**, and I am not claiming completion or mastery. I will keep the [Wiki goal source](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/wiki-cybersecurity-and-cloud-goal.md) as the repository version of this guide.
 
 ## Start with governance, risk and compliance
 
@@ -20,7 +20,7 @@ The [public control review](https://jeremy-bryant.pages.dev/security-labs/grc/pu
 
 - **Cybersecurity operations:** [complete lab library](https://jeremy-bryant.pages.dev/security-labs/library/) and [local application security projects](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/projects/README.md).
 - **Systems and recovery:** [LG webOS case study](https://jeremy-bryant.pages.dev/lg-webos-lab/) and [sanitised verification notes](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/verification.md).
-- **Cloud security:** begin with the [cloud storage review](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/cloud-storage-review/README.md), [IAM explicit deny](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/iam-explicit-deny/README.md) and [shared responsibility](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/shared-responsibility/README.md) labs.
+- **Cloud security:** I will begin with the [cloud storage review](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/cloud-storage-review/README.md), [shared responsibility](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/shared-responsibility/README.md), [cloud resource lifecycle](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/cloud-resource-lifecycle/README.md) and [IAM explicit deny](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/iam-explicit-deny/README.md) labs.
 
 ## How to read the work
 
