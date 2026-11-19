@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "route_id": "cyber-cloud-goal",
+  "title": "My cybersecurity and cloud learning goal",
+  "owner": "Jeremy Bryant",
+  "route_url": "/goal/",
+  "source_plan": "/security-labs/summer-study-plan.json",
+  "initial_status": "planned",
+  "lab_count": 25,
+  "claim_boundary": {
+    "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
+    "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
+    "tool_limit": "A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill."
+  },
+  "status_model": {
+    "planned": "I have selected the lab and its prerequisites, but I have not claimed an attempt.",
+    "guided": "I have worked with instructions, examples or prompts and recorded that help.",
+    "solo": "I have preserved a first answer to a changed case before checking a reference.",
+    "reviewed": "A person has challenged my evidence and reasoning, and I have retained the feedback and correction.",
+    "recall": "I have tried different facts later without reusing my earlier answer."
+  },
+  "review_gate": {
+    "statement": "Before I start a dependent lab, I will keep reviewed or equivalent evidence for each named dependency.",
+    "required_evidence": [
+      "case or input reference",
+      "preserved first answer",
+      "commands or method",
+      "exact evidence references",
+      "conclusion and uncertainty",
+      "help used",
+      "review feedback and correction",
+      "next check"
+    ],
+    "unavailable_reviewer": "I will mark the work awaiting review and will not call it independently demonstrated."
+  },
+  "stages": [
+    {
+      "id": "beginner",
+      "title": "Make bounded decisions",
+      "complexity": "I will use small fictional records to practise one bounded decision at a time.",
+      "mastery_note": "This label describes exercise complexity, not my current ability.",
+      "status": "planned",
+      "labs": [
+        {
+          "id": "rules-of-engagement",
+          "title": "Rules of engagement",
+          "url": "/lab-files/rules-of-engagement/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Scope sheet",
+            "decision": "I will name the owner, targets, allowed actions, exclusions, time window, stop conditions and pending approval."
+          }
+        },
+        {
+          "id": "access-review",
+          "title": "Access review",
+          "url": "/lab-files/access-review/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Role/resource/action matrix",
+            "decision": "I will preserve required access while removing permissions without a stated business need."
+          }
+        },
+        {
+          "id": "login-triage",
+          "title": "Login triage",
+          "url": "/lab-files/login-triage/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Sorted sign-in timeline and handover",
+            "decision": "I will separate rule matches, interpretation and the next evidence request."
+          }
+        },
+        {
+          "id": "timeline-analysis",
+          "title": "Timeline analysis",
+          "url": "/lab-files/timeline-analysis/",
+          "status": "planned",
+          "dependencies": ["login-triage"],
+          "evidence": {
+            "artifact": "UTC event timeline",
+            "decision": "I will cite exact event records and state uncertainty in a short handover."
+          }
+        },
+        {
+          "id": "network-address-path",
+          "title": "Network address path",
+          "url": "/lab-files/network-address-path/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Labelled packet-path diagram and worksheet",
+            "decision": "I will show route matches, the selected next hop and what the path cannot prove."
+          }
+        },
+        {
+          "id": "firewall-review",
+          "title": "Firewall review",
+          "url": "/lab-files/firewall-review/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "First-match rule trace",
+            "decision": "I will record required traffic kept, excess traffic removed and the model limits."
+          }
+        },
+        {
+          "id": "http-triage",
+          "title": "HTTP triage",
+          "url": "/lab-files/http-triage/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "HTTP triage report and evidence note",
+            "decision": "I will separate observed requests, possible explanations and the next check."
+          }
+        },
+        {
+          "id": "file-integrity",
+          "title": "File integrity",
+          "url": "/lab-files/file-integrity/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Baseline comparison report",
+            "decision": "I will classify exact changes as approved, unexpected or unsupported by the baseline."
+          }
+        },
+        {
+          "id": "backup-verification",
+          "title": "Backup verification",
+          "url": "/lab-files/backup-verification/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Backup copy-selection worksheet",
+            "decision": "I will use retention, required scope, byte hashes and RPO, then state the check's limits."
+          }
+        },
+        {
+          "id": "cloud-storage-review",
+          "title": "Cloud storage review",
+          "url": "/lab-files/cloud-storage-review/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Storage exposure-path worksheet",
+            "decision": "I will cite record IDs, preserve my first prediction and name the next unanswered check."
+          }
+        },
+        {
+          "id": "identity-lifecycle",
+          "title": "Identity lifecycle",
+          "url": "/lab-files/identity-lifecycle/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Joiner/mover/leaver access worksheet",
+            "decision": "I will explain each keep, remove or review decision from the supplied evidence."
+          }
+        }
+      ]
+    },
+    {
+      "id": "intermediate",
+      "title": "Connect controls and evidence",
+      "complexity": "I will combine earlier reasoning across cloud, identity, network, telemetry and recovery records.",
+      "mastery_note": "This label describes exercise complexity, not my current ability.",
+      "status": "planned",
+      "labs": [
+        {
+          "id": "cloud-audit-triage",
+          "title": "Cloud audit triage",
+          "url": "/lab-files/cloud-audit-triage/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Cloud audit-event timeline and handover",
+            "decision": "I will distinguish successful actions, denied attempts, coverage gaps and attribution limits."
+          }
+        },
+        {
+          "id": "shared-responsibility",
+          "title": "Shared responsibility",
+          "url": "/lab-files/shared-responsibility/",
+          "status": "planned",
+          "dependencies": ["cloud-storage-review", "backup-verification"],
+          "evidence": {
+            "artifact": "Service/task responsibility table",
+            "decision": "I will name the responsible party, agreement evidence, control record, gap and next owner."
+          }
+        },
+        {
+          "id": "iam-explicit-deny",
+          "title": "IAM explicit deny",
+          "url": "/lab-files/iam-explicit-deny/",
+          "status": "planned",
+          "dependencies": ["access-review", "identity-lifecycle"],
+          "evidence": {
+            "artifact": "Request/statement decision table",
+            "decision": "I will distinguish allow, explicit deny and implicit deny and compare one copied policy change."
+          }
+        },
+        {
+          "id": "temporary-credentials",
+          "title": "Temporary credentials",
+          "url": "/lab-files/temporary-credentials/",
+          "status": "planned",
+          "dependencies": ["access-review", "identity-lifecycle", "cloud-audit-triage"],
+          "evidence": {
+            "artifact": "Human-to-role-to-session timeline",
+            "decision": "I will trace issue, expiry, revocation and action decisions without overclaiming attribution."
+          }
+        },
+        {
+          "id": "cloud-network-path",
+          "title": "Cloud network path",
+          "url": "/lab-files/cloud-network-path/",
+          "status": "planned",
+          "dependencies": ["firewall-review", "network-address-path"],
+          "evidence": {
+            "artifact": "Two-leg cloud path diagram and reachability table",
+            "decision": "I will trace addressing, route choice, inbound rules and untested assumptions."
+          }
+        },
+        {
+          "id": "log-ingestion",
+          "title": "Log ingestion",
+          "url": "/lab-files/log-ingestion/",
+          "status": "planned",
+          "dependencies": ["login-triage", "timeline-analysis"],
+          "evidence": {
+            "artifact": "Import report, rejected-record list and reconciliation note",
+            "decision": "I will link normalised and rejected rows back to their source evidence."
+          }
+        },
+        {
+          "id": "logging-health",
+          "title": "Logging health",
+          "url": "/lab-files/logging-health/",
+          "status": "planned",
+          "dependencies": ["log-ingestion", "timeline-analysis"],
+          "evidence": {
+            "artifact": "Telemetry coverage timeline",
+            "decision": "I will show expected records, arrival times, heartbeat evidence, gaps and the smallest next check."
+          }
+        },
+        {
+          "id": "restore-drill",
+          "title": "Restore drill",
+          "url": "/lab-files/restore-drill/",
+          "status": "planned",
+          "dependencies": ["backup-verification", "file-integrity"],
+          "evidence": {
+            "artifact": "Dummy-data restore receipt",
+            "decision": "I will compare copied and verified hashes, measured durations and the restored version with the baseline."
+          }
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "Build and communicate a case",
+      "complexity": "I will connect several evidence types while keeping alternative explanations, authority and audience boundaries visible.",
+      "mastery_note": "This label describes exercise complexity, not my current ability.",
+      "status": "planned",
+      "labs": [
+        {
+          "id": "endpoint-triage",
+          "title": "Endpoint triage",
+          "url": "/lab-files/endpoint-triage/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Process tree and bounded handover",
+            "decision": "I will cite parent, location, signature and change context without asserting malware."
+          }
+        },
+        {
+          "id": "alert-correlation",
+          "title": "Alert correlation",
+          "url": "/lab-files/alert-correlation/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "Deduplicated and correlated alert set",
+            "decision": "I will state the time-window rule and avoid treating alert counts as incident counts."
+          }
+        },
+        {
+          "id": "soc-query-workbook",
+          "title": "SOC query workbook",
+          "url": "/lab-files/soc-query-workbook/",
+          "status": "planned",
+          "dependencies": ["log-ingestion", "login-triage", "alert-correlation"],
+          "evidence": {
+            "artifact": "Saved SQL and expected/actual result tables",
+            "decision": "I will reconcile distinct-event counts and explain any join multiplication."
+          }
+        },
+        {
+          "id": "incident-case",
+          "title": "Incident case",
+          "url": "/lab-files/incident-case/",
+          "status": "planned",
+          "dependencies": ["soc-query-workbook", "logging-health", "login-triage", "endpoint-triage", "http-triage", "alert-correlation", "timeline-analysis"],
+          "evidence": {
+            "artifact": "Four-part incident case notebook",
+            "decision": "I will build a timeline, two hypotheses, evidence needs and a bounded handover."
+          }
+        },
+        {
+          "id": "containment-tabletop",
+          "title": "Containment tabletop",
+          "url": "/lab-files/containment-tabletop/",
+          "status": "planned",
+          "dependencies": ["incident-case", "access-review", "backup-verification"],
+          "evidence": {
+            "artifact": "Containment decision table",
+            "decision": "I will name authority, operational effect, evidence preservation, owner and release check."
+          }
+        },
+        {
+          "id": "incident-communications",
+          "title": "Incident communications",
+          "url": "/lab-files/incident-communications/",
+          "status": "planned",
+          "dependencies": ["login-triage", "timeline-analysis"],
+          "evidence": {
+            "artifact": "Staff message, technical handover and manager update",
+            "decision": "I will separate confirmed facts, hypotheses, gaps, actions and owners for each audience."
+          }
+        }
+      ]
+    }
+  ]
+}
