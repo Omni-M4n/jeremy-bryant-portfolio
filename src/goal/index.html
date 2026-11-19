@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index, follow">
-<meta name="description" content="My planned 30-lab cybersecurity and cloud learning goal, with evidence, review gates and clear claim limits.">
+<meta name="description" content="My planned 31-lab cybersecurity and cloud learning goal, with evidence, review gates and clear claim limits.">
 <title>Cybersecurity and cloud learning goal — Jeremy Bryant</title>
 <link rel="canonical" href="https://jeremy-bryant.pages.dev/goal/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -16,10 +16,10 @@
 <section class="case-hero">
 <p class="eyebrow">My planned learning route</p>
 <h1 class="case-title">Cybersecurity and <em>cloud</em>, built through evidence.</h1>
-<p class="case-deck">I plan to work through 30 existing labs in dependency order, preserve a first attempt, explain each decision and use human review before I describe any skill as independently demonstrated.</p>
+<p class="case-deck">I plan to work through 31 existing labs in dependency order, preserve a first attempt, explain each decision and use human review before I describe any skill as independently demonstrated.</p>
 <dl class="case-meta">
 <div><dt>Current status</dt><dd><span class="evidence-state" data-state="pending">Planned</span></dd></div>
-<div><dt>Route</dt><dd>13 beginner · 11 intermediate · 6 advanced</dd></div>
+<div><dt>Route</dt><dd>14 beginner · 11 intermediate · 6 advanced</dd></div>
 <div><dt>Evidence rule</dt><dd>Artifact + reasoning + limits + next check</dd></div>
 </dl>
 </section>
@@ -54,7 +54,7 @@
 </section>
 
 <section class="case-section" id="beginner">
-<p class="eyebrow">Stage 1 · 13 labs · all planned</p>
+<p class="eyebrow">Stage 1 · 14 labs · all planned</p>
 <h2 class="case-section-title">Beginner: make bounded decisions</h2>
 <p>I will begin with scope, access, time, network, web, integrity, recovery and identity decisions using small fictional records.</p>
 <div class="table-scroll"><table class="evidence-table"><caption>My planned beginner evidence</caption><thead><tr><th scope="col">Lab</th><th scope="col">Evidence I plan to retain</th><th scope="col">Earlier lab dependency</th></tr></thead><tbody>
@@ -65,12 +65,13 @@
 <tr><th scope="row">05 · <a href="/lab-files/timeline-analysis/">Timeline analysis</a></th><td>A UTC event timeline, exact event references and a handover that states uncertainty.</td><td>Login triage</td></tr>
 <tr><th scope="row">06 · <a href="/lab-files/network-address-path/">Network address path</a></th><td>A labelled packet-path diagram and worksheet showing route matches, selected next hop and limits.</td><td>None</td></tr>
 <tr><th scope="row">07 · <a href="/lab-files/tcp-handshake/">TCP handshake investigation</a></th><td>I will retain a TCP flow table with exact frame references and sequence/acknowledgement calculations. I will use the supplied synthetic packet summaries to distinguish an observed handshake, reset, no visible response, missing final ACK, missing initial SYN and acknowledgement mismatch. I will state that the excerpt cannot establish full connection state or root cause, that missing packets do not prove packet loss, firewall failure or server fault, that an observed handshake does not prove application success, and that matching helper results do not prove professional use, completion or mastery.</td><td>DNS triage</td></tr>
-<tr><th scope="row">08 · <a href="/lab-files/firewall-review/">Firewall review</a></th><td>A first-match rule trace that records required traffic kept, excess traffic removed and exercise limits.</td><td>None</td></tr>
-<tr><th scope="row">09 · <a href="/lab-files/http-triage/">HTTP triage</a></th><td>A triage report and short note separating observed request evidence, possible explanations and the next check.</td><td>None</td></tr>
-<tr><th scope="row">10 · <a href="/lab-files/file-integrity/">File integrity</a></th><td>A baseline comparison report classifying exact changes as approved, unexpected or unsupported by the baseline.</td><td>None</td></tr>
-<tr><th scope="row">11 · <a href="/lab-files/backup-verification/">Backup verification</a></th><td>A copy-selection worksheet using retention, required scope, byte hashes and RPO, plus the limits of the check.</td><td>None</td></tr>
-<tr><th scope="row">12 · <a href="/lab-files/cloud-storage-review/">Cloud storage review</a></th><td>A filled exposure-path worksheet with record IDs, first prediction, remaining uncertainty and next check.</td><td>None</td></tr>
-<tr><th scope="row">13 · <a href="/lab-files/identity-lifecycle/">Identity lifecycle</a></th><td>A joiner/mover/leaver access worksheet and evidence note explaining each keep, remove or review decision.</td><td>None</td></tr>
+<tr><th scope="row">08 · <a href="/lab-files/asset-discovery/">Asset discovery and inventory</a></th><td>I will retain a saved-scan-to-inventory table with exact IP address, TCP port and XML references. I will compare the supplied synthetic scan snapshot with the approved inventory; distinguish hosts not present, recorded down or unregistered and expected, missing or unexpected open TCP services; and state that the offline helper does not run a scan. I will not treat one saved snapshot or a matching result as proof of ownership, vulnerability, malicious activity, current state, complete coverage, professional use, completion or mastery.</td><td>DNS triage</td></tr>
+<tr><th scope="row">09 · <a href="/lab-files/firewall-review/">Firewall review</a></th><td>A first-match rule trace that records required traffic kept, excess traffic removed and exercise limits.</td><td>None</td></tr>
+<tr><th scope="row">10 · <a href="/lab-files/http-triage/">HTTP triage</a></th><td>A triage report and short note separating observed request evidence, possible explanations and the next check.</td><td>None</td></tr>
+<tr><th scope="row">11 · <a href="/lab-files/file-integrity/">File integrity</a></th><td>A baseline comparison report classifying exact changes as approved, unexpected or unsupported by the baseline.</td><td>None</td></tr>
+<tr><th scope="row">12 · <a href="/lab-files/backup-verification/">Backup verification</a></th><td>A copy-selection worksheet using retention, required scope, byte hashes and RPO, plus the limits of the check.</td><td>None</td></tr>
+<tr><th scope="row">13 · <a href="/lab-files/cloud-storage-review/">Cloud storage review</a></th><td>A filled exposure-path worksheet with record IDs, first prediction, remaining uncertainty and next check.</td><td>None</td></tr>
+<tr><th scope="row">14 · <a href="/lab-files/identity-lifecycle/">Identity lifecycle</a></th><td>A joiner/mover/leaver access worksheet and evidence note explaining each keep, remove or review decision.</td><td>None</td></tr>
 </tbody></table></div>
 </section>
 
@@ -79,17 +80,17 @@
 <h2 class="case-section-title">Intermediate: connect controls and evidence</h2>
 <p>I will combine earlier reasoning across cloud events, identity policy, network paths, telemetry and recovery.</p>
 <div class="table-scroll"><table class="evidence-table"><caption>My planned intermediate evidence</caption><thead><tr><th scope="col">Lab</th><th scope="col">Evidence I plan to retain</th><th scope="col">Earlier lab dependency</th></tr></thead><tbody>
-<tr><th scope="row">14 · <a href="/lab-files/mfa-review/">MFA and account recovery review</a></th><td>I will retain a synthetic account-control worksheet comparing supplied MFA and recovery records by account type, with exact evidence references and limits stating that I did not test a real sign-in or control effectiveness.</td><td>Identity lifecycle</td></tr>
-<tr><th scope="row">15 · <a href="/lab-files/cloud-audit-triage/">Cloud audit triage</a></th><td>An audit-event timeline and handover distinguishing successful actions, denied attempts, coverage gaps and attribution limits.</td><td>None</td></tr>
-<tr><th scope="row">16 · <a href="/lab-files/shared-responsibility/">Shared responsibility</a></th><td>A service/task table naming the responsible party, agreement evidence, control record, missing evidence and next owner.</td><td>Cloud storage review; backup verification</td></tr>
-<tr><th scope="row">17 · <a href="/lab-files/iam-explicit-deny/">IAM explicit deny</a></th><td>A request/statement table distinguishing allow, explicit deny and implicit deny, with one changed-policy comparison.</td><td>Access review; identity lifecycle</td></tr>
-<tr><th scope="row">18 · <a href="/lab-files/temporary-credentials/">Temporary credentials</a></th><td>A human-to-role-to-session timeline with issue, expiry, revocation and action decisions.</td><td>Access review; identity lifecycle; cloud audit triage</td></tr>
-<tr><th scope="row">19 · <a href="/lab-files/cloud-network-path/">Cloud network path</a></th><td>A two-leg path diagram and reachability table covering addressing, route choice, inbound rules and untested assumptions.</td><td>Firewall review; network address path</td></tr>
-<tr><th scope="row">20 · <a href="/lab-files/log-ingestion/">Log ingestion</a></th><td>An import report, rejected-record list and reconciliation note linking normalised rows back to source evidence.</td><td>Login triage; timeline analysis</td></tr>
-<tr><th scope="row">21 · <a href="/lab-files/logging-health/">Logging health</a></th><td>A coverage timeline showing expected records, arrival times, heartbeat evidence, gaps and the smallest next check.</td><td>Log ingestion; timeline analysis</td></tr>
-<tr><th scope="row">22 · <a href="/lab-files/restore-drill/">Restore drill</a></th><td>A dummy-data restore receipt with copied and verified hashes, measured durations and a comparison with the baseline.</td><td>Backup verification; file integrity</td></tr>
-<tr><th scope="row">23 · <a href="/lab-files/evidence-custody/">Evidence custody</a></th><td>A dummy-file evidence register and copy receipt linking each copy to its recorded source, UTC handling records, hash checks and stated limits.</td><td>File integrity</td></tr>
-<tr><th scope="row">24 · <a href="/lab-files/secret-handling/">Secret handling</a></th><td>I will retain a DEMO-only secret exposure worksheet and evidence note tracing exact listed markers through configuration, saved changes and logs, separating observed exposure from proposed response and stating what the supplied files cannot prove.</td><td>File integrity</td></tr>
+<tr><th scope="row">15 · <a href="/lab-files/mfa-review/">MFA and account recovery review</a></th><td>I will retain a synthetic account-control worksheet comparing supplied MFA and recovery records by account type, with exact evidence references and limits stating that I did not test a real sign-in or control effectiveness.</td><td>Identity lifecycle</td></tr>
+<tr><th scope="row">16 · <a href="/lab-files/cloud-audit-triage/">Cloud audit triage</a></th><td>An audit-event timeline and handover distinguishing successful actions, denied attempts, coverage gaps and attribution limits.</td><td>None</td></tr>
+<tr><th scope="row">17 · <a href="/lab-files/shared-responsibility/">Shared responsibility</a></th><td>A service/task table naming the responsible party, agreement evidence, control record, missing evidence and next owner.</td><td>Cloud storage review; backup verification</td></tr>
+<tr><th scope="row">18 · <a href="/lab-files/iam-explicit-deny/">IAM explicit deny</a></th><td>A request/statement table distinguishing allow, explicit deny and implicit deny, with one changed-policy comparison.</td><td>Access review; identity lifecycle</td></tr>
+<tr><th scope="row">19 · <a href="/lab-files/temporary-credentials/">Temporary credentials</a></th><td>A human-to-role-to-session timeline with issue, expiry, revocation and action decisions.</td><td>Access review; identity lifecycle; cloud audit triage</td></tr>
+<tr><th scope="row">20 · <a href="/lab-files/cloud-network-path/">Cloud network path</a></th><td>A two-leg path diagram and reachability table covering addressing, route choice, inbound rules and untested assumptions.</td><td>Firewall review; network address path</td></tr>
+<tr><th scope="row">21 · <a href="/lab-files/log-ingestion/">Log ingestion</a></th><td>An import report, rejected-record list and reconciliation note linking normalised rows back to source evidence.</td><td>Login triage; timeline analysis</td></tr>
+<tr><th scope="row">22 · <a href="/lab-files/logging-health/">Logging health</a></th><td>A coverage timeline showing expected records, arrival times, heartbeat evidence, gaps and the smallest next check.</td><td>Log ingestion; timeline analysis</td></tr>
+<tr><th scope="row">23 · <a href="/lab-files/restore-drill/">Restore drill</a></th><td>A dummy-data restore receipt with copied and verified hashes, measured durations and a comparison with the baseline.</td><td>Backup verification; file integrity</td></tr>
+<tr><th scope="row">24 · <a href="/lab-files/evidence-custody/">Evidence custody</a></th><td>A dummy-file evidence register and copy receipt linking each copy to its recorded source, UTC handling records, hash checks and stated limits.</td><td>File integrity</td></tr>
+<tr><th scope="row">25 · <a href="/lab-files/secret-handling/">Secret handling</a></th><td>I will retain a DEMO-only secret exposure worksheet and evidence note tracing exact listed markers through configuration, saved changes and logs, separating observed exposure from proposed response and stating what the supplied files cannot prove.</td><td>File integrity</td></tr>
 </tbody></table></div>
 </section>
 
@@ -98,12 +99,12 @@
 <h2 class="case-section-title">Advanced: build and communicate a case</h2>
 <p>I will bring several evidence types together while keeping competing explanations, authority and communication boundaries visible.</p>
 <div class="table-scroll"><table class="evidence-table"><caption>My planned advanced evidence</caption><thead><tr><th scope="col">Lab</th><th scope="col">Evidence I plan to retain</th><th scope="col">Earlier lab dependency</th></tr></thead><tbody>
-<tr><th scope="row">25 · <a href="/lab-files/endpoint-triage/">Endpoint triage</a></th><td>A process tree and short handover citing parent/child, location, signature and change-context evidence without asserting malware.</td><td>None</td></tr>
-<tr><th scope="row">26 · <a href="/lab-files/alert-correlation/">Alert correlation</a></th><td>A deduplicated alert set, stated correlation-window rule and grouped evidence that does not equate alert counts with incidents.</td><td>None</td></tr>
-<tr><th scope="row">27 · <a href="/lab-files/soc-query-workbook/">SOC query workbook</a></th><td>Saved SQL, expected and actual result tables, distinct-event counts and a note about join multiplication.</td><td>Log ingestion; login triage; alert correlation</td></tr>
-<tr><th scope="row">28 · <a href="/lab-files/incident-case/">Incident case</a></th><td>A four-part case notebook with timeline, two hypotheses, evidence needs and a bounded handover.</td><td>SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis</td></tr>
-<tr><th scope="row">29 · <a href="/lab-files/containment-tabletop/">Containment tabletop</a></th><td>A containment decision table naming authority, operational effect, evidence preservation, owner and release check.</td><td>Incident case; access review; backup verification</td></tr>
-<tr><th scope="row">30 · <a href="/lab-files/incident-communications/">Incident communications</a></th><td>A staff action message, technical handover and manager update that separate confirmed facts, hypotheses, gaps and owners.</td><td>Login triage; timeline analysis</td></tr>
+<tr><th scope="row">26 · <a href="/lab-files/endpoint-triage/">Endpoint triage</a></th><td>A process tree and short handover citing parent/child, location, signature and change-context evidence without asserting malware.</td><td>None</td></tr>
+<tr><th scope="row">27 · <a href="/lab-files/alert-correlation/">Alert correlation</a></th><td>A deduplicated alert set, stated correlation-window rule and grouped evidence that does not equate alert counts with incidents.</td><td>None</td></tr>
+<tr><th scope="row">28 · <a href="/lab-files/soc-query-workbook/">SOC query workbook</a></th><td>Saved SQL, expected and actual result tables, distinct-event counts and a note about join multiplication.</td><td>Log ingestion; login triage; alert correlation</td></tr>
+<tr><th scope="row">29 · <a href="/lab-files/incident-case/">Incident case</a></th><td>A four-part case notebook with timeline, two hypotheses, evidence needs and a bounded handover.</td><td>SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis</td></tr>
+<tr><th scope="row">30 · <a href="/lab-files/containment-tabletop/">Containment tabletop</a></th><td>A containment decision table naming authority, operational effect, evidence preservation, owner and release check.</td><td>Incident case; access review; backup verification</td></tr>
+<tr><th scope="row">31 · <a href="/lab-files/incident-communications/">Incident communications</a></th><td>A staff action message, technical handover and manager update that separate confirmed facts, hypotheses, gaps and owners.</td><td>Login triage; timeline analysis</td></tr>
 </tbody></table></div>
 </section>
 
