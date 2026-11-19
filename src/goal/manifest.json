@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 36,
+  "lab_count": 37,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -138,6 +138,17 @@
           "evidence": {
             "artifact": "I will retain a fictional finding-priority queue with exact record and field references, impact, exposure, evidence-of-use, service-importance and confidence inputs, each four-part score, any overriding rule, uncertainty and the next owner check.",
             "decision": "I will apply only the supplied local rubric to supplied fictional findings: unverified evidence becomes investigate; supplied fictional observed-exploitation records become urgent; otherwise I will assign urgent, planned or routine by score. I will state that the rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation, and helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery."
+          }
+        },
+        {
+          "id": "vulnerability-retest",
+          "title": "Vulnerability retest",
+          "url": "/lab-files/vulnerability-retest/",
+          "status": "planned",
+          "dependencies": ["asset-discovery"],
+          "evidence": {
+            "artifact": "I will retain a fictional retest record citing the exact before-and-after record and fields for target, port, method, role, time, observed result and positive-control result, plus my decision, evidence references, limit and next check.",
+            "decision": "I will use only supplied synthetic offline records; require a vulnerable baseline with a passed control; compare target case-insensitively and port, method and role exactly; and call a later test not-testable when conditions changed, it was blocked or the control failed, otherwise unchanged or fixed by whether the finding was reproduced. I will state that the helper trusts the supplied observation and control fields, and that fixed covers only those conditions—not general safety or removal of every cause. I will send no traffic or change a system and will not treat a match as proof of a real fix, professional use, completion, mastery or independent assessment."
           }
         },
         {
