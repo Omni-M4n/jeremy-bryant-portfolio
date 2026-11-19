@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 41,
+  "lab_count": 42,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -50,6 +50,17 @@
           "evidence": {
             "artifact": "Scope sheet",
             "decision": "I will name the owner, targets, allowed actions, exclusions, time window, stop conditions and pending approval."
+          }
+        },
+        {
+          "id": "isolated-lab-workbench",
+          "title": "Disposable lab workbench — supplied evidence",
+          "url": "/lab-files/isolated-lab-workbench/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "I will retain a supplied-evidence workbench boundary diagram and worksheet citing the fictional VM and snapshot IDs, all eight adapter slots, guest route and address summary, listed host-transfer settings, loopback response and stop check, disk mode, and baseline, changed and restored hashes.",
+            "decision": "I will use only supplied offline records. I will require a disposable VM record; all eight adapter slots disabled or not attached; no default route, non-loopback address or listed host-transfer path; an HTTP 200 with exact `BASELINE\\n` body on `127.0.0.1` and refusal after stop; and matching VM/snapshot IDs on a normal disk, with a changed hash that differs and a restored hash matching baseline. The optional VM and all live and hands-on steps will remain unperformed. The helper will not inspect a real host or guest or certify isolation or safety. I will not treat a snapshot as a backup or any result as proof of professional use, completion, mastery or independent assessment."
           }
         },
         {
