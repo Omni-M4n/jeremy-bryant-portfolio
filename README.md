@@ -3,6 +3,7 @@
 A career portfolio that starts with governance, risk and compliance practice, then covers security operations, application security and an LG TV home lab. The home lab used hardware owned by Jeremy. The guided security cases use made-up data and are not independently assessed work.
 
 - **Portfolio:** https://jeremy-bryant.pages.dev/
+- **My cybersecurity and cloud learning goal:** https://jeremy-bryant.pages.dev/goal/
 - **Full case study:** https://jeremy-bryant.pages.dev/lg-webos-lab/
 - **Security foundations labs:** https://jeremy-bryant.pages.dev/security-labs/
 - **Complete lab library:** https://jeremy-bryant.pages.dev/security-labs/library/
@@ -39,6 +40,14 @@ a practice guide and interview notes. Prepared software and passing tests do
 not establish independent learner mastery. See [the project register](projects/README.md).
 
 ## Guided security exercises
+
+I’ve set out my cybersecurity and cloud learning direction on the
+[public goal page](https://jeremy-bryant.pages.dev/goal/). The supporting
+[goal source note](docs/cyber-cloud-learning-goal.md) explains my scope and
+claim boundaries, and the [Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md)
+keeps the corresponding repository guide ready for publication. The lab route
+is planned work; publishing it does not mean I have completed or been assessed
+on those labs.
 
 <!-- LAB_COUNTS_START -->
 This release has **61 core labs** and **25 extensions**.
@@ -91,7 +100,9 @@ learning, not a record of completed work.
 | `docs/grc-public-site-control-review.md` | Dated read-only release check and its evidence limits |
 | `docs/grc-public-site-control-manifest.json` | Public paths, digests and status from the checked release |
 | `docs/grc-control-review-worksheet.md` | Blank control evidence review form |
+| `docs/cyber-cloud-learning-goal.md` | Source note for my cybersecurity and cloud learning goal |
 | `docs/wiki-home.md` | Source copy for the published GRC-first Wiki Home page |
+| `docs/wiki-cybersecurity-and-cloud-goal.md` | Source copy for my Wiki learning-goal page |
 | `docs/wiki-grc-methods.md` | Source copy for the Wiki GRC methods page |
 
 ## Local development
