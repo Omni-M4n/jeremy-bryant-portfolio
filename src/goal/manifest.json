@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 25,
+  "lab_count": 26,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -257,6 +257,17 @@
           "evidence": {
             "artifact": "Dummy-data restore receipt",
             "decision": "I will compare copied and verified hashes, measured durations and the restored version with the baseline."
+          }
+        },
+        {
+          "id": "evidence-custody",
+          "title": "Evidence custody",
+          "url": "/lab-files/evidence-custody/",
+          "status": "planned",
+          "dependencies": ["file-integrity"],
+          "evidence": {
+            "artifact": "Dummy-file evidence register and copy receipt",
+            "decision": "I will link each copy to its recorded source, compare source and copy hashes, record UTC handling gaps and state what those records cannot prove."
           }
         }
       ]

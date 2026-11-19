@@ -24,6 +24,9 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   const goal=await readFile(new URL('../dist/goal/index.html',import.meta.url),'utf8');
   assert.match(goal,/<link rel="canonical" href="https:\/\/jeremy-bryant\.pages\.dev\/goal\/">/);
   assert.match(goal,/<meta name="robots" content="index, follow">/);
+  assert.match(goal,/I plan to work through 26 existing labs in dependency order/);
+  assert.match(goal,/11 beginner · 9 intermediate · 6 advanced/);
+  assert.match(goal,/Stage 2 · 9 labs · all planned/);
   assert.match(goal,/They do not describe my current ability\./);
   assert.match(goal,/I am publishing a learning intention and a route through existing practice materials\./);
   assert.match(goal,/I am not claiming that I have completed these labs, mastered their topics or used these methods in a professional role\./);
@@ -32,7 +35,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/Helper checks can compare formats and expected decisions, but they cannot judge the quality of my reasoning or prove independent skill\./);
   assert.match(goal,/The route is a plan, not a credential, job history or completion record\./);
 });
-test('goal manifest is a 25-lab planned route with valid ordered dependencies',async()=>{
+test('goal manifest is a 26-lab planned route with valid ordered dependencies',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   const registry=JSON.parse(await readFile(new URL('../labs/release-catalog.json',import.meta.url),'utf8'));
   const studyPlan=JSON.parse(await readFile(new URL('../labs/SUMMER-STUDY-PLAN.json',import.meta.url),'utf8'));
@@ -41,7 +44,7 @@ test('goal manifest is a 25-lab planned route with valid ordered dependencies',a
   assert.equal(manifest.route_url,'/goal/');
   assert.equal(manifest.source_plan,'/security-labs/summer-study-plan.json');
   assert.equal(manifest.initial_status,'planned');
-  assert.equal(manifest.lab_count,25);
+  assert.equal(manifest.lab_count,26);
   assert.equal(manifest.claim_boundary.statement,'I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.');
   assert.equal(manifest.claim_boundary.safe_scope,'I will use the fictional or dummy evidence and the safe boundaries stated in each lab.');
   assert.equal(manifest.claim_boundary.tool_limit,'A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill.');
@@ -55,7 +58,7 @@ test('goal manifest is a 25-lab planned route with valid ordered dependencies',a
   assert.ok(typeof manifest.review_gate.unavailable_reviewer==='string'&&manifest.review_gate.unavailable_reviewer.trim().length>0);
   assert.ok(Array.isArray(manifest.stages));
   assert.deepEqual(manifest.stages.map(stage=>stage.id),['beginner','intermediate','advanced']);
-  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[11,8,6]);
+  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[11,9,6]);
   const labs=manifest.stages.flatMap(stage=>{
     assert.match(stage.id,/^[a-z][a-z0-9-]*$/);
     for(const field of ['title','complexity','mastery_note']) assert.ok(typeof stage[field]==='string'&&stage[field].trim().length>0);
@@ -63,13 +66,14 @@ test('goal manifest is a 25-lab planned route with valid ordered dependencies',a
     assert.ok(Array.isArray(stage.labs));
     return stage.labs;
   });
-  assert.equal(labs.length,25);
+  assert.equal(labs.length,manifest.lab_count);
   const ids=labs.map(lab=>lab.id);
   assert.deepEqual(ids,[
     'rules-of-engagement','access-review','login-triage','timeline-analysis','network-address-path','firewall-review','http-triage','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle',
-    'cloud-audit-triage','shared-responsibility','iam-explicit-deny','temporary-credentials','cloud-network-path','log-ingestion','logging-health','restore-drill',
+    'cloud-audit-triage','shared-responsibility','iam-explicit-deny','temporary-credentials','cloud-network-path','log-ingestion','logging-health','restore-drill','evidence-custody',
     'endpoint-triage','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
   ]);
+  assert.deepEqual(labs.find(lab=>lab.id==='evidence-custody')?.dependencies,['file-integrity']);
   assert.equal(new Set(ids).size,ids.length);
   const registryIds=new Set(registry.labs.map(lab=>lab.id));
   const studyIds=new Set(studyPlan.packages.map(item=>item.id));
@@ -103,6 +107,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   for(const lab of manifest.stages.flatMap(stage=>stage.labs)) assert.match(goal,new RegExp(`href="\\/lab-files\\/${lab.id}\\/"`));
   for(const page of [home,labs,library]) assert.match(page,/href="\/goal\/"/);
+  assert.match(home,/I’ve mapped 26 labs I plan to work through/);
   assert.match(readme,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(readme,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/docs\/wiki-cybersecurity-and-cloud-goal\.md/);
