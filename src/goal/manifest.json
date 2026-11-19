@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 31,
+  "lab_count": 32,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -127,6 +127,17 @@
           "evidence": {
             "artifact": "I will retain a saved-scan-to-inventory table with exact IP address, TCP port and XML references.",
             "decision": "I will compare the supplied synthetic scan snapshot with the approved inventory; distinguish hosts not present, recorded down or unregistered and expected, missing or unexpected open TCP services; and state that the offline helper does not run a scan. I will not treat one saved snapshot or a matching result as proof of ownership, vulnerability, malicious activity, current state, complete coverage, professional use, completion or mastery."
+          }
+        },
+        {
+          "id": "vulnerability-prioritisation",
+          "title": "Vulnerability prioritisation",
+          "url": "/lab-files/vulnerability-prioritisation/",
+          "status": "planned",
+          "dependencies": ["asset-discovery", "access-review"],
+          "evidence": {
+            "artifact": "I will retain a fictional finding-priority queue with exact record and field references, impact, exposure, evidence-of-use, service-importance and confidence inputs, each four-part score, any overriding rule, uncertainty and the next owner check.",
+            "decision": "I will apply only the supplied local rubric to supplied fictional findings: unverified evidence becomes investigate; supplied fictional observed-exploitation records become urgent; otherwise I will assign urgent, planned or routine by score. I will state that the rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation, and helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery."
           }
         },
         {
