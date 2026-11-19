@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A Backup Is Not Yet a Restore — Jeremy Bryant</title>
+  <meta name="description" content="A local dummy-data restore drill showing why a completed copy is not enough evidence of recovery.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#14231f">
+  <link rel="canonical" href="https://jeremy-bryant.pages.dev/writing/backup-restore/">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body class="source-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="source-masthead container">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">JB<span>·</span></span><span class="brand-name">Jeremy Bryant<span>Cybersecurity portfolio</span></span></a>
+  <nav class="source-navigation" aria-label="Main navigation"><a href="/">Portfolio</a><a href="/security-labs/">Security labs</a><a href="/#writing">Writing</a></nav>
+</header>
+<main id="main" class="container">
+  <section class="source-intro">
+    <p class="eyebrow">Study note / Recovery testing</p>
+    <h1>A backup is not yet a restore.</h1>
+    <p>A local dummy-data exercise about completeness, recovered versions and the limits of a successful copy command.</p>
+    <p>19 November 2026 · Personal lab · Synthetic files only</p>
+  </section>
+  <article>
+    <section class="source-start" aria-labelledby="result-title">
+      <p class="eyebrow">The observed result</p>
+      <h2 id="result-title">The operation completed. One expected file did not return.</h2>
+      <p>I ran a small local restore drill with two expected files. The restore operation completed, but only one file came back.</p>
+      <p>The scenario used disposable dummy data. I recorded the original two-file inventory, created a deliberately incomplete backup, and then changed the current version of one file. The backup was restored into a new folder rather than over the working data.</p>
+      <p>The receipt showed three useful results: <code>item-01.txt</code> returned in its older baseline version, <code>item-02.txt</code> was missing, and no unexpected files appeared in the restored folder. The mechanism copied what the backup contained, but the recovered set did not meet the required inventory.</p>
+    </section>
+    <section class="source-start" aria-labelledby="method-title">
+      <p class="eyebrow">A repeatable check</p>
+      <h2 id="method-title">Test the recovery, not only the backup job.</h2>
+      <ol>
+        <li>Record the complete expected inventory.</li>
+        <li>Restore into a separate, empty location.</li>
+        <li>Compare every expected file with the restored set.</li>
+        <li>Report missing and unexpected files independently.</li>
+        <li>Confirm which saved version was recovered.</li>
+        <li>Measure copying and verification separately.</li>
+        <li>Assess completeness, version age and the time target as separate requirements.</li>
+      </ol>
+      <p>The local receipt recorded copy and verification durations independently. Those measurements describe this small operation; timings from two tiny files cannot establish disaster-recovery performance. They exclude application startup, permissions, infrastructure provisioning, key recovery, network transfer and operational coordination.</p>
+      <p>The practical takeaway is that a successful copy command answers only one question. Recovery confidence requires evidence that the expected data returned, the correct version was recovered and the result meets the needs defined before the test.</p>
+    </section>
+    <section class="source-start" aria-labelledby="sources-title">
+      <p class="eyebrow">Sources and scope</p>
+      <h2 id="sources-title">Inspect the exercise and its planning basis.</h2>
+      <ul class="source-list">
+        <li><a href="/lab-files/restore-drill/">Public restore-drill lab ↗</a><span>README, synthetic scenarios, code, checks and stated limits.</span></li>
+        <li><a href="https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final" target="_blank" rel="noopener noreferrer">NIST SP 800-34 Rev. 1 ↗</a><span>Contingency-planning and recovery guidance.</span></li>
+      </ul>
+      <p class="small">This exercise establishes a bounded local dummy-data result. It does not demonstrate application, operating-system, cloud or full-machine recovery.</p>
+    </section>
+  </article>
+</main>
+<footer class="source-footer container"><p>Jeremy Bryant · Cybersecurity study note</p><a href="/#writing">Back to writing</a></footer>
+</body>
+</html>
