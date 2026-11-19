@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 38,
+  "lab_count": 39,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -83,6 +83,17 @@
           "evidence": {
             "artifact": "I will retain a fictional Linux access worksheet citing the actor, groups, canonical paths, owner/group/other mode bits, selected permission class, required target bits, every ancestor search check, result, uncertainty and next check.",
             "decision": "I will use only the supplied synthetic records; select owner bits before group and other without falling back to a more permissive class; require search permission on every ancestor directory; distinguish directory read from search and require write plus search to create an entry. I will treat each result as allowed or denied by this small mode-bit model only; run no chmod or host inspection; mark ACLs, SELinux, capabilities, special bits, symbolic links, mount restrictions and deletion semantics outside scope; and not treat a helper match as proof of real access, system safety, professional use, completion, mastery or independent assessment."
+          }
+        },
+        {
+          "id": "ssh-config-review",
+          "title": "SSH configuration review",
+          "url": "/lab-files/ssh-config-review/",
+          "status": "planned",
+          "dependencies": ["linux-permissions"],
+          "evidence": {
+            "artifact": "I will retain a fictional SSH configuration review citing the exact config lines, first effective value for each of six supported directives, ignored duplicates, baseline label, authentication-route result, uncertainty and next verification check.",
+            "decision": "I will use only supplied synthetic text; accept plain keyword/value pairs for the lab’s six directives; apply the first-value rule; keep missing settings unknown rather than assume version defaults; compare explicit values only with the fictional baseline; and distinguish a supported method from a working login. I will reject Match, Include, unknown directives and complex syntax; read or change no host configuration; run no server, command or network test; state that keys, PAM, exposure and recovery remain unchecked; and not treat a helper match as proof of secure configuration, usable access, professional use, completion, mastery or independent assessment."
           }
         },
         {
