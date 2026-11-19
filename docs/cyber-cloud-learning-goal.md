@@ -1,6 +1,6 @@
 # My cybersecurity and cloud learning goal
 
-**Current status: planned.** I have selected this 27-lab route; I am not claiming that I have completed it, mastered its topics or used these methods in a professional role.
+**Current status: planned.** I have selected this 28-lab route; I am not claiming that I have completed it, mastered its topics or used these methods in a professional role.
 
 I will use three stages to describe exercise complexity, not my ability. Beginner uses smaller bounded decisions, Intermediate connects controls and evidence, and Advanced combines several evidence types and audiences. Every lab starts as **planned**.
 
@@ -36,27 +36,28 @@ Before I start a dependent lab, I will keep reviewed or equivalent evidence for 
 
 | # | Lab | Evidence I plan to retain | Earlier dependency |
 | ---: | --- | --- | --- |
-| 12 | [Cloud audit triage](/lab-files/cloud-audit-triage/) | Audit timeline separating actions, denials, gaps and attribution limits. | None |
-| 13 | [Shared responsibility](/lab-files/shared-responsibility/) | Service/task table with owner, agreement, control evidence and gap. | Cloud storage review; backup verification |
-| 14 | [IAM explicit deny](/lab-files/iam-explicit-deny/) | Request/statement table and one changed-policy comparison. | Access review; identity lifecycle |
-| 15 | [Temporary credentials](/lab-files/temporary-credentials/) | Human-to-role-to-session issue, expiry and revocation timeline. | Access review; identity lifecycle; cloud audit triage |
-| 16 | [Cloud network path](/lab-files/cloud-network-path/) | Two-leg path diagram and reachability table. | Firewall review; network address path |
-| 17 | [Log ingestion](/lab-files/log-ingestion/) | Import report, rejected rows and source reconciliation. | Login triage; timeline analysis |
-| 18 | [Logging health](/lab-files/logging-health/) | Coverage timeline with arrivals, heartbeats, gaps and next check. | Log ingestion; timeline analysis |
-| 19 | [Restore drill](/lab-files/restore-drill/) | Dummy-data restore receipt with hashes, version and measured durations. | Backup verification; file integrity |
-| 20 | [Evidence custody](/lab-files/evidence-custody/) | Dummy-file evidence register and copy receipt linking each copy to its recorded source, UTC handling records, hash checks and stated limits. | File integrity |
-| 21 | [Secret handling](/lab-files/secret-handling/) | I will retain a DEMO-only secret exposure worksheet and evidence note tracing exact listed markers through configuration, saved changes and logs, separating observed exposure from proposed response and stating what the supplied files cannot prove. | File integrity |
+| 12 | [MFA and account recovery review](/lab-files/mfa-review/) | I will retain a synthetic account-control worksheet comparing supplied MFA and recovery records by account type, with exact evidence references and limits stating that I did not test a real sign-in or control effectiveness. | Identity lifecycle |
+| 13 | [Cloud audit triage](/lab-files/cloud-audit-triage/) | Audit timeline separating actions, denials, gaps and attribution limits. | None |
+| 14 | [Shared responsibility](/lab-files/shared-responsibility/) | Service/task table with owner, agreement, control evidence and gap. | Cloud storage review; backup verification |
+| 15 | [IAM explicit deny](/lab-files/iam-explicit-deny/) | Request/statement table and one changed-policy comparison. | Access review; identity lifecycle |
+| 16 | [Temporary credentials](/lab-files/temporary-credentials/) | Human-to-role-to-session issue, expiry and revocation timeline. | Access review; identity lifecycle; cloud audit triage |
+| 17 | [Cloud network path](/lab-files/cloud-network-path/) | Two-leg path diagram and reachability table. | Firewall review; network address path |
+| 18 | [Log ingestion](/lab-files/log-ingestion/) | Import report, rejected rows and source reconciliation. | Login triage; timeline analysis |
+| 19 | [Logging health](/lab-files/logging-health/) | Coverage timeline with arrivals, heartbeats, gaps and next check. | Log ingestion; timeline analysis |
+| 20 | [Restore drill](/lab-files/restore-drill/) | Dummy-data restore receipt with hashes, version and measured durations. | Backup verification; file integrity |
+| 21 | [Evidence custody](/lab-files/evidence-custody/) | Dummy-file evidence register and copy receipt linking each copy to its recorded source, UTC handling records, hash checks and stated limits. | File integrity |
+| 22 | [Secret handling](/lab-files/secret-handling/) | I will retain a DEMO-only secret exposure worksheet and evidence note tracing exact listed markers through configuration, saved changes and logs, separating observed exposure from proposed response and stating what the supplied files cannot prove. | File integrity |
 
 ### Advanced — build and communicate a case
 
 | # | Lab | Evidence I plan to retain | Earlier dependency |
 | ---: | --- | --- | --- |
-| 22 | [Endpoint triage](/lab-files/endpoint-triage/) | Process tree and handover that does not assert malware. | None |
-| 23 | [Alert correlation](/lab-files/alert-correlation/) | Deduplicated alerts, stated correlation rule and bounded grouping. | None |
-| 24 | [SOC query workbook](/lab-files/soc-query-workbook/) | Saved SQL, result tables, distinct counts and join explanation. | Log ingestion; login triage; alert correlation |
-| 25 | [Incident case](/lab-files/incident-case/) | Notebook with timeline, two hypotheses, evidence needs and handover. | SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis |
-| 26 | [Containment tabletop](/lab-files/containment-tabletop/) | Decision table with authority, effect, evidence, owner and release check. | Incident case; access review; backup verification |
-| 27 | [Incident communications](/lab-files/incident-communications/) | Staff message, technical handover and manager update. | Login triage; timeline analysis |
+| 23 | [Endpoint triage](/lab-files/endpoint-triage/) | Process tree and handover that does not assert malware. | None |
+| 24 | [Alert correlation](/lab-files/alert-correlation/) | Deduplicated alerts, stated correlation rule and bounded grouping. | None |
+| 25 | [SOC query workbook](/lab-files/soc-query-workbook/) | Saved SQL, result tables, distinct counts and join explanation. | Log ingestion; login triage; alert correlation |
+| 26 | [Incident case](/lab-files/incident-case/) | Notebook with timeline, two hypotheses, evidence needs and handover. | SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis |
+| 27 | [Containment tabletop](/lab-files/containment-tabletop/) | Decision table with authority, effect, evidence, owner and release check. | Incident case; access review; backup verification |
+| 28 | [Incident communications](/lab-files/incident-communications/) | Staff message, technical handover and manager update. | Login triage; timeline analysis |
 
 ## Scope and limits
 

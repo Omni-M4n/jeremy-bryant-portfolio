@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 27,
+  "lab_count": 28,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -171,6 +171,17 @@
       "mastery_note": "This label describes exercise complexity, not my current ability.",
       "status": "planned",
       "labs": [
+        {
+          "id": "mfa-review",
+          "title": "MFA and account recovery review",
+          "url": "/lab-files/mfa-review/",
+          "status": "planned",
+          "dependencies": ["identity-lifecycle"],
+          "evidence": {
+            "artifact": "I will retain a synthetic account-control worksheet with exact evidence references and stated limits.",
+            "decision": "I will compare supplied enrolment, enforcement, recovery, ownership, monitoring and emergency-access records with the lab rules, then state that the helper does not test a real sign-in or prove control effectiveness."
+          }
+        },
         {
           "id": "cloud-audit-triage",
           "title": "Cloud audit triage",
