@@ -4,7 +4,7 @@
   "title": "The service folder",
   "synthetic": true,
   "context": {
-    "question": "A booking reminder needs a booking code and an email address. It does not need a birthday. Build a register that explains both what to keep and what to leave out."
+    "question": "I need to classify the supplied synthetic toy-service and staff-cover records: which fields should I keep or leave out, and how should I label, retain and share each record?"
   },
   "data": {
     "records": [

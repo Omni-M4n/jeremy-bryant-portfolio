@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 34,
+  "lab_count": 35,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -356,6 +356,17 @@
           "evidence": {
             "artifact": "I will retain a DEMO-only secret exposure worksheet and evidence note.",
             "decision": "I will trace only exact listed markers through configuration, saved changes and logs, distinguish active and revoked values, keep response proposals bounded and state what the supplied files cannot prove."
+          }
+        },
+        {
+          "id": "data-classification",
+          "title": "Data classification",
+          "url": "/lab-files/data-classification/",
+          "status": "planned",
+          "dependencies": ["access-review", "secret-handling"],
+          "evidence": {
+            "artifact": "I will retain a fictional data-handling register citing exact record and field references, owner and purpose, fields to keep or leave out, handling label, storage and reader rules, retention and hold state, sharing decision, one proposed exception, and the stated scope of each disposal receipt.",
+            "decision": "I will apply only supplied synthetic records and invented local rules; treat a hold as overriding age; distinguish disposal due from authorised and verified deletion, and listed-copy coverage from erasure; mark absent authority, date, method and checks as not supplied; and label exceptions proposed, not approved. I will state that the helper trusts the structured disposal field rather than verifying receipt prose. I will perform no deletion, sharing or live test and will not treat results as legal advice or proof of real deletion, control effectiveness, professional use, completion or mastery."
           }
         }
       ]

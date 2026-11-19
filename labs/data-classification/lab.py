@@ -43,6 +43,9 @@ def output(decisions, observations):
 
 LIMIT = 'These are invented handling rules, not legal advice or proof of real deletion.'
 def analyse(case):
+    require(isinstance(case, dict) and 'context' in case, 'context must be supplied')
+    fields(case['context'], 'question')
+    text(case['context']['question'])
     d = case['data']; fields(d, 'records')
     decisions, observations = {}, []
     for r in rows(d, 'records'):
