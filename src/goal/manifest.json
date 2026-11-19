@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 39,
+  "lab_count": 40,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -61,6 +61,17 @@
           "evidence": {
             "artifact": "I will retain a synthetic packet worksheet with exact frame references and stated capture limits.",
             "decision": "I will match each DNS question to any visible reply by endpoints, ports, DNS ID, name and type; distinguish an A answer, NXDOMAIN and no visible reply; use only the supplied synthetic evidence rather than claim a live capture; and not treat the exercise as proof of packet loss, application success, answer truth, professional use, completion or mastery."
+          }
+        },
+        {
+          "id": "dns-cache-records",
+          "title": "DNS cache records",
+          "url": "/lab-files/dns-cache-records/",
+          "status": "planned",
+          "dependencies": ["dns-triage"],
+          "evidence": {
+            "artifact": "I will retain a synthetic DNS cache worksheet that cites each query ID, owner and record type, CNAME path, receipt and query times, TTL or negative-cache lifetime, expiry arithmetic, seconds remaining, predicted answer, uncertainty and next check.",
+            "decision": "I will use only the supplied offline records. I will calculate remaining life as `max(0, receipt time + TTL − query time)`, treat zero as refresh-required, require every CNAME and final record in a chain to remain fresh, and use the smaller of SOA TTL and MINIMUM for a negative entry. I will distinguish exact-name NXDOMAIN from type-specific NODATA and treat missing or expired cache evidence as refresh-required, not proof that a name or service is unavailable. I will state that the exercise performs no DNS lookup and does not establish reachability, application success, current resolver state or the truth of a cached answer; record sets, DNSSEC, resolver caps, prefetch, serve-stale and failure caching remain outside scope."
           }
         },
         {
