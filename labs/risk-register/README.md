@@ -161,4 +161,4 @@ are local to the lab; they are not standards.
 Primary sources opened on 25 October 2026:
 
 - [NIST IR 8286A Rev. 1](https://csrc.nist.gov/pubs/ir/8286/a/r1/final) - Risk scenarios, likelihood, impact and registers.
-- [NIST SP 800-61 Rev. 3](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r3.pdf) - Response roles and communication.
+- [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) - Response roles and communication.

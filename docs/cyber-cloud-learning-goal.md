@@ -1,6 +1,6 @@
 # My cybersecurity and cloud learning goal
 
-**Current status: planned.** I have selected this 35-lab route; I am not claiming that I have completed it, mastered its topics or used these methods in a professional role.
+**Current status: planned.** I have selected this 36-lab route; I am not claiming that I have completed it, mastered its topics or used these methods in a professional role.
 
 I will use three stages to describe exercise complexity, not my ability. Beginner uses smaller bounded decisions, Intermediate connects controls and evidence, and Advanced combines several evidence types and audiences. Every lab starts as **planned**.
 
@@ -59,12 +59,13 @@ Before I start a dependent lab, I will keep reviewed or equivalent evidence for 
 
 | # | Lab | Evidence I plan to retain | Earlier dependency |
 | ---: | --- | --- | --- |
-| 30 | [Endpoint triage](/lab-files/endpoint-triage/) | Process tree and handover that does not assert malware. | None |
-| 31 | [Alert correlation](/lab-files/alert-correlation/) | Deduplicated alerts, stated correlation rule and bounded grouping. | None |
-| 32 | [SOC query workbook](/lab-files/soc-query-workbook/) | Saved SQL, result tables, distinct counts and join explanation. | Log ingestion; login triage; alert correlation |
-| 33 | [Incident case](/lab-files/incident-case/) | Notebook with timeline, two hypotheses, evidence needs and handover. | SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis |
-| 34 | [Containment tabletop](/lab-files/containment-tabletop/) | Decision table with authority, effect, evidence, owner and release check. | Incident case; access review; backup verification |
-| 35 | [Incident communications](/lab-files/incident-communications/) | Staff message, technical handover and manager update. | Login triage; timeline analysis |
+| 30 | [Risk register](/lab-files/risk-register/) | I will retain a fictional GRC decision pack containing written scope, a risk register with exact evidence IDs, a control-evidence matrix, a pending exception record, a challenge log and a sanitized decision report. I will apply only the lab’s local 1–3 teaching rubric to the supplied fictional case; separate events and plausible harms from confirmed facts; distinguish proposed controls and projected residual risk from checked operation; keep acceptance pending when authority, threshold, obligation or approval is not supplied; and record the owner, review date, uncertainty and bounded next check. I will perform no live action and will not treat helper matches, a worked reference or framework mapping as proof of a real incident, control effectiveness, legal compliance, professional use, completion, mastery or independent assessment. | Vulnerability prioritisation; data classification |
+| 31 | [Endpoint triage](/lab-files/endpoint-triage/) | Process tree and handover that does not assert malware. | None |
+| 32 | [Alert correlation](/lab-files/alert-correlation/) | Deduplicated alerts, stated correlation rule and bounded grouping. | None |
+| 33 | [SOC query workbook](/lab-files/soc-query-workbook/) | Saved SQL, result tables, distinct counts and join explanation. | Log ingestion; login triage; alert correlation |
+| 34 | [Incident case](/lab-files/incident-case/) | Notebook with timeline, two hypotheses, evidence needs and handover. | SOC query workbook; logging health; login triage; endpoint triage; HTTP triage; alert correlation; timeline analysis |
+| 35 | [Containment tabletop](/lab-files/containment-tabletop/) | Decision table with authority, effect, evidence, owner and release check. | Incident case; access review; backup verification |
+| 36 | [Incident communications](/lab-files/incident-communications/) | Staff message, technical handover and manager update. | Login triage; timeline analysis |
 
 ## Scope and limits
 
