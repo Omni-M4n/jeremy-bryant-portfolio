@@ -2,6 +2,10 @@
 
 The [portfolio site](https://jeremy-bryant.pages.dev/) presents the same work for readers who prefer a visual route; this repository keeps the code, fixtures, methods and limits.
 
+## My cybersecurity and cloud learning goal
+
+I’ve published [my learning goal and planned 25-lab route](https://jeremy-bryant.pages.dev/goal/) so readers can see the direction I’m working toward without treating planned work as completed work. The [goal source page](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/cyber-cloud-learning-goal.md) records my scope, status meanings and evidence boundaries; the [Wiki goal source](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/docs/wiki-cybersecurity-and-cloud-goal.md) keeps the repository version of this guide.
+
 ## Start with governance, risk and compliance
 
 Follow the [GRC path](https://jeremy-bryant.pages.dev/security-labs/grc/) or inspect its source exercises: [rules of engagement](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/rules-of-engagement/README.md), [data classification](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/data-classification/README.md), [vulnerability prioritisation](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/vulnerability-prioritisation/README.md), [risk register](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/risk-register/README.md) and [finding report](https://github.com/Omni-M4n/jeremy-bryant-portfolio/blob/main/labs/finding-report/README.md).
