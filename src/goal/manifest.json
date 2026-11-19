@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 28,
+  "lab_count": 29,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -50,6 +50,17 @@
           "evidence": {
             "artifact": "Scope sheet",
             "decision": "I will name the owner, targets, allowed actions, exclusions, time window, stop conditions and pending approval."
+          }
+        },
+        {
+          "id": "dns-triage",
+          "title": "DNS triage",
+          "url": "/lab-files/dns-triage/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "I will retain a synthetic packet worksheet with exact frame references and stated capture limits.",
+            "decision": "I will match each DNS question to any visible reply by endpoints, ports, DNS ID, name and type; distinguish an A answer, NXDOMAIN and no visible reply; use only the supplied synthetic evidence rather than claim a live capture; and not treat the exercise as proof of packet loss, application success, answer truth, professional use, completion or mastery."
           }
         },
         {
