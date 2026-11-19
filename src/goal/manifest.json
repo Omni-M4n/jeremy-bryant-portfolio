@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 29,
+  "lab_count": 30,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -105,6 +105,17 @@
           "evidence": {
             "artifact": "Labelled packet-path diagram and worksheet",
             "decision": "I will show route matches, the selected next hop and what the path cannot prove."
+          }
+        },
+        {
+          "id": "tcp-handshake",
+          "title": "TCP handshake investigation",
+          "url": "/lab-files/tcp-handshake/",
+          "status": "planned",
+          "dependencies": ["dns-triage"],
+          "evidence": {
+            "artifact": "TCP flow table with exact frame references and sequence/acknowledgement calculations",
+            "decision": "I will use the supplied synthetic packet summaries to distinguish an observed handshake, reset, no visible response, missing final ACK, missing initial SYN and acknowledgement mismatch; cite exact frames and show sequence/acknowledgement calculations; and state that the excerpt cannot establish full connection state or root cause, that missing packets do not prove packet loss, firewall failure or server fault, that an observed handshake does not prove application success, and that matching helper results do not prove professional use, completion or mastery."
           }
         },
         {
