@@ -812,10 +812,11 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/scheduled-task-review → endpoint-triage/);
   assert.match(wikiGoal,/cross-source-corroboration → evidence-custody, file-time-analysis, logging-health, timeline-analysis, http-triage, endpoint-triage/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){
-    assert.match(page,/On 20 November 2026, I verified the former 56-lab snapshot \(28\s+Beginner, 18 Intermediate and 10 Advanced\)/);
-    assert.match(page,/ec8a00c3cafc67597108a48c8675e0143d107991/);
-    assert.match(page,/That check confirms site\s+availability for the former snapshot only; it does not verify this current\s+57-lab route\./);
-    assert.match(page,/I will replace this pre-deployment receipt only after the current\s+route is successfully deployed and separately checked live\./);
-    assert.match(page,/I am keeping every\s+lab \*\*Planned\*\*, and I am not claiming completion or mastery\./);
+    assert.match(page,/On 20 November 2026, I verified the current 57-lab route \(29\s+Beginner, 18 Intermediate and 10 Advanced\)/);
+    assert.match(page,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
+    assert.match(page,/https:\/\/jeremy-bryant\.pages\.dev\/goal\/manifest\.json/);
+    assert.match(page,/for content\s+commit `feb9cb466cb7bd1ada5d7b3a198970a8c1656331`/);
+    assert.match(page,/I am keeping every\s+lab\s+\*\*Planned\*\*, and I am not claiming completion or mastery\./);
+    assert.doesNotMatch(page,/former 56-lab snapshot|pre-deployment receipt|ec8a00c3cafc67597108a48c8675e0143d107991/);
   }
 });
