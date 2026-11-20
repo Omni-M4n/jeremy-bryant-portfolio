@@ -54,5 +54,31 @@ class LabTests(unittest.TestCase):
         case["data"]["observed"][0]["action"] = "C:/Lab/../real.exe"
         with self.assertRaises(ValueError): lab.analyse(case)
 
+    def test_rejects_control_and_format_characters_in_task_text(self):
+        targets = (
+            ("observed", "id"),
+            ("observed", "account"),
+            ("observed", "action"),
+            ("approvals", "reason"),
+        )
+        controls = (
+            [chr(number) for number in range(32)]
+            + [chr(number) for number in range(127, 160)]
+            + ["\u200b", "\u2028", "\u2029", "\u202e", "\ufeff"]
+        )
+        for group, field in targets:
+            for character in controls:
+                case = self.case()
+                case["data"][group][0][field] += character + "hidden"
+                with self.subTest(group=group, field=field, codepoint=ord(character)), self.assertRaises(ValueError):
+                    lab.analyse(case)
+
+    def test_allows_ordinary_printable_internal_spaces(self):
+        case = self.case()
+        for group in ("baseline", "observed", "approvals"):
+            case["data"][group][0]["account"] = "lab backup"
+            case["data"][group][0]["action"] = "C:/Lab/bin/archive copy.exe"
+        self.assertEqual(lab.analyse(case)["decisions"]["archive"], "approved-maintenance-difference")
+
 if __name__ == "__main__":
     unittest.main()

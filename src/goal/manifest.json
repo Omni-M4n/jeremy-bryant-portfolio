@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 54,
+  "lab_count": 55,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -592,10 +592,21 @@
           "title": "Endpoint triage",
           "url": "/lab-files/endpoint-triage/",
           "status": "planned",
-          "dependencies": [],
+          "dependencies": ["login-triage"],
           "evidence": {
             "artifact": "Process tree and bounded handover",
             "decision": "I will cite parent, location, signature and change context without asserting malware."
+          }
+        },
+        {
+          "id": "scheduled-task-review",
+          "title": "Scheduled task change review",
+          "url": "/lab-files/scheduled-task-review/",
+          "status": "planned",
+          "dependencies": ["endpoint-triage"],
+          "evidence": {
+            "artifact": "I will retain my first choices, the supplied synthetic case and a scheduled-task change worksheet citing each task ID; the baseline, observed and approval daily time, configured run-as account and literal action string; the supplied approval reason; exact decision label; explanation; evidence references; alternative explanation; uncertainty; next check; correction and help used.",
+            "decision": "I will use only the package’s three supplied fictional JSON fixtures and compare each task’s `daily_time`, configured `account` and literal `action` string exactly, including case. In order, an ID absent from observed is `missing-from-snapshot`; an exact baseline tuple is `matches-baseline`; otherwise an exact same-ID approval tuple is `approved-maintenance-difference`; a new ID without that exact approval is `unregistered-task-review`; and any remaining change is `unapproved-change-review`. I will treat the approval row and reason as supplied assertions, not independently verified authority, and preserve an alternative explanation and smallest next evidence request. The hardened parser will refuse missing or extra fields, duplicate IDs, invalid `HH:MM`, actions outside the lexical `C:/Lab/` boundary or containing `..` or backslashes, and empty, surrounding-spaced, multiline or control-character task text. It will not parse Task Scheduler XML, validate Windows path semantics, inspect program contents or access rights, or establish inventory completeness, enabled state, trigger behavior, privilege, actual execution identity, execution history, intent or safety. A missing row is not proof of deletion, and a baseline or approval match is not proof of current host state, valid authorization, execution or safety. I will not inspect or change a real host, or create, change or run a real task. A helper, reference or test match will establish only bounded package behavior, not the quality of my reasoning, professional use, completion, mastery or independent assessment."
           }
         },
         {

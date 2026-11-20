@@ -11,7 +11,13 @@ def exact(value, fields, label):
     require(isinstance(value, dict) and set(value) == set(fields), label + ": unsupported or missing fields")
 
 def text(value, label):
-    require(isinstance(value, str) and 0 < len(value) <= 300 and value.strip() == value, label + ": bounded nonempty text required")
+    require(
+        isinstance(value, str)
+        and 0 < len(value) <= 300
+        and value.strip() == value
+        and value.isprintable(),
+        label + ": bounded printable single-line text required",
+    )
 
 
 import re
