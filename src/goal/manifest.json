@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 53,
+  "lab_count": 54,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -281,6 +281,17 @@
           "evidence": {
             "artifact": "HTTP triage report and evidence note",
             "decision": "I will separate observed requests, possible explanations and the next check."
+          }
+        },
+        {
+          "id": "http-header-review",
+          "title": "HTTP headers and cookies",
+          "url": "/lab-files/http-header-review/",
+          "status": "planned",
+          "dependencies": ["http-triage"],
+          "evidence": {
+            "artifact": "I will retain my first prediction, the supplied synthetic case and readable header excerpt, and a response-policy worksheet citing each response ID, scheme, HSTS `max-age`, `X-Content-Type-Options` value, CSP `frame-ancestors` value, Cache-Control directives, required session-cookie name, Secure and HttpOnly flags, SameSite value, exact decision and ordered gap tokens, reason, evidence references, uncertainty, next check, correction and help used.",
+            "decision": "I will use only the package’s supplied synthetic saved-response fields and fictional application requirements; no browser, server or network will be used. I will require HTTPS and `nosniff` for every response; for an HTTPS response, require an HSTS `max-age` at least as large as the supplied minimum; for HTML, require the exact supplied `frame-ancestors` value; for private data, require `no-store`; and for a response requiring a session, require the exact case-sensitive named cookie with Secure, HttpOnly and the supplied SameSite value. I will report `https-required` rather than an additional HSTS gap for an HTTP response, and if the required cookie is absent I will report `session-cookie` without inventing missing attribute results. I will preserve the package’s stated gap order and treat repeated or unsupported rules, attributes or forms, duplicate singleton headers or cookie names, folded fields, control characters and empty values as input errors rather than safe results. I will keep this narrow parser and fictional policy separate from a browser’s full syntax and every real security requirement; unknown headers are ignored, unsupported syntax is refused, and the helper uses saved excerpts without testing browser enforcement, transport, a live site or application safety. A helper or reference match will establish only bounded package behavior and expected decision fields, not the quality of my reasoning, factual completeness, professional use, completion, mastery or independent assessment."
           }
         },
         {
