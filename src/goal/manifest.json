@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 50,
+  "lab_count": 51,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -477,6 +477,17 @@
           "evidence": {
             "artifact": "Dummy-file evidence register and copy receipt",
             "decision": "I will link each copy to its recorded source, compare source and copy hashes, record UTC handling gaps and state what those records cannot prove."
+          }
+        },
+        {
+          "id": "file-type-triage",
+          "title": "Identify file types beyond the extension",
+          "url": "/lab-files/file-type-triage/",
+          "status": "planned",
+          "dependencies": ["file-integrity", "shell-troubleshooting"],
+          "evidence": {
+            "artifact": "I will retain my first prediction and decisions, the supplied synthetic case, notes, the practical receipt, the source and copied dummy files, and a file-type worksheet citing each item ID, filename and extension, reported MIME label, total size, inspected prefix length and hexadecimal bytes, source-before, source-after and copied-file SHA-256 values, the source-unchanged result, signature decision, alternative explanation, uncertainty and next check.",
+            "decision": "I will use only the package’s supplied synthetic cases and bounded local operation: create harmless PNG bytes, a tiny made-up SQLite database, plain text or short byte samples in a fresh lab folder; copy and hash them; inspect only their size and up to the first 16 bytes; and execute no sample. I will check zero length first, then require the complete eight-byte PNG signature or complete 16-byte SQLite signature; treat filename extensions and reported MIME labels as labels rather than proof; and leave incomplete or unsupported signatures type-undetermined. I will keep the fictional worksheet separate from the practical receipt and treat matching source hashes only as evidence that the source bytes stayed unchanged, not that metadata stayed unchanged or that a copy is safe. A signature match is only a format clue, and an extension mismatch does not establish malware or whole-file validity. Only PNG and SQLite signatures are recognized. I will use no personal file, device or browser profile and run no antivirus, full format validator or executable analysis. The saved package checks and practical receipts are maintainer evidence, not evidence that I performed the task. A helper or reference match, unit test or hash result will not establish factual completeness, a real file’s safety, professional use, completion, mastery or independent assessment."
           }
         },
         {
