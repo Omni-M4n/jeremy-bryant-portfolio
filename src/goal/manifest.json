@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 43,
+  "lab_count": 44,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -248,6 +248,17 @@
           "evidence": {
             "artifact": "HTTP triage report and evidence note",
             "decision": "I will separate observed requests, possible explanations and the next check."
+          }
+        },
+        {
+          "id": "http-request-construction",
+          "title": "Construct and trace an HTTP request",
+          "url": "/lab-files/http-request-construction/",
+          "status": "planned",
+          "dependencies": ["http-triage", "traffic-capture"],
+          "evidence": {
+            "artifact": "I will retain a first prediction, supplied request plan and local loopback evidence record citing each method, raw target, `Content-Type` and `X-Note` value, raw body, response status, decoded query and decoded form fields, uncertainty and the next check.",
+            "decision": "I will use only supplied fictional plans and the lab’s fresh `127.0.0.1` inspection service on a generated port. I will compare method, raw target, `Content-Type`, `X-Note` and body with the response status and separately decoded query and form fields; distinguish GET query data from POST form data; preserve repeated and empty values; and interpret `+` as a form space and `%2B` as a literal plus only under this lab’s rules. The helper accepts no external destination, refuses unsupported routes, methods, header newlines and malformed encoding, and closes its temporary server. Maintainer tests and reference requests are package checks, not evidence that I operated curl, a browser, Wireshark or a packet capture. I will not contact another host, expose or deploy the server, use real accounts or change security settings. A local response or reference match will not prove TLS, general HTTP correctness, production safety, professional use, completion, mastery or independent assessment."
           }
         },
         {
