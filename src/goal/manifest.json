@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 45,
+  "lab_count": 46,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -237,6 +237,17 @@
           "evidence": {
             "artifact": "First-match rule trace",
             "decision": "I will record required traffic kept, excess traffic removed and the model limits."
+          }
+        },
+        {
+          "id": "tls-review",
+          "title": "TLS certificate review",
+          "url": "/lab-files/tls-review/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "I will retain a synthetic TLS certificate review worksheet citing each certificate ID, requested host, SAN list, evaluation time, not-before and not-after values, seconds remaining, supplied chain status, exact decision label, uncertainty and next trust check.",
+            "decision": "I will use only the supplied offline certificate records. I will compare the requested host with exact or single-leftmost-label wildcard SANs case-insensitively; evaluate the inclusive validity interval at the supplied UTC time; calculate renewal due only while the certificate is valid; and keep hostname, time, supplied-chain and renewal findings separate. I will treat a reported verified chain as supplied evidence, not a signature or trust-chain check. The helper performs no network connection and checks no signatures, revocation, protocol versions, cipher suites, IP-address SANs or application safety. I will not treat a field or reference match as proof of a real site’s identity or trust, professional use, completion, mastery or independent assessment."
           }
         },
         {
