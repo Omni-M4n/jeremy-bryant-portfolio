@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 51,
+  "lab_count": 52,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -488,6 +488,17 @@
           "evidence": {
             "artifact": "I will retain my first prediction and decisions, the supplied synthetic case, notes, the practical receipt, the source and copied dummy files, and a file-type worksheet citing each item ID, filename and extension, reported MIME label, total size, inspected prefix length and hexadecimal bytes, source-before, source-after and copied-file SHA-256 values, the source-unchanged result, signature decision, alternative explanation, uncertainty and next check.",
             "decision": "I will use only the package’s supplied synthetic cases and bounded local operation: create harmless PNG bytes, a tiny made-up SQLite database, plain text or short byte samples in a fresh lab folder; copy and hash them; inspect only their size and up to the first 16 bytes; and execute no sample. I will check zero length first, then require the complete eight-byte PNG signature or complete 16-byte SQLite signature; treat filename extensions and reported MIME labels as labels rather than proof; and leave incomplete or unsupported signatures type-undetermined. I will keep the fictional worksheet separate from the practical receipt and treat matching source hashes only as evidence that the source bytes stayed unchanged, not that metadata stayed unchanged or that a copy is safe. A signature match is only a format clue, and an extension mismatch does not establish malware or whole-file validity. Only PNG and SQLite signatures are recognized. I will use no personal file, device or browser profile and run no antivirus, full format validator or executable analysis. The saved package checks and practical receipts are maintainer evidence, not evidence that I performed the task. A helper or reference match, unit test or hash result will not establish factual completeness, a real file’s safety, professional use, completion, mastery or independent assessment."
+          }
+        },
+        {
+          "id": "file-time-analysis",
+          "title": "Interpret filesystem timestamps and copies",
+          "url": "/lab-files/file-time-analysis/",
+          "status": "planned",
+          "dependencies": ["timeline-analysis", "evidence-custody"],
+          "evidence": {
+            "artifact": "I will retain my first prediction and decisions, the supplied synthetic case, notes, the practical receipt, the generated source and output dummy files, and a file-time worksheet citing each item ID, recorded operation, before and after SHA-256 values, before and after mtime_ns values, the separate byte-equality and modified-time-equality results, the exact modified-time difference in nanoseconds, my decision, an alternative explanation, uncertainty and next check. For the practical operation I will also retain the observed size, pre-hash atime_ns, ctime_ns with its platform note, birthtime_ns when exposed, platform, source SHA-256 values before and after, and the source-bytes-unchanged result.",
+            "decision": "I will use only the package’s supplied synthetic scenarios and bounded local operation in a fresh folder under this lab’s run/ directory: create one harmless dummy text file, set a known modified time, and perform only copy2, copyfile, or a controlled write followed by resetting the copied file’s modified time. I will compare SHA-256 and mtime_ns independently and use only the four supported outcomes: content-equal-time-equal, content-equal-time-differs, content-differs-time-equal, or content-and-time-differ. I will keep the fictional worksheet separate from the actual local receipt; note that access time was collected before hashing; record birth time only when Python exposes it; and treat ctime according to the recorded platform, not as a portable creation time. Matching hashes support byte equality only at the recorded checks, and a matching source hash supports only that the source bytes stayed unchanged; neither establishes unchanged metadata, file safety, who performed an action, when an action occurred, or why a timestamp has a value. File times can be copied or set explicitly, and filesystem, operating-system, access-time, birth-time, timestamp-precision, cross-filesystem and clock behavior remain outside this single local experiment unless separately tested. I will use no personal file, coursework, disk, device or browser profile and will make no claim of real forensic acquisition, factual completeness, professional use, completion, mastery or independent assessment. A reference match, unit test, hash result or saved maintainer receipt will establish only bounded package behavior or recorded byte identity, not my performance or a real-world conclusion."
           }
         },
         {
