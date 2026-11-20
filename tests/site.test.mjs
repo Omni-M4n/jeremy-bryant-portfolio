@@ -9,6 +9,8 @@ const fileTypeArtifact='I will retain my first prediction and decisions, the sup
 const fileTypeDecision='I will use only the package’s supplied synthetic cases and bounded local operation: create harmless PNG bytes, a tiny made-up SQLite database, plain text or short byte samples in a fresh lab folder; copy and hash them; inspect only their size and up to the first 16 bytes; and execute no sample. I will check zero length first, then require the complete eight-byte PNG signature or complete 16-byte SQLite signature; treat filename extensions and reported MIME labels as labels rather than proof; and leave incomplete or unsupported signatures type-undetermined. I will keep the fictional worksheet separate from the practical receipt and treat matching source hashes only as evidence that the source bytes stayed unchanged, not that metadata stayed unchanged or that a copy is safe. A signature match is only a format clue, and an extension mismatch does not establish malware or whole-file validity. Only PNG and SQLite signatures are recognized. I will use no personal file, device or browser profile and run no antivirus, full format validator or executable analysis. The saved package checks and practical receipts are maintainer evidence, not evidence that I performed the task. A helper or reference match, unit test or hash result will not establish factual completeness, a real file’s safety, professional use, completion, mastery or independent assessment.';
 const fileTimeArtifact='I will retain my first prediction and decisions, the supplied synthetic case, notes, the practical receipt, the generated source and output dummy files, and a file-time worksheet citing each item ID, recorded operation, before and after SHA-256 values, before and after mtime_ns values, the separate byte-equality and modified-time-equality results, the exact modified-time difference in nanoseconds, my decision, an alternative explanation, uncertainty and next check. For the practical operation I will also retain the observed size, pre-hash atime_ns, ctime_ns with its platform note, birthtime_ns when exposed, platform, source SHA-256 values before and after, and the source-bytes-unchanged result.';
 const fileTimeDecision='I will use only the package’s supplied synthetic scenarios and bounded local operation in a fresh folder under this lab’s run/ directory: create one harmless dummy text file, set a known modified time, and perform only copy2, copyfile, or a controlled write followed by resetting the copied file’s modified time. I will compare SHA-256 and mtime_ns independently and use only the four supported outcomes: content-equal-time-equal, content-equal-time-differs, content-differs-time-equal, or content-and-time-differ. I will keep the fictional worksheet separate from the actual local receipt; note that access time was collected before hashing; record birth time only when Python exposes it; and treat ctime according to the recorded platform, not as a portable creation time. Matching hashes support byte equality only at the recorded checks, and a matching source hash supports only that the source bytes stayed unchanged; neither establishes unchanged metadata, file safety, who performed an action, when an action occurred, or why a timestamp has a value. File times can be copied or set explicitly, and filesystem, operating-system, access-time, birth-time, timestamp-precision, cross-filesystem and clock behavior remain outside this single local experiment unless separately tested. I will use no personal file, coursework, disk, device or browser profile and will make no claim of real forensic acquisition, factual completeness, professional use, completion, mastery or independent assessment. A reference match, unit test, hash result or saved maintainer receipt will establish only bounded package behavior or recorded byte identity, not my performance or a real-world conclusion.';
+const deletedFileArtifact='I will retain my first prediction and decisions, the supplied synthetic case and notes, the practical receipt, the generated source image, read-only working copy, recovery log and separately extracted candidate when one is produced, plus a deleted-file-recovery worksheet citing the item ID, generated 32 KiB FAT12 geometry, directory-entry state and `0xe5` marker, FAT-copy agreement, cluster and allocation state, declared and candidate byte counts, known-file and extracted-candidate SHA-256 values, source-before and source-after hashes, decision, alternative explanation, uncertainty and next check.';
+const deletedFileDecision='I will use only the package’s supplied synthetic scenarios and bounded local operation in a fresh folder under this lab’s `run/` directory: construct the generated 32 KiB FAT12 layout in memory, write it only as a new ordinary image file, model deletion of one training entry and release of its cluster, reopen the working copy read-only, and extract at most one supported one-cluster candidate into a separate output folder. I will never mount the image or supply a device, personal file, coursework, browser profile or other external evidence. I will require the exact training geometry and agreeing FAT copies; distinguish an absent directory candidate from an allocated cluster or file larger than 512 bytes; compare candidate length with declared size before comparing SHA-256; and call a match only when both size and hash equal the known training file. I will keep the fictional worksheet separate from the actual local receipt and treat matching source hashes only as evidence that the source bytes stayed unchanged at the recorded checks, not that metadata stayed unchanged. An `0xe5` entry, free cluster or extracted byte sequence does not establish original provenance, who deleted a file, when or why deletion occurred, or complete recovery of arbitrary media. A known-file match establishes only byte equality for this generated training item. Missing or differing bytes do not prove that all prior data is gone or explain the difference. Mounting, recovery suites, fragmented files, physical disks, TRIM and damaged media remain untested. Reference matches, unit tests, hashes and maintainer receipts establish only bounded package behavior or recorded byte identity; they do not prove my performance, factual completeness, professional use, completion, mastery or independent assessment.';
 const occurrenceCount=(value,needle)=>value.split(needle).length-1;
 test('contact identity and standalone public scope are fixed',async()=>{const c=JSON.parse(await readFile(new URL('../site.config.json',import.meta.url)));assert.equal(c.base,'/');assert.equal(c.origin,'https://jeremy-bryant.pages.dev');assert.equal(c.source,'/source/');assert.equal(c.github,undefined);assert.match(c.linkedin,/linkedin\.com\/in\/jeremy-bryant-61347a445\//);});
 test('case study retains incomplete extension and attribution',async()=>{const html=await readFile(new URL('../dist/lg-webos-lab/index.html',import.meta.url),'utf8');assert.match(html,/Bluetooth controller behaviour had not been verified/);assert.match(html,/work of their upstream developers/);assert.match(html,/not an original exploit discovery/);});
@@ -35,10 +37,10 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   const goal=await readFile(new URL('../dist/goal/index.html',import.meta.url),'utf8');
   assert.match(goal,/<link rel="canonical" href="https:\/\/jeremy-bryant\.pages\.dev\/goal\/">/);
   assert.match(goal,/<meta name="robots" content="index, follow">/);
-  assert.match(goal,/I plan to work through 52 existing labs in dependency order/);
-  assert.match(goal,/27 beginner · 17 intermediate · 8 advanced/);
+  assert.match(goal,/I plan to work through 53 existing labs in dependency order/);
+  assert.match(goal,/27 beginner · 18 intermediate · 8 advanced/);
   assert.match(goal,/Stage 1 · 27 labs · all planned/);
-  assert.match(goal,/Stage 2 · 17 labs · all planned/);
+  assert.match(goal,/Stage 2 · 18 labs · all planned/);
   assert.match(goal,/Stage 3 · 8 labs · all planned/);
   assert.match(goal,/I will retain a synthetic packet worksheet that cites exact frames and matches each DNS question to any visible reply by endpoints, ports, DNS ID, name and type\./);
   assert.match(goal,/I will distinguish an A answer, NXDOMAIN and no visible reply\./);
@@ -162,26 +164,29 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/41 · <a href="\/lab-files\/file-time-analysis\/">Interpret filesystem timestamps and copies<\/a>/);
   assert.ok(goal.includes(fileTimeArtifact));
   assert.ok(goal.includes(fileTimeDecision));
-  assert.match(goal,/42 · <a href="\/lab-files\/browser-artifacts\/">Reconstruct a benign browsing session from a lab profile<\/a>/);
+  assert.match(goal,/42 · <a href="\/lab-files\/deleted-file-recovery\/">Recover a deleted dummy file from a disposable image<\/a>/);
+  assert.ok(goalText.includes(deletedFileArtifact));
+  assert.ok(goalText.includes(deletedFileDecision));
+  assert.match(goal,/43 · <a href="\/lab-files\/browser-artifacts\/">Reconstruct a benign browsing session from a lab profile<\/a>/);
   assert.ok(goal.includes('I will retain my first prediction, the supplied synthetic case, the practical receipt with source SHA-256 values before and after, the copy-unchanged result, and a timeline citing each event ID, kind, UTC time, reserved <code>.test</code> URL, session, state and byte counts, plus my conclusion, uncertainty and next check.'));
   assert.ok(goal.includes('I will use only the package’s supplied synthetic scenarios and bounded local operation: create the made-up SQLite database in a fresh lab folder, copy it, open the copy read-only and use only <code>SELECT</code> queries. I will link records only when URL and session match and the history record is no later than the other record and within 60 seconds; call a download complete only when its state is complete and received bytes equal expected bytes; and keep stored records separate from proof of who used the browser, page attention or whether a downloaded file still exists. I will state that this is a fictional schema with explicit UTC text, not a Chrome or Firefox profile parser. I will use no real profile, account, credential, device or target; live database/WAL acquisition, incognito inspection and browser-specific timestamp conversion will remain unperformed. Missing history may reflect deletion, private browsing, collection gaps or no visit. Hash matches, reference matches and helper tests establish only bounded byte preservation and package behavior, not factual completeness, professional use, completion, mastery or independent assessment.'));
-  assert.match(goal,/44 · <a href="\/lab-files\/data-classification\/">Data classification<\/a>/);
+  assert.match(goal,/45 · <a href="\/lab-files\/data-classification\/">Data classification<\/a>/);
   assert.match(goal,/fictional data-handling register citing exact record and field references, owner and purpose, fields to keep or leave out, handling label, storage and reader rules, retention and hold state, sharing decision, one proposed exception, and the stated scope of each disposal receipt/);
   assert.match(goal,/apply only supplied synthetic records and invented local rules; treat a hold as overriding age/);
   assert.match(goal,/distinguish disposal due from authorised and verified deletion, and listed-copy coverage from erasure/);
   assert.match(goal,/mark absent authority, date, method and checks as not supplied; and label exceptions proposed, not approved/);
   assert.match(goal,/helper trusts the structured disposal field rather than verifying receipt prose/);
   assert.match(goal,/perform no deletion, sharing or live test and will not treat results as legal advice or proof of real deletion, control effectiveness, professional use, completion or mastery/);
-  assert.match(goal,/45 · <a href="\/lab-files\/small-threat-model\/">Threat-model a small application or home-lab service<\/a>/);
-  assert.match(goal,/46 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
+  assert.match(goal,/46 · <a href="\/lab-files\/small-threat-model\/">Threat-model a small application or home-lab service<\/a>/);
+  assert.match(goal,/47 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
   assert.match(goal,/fictional GRC decision pack containing written scope, a risk register with exact evidence IDs, a control-evidence matrix, a pending exception record, a challenge log and a sanitized decision report/);
   assert.match(goal,/apply only the lab’s local 1–3 teaching rubric to the supplied fictional case/);
   assert.match(goal,/separate events and plausible harms from confirmed facts/);
   assert.match(goal,/distinguish proposed controls and projected residual risk from checked operation/);
   assert.match(goal,/keep acceptance pending when authority, threshold, obligation or approval is not supplied/);
   assert.match(goal,/perform no live action and will not treat helper matches, a worked reference or framework mapping as proof of a real incident, control effectiveness, legal compliance, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/47 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
-  assert.match(goal,/52 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
+  assert.match(goal,/48 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
+  assert.match(goal,/53 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
   assert.match(goal,/They do not describe my current ability\./);
   assert.match(goal,/I am publishing a learning intention and a route through existing practice materials\./);
   assert.match(goal,/I am not claiming that I have completed these labs, mastered their topics or used these methods in a professional role\./);
@@ -190,7 +195,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/Helper checks can compare formats and expected decisions, but they cannot judge the quality of my reasoning or prove independent skill\./);
   assert.match(goal,/The route is a plan, not a credential, job history or completion record\./);
 });
-test('goal manifest is a 52-lab planned route with valid ordered dependencies',async()=>{
+test('goal manifest is a 53-lab planned route with valid ordered dependencies',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   const registry=JSON.parse(await readFile(new URL('../labs/release-catalog.json',import.meta.url),'utf8'));
   const studyPlan=JSON.parse(await readFile(new URL('../labs/SUMMER-STUDY-PLAN.json',import.meta.url),'utf8'));
@@ -199,7 +204,7 @@ test('goal manifest is a 52-lab planned route with valid ordered dependencies',a
   assert.equal(manifest.route_url,'/goal/');
   assert.equal(manifest.source_plan,'/security-labs/summer-study-plan.json');
   assert.equal(manifest.initial_status,'planned');
-  assert.equal(manifest.lab_count,52);
+  assert.equal(manifest.lab_count,53);
   assert.equal(manifest.claim_boundary.statement,'I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.');
   assert.equal(manifest.claim_boundary.safe_scope,'I will use the fictional or dummy evidence and the safe boundaries stated in each lab.');
   assert.equal(manifest.claim_boundary.tool_limit,'A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill.');
@@ -213,7 +218,7 @@ test('goal manifest is a 52-lab planned route with valid ordered dependencies',a
   assert.ok(typeof manifest.review_gate.unavailable_reviewer==='string'&&manifest.review_gate.unavailable_reviewer.trim().length>0);
   assert.ok(Array.isArray(manifest.stages));
   assert.deepEqual(manifest.stages.map(stage=>stage.id),['beginner','intermediate','advanced']);
-  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[27,17,8]);
+  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[27,18,8]);
   const labs=manifest.stages.flatMap(stage=>{
     assert.match(stage.id,/^[a-z][a-z0-9-]*$/);
     for(const field of ['title','complexity','mastery_note']) assert.ok(typeof stage[field]==='string'&&stage[field].trim().length>0);
@@ -225,7 +230,7 @@ test('goal manifest is a 52-lab planned route with valid ordered dependencies',a
   const ids=labs.map(lab=>lab.id);
   assert.deepEqual(ids,[
     'rules-of-engagement','shell-troubleshooting','isolated-lab-workbench','dns-triage','dns-cache-records','email-triage','access-review','linux-permissions','ssh-config-review','login-triage','timeline-analysis','network-address-path','vpn-routing-review','tcp-handshake','traffic-capture','asset-discovery','vulnerability-prioritisation','vulnerability-retest','dependency-review','firewall-review','tls-review','http-triage','http-request-construction','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle','mfa-review',
-    'cloud-audit-triage','shared-responsibility','cloud-resource-lifecycle','iam-explicit-deny','temporary-credentials','cloud-network-path','encryption-key-recovery','log-ingestion','logging-health','restore-drill','evidence-custody','file-type-triage','file-time-analysis','browser-artifacts','secret-handling','data-classification',
+    'cloud-audit-triage','shared-responsibility','cloud-resource-lifecycle','iam-explicit-deny','temporary-credentials','cloud-network-path','encryption-key-recovery','log-ingestion','logging-health','restore-drill','evidence-custody','file-type-triage','file-time-analysis','deleted-file-recovery','browser-artifacts','secret-handling','data-classification',
     'small-threat-model','risk-register','endpoint-triage','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
   ]);
   const emailTriageLabs=labs.filter(lab=>lab.id==='email-triage');
@@ -274,18 +279,30 @@ test('goal manifest is a 52-lab planned route with valid ordered dependencies',a
   const fileTime=fileTimeLabs[0];
   assert.equal(ids.indexOf('file-time-analysis'),40);
   assert.equal(manifest.stages[1].labs.indexOf(fileTime),13);
-  assert.equal(ids.indexOf('browser-artifacts'),ids.indexOf('file-time-analysis')+1);
+  assert.equal(ids.indexOf('deleted-file-recovery'),ids.indexOf('file-time-analysis')+1);
   assert.equal(fileTime?.title,'Interpret filesystem timestamps and copies');
   assert.equal(fileTime?.url,'/lab-files/file-time-analysis/');
   assert.equal(fileTime?.status,'planned');
   assert.deepEqual(fileTime?.dependencies,['timeline-analysis','evidence-custody']);
   assert.equal(fileTime?.evidence.artifact,fileTimeArtifact);
   assert.equal(fileTime?.evidence.decision,fileTimeDecision);
+  const deletedFileLabs=labs.filter(lab=>lab.id==='deleted-file-recovery');
+  assert.equal(deletedFileLabs.length,1);
+  const deletedFile=deletedFileLabs[0];
+  assert.equal(ids.indexOf('deleted-file-recovery'),41);
+  assert.equal(manifest.stages[1].labs.indexOf(deletedFile),14);
+  assert.equal(ids.indexOf('browser-artifacts'),ids.indexOf('deleted-file-recovery')+1);
+  assert.equal(deletedFile?.title,'Recover a deleted dummy file from a disposable image');
+  assert.equal(deletedFile?.url,'/lab-files/deleted-file-recovery/');
+  assert.equal(deletedFile?.status,'planned');
+  assert.deepEqual(deletedFile?.dependencies,['evidence-custody','file-type-triage','isolated-lab-workbench']);
+  assert.equal(deletedFile?.evidence.artifact,deletedFileArtifact);
+  assert.equal(deletedFile?.evidence.decision,deletedFileDecision);
   const browserArtifactLabs=labs.filter(lab=>lab.id==='browser-artifacts');
   assert.equal(browserArtifactLabs.length,1);
   const browserArtifacts=browserArtifactLabs[0];
-  assert.equal(ids.indexOf('browser-artifacts'),41);
-  assert.equal(manifest.stages[1].labs.indexOf(browserArtifacts),14);
+  assert.equal(ids.indexOf('browser-artifacts'),42);
+  assert.equal(manifest.stages[1].labs.indexOf(browserArtifacts),15);
   assert.equal(ids.indexOf('secret-handling'),ids.indexOf('browser-artifacts')+1);
   assert.equal(browserArtifacts?.title,'Reconstruct a benign browsing session from a lab profile');
   assert.equal(browserArtifacts?.url,'/lab-files/browser-artifacts/');
@@ -369,7 +386,7 @@ test('goal manifest is a 52-lab planned route with valid ordered dependencies',a
   const smallThreatModels=labs.filter(lab=>lab.id==='small-threat-model');
   assert.equal(smallThreatModels.length,1);
   const smallThreatModel=smallThreatModels[0];
-  assert.equal(ids.indexOf('small-threat-model'),44);
+  assert.equal(ids.indexOf('small-threat-model'),45);
   assert.equal(ids.indexOf('risk-register'),ids.indexOf('small-threat-model')+1);
   assert.equal(smallThreatModel?.title,'Threat-model a small application or home-lab service');
   assert.equal(smallThreatModel?.url,'/lab-files/small-threat-model/');
@@ -570,7 +587,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   for(const lab of manifest.stages.flatMap(stage=>stage.labs)) assert.match(goal,new RegExp(`href="\\/lab-files\\/${lab.id}\\/"`));
   for(const page of [home,labs,library]) assert.match(page,/href="\/goal\/"/);
-  assert.match(home,/I will work through 52 mapped labs/);
+  assert.match(home,/I will work through 53 mapped labs/);
   assert.match(readme,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(readme,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/docs\/wiki-cybersecurity-and-cloud-goal\.md/);
@@ -578,8 +595,8 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wiki,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/I will use the prepared \[goal source note\]/);
   assert.doesNotMatch(readme,/\[public goal page\]/);
-  assert.match(wiki,/prepared \[learning goal and planned 52-lab route\]/);
-  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 52 existing labs/);
+  assert.match(wiki,/prepared \[learning goal and planned 53-lab route\]/);
+  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 53 existing labs/);
   assert.equal(occurrenceCount(goalDoc,'[Use shell commands for read-only troubleshooting](/lab-files/shell-troubleshooting/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'shell-troubleshooting ('),1);
   for(const page of [goalDoc,wikiGoal]){
@@ -649,19 +666,25 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/evidence-custody \(dummy-file evidence register and copy receipt\); file-type-triage \(I will retain my first prediction and decisions/);
   assert.match(wikiGoal,/file-type-triage → file-integrity, shell-troubleshooting/);
   assert.match(wikiGoal,/file-time-analysis → timeline-analysis, evidence-custody/);
+  assert.match(wikiGoal,/deleted-file-recovery → evidence-custody, file-type-triage, isolated-lab-workbench/);
   assert.match(wikiGoal,/browser-artifacts → timeline-analysis, evidence-custody/);
   assert.match(goalDoc,/\| 40 \| \[Identify file types beyond the extension\]\(\/lab-files\/file-type-triage\/\)/);
   assert.match(goalDoc,/\| 41 \| \[Interpret filesystem timestamps and copies\]\(\/lab-files\/file-time-analysis\/\)/);
-  assert.match(goalDoc,/\| 42 \| \[Reconstruct a benign browsing session from a lab profile\]\(\/lab-files\/browser-artifacts\/\)/);
+  assert.match(goalDoc,/\| 42 \| \[Recover a deleted dummy file from a disposable image\]\(\/lab-files\/deleted-file-recovery\/\)/);
+  assert.match(goalDoc,/\| 43 \| \[Reconstruct a benign browsing session from a lab profile\]\(\/lab-files\/browser-artifacts\/\)/);
   assert.equal(occurrenceCount(goalDoc,'[Identify file types beyond the extension](/lab-files/file-type-triage/)'),1);
   assert.equal(occurrenceCount(goalDoc,'[Interpret filesystem timestamps and copies](/lab-files/file-time-analysis/)'),1);
+  assert.equal(occurrenceCount(goalDoc,'[Recover a deleted dummy file from a disposable image](/lab-files/deleted-file-recovery/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'file-type-triage ('),1);
   assert.equal(occurrenceCount(wikiGoal,'file-time-analysis ('),1);
+  assert.equal(occurrenceCount(wikiGoal,'deleted-file-recovery ('),1);
   for(const page of [goalDoc,wikiGoal]){
     assert.equal(occurrenceCount(page,fileTypeArtifact),1);
     assert.equal(occurrenceCount(page,fileTypeDecision),1);
     assert.equal(occurrenceCount(page,fileTimeArtifact),1);
     assert.equal(occurrenceCount(page,fileTimeDecision),1);
+    assert.equal(occurrenceCount(page,deletedFileArtifact),1);
+    assert.equal(occurrenceCount(page,deletedFileDecision),1);
   }
   const browserArtifact='I will retain my first prediction, the supplied synthetic case, the practical receipt with source SHA-256 values before and after, the copy-unchanged result, and a timeline citing each event ID, kind, UTC time, reserved `.test` URL, session, state and byte counts, plus my conclusion, uncertainty and next check.';
   const browserDecision='I will use only the package’s supplied synthetic scenarios and bounded local operation: create the made-up SQLite database in a fresh lab folder, copy it, open the copy read-only and use only `SELECT` queries. I will link records only when URL and session match and the history record is no later than the other record and within 60 seconds; call a download complete only when its state is complete and received bytes equal expected bytes; and keep stored records separate from proof of who used the browser, page attention or whether a downloaded file still exists. I will state that this is a fictional schema with explicit UTC text, not a Chrome or Firefox profile parser. I will use no real profile, account, credential, device or target; live database/WAL acquisition, incognito inspection and browser-specific timestamp conversion will remain unperformed. Missing history may reflect deletion, private browsing, collection gaps or no visit. Hash matches, reference matches and helper tests establish only bounded byte preservation and package behavior, not factual completeness, professional use, completion, mastery or independent assessment.';
