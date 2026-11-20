@@ -88,6 +88,19 @@ class RuntimeTests(unittest.TestCase):
             with self.subTest(text=text), self.assertRaises(ValueError):
                 runtime.read_json(file)
 
+    def test_duplicate_key_error_never_echoes_control_text(self):
+        file = self.root / "bad.json"
+        for key in ("\x00C0", "\x85C1", "\x1bESC", "\nFAKE", "\u202eBIDI"):
+            encoded_key = json.dumps(key)
+            file.write_text(f"{{{encoded_key}: 1, {encoded_key}: 2}}", encoding="utf-8")
+            with self.subTest(key=repr(key)):
+                code, output, error = self.cli("show", "--case", str(file))
+                self.assertEqual(code, 2)
+                self.assertEqual(output, "")
+                self.assertEqual(error, "Input error: duplicate JSON key\n")
+                self.assertTrue(error.isascii())
+                self.assertNotIn(key, error)
+
     def test_oversized_input_is_rejected(self):
         file = self.root / "large.json"
         file.write_bytes(b" " * (runtime.MAX_BYTES + 1))

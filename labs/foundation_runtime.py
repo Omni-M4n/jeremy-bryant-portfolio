@@ -25,7 +25,7 @@ def require(condition, message):
 def unique_object(pairs):
     result = {}
     for key, value in pairs:
-        require(key not in result, f"duplicate JSON key: {key}")
+        require(key not in result, "duplicate JSON key")
         result[key] = value
     return result
 

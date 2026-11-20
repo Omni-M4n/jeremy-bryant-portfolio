@@ -16,7 +16,9 @@ BLOCKS = tuple(IPv4Network(n) for n in ("192.0.2.0/24", "198.51.100.0/24", "203.
 LIMITATIONS = [
     "Frames are synthetic summaries from one observation point, not a PCAP or proof of client acceptance, connectivity or server trust.",
     "Missing messages may reflect the capture window or visibility. A renewal need not repeat Discover and Offer; no failure cause is inferred.",
-    "Only one allocation or unicast renewal attempt per client/xid and ordinary ARP request/reply excerpts are supported; relays, rebinding, INIT-REBOOT, probes and announcements are excluded."
+    "This IPv4-only model supports one allocation or unicast renewal attempt per client/xid and ordinary ARP request/reply excerpts; IPv6 Neighbor Discovery, relays, rebinding, INIT-REBOOT, probes and announcements are excluded.",
+    "Client MAC is a simplified matching key; DHCP client identifiers and hardware-address variations are absent, and a MAC match does not establish device or person identity.",
+    "Session and exchange grouping and related-DHCP links are supplied teaching assertions checked for conflicts; the helper does not discover query membership from an ungrouped capture."
 ]
 
 
@@ -49,6 +51,16 @@ def mac(value, allow_empty=False):
 
 def integer(value, low, high, label):
     require(type(value) is int and low <= value <= high, f"invalid {label}")
+
+
+def bounded_text(value, label, maximum=200):
+    require(
+        isinstance(value, str)
+        and 1 <= len(value) <= maximum
+        and value.strip() == value
+        and value.isprintable(),
+        f"{label}: bounded printable single-line text required",
+    )
 
 
 def packet_order(packets, used_frames):
@@ -112,7 +124,7 @@ def dhcp_result(session):
     matching = [p for p in session["packets"] if (p["client_mac"], p["xid"]) == (session["client_mac"], session["xid"])]
     ignored = [p["frame"] for p in session["packets"] if p not in matching]
     messages = [p["message"] for p in matching]
-    require(len(messages) == len(set(messages)), "split retransmissions or multiple offers into separate evidence before using this model")
+    require(len(messages) == len(set(messages)), "retransmissions or multiple matching messages are outside this model")
     require(not ("ACK" in messages and "NAK" in messages), "conflicting terminal replies outside model")
     rank = {"DISCOVER": 0, "OFFER": 1, "REQUEST": 2, "ACK": 3, "NAK": 3}
     require([rank[m] for m in messages] == sorted(rank[m] for m in messages), "unsupported DHCP order")
@@ -125,22 +137,31 @@ def dhcp_result(session):
     require(not renewal or not ({"DISCOVER", "OFFER"} & set(messages)), "renewal cannot include allocation steps in this attempt")
     wanted_ip = request["ciaddr"] if renewal else request["requested_ip"]
     wanted_server = request["ip_destination"] if renewal else request["server_id"]
+    offer_note = ""
+    offer = lookup.get("OFFER")
+    if not renewal and offer is not None:
+        mismatches = []
+        if offer["server_id"] != wanted_server:
+            mismatches.append(f"server mismatch (selected {wanted_server}, offered by {offer['server_id']})")
+        if offer["yiaddr"] != wanted_ip:
+            mismatches.append(f"address mismatch (requested {wanted_ip}, offered {offer['yiaddr']})")
+        if mismatches:
+            offer_note = f" Observed Offer frame {offer['frame']} is non-selected: {'; '.join(mismatches)}."
     reply = lookup.get("ACK") or lookup.get("NAK")
     if reply is None:
-        return "ack-not-observed", prefix + f"; {'renewal' if renewal else 'allocation'} Request for {wanted_ip}; no matching ACK/NAK in this excerpt.", None
+        return "ack-not-observed", prefix + f"; {'renewal' if renewal else 'allocation'} Request for {wanted_ip}; no matching ACK/NAK in this excerpt." + offer_note, None
     if reply["message"] == "ACK":
         validate_ack_delivery(request, reply)
     if reply["server_id"] != wanted_server or (reply["message"] == "ACK" and reply["yiaddr"] != wanted_ip):
-        return "reply-mismatch", prefix + f"; expected server/address {wanted_server}/{wanted_ip}; reply has {reply['server_id']}/{reply['yiaddr']}.", None
+        return "reply-mismatch", prefix + f"; expected server/address {wanted_server}/{wanted_ip}; reply has {reply['server_id']}/{reply['yiaddr']}." + offer_note, None
     if reply["message"] == "NAK":
-        return "nak-observed", prefix + f"; server {wanted_server} returned NAK, not a lease acknowledgement.", None
+        return "nak-observed", prefix + f"; server {wanted_server} returned NAK, not a lease acknowledgement." + offer_note, None
     if renewal:
         label = "renewal-ack-observed"
     else:
-        offer = lookup.get("OFFER")
         complete = "DISCOVER" in lookup and offer is not None and offer["server_id"] == wanted_server and offer["yiaddr"] == wanted_ip
         label = "allocation-ack-observed" if complete else "allocation-ack-with-gaps"
-    detail = prefix + f"; {label}: ACK frame {reply['frame']} matches server {wanted_server} and address {wanted_ip}, lease {reply['lease_seconds']} seconds; reply destination {reply['ip_destination']}, ciaddr {reply['ciaddr']}."
+    detail = prefix + f"; {label}: ACK frame {reply['frame']} matches server {wanted_server} and address {wanted_ip}, lease {reply['lease_seconds']} seconds; reply destination {reply['ip_destination']}, ciaddr {reply['ciaddr']}." + offer_note
     return label, detail, reply
 
 
@@ -199,34 +220,60 @@ def analyse(case):
     require(isinstance(case["context"]["question"], str) and case["context"]["question"].strip(), "question required")
     data = case["data"]
     fields(data, "capture_note dhcp_sessions arp_exchanges", "data")
-    require(isinstance(data["capture_note"], str) and data["capture_note"].strip(), "capture note required")
+    bounded_text(data["capture_note"], "capture note")
     decisions, observations, sessions, acknowledgements, frames = {}, [], {}, {}, set()
-    for session in records(data["dhcp_sessions"], "DHCP sessions", 10):
+    dhcp_sessions = records(data["dhcp_sessions"], "DHCP sessions", 10)
+    session_keys, query_ids = set(), set()
+    for session in dhcp_sessions:
         fields(session, "id client_mac xid packets", "DHCP session")
         key = identifier(session["id"])
-        require(key not in decisions, "duplicate decision ID")
+        require(key not in query_ids, "duplicate decision ID")
+        query_ids.add(key)
         mac(session["client_mac"])
         integer(session["xid"], 0, 2**32 - 1, "transaction ID")
+        session_key = (session["client_mac"], session["xid"])
+        require(session_key not in session_keys, "duplicate DHCP client/xid session")
+        session_keys.add(session_key)
+    for session in dhcp_sessions:
+        key = session["id"]
+        session_key = (session["client_mac"], session["xid"])
         packet_order(session["packets"], frames)
         for packet in session["packets"]:
             validate_dhcp(packet)
+            packet_key = (packet["client_mac"], packet["xid"])
+            require(packet_key == session_key or packet_key not in session_keys, "DHCP packet matches another declared session")
         label, detail, ack = dhcp_result(session)
         decisions[key], sessions[key], acknowledgements[key] = label, session, ack
         observations.append(detail)
-    for exchange in records(data["arp_exchanges"], "ARP exchanges", 10):
+    arp_exchanges = records(data["arp_exchanges"], "ARP exchanges", 10)
+    exchange_keys, output_ids = set(), set(decisions)
+    for exchange in arp_exchanges:
         fields(exchange, "id requester_ip requester_mac target_ip related_dhcp packets", "ARP exchange")
         key = identifier(exchange["id"])
-        require(key not in decisions and key + "-lease-link" not in decisions, "duplicate decision ID")
+        require(key not in output_ids and key + "-lease-link" not in output_ids, "duplicate decision ID")
+        output_ids.update((key, key + "-lease-link"))
         address(exchange["requester_ip"])
         address(exchange["target_ip"])
         require(exchange["requester_ip"] != exchange["target_ip"], "ARP endpoints must differ")
         mac(exchange["requester_mac"])
+        exchange_key = (exchange["requester_ip"], exchange["requester_mac"], exchange["target_ip"])
+        require(exchange_key not in exchange_keys, "duplicate ARP requester/target query")
+        exchange_keys.add(exchange_key)
         require(isinstance(exchange["related_dhcp"], str) and exchange["related_dhcp"] in sessions, "unknown related DHCP session")
         related = sessions[exchange["related_dhcp"]]
         require(exchange["requester_mac"] == related["client_mac"], "related DHCP must identify the same client MAC")
+    for exchange in arp_exchanges:
+        key = exchange["id"]
+        related = sessions[exchange["related_dhcp"]]
+        exchange_key = (exchange["requester_ip"], exchange["requester_mac"], exchange["target_ip"])
         packet_order(exchange["packets"], frames)
         for packet in exchange["packets"]:
             validate_arp(packet)
+            if packet["opcode"] == "request":
+                packet_key = (packet["sender_ip"], packet["sender_mac"], packet["target_ip"])
+            else:
+                packet_key = (packet["target_ip"], packet["target_mac"], packet["sender_ip"])
+            require(packet_key == exchange_key or packet_key not in exchange_keys, "ARP packet matches another declared exchange")
         label, detail, requests = arp_result(exchange)
         decisions[key] = label
         observations.append(detail)

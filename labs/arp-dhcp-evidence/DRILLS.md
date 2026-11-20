@@ -1,6 +1,6 @@
 # Exchange practice with fewer prompts
 
-Use a fresh `run/attempt-NN` for every pass. Record the date, Python version, case ID, prediction, evidence, help used and correction. Save the first worksheet before running `check`. It reveals answer labels where yours differ. Name the stage that fits your work, such as "guided with prompts" or "independent attempt awaiting review". A passing tool does not prove skill.
+Use a fresh `run/attempt-NN` for every pass. Record the date, Python version, case ID, prediction, evidence, help used and correction. Save the first worksheet before running `check`. It reveals answer labels where yours differ. Name the stage that fits your work, such as "guided with prompts" or "solo attempt awaiting review". A passing tool does not prove skill.
 
 ## Guided: 30-45 minutes
 
@@ -10,9 +10,9 @@ Prepare `guided` using the README. Draw one timeline with DHCP and ARP frame num
 
 Prepare `guided` in a fresh folder and close the worked example. Use these prompts: Which client and xid am I following? What does the Request say about the client address? Which server/address should a reply match? Which address is ARP seeking? To whom is the reply addressed? Does the frame order support the proposed relationship? Save the completed table before checking.
 
-## Independent: 20-30 minutes
+## Solo: 20-30 minutes
 
-Prepare `challenge`. Close worked solutions, answer files, tests and past answers. Use only its evidence, the README's model rules and a blank table. Choose a label for each query. List all matching and excluded frames. Explain at least one open question. Do not invent an event to fill a gap. Complete every `-lease-link` entry apart from the ARP exchange result. Save first, then check and ask a person to review it. This drill gives no case answers.
+Prepare the shipped `challenge` as a solo stage. It is a supplied practice case, not a fresh unseen or reviewer-provided assessment, and it is not independently assessed. Close worked solutions, answer files, tests and past answers. Use only its evidence, the README's model rules and a blank table. Choose a label for each query. List all matching and excluded frames. Explain at least one open question. Do not invent an event to fill a gap. Complete each ARP exchange result and its separate `-lease-link` result. Save first, then check and ask a person to review it. This drill page does not reproduce the case answers, but the checker and shipped reference contain them.
 
 ## Changed observations: 20-30 minutes
 

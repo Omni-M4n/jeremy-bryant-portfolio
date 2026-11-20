@@ -1,4 +1,4 @@
-"""Independent correlation boundaries and fixed fixture expectations."""
+"""Solo-practice correlation boundaries and fixed fixture expectations."""
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -55,6 +55,14 @@ class ExchangeTests(unittest.TestCase):
         self.assertEqual(result["lease-a"], "nak-observed")
         self.assertEqual(result["gateway-lease-link"], "lease-link-not-established")
 
+    def test_nak_from_wrong_server_is_reply_mismatch(self):
+        case = self.case()
+        packet = case["data"]["dhcp_sessions"][0]["packets"][-1]
+        packet.update(message="NAK", yiaddr="0.0.0.0", server_id="192.0.2.2", lease_seconds=None)
+        result = lab.analyse(self.sync(case))["decisions"]
+        self.assertEqual(result["lease-a"], "reply-mismatch")
+        self.assertEqual(result["gateway-lease-link"], "lease-link-not-established")
+
     def test_offer_without_request_is_not_a_lease(self):
         case = self.case()
         case["data"]["dhcp_sessions"][0]["packets"] = case["data"]["dhcp_sessions"][0]["packets"][:2]
@@ -65,8 +73,34 @@ class ExchangeTests(unittest.TestCase):
         case["data"]["dhcp_sessions"][0]["packets"].pop(0)
         self.assertEqual(lab.analyse(self.sync(case))["decisions"]["lease-a"], "allocation-ack-with-gaps")
 
+    def test_non_selected_offer_server_mismatch_is_visible_without_relabelling_ack(self):
+        case = self.case()
+        case["data"]["dhcp_sessions"][0]["packets"][1]["server_id"] = "192.0.2.2"
+        result = lab.analyse(self.sync(case))
+        self.assertEqual(result["decisions"]["lease-a"], "allocation-ack-with-gaps")
+        self.assertIn("Observed Offer frame 2 is non-selected: server mismatch (selected 192.0.2.1, offered by 192.0.2.2).", result["observations"][0])
+        self.assertNotIn("address mismatch", result["observations"][0])
+
+    def test_non_selected_offer_address_mismatch_is_visible_without_relabelling_ack(self):
+        case = self.case()
+        case["data"]["dhcp_sessions"][0]["packets"][1]["yiaddr"] = "192.0.2.21"
+        result = lab.analyse(self.sync(case))
+        self.assertEqual(result["decisions"]["lease-a"], "allocation-ack-with-gaps")
+        self.assertIn("Observed Offer frame 2 is non-selected: address mismatch (requested 192.0.2.20, offered 192.0.2.21).", result["observations"][0])
+        self.assertNotIn("server mismatch", result["observations"][0])
+
     def test_arp_reply_to_other_client_does_not_match(self):
         self.assertEqual(lab.analyse(self.case("changed"))["decisions"]["exchange-b"], "request-no-reply-observed")
+
+    def test_no_matching_arp_frames_uses_documented_label(self):
+        case = self.case()
+        packets = case["data"]["arp_exchanges"][0]["packets"]
+        packets[0]["sender_mac"] = "02:00:00:00:00:99"
+        packets[1]["target_mac"] = "02:00:00:00:00:99"
+        result = lab.analyse(self.sync(case))
+        self.assertEqual(result["decisions"]["gateway"], "no-matching-frames")
+        self.assertEqual(result["decisions"]["gateway-lease-link"], "lease-link-not-established")
+        self.assertIn("request frames []; reply frames []; mappings []; ignored frames [5, 6]", result["observations"][1])
 
     def test_missing_arp_request_is_not_filled_in(self):
         case = self.case()
@@ -85,6 +119,9 @@ class ExchangeTests(unittest.TestCase):
     def test_arp_before_ack_cannot_be_explained_by_later_ack(self):
         case = self.case()
         case["data"]["dhcp_sessions"][0]["packets"][-1]["frame"] = 7
+        packets = case["data"]["arp_exchanges"][0]["packets"]
+        packets.insert(1, dict(packets[0], frame=8))
+        packets[-1]["frame"] = 9
         self.assertEqual(lab.analyse(self.sync(case))["decisions"]["gateway-lease-link"], "arp-precedes-ack")
 
     def test_address_disagreement_survives_same_mac(self):
@@ -123,6 +160,69 @@ class ExchangeTests(unittest.TestCase):
         with self.assertRaises(ValueError): lab.analyse(case)
         case = self.case(); case["data"]["extra"] = True
         with self.assertRaises(ValueError): lab.analyse(case)
+
+    def test_capture_note_is_bounded_printable_single_line(self):
+        case = self.case()
+        case["data"]["capture_note"] = "x" * 200
+        lab.analyse(self.sync(case))
+        invalid = (
+            "stated observation\nframe 999: fake ACK",
+            "stated observation\x1b[31m",
+            "stated\tobservation",
+            " leading whitespace",
+            "trailing whitespace ",
+            "x" * 201,
+        )
+        for value in invalid:
+            case = self.case()
+            case["data"]["capture_note"] = value
+            with self.subTest(value=repr(value)), self.assertRaisesRegex(ValueError, "bounded printable single-line"):
+                lab.analyse(self.sync(case))
+
+    def test_duplicate_semantic_dhcp_sessions_are_rejected(self):
+        case = self.case()
+        duplicate = deepcopy(case["data"]["dhcp_sessions"][0])
+        duplicate["id"] = "lease-b"
+        for packet in duplicate["packets"]:
+            packet["frame"] += 100
+        case["data"]["dhcp_sessions"].append(duplicate)
+        with self.assertRaisesRegex(ValueError, "duplicate DHCP client/xid session"):
+            lab.analyse(self.sync(case))
+
+    def test_duplicate_semantic_arp_queries_are_rejected(self):
+        case = self.case()
+        duplicate = deepcopy(case["data"]["arp_exchanges"][0])
+        duplicate["id"] = "gateway-b"
+        for packet in duplicate["packets"]:
+            packet["frame"] += 100
+        case["data"]["arp_exchanges"].append(duplicate)
+        with self.assertRaisesRegex(ValueError, "duplicate ARP requester/target query"):
+            lab.analyse(self.sync(case))
+
+    def test_generated_lease_link_id_collision_is_rejected(self):
+        case = self.case()
+        collision = deepcopy(case["data"]["arp_exchanges"][0])
+        collision.update(id="gateway-lease-link", requester_ip="192.0.2.21", target_ip="192.0.2.2")
+        for packet in collision["packets"]:
+            packet["frame"] += 100
+        case["data"]["arp_exchanges"].append(collision)
+        with self.assertRaisesRegex(ValueError, "duplicate decision ID"):
+            lab.analyse(self.sync(case))
+
+    def test_packets_matching_other_declared_queries_are_rejected(self):
+        dhcp_case = self.case("changed")
+        dhcp_case["data"]["dhcp_sessions"][0]["packets"].append(
+            deepcopy(dhcp_case["data"]["dhcp_sessions"][1]["packets"][0])
+        )
+        with self.assertRaisesRegex(ValueError, "DHCP packet matches another declared session"):
+            lab.analyse(self.sync(dhcp_case))
+
+        arp_case = self.case("challenge")
+        arp_case["data"]["arp_exchanges"][0]["packets"].append(
+            deepcopy(arp_case["data"]["arp_exchanges"][1]["packets"][0])
+        )
+        with self.assertRaisesRegex(ValueError, "ARP packet matches another declared exchange"):
+            lab.analyse(self.sync(arp_case))
 
     def test_unknown_related_session_and_client_mismatch_rejected(self):
         for field, value in (("related_dhcp", "missing"), ("requester_mac", "02:00:00:00:00:99")):
@@ -232,7 +332,7 @@ class ExchangeTests(unittest.TestCase):
         packets.append(dict(packets[-1], frame=7))
         self.assertEqual(lab.analyse(self.sync(case))["decisions"]["gateway"], "exchange-observed")
 
-    def test_independent_metadata_uses_neutral_titles_and_ids(self):
+    def test_solo_metadata_uses_neutral_titles_and_ids(self):
         for key, suffix in (("changed", "B"), ("challenge", "C")):
             case = self.case(key)
             self.assertEqual(case["title"], "Packet excerpt set " + suffix)
@@ -241,6 +341,12 @@ class ExchangeTests(unittest.TestCase):
             for exchange in case["data"]["arp_exchanges"]:
                 self.assertRegex(exchange["id"], r"^exchange-[a-z]$")
                 self.assertRegex(exchange["related_dhcp"], r"^client-[a-z]$")
+        drills = (lab.ROOT / "DRILLS.md").read_text(encoding="utf-8")
+        self.assertIn("## Solo: 20-30 minutes", drills)
+        self.assertIn("not a fresh unseen or reviewer-provided assessment", drills)
+        self.assertIn("not independently assessed", drills)
+        self.assertIn("each ARP exchange result and its separate `-lease-link` result", drills)
+        self.assertNotIn("## Independent:", drills)
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 56,
+  "lab_count": 57,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -204,6 +204,17 @@
           "evidence": {
             "artifact": "I will retain my own controlled loopback PCAP, exact capture and display filters, generator setup and logs, and a worksheet citing actual frame and TCP-stream numbers for one HTTP 200, one HTTP 404 and one failed connection.",
             "decision": "I will confirm capture permission and existing loopback support, then use only the lab’s `127.0.0.1` service and generated ports. I will start capture before the requests and use visible frames to distinguish a TCP connection, an HTTP 200, an HTTP 404 and a refused or timed-out connection. The generator and maintainer tests create local traffic and logs, not a PCAP, and no fixture or fixed answer will substitute for run-specific frame and stream references. Until I retain those references, I will mark capture pending and claim no Wireshark attempt. Missing packets will not prove firewall blocking, packet loss or server fault; a handshake will not prove application success; and a toy response will not prove a real business outcome. I will send no external traffic, install no software or change firewall or VM settings, and I will not treat generated or test results as proof of completion, mastery, independent assessment or professional use."
+          }
+        },
+        {
+          "id": "arp-dhcp-evidence",
+          "title": "Read ARP and DHCP exchanges",
+          "url": "/lab-files/arp-dhcp-evidence/",
+          "status": "planned",
+          "dependencies": ["network-address-path", "traffic-capture"],
+          "evidence": {
+            "artifact": "I will retain my first decisions, the supplied synthetic packet summaries and a marked DHCP/ARP exchange table citing each query ID; matching and excluded frames; client MAC and transaction ID; current, offered and requested addresses; server, destination and lease fields; ARP requester, target and claimed mapping; exchange and lease-link labels; uncertainty, help, correction and next check.",
+            "decision": "I will use only supplied fictional packet summaries from one stated observation point; I will not treat them as a real capture or send traffic. For DHCP, I will match both client MAC and transaction ID, read the Request fields to distinguish an initial allocation from a renewal, preserve message order and gaps, compare the expected server with the observed ACK or NAK and, for an ACK, compare the expected address. For ARP, I will match the requester IP and MAC and sought IP, require a reply addressed to that requester, keep replies without an earlier request separate, and report conflicting claimed MACs without assigning cause. I will link a lease to address use only when a matched Request and ACK precede an ARP request from the same client MAC using the acknowledged address. I will keep an absent message distinct from an event that did not happen, because the capture window or position may omit it and a renewal need not repeat Discover and Offer. I will not infer identity, address ownership, current lease validity, connectivity, server trust, malicious activity or root cause. I will keep relays, rebinding, other DHCP states, retransmissions, multiple offers, ARP probes and announcements outside this model. I will leave the optional comparison with separately approved saved evidence unperformed unless I retain separate run-specific records. I will treat a matching label as bounded consistency in the supplied summaries only, not as professional use, completion, mastery or independent assessment. I will treat the stated one-observation-point scope, query grouping and related_dhcp links as supplied model assertions, and I will state that the helper neither discovers their provenance nor verifies it. I will use client MAC plus transaction ID only as this bounded model’s match and will omit DHCP client identifiers and chaddr variants. I will keep the model IPv4-only and leave IPv6 Neighbor Discovery outside scope. I will not treat frame order as elapsed time or an ACK as proof of receipt, acceptance, configuration or current lease validity; I will treat a later ARP request with the same MAC and IP as correlation only, not causation; and I will treat an ARP mapping as a claim, not proof of ownership or identity. I will leave the optional saved-evidence viewer lane unrun and, if it is separately approved later, I will require a disconnected environment with external name resolution disabled."
           }
         },
         {

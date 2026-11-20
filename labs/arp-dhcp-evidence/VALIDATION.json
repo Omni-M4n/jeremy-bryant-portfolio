@@ -1,0 +1,101 @@
+{
+  "status": "Reviewed package materials; learner skill and independent performance have not been assessed.",
+  "checked_on": "2026-11-20",
+  "python_version": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "isolated_unit_tests": {
+    "run": 43,
+    "passed": 43,
+    "skipped": 0,
+    "failed": 0,
+    "skip_reason": "No tests were skipped."
+  },
+  "references": {
+    "cases": 3,
+    "matched": 3,
+    "method": "The guided, changed and challenge outputs were compared with their separately stored fixed references."
+  },
+  "shared_runtime_tests": {
+    "run": 15,
+    "passed": 15,
+    "skipped": 0,
+    "failed": 0,
+    "scope": "The shared envelope, worksheet and filesystem runtime tests passed; this package is outside the original twenty-package foundation release inventory."
+  },
+  "executed_commands": [
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "python test_lab.py",
+      "result": "43 tests run; 43 passed; 0 skipped; 0 failed."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "python lab.py verify",
+      "result": "3 cases checked; 3 matched their fixed references."
+    },
+    {
+      "cwd": "labs",
+      "command": "python -m unittest discover -s . -p 'test_foundation_runtime.py' -v",
+      "result": "15 tests run; 15 passed; 0 skipped; 0 failed."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "strace -f -qq -e trace=network -o /tmp/arp-dhcp-evidence-test-network.trace python test_lab.py",
+      "result": "The test suite passed and the trace contained 0 network-syscall lines."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "strace -f -qq -e trace=network -o /tmp/arp-dhcp-evidence-verify-network.trace python lab.py verify",
+      "result": "All references matched and the trace contained 0 network-syscall lines."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "wc -l /tmp/arp-dhcp-evidence-test-network.trace /tmp/arp-dhcp-evidence-verify-network.trace",
+      "result": "Both trace files contained 0 lines; total 0."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "sha256sum DRILLS.md README.md WORKED-EXAMPLE.md fixtures/challenge.json fixtures/changed.json fixtures/guided.json lab.py reference/challenge.json reference/changed.json reference/guided.json test_lab.py",
+      "result": "Produced the per-file source identities recorded below."
+    },
+    {
+      "cwd": "labs/arp-dhcp-evidence",
+      "command": "sha256sum DRILLS.md README.md WORKED-EXAMPLE.md fixtures/challenge.json fixtures/changed.json fixtures/guided.json lab.py reference/challenge.json reference/changed.json reference/guided.json test_lab.py | sha256sum",
+      "result": "Produced aggregate SHA-256 6c444a893130f17c02d7cefd5ebb84e4cb13e31407673cf78c809d387de22723."
+    }
+  ],
+  "source_identity": {
+    "algorithm": "SHA-256",
+    "scope": "Eleven package source files listed below, in the recorded order.",
+    "aggregate_method": "For each listed path in order, concatenate its lowercase SHA-256 hex digest, two ASCII spaces, its relative path and LF; SHA-256 that byte stream.",
+    "excluded": {
+      "VALIDATION.json": "The receipt is deliberately excluded so it does not self-hash."
+    },
+    "files": {
+      "DRILLS.md": "219c8dfd81c53b84ea006304e28a4513b8eca232a11a71af27f1bd2b41090d93",
+      "README.md": "3af711fcfa4db75d074948d5545c3ede6ccf8f8fe4d676d786a645a4b985d109",
+      "WORKED-EXAMPLE.md": "b8000093bd3f5a64e7b6a60d48c206db046488101c99b39c78b5b54b52c2f3c0",
+      "fixtures/challenge.json": "7ac8af4b0a6f47d8465a24c3d891f02ffaa0a00fdb8b28f504de8b3e2b99a3db",
+      "fixtures/changed.json": "181448a9068a489a931c9fbf318cf60e8ed4d52c0e766ae031a94abd4fa1b200",
+      "fixtures/guided.json": "c83c84fc2b8f2ae10750d3eaf7c39f52979bf15a088972b6601ff65cd6fe6b20",
+      "lab.py": "2d7a6ea366c7973a2138a39afbc41e197add363e331e7ff482cf864a171ca8d0",
+      "reference/challenge.json": "dd58a7a3793791ccdf5107c54cf16f633a6bc049c8c89306b99c207fd1a751d8",
+      "reference/changed.json": "6587fc99eb603326a514d7301242aa0e01a6d2f58a9e0188874cc07fa1d0fd79",
+      "reference/guided.json": "e4424cdd331037b6fa41d974e60a88904e6d7be26c485e7a7c0b195c49af7b6d",
+      "test_lab.py": "10446b6d0c50a5a0260a028938ee446dc7f4bac84ba4ac0a1ad96f5f8cbe1970"
+    },
+    "aggregate_sha256": "6c444a893130f17c02d7cefd5ebb84e4cb13e31407673cf78c809d387de22723"
+  },
+  "network_syscall_audit": {
+    "method": "strace -f -qq -e trace=network",
+    "test_trace_lines": 0,
+    "verify_trace_lines": 0,
+    "result": "Zero network syscalls were recorded for the isolated suite or fixed-reference verifier."
+  },
+  "execution_boundary": "The helper, isolated tests and verify run used only supplied synthetic JSON summaries and Python standard-library code. The strace audit recorded zero network syscalls; they sent no packets, opened no PCAP and contacted no network service.",
+  "unrun": [
+    "The optional Wireshark viewer comparison with a separately approved saved capture was not run."
+  ],
+  "review_boundary": "This receipt validates package behavior and fixed references only. It does not show that a learner attempted the task, establish factual completeness, or assess completion, mastery, professional use or independent performance.",
+  "summary_scope": "Public summary of the recorded package checks run on 2026-11-20."
+}
