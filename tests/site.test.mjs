@@ -787,7 +787,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/cross-source-corroboration → evidence-custody, file-time-analysis, logging-health, timeline-analysis, http-triage, endpoint-triage/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){
     assert.match(page,/On 20 November 2026, I verified that/);
-    assert.match(page,/f8f6c027288c3c409571fed794472146672b2723/);
+    assert.match(page,/ec8a00c3cafc67597108a48c8675e0143d107991/);
     assert.match(page,/This confirms site\s+availability at that check only; I am keeping every lab \*\*Planned\*\*, and I am\s+not claiming completion or mastery\./);
     assert.doesNotMatch(page,/pending until I separately verify|after I separately verify|I intend to publish/);
   }
