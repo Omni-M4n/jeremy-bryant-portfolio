@@ -160,18 +160,22 @@ test('renders all 30 local lab pages and literal documents without executable ma
   for (const name of ['README.md', 'WORKED-EXAMPLE.md', 'DRILLS.md', 'PRACTICE.md']) assert.ok(html.includes('labs/lab-01/' + name));
 });
 
-test('hands-on instructions explain separate tooling rather than claiming offline completion', async t => {
+test('lab pages defer exact software and environment requirements to each README', async t => {
   const context = await fixture(t);
-  await rename(join(context.root,'labs','lab-01'),join(context.root,'labs','traffic-capture'));
   const path=join(context.root,'labs','release-catalog.json');
   const registry=JSON.parse(await readFile(path,'utf8'));
-  registry.labs[0].id='traffic-capture';registry.labs[0].mode='hands-on';
+  registry.labs[0].mode='mixed';
+  await writeFile(join(context.root,'labs','lab-01','README.md'),'# Cross-source practice\n\nI will use Python standard library tools with no extra install.\n');
   await writeFile(path,JSON.stringify(registry));
   await buildSourceDownloads(context);
-  const html = await readFile(join(context.dist,'lab-files','traffic-capture','index.html'),'utf8');
-  assert.ok(html.includes('Core lab / hands-on practice'));
-  assert.ok(html.includes('requires the separate software and controlled environment'));
-  assert.ok(!html.includes('Core lab / offline practice'));
+  const html = await readFile(join(context.dist,'lab-files','lab-01','index.html'),'utf8');
+  const index = await readFile(join(context.dist,'source','index.html'),'utf8');
+  assert.match(html,/Core lab \/ mixed practice/);
+  assert.ok(html.includes('I will follow any additional software or local-environment requirements stated in the lab instructions below.'));
+  assert.ok(html.includes('I will use Python standard library tools with no extra install.'));
+  assert.doesNotMatch(html,/requires the separate software and controlled environment/);
+  assert.ok(index.includes('Where a lab calls for separate security tools or a controlled local environment, I will follow the exact requirements in its README.'));
+  assert.doesNotMatch(index,/The hands-on labs also need the separate security tools and local environment/);
 });
 
 test('extra accepted teaching guides are readable online as well as in the archive', async t => {

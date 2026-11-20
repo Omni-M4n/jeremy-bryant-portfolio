@@ -185,7 +185,6 @@ function titleFrom(markdown, id) {
 function labPage(id, documents, registry) {
   const title = titleFrom(documents[0].text, id);
   const lab = registry.labs.find(item => item.id === id);
-  const handsOn = lab.mode !== 'offline';
   const labels = { 'README.md': 'Lab instructions', 'WORKED-EXAMPLE.md': 'Worked example', 'DRILLS.md': 'Practice drills', 'PRACTICE.md': 'Practice notes' };
   const label = name => labels[name] || name.replace(/\.md$/iu, '').replaceAll('-', ' ');
   const anchor = name => {
@@ -196,7 +195,7 @@ function labPage(id, documents, registry) {
   <section class="source-intro">
     <p class="eyebrow">${lab.kind === 'extension' ? 'Extension' : 'Core lab'} / ${escape(lab.mode)} practice</p>
     <h1>${escape(title)}</h1>
-    <p>Read the supplied instructions here, then download the complete project to use the Python utilities and training materials. ${handsOn ? 'The tool workflow requires the separate software and controlled environment described below. ' : ''}These are guided practice materials; reference checks do not assess independent understanding.</p>
+    <p>I will read the supplied instructions here, then download the complete project to use the Python utilities and training materials. I will follow any additional software or local-environment requirements stated in the lab instructions below. These are guided practice materials; reference checks do not assess independent understanding.</p>
     <p><a class="button button-primary" href="/${DOWNLOAD}" download>Download complete source ZIP</a></p>
     <p class="source-location">Archive folder: <code>${PREFIX}labs/${id}/</code></p>
   </section>
@@ -219,7 +218,7 @@ function indexPage(labs, receipt, registry) {
   </section>
   <section class="source-start" aria-labelledby="source-start-title">
     <h2 id="source-start-title">Run it locally</h2>
-    <p>Extract the whole archive so the labs retain their shared modules. The exercises require Python 3.10 or later. The website build requires a current Node.js release. The hands-on labs also need the separate security tools and local environment described in each README. Read the root <code>README.md</code> and the chosen lab's README before running commands.</p>
+    <p>I will extract the whole archive so the labs retain their shared modules. I will use Python 3.10 or later for the exercises and a current Node.js release for the website build. Where a lab calls for separate security tools or a controlled local environment, I will follow the exact requirements in its README. I will read the root <code>README.md</code> and the chosen lab's README before running commands.</p>
     <pre><code>python -m zipfile -e jeremy-bryant-portfolio.zip .
 cd jeremy-bryant-pages
 node scripts/build.mjs</code></pre>

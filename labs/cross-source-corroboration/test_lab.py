@@ -130,6 +130,23 @@ class DomainTests(unittest.TestCase):
         self.assertEqual(lab.analyse(value)['decisions']['pair-01'],'link-supported-within-clock-bounds')
         value['data']['records'][1]['time']='2025-01-12T10:00:03Z'
         self.assertEqual(lab.analyse(value)['decisions']['pair-01'],'time-conflict')
+    def test_decision_precedence(self):
+        scenarios=[]
+        value=case(); value['data']['records'][1]['request_id']='request-02'; value['data']['records'][1]['object_sha256']='0'*64
+        scenarios.append(('identifier-before-content',value,'identifiers-conflict'))
+        value=case(); value['data']['records'][1]['request_id']=None; value['data']['records'][1]['object_sha256']='0'*64
+        scenarios.append(('content-before-missing-identifier',value,'content-conflict'))
+        value=case(); value['data']['records'][1]['request_id']=None; value['data']['sources'][0]['clock_error_seconds']=None
+        scenarios.append(('missing-identifier-before-clock',value,'insufficient-link'))
+        value=case(); value['data']['sources'][0]['clock_error_seconds']=None; value['data']['records'][1]['time']='2025-01-12T11:00:00Z'
+        scenarios.append(('unknown-clock-before-time',value,'clock-unresolved'))
+        value=case(); value['data']['records'][1]['time']='2025-01-12T10:00:03Z'
+        scenarios.append(('time-conflict',value,'time-conflict'))
+        value=case(); value['data']['records'][1]['time']='2025-01-12T10:00:02Z'
+        scenarios.append(('supported-boundary',value,'link-supported-within-clock-bounds'))
+        for name,value,expected in scenarios:
+            with self.subTest(name=name):
+                self.assertEqual(lab.analyse(value)['decisions']['pair-01'],expected)
     def test_missing_identifier_does_not_link_on_time(self):
         value=case(); value['data']['records'][1]['request_id']=None
         self.assertEqual(lab.analyse(value)['decisions']['pair-01'],'insufficient-link')

@@ -1,13 +1,13 @@
 {
   "status": "Reviewed practice materials; learner skill has not been assessed.",
-  "checked_on": "2026-10-25",
+  "checked_on": "2026-11-20",
   "python_version": "3.12.14",
   "isolated_unit_tests": {
-    "run": 20,
-    "passed": 19,
-    "skipped": 1,
+    "run": 21,
+    "passed": 21,
+    "skipped": 0,
     "failed": 0,
-    "skip_reason": "Local symlink creation was unavailable; dynamic symlink refusal was not exercised."
+    "skip_reason": "No tests were skipped; I exercised the local symlink and hard-link refusal checks in this check."
   },
   "references": {
     "cases": 3,

@@ -14,7 +14,7 @@ Check each number or pair of values in `fixtures/guided.json`. The output label 
 
 - `pair-01`: `link-supported-within-clock-bounds`.
 
-Explain how the values you found support these choices. Then add a limit: A shared ID and compatible time interval support a link within this fictional model; IDs and logs can be reused, copied or wrong.
+I will explain how the values I found support these choices. I will retain these limits: I treat matching supplied request IDs and recorded object SHA-256 values, together with corrected uncertainty intervals that touch or overlap, as support only for a proposed link in this fictional model; identifiers and logs can be missing, reused, copied, incomplete or wrong. I treat clock errors, uncertainty values and collection notes as supplied training assertions, not live measurements or independently verified custody; I also record that the analyser neither acquires logs nor recomputes the recorded object hashes from underlying objects. I do not use timing compatibility to identify a person, establish causation or prove that either source is complete.
 
 ## Connect it to the operation
 

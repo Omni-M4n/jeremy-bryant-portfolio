@@ -10,9 +10,9 @@ Prepare Collection 01 using the README. Explain the everyday example aloud. Writ
 
 Close the worked example and start a fresh attempt. Ask: Which value did I observe? Which is a label? Which values support my claim? What does a missing record leave unknown? Name the source and copied file for each fact you use.
 
-## 3. Independent stage
+## 3. Solo stage (not independently assessed)
 
-Run `python lab.py prepare --scenario challenge --out run/attempt-02` and `python lab.py show --case run/attempt-02/case.json`. Keep `reference/` and the analyse command closed. Use the evidence you can see. Give another way to explain it and state your next check. Then run `python practice.py run --scenario challenge --out run/practical-02` and save what you think its actual evidence shows. Save both answers before you run check and analyse for attempt-02.
+I will run `python lab.py prepare --scenario challenge --out run/attempt-02` and `python lab.py show --case run/attempt-02/case.json`. I will keep `reference/` and the analyse command closed while I use only the evidence I can see, give another explanation and state my next check. I will then run `python practice.py run --scenario challenge --out run/practical-02` and record what its bounded dummy-data evidence shows. I will save both answers before I run check or analyse. The shipped challenge and reference answer are supplied solo practice, not a reviewer-prepared fresh unseen assessment; unless a reviewer provides and reviews a different supported case, I will mark fresh-case review as awaiting review rather than call this attempt independent.
 
 ## 4. Changed case
 

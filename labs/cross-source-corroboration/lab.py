@@ -55,7 +55,11 @@ def rawhex(value, maximum=4096):
 def result(decisions, observations):
     return {'decisions': decisions, 'observations': observations, 'limitations': LIMITS}
 
-LIMITS = ['A shared ID and compatible time interval support a link within this fictional model; IDs and logs can be reused, copied or wrong.', 'Clock correction is supplied evidence, not a fitted value chosen to force agreement. Timing alone does not identify a person or establish causation.']
+LIMITS = [
+    'I treat matching supplied request IDs and recorded object SHA-256 values, together with corrected uncertainty intervals that touch or overlap, as support only for a proposed link in this fictional model; identifiers and logs can be missing, reused, copied, incomplete or wrong.',
+    'I treat clock errors, uncertainty values and collection notes as supplied training assertions, not live measurements or independently verified custody; I also record that the analyser neither acquires logs nor recomputes the recorded object hashes from underlying objects.',
+    'I do not use timing compatibility to identify a person, establish causation or prove that either source is complete.'
+]
 
 def analyse(case):
     data = case['data']; exact(data, 'sources records pairs')

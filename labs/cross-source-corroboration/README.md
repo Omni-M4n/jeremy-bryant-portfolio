@@ -19,7 +19,9 @@ These materials were made for this lab. Use only the dummy data the script creat
 - **uncertainty:** a stated range in which a time may fall.
 - **identifier:** a label used to link records, which may be missing or reused.
 
-## First attempt and real local operation
+## First attempt and bounded local dummy-file operation
+
+I will use the supplied Python standard-library helper only for this bounded local dummy-data file operation; it installs nothing, uses no network, real logs, device or profile, and is not evidence that I operated an external forensic tool.
 
 1. Run `python lab.py prepare --scenario guided --out run/attempt-01`.
 2. Run `python lab.py show --case run/attempt-01/case.json`. Read the small input. It is a made-up example supplied with the lab. It does not describe your machine.
@@ -69,10 +71,9 @@ There is no service to stop or system setting to restore. Keep the attempts unti
 
 ## Limits and unrun work
 
-- A shared ID and compatible time interval support a link within this fictional model; IDs and logs can be reused, copied or wrong.
-- Clock correction is supplied evidence, not a fitted value chosen to force agreement. Timing alone does not identify a person or establish causation.
-
-- No real endpoint, web server or packet logs were acquired. Clock errors are supplied training measurements rather than live synchronization tests.
+- I treat matching supplied request IDs and recorded object SHA-256 values, together with corrected uncertainty intervals that touch or overlap, as support only for a proposed link in this fictional model; identifiers and logs can be missing, reused, copied, incomplete or wrong.
+- I treat clock errors, uncertainty values and collection notes as supplied training assertions, not live measurements or independently verified custody; I also record that the analyser neither acquires logs nor recomputes the recorded object hashes from underlying objects.
+- I do not use timing compatibility to identify a person, establish causation or prove that either source is complete.
 
 ## Primary references
 
