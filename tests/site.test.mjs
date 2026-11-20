@@ -701,7 +701,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/risk-register → vulnerability-prioritisation, data-classification/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){
     assert.match(page,/On 20 November 2026, I verified that/);
-    assert.match(page,/5a1e40d7be8809744518aaac638d2c578ee12aae/);
+    assert.match(page,/df8929b4839004a82b2c896bed4400f55290b523/);
     assert.match(page,/This confirms site\s+availability at that check only; I am keeping every lab \*\*Planned\*\*, and I am\s+not claiming completion or mastery\./);
     assert.doesNotMatch(page,/pending until I separately verify|after I separately verify|I intend to publish/);
   }
