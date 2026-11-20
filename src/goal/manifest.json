@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 46,
+  "lab_count": 47,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -444,6 +444,17 @@
           "evidence": {
             "artifact": "Dummy-file evidence register and copy receipt",
             "decision": "I will link each copy to its recorded source, compare source and copy hashes, record UTC handling gaps and state what those records cannot prove."
+          }
+        },
+        {
+          "id": "browser-artifacts",
+          "title": "Reconstruct a benign browsing session from a lab profile",
+          "url": "/lab-files/browser-artifacts/",
+          "status": "planned",
+          "dependencies": ["timeline-analysis", "evidence-custody"],
+          "evidence": {
+            "artifact": "I will retain my first prediction, the supplied synthetic case, the practical receipt with source SHA-256 values before and after, the copy-unchanged result, and a timeline citing each event ID, kind, UTC time, reserved `.test` URL, session, state and byte counts, plus my conclusion, uncertainty and next check.",
+            "decision": "I will use only the package’s supplied synthetic scenarios and bounded local operation: create the made-up SQLite database in a fresh lab folder, copy it, open the copy read-only and use only `SELECT` queries. I will link records only when URL and session match and the history record is no later than the other record and within 60 seconds; call a download complete only when its state is complete and received bytes equal expected bytes; and keep stored records separate from proof of who used the browser, page attention or whether a downloaded file still exists. I will state that this is a fictional schema with explicit UTC text, not a Chrome or Firefox profile parser. I will use no real profile, account, credential, device or target; live database/WAL acquisition, incognito inspection and browser-specific timestamp conversion will remain unperformed. Missing history may reflect deletion, private browsing, collection gaps or no visit. Hash matches, reference matches and helper tests establish only bounded byte preservation and package behavior, not factual completeness, professional use, completion, mastery or independent assessment."
           }
         },
         {
