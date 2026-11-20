@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 48,
+  "lab_count": 49,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -411,6 +411,17 @@
           "evidence": {
             "artifact": "Two-leg cloud path diagram and reachability table",
             "decision": "I will trace addressing, route choice, inbound rules and untested assumptions."
+          }
+        },
+        {
+          "id": "encryption-key-recovery",
+          "title": "Compare encryption, encoding, hashing and key recovery",
+          "url": "/lab-files/encryption-key-recovery/",
+          "status": "planned",
+          "dependencies": ["file-integrity"],
+          "evidence": {
+            "artifact": "I will retain first predictions, the supplied synthetic transform, key and restore ledgers, helper observations, and a recovery-dependency worksheet citing exact sample, backup, key and evidence-reference IDs, byte boundaries, computed and supplied values, the trusted-baseline assumption, decisions, uncertainty and next checks.",
+            "decision": "I will use only supplied fictional recovery records and dummy UTF-8 text; distinguish Base64 encoding, SHA-256 change detection and encryption for confidentiality; and trace each saved object to its exact required key, key state, operator access, ciphertext evidence, attempt record and restored-content comparison. I will treat the trusted baseline as an exercise assumption not established by hashing, and distinguish actual Base64 decoding and SHA-256 computation from fictional encryption and decryption receipts. I will not treat a key ID, replacement key, duplicate ciphertext or supplied success receipt as proof of recoverability, and will not claim real encryption, decryption, confidentiality, restore success, future recoverability, professional use, completion, mastery or independent assessment."
           }
         },
         {
