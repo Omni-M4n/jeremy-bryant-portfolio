@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 49,
+  "lab_count": 50,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -50,6 +50,17 @@
           "evidence": {
             "artifact": "Scope sheet",
             "decision": "I will name the owner, targets, allowed actions, exclusions, time window, stop conditions and pending approval."
+          }
+        },
+        {
+          "id": "shell-troubleshooting",
+          "title": "Use shell commands for read-only troubleshooting",
+          "url": "/lab-files/shell-troubleshooting/",
+          "status": "planned",
+          "dependencies": [],
+          "evidence": {
+            "artifact": "I will retain my first decisions, the supplied fictional command notebook and a worksheet citing each record ID, shell, working directory, actual arguments, match, error and status fields, pipeline-stage statuses, byte margin, service state, process and expected PIDs, listener bind, port and owner fields, uncertainty and smallest next read-only check.",
+            "decision": "I will use only the supplied fictional command notebook for this planned route; its commands and result fields are transcriptions, and the helper reads JSON but does not execute commands or inspect a host. I will apply the stated lexical path and status rules: actual argument tokens and the working directory support only the bounded path result, not links, permissions or a live file check; grep, PowerShell and pipeline statuses must be tied to the named command and captured fields, and an empty result differs from an error; and the byte result tests only the stated budget. A supplied service state does not establish the expected state or cause; a PID and process-name match does not establish identity or intent and may change; and a loopback or wildcard listener and owner PID do not establish remote reachability. The optional Linux and Windows live lanes were not run during package authoring and will remain unperformed unless I retain separate live evidence. I will not elevate privileges, install tools, change or start or stop a service, or scan a remote system. A helper or reference match will not prove live command execution, host state, safety, professional use, completion, mastery or independent assessment."
           }
         },
         {
