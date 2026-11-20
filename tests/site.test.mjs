@@ -24,11 +24,11 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   const goal=await readFile(new URL('../dist/goal/index.html',import.meta.url),'utf8');
   assert.match(goal,/<link rel="canonical" href="https:\/\/jeremy-bryant\.pages\.dev\/goal\/">/);
   assert.match(goal,/<meta name="robots" content="index, follow">/);
-  assert.match(goal,/I plan to work through 44 existing labs in dependency order/);
-  assert.match(goal,/24 beginner · 13 intermediate · 7 advanced/);
+  assert.match(goal,/I plan to work through 45 existing labs in dependency order/);
+  assert.match(goal,/24 beginner · 13 intermediate · 8 advanced/);
   assert.match(goal,/Stage 1 · 24 labs · all planned/);
   assert.match(goal,/Stage 2 · 13 labs · all planned/);
-  assert.match(goal,/Stage 3 · 7 labs · all planned/);
+  assert.match(goal,/Stage 3 · 8 labs · all planned/);
   assert.match(goal,/I will retain a synthetic packet worksheet that cites exact frames and matches each DNS question to any visible reply by endpoints, ports, DNS ID, name and type\./);
   assert.match(goal,/I will distinguish an A answer, NXDOMAIN and no visible reply\./);
   assert.match(goal,/I will use only the supplied synthetic evidence, not a live capture, and will not treat the exercise as proof of packet loss, application success, answer truth, professional use, completion or mastery\./);
@@ -135,15 +135,16 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/mark absent authority, date, method and checks as not supplied; and label exceptions proposed, not approved/);
   assert.match(goal,/helper trusts the structured disposal field rather than verifying receipt prose/);
   assert.match(goal,/perform no deletion, sharing or live test and will not treat results as legal advice or proof of real deletion, control effectiveness, professional use, completion or mastery/);
-  assert.match(goal,/38 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
+  assert.match(goal,/38 · <a href="\/lab-files\/small-threat-model\/">Threat-model a small application or home-lab service<\/a>/);
+  assert.match(goal,/39 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
   assert.match(goal,/fictional GRC decision pack containing written scope, a risk register with exact evidence IDs, a control-evidence matrix, a pending exception record, a challenge log and a sanitized decision report/);
   assert.match(goal,/apply only the lab’s local 1–3 teaching rubric to the supplied fictional case/);
   assert.match(goal,/separate events and plausible harms from confirmed facts/);
   assert.match(goal,/distinguish proposed controls and projected residual risk from checked operation/);
   assert.match(goal,/keep acceptance pending when authority, threshold, obligation or approval is not supplied/);
   assert.match(goal,/perform no live action and will not treat helper matches, a worked reference or framework mapping as proof of a real incident, control effectiveness, legal compliance, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/39 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
-  assert.match(goal,/44 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
+  assert.match(goal,/40 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
+  assert.match(goal,/45 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
   assert.match(goal,/They do not describe my current ability\./);
   assert.match(goal,/I am publishing a learning intention and a route through existing practice materials\./);
   assert.match(goal,/I am not claiming that I have completed these labs, mastered their topics or used these methods in a professional role\./);
@@ -152,7 +153,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/Helper checks can compare formats and expected decisions, but they cannot judge the quality of my reasoning or prove independent skill\./);
   assert.match(goal,/The route is a plan, not a credential, job history or completion record\./);
 });
-test('goal manifest is a 44-lab planned route with valid ordered dependencies',async()=>{
+test('goal manifest is a 45-lab planned route with valid ordered dependencies',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   const registry=JSON.parse(await readFile(new URL('../labs/release-catalog.json',import.meta.url),'utf8'));
   const studyPlan=JSON.parse(await readFile(new URL('../labs/SUMMER-STUDY-PLAN.json',import.meta.url),'utf8'));
@@ -161,7 +162,7 @@ test('goal manifest is a 44-lab planned route with valid ordered dependencies',a
   assert.equal(manifest.route_url,'/goal/');
   assert.equal(manifest.source_plan,'/security-labs/summer-study-plan.json');
   assert.equal(manifest.initial_status,'planned');
-  assert.equal(manifest.lab_count,44);
+  assert.equal(manifest.lab_count,45);
   assert.equal(manifest.claim_boundary.statement,'I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.');
   assert.equal(manifest.claim_boundary.safe_scope,'I will use the fictional or dummy evidence and the safe boundaries stated in each lab.');
   assert.equal(manifest.claim_boundary.tool_limit,'A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill.');
@@ -175,7 +176,7 @@ test('goal manifest is a 44-lab planned route with valid ordered dependencies',a
   assert.ok(typeof manifest.review_gate.unavailable_reviewer==='string'&&manifest.review_gate.unavailable_reviewer.trim().length>0);
   assert.ok(Array.isArray(manifest.stages));
   assert.deepEqual(manifest.stages.map(stage=>stage.id),['beginner','intermediate','advanced']);
-  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[24,13,7]);
+  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[24,13,8]);
   const labs=manifest.stages.flatMap(stage=>{
     assert.match(stage.id,/^[a-z][a-z0-9-]*$/);
     for(const field of ['title','complexity','mastery_note']) assert.ok(typeof stage[field]==='string'&&stage[field].trim().length>0);
@@ -188,7 +189,7 @@ test('goal manifest is a 44-lab planned route with valid ordered dependencies',a
   assert.deepEqual(ids,[
     'rules-of-engagement','isolated-lab-workbench','dns-triage','dns-cache-records','access-review','linux-permissions','ssh-config-review','login-triage','timeline-analysis','network-address-path','vpn-routing-review','tcp-handshake','traffic-capture','asset-discovery','vulnerability-prioritisation','vulnerability-retest','dependency-review','firewall-review','http-triage','http-request-construction','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle','mfa-review',
     'cloud-audit-triage','shared-responsibility','cloud-resource-lifecycle','iam-explicit-deny','temporary-credentials','cloud-network-path','log-ingestion','logging-health','restore-drill','evidence-custody','secret-handling','data-classification',
-    'risk-register','endpoint-triage','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
+    'small-threat-model','risk-register','endpoint-triage','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
   ]);
   assert.deepEqual(labs.find(lab=>lab.id==='evidence-custody')?.dependencies,['file-integrity']);
   assert.deepEqual(labs.find(lab=>lab.id==='secret-handling')?.dependencies,['file-integrity']);
@@ -233,7 +234,7 @@ test('goal manifest is a 44-lab planned route with valid ordered dependencies',a
   assert.equal(dataClassificationLabs.length,1);
   const dataClassification=dataClassificationLabs[0];
   assert.equal(ids.indexOf('data-classification'),ids.indexOf('secret-handling')+1);
-  assert.equal(ids.indexOf('risk-register'),ids.indexOf('data-classification')+1);
+  assert.equal(ids.indexOf('small-threat-model'),ids.indexOf('data-classification')+1);
   assert.equal(dataClassification?.status,'planned');
   assert.deepEqual(dataClassification?.dependencies,['access-review','secret-handling']);
   assert.ok(dataClassification.evidence.artifact.length<=400);
@@ -253,6 +254,17 @@ test('goal manifest is a 44-lab planned route with valid ordered dependencies',a
   assert.match(dataClassification.evidence.decision,/helper trusts the structured disposal field rather than verifying receipt prose/);
   assert.match(dataClassification.evidence.decision,/perform no deletion, sharing or live test/);
   assert.match(dataClassification.evidence.decision,/not treat results as legal advice or proof of real deletion, control effectiveness, professional use, completion or mastery/);
+  const smallThreatModels=labs.filter(lab=>lab.id==='small-threat-model');
+  assert.equal(smallThreatModels.length,1);
+  const smallThreatModel=smallThreatModels[0];
+  assert.equal(ids.indexOf('small-threat-model'),37);
+  assert.equal(ids.indexOf('risk-register'),ids.indexOf('small-threat-model')+1);
+  assert.equal(smallThreatModel?.title,'Threat-model a small application or home-lab service');
+  assert.equal(smallThreatModel?.url,'/lab-files/small-threat-model/');
+  assert.equal(smallThreatModel?.status,'planned');
+  assert.deepEqual(smallThreatModel?.dependencies,['network-address-path','http-request-construction','access-review']);
+  assert.equal(smallThreatModel?.evidence.artifact,'I will retain a fictional data-flow and trust-boundary diagram plus a control worksheet citing each source, destination, configured network rule, supplied observation, Wi-Fi access type, service identity, resource-permission check, transport protection, asset, possible failure, control, missing evidence, uncertainty and next validation.');
+  assert.equal(smallThreatModel?.evidence.decision,'I will use only supplied synthetic settings and observations. I will distinguish configured-only paths from observed reachable or blocked paths, mark unrun checks for validation and retain conflicts. I will assess named identity, resource permission and TLS separately even when the path is blocked; shared Wi-Fi access is network access, not user identity or record permission. I will not scan, connect, change accounts or controls, run a live test or publish. A listed check will not prove operation, one path observation will not establish every path, and a helper or reference match will not prove isolation, safe access, cause, professional use, completion, mastery or independent assessment.');
   const riskRegisters=labs.filter(lab=>lab.id==='risk-register');
   assert.equal(riskRegisters.length,1);
   const riskRegister=riskRegisters[0];
@@ -434,7 +446,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   for(const lab of manifest.stages.flatMap(stage=>stage.labs)) assert.match(goal,new RegExp(`href="\\/lab-files\\/${lab.id}\\/"`));
   for(const page of [home,labs,library]) assert.match(page,/href="\/goal\/"/);
-  assert.match(home,/I will work through 44 mapped labs/);
+  assert.match(home,/I will work through 45 mapped labs/);
   assert.match(readme,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(readme,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/docs\/wiki-cybersecurity-and-cloud-goal\.md/);
@@ -442,8 +454,8 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wiki,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/I will use the prepared \[goal source note\]/);
   assert.doesNotMatch(readme,/\[public goal page\]/);
-  assert.match(wiki,/prepared \[learning goal and planned 44-lab route\]/);
-  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 44 existing labs/);
+  assert.match(wiki,/prepared \[learning goal and planned 45-lab route\]/);
+  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 45 existing labs/);
   assert.match(wikiGoal,/isolated-lab-workbench \(I will retain a supplied-evidence workbench boundary diagram and worksheet citing the fictional VM and snapshot IDs, all eight adapter slots/);
   assert.match(wikiGoal,/HTTP 200 with exact `BASELINE\\n` body on `127\.0\.0\.1` and refusal after stop/);
   assert.match(goalDoc,/\| 2 \| \[Disposable lab workbench — supplied evidence\]\(\/lab-files\/isolated-lab-workbench\/\)/);
@@ -482,6 +494,9 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/cloud-resource-lifecycle → asset-discovery, shared-responsibility/);
   assert.match(wikiGoal,/data-classification \(I will retain a fictional data-handling register citing exact record and field references/);
   assert.match(wikiGoal,/data-classification → access-review, secret-handling/);
+  assert.match(wikiGoal,/small-threat-model \(I will retain a fictional data-flow and trust-boundary diagram plus a control worksheet citing each source, destination, configured network rule, supplied observation, Wi-Fi access type, service identity, resource-permission check, transport protection, asset, possible failure, control, missing evidence, uncertainty and next validation\./);
+  assert.match(wikiGoal,/I will assess named identity, resource permission and TLS separately even when the path is blocked; shared Wi-Fi access is network access, not user identity or record permission\./);
+  assert.match(wikiGoal,/small-threat-model → network-address-path, http-request-construction, access-review/);
   assert.match(wikiGoal,/risk-register \(I will retain a fictional GRC decision pack containing written scope/);
   assert.match(wikiGoal,/risk-register → vulnerability-prioritisation, data-classification/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){

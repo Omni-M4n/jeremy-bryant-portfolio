@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 44,
+  "lab_count": 45,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -466,6 +466,17 @@
       "mastery_note": "This label describes exercise complexity, not my current ability.",
       "status": "planned",
       "labs": [
+        {
+          "id": "small-threat-model",
+          "title": "Threat-model a small application or home-lab service",
+          "url": "/lab-files/small-threat-model/",
+          "status": "planned",
+          "dependencies": ["network-address-path", "http-request-construction", "access-review"],
+          "evidence": {
+            "artifact": "I will retain a fictional data-flow and trust-boundary diagram plus a control worksheet citing each source, destination, configured network rule, supplied observation, Wi-Fi access type, service identity, resource-permission check, transport protection, asset, possible failure, control, missing evidence, uncertainty and next validation.",
+            "decision": "I will use only supplied synthetic settings and observations. I will distinguish configured-only paths from observed reachable or blocked paths, mark unrun checks for validation and retain conflicts. I will assess named identity, resource permission and TLS separately even when the path is blocked; shared Wi-Fi access is network access, not user identity or record permission. I will not scan, connect, change accounts or controls, run a live test or publish. A listed check will not prove operation, one path observation will not establish every path, and a helper or reference match will not prove isolation, safe access, cause, professional use, completion, mastery or independent assessment."
+          }
+        },
         {
           "id": "risk-register",
           "title": "Risk register",
