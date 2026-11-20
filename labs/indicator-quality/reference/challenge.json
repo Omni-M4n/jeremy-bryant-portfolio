@@ -1,16 +1,16 @@
 {
   "decisions": {
     "i1": "narrow-scope",
-    "i2": "seek-origin"
+    "i2": "seek-support"
   },
-  "observations": [
-    "i1: report=r1; source=direct; stated confidence=80; scope=shared-service; review=2026-01-15T00:00:00Z.",
-    "i2: report=r2; source=direct; stated confidence=unspecified; scope=single-host; review=2026-01-15T00:00:00Z."
-  ],
   "limitations": [
-    "All indicators and reports are fictional. No lookup, reputation check, block or external submission is performed.",
-    "A supplied confidence number is the report author opinion, not a measured probability or proof.",
-    "A repeated report is not independent corroboration. A shared service can serve unrelated users.",
-    "The seven-day review rule and 70 threshold are local teaching choices, not STIX requirements. This is not a STIX implementation."
+    "All indicator values, records, metadata and conflict flags are synthetic and supplied. No lookup, reputation check, blocking action, external submission or attribution is performed.",
+    "Source, confidence, scope, timestamps, expiry and conflict are supplied metadata; the helper does not verify provenance, source reliability, truth, independence or corroboration.",
+    "Each row is assessed independently; the helper does not link records across sources or decide that two records describe the same activity.",
+    "The seven-day review interval and 70 confidence threshold are local teaching choices, not STIX requirements or operational policy."
+  ],
+  "observations": [
+    "i1: value=192.0.2.20; type=ipv4; evidence_id=r1; observed_at=2026-01-10T00:00:00Z; reported_at=2026-01-11T00:00:00Z; valid_until=2026-01-20T00:00:00Z; as_of=2026-01-15T00:00:00Z; supplied conflict=false; source=direct; stated confidence=80; scope=shared-service; decision=narrow-scope; review_date=2026-01-15T00:00:00Z.",
+    "i2: value=relay.test; type=domain; evidence_id=r2; observed_at=2026-01-10T00:00:00Z; reported_at=2026-01-11T00:00:00Z; valid_until=2026-01-20T00:00:00Z; as_of=2026-01-15T00:00:00Z; supplied conflict=false; source=direct; stated confidence=unstated; scope=single-host; decision=seek-support; review_date=2026-01-15T00:00:00Z."
   ]
 }

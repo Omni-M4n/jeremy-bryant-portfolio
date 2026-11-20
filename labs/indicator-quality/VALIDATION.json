@@ -1,0 +1,99 @@
+{
+  "status": "Reviewed package materials; learner skill and independent performance have not been assessed.",
+  "checked_on": "2026-11-20",
+  "python_version": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64",
+  "isolated_unit_tests": {
+    "run": 30,
+    "passed": 30,
+    "skipped": 0,
+    "failed": 0,
+    "skip_reason": "No tests were skipped."
+  },
+  "references": {
+    "cases": 3,
+    "matched": 3,
+    "failed": 0,
+    "method": "Guided, changed and challenge outputs were compared with three separately stored fixed references regenerated only after the hardened rules and expected behavior were reviewed."
+  },
+  "shared_runtime_tests": {
+    "run": 15,
+    "passed": 15,
+    "skipped": 0,
+    "failed": 0,
+    "scope": "The shared envelope, worksheet, CLI and filesystem runtime tests passed; this package is outside the original twenty-package foundation release inventory."
+  },
+  "executed_commands": [
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "python -B test_lab.py",
+      "result": "30 tests run; 30 passed; 0 skipped; 0 failed."
+    },
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "python -B lab.py verify",
+      "result": "3 cases checked; 3 matched their fixed references."
+    },
+    {
+      "cwd": "labs",
+      "command": "python -B -m unittest test_foundation_runtime.py -v",
+      "result": "15 tests run; 15 passed; 0 skipped; 0 failed."
+    },
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "strace -f -qq -e trace=network -e signal=none -o /tmp/indicator-quality-tests-network.trace python -B test_lab.py",
+      "result": "The 30-test suite passed and the trace contained 0 network-syscall lines."
+    },
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "strace -f -qq -e trace=network -e signal=none -o /tmp/indicator-quality-verify-network.trace python -B lab.py verify",
+      "result": "All 3 references matched and the trace contained 0 network-syscall lines."
+    },
+    {
+      "cwd": "repository root",
+      "command": "wc -l /tmp/indicator-quality-tests-network.trace /tmp/indicator-quality-verify-network.trace",
+      "result": "Both trace files contained 0 lines; total 0."
+    },
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "sha256sum DRILLS.md README.md WORKED-EXAMPLE.md fixtures/challenge.json fixtures/changed.json fixtures/guided.json lab.py reference/challenge.json reference/changed.json reference/guided.json test_lab.py",
+      "result": "Produced the per-file source identities recorded below."
+    },
+    {
+      "cwd": "labs/indicator-quality",
+      "command": "sha256sum DRILLS.md README.md WORKED-EXAMPLE.md fixtures/challenge.json fixtures/changed.json fixtures/guided.json lab.py reference/challenge.json reference/changed.json reference/guided.json test_lab.py | sha256sum",
+      "result": "Produced aggregate SHA-256 bf3f51f443105c5a00a479fbc1edaca1d2a2a7ec1da0c9268dc09c6ecb766cd5."
+    }
+  ],
+  "source_identity": {
+    "algorithm": "SHA-256",
+    "scope": "Eleven package source files listed below, in the recorded order.",
+    "aggregate_method": "For each listed path in order, concatenate its lowercase SHA-256 hex digest, two ASCII spaces, its relative path and LF; SHA-256 that byte stream.",
+    "excluded": {
+      "VALIDATION.json": "The receipt is deliberately excluded so it does not self-hash."
+    },
+    "files": {
+      "DRILLS.md": "5115a22d21c7ab17f9627bcb94e00dd420e359725009e0173aaca9ed5192f57c",
+      "README.md": "03c739d3799f118cfa30a254912db975cdec4bbe311e7f4bc77c092f4ab490fe",
+      "WORKED-EXAMPLE.md": "d206f30716c2f9ee0dbc2dd227907fd8b0952aa3acebba6d06a3825003c54f70",
+      "fixtures/challenge.json": "69376713d05d2277f60b9b245600b9b11b7932103a7f174b5fc8a0182b097af9",
+      "fixtures/changed.json": "a6aa2465969269d15d7ffcad68098145dc70356919a3f15a5bdc1b0aeeb3ed66",
+      "fixtures/guided.json": "929e6321ba29b0be6f7191f4a3aad9631e1de8c63af44f2b5296bbc14c868345",
+      "lab.py": "20090580e0a63f978b9561e8795236f8fb3d9fbb4f93a13e8663ba88d76c78d8",
+      "reference/challenge.json": "46f5f3cbca4ed2577dc36bfe091cbb322fb18ad9448a68f0d92237107d20b84e",
+      "reference/changed.json": "83e4283f9e5b1e1f6b97b6dc24b838a85a99959fcc832451e872eb1a19a0cf22",
+      "reference/guided.json": "2fd726774ca0bbc6ae17ff4917fdbe2c0be264079a201597a495dc2f0963c1f2",
+      "test_lab.py": "0f53689d495cf38a80711d349d735a58cc2c75ef7fea9bc68c4682f2cc3b6ea0"
+    },
+    "aggregate_sha256": "bf3f51f443105c5a00a479fbc1edaca1d2a2a7ec1da0c9268dc09c6ecb766cd5"
+  },
+  "network_syscall_audit": {
+    "method": "strace -f -qq -e trace=network -e signal=none",
+    "test_trace_lines": 0,
+    "verify_trace_lines": 0,
+    "result": "Zero network syscalls were recorded for the isolated suite or fixed-reference verifier."
+  },
+  "execution_boundary": "The helper, isolated tests and verifier use only supplied synthetic JSON and Python standard-library code plus the repository's shared standard-library runtime. They perform no lookup, reputation check, blocking action, external submission or network request.",
+  "review_boundary": "This receipt validates package behavior, input rejection, output isolation and fixed references only. It does not show a learner attempt, establish factual completeness, or assess completion, mastery, professional use or independent performance.",
+  "summary_scope": "Package-only validation recorded on 2026-11-20; this is not a learner assessment."
+}

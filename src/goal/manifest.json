@@ -6,7 +6,7 @@
   "route_url": "/goal/",
   "source_plan": "/security-labs/summer-study-plan.json",
   "initial_status": "planned",
-  "lab_count": 57,
+  "lab_count": 58,
   "claim_boundary": {
     "statement": "I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.",
     "safe_scope": "I will use the fictional or dummy evidence and the safe boundaries stated in each lab.",
@@ -105,6 +105,17 @@
           "evidence": {
             "artifact": "I will retain my first choices, the supplied synthetic case and a message-triage note citing each message ID, the separate receiver trust-register entry, the accepted or rejected Authentication-Results record, From and expected-sender domains, Reply-To and link domains, SPF MAIL FROM, DKIM signing domain and DMARC result, plus each decision, discrepancy, uncertainty, next check, correction and help used.",
             "decision": "I will use only the package’s supplied decoded `.test` domains, Authentication-Results records and separate fictional receiver trust register. I will accept a result only when its record ID is registered and its `authserv-id` matches the trusted receiving relay; apply the package’s strict exact-domain alignment rule; and use the ordered labels for no trusted result, reported DMARC failure, unresolved authentication, authenticated domains with discrepancies and authenticated domains that still require content review. I will treat SPF, DKIM and DMARC values as supplied receiver outcomes, not results I independently derived from DNS or signature verification. I will keep domain authentication separate from a person’s identity, intent and message safety, and will not treat a differing expected-sender, Reply-To or link domain as proof of phishing. The lab performs no DNS query, signature validation, arbitrary-email parsing, ARC, relaxed-alignment, attachment or URL-content analysis. A helper or reference match establishes only bounded package behavior, not a live message’s authenticity, factual completeness, professional use, completion, mastery or independent assessment."
+          }
+        },
+        {
+          "id": "indicator-quality",
+          "title": "Assess indicator quality and expiry",
+          "url": "/lab-files/indicator-quality/",
+          "status": "planned",
+          "dependencies": ["dns-triage", "email-triage"],
+          "evidence": {
+            "artifact": "I will retain my first decisions, the supplied synthetic case and indicator register, and an indicator-review worksheet citing each record ID, value and type, unique evidence ID, observed, reported, valid-until and as-of timestamps, supplied conflict flag, source, stated confidence, scope, exact decision, review date, uncertainty, next support request, correction and help used.",
+            "decision": "I will use only the package’s supplied synthetic JSON, keep `case.json` authoritative and require its extracted-artifact object to remain empty. I will treat source, confidence, scope, timestamps, expiry and conflict as supplied metadata rather than verified provenance, reliability, truth, independence or corroboration, and I will keep the original source unknown unless it is separately supplied. I will assess each row independently and apply the first matching rule in this exact order: at or after `valid_until`, `review-expiry`; otherwise a true supplied conflict flag, `review-conflict`; otherwise copied provenance, unstated confidence or confidence below 70, `seek-support`; otherwise shared-service scope, `narrow-scope`; otherwise `retain-as-context`. I will set a `retain-as-context` review date to the earlier of `valid_until` or exactly seven days after `as_of`, including equality at seven days, and I will set every other review date to `as_of`. I will perform no lookup, reputation check, blocking action or external submission and will not infer maliciousness, safety, identity, ownership, intent, attribution, cause or authority to block. I will keep cross-source event linking and corroboration outside this exercise, and I will not treat a helper, shipped reference or matching label as factual completeness, professional use, completion, mastery or independent assessment."
           }
         },
         {

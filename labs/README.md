@@ -160,7 +160,7 @@ it needs. The study plan places these packages in the full learning route.
 | Extension | [Evaluate a detection against a labelled benign corpus](detection-corpus/README.md) | Move beyond one marker exercise to measure false positives/misses and justify a threshold change without fitting only the example. |
 | Core | [Investigate missing or delayed telemetry](logging-health/README.md) | Distinguish an apparently quiet system from a collection gap and decide whether a query can support a conclusion. |
 | Extension | [Work an end-to-end benign incident case](incident-case/README.md) | Combine separate lab skills into a defensible hypothesis, evidence requests and a final scoped conclusion. |
-| Core | [Assess indicator quality and expiry](indicator-quality/README.md) | Explain confidence, source reliability, scope and expiry instead of treating every listed indicator as malicious. |
+| Core | [Assess indicator quality and expiry](indicator-quality/README.md) | Apply supplied provenance, stated confidence, scope and expiry rules without treating metadata as verified truth or every indicator as malicious. |
 | Core | [Choose proportionate containment in a tabletop](containment-tabletop/README.md) | Balance evidence preservation, business impact, authority and reversibility when selecting the next action. |
 
 ### Forensics and recovery

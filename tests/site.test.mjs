@@ -1,6 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 const emailTriageArtifact='I will retain my first choices, the supplied synthetic case and a message-triage note citing each message ID, the separate receiver trust-register entry, the accepted or rejected Authentication-Results record, From and expected-sender domains, Reply-To and link domains, SPF MAIL FROM, DKIM signing domain and DMARC result, plus each decision, discrepancy, uncertainty, next check, correction and help used.';
 const emailTriageDecision='I will use only the package’s supplied decoded `.test` domains, Authentication-Results records and separate fictional receiver trust register. I will accept a result only when its record ID is registered and its `authserv-id` matches the trusted receiving relay; apply the package’s strict exact-domain alignment rule; and use the ordered labels for no trusted result, reported DMARC failure, unresolved authentication, authenticated domains with discrepancies and authenticated domains that still require content review. I will treat SPF, DKIM and DMARC values as supplied receiver outcomes, not results I independently derived from DNS or signature verification. I will keep domain authentication separate from a person’s identity, intent and message safety, and will not treat a differing expected-sender, Reply-To or link domain as proof of phishing. The lab performs no DNS query, signature validation, arbitrary-email parsing, ARC, relaxed-alignment, attachment or URL-content analysis. A helper or reference match establishes only bounded package behavior, not a live message’s authenticity, factual completeness, professional use, completion, mastery or independent assessment.';
+const indicatorQualityArtifact='I will retain my first decisions, the supplied synthetic case and indicator register, and an indicator-review worksheet citing each record ID, value and type, unique evidence ID, observed, reported, valid-until and as-of timestamps, supplied conflict flag, source, stated confidence, scope, exact decision, review date, uncertainty, next support request, correction and help used.';
+const indicatorQualityDecision='I will use only the package’s supplied synthetic JSON, keep `case.json` authoritative and require its extracted-artifact object to remain empty. I will treat source, confidence, scope, timestamps, expiry and conflict as supplied metadata rather than verified provenance, reliability, truth, independence or corroboration, and I will keep the original source unknown unless it is separately supplied. I will assess each row independently and apply the first matching rule in this exact order: at or after `valid_until`, `review-expiry`; otherwise a true supplied conflict flag, `review-conflict`; otherwise copied provenance, unstated confidence or confidence below 70, `seek-support`; otherwise shared-service scope, `narrow-scope`; otherwise `retain-as-context`. I will set a `retain-as-context` review date to the earlier of `valid_until` or exactly seven days after `as_of`, including equality at seven days, and I will set every other review date to `as_of`. I will perform no lookup, reputation check, blocking action or external submission and will not infer maliciousness, safety, identity, ownership, intent, attribution, cause or authority to block. I will keep cross-source event linking and corroboration outside this exercise, and I will not treat a helper, shipped reference or matching label as factual completeness, professional use, completion, mastery or independent assessment.';
 const httpHeaderArtifact='I will retain my first prediction, the supplied synthetic case and readable header excerpt, and a response-policy worksheet citing each response ID, scheme, HSTS `max-age`, `X-Content-Type-Options` value, CSP `frame-ancestors` value, Cache-Control directives, required session-cookie name, Secure and HttpOnly flags, SameSite value, exact decision and ordered gap tokens, reason, evidence references, uncertainty, next check, correction and help used.';
 const httpHeaderDecision='I will use only the package’s supplied synthetic saved-response fields and fictional application requirements; no browser, server or network will be used. I will require HTTPS and `nosniff` for every response; for an HTTPS response, require an HSTS `max-age` at least as large as the supplied minimum; for HTML, require the exact supplied `frame-ancestors` value; for private data, require `no-store`; and for a response requiring a session, require the exact case-sensitive named cookie with Secure, HttpOnly and the supplied SameSite value. I will report `https-required` rather than an additional HSTS gap for an HTTP response, and if the required cookie is absent I will report `session-cookie` without inventing missing attribute results. I will preserve the package’s stated gap order and treat repeated or unsupported rules, attributes or forms, duplicate singleton headers or cookie names, folded fields, control characters and empty values as input errors rather than safe results. I will keep this narrow parser and fictional policy separate from a browser’s full syntax and every real security requirement; unknown headers are ignored, unsupported syntax is refused, and the helper uses saved excerpts without testing browser enforcement, transport, a live site or application safety. A helper or reference match will establish only bounded package behavior and expected decision fields, not the quality of my reasoning, factual completeness, professional use, completion, mastery or independent assessment.';
 const scheduledTaskArtifact='I will retain my first choices, the supplied synthetic case and a scheduled-task change worksheet citing each task ID; the baseline, observed and approval daily time, configured run-as account and literal action string; the supplied approval reason; exact decision label; explanation; evidence references; alternative explanation; uncertainty; next check; correction and help used.';
@@ -45,9 +47,9 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   const goal=await readFile(new URL('../dist/goal/index.html',import.meta.url),'utf8');
   assert.match(goal,/<link rel="canonical" href="https:\/\/jeremy-bryant\.pages\.dev\/goal\/">/);
   assert.match(goal,/<meta name="robots" content="index, follow">/);
-  assert.match(goal,/I plan to work through 57 existing labs in dependency order/);
-  assert.match(goal,/29 beginner · 18 intermediate · 10 advanced/);
-  assert.match(goal,/Stage 1 · 29 labs · all planned/);
+  assert.match(goal,/I plan to work through 58 existing labs in dependency order/);
+  assert.match(goal,/30 beginner · 18 intermediate · 10 advanced/);
+  assert.match(goal,/Stage 1 · 30 labs · all planned/);
   assert.match(goal,/Stage 2 · 18 labs · all planned/);
   assert.match(goal,/Stage 3 · 10 labs · all planned/);
   assert.match(goal,/I will retain a synthetic packet worksheet that cites exact frames and matches each DNS question to any visible reply by endpoints, ports, DNS ID, name and type\./);
@@ -74,10 +76,14 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.equal(occurrenceCount(goal,'href="/lab-files/email-triage/"'),1);
   assert.ok(goalText.includes(emailTriageArtifact));
   assert.ok(goalText.includes(emailTriageDecision));
+  assert.match(goal,/07 · <a href="\/lab-files\/indicator-quality\/">Assess indicator quality and expiry<\/a>/);
+  assert.equal(occurrenceCount(goal,'href="/lab-files/indicator-quality/"'),1);
+  assert.ok(goalText.includes(indicatorQualityArtifact));
+  assert.ok(goalText.includes(indicatorQualityDecision));
   assert.equal(occurrenceCount(goal,'href="/lab-files/http-header-review/"'),1);
   assert.ok(goalText.includes(httpHeaderArtifact));
   assert.ok(goalText.includes(httpHeaderDecision));
-  assert.match(goal,/13 · <a href="\/lab-files\/vpn-routing-review\/">Review VPN routes and DNS scope<\/a>/);
+  assert.match(goal,/14 · <a href="\/lab-files\/vpn-routing-review\/">Review VPN routes and DNS scope<\/a>/);
   assert.match(goal,/I will retain synthetic before-and-after route maps and a separate DNS-path table citing each row ID, destination or name, address family, selected prefix or suffix rule, metric, resolver address, before-and-after path, stated intent, result, uncertainty and next check\./);
   assert.match(goal,/I will keep the optional VM comparison and any live path or query test explicitly marked unperformed and separate from the supplied evidence\./);
   assert.match(goal,/For each traffic destination, I will select the longest matching prefix in its address family and use the lowest metric only between equally specific routes\./);
@@ -93,7 +99,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/missing packets do not prove packet loss, firewall failure or server fault/);
   assert.match(goal,/an observed handshake does not prove application success/);
   assert.match(goal,/matching helper results do not prove professional use, completion or mastery/);
-  assert.match(goal,/15 · <a href="\/lab-files\/traffic-capture\/">Capture and explain your own traffic<\/a>/);
+  assert.match(goal,/16 · <a href="\/lab-files\/traffic-capture\/">Capture and explain your own traffic<\/a>/);
   assert.match(goal,/I will retain my own controlled loopback PCAP, exact capture and display filters, generator setup and logs, and a worksheet citing actual frame and TCP-stream numbers for one HTTP 200, one HTTP 404 and one failed connection\./);
   assert.match(goal,/use only the lab’s <code>127\.0\.0\.1<\/code> service and generated ports/);
   assert.match(goal,/generator and maintainer tests create local traffic and logs, not a PCAP/);
@@ -101,8 +107,8 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/mark capture pending and claim no Wireshark attempt/);
   assert.match(goal,/send no external traffic, install no software or change firewall or VM settings/);
   assert.match(goal,/not treat generated or test results as proof of completion, mastery, independent assessment or professional use/);
-  assert.match(goal,/24 · <a href="\/lab-files\/http-header-review\/">HTTP headers and cookies<\/a>/);
-  assert.match(goal,/25 · <a href="\/lab-files\/http-request-construction\/">Construct and trace an HTTP request<\/a>/);
+  assert.match(goal,/25 · <a href="\/lab-files\/http-header-review\/">HTTP headers and cookies<\/a>/);
+  assert.match(goal,/26 · <a href="\/lab-files\/http-request-construction\/">Construct and trace an HTTP request<\/a>/);
   assert.match(goal,/first prediction, supplied request plan and local loopback evidence record citing each method, raw target, <code>Content-Type<\/code> and <code>X-Note<\/code> value/);
   assert.match(goal,/fresh <code>127\.0\.0\.1<\/code> inspection service on a generated port/);
   assert.match(goal,/distinguish GET query data from POST form data; preserve repeated and empty values/);
@@ -111,7 +117,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/package checks, not evidence that I operated curl, a browser, Wireshark or a packet capture/);
   assert.match(goal,/not contact another host, expose or deploy the server, use real accounts or change security settings/);
   assert.match(goal,/not prove TLS, general HTTP correctness, production safety, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/08 · <a href="\/lab-files\/linux-permissions\/">Linux permissions<\/a>/);
+  assert.match(goal,/09 · <a href="\/lab-files\/linux-permissions\/">Linux permissions<\/a>/);
   assert.match(goal,/fictional Linux access worksheet citing the actor, groups, canonical paths, owner\/group\/other mode bits, selected permission class, required target bits, every ancestor search check, result, uncertainty and next check/);
   assert.match(goal,/select owner bits before group and other without falling back to a more permissive class/);
   assert.match(goal,/require search permission on every ancestor directory/);
@@ -120,7 +126,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/run no chmod or host inspection/);
   assert.match(goal,/ACLs, SELinux, capabilities, special bits, symbolic links, mount restrictions and deletion semantics outside scope/);
   assert.match(goal,/not treat a helper match as proof of real access, system safety, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/09 · <a href="\/lab-files\/ssh-config-review\/">SSH configuration review<\/a>/);
+  assert.match(goal,/10 · <a href="\/lab-files\/ssh-config-review\/">SSH configuration review<\/a>/);
   assert.match(goal,/fictional SSH configuration review citing the exact config lines, first effective value for each of six supported directives, ignored duplicates, baseline label, authentication-route result, uncertainty and next verification check/);
   assert.match(goal,/use only supplied synthetic text; accept plain keyword\/value pairs for the lab’s six directives; apply the first-value rule/);
   assert.match(goal,/keep missing settings unknown rather than assume version defaults/);
@@ -129,22 +135,22 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/read or change no host configuration; run no server, command or network test/);
   assert.match(goal,/keys, PAM, exposure and recovery remain unchecked/);
   assert.match(goal,/not treat a helper match as proof of secure configuration, usable access, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/16 · <a href="\/lab-files\/arp-dhcp-evidence\/">Read ARP and DHCP exchanges<\/a>/);
+  assert.match(goal,/17 · <a href="\/lab-files\/arp-dhcp-evidence\/">Read ARP and DHCP exchanges<\/a>/);
   assert.equal(occurrenceCount(goal,'href="/lab-files/arp-dhcp-evidence/"'),1);
   assert.ok(goalText.includes(arpDhcpArtifact));
   assert.ok(goalText.includes(arpDhcpDecision));
-  assert.match(goal,/17 · <a href="\/lab-files\/asset-discovery\/">Asset discovery and inventory<\/a>/);
+  assert.match(goal,/18 · <a href="\/lab-files\/asset-discovery\/">Asset discovery and inventory<\/a>/);
   assert.match(goal,/I will retain a saved-scan-to-inventory table with exact IP address, TCP port and XML references\./);
   assert.match(goal,/compare the supplied synthetic scan snapshot with the approved inventory/);
   assert.match(goal,/distinguish hosts not present, recorded down or unregistered and expected, missing or unexpected open TCP services/);
   assert.match(goal,/the offline helper does not run a scan/);
   assert.match(goal,/not treat one saved snapshot or a matching result as proof of ownership, vulnerability, malicious activity, current state, complete coverage, professional use, completion or mastery/);
-  assert.match(goal,/18 · <a href="\/lab-files\/vulnerability-prioritisation\/">Vulnerability prioritisation<\/a>/);
+  assert.match(goal,/19 · <a href="\/lab-files\/vulnerability-prioritisation\/">Vulnerability prioritisation<\/a>/);
   assert.match(goal,/fictional finding-priority queue with exact record and field references, impact, exposure, evidence-of-use, service-importance and confidence inputs, each four-part score, any overriding rule, uncertainty and the next owner check/);
   assert.match(goal,/apply only the supplied local rubric to supplied fictional findings: unverified evidence becomes investigate; supplied fictional observed-exploitation records become urgent; otherwise I will assign urgent, planned or routine by score/);
   assert.match(goal,/the rubric is not CVSS, queue labels do not set deadlines, proof of concept does not prove exploitation/);
   assert.match(goal,/helper matches do not prove a real vulnerability, real exploitation or current risk, professional use, completion or mastery/);
-  assert.match(goal,/19 · <a href="\/lab-files\/vulnerability-retest\/">Vulnerability retest<\/a>/);
+  assert.match(goal,/20 · <a href="\/lab-files\/vulnerability-retest\/">Vulnerability retest<\/a>/);
   assert.match(goal,/fictional retest record citing the exact before-and-after record and fields for target, port, method, role, time, observed result and positive-control result/);
   assert.match(goal,/use only supplied synthetic offline records; require a vulnerable baseline with a passed control/);
   assert.match(goal,/compare target case-insensitively and port, method and role exactly/);
@@ -152,65 +158,65 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/helper trusts the supplied observation and control fields/);
   assert.match(goal,/fixed covers only those conditions—not general safety or removal of every cause/);
   assert.match(goal,/send no traffic or change a system and will not treat a match as proof of a real fix, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/20 · <a href="\/lab-files\/dependency-review\/">Dependency review<\/a>/);
+  assert.match(goal,/21 · <a href="\/lab-files\/dependency-review\/">Dependency review<\/a>/);
   assert.match(goal,/fictional component\/advisory worksheet citing component IDs, package names, versions, scope, path evidence, advisory IDs, affected-range comparisons, uncertainty and the next check/);
   assert.match(goal,/compare each supplied stable three-part version numerically with every supplied exact-package \[introduced,fixed\) range/);
   assert.match(goal,/distinguish no supplied advisory from outside supplied ranges/);
   assert.match(goal,/separate build exposure from reachable, not-demonstrated and unknown runtime paths/);
   assert.match(goal,/offline exercise trusts the supplied inventory and path evidence and does not install packages, fetch live notices, resolve a full dependency chain, model ecosystem-specific version rules or test an exploit/);
   assert.match(goal,/Version, range and helper results do not prove exploitability, safety, professional use, completion or mastery/);
-  assert.match(goal,/21 · <a href="\/lab-files\/firewall-review\/">Firewall review<\/a>/);
-  assert.match(goal,/22 · <a href="\/lab-files\/tls-review\/">TLS certificate review<\/a>/);
+  assert.match(goal,/22 · <a href="\/lab-files\/firewall-review\/">Firewall review<\/a>/);
+  assert.match(goal,/23 · <a href="\/lab-files\/tls-review\/">TLS certificate review<\/a>/);
   assert.ok(goal.includes('I will retain a synthetic TLS certificate review worksheet citing each certificate ID, requested host, SAN list, evaluation time, not-before and not-after values, seconds remaining, supplied chain status, exact decision label, uncertainty and next trust check.'));
   assert.ok(goal.includes('I will use only the supplied offline certificate records. I will compare the requested host with exact or single-leftmost-label wildcard SANs case-insensitively; evaluate the inclusive validity interval at the supplied UTC time; calculate renewal due only while the certificate is valid; and keep hostname, time, supplied-chain and renewal findings separate. I will treat a reported verified chain as supplied evidence, not a signature or trust-chain check. The helper performs no network connection and checks no signatures, revocation, protocol versions, cipher suites, IP-address SANs or application safety. I will not treat a field or reference match as proof of a real site’s identity or trust, professional use, completion, mastery or independent assessment.'));
-  assert.match(goal,/33 · <a href="\/lab-files\/cloud-resource-lifecycle\/">Cloud resource lifecycle<\/a>/);
+  assert.match(goal,/34 · <a href="\/lab-files\/cloud-resource-lifecycle\/">Cloud resource lifecycle<\/a>/);
   assert.match(goal,/synthetic cloud-resource lifecycle worksheet citing exact resource IDs, owners, expiry and review flags, dependency arrows, retention holds, proposed teardown order, made-up residual daily cost units, budget-alert state, the approver needed for each proposed step and a later bill check/);
   assert.match(goal,/use only supplied offline records; identify missing ownership or expiry data; block proposed removal when a retention hold or remaining dependency applies/);
   assert.match(goal,/distinguish review or expiry from deletion approval, a budget alert from a spending cap, and a model-valid order or zero model cost from real deletion or stopped charges/);
   assert.match(goal,/run no cloud deletion commands and will not treat the exercise as proof of complete inventory, real removal, stopped spending, professional use, completion or mastery/);
-  assert.match(goal,/34 · <a href="\/lab-files\/iam-explicit-deny\/">IAM explicit deny<\/a>/);
-  assert.match(goal,/37 · <a href="\/lab-files\/encryption-key-recovery\/">Compare encryption, encoding, hashing and key recovery<\/a>/);
+  assert.match(goal,/35 · <a href="\/lab-files\/iam-explicit-deny\/">IAM explicit deny<\/a>/);
+  assert.match(goal,/38 · <a href="\/lab-files\/encryption-key-recovery\/">Compare encryption, encoding, hashing and key recovery<\/a>/);
   assert.match(goal,/trusted-baseline assumption, decisions, uncertainty and next checks/);
   assert.match(goal,/distinguish actual Base64 decoding and SHA-256 computation from fictional encryption and decryption receipts/);
   assert.match(goal,/not treat a key ID, replacement key, duplicate ciphertext or supplied success receipt as proof of recoverability/);
   assert.match(goal,/not claim real encryption, decryption, confidentiality, restore success, future recoverability, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/42 · <a href="\/lab-files\/file-type-triage\/">Identify file types beyond the extension<\/a>/);
+  assert.match(goal,/43 · <a href="\/lab-files\/file-type-triage\/">Identify file types beyond the extension<\/a>/);
   assert.ok(goalText.includes(fileTypeArtifact));
   assert.ok(goalText.includes(fileTypeDecision));
-  assert.match(goal,/43 · <a href="\/lab-files\/file-time-analysis\/">Interpret filesystem timestamps and copies<\/a>/);
+  assert.match(goal,/44 · <a href="\/lab-files\/file-time-analysis\/">Interpret filesystem timestamps and copies<\/a>/);
   assert.ok(goal.includes(fileTimeArtifact));
   assert.ok(goal.includes(fileTimeDecision));
-  assert.match(goal,/44 · <a href="\/lab-files\/deleted-file-recovery\/">Recover a deleted dummy file from a disposable image<\/a>/);
+  assert.match(goal,/45 · <a href="\/lab-files\/deleted-file-recovery\/">Recover a deleted dummy file from a disposable image<\/a>/);
   assert.ok(goalText.includes(deletedFileArtifact));
   assert.ok(goalText.includes(deletedFileDecision));
-  assert.match(goal,/45 · <a href="\/lab-files\/browser-artifacts\/">Reconstruct a benign browsing session from a lab profile<\/a>/);
+  assert.match(goal,/46 · <a href="\/lab-files\/browser-artifacts\/">Reconstruct a benign browsing session from a lab profile<\/a>/);
   assert.ok(goal.includes('I will retain my first prediction, the supplied synthetic case, the practical receipt with source SHA-256 values before and after, the copy-unchanged result, and a timeline citing each event ID, kind, UTC time, reserved <code>.test</code> URL, session, state and byte counts, plus my conclusion, uncertainty and next check.'));
   assert.ok(goal.includes('I will use only the package’s supplied synthetic scenarios and bounded local operation: create the made-up SQLite database in a fresh lab folder, copy it, open the copy read-only and use only <code>SELECT</code> queries. I will link records only when URL and session match and the history record is no later than the other record and within 60 seconds; call a download complete only when its state is complete and received bytes equal expected bytes; and keep stored records separate from proof of who used the browser, page attention or whether a downloaded file still exists. I will state that this is a fictional schema with explicit UTC text, not a Chrome or Firefox profile parser. I will use no real profile, account, credential, device or target; live database/WAL acquisition, incognito inspection and browser-specific timestamp conversion will remain unperformed. Missing history may reflect deletion, private browsing, collection gaps or no visit. Hash matches, reference matches and helper tests establish only bounded byte preservation and package behavior, not factual completeness, professional use, completion, mastery or independent assessment.'));
-  assert.match(goal,/47 · <a href="\/lab-files\/data-classification\/">Data classification<\/a>/);
+  assert.match(goal,/48 · <a href="\/lab-files\/data-classification\/">Data classification<\/a>/);
   assert.match(goal,/fictional data-handling register citing exact record and field references, owner and purpose, fields to keep or leave out, handling label, storage and reader rules, retention and hold state, sharing decision, one proposed exception, and the stated scope of each disposal receipt/);
   assert.match(goal,/apply only supplied synthetic records and invented local rules; treat a hold as overriding age/);
   assert.match(goal,/distinguish disposal due from authorised and verified deletion, and listed-copy coverage from erasure/);
   assert.match(goal,/mark absent authority, date, method and checks as not supplied; and label exceptions proposed, not approved/);
   assert.match(goal,/helper trusts the structured disposal field rather than verifying receipt prose/);
   assert.match(goal,/perform no deletion, sharing or live test and will not treat results as legal advice or proof of real deletion, control effectiveness, professional use, completion or mastery/);
-  assert.match(goal,/48 · <a href="\/lab-files\/small-threat-model\/">Threat-model a small application or home-lab service<\/a>/);
-  assert.match(goal,/49 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
+  assert.match(goal,/49 · <a href="\/lab-files\/small-threat-model\/">Threat-model a small application or home-lab service<\/a>/);
+  assert.match(goal,/50 · <a href="\/lab-files\/risk-register\/">Risk register<\/a>/);
   assert.match(goal,/fictional GRC decision pack containing written scope, a risk register with exact evidence IDs, a control-evidence matrix, a pending exception record, a challenge log and a sanitized decision report/);
   assert.match(goal,/apply only the lab’s local 1–3 teaching rubric to the supplied fictional case/);
   assert.match(goal,/separate events and plausible harms from confirmed facts/);
   assert.match(goal,/distinguish proposed controls and projected residual risk from checked operation/);
   assert.match(goal,/keep acceptance pending when authority, threshold, obligation or approval is not supplied/);
   assert.match(goal,/perform no live action and will not treat helper matches, a worked reference or framework mapping as proof of a real incident, control effectiveness, legal compliance, professional use, completion, mastery or independent assessment/);
-  assert.match(goal,/50 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
-  assert.match(goal,/51 · <a href="\/lab-files\/scheduled-task-review\/">Scheduled task change review<\/a>/);
+  assert.match(goal,/51 · <a href="\/lab-files\/endpoint-triage\/">Endpoint triage<\/a>/);
+  assert.match(goal,/52 · <a href="\/lab-files\/scheduled-task-review\/">Scheduled task change review<\/a>/);
   assert.equal(occurrenceCount(goal,'href="/lab-files/scheduled-task-review/"'),1);
   assert.ok(goalText.includes(scheduledTaskArtifact));
   assert.ok(goalText.includes(scheduledTaskDecision));
-  assert.match(goal,/52 · <a href="\/lab-files\/cross-source-corroboration\/">Resolve a disagreement between two evidence sources<\/a>/);
+  assert.match(goal,/53 · <a href="\/lab-files\/cross-source-corroboration\/">Resolve a disagreement between two evidence sources<\/a>/);
   assert.equal(occurrenceCount(goal,'href="/lab-files/cross-source-corroboration/"'),1);
   assert.ok(goalText.includes(crossSourceArtifact));
   assert.ok(goalText.includes(crossSourceDecision));
-  assert.match(goal,/57 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
+  assert.match(goal,/58 · <a href="\/lab-files\/incident-communications\/">Incident communications<\/a>/);
   assert.match(goal,/They do not describe my current ability\./);
   assert.match(goal,/I am publishing a learning intention and a route through existing practice materials\./);
   assert.match(goal,/I am not claiming that I have completed these labs, mastered their topics or used these methods in a professional role\./);
@@ -219,7 +225,7 @@ test('goal route publishes indexable metadata and first-person claim boundaries'
   assert.match(goal,/Helper checks can compare formats and expected decisions, but they cannot judge the quality of my reasoning or prove independent skill\./);
   assert.match(goal,/The route is a plan, not a credential, job history or completion record\./);
 });
-test('goal manifest is a 57-lab planned route with valid ordered dependencies',async()=>{
+test('goal manifest is a 58-lab planned route with valid ordered dependencies',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   const registry=JSON.parse(await readFile(new URL('../labs/release-catalog.json',import.meta.url),'utf8'));
   const studyPlan=JSON.parse(await readFile(new URL('../labs/SUMMER-STUDY-PLAN.json',import.meta.url),'utf8'));
@@ -228,7 +234,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   assert.equal(manifest.route_url,'/goal/');
   assert.equal(manifest.source_plan,'/security-labs/summer-study-plan.json');
   assert.equal(manifest.initial_status,'planned');
-  assert.equal(manifest.lab_count,57);
+  assert.equal(manifest.lab_count,58);
   assert.equal(manifest.claim_boundary.statement,'I am publishing a learning intention and an evidence route. I am not claiming completion, mastery, a credential or professional experience.');
   assert.equal(manifest.claim_boundary.safe_scope,'I will use the fictional or dummy evidence and the safe boundaries stated in each lab.');
   assert.equal(manifest.claim_boundary.tool_limit,'A matching helper result can check an expected decision or format; it cannot judge my reasoning or prove independent skill.');
@@ -242,7 +248,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   assert.ok(typeof manifest.review_gate.unavailable_reviewer==='string'&&manifest.review_gate.unavailable_reviewer.trim().length>0);
   assert.ok(Array.isArray(manifest.stages));
   assert.deepEqual(manifest.stages.map(stage=>stage.id),['beginner','intermediate','advanced']);
-  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[29,18,10]);
+  assert.deepEqual(manifest.stages.map(stage=>stage.labs.length),[30,18,10]);
   const labs=manifest.stages.flatMap(stage=>{
     assert.match(stage.id,/^[a-z][a-z0-9-]*$/);
     for(const field of ['title','complexity','mastery_note']) assert.ok(typeof stage[field]==='string'&&stage[field].trim().length>0);
@@ -253,7 +259,8 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   assert.equal(labs.length,manifest.lab_count);
   const ids=labs.map(lab=>lab.id);
   assert.deepEqual(ids,[
-    'rules-of-engagement','shell-troubleshooting','isolated-lab-workbench','dns-triage','dns-cache-records','email-triage','access-review','linux-permissions','ssh-config-review','login-triage','timeline-analysis','network-address-path','vpn-routing-review','tcp-handshake','traffic-capture','arp-dhcp-evidence','asset-discovery','vulnerability-prioritisation','vulnerability-retest','dependency-review','firewall-review','tls-review','http-triage','http-header-review','http-request-construction','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle','mfa-review',
+    'rules-of-engagement','shell-troubleshooting','isolated-lab-workbench','dns-triage','dns-cache-records','email-triage','indicator-quality','access-review','linux-permissions','ssh-config-review','login-triage','timeline-analysis','network-address-path','vpn-routing-review','tcp-handshake','traffic-capture','arp-dhcp-evidence','asset-discovery','vulnerability-prioritisation','vulnerability-retest','dependency-review','firewall-review','tls-review','http-triage','http-header-review','http-request-construction','file-integrity','backup-verification','cloud-storage-review','identity-lifecycle',
+    'mfa-review',
     'cloud-audit-triage','shared-responsibility','cloud-resource-lifecycle','iam-explicit-deny','temporary-credentials','cloud-network-path','encryption-key-recovery','log-ingestion','logging-health','restore-drill','evidence-custody','file-type-triage','file-time-analysis','deleted-file-recovery','browser-artifacts','secret-handling','data-classification',
     'small-threat-model','risk-register','endpoint-triage','scheduled-task-review','cross-source-corroboration','alert-correlation','soc-query-workbook','incident-case','containment-tabletop','incident-communications'
   ]);
@@ -263,18 +270,30 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   assert.equal(ids.indexOf('email-triage'),5);
   assert.equal(manifest.stages[0].labs.indexOf(emailTriage),5);
   assert.equal(ids.indexOf('email-triage'),ids.indexOf('dns-cache-records')+1);
-  assert.equal(ids.indexOf('access-review'),ids.indexOf('email-triage')+1);
+  assert.equal(ids.indexOf('indicator-quality'),ids.indexOf('email-triage')+1);
   assert.equal(emailTriage?.title,'Email identity and message triage');
   assert.equal(emailTriage?.url,'/lab-files/email-triage/');
   assert.equal(emailTriage?.status,'planned');
   assert.deepEqual(emailTriage?.dependencies,['dns-triage']);
   assert.equal(emailTriage?.evidence.artifact,emailTriageArtifact);
   assert.equal(emailTriage?.evidence.decision,emailTriageDecision);
+  const indicatorQualityLabs=labs.filter(lab=>lab.id==='indicator-quality');
+  assert.equal(indicatorQualityLabs.length,1);
+  const indicatorQuality=indicatorQualityLabs[0];
+  assert.equal(ids.indexOf('indicator-quality'),6);
+  assert.equal(manifest.stages[0].labs.indexOf(indicatorQuality),6);
+  assert.equal(ids.indexOf('access-review'),ids.indexOf('indicator-quality')+1);
+  assert.equal(indicatorQuality?.title,'Assess indicator quality and expiry');
+  assert.equal(indicatorQuality?.url,'/lab-files/indicator-quality/');
+  assert.equal(indicatorQuality?.status,'planned');
+  assert.deepEqual(indicatorQuality?.dependencies,['dns-triage','email-triage']);
+  assert.equal(indicatorQuality?.evidence.artifact,indicatorQualityArtifact);
+  assert.equal(indicatorQuality?.evidence.decision,indicatorQualityDecision);
   const httpHeaderLabs=labs.filter(lab=>lab.id==='http-header-review');
   assert.equal(httpHeaderLabs.length,1);
   const httpHeader=httpHeaderLabs[0];
-  assert.equal(ids.indexOf('http-header-review'),23);
-  assert.equal(manifest.stages[0].labs.indexOf(httpHeader),23);
+  assert.equal(ids.indexOf('http-header-review'),24);
+  assert.equal(manifest.stages[0].labs.indexOf(httpHeader),24);
   assert.equal(ids.indexOf('http-header-review'),ids.indexOf('http-triage')+1);
   assert.equal(ids.indexOf('http-request-construction'),ids.indexOf('http-header-review')+1);
   assert.equal(httpHeader?.title,'HTTP headers and cookies');
@@ -286,7 +305,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const encryptionKeyLabs=labs.filter(lab=>lab.id==='encryption-key-recovery');
   assert.equal(encryptionKeyLabs.length,1);
   const encryptionKeyRecovery=encryptionKeyLabs[0];
-  assert.equal(ids.indexOf('encryption-key-recovery'),36);
+  assert.equal(ids.indexOf('encryption-key-recovery'),37);
   assert.equal(manifest.stages[1].labs.indexOf(encryptionKeyRecovery),7);
   assert.equal(ids.indexOf('encryption-key-recovery'),ids.indexOf('cloud-network-path')+1);
   assert.equal(ids.indexOf('log-ingestion'),ids.indexOf('encryption-key-recovery')+1);
@@ -301,7 +320,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const fileTypeLabs=labs.filter(lab=>lab.id==='file-type-triage');
   assert.equal(fileTypeLabs.length,1);
   const fileType=fileTypeLabs[0];
-  assert.equal(ids.indexOf('file-type-triage'),41);
+  assert.equal(ids.indexOf('file-type-triage'),42);
   assert.equal(manifest.stages[1].labs.indexOf(fileType),12);
   assert.equal(ids.indexOf('file-type-triage'),ids.indexOf('evidence-custody')+1);
   assert.equal(ids.indexOf('file-time-analysis'),ids.indexOf('file-type-triage')+1);
@@ -314,7 +333,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const fileTimeLabs=labs.filter(lab=>lab.id==='file-time-analysis');
   assert.equal(fileTimeLabs.length,1);
   const fileTime=fileTimeLabs[0];
-  assert.equal(ids.indexOf('file-time-analysis'),42);
+  assert.equal(ids.indexOf('file-time-analysis'),43);
   assert.equal(manifest.stages[1].labs.indexOf(fileTime),13);
   assert.equal(ids.indexOf('deleted-file-recovery'),ids.indexOf('file-time-analysis')+1);
   assert.equal(fileTime?.title,'Interpret filesystem timestamps and copies');
@@ -326,7 +345,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const deletedFileLabs=labs.filter(lab=>lab.id==='deleted-file-recovery');
   assert.equal(deletedFileLabs.length,1);
   const deletedFile=deletedFileLabs[0];
-  assert.equal(ids.indexOf('deleted-file-recovery'),43);
+  assert.equal(ids.indexOf('deleted-file-recovery'),44);
   assert.equal(manifest.stages[1].labs.indexOf(deletedFile),14);
   assert.equal(ids.indexOf('browser-artifacts'),ids.indexOf('deleted-file-recovery')+1);
   assert.equal(deletedFile?.title,'Recover a deleted dummy file from a disposable image');
@@ -338,7 +357,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const browserArtifactLabs=labs.filter(lab=>lab.id==='browser-artifacts');
   assert.equal(browserArtifactLabs.length,1);
   const browserArtifacts=browserArtifactLabs[0];
-  assert.equal(ids.indexOf('browser-artifacts'),44);
+  assert.equal(ids.indexOf('browser-artifacts'),45);
   assert.equal(manifest.stages[1].labs.indexOf(browserArtifacts),15);
   assert.equal(ids.indexOf('secret-handling'),ids.indexOf('browser-artifacts')+1);
   assert.equal(browserArtifacts?.title,'Reconstruct a benign browsing session from a lab profile');
@@ -423,7 +442,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const smallThreatModels=labs.filter(lab=>lab.id==='small-threat-model');
   assert.equal(smallThreatModels.length,1);
   const smallThreatModel=smallThreatModels[0];
-  assert.equal(ids.indexOf('small-threat-model'),47);
+  assert.equal(ids.indexOf('small-threat-model'),48);
   assert.equal(ids.indexOf('risk-register'),ids.indexOf('small-threat-model')+1);
   assert.equal(smallThreatModel?.title,'Threat-model a small application or home-lab service');
   assert.equal(smallThreatModel?.url,'/lab-files/small-threat-model/');
@@ -446,13 +465,13 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   assert.match(riskRegister?.evidence.decision,/perform no live action/);
   assert.match(riskRegister?.evidence.decision,/not treat helper matches, a worked reference or framework mapping as proof of a real incident, control effectiveness, legal compliance, professional use, completion, mastery or independent assessment/);
   const endpointTriage=labs.find(lab=>lab.id==='endpoint-triage');
-  assert.equal(ids.indexOf('endpoint-triage'),49);
+  assert.equal(ids.indexOf('endpoint-triage'),50);
   assert.equal(manifest.stages[2].labs.indexOf(endpointTriage),2);
   assert.deepEqual(endpointTriage?.dependencies,['login-triage']);
   const scheduledTaskLabs=labs.filter(lab=>lab.id==='scheduled-task-review');
   assert.equal(scheduledTaskLabs.length,1);
   const scheduledTask=scheduledTaskLabs[0];
-  assert.equal(ids.indexOf('scheduled-task-review'),50);
+  assert.equal(ids.indexOf('scheduled-task-review'),51);
   assert.equal(manifest.stages[2].labs.indexOf(scheduledTask),3);
   assert.equal(ids.indexOf('scheduled-task-review'),ids.indexOf('endpoint-triage')+1);
   assert.equal(scheduledTask?.title,'Scheduled task change review');
@@ -464,7 +483,7 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const crossSourceLabs=labs.filter(lab=>lab.id==='cross-source-corroboration');
   assert.equal(crossSourceLabs.length,1);
   const crossSource=crossSourceLabs[0];
-  assert.equal(ids.indexOf('cross-source-corroboration'),51);
+  assert.equal(ids.indexOf('cross-source-corroboration'),52);
   assert.equal(manifest.stages[2].labs.indexOf(crossSource),4);
   assert.equal(ids.indexOf('cross-source-corroboration'),ids.indexOf('scheduled-task-review')+1);
   assert.equal(ids.indexOf('alert-correlation'),ids.indexOf('cross-source-corroboration')+1);
@@ -518,8 +537,8 @@ test('goal manifest is a 57-lab planned route with valid ordered dependencies',a
   const arpDhcpLabs=labs.filter(lab=>lab.id==='arp-dhcp-evidence');
   assert.equal(arpDhcpLabs.length,1);
   const arpDhcp=arpDhcpLabs[0];
-  assert.equal(ids.indexOf('arp-dhcp-evidence'),15);
-  assert.equal(manifest.stages[0].labs.indexOf(arpDhcp),15);
+  assert.equal(ids.indexOf('arp-dhcp-evidence'),16);
+  assert.equal(manifest.stages[0].labs.indexOf(arpDhcp),16);
   assert.equal(ids.indexOf('arp-dhcp-evidence'),ids.indexOf('traffic-capture')+1);
   assert.equal(ids.indexOf('asset-discovery'),ids.indexOf('arp-dhcp-evidence')+1);
   assert.equal(arpDhcp?.title,'Read ARP and DHCP exchanges');
@@ -665,7 +684,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   const manifest=JSON.parse(await readFile(new URL('../dist/goal/manifest.json',import.meta.url),'utf8'));
   for(const lab of manifest.stages.flatMap(stage=>stage.labs)) assert.match(goal,new RegExp(`href="\\/lab-files\\/${lab.id}\\/"`));
   for(const page of [home,labs,library]) assert.match(page,/href="\/goal\/"/);
-  assert.match(home,/I will work through 57 mapped labs/);
+  assert.match(home,/I will work through 58 mapped labs/);
   assert.match(readme,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
   assert.match(readme,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/docs\/wiki-cybersecurity-and-cloud-goal\.md/);
@@ -673,8 +692,8 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wiki,/docs\/cyber-cloud-learning-goal\.md/);
   assert.match(readme,/I will use the prepared \[goal source note\]/);
   assert.doesNotMatch(readme,/\[public goal page\]/);
-  assert.match(wiki,/prepared \[learning goal and planned 57-lab route\]/);
-  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 57 existing labs/);
+  assert.match(wiki,/prepared \[learning goal and planned 58-lab route\]/);
+  assert.match(wikiGoal,/prepared, \*\*planned\*\* route through 58 existing labs/);
   assert.equal(occurrenceCount(goalDoc,'[Use shell commands for read-only troubleshooting](/lab-files/shell-troubleshooting/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'shell-troubleshooting ('),1);
   for(const page of [goalDoc,wikiGoal]){
@@ -685,18 +704,25 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/HTTP 200 with exact `BASELINE\\n` body on `127\.0\.0\.1` and refusal after stop/);
   assert.match(goalDoc,/\| 2 \| \[Use shell commands for read-only troubleshooting\]\(\/lab-files\/shell-troubleshooting\/\)/);
   assert.match(goalDoc,/\| 3 \| \[Disposable lab workbench — supplied evidence\]\(\/lab-files\/isolated-lab-workbench\/\)/);
-  assert.match(goalDoc,/\| 15 \| \[Capture and explain your own traffic\]\(\/lab-files\/traffic-capture\/\)/);
-  assert.match(goalDoc,/\| 16 \| \[Read ARP and DHCP exchanges\]\(\/lab-files\/arp-dhcp-evidence\/\)/);
+  assert.match(goalDoc,/\| 7 \| \[Assess indicator quality and expiry\]\(\/lab-files\/indicator-quality\/\)/);
+  assert.equal(occurrenceCount(goalDoc,'[Assess indicator quality and expiry](/lab-files/indicator-quality/)'),1);
+  assert.equal(occurrenceCount(wikiGoal,'indicator-quality ('),1);
+  for(const page of [goalDoc,wikiGoal]){
+    assert.equal(occurrenceCount(page,indicatorQualityArtifact),1);
+    assert.equal(occurrenceCount(page,indicatorQualityDecision),1);
+  }
+  assert.match(goalDoc,/\| 16 \| \[Capture and explain your own traffic\]\(\/lab-files\/traffic-capture\/\)/);
+  assert.match(goalDoc,/\| 17 \| \[Read ARP and DHCP exchanges\]\(\/lab-files\/arp-dhcp-evidence\/\)/);
   assert.equal(occurrenceCount(goalDoc,'[Read ARP and DHCP exchanges](/lab-files/arp-dhcp-evidence/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'arp-dhcp-evidence ('),1);
   for(const page of [goalDoc,wikiGoal]){
     assert.equal(occurrenceCount(page,arpDhcpArtifact),1);
     assert.equal(occurrenceCount(page,arpDhcpDecision),1);
   }
-  assert.match(goalDoc,/\| 22 \| \[TLS certificate review\]\(\/lab-files\/tls-review\/\)/);
+  assert.match(goalDoc,/\| 23 \| \[TLS certificate review\]\(\/lab-files\/tls-review\/\)/);
   assert.ok(goalDoc.includes('I will retain a synthetic TLS certificate review worksheet citing each certificate ID, requested host, SAN list, evaluation time, not-before and not-after values, seconds remaining, supplied chain status, exact decision label, uncertainty and next trust check. I will use only the supplied offline certificate records. I will compare the requested host with exact or single-leftmost-label wildcard SANs case-insensitively; evaluate the inclusive validity interval at the supplied UTC time; calculate renewal due only while the certificate is valid; and keep hostname, time, supplied-chain and renewal findings separate. I will treat a reported verified chain as supplied evidence, not a signature or trust-chain check. The helper performs no network connection and checks no signatures, revocation, protocol versions, cipher suites, IP-address SANs or application safety. I will not treat a field or reference match as proof of a real site’s identity or trust, professional use, completion, mastery or independent assessment.'));
-  assert.match(goalDoc,/\| 24 \| \[HTTP headers and cookies\]\(\/lab-files\/http-header-review\/\)/);
-  assert.match(goalDoc,/\| 25 \| \[Construct and trace an HTTP request\]\(\/lab-files\/http-request-construction\/\)/);
+  assert.match(goalDoc,/\| 25 \| \[HTTP headers and cookies\]\(\/lab-files\/http-header-review\/\)/);
+  assert.match(goalDoc,/\| 26 \| \[Construct and trace an HTTP request\]\(\/lab-files\/http-request-construction\/\)/);
   assert.equal(occurrenceCount(goalDoc,'[HTTP headers and cookies](/lab-files/http-header-review/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'http-header-review ('),1);
   for(const page of [goalDoc,wikiGoal]){
@@ -717,6 +743,7 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/calculate remaining life as `max\(0, receipt time \+ TTL − query time\)`/);
   assert.match(wikiGoal,/dns-cache-records → dns-triage/);
   assert.match(wikiGoal,/email-triage → dns-triage/);
+  assert.match(wikiGoal,/indicator-quality → dns-triage, email-triage/);
   assert.equal(occurrenceCount(goalDoc,'[Email identity and message triage](/lab-files/email-triage/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'email-triage ('),1);
   for(const page of [goalDoc,wikiGoal]){
@@ -756,16 +783,16 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.ok(intermediateLine.indexOf('encryption-key-recovery (')<intermediateLine.indexOf('log-ingestion (import and rejection reconciliation)'));
   assert.doesNotMatch(wikiGoal,/Within the Intermediate stage/);
   assert.match(wikiGoal,/encryption-key-recovery → file-integrity/);
-  assert.match(goalDoc,/\| 37 \| \[Compare encryption, encoding, hashing and key recovery\]\(\/lab-files\/encryption-key-recovery\/\)/);
+  assert.match(goalDoc,/\| 38 \| \[Compare encryption, encoding, hashing and key recovery\]\(\/lab-files\/encryption-key-recovery\/\)/);
   assert.match(wikiGoal,/evidence-custody \(dummy-file evidence register and copy receipt\); file-type-triage \(I will retain my first prediction and decisions/);
   assert.match(wikiGoal,/file-type-triage → file-integrity, shell-troubleshooting/);
   assert.match(wikiGoal,/file-time-analysis → timeline-analysis, evidence-custody/);
   assert.match(wikiGoal,/deleted-file-recovery → evidence-custody, file-type-triage, isolated-lab-workbench/);
   assert.match(wikiGoal,/browser-artifacts → timeline-analysis, evidence-custody/);
-  assert.match(goalDoc,/\| 42 \| \[Identify file types beyond the extension\]\(\/lab-files\/file-type-triage\/\)/);
-  assert.match(goalDoc,/\| 43 \| \[Interpret filesystem timestamps and copies\]\(\/lab-files\/file-time-analysis\/\)/);
-  assert.match(goalDoc,/\| 44 \| \[Recover a deleted dummy file from a disposable image\]\(\/lab-files\/deleted-file-recovery\/\)/);
-  assert.match(goalDoc,/\| 45 \| \[Reconstruct a benign browsing session from a lab profile\]\(\/lab-files\/browser-artifacts\/\)/);
+  assert.match(goalDoc,/\| 43 \| \[Identify file types beyond the extension\]\(\/lab-files\/file-type-triage\/\)/);
+  assert.match(goalDoc,/\| 44 \| \[Interpret filesystem timestamps and copies\]\(\/lab-files\/file-time-analysis\/\)/);
+  assert.match(goalDoc,/\| 45 \| \[Recover a deleted dummy file from a disposable image\]\(\/lab-files\/deleted-file-recovery\/\)/);
+  assert.match(goalDoc,/\| 46 \| \[Reconstruct a benign browsing session from a lab profile\]\(\/lab-files\/browser-artifacts\/\)/);
   assert.equal(occurrenceCount(goalDoc,'[Identify file types beyond the extension](/lab-files/file-type-triage/)'),1);
   assert.equal(occurrenceCount(goalDoc,'[Interpret filesystem timestamps and copies](/lab-files/file-time-analysis/)'),1);
   assert.equal(occurrenceCount(goalDoc,'[Recover a deleted dummy file from a disposable image](/lab-files/deleted-file-recovery/)'),1);
@@ -793,11 +820,11 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/small-threat-model → network-address-path, http-request-construction, access-review/);
   assert.match(wikiGoal,/risk-register \(I will retain a fictional GRC decision pack containing written scope/);
   assert.match(wikiGoal,/risk-register → vulnerability-prioritisation, data-classification/);
-  assert.match(goalDoc,/\| 50 \| \[Endpoint triage\]\(\/lab-files\/endpoint-triage\/\)/);
-  assert.match(goalDoc,/\| 51 \| \[Scheduled task change review\]\(\/lab-files\/scheduled-task-review\/\)/);
-  assert.match(goalDoc,/\| 52 \| \[Resolve a disagreement between two evidence sources\]\(\/lab-files\/cross-source-corroboration\/\)/);
-  assert.match(goalDoc,/\| 53 \| \[Alert correlation\]\(\/lab-files\/alert-correlation\/\)/);
-  assert.match(goalDoc,/\| 57 \| \[Incident communications\]\(\/lab-files\/incident-communications\/\)/);
+  assert.match(goalDoc,/\| 51 \| \[Endpoint triage\]\(\/lab-files\/endpoint-triage\/\)/);
+  assert.match(goalDoc,/\| 52 \| \[Scheduled task change review\]\(\/lab-files\/scheduled-task-review\/\)/);
+  assert.match(goalDoc,/\| 53 \| \[Resolve a disagreement between two evidence sources\]\(\/lab-files\/cross-source-corroboration\/\)/);
+  assert.match(goalDoc,/\| 54 \| \[Alert correlation\]\(\/lab-files\/alert-correlation\/\)/);
+  assert.match(goalDoc,/\| 58 \| \[Incident communications\]\(\/lab-files\/incident-communications\/\)/);
   assert.equal(occurrenceCount(goalDoc,'[Scheduled task change review](/lab-files/scheduled-task-review/)'),1);
   assert.equal(occurrenceCount(wikiGoal,'scheduled-task-review ('),1);
   for(const page of [goalDoc,wikiGoal]){
@@ -812,11 +839,13 @@ test('goal route and surrounding pages provide the expected wayfinding',async()=
   assert.match(wikiGoal,/scheduled-task-review → endpoint-triage/);
   assert.match(wikiGoal,/cross-source-corroboration → evidence-custody, file-time-analysis, logging-health, timeline-analysis, http-triage, endpoint-triage/);
   for(const page of [readme,wiki,goalDoc,wikiGoal]){
-    assert.match(page,/On 20 November 2026, I verified the current 57-lab route \(29\s+Beginner, 18 Intermediate and 10 Advanced\)/);
+    assert.match(page,/On 20 November 2026, I verified the former 57-lab snapshot \(29\s+Beginner, 18 Intermediate and 10 Advanced\)/);
     assert.match(page,/https:\/\/jeremy-bryant\.pages\.dev\/goal\//);
     assert.match(page,/https:\/\/jeremy-bryant\.pages\.dev\/goal\/manifest\.json/);
     assert.match(page,/for content\s+commit `feb9cb466cb7bd1ada5d7b3a198970a8c1656331`/);
+    assert.match(page,/That check confirms site\s+availability for the former snapshot only; it does not verify this current\s+58-lab route\./);
+    assert.match(page,/I will replace this pre-deployment receipt only after the current\s+route is successfully deployed and separately checked live\./);
     assert.match(page,/I am keeping every\s+lab\s+\*\*Planned\*\*, and I am not claiming completion or mastery\./);
-    assert.doesNotMatch(page,/former 56-lab snapshot|pre-deployment receipt|ec8a00c3cafc67597108a48c8675e0143d107991/);
+    assert.doesNotMatch(page,/former 56-lab snapshot|ec8a00c3cafc67597108a48c8675e0143d107991/);
   }
 });

@@ -794,7 +794,7 @@
       "kind": "core",
       "group": "Logs, SOC and incident response",
       "title": "Assess indicator quality and expiry",
-      "summary": "Explain confidence, source reliability, scope and expiry instead of treating every listed indicator as malicious.",
+      "summary": "Apply supplied provenance, stated confidence, scope and expiry rules without treating metadata as verified truth or every indicator as malicious.",
       "start_with": "DNS triage; Email identity and message triage",
       "extends": [],
       "mode": "offline",

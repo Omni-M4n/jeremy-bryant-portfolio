@@ -43,12 +43,15 @@ not establish independent learner mastery. See [the project register](projects/R
 
 I will use the prepared [goal source note](docs/cyber-cloud-learning-goal.md)
 to set out my cybersecurity and cloud learning direction, scope and claim
-boundaries. On 20 November 2026, I verified the current 57-lab route (29
+boundaries. On 20 November 2026, I verified the former 57-lab snapshot (29
 Beginner, 18 Intermediate and 10 Advanced) at the
 [portfolio goal route](https://jeremy-bryant.pages.dev/goal/) and its
 [manifest](https://jeremy-bryant.pages.dev/goal/manifest.json) for content
-commit `feb9cb466cb7bd1ada5d7b3a198970a8c1656331`. I am keeping every lab
-**Planned**, and I am not claiming completion or mastery. I will keep the
+commit `feb9cb466cb7bd1ada5d7b3a198970a8c1656331`. That check confirms site
+availability for the former snapshot only; it does not verify this current
+58-lab route. I will replace this pre-deployment receipt only after the current
+route is successfully deployed and separately checked live. I am keeping every
+lab **Planned**, and I am not claiming completion or mastery. I will keep the
 [Wiki goal source](docs/wiki-cybersecurity-and-cloud-goal.md) as the
 corresponding repository guide. The lab route will remain planned work;
 publishing it will not mean I have completed or been assessed on those labs.
